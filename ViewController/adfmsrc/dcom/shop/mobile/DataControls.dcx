@@ -9,8 +9,8 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="WarehouseLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="dcom.shop.mobile/dcomgetwhsebpelprocess_client_ep.wsdl" ensureKeyAttribute="true"
-                  useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetWhse/dcomgetwhsebpelprocess_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetwhsebpelprocess_client_ep"
                  namespace="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess"
                  connection="WarehouseLOV_WS">

@@ -5,14 +5,14 @@
     <RefAddresses>
       <XmlRefAddr addrType="WebServiceConnection">
         <Contents>
-          <wsconnection description="file:/C:/jDeveloper/jdevhome/jdev/mywork/ShopFloorMobileApp/ViewController/dcom.shop.mobile/dcomgetwhsebpelprocess_client_ep.wsdl"
+          <wsconnection description="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetWhse/dcomgetwhsebpelprocess_client_ep?WSDL"
                         service="{http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess}dcomgetwhsebpelprocess_client_ep">
             <model name="{http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess}dcomgetwhsebpelprocess_client_ep"
                    xmlns="http://oracle.com/ws/model">
               <service name="{http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess}dcomgetwhsebpelprocess_client_ep">
                 <port name="DCOMGetWhseBPELProcess_pt"
                       binding="{http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess}DCOMGetWhseBPELProcessBinding">
-                  <soap addressUrl="http://ushyddipverma1:7101/ShopFloorMobileApp-ViewController-context-root/WarehouseLOV_WSService"
+                  <soap addressUrl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetWhse/dcomgetwhsebpelprocess_client_ep"
                         xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
                   <operation name="process">
                     <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>

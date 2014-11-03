@@ -8,6 +8,7 @@
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="WarehouseLOV_WS" path="dcom.shop.mobile.WarehouseLOV_WS"/>
     <dc id="WarehouseDC" path="dcom.shop.mobile.WarehouseDC"/>
   </dataControlUsages>
 </Application>

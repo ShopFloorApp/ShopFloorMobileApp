@@ -144,41 +144,41 @@ public class LifeCycleListenerImpl implements LifeCycleListener {
     private void intializeDBfromScript() throws Exception {
         InputStream scriptStream = null;
         Connection conn = null;
-//        try {
-//            Utility.ApplicationLogger.info("Initializing DB...");
-//            String docRoot = AdfmfJavaUtilities.getDirectoryPathRoot(AdfmfJavaUtilities.ApplicationDirectory);
-//            String dbName = docRoot + "/dcomShopFloor.db";
-//
-//            File dbFile = new File(dbName);
-//            if (dbFile.exists())
-//                return;
-//
-//            conn = new SQLite.JDBCDataSource("jdbc:sqlite:" + dbName).getConnection();
-//            conn.setAutoCommit(false);
-//
-//            Utility.ApplicationLogger.info("Reading script dcomShopFloor.db");
-//            scriptStream =
-//                Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/initializedb.sql");
-//            BufferedReader scriptReader = new BufferedReader(new InputStreamReader(scriptStream));
-//            String nextLine;
-//            StringBuffer nextStatement = new StringBuffer();
-//
-//            Statement stmt = conn.createStatement();
-//            while ((nextLine = scriptReader.readLine()) != null) {
-//                if (nextLine.startsWith("REM") || nextLine.startsWith("COMMIT") || nextLine.length() < 1)
-//                    continue;
-//                nextStatement.append(nextLine);
-//                if (nextLine.endsWith(";")) {
-//                    Utility.ApplicationLogger.info("Execute statement: " + nextStatement.toString());
-//                    stmt.execute(nextStatement.toString());
-//                    nextStatement = new StringBuffer();
-//                }
-//            }
-//        } finally {
-//            if (conn != null) {
-//                conn.commit();
-//                conn.close();
-//            }
-//        }
+        try {
+            Utility.ApplicationLogger.info("Initializing DB...");
+            String docRoot = AdfmfJavaUtilities.getDirectoryPathRoot(AdfmfJavaUtilities.ApplicationDirectory);
+            String dbName = docRoot + "/dcomShopFloor.db";
+
+            File dbFile = new File(dbName);
+            if (dbFile.exists())
+                return;
+
+            conn = new SQLite.JDBCDataSource("jdbc:sqlite:" + dbName).getConnection();
+            conn.setAutoCommit(false);
+
+            Utility.ApplicationLogger.info("Reading script dcomShopFloor.db");
+            scriptStream =
+                Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/initializedb.sql");
+            BufferedReader scriptReader = new BufferedReader(new InputStreamReader(scriptStream));
+            String nextLine;
+            StringBuffer nextStatement = new StringBuffer();
+
+            Statement stmt = conn.createStatement();
+            while ((nextLine = scriptReader.readLine()) != null) {
+                if (nextLine.startsWith("REM") || nextLine.startsWith("COMMIT") || nextLine.length() < 1)
+                    continue;
+                nextStatement.append(nextLine);
+                if (nextLine.endsWith(";")) {
+                    Utility.ApplicationLogger.info("Execute statement: " + nextStatement.toString());
+                    stmt.execute(nextStatement.toString());
+                    nextStatement = new StringBuffer();
+                }
+            }
+        } finally {
+            if (conn != null) {
+                conn.commit();
+                conn.close();
+            }
+        }
     }
 }
