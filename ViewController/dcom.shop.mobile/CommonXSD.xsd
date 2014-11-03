@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.deloitte.com/DCOM/Common" targetNamespace="http://www.deloitte.com/DCOM/Common" elementFormDefault="qualified">
+  <xsd:complexType name="TransactionHeaderType">
+    <xsd:sequence>
+      <xsd:element name="CallingSystemName" type="xsd:normalizedString" maxOccurs="1" minOccurs="1"/>
+      <xsd:element name="CallingInterfaceName" type="xsd:normalizedString" maxOccurs="1" minOccurs="1"/>
+      <xsd:element name="UserIdentifier" type="xsd:normalizedString" maxOccurs="1" minOccurs="1"/>
+      <xsd:element name="RoleName" type="xsd:normalizedString" maxOccurs="1" minOccurs="1"/>
+      <xsd:element name="LastSyncDateTime" type="xsd:dateTime" maxOccurs="1" minOccurs="1"/>
+      <xsd:element name="Status" type="tns:Status_Type" maxOccurs="1" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Status_Type">
+    <xsd:sequence>
+      <xsd:element name="Code" type="xsd:string" maxOccurs="1" minOccurs="0"/>
+      <xsd:element name="Msg" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AttributeListType">
+    <xsd:sequence>
+      <xsd:element name="Attr" type="tns:nvAttributeType" maxOccurs="unbounded" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="nvAttributeType">
+    <xsd:sequence>
+      <xsd:element name="N" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+      <xsd:element name="V" type="xsd:string" maxOccurs="1" minOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

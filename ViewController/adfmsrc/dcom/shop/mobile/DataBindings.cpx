@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="dcom.shop.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/page/syncPrefPG.amx" usageId="dcom_shop_mobile_syncPrefPGPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="WarehouseDC" path="dcom.shop.mobile.WarehouseDC"/>
+  </dataControlUsages>
+</Application>

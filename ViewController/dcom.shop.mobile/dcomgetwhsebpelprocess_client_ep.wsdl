@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="DCOMGetWhseBPELProcess" targetNamespace="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess" xmlns:ns1="http://www.deloitte.com/DCOM/Warehouse/DCOMGetWhse" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:documentation>
+    <abstractWSDL>http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetWhse!1.0/DCOMGetWhseBPELProcess.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <plnk:partnerLinkType name="DCOMGetWhseBPELProcess">
+    <plnk:role name="DCOMGetWhseBPELProcessProvider">
+      <plnk:portType name="client:DCOMGetWhseBPELProcess"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://www.deloitte.com/DCOM/Warehouse/DCOMGetWhse" schemaLocation="DCOMGetWhse.xsd"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="DCOMGetWhseBPELProcessRequestMessage">
+    <wsdl:part name="payload" element="ns1:getWhseProcess"/>
+  </wsdl:message>
+  <wsdl:message name="DCOMGetWhseBPELProcessResponseMessage">
+    <wsdl:part name="payload" element="ns1:getWhseProcessResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="DCOMGetWhseBPELProcess">
+    <wsdl:operation name="process">
+      <wsdl:input message="client:DCOMGetWhseBPELProcessRequestMessage"/>
+      <wsdl:output message="client:DCOMGetWhseBPELProcessResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DCOMGetWhseBPELProcessBinding" type="client:DCOMGetWhseBPELProcess">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="process">
+      <soap:operation style="document" soapAction="process"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="dcomgetwhsebpelprocess_client_ep">
+    <wsdl:port name="DCOMGetWhseBPELProcess_pt" binding="client:DCOMGetWhseBPELProcessBinding">
+      <soap:address location="http://ushyddipverma1:7101/ShopFloorMobileApp-ViewController-context-root/WarehouseLOV_WSService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

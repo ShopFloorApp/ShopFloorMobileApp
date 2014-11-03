@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.2.36" id="DataControls"
+                    Package="dcom.shop.mobile">
+  <AdapterDataControl id="WarehouseLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.WarehouseLOV_WS"
+                      BeanClass="dcom.shop.mobile.WarehouseLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="WarehouseLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="dcom.shop.mobile/dcomgetwhsebpelprocess_client_ep.wsdl" ensureKeyAttribute="true"
+                  useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetwhsebpelprocess_client_ep"
+                 namespace="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess"
+                 connection="WarehouseLOV_WS">
+          <port name="DCOMGetWhseBPELProcess_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="WarehouseDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.WarehouseDC"
+                      BeanClass="dcom.shop.application.dc.WarehouseDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.WarehouseDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>
