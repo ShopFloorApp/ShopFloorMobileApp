@@ -62,6 +62,14 @@
    </list>
    <value n="defaultPackage" v="dcom.shop.application"/>
    <hash n="oracle.adfdtinternal.model.ide.settings.ADFMSettings">
+      <hash n="adfmContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="adfmsrc/"/>
+         </list>
+      </hash>
       <value n="hasDataControls" v="true"/>
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">

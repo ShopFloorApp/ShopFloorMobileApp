@@ -1,5 +1,6 @@
 package dcom.shop.application.dc;
 
+import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.base.TransactionHeader;
 import dcom.shop.application.database.ConnectionFactory;
 import dcom.shop.application.mobile.WarehouseBO;
@@ -19,17 +20,25 @@ import oracle.adfmf.util.GenericType;
 import oracle.adfmf.util.GenericVirtualType;
 import oracle.adfmf.util.Utility;
 
-public class WarehouseDC extends TransactionHeader {
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+public class WarehouseDC extends SyncUtils {
+    
 
     public WarehouseDC() {
         super();
     }
 
     public WarehouseBO[] getWarehouses() {
+        
+        try{
         WarehouseBO[] warehouses = null;
-
-        String networkStatus =
+        warehouses = (WarehouseBO[]) super.getCollection(WarehouseBO.class,"WarehouseLOV_WS","process");
+            return warehouses;
+        }
+        catch(Exception e){
+            throw new RuntimeException("Called Error "+e);
+        }
+        /*
+         * String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
 
         if (networkStatus.equals(NOT_REACHABLE)) {
@@ -40,7 +49,8 @@ public class WarehouseDC extends TransactionHeader {
             warehouses = getWarehousesFromWS();
             updateWhseSqlLiteTable(warehouses);
         }
-        return warehouses;
+*/
+       
 
     }
 
@@ -66,8 +76,8 @@ public class WarehouseDC extends TransactionHeader {
                 Utility.ApplicationLogger.severe("Warehouse: " + result.getString("WHSE"));
 
                 warehouse.setWhse(result.getString("WHSE"));
-                warehouse.setAttribute1(result.getString("ATTRIBUTE1"));
-                warehouse.setAttribute2(result.getString("ATTRIBUTE2"));
+                //warehouse.setAttribute1(result.getString("ATTRIBUTE1"));
+                //warehouse.setAttribute2(result.getString("ATTRIBUTE2"));
                 warehouse.setLine1(result.getString("LINE_1"));
                 warehouse.setLine2(result.getString("LINE_2"));
                 warehouse.setCity(result.getString("CITY"));
@@ -195,8 +205,8 @@ public class WarehouseDC extends TransactionHeader {
                 query.append("'" + warehouses[i].getCountry() + "', ");
                 query.append("'" + warehouses[i].getLocatorControl() + "', ");
                 query.append("'" + warehouses[i].getIsWMS() + "', ");
-                query.append("'" + warehouses[i].getAttribute1() + "', ");
-                query.append("'" + warehouses[i].getAttribute2() + "'); ");
+                //query.append("'" + warehouses[i].getAttribute1() + "', ");
+                //query.append("'" + warehouses[i].getAttribute2() + "'); ");
                 System.out.println("INSERT Query:" + query.toString());
                 stmt.executeQuery(query.toString());
                 System.out.println("Inserted in to query");
@@ -207,5 +217,7 @@ public class WarehouseDC extends TransactionHeader {
             throw new RuntimeException(ex);
         }
     }
+
+
 }
 

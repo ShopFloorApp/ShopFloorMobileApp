@@ -14,14 +14,20 @@ public class WarehouseBO implements Comparable {
     private String country;
     private String locatorControl;
     private String isWMS;
-    private String attribute1;
-    private String attribute2;
+    private AttributeListType attributes;
 
 
     public WarehouseBO() {
         super();
     }
 
+    public void setAttributes(WarehouseBO.AttributeListType attributes) {
+        this.attributes = attributes;
+    }
+
+    public WarehouseBO.AttributeListType getAttributes() {
+        return attributes;
+    }
 
     public void setWhse(String whse) {
         String oldWhse = this.whse;
@@ -124,25 +130,6 @@ public class WarehouseBO implements Comparable {
         return isWMS;
     }
 
-    public void setAttribute1(String attribute1) {
-        String oldAttribute1 = this.attribute1;
-        this.attribute1 = attribute1;
-        propertyChangeSupport.firePropertyChange("attribute1", oldAttribute1, attribute1);
-    }
-
-    public String getAttribute1() {
-        return attribute1;
-    }
-
-    public void setAttribute2(String attribute2) {
-        String oldAttribute2 = this.attribute2;
-        this.attribute2 = attribute2;
-        propertyChangeSupport.firePropertyChange("attribute2", oldAttribute2, attribute2);
-    }
-
-    public String getAttribute2() {
-        return attribute2;
-    }
     private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
@@ -194,6 +181,15 @@ public class WarehouseBO implements Comparable {
             return this.name.compareTo(((WarehouseBO) o).getName());
         } else {
             throw new ClassCastException("Warehouse Class expected.");
+        }
+    }
+
+    private class AttributeListType {
+        nvAttributeType[] attr;
+
+        private class nvAttributeType {
+            String n;
+            String v;
         }
     }
 }

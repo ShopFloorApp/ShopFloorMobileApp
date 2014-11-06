@@ -7,6 +7,7 @@
     <iterator Binds="root" RangeSize="25" DataControl="WarehouseDC" id="WarehouseDCIterator"/>
     <accessorIterator MasterBinding="WarehouseDCIterator" Binds="warehouses" RangeSize="25" DataControl="WarehouseDC"
                       BeanClass="dcom.shop.application.mobile.WarehouseBO" id="warehousesIterator"/>
+    <iterator id="WarehouseLOV_WS_rootIter" Binds="root" DataControl="WarehouseLOV_WS" RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
