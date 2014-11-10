@@ -1,7 +1,13 @@
 package dcom.shop.application.mobile;
 
+import java.util.HashMap;
+
+import java.util.Iterator;
+import java.util.Map;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.util.GenericVirtualType;
 
 public class WarehouseBO implements Comparable {
     private String whse;
@@ -14,20 +20,23 @@ public class WarehouseBO implements Comparable {
     private String country;
     private String locatorControl;
     private String isWMS;
-    private AttributeListType attributes;
+    private GenericVirtualType attributes;
 
 
     public WarehouseBO() {
         super();
     }
 
-    public void setAttributes(WarehouseBO.AttributeListType attributes) {
+    public void setAttributes(GenericVirtualType attributes) {
+        GenericVirtualType oldAttributes = this.attributes;
         this.attributes = attributes;
+        propertyChangeSupport.firePropertyChange("attributes", oldAttributes, attributes);
     }
 
-    public WarehouseBO.AttributeListType getAttributes() {
+    public GenericVirtualType getAttributes() {
         return attributes;
     }
+
 
     public void setWhse(String whse) {
         String oldWhse = this.whse;
@@ -130,19 +139,35 @@ public class WarehouseBO implements Comparable {
         return isWMS;
     }
 
+    public void setBOClassRow(HashMap hashMap) {
+        this.setWhse((String) hashMap.get("whse"));
+        this.setName((String) hashMap.get("name"));
+        this.setLine1((String) hashMap.get("line1"));
+        this.setLine2((String) hashMap.get("line2"));
+        this.setCity((String) hashMap.get("city"));
+        this.setState((String) hashMap.get("state"));
+        this.setZip((String) hashMap.get("zip"));
+        this.setCountry((String) hashMap.get("country"));
+        this.setLocatorControl((String) hashMap.get("locatorControl"));
+        this.setIsWMS((String) hashMap.get("isWMS"));
+    }
+
+    public HashMap getBOClassRow(WarehouseBO warehouse) {
+        HashMap map = new HashMap();
+        map.put("whse", warehouse.getWhse());
+        map.put("name", warehouse.getName());
+        map.put("line1", warehouse.getLine1());
+        map.put("line2", warehouse.getLine2());
+        map.put("city", warehouse.getCity());
+        map.put("state", warehouse.getState());
+        map.put("zip", warehouse.getZip());
+        map.put("country", warehouse.getCountry());
+        map.put("locatorcontrol", warehouse.getLocatorControl());
+        map.put("iswms", warehouse.getIsWMS());
+        return map;
+    }
+
     private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-
-
-    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
-        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
-        this.propertyChangeSupport = propertyChangeSupport;
-        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
-                                                 propertyChangeSupport);
-    }
-
-    public PropertyChangeSupport getPropertyChangeSupport() {
-        return propertyChangeSupport;
-    }
 
     public boolean equals(Object object) {
         if (this == object) {
@@ -184,12 +209,36 @@ public class WarehouseBO implements Comparable {
         }
     }
 
-    private class AttributeListType {
+    public class AttributeListType {
         nvAttributeType[] attr;
 
-        private class nvAttributeType {
+        public void setAttr(WarehouseBO.AttributeListType.nvAttributeType[] attr) {
+            this.attr = attr;
+        }
+
+        public WarehouseBO.AttributeListType.nvAttributeType[] getAttr() {
+            return attr;
+        }
+
+        public class nvAttributeType {
             String n;
             String v;
+
+            public void setN(String n) {
+                this.n = n;
+            }
+
+            public String getN() {
+                return n;
+            }
+
+            public void setV(String v) {
+                this.v = v;
+            }
+
+            public String getV() {
+                return v;
+            }
         }
     }
 }

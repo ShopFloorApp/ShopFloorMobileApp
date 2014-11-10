@@ -27,4 +27,116 @@
       </XmlRefAddr>
     </RefAddresses>
   </Reference>
+  <Reference name="CategorySetLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
+             xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCatgSet/dcomgetcatgsetbpel_client_ep?WSDL"
+                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgSet/DCOMGetCatgSetBPEL}dcomgetcatgsetbpel_client_ep">
+            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgSet/DCOMGetCatgSetBPEL}dcomgetcatgsetbpel_client_ep"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgSet/DCOMGetCatgSetBPEL}dcomgetcatgsetbpel_client_ep">
+                <port name="DCOMGetCatgSetBPEL_pt"
+                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgSet/DCOMGetCatgSetBPEL}DCOMGetCatgSetBPELBinding">
+                  <soap addressUrl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCatgSet/dcomgetcatgsetbpel_client_ep"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="process">
+                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="SubinventoryLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
+             xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep?WSDL"
+                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}dcomgetsubinvbpel_client_ep">
+            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}dcomgetsubinvbpel_client_ep"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}dcomgetsubinvbpel_client_ep">
+                <port name="DCOMGetSubinvBPEL_pt"
+                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}DCOMGetSubinvBPELBinding">
+                  <soap addressUrl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="process">
+                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="LocatorLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
+             xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetLocator/dcomgetlocatorbpel_client_ep?WSDL"
+                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLocator/DCOMGetLocatorBPEL}dcomgetlocatorbpel_client_ep">
+            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLocator/DCOMGetLocatorBPEL}dcomgetlocatorbpel_client_ep"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLocator/DCOMGetLocatorBPEL}dcomgetlocatorbpel_client_ep">
+                <port name="DCOMGetLocatorBPEL_pt"
+                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLocator/DCOMGetLocatorBPEL}DCOMGetLocatorBPELBinding">
+                  <soap addressUrl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetLocator/dcomgetlocatorbpel_client_ep"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="process">
+                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="CategoryCodeLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
+             xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCatgCode/dcomgetcatgcodebpel_client_ep?WSDL"
+                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgCode/DCOMGetCatgCodeBPEL}dcomgetcatgcodebpel_client_ep">
+            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgCode/DCOMGetCatgCodeBPEL}dcomgetcatgcodebpel_client_ep"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgCode/DCOMGetCatgCodeBPEL}dcomgetcatgcodebpel_client_ep">
+                <port name="DCOMGetCatgCodeBPEL_pt"
+                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgCode/DCOMGetCatgCodeBPEL}DCOMGetCatgCodeBPELBinding">
+                  <soap addressUrl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCatgCode/dcomgetcatgcodebpel_client_ep"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="process">
+                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
 </References>

@@ -8,6 +8,14 @@
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="CategoryCodeDC" path="dcom.shop.mobile.CategoryCodeDC"/>
+    <dc id="CategoryCodeLOV_WS" path="dcom.shop.mobile.CategoryCodeLOV_WS"/>
+    <dc id="LocatorDC" path="dcom.shop.mobile.LocatorDC"/>
+    <dc id="LocatorLOV_WS" path="dcom.shop.mobile.LocatorLOV_WS"/>
+    <dc id="SubinventoryDC" path="dcom.shop.mobile.SubinventoryDC"/>
+    <dc id="SubinventoryLOV_WS" path="dcom.shop.mobile.SubinventoryLOV_WS"/>
+    <dc id="CategorySetDC" path="dcom.shop.mobile.CategorySetDC"/>
+    <dc id="CategorySetLOV_WS" path="dcom.shop.mobile.CategorySetLOV_WS"/>
     <dc id="WarehouseLOV_WS" path="dcom.shop.mobile.WarehouseLOV_WS"/>
     <dc id="WarehouseDC" path="dcom.shop.mobile.WarehouseDC"/>
   </dataControlUsages>

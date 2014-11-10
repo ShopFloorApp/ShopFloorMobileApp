@@ -6,14 +6,24 @@ import dcom.shop.application.mobile.WarehouseBO;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+import java.security.Key;
+
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+
+import java.util.Map;
+
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.api.GenericTypeBeanSerializationHelper;
@@ -45,28 +55,23 @@ public abstract class SyncUtils {
         return transactionHeader;
     }
 
-    //protected abstract boolean syncCollection();
 
-   // protected Object[] getCollection() {
-   //     return null;
-   // }
-
-    protected Object[] getCollection(Class collectionClass,String lovDCName,String opeartionName) {
+    protected List getCollection(Class collectionClass,HashMap params) {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
-        Object[] collections;
+        List collections;
         if (networkStatus.equals(NOT_REACHABLE)) {
             System.out.println("In not reachable");
             collections = getCollectionFromDB(collectionClass);
         } else {
             System.out.println("Getting from Warehouse web service");
-            collections = getCollectionFromWS(collectionClass,lovDCName,opeartionName);
+            collections = getCollectionFromWS(collectionClass, params);
             updateSqlLiteTable(collectionClass, collections);
         }
         return collections;
     }
 
-    private Object[] getCollectionFromDB(Class collectionClass) {
+    private List getCollectionFromDB(Class collectionClass) {
         Connection conn = null;
         List returnValue = new ArrayList();
 
@@ -74,89 +79,175 @@ public abstract class SyncUtils {
             conn = ConnectionFactory.getConnection();
 
             Statement stmt = conn.createStatement();
-            ResultSet result;
-            StringBuffer query= new StringBuffer();
+
+
+            StringBuffer query = new StringBuffer();
             query.append("SELECT ");
-            Field[] fields =collectionClass.getFields();
-            for(int i=0; i<fields.length;i++){
-                
+
+            Field[] fields = collectionClass.getDeclaredFields();
+
+            StringBuffer q1 = new StringBuffer();
+            for (int i = 0; i < fields.length; i++) {
+
+                if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                    continue;
+                }
+                q1.append(fields[i].getName().toUpperCase() + ",");
             }
-/*           stmt.executeQuery("SELECT WHSE, NAME, LINE_1, LINE_2, CITY, STATE, ZIP, COUNTRY, LOCATOR_CONTROL, IS_WMS, ATTRIBUTE1, ATTRIBUTE2 FROM WAREHOUSE;");
+            String q2 = q1.substring(0, q1.length() - 1);
+            String tableName = collectionClass.getName();
+            String tabName = tableName.substring(tableName.lastIndexOf(".") + 1, tableName.length() - 2);
+            query.append(q2 + " FROM " + tabName.toUpperCase() + ";");
+            ResultSet result = stmt.executeQuery(query.toString());
             while (result.next()) {
-                WarehouseBO warehouse = new WarehouseBO();
-                Utility.ApplicationLogger.severe("Warehouse: " + result.getString("WHSE"));
-
-                warehouse.setWhse(result.getString("WHSE"));
-                warehouse.setAttribute1(result.getString("ATTRIBUTE1"));
-                warehouse.setAttribute2(result.getString("ATTRIBUTE2"));
-                warehouse.setLine1(result.getString("LINE_1"));
-                warehouse.setLine2(result.getString("LINE_2"));
-                warehouse.setCity(result.getString("CITY"));
-                warehouse.setState(result.getString("STATE"));
-                warehouse.setCountry(result.getString("COUNTRY"));
-                warehouse.setName(result.getString("NAME"));
-                warehouse.setZip(result.getString("ZIP"));
-                warehouse.setLocatorControl(result.getString("LOCATOR_CONTROL"));
-                warehouse.setIsWMS(result.getString("IS_WMS"));
-
-                returnValue.add(warehouse);
+                System.out.println("inside first while");
+                HashMap map = new HashMap();
+                for (int i = 0; i < fields.length; i++) {
+                    if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                        continue;
+                    }
+                    System.out.println("adding rows to hashmap");
+                    map.put(fields[i].getName().toLowerCase(), (String) result.getObject(fields[i].getName()));
+                }
+                System.out.println("before invoking the method");
+                Object obj = collectionClass.newInstance();
+                Method method = collectionClass.getMethod("setBOClassRow", new Class[] { HashMap.class });
+                method.invoke(obj, new Object[] { map });
+                System.out.println("after invoking");
+                Iterator entries = map.entrySet().iterator();
+                while (entries.hasNext()) {
+                    Map.Entry entry = (Map.Entry) entries.next();
+                    String key = (String) entry.getKey();
+                    String value = (String) entry.getValue();
+                    System.out.println("Key = " + key + ", Value = " + value);
+                }
+                System.out.println("after iterating hashmap");
+                returnValue.add(obj);
             }
-*/
+
         } catch (Exception ex) {
             Utility.ApplicationLogger.severe(ex.getMessage());
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
-        Collections.sort(returnValue);
-        return (WarehouseBO[]) returnValue.toArray(new WarehouseBO[returnValue.size()]);
+        return returnValue;
     }
 
-    private Object[] getCollectionFromWS(Class collectionClass,String lovDCName,String opeartionName) {
+    private List getCollectionFromWS(Class collectionClass, HashMap params) {
         System.out.println("Inside getWarehousesFromWS");
-                GenericVirtualType payload = new GenericVirtualType(null, "payload");
-         
-         
-                //Fetching Transaction header
-                GenericVirtualType transactionHeader = getTransactionHeader();
-                payload.defineAttribute(null, "TransactionHeader", GenericType.class, transactionHeader);
-         
-                List pnames = new ArrayList();
-                List pvals = new ArrayList();
-                List ptypes = new ArrayList();
-                List collection = new ArrayList();
-         
-                pnames.add("payload");
-                ptypes.add(GenericType.class);
-                pvals.add(payload);
-                System.out.println("Before Webservice call");
-                try {
-                    GenericType genericReturnValue =
-                        (GenericType) AdfmfJavaUtilities.invokeDataControlMethod(lovDCName, null, opeartionName, pnames,
-                                                                                 pvals, ptypes);
-                    GenericType respListType = (GenericType) genericReturnValue.getAttribute(1);
-                    
-                    for (int i = 0; i < respListType.getAttributeCount(); i++) {
-                        // Get each individual GenericType instance that holds the attribute key-value pairs of department
-        //                GenericType entityGenericType = (GenericType) whseListType.getAttribute(i);
-                        // Now create Department instance out of this GenericType
-                        // this works fine if payload attr names match department attr names
-                        Object obj=collectionClass.newInstance();
-                        obj =GenericTypeBeanSerializationHelper.fromGenericType(collectionClass,respListType);
-                        collection.add(obj);
-                    }
-        //            Arrays.sort(warehouse);
-                    return collection.toArray(new Object[collection.size()]);
-         
-                } catch (Exception aie) {
-        //            if (AdfInvocationException.CATEGORY_WEBSERVICE.compareTo(aie.getErrorCategory()) == 0) {
-        //                throw new RuntimeException("Error with the server. Please try later", aie);
-        //            } else {
-                        throw new RuntimeException("error here "+aie);
-         
-        //            }
-                }
+        GenericVirtualType payload = (GenericVirtualType) params.get("payload");
+        String lovDCName = (String) params.get("lovDCName");
+        String opeartionName = (String) params.get("opeartionName");
+        String resAttriName = (String) params.get("resAttriName");
+
+        //Fetching Transaction header
+        GenericVirtualType transactionHeader = getTransactionHeader();
+        payload.defineAttribute(null, "TransactionHeader", GenericType.class, transactionHeader);
+
+        List pnames = new ArrayList();
+        List pvals = new ArrayList();
+        List ptypes = new ArrayList();
+        List collection = new ArrayList();
+
+        pnames.add("payload");
+        ptypes.add(GenericType.class);
+        pvals.add(payload);
+        System.out.println("Before Webservice call");
+        try {
+            GenericType genericReturnValue =
+                (GenericType) AdfmfJavaUtilities.invokeDataControlMethod(lovDCName, null, opeartionName, pnames, pvals,
+                                                                         ptypes);
+            GenericType respListType = (GenericType) genericReturnValue.getAttribute(resAttriName);
+
+            for (int i = 0; i < respListType.getAttributeCount(); i++) {
+                // Get each individual GenericType instance that holds the attribute key-value pairs of department
+                GenericType entityGenericType = (GenericType) respListType.getAttribute(i);
+                // Now create Department instance out of this GenericType
+                // this works fine if payload attr names match department attr names
+                Object obj = collectionClass.newInstance();
+                obj = GenericTypeBeanSerializationHelper.fromGenericType(collectionClass, entityGenericType);
+                collection.add(obj);
+            }
+            return collection;
+
+        } catch (Exception aie) {
+            throw new RuntimeException(aie);
+        }
     }
 
-    private void updateSqlLiteTable(Class collectionClass, Object[] collections) {
+    private void updateSqlLiteTable(Class collectionClass, List collections) {
+        Connection conn = null;
+
+        String tableName = collectionClass.getName();
+        String tabName = tableName.substring(tableName.lastIndexOf(".") + 1, tableName.length() - 2);
+
+        try {
+            conn = ConnectionFactory.getConnection();
+
+            Statement stmt = conn.createStatement();
+
+            stmt.executeQuery("DELETE FROM " + tabName.toUpperCase() + ";");
+
+            Field[] fields = collectionClass.getDeclaredFields();
+
+            StringBuffer query = new StringBuffer();
+            query.append("INSERT INTO " + tabName.toUpperCase() + " (");
+
+            StringBuffer fieldNames = new StringBuffer();
+            for (int i = 0; i < fields.length; i++) {
+
+                if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                    continue;
+                }
+                fieldNames.append(fields[i].getName().toUpperCase() + ",");
+            }
+            String fieldNamesStr = fieldNames.substring(0, fieldNames.length() - 1);
+
+            query.append(fieldNamesStr + " ) VALUES ( ");
+
+            System.out.println("after resultset logic query is " + query);
+            Object obj = collectionClass.newInstance();
+            for (int i = 0; i < collections.size(); i++) {
+                stmt = conn.createStatement();
+                StringBuffer insertQueryValues = new StringBuffer();
+                System.out.println("row is " + collections.get(i));
+                System.out.println("row class is " + collections.get(i).getClass());
+                Method method = collectionClass.getMethod("getBOClassRow", new Class[] { collectionClass });
+                System.out.println("invoking the method and getting the output");
+                HashMap pojoRowMap = (HashMap) method.invoke(obj, new Object[] { collections.get(i) });
+
+                for (int j = 0; j < fields.length; j++) {
+                    if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                        continue;
+                    }
+                    System.out.println("getting row from hashmap");
+                    String columnValue = (String) pojoRowMap.get(fields[j].getName().toLowerCase()); //
+                    System.out.println("field name is " + fields[j].getName().toLowerCase());
+
+                    insertQueryValues.append("'" + columnValue + "'" + ",");
+                }
+                System.out.println("insert value is " + insertQueryValues);
+                String valuesStr = insertQueryValues.substring(0, insertQueryValues.length() - 1);
+                String finalQuery = query.toString() + valuesStr + ");";
+                System.out.println("insert query is " + finalQuery);
+                stmt.execute(finalQuery);
+
+            }
+
+        } catch (Exception ex) {
+            Utility.ApplicationLogger.severe(ex.getMessage());
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public String toCamelCase(String s) {
+        String finalString = s.substring(0, 1).toUpperCase() + s.substring(1);
+        return finalString;
+
     }
 }

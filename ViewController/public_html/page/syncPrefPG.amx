@@ -52,7 +52,7 @@
                           selectedRowKeys="#{bindings.warehouses.collectionModel.selectedRow}"
                           selectionListener="#{bindings.warehouses.collectionModel.makeCurrent}"
                           styleClass="adfmf-listView-insetList" showMoreStrategy="autoScroll" bufferStrategy="viewport"
-                          id="lv1">
+                          id="lv1" rendered="false">
               <amx:listItem id="li1">
                 <amx:tableLayout width="100%" id="tl2">
                   <amx:rowLayout id="rl6">
@@ -64,6 +64,90 @@
                   <amx:rowLayout id="rl5">
                     <amx:cellFormat width="100%" height="12px" id="cf8">
                       <amx:outputText value="#{row.line1}" styleClass="adfmf-listItem-captionText" id="ot3"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                </amx:tableLayout>
+              </amx:listItem>
+            </amx:listView>
+            <amx:listView var="row" value="#{bindings.categorySets.collectionModel}"
+                          fetchSize="#{bindings.categorySets.rangeSize}"
+                          selectedRowKeys="#{bindings.categorySets.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.categorySets.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2" rendered="false">
+              <amx:listItem id="li2">
+                <amx:tableLayout width="100%" id="tl3">
+                  <amx:rowLayout id="rl7">
+                    <amx:cellFormat width="10px" rowSpan="2" id="cf11"/>
+                    <amx:cellFormat width="100%" height="28px" id="cf12">
+                      <amx:outputText value="#{row.catgSetName}" id="ot5"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                  <amx:rowLayout id="rl8">
+                    <amx:cellFormat width="100%" height="12px" id="cf13">
+                      <amx:outputText value="#{row.structureId}" styleClass="adfmf-listItem-captionText" id="ot6"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                </amx:tableLayout>
+              </amx:listItem>
+            </amx:listView>
+            <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
+                          fetchSize="#{bindings.subinventories.rangeSize}"
+                          selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.subinventories.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv3" rendered="false">
+              <amx:listItem id="li3">
+                <amx:tableLayout width="100%" id="tl4">
+                  <amx:rowLayout id="rl10">
+                    <amx:cellFormat width="10px" rowSpan="2" id="cf15"/>
+                    <amx:cellFormat width="100%" height="28px" id="cf16">
+                      <amx:outputText value="#{row.whse}" id="ot8"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                  <amx:rowLayout id="rl9">
+                    <amx:cellFormat width="100%" height="12px" id="cf14">
+                      <amx:outputText value="#{row.subinv}" styleClass="adfmf-listItem-captionText" id="ot7"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                </amx:tableLayout>
+              </amx:listItem>
+            </amx:listView>
+            <amx:listView var="row" value="#{bindings.locators.collectionModel}"
+                          fetchSize="#{bindings.locators.rangeSize}"
+                          selectedRowKeys="#{bindings.locators.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.locators.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv4" rendered="false">
+              <amx:listItem id="li4">
+                <amx:tableLayout width="100%" id="tl5">
+                  <amx:rowLayout id="rl12">
+                    <amx:cellFormat width="10px" rowSpan="2" id="cf18"/>
+                    <amx:cellFormat width="100%" height="28px" id="cf19">
+                      <amx:outputText value="#{row.subinv}" id="ot10"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                  <amx:rowLayout id="rl11">
+                    <amx:cellFormat width="100%" height="12px" id="cf17">
+                      <amx:outputText value="#{row.locator}" styleClass="adfmf-listItem-captionText" id="ot9"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                </amx:tableLayout>
+              </amx:listItem>
+            </amx:listView>
+            <amx:listView var="row" value="#{bindings.categoryCodes.collectionModel}"
+                          fetchSize="#{bindings.categoryCodes.rangeSize}"
+                          selectedRowKeys="#{bindings.categoryCodes.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.categoryCodes.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv5">
+              <amx:listItem id="li5">
+                <amx:tableLayout width="100%" id="tl6">
+                  <amx:rowLayout id="rl13">
+                    <amx:cellFormat width="10px" rowSpan="2" id="cf20"/>
+                    <amx:cellFormat width="100%" height="28px" id="cf21">
+                      <amx:outputText value="#{row.catgCode}" id="ot11"/>
+                    </amx:cellFormat>
+                  </amx:rowLayout>
+                  <amx:rowLayout id="rl14">
+                    <amx:cellFormat width="100%" height="12px" id="cf22">
+                      <amx:outputText value="#{row.structureId}" styleClass="adfmf-listItem-captionText" id="ot12"/>
                     </amx:cellFormat>
                   </amx:rowLayout>
                 </amx:tableLayout>

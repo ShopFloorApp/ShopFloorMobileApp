@@ -8,6 +8,25 @@
     <accessorIterator MasterBinding="WarehouseDCIterator" Binds="warehouses" RangeSize="25" DataControl="WarehouseDC"
                       BeanClass="dcom.shop.application.mobile.WarehouseBO" id="warehousesIterator"/>
     <iterator id="WarehouseLOV_WS_rootIter" Binds="root" DataControl="WarehouseLOV_WS" RangeSize="25"/>
+    <iterator id="CategorySetLOV_WS_rootIter" Binds="root" DataControl="CategorySetLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CategorySetDC" id="CategorySetDCIterator"/>
+    <accessorIterator MasterBinding="CategorySetDCIterator" Binds="categorySets" RangeSize="25"
+                      DataControl="CategorySetDC" BeanClass="dcom.shop.application.mobile.CategorySetBO"
+                      id="categorySetsIterator"/>
+    <iterator id="SubinventoryLOV_WS_rootIter" Binds="root" DataControl="SubinventoryLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
+    <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="25"
+                      DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subinventoriesIterator"/>
+    <iterator id="LocatorLOV_WS_rootIter" Binds="root" DataControl="LocatorLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator id="CategoryCodeLOV_WS_rootIter" Binds="root" DataControl="CategoryCodeLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CategoryCodeDC" id="CategoryCodeDCIterator"/>
+    <accessorIterator MasterBinding="CategoryCodeDCIterator" Binds="categoryCodes" RangeSize="25"
+                      DataControl="CategoryCodeDC" BeanClass="dcom.shop.application.mobile.CategoryCodeBO"
+                      id="categoryCodesIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -15,6 +34,38 @@
         <AttrNames>
           <Item Value="whse"/>
           <Item Value="line1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="categorySetsIterator" id="categorySets">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CategorySetBO" Name="categorySets0">
+        <AttrNames>
+          <Item Value="catgSetName"/>
+          <Item Value="structureId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="subinventoriesIterator" id="subinventories">
+      <nodeDefinition DefName="dcom.shop.application.mobile.SubinventoryBO" Name="subinventories0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="subinv"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="locatorsIterator" id="locators">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LocatorBO" Name="locators0">
+        <AttrNames>
+          <Item Value="subinv"/>
+          <Item Value="locator"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="categoryCodesIterator" id="categoryCodes">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CategoryCodeBO" Name="categoryCodes0">
+        <AttrNames>
+          <Item Value="catgCode"/>
+          <Item Value="structureId"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
