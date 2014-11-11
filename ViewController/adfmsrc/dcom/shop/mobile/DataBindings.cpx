@@ -8,6 +8,26 @@
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ResourceLOV_WS" path="dcom.shop.mobile.ResourceLOV_WS"/>
+    <dc id="ResourceDC" path="dcom.shop.mobile.ResourceDC"/>
+    <dc id="DepartmentLOV_WS" path="dcom.shop.mobile.DepartmentLOV_WS"/>
+    <dc id="DepartmentDC" path="dcom.shop.mobile.DepartmentDC"/>
+    <dc id="CountTypeLOV_WS" path="dcom.shop.mobile.CountTypeLOV_WS"/>
+    <dc id="CountTypeDC" path="dcom.shop.mobile.CountTypeDC"/>
+    <dc id="PickRuleLOV_WS" path="dcom.shop.mobile.PickRuleLOV_WS"/>
+    <dc id="PickRuleDC" path="dcom.shop.mobile.PickRuleDC"/>
+    <dc id="AccountAliasLOV_WS" path="dcom.shop.mobile.AccountAliasLOV_WS"/>
+    <dc id="AccountAliasDC" path="dcom.shop.mobile.AccountAliasDC"/>
+    <dc id="CarrierLOV_WS" path="dcom.shop.mobile.CarrierLOV_WS"/>
+    <dc id="CarrierDC" path="dcom.shop.mobile.CarrierDC"/>
+    <dc id="TransactionReasonLOV_WS" path="dcom.shop.mobile.TransactionReasonLOV_WS"/>
+    <dc id="TransactionReasonDC" path="dcom.shop.mobile.TransactionReasonDC"/>
+    <dc id="TransactionTypeLOV_WS" path="dcom.shop.mobile.TransactionTypeLOV_WS"/>
+    <dc id="TransactionTypeDC" path="dcom.shop.mobile.TransactionTypeDC"/>
+    <dc id="CostGroupDC" path="dcom.shop.mobile.CostGroupDC"/>
+    <dc id="CostGroupLOV_WS" path="dcom.shop.mobile.CostGroupLOV_WS"/>
+    <dc id="UOMDC" path="dcom.shop.mobile.UOMDC"/>
+    <dc id="UOMLOV_WS" path="dcom.shop.mobile.UOMLOV_WS"/>
     <dc id="CategoryCodeDC" path="dcom.shop.mobile.CategoryCodeDC"/>
     <dc id="CategoryCodeLOV_WS" path="dcom.shop.mobile.CategoryCodeLOV_WS"/>
     <dc id="LocatorDC" path="dcom.shop.mobile.LocatorDC"/>

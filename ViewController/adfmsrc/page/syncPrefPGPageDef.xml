@@ -27,6 +27,49 @@
     <accessorIterator MasterBinding="CategoryCodeDCIterator" Binds="categoryCodes" RangeSize="25"
                       DataControl="CategoryCodeDC" BeanClass="dcom.shop.application.mobile.CategoryCodeBO"
                       id="categoryCodesIterator"/>
+    <iterator id="UOMLOV_WS_rootIter" Binds="root" DataControl="UOMLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOMs" RangeSize="25" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMsIterator"/>
+    <iterator id="CostGroupLOV_WS_rootIter" Binds="root" DataControl="CostGroupLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CostGroupDC" id="CostGroupDCIterator"/>
+    <accessorIterator MasterBinding="CostGroupDCIterator" Binds="costGroups" RangeSize="25" DataControl="CostGroupDC"
+                      BeanClass="dcom.shop.application.mobile.CostGroupBO" id="costGroupsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactionTypeDC" id="TransactionTypeDCIterator"/>
+    <accessorIterator MasterBinding="TransactionTypeDCIterator" Binds="transactionTypes" RangeSize="25"
+                      DataControl="TransactionTypeDC" BeanClass="dcom.shop.application.mobile.TransactionTypeBO"
+                      id="transactionTypesIterator"/>
+    <iterator id="TransactionTypeLOV_WS_rootIter" Binds="root" DataControl="TransactionTypeLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactionReasonDC" id="TransactionReasonDCIterator"/>
+    <accessorIterator MasterBinding="TransactionReasonDCIterator" Binds="transactionReasons" RangeSize="25"
+                      DataControl="TransactionReasonDC" BeanClass="dcom.shop.application.mobile.TransactionReasonBO"
+                      id="transactionReasonsIterator"/>
+    <iterator id="TransactionReasonLOV_WS_rootIter" Binds="root" DataControl="TransactionReasonLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CarrierDC" id="CarrierDCIterator"/>
+    <accessorIterator MasterBinding="CarrierDCIterator" Binds="carriers" RangeSize="25" DataControl="CarrierDC"
+                      BeanClass="dcom.shop.application.mobile.CarrierBO" id="carriersIterator"/>
+    <iterator id="CarrierLOV_WS_rootIter" Binds="root" DataControl="CarrierLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AccountAliasDC" id="AccountAliasDCIterator"/>
+    <accessorIterator MasterBinding="AccountAliasDCIterator" Binds="accountAlias" RangeSize="25"
+                      DataControl="AccountAliasDC" BeanClass="dcom.shop.application.mobile.AccountAliasBO"
+                      id="accountAliasIterator"/>
+    <iterator id="AccountAliasLOV_WS_rootIter" Binds="root" DataControl="AccountAliasLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PickRuleDC" id="PickRuleDCIterator"/>
+    <accessorIterator MasterBinding="PickRuleDCIterator" Binds="pickRules" RangeSize="25" DataControl="PickRuleDC"
+                      BeanClass="dcom.shop.application.mobile.PickRuleBO" id="pickRulesIterator"/>
+    <iterator id="PickRuleLOV_WS_rootIter" Binds="root" DataControl="PickRuleLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CountTypeDC" id="CountTypeDCIterator"/>
+    <accessorIterator MasterBinding="CountTypeDCIterator" Binds="countTypes" RangeSize="25" DataControl="CountTypeDC"
+                      BeanClass="dcom.shop.application.mobile.CountTypeBO" id="countTypesIterator"/>
+    <iterator id="CountTypeLOV_WS_rootIter" Binds="root" DataControl="CountTypeLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="DepartmentDC" id="DepartmentDCIterator"/>
+    <accessorIterator MasterBinding="DepartmentDCIterator" Binds="departments" RangeSize="25" DataControl="DepartmentDC"
+                      BeanClass="dcom.shop.application.mobile.DepartmentBO" id="departmentsIterator"/>
+    <iterator id="DepartmentLOV_WS_rootIter" Binds="root" DataControl="DepartmentLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ResourceDC" id="ResourceDCIterator"/>
+    <accessorIterator MasterBinding="ResourceDCIterator" Binds="resources" RangeSize="25" DataControl="ResourceDC"
+                      BeanClass="dcom.shop.application.mobile.ResourceBO" id="resourcesIterator"/>
+    <iterator id="ResourceLOV_WS_rootIter" Binds="root" DataControl="ResourceLOV_WS" RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -66,6 +109,86 @@
         <AttrNames>
           <Item Value="catgCode"/>
           <Item Value="structureId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="UOMsIterator" id="UOMs">
+      <nodeDefinition DefName="dcom.shop.application.mobile.UOMBO" Name="UOMs0">
+        <AttrNames>
+          <Item Value="UOMCode"/>
+          <Item Value="UOM"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="costGroupsIterator" id="costGroups">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CostGroupBO" Name="costGroups0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="costGroup"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="transactionTypesIterator" id="transactionTypes">
+      <nodeDefinition DefName="dcom.shop.application.mobile.TransactionTypeBO" Name="transactionTypes0">
+        <AttrNames>
+          <Item Value="transactionType"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="transactionReasonsIterator" id="transactionReasons">
+      <nodeDefinition DefName="dcom.shop.application.mobile.TransactionReasonBO" Name="transactionReasons0">
+        <AttrNames>
+          <Item Value="reasonName"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="carriersIterator" id="carriers">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CarrierBO" Name="carriers0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="carrierName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="accountAliasIterator" id="accountAlias">
+      <nodeDefinition DefName="dcom.shop.application.mobile.AccountAliasBO" Name="accountAlias0">
+        <AttrNames>
+          <Item Value="accountAlias"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="pickRulesIterator" id="pickRules">
+      <nodeDefinition DefName="dcom.shop.application.mobile.PickRuleBO" Name="pickRules0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="ruleName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="countTypesIterator" id="countTypes">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CountTypeBO" Name="countTypes0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="countType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="departmentsIterator" id="departments">
+      <nodeDefinition DefName="dcom.shop.application.mobile.DepartmentBO" Name="departments0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="deptCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="resourcesIterator" id="resources">
+      <nodeDefinition DefName="dcom.shop.application.mobile.ResourceBO" Name="resources0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="resourceCode"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
