@@ -5,4 +5,9 @@
       <adfmf:amx file="dcom.shop.syncPref/syncPrefTF.xml#syncPrefTF"/>
     </adfmf:content>
   </adfmf:feature>
+  <adfmf:feature id="dcom.shop.LoadLov" name="LoadLov">
+    <adfmf:content id="dcom.shop.LoadLov.1">
+      <adfmf:amx file="TaskFlow/LOV-task-flow.xml#LOV-task-flow"/>
+    </adfmf:content>
+  </adfmf:feature>
 </adfmf:features>

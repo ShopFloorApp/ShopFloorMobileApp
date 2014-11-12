@@ -6,5 +6,6 @@
   <adfmf:deviceFeatureAccess>
     <adfmf:deviceNetwork access="true" id="dn1"/>
   </adfmf:deviceFeatureAccess>
+  <adfmf:featureReference id="dcom.shop.LoadLov"/>
   <adfmf:featureReference id="dcom.shop.syncPref"/>
 </adfmf:application>

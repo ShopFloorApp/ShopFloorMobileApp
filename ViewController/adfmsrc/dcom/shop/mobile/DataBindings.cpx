@@ -3,9 +3,13 @@
              SeparateXMLFiles="false" Package="dcom.shop.mobile" ClientType="Generic">
   <pageMap>
     <page path="/page/syncPrefPG.amx" usageId="dcom_shop_mobile_syncPrefPGPageDef"/>
+    <page path="/page/LovPage/WarehouseLov.amx" usageId="dcom_shop_mobile_WarehouseLovPageDef"/>
+    <page path="/page/LovPage/SubinventoryLov.amx" usageId="dcom_shop_mobile_SubinventoryLovPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
+    <page id="dcom_shop_mobile_WarehouseLovPageDef" path="page.LovPage.WarehouseLovPageDef"/>
+    <page id="dcom_shop_mobile_SubinventoryLovPageDef" path="page.LovPage.SubinventoryLovPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ResourceLOV_WS" path="dcom.shop.mobile.ResourceLOV_WS"/>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="LOV-task-flow">
+    <default-activity>navigateLov</default-activity>
+    <router id="navigateLov">
+      <case id="__5">
+        <expression>#{applicationScope.reqLovName}</expression>
+        <outcome>goToWarehouseLov</outcome>
+      </case>
+      <default-outcome>goToSubinventory</default-outcome>
+    </router>
+    <view id="WarehouseLov">
+      <page>/page/LovPage/WarehouseLov.amx</page>
+    </view>
+    <view id="SubinventoryLov">
+      <page>/page/LovPage/SubinventoryLov.amx</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>navigateLov</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>goToWarehouseLov</from-outcome>
+        <to-activity-id>WarehouseLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>goToSubinventory</from-outcome>
+        <to-activity-id>SubinventoryLov</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-mobile-config>
