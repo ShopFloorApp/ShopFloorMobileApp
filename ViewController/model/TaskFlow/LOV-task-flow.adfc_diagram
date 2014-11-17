@@ -13,9 +13,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">224.94824</property>
+         name="y">163.24707</property>
       <property
-         name="x">240.0</property>
+         name="x">283.0</property>
    </Router>
    <View
       id="View3">
@@ -28,9 +28,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">163.79883</property>
+         name="y">221.39648</property>
       <property
-         name="x">556.35645</property>
+         name="x">557.35645</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -40,7 +40,7 @@
       <property
          name="fromOutcome">goToWarehouseLov</property>
       <property
-         name="sdm:polyPoints">R50,281.0,224.59766,515.35645,163.44824,L50</property>
+         name="sdm:polyPoints">R50,324.92407,162.89648,515.4324,221.0459,L50</property>
    </ControlFlowCase>
    <View
       id="View6">
@@ -53,9 +53,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">344.79883</property>
+         name="y">381.39648</property>
       <property
-         name="x">574.6953</property>
+         name="x">594.6953</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -65,6 +65,106 @@
       <property
          name="fromOutcome">goToSubinventory</property>
       <property
-         name="sdm:polyPoints">R54,281.0,228.09766,533.6953,344.44824,L50</property>
+         name="sdm:polyPoints">B72,296.27225,217.82057,552.77124,381.0459,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View8">
+      <property
+         name="activityId">CategorySetNameLov</property>
+      <property
+         name="page">/page/LovPage/CategorySetNameLov.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CategorySetNameLov&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">475.99414</property>
+      <property
+         name="x">417.03027</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase9"
+      from="Router2"
+      to="View8">
+      <property
+         name="fromOutcome">goToCategorySet</property>
+      <property
+         name="sdm:polyPoints">B57,287.42407,221.54156,417.03027,420.71945,T50</property>
+   </ControlFlowCase>
+   <View
+      id="View10">
+      <property
+         name="activityId">CostGroupsLov</property>
+      <property
+         name="page">/page/LovPage/CostGroupsLov.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CostGroupsLov&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">482.0918</property>
+      <property
+         name="x">263.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="Router2"
+      to="View10">
+      <property
+         name="fromOutcome">goToCostGroups</property>
+      <property
+         name="sdm:polyPoints">B43,278.57593,219.88062,263.00003,426.81714,T50</property>
+   </ControlFlowCase>
+   <View
+      id="View12">
+      <property
+         name="activityId">ResourcesLov</property>
+      <property
+         name="page">/page/LovPage/ResourcesLov.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ResourcesLov&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">456.39648</property>
+      <property
+         name="x">77.35254</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="Router2"
+      to="View12">
+      <property
+         name="fromOutcome">goToResources</property>
+      <property
+         name="sdm:polyPoints">B28,269.72775,217.82057,77.35254,401.12186,T50</property>
+   </ControlFlowCase>
+   <View
+      id="View14">
+      <property
+         name="activityId">RequisitionNumberLov</property>
+      <property
+         name="page">/page/LovPage/RequisitionNumberLov.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>RequisitionNumberLov&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">249.89648</property>
+      <property
+         name="x">54.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="Router2"
+      to="View14">
+      <property
+         name="fromOutcome">goToRequisitionNumber</property>
+      <property
+         name="sdm:polyPoints">L50,241.07591,162.89648,95.92409,249.5459,R50</property>
    </ControlFlowCase>
 </SDM>

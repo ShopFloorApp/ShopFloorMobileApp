@@ -7,13 +7,45 @@
         <expression>#{applicationScope.reqLovName}</expression>
         <outcome>goToWarehouseLov</outcome>
       </case>
-      <default-outcome>goToSubinventory</default-outcome>
+      <case id="__9">
+        <expression>#{applicationScope.reqLovName}</expression>
+        <outcome>goToCategorySet</outcome>
+      </case>
+      <case id="__10">
+        <expression>#{applicationScope.reqLovName}</expression>
+        <outcome>goToCostGroups</outcome>
+      </case>
+      <case id="__11">
+        <expression>#{applicationScope.reqLovName}</expression>
+        <outcome>goToRequisitionNumber</outcome>
+      </case>
+      <case id="__12">
+        <expression>#{applicationScope.reqLovName}</expression>
+        <outcome>goToResources</outcome>
+      </case>
+      <case id="__13">
+        <expression>#{applicationScope.reqLovName}</expression>
+        <outcome>goToSubinventory</outcome>
+      </case>
+      <default-outcome>goToCategorySet</default-outcome>
     </router>
     <view id="WarehouseLov">
       <page>/page/LovPage/WarehouseLov.amx</page>
     </view>
     <view id="SubinventoryLov">
       <page>/page/LovPage/SubinventoryLov.amx</page>
+    </view>
+    <view id="CategorySetNameLov">
+      <page>/page/LovPage/CategorySetNameLov.amx</page>
+    </view>
+    <view id="CostGroupsLov">
+      <page>/page/LovPage/CostGroupsLov.amx</page>
+    </view>
+    <view id="ResourcesLov">
+      <page>/page/LovPage/ResourcesLov.amx</page>
+    </view>
+    <view id="RequisitionNumberLov">
+      <page>/page/LovPage/RequisitionNumberLov.amx</page>
     </view>
     <control-flow-rule id="__3">
       <from-activity-id>navigateLov</from-activity-id>
@@ -24,6 +56,22 @@
       <control-flow-case id="__6">
         <from-outcome>goToSubinventory</from-outcome>
         <to-activity-id>SubinventoryLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__1">
+        <from-outcome>goToCategorySet</from-outcome>
+        <to-activity-id>CategorySetNameLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__2">
+        <from-outcome>goToCostGroups</from-outcome>
+        <to-activity-id>CostGroupsLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>goToResources</from-outcome>
+        <to-activity-id>ResourcesLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>goToRequisitionNumber</from-outcome>
+        <to-activity-id>RequisitionNumberLov</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>
