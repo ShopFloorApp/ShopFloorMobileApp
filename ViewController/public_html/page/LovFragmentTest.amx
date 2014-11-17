@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:custom="http://xmlns.example.com/custom">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelGroupLayout id="pgl1">
+      <amx:panelGroupLayout id="pgl2">
+        <amx:inputText label="Lov" id="it1" value="#{applicationScope.returnLovValue}"/>
+        <amx:commandLink text="Search" id="cl1" actionListener="#{jsMBean.rightNav}"/>
+      </amx:panelGroupLayout>
+      <amx:panelGroupLayout id="right-navigation" styleClass="right-nav-container">
+        <amx:fragment src="/page/LovPage/Fragments/WarehouseLovFr.amxf" id="f1">
+          <amx:attribute name="coll" value="#{bindings.warehouses}" id="a4"/>
+          <amx:attribute name="MainText" value="whse" id="a5"/>
+          <amx:attribute name="SubText" value="name" id="a3"/>
+          <amx:attribute name="attrib1" value="#{bindings.warehouseFilter}" id="a2"/>
+          <amx:attribute name="attrib2" value="#{bindings.nameFilter}" id="a6"/>
+          <amx:attribute name="Method1" value="#{bindings.filterWarehouses}" id="a1"/>
+          <amx:facet name="RightMenu"/>
+        </amx:fragment>
+      </amx:panelGroupLayout>
+    </amx:panelGroupLayout>    
+  </amx:panelPage>
+</amx:view>

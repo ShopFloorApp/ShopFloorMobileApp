@@ -1,0 +1,26 @@
+@charset "windows-1252";
+
+.right-nav-container{
+  position: fixed;
+  width: 350px;
+  right: -350px;
+  top: 0;
+  bottom: -47px;
+  background: #CFC9C0;
+  z-index: 10;
+  -webkit-transition: right .5s ease-in-out;
+  transition: right .5s ease-in-out;
+}
+.right-nav-container.show{
+  right: 0;
+}
+
+.rightnav-link{
+  position: absolute;
+  left: -27px;
+  background: url('../../../../ViewController/public_html/images/right.png') no-repeat center center;
+}
+.rightnav-link.hide{
+    background-image: url('../../../../ViewController/public_html/images/left.png');
+}
+

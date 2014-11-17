@@ -250,4 +250,62 @@ public abstract class SyncUtils {
         return finalString;
 
     }
+    
+    public List getFileteredCollection(Class classPOJO,HashMap params){
+        List filteredRows=new ArrayList();
+        try{
+            System.out.println("code inside try");
+        List allRowsCollection = (List) params.get("collection");
+        HashMap filterFieldsValues = (HashMap) params.get("filterFieldsValues");
+            String filter="";
+            int fieldsCount=0;
+            Iterator entriesFields = filterFieldsValues.entrySet().iterator();
+            while (entriesFields.hasNext()) {
+                Map.Entry entry = (Map.Entry) entriesFields.next();
+                String value = (String) entry.getValue();
+                    filter=filter+value;
+                    fieldsCount=fieldsCount+1;
+                } 
+            System.out.println("filter text is "+filter+" and length is "+filter.length());
+            boolean nofilter = (filter.length() == 0);                                                                                                                                                                                           
+        
+                
+        Object obj=classPOJO.newInstance();
+        for (int x = 0; x < allRowsCollection.size(); x++) {
+            System.out.println("inside for code");
+            
+            if (nofilter) {
+                filteredRows.add(allRowsCollection.get(x));
+            } else {
+                System.out.println("inside else condition");
+                Method method = classPOJO.getMethod("getBOClassRow", new Class[] { classPOJO });
+                System.out.println("invoking the method and getting the output");
+                HashMap pojoRowMap = (HashMap) method.invoke(obj, new Object[] { allRowsCollection.get(x) });
+                int i=0;
+                Iterator filterFields = filterFieldsValues.entrySet().iterator();
+                while (filterFields.hasNext()) {
+                    Map.Entry entry = (Map.Entry) filterFields.next();
+                    String key = (String) entry.getKey();
+                    System.out.println("filter column name is "+key);
+                    String filtervalue = (String) entry.getValue();
+                    System.out.println("filter value for column "+key+" is "+filtervalue);
+                    String attribValue = (String) pojoRowMap.get(key);
+                    System.out.println("column row value is "+attribValue);
+                    if(attribValue.indexOf(filtervalue) != -1||attribValue == null || attribValue.equals("")){
+                        System.out.println("inside if of while");
+                        i=i+1;
+                    }
+                    } 
+                if (i==fieldsCount) {
+                    System.out.println("inside if..row is filtered");
+                    filteredRows.add(allRowsCollection.get(x));
+                }
+            }
+        }
+        }
+        catch(Exception e){
+            throw new RuntimeException(e);
+        }
+        return filteredRows;
+    }
 }

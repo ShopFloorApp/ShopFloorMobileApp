@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="LovFragmentTestPageDef"
+                Package="page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="WarehouseDC" id="WarehouseDCIterator"/>
+    <accessorIterator MasterBinding="WarehouseDCIterator" Binds="warehouses" RangeSize="25" DataControl="WarehouseDC"
+                      BeanClass="dcom.shop.application.mobile.WarehouseBO" id="warehousesIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="warehousesIterator" id="warehouses">
+      <nodeDefinition DefName="dcom.shop.application.mobile.WarehouseBO" Name="warehouses0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="WarehouseDCIterator" id="warehouseFilter">
+      <AttrNames>
+        <Item Value="warehouseFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="WarehouseDCIterator" id="nameFilter">
+      <AttrNames>
+        <Item Value="nameFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterWarehouses" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterWarehouses"
+                  IsViewObjectMethod="false" DataControl="WarehouseDC" InstanceName="data.WarehouseDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

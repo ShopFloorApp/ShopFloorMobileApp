@@ -2,12 +2,22 @@
 <adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
   <adfmf:feature id="dcom.shop.syncPref" name="syncPref">
     <adfmf:content id="dcom.shop.syncPref.1">
-      <adfmf:amx file="dcom.shop.syncPref/syncPrefTF.xml#syncPrefTF"/>
+      <adfmf:amx file="dcom.shop.syncPref/syncPrefTF.xml#syncPrefTF">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i1"/>
+          <adfmf:include type="JavaScript" file="resources/js/Navigation.js" id="i2"/>
+        </adfmf:includes>
+      </adfmf:amx>
     </adfmf:content>
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.LoadLov" name="LoadLov">
     <adfmf:content id="dcom.shop.LoadLov.1">
-      <adfmf:amx file="TaskFlow/LOV-task-flow.xml#LOV-task-flow"/>
+      <adfmf:amx file="page/LovFragmentTest.amx">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i3"/>
+          <adfmf:include type="JavaScript" file="resources/js/Navigation.js" id="i4"/>
+        </adfmf:includes>
+      </adfmf:amx>
     </adfmf:content>
   </adfmf:feature>
 </adfmf:features>
