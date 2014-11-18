@@ -42,11 +42,11 @@
                                       inlineStyle="width:#{deviceScope.hardware.screen.availableWidth*.7}px">
                     <custom:csearch id="custom1" value="#{attrib1.inputValue}"
                                     valueChangeListener="#{Method1.execute}" inlineStyle="" rendered="true"
-                                    hintText="Search Warehouse"/>
+                                    hintText="Search Subinventory"/>
                                     <amx:spacer id="s21" height="20"/>
                     <custom:csearch id="custom2" value="#{attrib2.inputValue}"
                                     valueChangeListener="#{Method1.execute}" inlineStyle="" rendered="true"
-                                    hintText="Search Name"/>
+                                    hintText="Search Description"/>
                 </amx:panelGroupLayout>
     <amx:spacer id="s2" height="20"/>
     <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"

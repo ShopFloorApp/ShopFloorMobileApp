@@ -7,6 +7,13 @@
     <iterator Binds="root" RangeSize="25" DataControl="WarehouseDC" id="WarehouseDCIterator"/>
     <accessorIterator MasterBinding="WarehouseDCIterator" Binds="warehouses" RangeSize="25" DataControl="WarehouseDC"
                       BeanClass="dcom.shop.application.mobile.WarehouseBO" id="warehousesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
+    <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="25"
+                      DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subinventoriesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -29,5 +36,46 @@
     </attributeValues>
     <methodAction id="filterWarehouses" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterWarehouses"
                   IsViewObjectMethod="false" DataControl="WarehouseDC" InstanceName="data.WarehouseDC.dataProvider"/>
+    <tree IterBinding="subinventoriesIterator" id="subinventories">
+      <nodeDefinition DefName="dcom.shop.application.mobile.SubinventoryBO" Name="subinventories0">
+        <AttrNames>
+          <Item Value="subinv"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SubinventoryDCIterator" id="subinvFilter">
+      <AttrNames>
+        <Item Value="subinvFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SubinventoryDCIterator" id="descFilter">
+      <AttrNames>
+        <Item Value="descFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterSubinventories" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterSubinventories" IsViewObjectMethod="false" DataControl="SubinventoryDC"
+                  InstanceName="data.SubinventoryDC.dataProvider"/>
+    <tree IterBinding="locatorsIterator" id="locators">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LocatorBO" Name="locators0">
+        <AttrNames>
+          <Item Value="locator"/>
+          <Item Value="alias"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="LocatorDCIterator" id="locatorFilter">
+      <AttrNames>
+        <Item Value="locatorFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LocatorDCIterator" id="aliasFilter">
+      <AttrNames>
+        <Item Value="aliasFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterLocators"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
   </bindings>
 </pageDefinition>

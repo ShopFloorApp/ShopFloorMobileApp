@@ -17,7 +17,7 @@
         <amx:commandLink text="Search" id="cl1" actionListener="#{jsMBean.rightNav}"/>
       </amx:panelGroupLayout>
       <amx:panelGroupLayout id="right-navigation" styleClass="right-nav-container">
-        <amx:fragment src="/page/LovPage/Fragments/WarehouseLovFr.amxf" id="f1">
+        <amx:fragment src="/page/LovPage/Fragments/WarehouseLovFr.amxf" id="f1" rendered="false">
           <amx:attribute name="coll" value="#{bindings.warehouses}" id="a4"/>
           <amx:attribute name="MainText" value="whse" id="a5"/>
           <amx:attribute name="SubText" value="name" id="a3"/>
@@ -26,7 +26,25 @@
           <amx:attribute name="Method1" value="#{bindings.filterWarehouses}" id="a1"/>
           <amx:facet name="RightMenu"/>
         </amx:fragment>
+        <amx:fragment src="/page/LovPage/Fragments/SubinventoriesLovFr.amxf" id="f2" rendered="false">
+          <amx:attribute name="coll" value="#{bindings.subinventories}" id="a11"/>
+          <amx:attribute name="MainText" value="subinv" id="a9"/>
+          <amx:attribute name="SubText" value="desc" id="a10"/>
+          <amx:attribute name="attrib1" value="#{bindings.subinvFilter}" id="a7"/>
+          <amx:attribute name="attrib2" value="#{bindings.descFilter}" id="a8"/>
+          <amx:attribute name="Method1" value="#{bindings.filterSubinventories}" id="a12"/>
+          <amx:facet name="RightMenu"/>
+        </amx:fragment>
+        <amx:fragment src="/page/LovPage/Fragments/LocatorLovFr.amxf" id="f3">
+          <amx:attribute name="coll" value="#{bindings.locators}" id="a14"/>
+          <amx:attribute name="MainText" value="locator" id="a15"/>
+          <amx:attribute name="SubText" value="alias" id="a17"/>
+          <amx:attribute name="attrib1" value="#{bindings.locatorFilter}" id="a13"/>
+          <amx:attribute name="attrib2" value="#{bindings.aliasFilter}" id="a16"/>
+          <amx:attribute name="Method1" value="#{bindings.filterLocators}" id="a18"/>
+          <amx:facet name="RightMenu"/>
+        </amx:fragment>
       </amx:panelGroupLayout>
-    </amx:panelGroupLayout>    
+    </amx:panelGroupLayout>   
   </amx:panelPage>
 </amx:view>
