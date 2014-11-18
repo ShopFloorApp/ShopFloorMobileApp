@@ -35,7 +35,7 @@
           <amx:attribute name="Method1" value="#{bindings.filterSubinventories}" id="a12"/>
           <amx:facet name="RightMenu"/>
         </amx:fragment>
-        <amx:fragment src="/page/LovPage/Fragments/LocatorLovFr.amxf" id="f3">
+        <amx:fragment src="/page/LovPage/Fragments/LocatorLovFr.amxf" id="f3" rendered="false">
           <amx:attribute name="coll" value="#{bindings.locators}" id="a14"/>
           <amx:attribute name="MainText" value="locator" id="a15"/>
           <amx:attribute name="SubText" value="alias" id="a17"/>
@@ -44,7 +44,17 @@
           <amx:attribute name="Method1" value="#{bindings.filterLocators}" id="a18"/>
           <amx:facet name="RightMenu"/>
         </amx:fragment>
+        <amx:fragment src="/page/LovPage/Fragments/UOMLovFr.amxf" id="f4">
+      <amx:attribute name="coll" value="#{bindings.UOMs}" id="a19"/>
+      <amx:attribute name="MainText" value="UOMCode" id="a20"/>
+      <amx:attribute name="SubText" value="UOM" id="a23"/>
+      <amx:attribute name="attrib1" value="#{bindings.uomcodeFilter}" id="a24"/>
+      <amx:attribute name="attrib2" value="#{bindings.uomFilter}" id="a22"/>
+      <amx:attribute name="Method1" value="#{bindings.filterUOMs}" id="a21"/>
+      <amx:facet name="RightMenu"/>
+    </amx:fragment>
       </amx:panelGroupLayout>
-    </amx:panelGroupLayout>   
+    </amx:panelGroupLayout>
+    
   </amx:panelPage>
 </amx:view>

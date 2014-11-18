@@ -32,7 +32,7 @@ public class LocatorDC extends SyncUtils {
         paramsMap.put("lovDCName", "LocatorLOV_WS");
         paramsMap.put("opeartionName", "process");
         paramsMap.put("payload",payload);
-        filtered_Locators = super.getCollection(LocatorBO.class, paramsMap);
+        s_locator = super.getCollection(LocatorBO.class, paramsMap);
             filterLocators();
         }catch(Exception e){
             throw new RuntimeException(e);

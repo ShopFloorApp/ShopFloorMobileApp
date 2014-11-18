@@ -14,6 +14,9 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOMs" RangeSize="25" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMsIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -77,5 +80,25 @@
     </attributeValues>
     <methodAction id="filterLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterLocators"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+    <tree IterBinding="UOMsIterator" id="UOMs">
+      <nodeDefinition DefName="dcom.shop.application.mobile.UOMBO" Name="UOMs0">
+        <AttrNames>
+          <Item Value="UOMCode"/>
+          <Item Value="UOM"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="UOMDCIterator" id="uomcodeFilter">
+      <AttrNames>
+        <Item Value="uomcodeFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UOMDCIterator" id="uomFilter">
+      <AttrNames>
+        <Item Value="uomFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterUOMs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterUOMs"
+                  IsViewObjectMethod="false" DataControl="UOMDC" InstanceName="data.UOMDC.dataProvider"/>
   </bindings>
 </pageDefinition>
