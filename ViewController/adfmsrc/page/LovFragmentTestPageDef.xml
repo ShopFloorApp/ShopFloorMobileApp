@@ -17,6 +17,10 @@
     <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
     <accessorIterator MasterBinding="UOMDCIterator" Binds="UOMs" RangeSize="25" DataControl="UOMDC"
                       BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AccountAliasDC" id="AccountAliasDCIterator"/>
+    <accessorIterator MasterBinding="AccountAliasDCIterator" Binds="accountAlias" RangeSize="25"
+                      DataControl="AccountAliasDC" BeanClass="dcom.shop.application.mobile.AccountAliasBO"
+                      id="accountAliasIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -100,5 +104,26 @@
     </attributeValues>
     <methodAction id="filterUOMs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterUOMs"
                   IsViewObjectMethod="false" DataControl="UOMDC" InstanceName="data.UOMDC.dataProvider"/>
+    <tree IterBinding="accountAliasIterator" id="accountAlias">
+      <nodeDefinition DefName="dcom.shop.application.mobile.AccountAliasBO" Name="accountAlias0">
+        <AttrNames>
+          <Item Value="accountAlias"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="AccountAliasDCIterator" id="accountaliasFilter">
+      <AttrNames>
+        <Item Value="accountaliasFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AccountAliasDCIterator" id="descFilter1">
+      <AttrNames>
+        <Item Value="descFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterAccountAlias" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterAccountAlias" IsViewObjectMethod="false" DataControl="AccountAliasDC"
+                  InstanceName="data.AccountAliasDC.dataProvider"/>
   </bindings>
 </pageDefinition>

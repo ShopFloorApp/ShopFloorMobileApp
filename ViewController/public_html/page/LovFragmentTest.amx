@@ -1,60 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:custom="http://xmlns.example.com/custom">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl1">
-      <amx:panelGroupLayout id="pgl2">
-        <amx:inputText label="Lov" id="it1" value="#{applicationScope.returnLovValue}"/>
-        <amx:commandLink text="Search" id="cl1" actionListener="#{jsMBean.rightNav}"/>
-      </amx:panelGroupLayout>
-      <amx:panelGroupLayout id="right-navigation" styleClass="right-nav-container">
-        <amx:fragment src="/page/LovPage/Fragments/WarehouseLovFr.amxf" id="f1" rendered="false">
-          <amx:attribute name="coll" value="#{bindings.warehouses}" id="a4"/>
-          <amx:attribute name="MainText" value="whse" id="a5"/>
-          <amx:attribute name="SubText" value="name" id="a3"/>
-          <amx:attribute name="attrib1" value="#{bindings.warehouseFilter}" id="a2"/>
-          <amx:attribute name="attrib2" value="#{bindings.nameFilter}" id="a6"/>
-          <amx:attribute name="Method1" value="#{bindings.filterWarehouses}" id="a1"/>
-          <amx:facet name="RightMenu"/>
-        </amx:fragment>
-        <amx:fragment src="/page/LovPage/Fragments/SubinventoriesLovFr.amxf" id="f2" rendered="false">
-          <amx:attribute name="coll" value="#{bindings.subinventories}" id="a11"/>
-          <amx:attribute name="MainText" value="subinv" id="a9"/>
-          <amx:attribute name="SubText" value="desc" id="a10"/>
-          <amx:attribute name="attrib1" value="#{bindings.subinvFilter}" id="a7"/>
-          <amx:attribute name="attrib2" value="#{bindings.descFilter}" id="a8"/>
-          <amx:attribute name="Method1" value="#{bindings.filterSubinventories}" id="a12"/>
-          <amx:facet name="RightMenu"/>
-        </amx:fragment>
-        <amx:fragment src="/page/LovPage/Fragments/LocatorLovFr.amxf" id="f3" rendered="false">
-          <amx:attribute name="coll" value="#{bindings.locators}" id="a14"/>
-          <amx:attribute name="MainText" value="locator" id="a15"/>
-          <amx:attribute name="SubText" value="alias" id="a17"/>
-          <amx:attribute name="attrib1" value="#{bindings.locatorFilter}" id="a13"/>
-          <amx:attribute name="attrib2" value="#{bindings.aliasFilter}" id="a16"/>
-          <amx:attribute name="Method1" value="#{bindings.filterLocators}" id="a18"/>
-          <amx:facet name="RightMenu"/>
-        </amx:fragment>
-        <amx:fragment src="/page/LovPage/Fragments/UOMLovFr.amxf" id="f4">
-      <amx:attribute name="coll" value="#{bindings.UOMs}" id="a19"/>
-      <amx:attribute name="MainText" value="UOMCode" id="a20"/>
-      <amx:attribute name="SubText" value="UOM" id="a23"/>
-      <amx:attribute name="attrib1" value="#{bindings.uomcodeFilter}" id="a24"/>
-      <amx:attribute name="attrib2" value="#{bindings.uomFilter}" id="a22"/>
-      <amx:attribute name="Method1" value="#{bindings.filterUOMs}" id="a21"/>
-      <amx:facet name="RightMenu"/>
-    </amx:fragment>
-      </amx:panelGroupLayout>
-    </amx:panelGroupLayout>
-    
-  </amx:panelPage>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Header" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1">
+            <amx:panelGroupLayout id="pgl2">
+                <amx:inputText label="Lov" id="it1" value="#{applicationScope.returnLovValue}"/>
+                <amx:commandLink text="Search" id="cl1" actionListener="#{jsMBean.rightNav}"/>
+            </amx:panelGroupLayout>
+            <amx:panelGroupLayout id="right-navigation" styleClass="right-nav-container">
+                <amx:fragment src="/page/LovPage/Fragments/WarehouseLovFr.amxf" id="f1" rendered="false">
+                    <amx:attribute name="coll" value="#{bindings.warehouses}" id="a4"/>
+                    <amx:attribute name="MainText" value="whse" id="a5"/>
+                    <amx:attribute name="SubText" value="name" id="a3"/>
+                    <amx:attribute name="attrib1" value="#{bindings.warehouseFilter}" id="a2"/>
+                    <amx:attribute name="attrib2" value="#{bindings.nameFilter}" id="a6"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterWarehouses}" id="a1"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/SubinventoriesLovFr.amxf" id="f2" rendered="false">
+                    <amx:attribute name="coll" value="#{bindings.subinventories}" id="a11"/>
+                    <amx:attribute name="MainText" value="subinv" id="a9"/>
+                    <amx:attribute name="SubText" value="desc" id="a10"/>
+                    <amx:attribute name="attrib1" value="#{bindings.subinvFilter}" id="a7"/>
+                    <amx:attribute name="attrib2" value="#{bindings.descFilter}" id="a8"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterSubinventories}" id="a12"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/LocatorLovFr.amxf" id="f3" rendered="false">
+                    <amx:attribute name="coll" value="#{bindings.locators}" id="a14"/>
+                    <amx:attribute name="MainText" value="locator" id="a15"/>
+                    <amx:attribute name="SubText" value="alias" id="a17"/>
+                    <amx:attribute name="attrib1" value="#{bindings.locatorFilter}" id="a13"/>
+                    <amx:attribute name="attrib2" value="#{bindings.aliasFilter}" id="a16"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterLocators}" id="a18"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/UOMLovFr.amxf" id="f4" rendered="false">
+                    <amx:attribute name="coll" value="#{bindings.UOMs}" id="a19"/>
+                    <amx:attribute name="MainText" value="UOMCode" id="a20"/>
+                    <amx:attribute name="SubText" value="UOM" id="a23"/>
+                    <amx:attribute name="attrib1" value="#{bindings.uomcodeFilter}" id="a24"/>
+                    <amx:attribute name="attrib2" value="#{bindings.uomFilter}" id="a22"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterUOMs}" id="a21"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/AccountAliasLovFr.amxf" id="f5">
+                    <amx:attribute name="coll" value="#{bindings.accountAlias}" id="a26"/>
+                    <amx:attribute name="MainText" value="accountAlias" id="a30"/>
+                    <amx:attribute name="SubText" value="desc" id="a28"/>
+                    <amx:attribute name="attrib1" value="#{bindings.accountaliasFilter}" id="a25"/>
+                    <amx:attribute name="attrib2" value="#{bindings.descFilter1}" id="a27"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterAccountAlias}" id="a29"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
+            </amx:panelGroupLayout>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
 </amx:view>
