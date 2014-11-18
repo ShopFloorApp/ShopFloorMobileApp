@@ -25,6 +25,10 @@
     <accessorIterator MasterBinding="CategoryCodeDCIterator" Binds="categoryCodes" RangeSize="25"
                       DataControl="CategoryCodeDC" BeanClass="dcom.shop.application.mobile.CategoryCodeBO"
                       id="categoryCodesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactionTypeDC" id="TransactionTypeDCIterator"/>
+    <accessorIterator MasterBinding="TransactionTypeDCIterator" Binds="transactionTypes" RangeSize="25"
+                      DataControl="TransactionTypeDC" BeanClass="dcom.shop.application.mobile.TransactionTypeBO"
+                      id="transactionTypesIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -150,5 +154,20 @@
     <methodAction id="filterCategoryCodes" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="filterCategoryCodes" IsViewObjectMethod="false" DataControl="CategoryCodeDC"
                   InstanceName="data.CategoryCodeDC.dataProvider"/>
+    <tree IterBinding="transactionTypesIterator" id="transactionTypes">
+      <nodeDefinition DefName="dcom.shop.application.mobile.TransactionTypeBO" Name="transactionTypes0">
+        <AttrNames>
+          <Item Value="transactionType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="TransactionTypeDCIterator" id="transactiontypeFilter">
+      <AttrNames>
+        <Item Value="transactiontypeFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterTransactionTypes" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterTransactionTypes" IsViewObjectMethod="false" DataControl="TransactionTypeDC"
+                  InstanceName="data.TransactionTypeDC.dataProvider"/>
   </bindings>
 </pageDefinition>
