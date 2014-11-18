@@ -21,6 +21,10 @@
     <accessorIterator MasterBinding="AccountAliasDCIterator" Binds="accountAlias" RangeSize="25"
                       DataControl="AccountAliasDC" BeanClass="dcom.shop.application.mobile.AccountAliasBO"
                       id="accountAliasIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CategoryCodeDC" id="CategoryCodeDCIterator"/>
+    <accessorIterator MasterBinding="CategoryCodeDCIterator" Binds="categoryCodes" RangeSize="25"
+                      DataControl="CategoryCodeDC" BeanClass="dcom.shop.application.mobile.CategoryCodeBO"
+                      id="categoryCodesIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -125,5 +129,26 @@
     <methodAction id="filterAccountAlias" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="filterAccountAlias" IsViewObjectMethod="false" DataControl="AccountAliasDC"
                   InstanceName="data.AccountAliasDC.dataProvider"/>
+    <tree IterBinding="categoryCodesIterator" id="categoryCodes">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CategoryCodeBO" Name="categoryCodes0">
+        <AttrNames>
+          <Item Value="catgCode"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CategoryCodeDCIterator" id="catgcodeFilter">
+      <AttrNames>
+        <Item Value="catgcodeFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CategoryCodeDCIterator" id="descFilter2">
+      <AttrNames>
+        <Item Value="descFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterCategoryCodes" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterCategoryCodes" IsViewObjectMethod="false" DataControl="CategoryCodeDC"
+                  InstanceName="data.CategoryCodeDC.dataProvider"/>
   </bindings>
 </pageDefinition>
