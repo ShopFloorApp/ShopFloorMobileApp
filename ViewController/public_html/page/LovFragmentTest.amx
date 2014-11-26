@@ -71,13 +71,27 @@
                     <amx:attribute name="Method1" value="#{bindings.filterCategoryCodes}" id="a36"/>
                     <amx:facet name="RightMenu"/>
                 </amx:fragment>
-                <amx:fragment src="/page/LovPage/Fragments/TransactionTypeLovFr.amxf" id="f7">
+                <amx:fragment src="/page/LovPage/Fragments/TransactionTypeLovFr.amxf" id="f7" rendered="false">
                     <amx:attribute name="coll" value="#{bindings.transactionTypes}" id="a40"/>
                     <amx:attribute name="MainText" value="transactionType" id="a38"/>
                     <amx:attribute name="attrib1" value="#{bindings.transactiontypeFilter}" id="a37"/>
                     <amx:attribute name="Method1" value="#{bindings.filterTransactionTypes}" id="a39"/>
                     <amx:facet name="RightMenu"/>
                 </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/TransactionReasonLovFr.amxf" id="f8" rendered="false">
+                    <amx:attribute name="coll" value="#{bindings.transactionReasons}" id="a42"/>
+                    <amx:attribute name="MainText" value="reasonName" id="a44"/>
+                    <amx:attribute name="attrib1" value="#{bindings.reasonNameFilter}" id="a43"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterTransactionReason}" id="a41"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/PickRuleLovFr.amxf" id="f9" rendered="true">
+                    <amx:attribute name="coll" value="#{bindings.pickRules}" id="a47"/>
+                    <amx:attribute name="MainText" value="ruleName" id="a46"/>
+                    <amx:attribute name="attrib1" value="#{bindings.pickruleNameFilter}" id="a48"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterpickrule}" id="a45"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>                
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:panelPage>

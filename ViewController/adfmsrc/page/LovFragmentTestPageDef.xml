@@ -29,6 +29,13 @@
     <accessorIterator MasterBinding="TransactionTypeDCIterator" Binds="transactionTypes" RangeSize="25"
                       DataControl="TransactionTypeDC" BeanClass="dcom.shop.application.mobile.TransactionTypeBO"
                       id="transactionTypesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactionReasonDC" id="TransactionReasonDCIterator"/>
+    <accessorIterator MasterBinding="TransactionReasonDCIterator" Binds="transactionReasons" RangeSize="25"
+                      DataControl="TransactionReasonDC" BeanClass="dcom.shop.application.mobile.TransactionReasonBO"
+                      id="transactionReasonsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PickRuleDC" id="PickRuleDCIterator"/>
+    <accessorIterator MasterBinding="PickRuleDCIterator" Binds="pickRules" RangeSize="25" DataControl="PickRuleDC"
+                      BeanClass="dcom.shop.application.mobile.PickRuleBO" id="pickRulesIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -169,5 +176,42 @@
     <methodAction id="filterTransactionTypes" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="filterTransactionTypes" IsViewObjectMethod="false" DataControl="TransactionTypeDC"
                   InstanceName="data.TransactionTypeDC.dataProvider"/>
+    <tree IterBinding="transactionReasonsIterator" id="transactionReasons">
+      <nodeDefinition DefName="dcom.shop.application.mobile.TransactionReasonBO" Name="transactionReasons0">
+        <AttrNames>
+          <Item Value="reasonName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="TransactionReasonDCIterator" id="reasonNameFilter">
+      <AttrNames>
+        <Item Value="reasonNameFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterTransactionReason" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterTransactionReason" IsViewObjectMethod="false" DataControl="TransactionReasonDC"
+                  InstanceName="data.TransactionReasonDC.dataProvider"/>
+    <tree IterBinding="pickRulesIterator" id="pickRules">
+      <nodeDefinition DefName="dcom.shop.application.mobile.PickRuleBO" Name="pickRules0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="ruleName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PickRuleDCIterator" id="pickruleNameFilter">
+      <AttrNames>
+        <Item Value="pickruleNameFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterpickrule" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterpickrule"
+                  IsViewObjectMethod="false" DataControl="PickRuleDC" InstanceName="data.PickRuleDC.dataProvider"/>
+    <tree IterBinding="pickRulesIterator" id="pickRules1">
+      <nodeDefinition DefName="dcom.shop.application.mobile.PickRuleBO" Name="pickRules10">
+        <AttrNames>
+          <Item Value="ruleName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>
