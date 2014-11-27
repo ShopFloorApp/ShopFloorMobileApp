@@ -16,7 +16,7 @@
         <amx:inputText label="Lov" id="it1" value="#{applicationScope.returnLovValue}"/>
         <amx:commandLink text="Search" id="cl1" actionListener="#{jsMBean.rightNav}"/>
       </amx:panelGroupLayout>
-      <amx:panelGroupLayout id="right-navigation" styleClass="right-nav-container">
+      <amx:panelGroupLayout id="right-navigation" styleClass="right-nav-container" >
         <amx:fragment src="/page/LovPage/Fragments/WarehouseLovFr.amxf" id="f1" rendered="false">
           <amx:attribute name="coll" value="#{bindings.warehouses}" id="a4"/>
           <amx:attribute name="MainText" value="whse" id="a5"/>
@@ -44,7 +44,7 @@
           <amx:attribute name="Method1" value="#{bindings.filterLocators}" id="a18"/>
           <amx:facet name="RightMenu"/>
         </amx:fragment>
-        <amx:fragment src="/page/LovPage/Fragments/UOMLovFr.amxf" id="f4">
+        <amx:fragment src="/page/LovPage/Fragments/UOMLovFr.amxf" id="f4" rendered="false">
       <amx:attribute name="coll" value="#{bindings.UOMs}" id="a19"/>
       <amx:attribute name="MainText" value="UOMCode" id="a20"/>
       <amx:attribute name="SubText" value="UOM" id="a23"/>
@@ -53,8 +53,32 @@
       <amx:attribute name="Method1" value="#{bindings.filterUOMs}" id="a21"/>
       <amx:facet name="RightMenu"/>
     </amx:fragment>
+        <amx:fragment src="/page/LovPage/Fragments/CategorySetsLovFr.amxf" id="f5" rendered="false">
+          <amx:attribute name="coll" value="#{bindings.categorySets}" id="a28"/>
+          <amx:attribute name="MainText" value="catgSetName" id="a29"/>
+          <amx:attribute name="SubText" value="desc" id="a30"/>
+          <amx:attribute name="attrib1" value="#{bindings.categorySetFilter}" id="a27"/>
+          <amx:attribute name="attrib2" value="#{bindings.descFilter1}" id="a25"/>
+          <amx:attribute name="Method1" value="#{bindings.filterCategorySets}" id="a26"/>
+          <amx:facet name="RightMenu"/>
+        </amx:fragment>
+        <amx:fragment src="/page/LovPage/Fragments/CostGroupsLovFr.amxf" id="f6">
+          <amx:attribute name="coll" value="#{bindings.costGroups}" id="a34"/>
+          <amx:attribute name="MainText" value="costGroups" id="a32"/>
+          <amx:attribute name="attrib1" value="#{bindings.costGroupsFilter}" id="a31"/>
+          <amx:attribute name="Method1" value="#{bindings.filterCostGroups}" id="a33"/>
+          <amx:facet name="RightMenu"/>
+        </amx:fragment>
       </amx:panelGroupLayout>
     </amx:panelGroupLayout>
-    
+    <amx:fragment src="/page/LovPage/Fragments/ResourcesLovFr.amxf" id="f7" rendered="false">
+      <amx:attribute name="coll" value="#{bindings.resources}" id="a39"/>
+      <amx:attribute name="MainText" value="resourceCode" id="a36"/>
+      <amx:attribute name="SubText" value="desc" id="a35"/>
+      <amx:attribute name="attrib1" value="#{bindings.resourceCodeFilter}" id="a38"/>
+      <amx:attribute name="attrib2" value="#{bindings.descFilter2}" id="a37"/>
+      <amx:attribute name="Method1" value="#{bindings.filterResources}" id="a40"/>
+      <amx:facet name="RightMenu"/>
+    </amx:fragment>
   </amx:panelPage>
 </amx:view>

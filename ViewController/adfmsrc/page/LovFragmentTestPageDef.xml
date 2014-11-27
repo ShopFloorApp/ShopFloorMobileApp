@@ -17,6 +17,21 @@
     <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
     <accessorIterator MasterBinding="UOMDCIterator" Binds="UOMs" RangeSize="25" DataControl="UOMDC"
                       BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CategorySetDC" id="CategorySetDCIterator"/>
+    <accessorIterator MasterBinding="CategorySetDCIterator" Binds="categorySets" RangeSize="25"
+                      DataControl="CategorySetDC" BeanClass="dcom.shop.application.mobile.CategorySetBO"
+                      id="categorySetsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CostGroupDC" id="CostGroupDCIterator"/>
+    <accessorIterator MasterBinding="CostGroupDCIterator" Binds="costGroups" RangeSize="25" DataControl="CostGroupDC"
+                      BeanClass="dcom.shop.application.mobile.CostGroupBO" id="costGroupsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ResourceDC" id="ResourceDCIterator"/>
+    <accessorIterator MasterBinding="ResourceDCIterator" Binds="resources" RangeSize="25" DataControl="ResourceDC"
+                      BeanClass="dcom.shop.application.mobile.ResourceBO" id="resourcesIterator"/>
+    <iterator id="WarehouseLOV_WS_rootIter" Binds="root" DataControl="WarehouseLOV_WS" RangeSize="25"/>
+    <iterator id="SubinventoryLOV_WS_rootIter" Binds="root" DataControl="SubinventoryLOV_WS" RangeSize="25"/>
+    <iterator id="CategorySetLOV_WS_rootIter" Binds="root" DataControl="CategorySetLOV_WS" RangeSize="25"/>
+    <iterator id="CostGroupLOV_WS_rootIter" Binds="root" DataControl="CostGroupLOV_WS" RangeSize="25"/>
+    <iterator id="ResourceLOV_WS_rootIter" Binds="root" DataControl="ResourceLOV_WS" RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -100,5 +115,58 @@
     </attributeValues>
     <methodAction id="filterUOMs" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterUOMs"
                   IsViewObjectMethod="false" DataControl="UOMDC" InstanceName="data.UOMDC.dataProvider"/>
+    <tree IterBinding="categorySetsIterator" id="categorySets">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CategorySetBO" Name="categorySets0">
+        <AttrNames>
+          <Item Value="catgSetName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CategorySetDCIterator" id="categorySetFilter">
+      <AttrNames>
+        <Item Value="categorySetFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterCategorySets" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="filterCategorySets" IsViewObjectMethod="false" DataControl="CategorySetDC"
+                  InstanceName="data.CategorySetDC.dataProvider"/>
+    <attributeValues IterBinding="CategorySetDCIterator" id="descFilter1">
+      <AttrNames>
+        <Item Value="descFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="costGroupsIterator" id="costGroups">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CostGroupBO" Name="costGroups0">
+        <AttrNames>
+          <Item Value="whse"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="CostGroupDCIterator" id="costGroupsFilter">
+      <AttrNames>
+        <Item Value="costGroupsFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterCostGroups" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterCostGroups"
+                  IsViewObjectMethod="false" DataControl="CostGroupDC" InstanceName="data.CostGroupDC.dataProvider"/>
+    <tree IterBinding="resourcesIterator" id="resources">
+      <nodeDefinition DefName="dcom.shop.application.mobile.ResourceBO" Name="resources0">
+        <AttrNames>
+          <Item Value="whse"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ResourceDCIterator" id="resourceCodeFilter">
+      <AttrNames>
+        <Item Value="resourceCodeFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ResourceDCIterator" id="descFilter2">
+      <AttrNames>
+        <Item Value="descFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterResources" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterResources"
+                  IsViewObjectMethod="false" DataControl="ResourceDC" InstanceName="data.ResourceDC.dataProvider"/>
   </bindings>
 </pageDefinition>
