@@ -243,11 +243,6 @@
     <methodAction id="filterCategorySets" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="filterCategorySets" IsViewObjectMethod="false" DataControl="CategorySetDC"
                   InstanceName="data.CategorySetDC.dataProvider"/>
-    <attributeValues IterBinding="CategorySetDCIterator" id="descFilter1">
-      <AttrNames>
-        <Item Value="descFilter"/>
-      </AttrNames>
-    </attributeValues>
     <tree IterBinding="costGroupsIterator" id="costGroups">
       <nodeDefinition DefName="dcom.shop.application.mobile.CostGroupBO" Name="costGroups0">
         <AttrNames>
@@ -274,12 +269,17 @@
         <Item Value="resourceCodeFilter"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="ResourceDCIterator" id="descFilter2">
+    <methodAction id="filterResources" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterResources"
+                  IsViewObjectMethod="false" DataControl="ResourceDC" InstanceName="data.ResourceDC.dataProvider"/>
+    <attributeValues IterBinding="CategorySetDCIterator" id="descFilter3">
       <AttrNames>
         <Item Value="descFilter"/>
       </AttrNames>
     </attributeValues>
-    <methodAction id="filterResources" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterResources"
-                  IsViewObjectMethod="false" DataControl="ResourceDC" InstanceName="data.ResourceDC.dataProvider"/>
+    <attributeValues IterBinding="ResourceDCIterator" id="descFilter4">
+      <AttrNames>
+        <Item Value="descFilter"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
