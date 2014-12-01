@@ -78,6 +78,15 @@
                     <amx:attribute name="Method1" value="#{bindings.filterTransactionTypes}" id="a39"/>
                     <amx:facet name="RightMenu"/>
                 </amx:fragment>
+                <amx:fragment src="/page/LovPage/Fragments/DepartmentLovFr.amxf" id="f8">
+                    <amx:attribute name="coll" value="#{bindings.departments}" id="a43"/>
+                    <amx:attribute name="MainText" value="deptCode" id="a42"/>
+                    <amx:attribute name="SubText" value="desc" id="a45"/>
+                    <amx:attribute name="attrib1" value="#{bindings.deptFilter}" id="a46"/>
+                    <amx:attribute name="attrib2" value="#{bindings.nameFilter1}" id="a44"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterDepartments}" id="a41"/>
+                    <amx:facet name="RightMenu"/>
+                </amx:fragment>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:panelPage>

@@ -29,6 +29,9 @@
     <accessorIterator MasterBinding="TransactionTypeDCIterator" Binds="transactionTypes" RangeSize="25"
                       DataControl="TransactionTypeDC" BeanClass="dcom.shop.application.mobile.TransactionTypeBO"
                       id="transactionTypesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="DepartmentDC" id="DepartmentDCIterator"/>
+    <accessorIterator MasterBinding="DepartmentDCIterator" Binds="departments" RangeSize="25" DataControl="DepartmentDC"
+                      BeanClass="dcom.shop.application.mobile.DepartmentBO" id="departmentsIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -169,5 +172,25 @@
     <methodAction id="filterTransactionTypes" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="filterTransactionTypes" IsViewObjectMethod="false" DataControl="TransactionTypeDC"
                   InstanceName="data.TransactionTypeDC.dataProvider"/>
+    <tree IterBinding="departmentsIterator" id="departments">
+      <nodeDefinition DefName="dcom.shop.application.mobile.DepartmentBO" Name="departments0">
+        <AttrNames>
+          <Item Value="deptCode"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="DepartmentDCIterator" id="deptFilter">
+      <AttrNames>
+        <Item Value="deptFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DepartmentDCIterator" id="nameFilter1">
+      <AttrNames>
+        <Item Value="nameFilter"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="filterDepartments" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterDepartments"
+                  IsViewObjectMethod="false" DataControl="DepartmentDC" InstanceName="data.DepartmentDC.dataProvider"/>
   </bindings>
 </pageDefinition>
