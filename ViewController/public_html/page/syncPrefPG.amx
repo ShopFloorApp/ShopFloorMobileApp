@@ -1,370 +1,482 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Sync" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1" text="Back"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2" text="Sync All"/>
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl1" layout="horizontal">
-      <amx:tableLayout id="tl1" borderWidth="0" width="30%" layout="weighted"
-                       inlineStyle="margin-top:10px; margin-left:10px;">
-        <amx:rowLayout id="rl1">
-          <amx:cellFormat id="cf1"
-                          inlineStyle="margin-bottom:10px; margin-left:10px; margin-right:10px; margin-top:10px; background-color:#0084c6;"
-                          width="40%">
-            <amx:image id="i1" source="/images/warehouse.png"
-                       inlineStyle="flex-align:start; height:100px; width:auto;"/>
-          </amx:cellFormat>
-          <amx:cellFormat id="cf2"
-                          inlineStyle="background-color:#0084c6; margin:10px;" width="60%">
-            <amx:outputText value="Warehouse" id="ot2"
-                            inlineStyle="font-size:xx-large; font-weight:bold; color:White;"/>
-          </amx:cellFormat>
-        </amx:rowLayout>
-        <amx:rowLayout id="rl2">
-          <amx:cellFormat id="cf7"/>
-          <amx:cellFormat id="cf4"
-                          inlineStyle="margin-bottom:10px; margin-left:10px; margin-right:10px; margin-top:10px; width:100%;"
-                          halign="end">
-            <amx:selectBooleanSwitch label="Sync" id="sbs1"/>
-          </amx:cellFormat>
-        </amx:rowLayout>
-        <amx:rowLayout id="rl3">
-          <amx:cellFormat id="cf3">
-            <amx:commandButton text="Sync" id="cb3"/>
-          </amx:cellFormat>
-          <amx:cellFormat id="cf5" halign="end">
-            <dvtm:statusMeterGauge id="statusMeterGauge1" orientation="circular">
-              <dvtm:threshold id="t1"/>
-            </dvtm:statusMeterGauge>
-          </amx:cellFormat>
-        </amx:rowLayout>
-        <amx:rowLayout id="rl4">
-          <amx:cellFormat id="cf6" rowSpan="1" columnSpan="2">
-            <amx:listView var="row" value="#{bindings.warehouses.collectionModel}"
-                          fetchSize="#{bindings.warehouses.rangeSize}"
-                          selectedRowKeys="#{bindings.warehouses.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.warehouses.collectionModel.makeCurrent}"
-                          styleClass="adfmf-listView-insetList" showMoreStrategy="autoScroll" bufferStrategy="viewport"
-                          id="lv1" rendered="false">
-              <amx:listItem id="li1">
-                <amx:tableLayout width="100%" id="tl2">
-                  <amx:rowLayout id="rl6">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf10"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf9">
-                      <amx:outputText value="#{row.whse}" id="ot4"/>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Sync" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" text="Back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" text="Sync All"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1" layout="horizontal" rendered="false">
+            <amx:tableLayout id="tl1" borderWidth="0" width="30%" layout="weighted"
+                             inlineStyle="margin-top:10px; margin-left:10px;">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf1"
+                                    inlineStyle="margin-bottom:10px; margin-left:10px; margin-right:10px; margin-top:10px; background-color:#0084c6;"
+                                    width="40%">
+                        <amx:image id="i1" source="/images/warehouse.png"
+                                   inlineStyle="flex-align:start; height:100px; width:auto;"/>
                     </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl5">
-                    <amx:cellFormat width="100%" height="12px" id="cf8">
-                      <amx:outputText value="#{row.line1}" styleClass="adfmf-listItem-captionText" id="ot3"/>
+                    <amx:cellFormat id="cf2" inlineStyle="background-color:#0084c6; margin:10px;" width="60%">
+                        <amx:outputText value="Warehouse" id="ot2"
+                                        inlineStyle="font-size:xx-large; font-weight:bold; color:White;"/>
                     </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.categorySets.collectionModel}"
-                          fetchSize="#{bindings.categorySets.rangeSize}"
-                          selectedRowKeys="#{bindings.categorySets.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.categorySets.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2" rendered="false">
-              <amx:listItem id="li2">
-                <amx:tableLayout width="100%" id="tl3">
-                  <amx:rowLayout id="rl7">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf11"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf12">
-                      <amx:outputText value="#{row.catgSetName}" id="ot5"/>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl2">
+                    <amx:cellFormat id="cf7"/>
+                    <amx:cellFormat id="cf4"
+                                    inlineStyle="margin-bottom:10px; margin-left:10px; margin-right:10px; margin-top:10px; width:100%;"
+                                    halign="end">
+                        <amx:selectBooleanSwitch label="Sync" id="sbs1"/>
                     </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl8">
-                    <amx:cellFormat width="100%" height="12px" id="cf13">
-                      <amx:outputText value="#{row.structureId}" styleClass="adfmf-listItem-captionText" id="ot6"/>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl3">
+                    <amx:cellFormat id="cf3">
+                        <amx:commandButton text="Sync" id="cb3"/>
                     </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
-                          fetchSize="#{bindings.subinventories.rangeSize}"
-                          selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.subinventories.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv3" rendered="false">
-              <amx:listItem id="li3">
-                <amx:tableLayout width="100%" id="tl4">
-                  <amx:rowLayout id="rl10">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf15"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf16">
-                      <amx:outputText value="#{row.whse}" id="ot8"/>
+                    <amx:cellFormat id="cf5" halign="end">
+                        <dvtm:statusMeterGauge id="statusMeterGauge1" orientation="circular">
+                            <dvtm:threshold id="t1"/>
+                        </dvtm:statusMeterGauge>
                     </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl9">
-                    <amx:cellFormat width="100%" height="12px" id="cf14">
-                      <amx:outputText value="#{row.subinv}" styleClass="adfmf-listItem-captionText" id="ot7"/>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl4">
+                    <amx:cellFormat id="cf6" rowSpan="1" columnSpan="2">
+                        <amx:listView var="row" value="#{bindings.warehouses.collectionModel}"
+                                      fetchSize="#{bindings.warehouses.rangeSize}"
+                                      selectedRowKeys="#{bindings.warehouses.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.warehouses.collectionModel.makeCurrent}"
+                                      styleClass="adfmf-listView-insetList" showMoreStrategy="autoScroll"
+                                      bufferStrategy="viewport" id="lv1" rendered="false">
+                            <amx:listItem id="li1">
+                                <amx:tableLayout width="100%" id="tl2">
+                                    <amx:rowLayout id="rl6">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf10"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf9">
+                                            <amx:outputText value="#{row.whse}" id="ot4"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl5">
+                                        <amx:cellFormat width="100%" height="12px" id="cf8">
+                                            <amx:outputText value="#{row.line1}" styleClass="adfmf-listItem-captionText"
+                                                            id="ot3"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.categorySets.collectionModel}"
+                                      fetchSize="#{bindings.categorySets.rangeSize}"
+                                      selectedRowKeys="#{bindings.categorySets.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.categorySets.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2" rendered="false">
+                            <amx:listItem id="li2">
+                                <amx:tableLayout width="100%" id="tl3">
+                                    <amx:rowLayout id="rl7">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf11"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf12">
+                                            <amx:outputText value="#{row.catgSetName}" id="ot5"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl8">
+                                        <amx:cellFormat width="100%" height="12px" id="cf13">
+                                            <amx:outputText value="#{row.structureId}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot6"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
+                                      fetchSize="#{bindings.subinventories.rangeSize}"
+                                      selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.subinventories.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv3" rendered="false">
+                            <amx:listItem id="li3">
+                                <amx:tableLayout width="100%" id="tl4">
+                                    <amx:rowLayout id="rl10">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf15"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf16">
+                                            <amx:outputText value="#{row.whse}" id="ot8"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl9">
+                                        <amx:cellFormat width="100%" height="12px" id="cf14">
+                                            <amx:outputText value="#{row.subinv}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot7"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.locators.collectionModel}"
+                                      fetchSize="#{bindings.locators.rangeSize}"
+                                      selectedRowKeys="#{bindings.locators.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.locators.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv4" rendered="false">
+                            <amx:listItem id="li4">
+                                <amx:tableLayout width="100%" id="tl5">
+                                    <amx:rowLayout id="rl12">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf18"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf19">
+                                            <amx:outputText value="#{row.subinv}" id="ot10"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl11">
+                                        <amx:cellFormat width="100%" height="12px" id="cf17">
+                                            <amx:outputText value="#{row.locator}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot9"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.categoryCodes.collectionModel}"
+                                      fetchSize="#{bindings.categoryCodes.rangeSize}"
+                                      selectedRowKeys="#{bindings.categoryCodes.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.categoryCodes.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv5" rendered="false">
+                            <amx:listItem id="li5">
+                                <amx:tableLayout width="100%" id="tl6">
+                                    <amx:rowLayout id="rl13">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf20"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf21">
+                                            <amx:outputText value="#{row.catgCode}" id="ot11"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl14">
+                                        <amx:cellFormat width="100%" height="12px" id="cf22">
+                                            <amx:outputText value="#{row.structureId}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot12"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.UOMs.collectionModel}"
+                                      fetchSize="#{bindings.UOMs.rangeSize}"
+                                      selectedRowKeys="#{bindings.UOMs.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.UOMs.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv6" rendered="false">
+                            <amx:listItem id="li6">
+                                <amx:tableLayout width="100%" id="tl7">
+                                    <amx:rowLayout id="rl16">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf25"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf24">
+                                            <amx:outputText value="#{row.UOMCode}" id="ot14"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl15">
+                                        <amx:cellFormat width="100%" height="12px" id="cf23">
+                                            <amx:outputText value="#{row.UOM}" styleClass="adfmf-listItem-captionText"
+                                                            id="ot13"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.costGroups.collectionModel}"
+                                      fetchSize="#{bindings.costGroups.rangeSize}"
+                                      selectedRowKeys="#{bindings.costGroups.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.costGroups.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv7" rendered="false">
+                            <amx:listItem id="li7">
+                                <amx:tableLayout width="100%" id="tl8">
+                                    <amx:rowLayout id="rl18">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf27"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf28">
+                                            <amx:outputText value="#{row.whse}" id="ot16"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl17">
+                                        <amx:cellFormat width="100%" height="12px" id="cf26">
+                                            <amx:outputText value="#{row.costGroup}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot15"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.transactionTypes.collectionModel}"
+                                      fetchSize="#{bindings.transactionTypes.rangeSize}"
+                                      selectedRowKeys="#{bindings.transactionTypes.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.transactionTypes.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv8" rendered="false">
+                            <amx:listItem id="li8">
+                                <amx:tableLayout width="100%" id="tl9">
+                                    <amx:rowLayout id="rl20">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf31"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf30">
+                                            <amx:outputText value="#{row.transactionType}" id="ot18"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl19">
+                                        <amx:cellFormat width="100%" height="12px" id="cf29">
+                                            <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText"
+                                                            id="ot17"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.carriers.collectionModel}"
+                                      fetchSize="#{bindings.carriers.rangeSize}"
+                                      selectedRowKeys="#{bindings.carriers.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.carriers.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv10"
+                                      rendered="false">
+                            <amx:listItem id="li10">
+                                <amx:tableLayout width="100%" id="tl11">
+                                    <amx:rowLayout id="rl24">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf37"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf36">
+                                            <amx:outputText value="#{row.whse}" id="ot22"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl23">
+                                        <amx:cellFormat width="100%" height="12px" id="cf35">
+                                            <amx:outputText value="#{row.carrierName}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot21"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.transactionReasons.collectionModel}"
+                                      fetchSize="#{bindings.transactionReasons.rangeSize}"
+                                      selectedRowKeys="#{bindings.transactionReasons.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.transactionReasons.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv9" rendered="false">
+                            <amx:listItem id="li9">
+                                <amx:tableLayout width="100%" id="tl10">
+                                    <amx:rowLayout id="rl22">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf33"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf34">
+                                            <amx:outputText value="#{row.reasonName}" id="ot20"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl21">
+                                        <amx:cellFormat width="100%" height="12px" id="cf32">
+                                            <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText"
+                                                            id="ot19"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.accountAlias.collectionModel}"
+                                      fetchSize="#{bindings.accountAlias.rangeSize}"
+                                      selectedRowKeys="#{bindings.accountAlias.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.accountAlias.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv11"
+                                      rendered="false">
+                            <amx:listItem id="li11">
+                                <amx:tableLayout width="100%" id="tl12">
+                                    <amx:rowLayout id="rl26">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf40"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf39">
+                                            <amx:outputText value="#{row.accountAlias}" id="ot24"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl25">
+                                        <amx:cellFormat width="100%" height="12px" id="cf38">
+                                            <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText"
+                                                            id="ot23"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.pickRules.collectionModel}"
+                                      fetchSize="#{bindings.pickRules.rangeSize}"
+                                      selectedRowKeys="#{bindings.pickRules.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.pickRules.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv12"
+                                      rendered="false">
+                            <amx:listItem id="li12">
+                                <amx:tableLayout width="100%" id="tl13">
+                                    <amx:rowLayout id="rl28">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf43"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf42">
+                                            <amx:outputText value="#{row.whse}" id="ot26"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl27">
+                                        <amx:cellFormat width="100%" height="12px" id="cf41">
+                                            <amx:outputText value="#{row.ruleName}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot25"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.countTypes.collectionModel}"
+                                      fetchSize="#{bindings.countTypes.rangeSize}"
+                                      selectedRowKeys="#{bindings.countTypes.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.countTypes.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv13"
+                                      rendered="false">
+                            <amx:listItem id="li13">
+                                <amx:tableLayout width="100%" id="tl14">
+                                    <amx:rowLayout id="rl30">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf45"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf46">
+                                            <amx:outputText value="#{row.whse}" id="ot28"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl29">
+                                        <amx:cellFormat width="100%" height="12px" id="cf44">
+                                            <amx:outputText value="#{row.countType}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot27"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.departments.collectionModel}"
+                                      fetchSize="#{bindings.departments.rangeSize}"
+                                      selectedRowKeys="#{bindings.departments.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.departments.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv14"
+                                      rendered="false">
+                            <amx:listItem id="li14">
+                                <amx:tableLayout width="100%" id="tl15">
+                                    <amx:rowLayout id="rl32">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf49"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf48">
+                                            <amx:outputText value="#{row.whse}" id="ot30"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl31">
+                                        <amx:cellFormat width="100%" height="12px" id="cf47">
+                                            <amx:outputText value="#{row.deptCode}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot29"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
+                        <amx:listView var="row" value="#{bindings.resources.collectionModel}"
+                                      fetchSize="#{bindings.resources.rangeSize}"
+                                      selectedRowKeys="#{bindings.resources.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.resources.collectionModel.makeCurrent}"
+                                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv15">
+                            <amx:listItem id="li15">
+                                <amx:tableLayout width="auto" id="tl16">
+                                    <amx:rowLayout id="rl34">
+                                        <amx:cellFormat width="10px" rowSpan="2" id="cf52"/>
+                                        <amx:cellFormat width="100%" height="28px" id="cf51">
+                                            <amx:outputText value="#{row.whse}" id="ot32"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl33">
+                                        <amx:cellFormat width="100%" height="12px" id="cf50">
+                                            <amx:outputText value="#{row.resourceCode}"
+                                                            styleClass="adfmf-listItem-captionText" id="ot31"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:listItem>
+                        </amx:listView>
                     </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.locators.collectionModel}"
-                          fetchSize="#{bindings.locators.rangeSize}"
-                          selectedRowKeys="#{bindings.locators.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.locators.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv4" rendered="false">
-              <amx:listItem id="li4">
-                <amx:tableLayout width="100%" id="tl5">
-                  <amx:rowLayout id="rl12">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf18"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf19">
-                      <amx:outputText value="#{row.subinv}" id="ot10"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl11">
-                    <amx:cellFormat width="100%" height="12px" id="cf17">
-                      <amx:outputText value="#{row.locator}" styleClass="adfmf-listItem-captionText" id="ot9"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.categoryCodes.collectionModel}"
-                          fetchSize="#{bindings.categoryCodes.rangeSize}"
-                          selectedRowKeys="#{bindings.categoryCodes.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.categoryCodes.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv5" rendered="false">
-              <amx:listItem id="li5">
-                <amx:tableLayout width="100%" id="tl6">
-                  <amx:rowLayout id="rl13">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf20"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf21">
-                      <amx:outputText value="#{row.catgCode}" id="ot11"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl14">
-                    <amx:cellFormat width="100%" height="12px" id="cf22">
-                      <amx:outputText value="#{row.structureId}" styleClass="adfmf-listItem-captionText" id="ot12"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.UOMs.collectionModel}" fetchSize="#{bindings.UOMs.rangeSize}"
-                          selectedRowKeys="#{bindings.UOMs.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.UOMs.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                          bufferStrategy="viewport" id="lv6" rendered="false">
-              <amx:listItem id="li6">
-                <amx:tableLayout width="100%" id="tl7">
-                  <amx:rowLayout id="rl16">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf25"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf24">
-                      <amx:outputText value="#{row.UOMCode}" id="ot14"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl15">
-                    <amx:cellFormat width="100%" height="12px" id="cf23">
-                      <amx:outputText value="#{row.UOM}" styleClass="adfmf-listItem-captionText" id="ot13"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.costGroups.collectionModel}"
-                          fetchSize="#{bindings.costGroups.rangeSize}"
-                          selectedRowKeys="#{bindings.costGroups.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.costGroups.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv7" rendered="false">
-              <amx:listItem id="li7">
-                <amx:tableLayout width="100%" id="tl8">
-                  <amx:rowLayout id="rl18">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf27"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf28">
-                      <amx:outputText value="#{row.whse}" id="ot16"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl17">
-                    <amx:cellFormat width="100%" height="12px" id="cf26">
-                      <amx:outputText value="#{row.costGroup}" styleClass="adfmf-listItem-captionText" id="ot15"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.transactionTypes.collectionModel}"
-                          fetchSize="#{bindings.transactionTypes.rangeSize}"
-                          selectedRowKeys="#{bindings.transactionTypes.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.transactionTypes.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv8" rendered="false">
-              <amx:listItem id="li8">
-                <amx:tableLayout width="100%" id="tl9">
-                  <amx:rowLayout id="rl20">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf31"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf30">
-                      <amx:outputText value="#{row.transactionType}" id="ot18"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl19">
-                    <amx:cellFormat width="100%" height="12px" id="cf29">
-                      <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText" id="ot17"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.carriers.collectionModel}"
-                          fetchSize="#{bindings.carriers.rangeSize}"
-                          selectedRowKeys="#{bindings.carriers.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.carriers.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv10" rendered="false">
-              <amx:listItem id="li10">
-                <amx:tableLayout width="100%" id="tl11">
-                  <amx:rowLayout id="rl24">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf37"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf36">
-                      <amx:outputText value="#{row.whse}" id="ot22"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl23">
-                    <amx:cellFormat width="100%" height="12px" id="cf35">
-                      <amx:outputText value="#{row.carrierName}" styleClass="adfmf-listItem-captionText" id="ot21"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.transactionReasons.collectionModel}"
-                          fetchSize="#{bindings.transactionReasons.rangeSize}"
-                          selectedRowKeys="#{bindings.transactionReasons.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.transactionReasons.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv9" rendered="false">
-              <amx:listItem id="li9">
-                <amx:tableLayout width="100%" id="tl10">
-                  <amx:rowLayout id="rl22">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf33"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf34">
-                      <amx:outputText value="#{row.reasonName}" id="ot20"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl21">
-                    <amx:cellFormat width="100%" height="12px" id="cf32">
-                      <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText" id="ot19"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.accountAlias.collectionModel}"
-                          fetchSize="#{bindings.accountAlias.rangeSize}"
-                          selectedRowKeys="#{bindings.accountAlias.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.accountAlias.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv11" rendered="false">
-              <amx:listItem id="li11">
-                <amx:tableLayout width="100%" id="tl12">
-                  <amx:rowLayout id="rl26">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf40"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf39">
-                      <amx:outputText value="#{row.accountAlias}" id="ot24"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl25">
-                    <amx:cellFormat width="100%" height="12px" id="cf38">
-                      <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText" id="ot23"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.pickRules.collectionModel}"
-                          fetchSize="#{bindings.pickRules.rangeSize}"
-                          selectedRowKeys="#{bindings.pickRules.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.pickRules.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv12" rendered="false">
-              <amx:listItem id="li12">
-                <amx:tableLayout width="100%" id="tl13">
-                  <amx:rowLayout id="rl28">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf43"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf42">
-                      <amx:outputText value="#{row.whse}" id="ot26"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl27">
-                    <amx:cellFormat width="100%" height="12px" id="cf41">
-                      <amx:outputText value="#{row.ruleName}" styleClass="adfmf-listItem-captionText" id="ot25"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.countTypes.collectionModel}"
-                          fetchSize="#{bindings.countTypes.rangeSize}"
-                          selectedRowKeys="#{bindings.countTypes.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.countTypes.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv13" rendered="false">
-              <amx:listItem id="li13">
-                <amx:tableLayout width="100%" id="tl14">
-                  <amx:rowLayout id="rl30">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf45"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf46">
-                      <amx:outputText value="#{row.whse}" id="ot28"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl29">
-                    <amx:cellFormat width="100%" height="12px" id="cf44">
-                      <amx:outputText value="#{row.countType}" styleClass="adfmf-listItem-captionText" id="ot27"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.departments.collectionModel}"
-                          fetchSize="#{bindings.departments.rangeSize}"
-                          selectedRowKeys="#{bindings.departments.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.departments.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv14" rendered="false">
-              <amx:listItem id="li14">
-                <amx:tableLayout width="100%" id="tl15">
-                  <amx:rowLayout id="rl32">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf49"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf48">
-                      <amx:outputText value="#{row.whse}" id="ot30"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl31">
-                    <amx:cellFormat width="100%" height="12px" id="cf47">
-                      <amx:outputText value="#{row.deptCode}" styleClass="adfmf-listItem-captionText" id="ot29"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-            <amx:listView var="row" value="#{bindings.resources.collectionModel}"
-                          fetchSize="#{bindings.resources.rangeSize}"
-                          selectedRowKeys="#{bindings.resources.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.resources.collectionModel.makeCurrent}"
-                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv15">
-              <amx:listItem id="li15">
-                <amx:tableLayout width="100%" id="tl16">
-                  <amx:rowLayout id="rl34">
-                    <amx:cellFormat width="10px" rowSpan="2" id="cf52"/>
-                    <amx:cellFormat width="100%" height="28px" id="cf51">
-                      <amx:outputText value="#{row.whse}" id="ot32"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl33">
-                    <amx:cellFormat width="100%" height="12px" id="cf50">
-                      <amx:outputText value="#{row.resourceCode}" styleClass="adfmf-listItem-captionText" id="ot31"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                </amx:tableLayout>
-              </amx:listItem>
-            </amx:listView>
-          </amx:cellFormat>
-        </amx:rowLayout>
-      </amx:tableLayout>
-    </amx:panelGroupLayout>
-  </amx:panelPage>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="cardt" inlineStyle="width:100%;height:100%" halign="center"
+                              scrollPolicy="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'scroll' : 'auto'}">
+            <amx:panelGroupLayout id="cards" inlineStyle="height:100%;width:100%" scrollPolicy="scroll" layout="wrap"
+                                  rendered="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'true' : 'false'}">
+                <amx:listView var="row" value="#{bindings.syncLovs.collectionModel}"
+                              fetchSize="#{bindings.syncLovs.rangeSize}"
+                              selectedRowKeys="#{bindings.syncLovs.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.syncLovs.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                              bufferStrategy="viewport" id="lv16" layout="cards" halign="center"
+                              styleClass="swipelistview">
+                    <amx:listItem id="li16" styleClass="swipelistitem">
+                        <amx:panelGroupLayout id="pgl2" styleClass="front">
+                            <amx:tableLayout id="tl17" width="100%" inlineStyle="height: 50px; position: relative; padding: 10px;">
+                                <amx:rowLayout id="rl39">
+                                    <amx:cellFormat id="cf62" width="100%">
+                                        <amx:outputText value="#{row.lovName}" id="ot38"
+                                                        inlineStyle="font-weight:lighter;font-family: cursive;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl38">
+                                    <amx:cellFormat id="cf61" inlineStyle="border: 1px solid #D6C9C9;"/>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl35">
+                                    
+                                    <amx:cellFormat id="cf53" height="28px">
+                                        <amx:panelGroupLayout id="pgl6" layout="horizontal">
+                                            <amx:panelGroupLayout id="pgl4" layout="vertical" valign="middle"
+                                                                  halign="center"
+                                                                  inlineStyle="width: 150px; margin-top: 25px;">
+                                                <amx:outputText value="#{row.syncCount}" id="ot33"
+                                                                inlineStyle="color: rgb(86, 165, 7); font-size: x-large;"/>
+                                                <amx:outputText id="ot35" value="Count"
+                                                                inlineStyle="color: darkgrey; font-size: smaller;"/>
+                                            </amx:panelGroupLayout>
+                                            <amx:spacer id="s1" width="20"/>
+                                            <amx:panelGroupLayout id="pgl5" layout="vertical" valign="middle"
+                                                                  halign="center"
+                                                                  inlineStyle="width: 150px; margin-top: 25px;">
+                                                <amx:outputText value="#{row.lastSyncDateTime}" id="ot36"
+                                                                inlineStyle="font-size: x-large; color: chocolate;"/>
+                                                <amx:outputText id="ot37" value="Last Sync Date"
+                                                                inlineStyle="color: darkgrey; font-size: smaller;"/>
+                                            </amx:panelGroupLayout>
+                                        </amx:panelGroupLayout>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl37" >
+                                    <amx:cellFormat id="cf59" width="100%" height="12px" halign="end">
+                                        <amx:commandLink id="cl1" actionListener="#{jsMBean.flipCardBack}">
+                                            <amx:image id="i2" source="/images/flipback.png"
+                                                       inlineStyle="height: 25px;"/>
+                                            <amx:setPropertyListener id="spl1" to="#{pageFlowScope.deckName}"
+                                                                     from="#{row.rowIdx}"/>
+                                        </amx:commandLink>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:panelGroupLayout>
+                        <amx:panelGroupLayout id="pgl3" styleClass="back">
+                            <amx:tableLayout id="tl18"  width="100%" inlineStyle="padding: 10px;">
+                                
+                                <amx:rowLayout id="rl36">
+                                    <amx:cellFormat id="cf56" width="100%" inlineStyle="padding: 10px;">
+                                        <amx:outputText value="#{row.lovName}" id="ot34"
+                                                        inlineStyle="color: white; font-family: cursive;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl41">
+                                    <amx:cellFormat id="cf54" inlineStyle="border: 1px solid #D6C9C9;"/>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl42">
+                                    <amx:cellFormat id="cf55" width="100%" inlineStyle="padding: 10px;">
+                                        <amx:outputText value="#{row.lovDescription}" id="ot39"
+                                                        inlineStyle="color:white; font-family:cursive; font-size:small;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl40">
+                                    <amx:cellFormat id="cf57" halign="end" valign="bottom">
+                                        <amx:commandLink id="cl2" actionListener="#{jsMBean.flipCardFront}">
+                                            <amx:image id="i3" source="/images/flipfront.png"
+                                                       inlineStyle="height: 25px;"/>
+                                            <amx:setPropertyListener id="spl2" to="#{pageFlowScope.deckName}"
+                                                                     from="#{row.rowIdx}"/>
+                                        </amx:commandLink>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:panelGroupLayout>
+                    </amx:listItem>
+                </amx:listView>
+            </amx:panelGroupLayout>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
 </amx:view>

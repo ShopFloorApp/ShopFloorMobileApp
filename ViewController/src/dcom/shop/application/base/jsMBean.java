@@ -19,4 +19,22 @@ public class jsMBean {
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "rightNavigationToggleBtn", new Object[] {});
         return null;
     }
+    
+    public void flipCardBack(ActionEvent actionEvent) {
+        System.out.println("code reached in flip card");
+        String val = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deckName}");
+        Integer i=new Integer(Integer.parseInt(val)-1);
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        System.out.println("code is reaching before javascript "+val);
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "flipCardLayoutAnimActionBack", new Object[] {i});
+    }
+    
+    public void flipCardFront(ActionEvent actionEvent) {
+        System.out.println("code reached in flip card");
+        String val = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deckName}");
+        Integer i=new Integer(Integer.parseInt(val)-1);
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        System.out.println("code is reaching before javascript "+val);
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "flipCardLayoutAnimActionFront", new Object[] {i});
+    }
 }

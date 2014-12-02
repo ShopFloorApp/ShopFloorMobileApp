@@ -70,6 +70,10 @@
     <accessorIterator MasterBinding="ResourceDCIterator" Binds="resources" RangeSize="25" DataControl="ResourceDC"
                       BeanClass="dcom.shop.application.mobile.ResourceBO" id="resourcesIterator"/>
     <iterator id="ResourceLOV_WS_rootIter" Binds="root" DataControl="ResourceLOV_WS" RangeSize="25"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SyncPreferencesDC" id="SyncPreferencesDCIterator"/>
+    <accessorIterator MasterBinding="SyncPreferencesDCIterator" Binds="syncLovs" RangeSize="25"
+                      DataControl="SyncPreferencesDC" BeanClass="dcom.shop.application.mobile.SyncPreferencesBO"
+                      id="syncLovsIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehousesIterator" id="warehouses">
@@ -189,6 +193,18 @@
         <AttrNames>
           <Item Value="whse"/>
           <Item Value="resourceCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="syncLovsIterator" id="syncLovs">
+      <nodeDefinition DefName="dcom.shop.application.mobile.SyncPreferencesBO" Name="syncLovs0">
+        <AttrNames>
+          <Item Value="lovName"/>
+          <Item Value="lovDescription"/>
+          <Item Value="lastSyncDateTime"/>
+          <Item Value="lovId"/>
+          <Item Value="rowIdx"/>
+          <Item Value="syncCount"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

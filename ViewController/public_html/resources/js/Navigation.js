@@ -44,4 +44,21 @@
             jQuery('.rightnav-link').addClass('hide');
         }
     }
+    
+    flipCardLayoutAnimActionBack = function () {
+    var args = arguments;
+        var str = ""+ args[0];
+//        alert("code reached to JS "+str);
+        
+        $('.front').eq(str).addClass('flip');
+        $('.back').eq(str).addClass('flip');
+    };
+    flipCardLayoutAnimActionFront = function () {
+    var args = arguments;
+        var str = ""+ args[0];
+//        alert("code reached to JS "+str);
+        
+        $('.front').eq(str).removeClass('flip');
+        $('.back').eq(str).removeClass('flip');
+    };
 })();

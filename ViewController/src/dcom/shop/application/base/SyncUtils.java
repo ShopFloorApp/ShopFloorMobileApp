@@ -70,6 +70,12 @@ public abstract class SyncUtils {
         }
         return collections;
     }
+    
+    protected List getOfflineCollection(Class collectionClass) {
+        List collections;        
+            collections = getCollectionFromDB(collectionClass);   
+        return collections;
+    }
 
     private List getCollectionFromDB(Class collectionClass) {
         Connection conn = null;
@@ -90,7 +96,9 @@ public abstract class SyncUtils {
             for (int i = 0; i < fields.length; i++) {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
-                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                    (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
                 }
                 q1.append(fields[i].getName().toUpperCase() + ",");
@@ -105,7 +113,9 @@ public abstract class SyncUtils {
                 HashMap map = new HashMap();
                 for (int i = 0; i < fields.length; i++) {
                     if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
-                        (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                        (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                        (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
                     }
                     System.out.println("adding rows to hashmap");
@@ -199,7 +209,9 @@ public abstract class SyncUtils {
             for (int i = 0; i < fields.length; i++) {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
-                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                    (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
                 }
                 fieldNames.append(fields[i].getName().toUpperCase() + ",");
@@ -221,7 +233,9 @@ public abstract class SyncUtils {
 
                 for (int j = 0; j < fields.length; j++) {
                     if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
-                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport"))) {
+                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                        (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
                     }
                     System.out.println("getting row from hashmap");

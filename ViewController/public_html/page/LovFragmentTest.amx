@@ -117,29 +117,29 @@
                     <amx:attribute name="Method1" value="#{bindings.filterpickrule}" id="a45"/>
                     <amx:facet name="RightMenu"/>
                  </amx:fragment>
-                <amx:fragment src="/page/LovPage/Fragments/CategoryCodeLovFr.amxf" id="f6" rendered="false">
-                    <amx:attribute name="coll" value="#{bindings.categoryCodes}" id="a35"/>
-                    <amx:attribute name="MainText" value="catgCode" id="a33"/>
-                    <amx:attribute name="SubText" value="desc" id="a31"/>
-                    <amx:attribute name="attrib1" value="#{bindings.catgcodeFilter}" id="a34"/>
-                    <amx:attribute name="attrib2" value="#{bindings.descFilter2}" id="a32"/>
-                    <amx:attribute name="Method1" value="#{bindings.filterCategoryCodes}" id="a36"/>
+                <amx:fragment src="/page/LovPage/Fragments/CategoryCodeLovFr.amxf" id="f13" rendered="false">
+                    <amx:attribute name="coll" value="#{bindings.categoryCodes}" id="a65"/>
+                    <amx:attribute name="MainText" value="catgCode" id="a66"/>
+                    <amx:attribute name="SubText" value="desc" id="a67"/>
+                    <amx:attribute name="attrib1" value="#{bindings.catgcodeFilter}" id="a68"/>
+                    <amx:attribute name="attrib2" value="#{bindings.descFilter2}" id="a69"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterCategoryCodes}" id="a70"/>
                     <amx:facet name="RightMenu"/>
                 </amx:fragment>
-                <amx:fragment src="/page/LovPage/Fragments/TransactionTypeLovFr.amxf" id="f7">
-                    <amx:attribute name="coll" value="#{bindings.transactionTypes}" id="a40"/>
-                    <amx:attribute name="MainText" value="transactionType" id="a38"/>
-                    <amx:attribute name="attrib1" value="#{bindings.transactiontypeFilter}" id="a37"/>
-                    <amx:attribute name="Method1" value="#{bindings.filterTransactionTypes}" id="a39"/>
+                <amx:fragment src="/page/LovPage/Fragments/TransactionTypeLovFr.amxf" id="f14">
+                    <amx:attribute name="coll" value="#{bindings.transactionTypes}" id="a71"/>
+                    <amx:attribute name="MainText" value="transactionType" id="a72"/>
+                    <amx:attribute name="attrib1" value="#{bindings.transactiontypeFilter}" id="a73"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterTransactionTypes}" id="a74"/>
                     <amx:facet name="RightMenu"/>
                 </amx:fragment>
-                <amx:fragment src="/page/LovPage/Fragments/DepartmentLovFr.amxf" id="f8">
-                    <amx:attribute name="coll" value="#{bindings.departments}" id="a43"/>
-                    <amx:attribute name="MainText" value="deptCode" id="a42"/>
-                    <amx:attribute name="SubText" value="desc" id="a45"/>
-                    <amx:attribute name="attrib1" value="#{bindings.deptFilter}" id="a46"/>
-                    <amx:attribute name="attrib2" value="#{bindings.nameFilter1}" id="a44"/>
-                    <amx:attribute name="Method1" value="#{bindings.filterDepartments}" id="a41"/>
+                <amx:fragment src="/page/LovPage/Fragments/DepartmentLovFr.amxf" id="f15">
+                    <amx:attribute name="coll" value="#{bindings.departments}" id="a75"/>
+                    <amx:attribute name="MainText" value="deptCode" id="a76"/>
+                    <amx:attribute name="SubText" value="desc" id="a77"/>
+                    <amx:attribute name="attrib1" value="#{bindings.deptFilter}" id="a80"/>
+                    <amx:attribute name="attrib2" value="#{bindings.nameFilter1}" id="a78"/>
+                    <amx:attribute name="Method1" value="#{bindings.filterDepartments}" id="a79"/>
                     <amx:facet name="RightMenu"/>
                 </amx:fragment>
             </amx:panelGroupLayout>

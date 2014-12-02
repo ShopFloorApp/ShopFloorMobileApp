@@ -20,6 +20,7 @@
     <page id="dcom_shop_mobile_CostGroupsLovPageDef" path="page.LovPage.CostGroupsLovPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="SyncPreferencesDC" path="dcom.shop.mobile.SyncPreferencesDC"/>
     <dc id="ResourceLOV_WS" path="dcom.shop.mobile.ResourceLOV_WS"/>
     <dc id="ResourceDC" path="dcom.shop.mobile.ResourceDC"/>
     <dc id="DepartmentLOV_WS" path="dcom.shop.mobile.DepartmentLOV_WS"/>
