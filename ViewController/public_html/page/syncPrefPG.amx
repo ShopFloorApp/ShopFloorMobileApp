@@ -401,8 +401,13 @@
                             <amx:tableLayout id="tl17" width="100%" inlineStyle="height: 50px; position: relative; padding: 10px;">
                                 <amx:rowLayout id="rl39">
                                     <amx:cellFormat id="cf62" width="100%">
-                                        <amx:outputText value="#{row.lovName}" id="ot38"
-                                                        inlineStyle="font-weight:lighter;font-family: cursive;"/>
+                                        <amx:panelGroupLayout id="pgl7" layout="horizontal">
+                                            <amx:outputText value="#{row.lovName}" id="ot38"
+                                                            inlineStyle="font-weight:lighter;font-family: cursive;width: 255px;"/>
+                                            <amx:spacer id="s2" width="20"/>
+                                            <amx:commandButton text="Sync" id="cb4" styleClass="btncardlyt"
+                                                               inlineStyle="font-family:Helvetica;"/>
+                                        </amx:panelGroupLayout>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl38">
@@ -414,7 +419,7 @@
                                         <amx:panelGroupLayout id="pgl6" layout="horizontal">
                                             <amx:panelGroupLayout id="pgl4" layout="vertical" valign="middle"
                                                                   halign="center"
-                                                                  inlineStyle="width: 150px; margin-top: 25px;">
+                                                                  inlineStyle="width: 150px; margin-top: 10px;">
                                                 <amx:outputText value="#{row.syncCount}" id="ot33"
                                                                 inlineStyle="color: rgb(86, 165, 7); font-size: x-large;"/>
                                                 <amx:outputText id="ot35" value="Count"
@@ -423,7 +428,7 @@
                                             <amx:spacer id="s1" width="20"/>
                                             <amx:panelGroupLayout id="pgl5" layout="vertical" valign="middle"
                                                                   halign="center"
-                                                                  inlineStyle="width: 150px; margin-top: 25px;">
+                                                                  inlineStyle="width: 150px; margin-top: 10px;">
                                                 <amx:outputText value="#{row.lastSyncDateTime}" id="ot36"
                                                                 inlineStyle="font-size: x-large; color: chocolate;"/>
                                                 <amx:outputText id="ot37" value="Last Sync Date"

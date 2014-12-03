@@ -122,5 +122,17 @@
 .swipelistview{
     background-color: #F3F3F3;
 }
+.btncardlyt{
+    border-radius: 10px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px;
+    display: inline-block;
+    width: 100px;
+    background: cornflowerblue;
+    padding-top: 5px; 
+    padding-left: 0px; 
+    padding-right: 0px;
+    color: white;
+}
 
 
