@@ -61,4 +61,26 @@
         $('.front').eq(str).removeClass('flip');
         $('.back').eq(str).removeClass('flip');
     };
+    changeCardLytValues=function(){
+//    alert('inside JS again');
+        var args = arguments;
+        var str = ""+ args[0];
+        var count=""+args[1];
+        var sdate=""+args[2];
+        
+        $('.synccount').eq(str).text(count);
+        $('.syncdate').eq(str).text(sdate);
+    }
+    
+    deactivateCardLayout = function () {
+    var args = arguments;
+        var str = ""+ args[0];
+        $('.front').eq(str).addClass('dimLyt');
+    };
+    
+    activateCardLayout = function () {
+    var args = arguments;
+        var str = ""+ args[0];
+        $('.front').eq(str).removeClass('dimLyt');
+    };
 })();

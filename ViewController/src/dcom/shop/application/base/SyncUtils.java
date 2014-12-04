@@ -146,6 +146,7 @@ public abstract class SyncUtils {
     }
 
     private List getCollectionFromWS(Class collectionClass, HashMap params) {
+        
         System.out.println("Inside getWarehousesFromWS");
         GenericVirtualType payload = (GenericVirtualType) params.get("payload");
         String lovDCName = (String) params.get("lovDCName");
@@ -166,6 +167,7 @@ public abstract class SyncUtils {
         pvals.add(payload);
         System.out.println("Before Webservice call");
         try {
+            Object obj = collectionClass.newInstance();
             GenericType genericReturnValue =
                 (GenericType) AdfmfJavaUtilities.invokeDataControlMethod(lovDCName, null, opeartionName, pnames, pvals,
                                                                          ptypes);
@@ -176,7 +178,7 @@ public abstract class SyncUtils {
                 GenericType entityGenericType = (GenericType) respListType.getAttribute(i);
                 // Now create Department instance out of this GenericType
                 // this works fine if payload attr names match department attr names
-                Object obj = collectionClass.newInstance();
+                
                 obj = GenericTypeBeanSerializationHelper.fromGenericType(collectionClass, entityGenericType);
                 collection.add(obj);
             }
@@ -187,7 +189,7 @@ public abstract class SyncUtils {
         }
     }
 
-    private void updateSqlLiteTable(Class collectionClass, List collections) {
+    protected void updateSqlLiteTable(Class collectionClass, List collections) {
         Connection conn = null;
 
         String tableName = collectionClass.getName();

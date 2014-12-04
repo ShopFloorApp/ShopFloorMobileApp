@@ -4,7 +4,7 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="WarehouseDC" id="WarehouseDCIterator"/>
+    <!--iterator Binds="root" RangeSize="25" DataControl="WarehouseDC" id="WarehouseDCIterator"/>
     <accessorIterator MasterBinding="WarehouseDCIterator" Binds="warehouses" RangeSize="25" DataControl="WarehouseDC"
                       BeanClass="dcom.shop.application.mobile.WarehouseBO" id="warehousesIterator"/>
     <iterator id="WarehouseLOV_WS_rootIter" Binds="root" DataControl="WarehouseLOV_WS" RangeSize="25"/>
@@ -69,133 +69,13 @@
     <iterator Binds="root" RangeSize="25" DataControl="ResourceDC" id="ResourceDCIterator"/>
     <accessorIterator MasterBinding="ResourceDCIterator" Binds="resources" RangeSize="25" DataControl="ResourceDC"
                       BeanClass="dcom.shop.application.mobile.ResourceBO" id="resourcesIterator"/>
-    <iterator id="ResourceLOV_WS_rootIter" Binds="root" DataControl="ResourceLOV_WS" RangeSize="25"/>
+    <iterator id="ResourceLOV_WS_rootIter" Binds="root" DataControl="ResourceLOV_WS" RangeSize="25"/-->
     <iterator Binds="root" RangeSize="25" DataControl="SyncPreferencesDC" id="SyncPreferencesDCIterator"/>
     <accessorIterator MasterBinding="SyncPreferencesDCIterator" Binds="syncLovs" RangeSize="25"
                       DataControl="SyncPreferencesDC" BeanClass="dcom.shop.application.mobile.SyncPreferencesBO"
                       id="syncLovsIterator"/>
   </executables>
   <bindings>
-    <tree IterBinding="warehousesIterator" id="warehouses">
-      <nodeDefinition DefName="dcom.shop.application.mobile.WarehouseBO" Name="warehouses0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="line1"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="categorySetsIterator" id="categorySets">
-      <nodeDefinition DefName="dcom.shop.application.mobile.CategorySetBO" Name="categorySets0">
-        <AttrNames>
-          <Item Value="catgSetName"/>
-          <Item Value="structureId"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="subinventoriesIterator" id="subinventories">
-      <nodeDefinition DefName="dcom.shop.application.mobile.SubinventoryBO" Name="subinventories0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="subinv"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="locatorsIterator" id="locators">
-      <nodeDefinition DefName="dcom.shop.application.mobile.LocatorBO" Name="locators0">
-        <AttrNames>
-          <Item Value="subinv"/>
-          <Item Value="locator"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="categoryCodesIterator" id="categoryCodes">
-      <nodeDefinition DefName="dcom.shop.application.mobile.CategoryCodeBO" Name="categoryCodes0">
-        <AttrNames>
-          <Item Value="catgCode"/>
-          <Item Value="structureId"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="UOMsIterator" id="UOMs">
-      <nodeDefinition DefName="dcom.shop.application.mobile.UOMBO" Name="UOMs0">
-        <AttrNames>
-          <Item Value="UOMCode"/>
-          <Item Value="UOM"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="costGroupsIterator" id="costGroups">
-      <nodeDefinition DefName="dcom.shop.application.mobile.CostGroupBO" Name="costGroups0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="costGroup"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="transactionTypesIterator" id="transactionTypes">
-      <nodeDefinition DefName="dcom.shop.application.mobile.TransactionTypeBO" Name="transactionTypes0">
-        <AttrNames>
-          <Item Value="transactionType"/>
-          <Item Value="desc"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="transactionReasonsIterator" id="transactionReasons">
-      <nodeDefinition DefName="dcom.shop.application.mobile.TransactionReasonBO" Name="transactionReasons0">
-        <AttrNames>
-          <Item Value="reasonName"/>
-          <Item Value="desc"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="carriersIterator" id="carriers">
-      <nodeDefinition DefName="dcom.shop.application.mobile.CarrierBO" Name="carriers0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="carrierName"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="accountAliasIterator" id="accountAlias">
-      <nodeDefinition DefName="dcom.shop.application.mobile.AccountAliasBO" Name="accountAlias0">
-        <AttrNames>
-          <Item Value="accountAlias"/>
-          <Item Value="desc"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="pickRulesIterator" id="pickRules">
-      <nodeDefinition DefName="dcom.shop.application.mobile.PickRuleBO" Name="pickRules0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="ruleName"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="countTypesIterator" id="countTypes">
-      <nodeDefinition DefName="dcom.shop.application.mobile.CountTypeBO" Name="countTypes0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="countType"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="departmentsIterator" id="departments">
-      <nodeDefinition DefName="dcom.shop.application.mobile.DepartmentBO" Name="departments0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="deptCode"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-    <tree IterBinding="resourcesIterator" id="resources">
-      <nodeDefinition DefName="dcom.shop.application.mobile.ResourceBO" Name="resources0">
-        <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="resourceCode"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
     <tree IterBinding="syncLovsIterator" id="syncLovs">
       <nodeDefinition DefName="dcom.shop.application.mobile.SyncPreferencesBO" Name="syncLovs0">
         <AttrNames>
@@ -205,8 +85,18 @@
           <Item Value="lovId"/>
           <Item Value="rowIdx"/>
           <Item Value="syncCount"/>
+          <Item Value="lovClassName"/>
+          <Item Value="lovCollectVar"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="syncCard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="syncCard"
+                  IsViewObjectMethod="false" DataControl="SyncPreferencesDC"
+                  InstanceName="data.SyncPreferencesDC.dataProvider">
+      <NamedData NDName="lovId" NDValue="#{viewScope.lovId}" NDType="java.lang.String"/>
+      <NamedData NDName="lovDCClass" NDValue="#{viewScope.lovDCClass}" NDType="java.lang.String"/>
+      <NamedData NDName="lovCollectionVar" NDValue="#{viewScope.lovCollectionVar}" NDType="java.lang.String"/>
+      <NamedData NDName="rowIdx" NDValue="#{viewScope.lovRowIdx}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

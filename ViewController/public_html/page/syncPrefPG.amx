@@ -406,7 +406,17 @@
                                                             inlineStyle="font-weight:lighter;font-family: cursive;width: 255px;"/>
                                             <amx:spacer id="s2" width="20"/>
                                             <amx:commandButton text="Sync" id="cb4" styleClass="btncardlyt"
-                                                               inlineStyle="font-family:Helvetica;"/>
+                                                               inlineStyle="font-family:Helvetica;"
+                                                               actionListener="#{bindings.syncCard.execute}">
+                                                <amx:setPropertyListener id="spl3" from="#{row.lovId}"
+                                                                         to="#{viewScope.lovId}"/>
+                                                <amx:setPropertyListener id="spl4" from="#{row.lovClassName}"
+                                                                         to="#{viewScope.lovDCClass}"/>
+                                                <amx:setPropertyListener id="spl5" to="#{viewScope.lovCollectionVar}"
+                                                                         from="#{row.lovCollectVar}"/>
+                                                <amx:setPropertyListener id="spl6" to="#{viewScope.lovRowIdx}"
+                                                                         from="#{row.rowIdx}"/>
+                                            </amx:commandButton>
                                         </amx:panelGroupLayout>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
@@ -421,7 +431,8 @@
                                                                   halign="center"
                                                                   inlineStyle="width: 150px; margin-top: 10px;">
                                                 <amx:outputText value="#{row.syncCount}" id="ot33"
-                                                                inlineStyle="color: rgb(86, 165, 7); font-size: x-large;"/>
+                                                                inlineStyle="color: rgb(86, 165, 7); font-size: x-large;"
+                                                                styleClass="synccount"/>
                                                 <amx:outputText id="ot35" value="Count"
                                                                 inlineStyle="color: darkgrey; font-size: smaller;"/>
                                             </amx:panelGroupLayout>
@@ -430,7 +441,8 @@
                                                                   halign="center"
                                                                   inlineStyle="width: 150px; margin-top: 10px;">
                                                 <amx:outputText value="#{row.lastSyncDateTime}" id="ot36"
-                                                                inlineStyle="font-size: x-large; color: chocolate;"/>
+                                                                inlineStyle="font-size: x-large; color: chocolate;"
+                                                                styleClass="syncdate"/>
                                                 <amx:outputText id="ot37" value="Last Sync Date"
                                                                 inlineStyle="color: darkgrey; font-size: smaller;"/>
                                             </amx:panelGroupLayout>

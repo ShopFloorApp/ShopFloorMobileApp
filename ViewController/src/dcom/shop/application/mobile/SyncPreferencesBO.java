@@ -14,6 +14,8 @@ public class SyncPreferencesBO implements Comparable {
     private String lovDescription;
     private String syncCount;
     private String lastSyncDateTime;
+    private String lovClassName;
+    private String lovCollectVar;
     private String rowIdx;
     private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -27,6 +29,8 @@ public class SyncPreferencesBO implements Comparable {
         this.setLovDescription((String) hashMap.get("lovdescription"));
         this.setSyncCount((String) hashMap.get("synccount"));
         this.setLastSyncDateTime((String) hashMap.get("lastsyncdatetime"));
+        this.setLovClassName((String) hashMap.get("lovclassname"));
+        this.setLovCollectVar((String) hashMap.get("lovcollectvar"));
     }
 
     public HashMap getBOClassRow(SyncPreferencesBO synpreference) {
@@ -36,12 +40,34 @@ public class SyncPreferencesBO implements Comparable {
         map.put("lovdescription", synpreference.getLovDescription());
         map.put("synccount", synpreference.getSyncCount());
         map.put("lastsyncdatetime", synpreference.getLastSyncDateTime());
+        map.put("lovclassname", synpreference.getLovClassName());
+        map.put("lovcollectvar", synpreference.getLovCollectVar());
         return map;
     }
     public void setRowIdx(String rowIdx) {
         String oldRowIdx = this.rowIdx;
         this.rowIdx = rowIdx;
         propertyChangeSupport.firePropertyChange("rowIdx", oldRowIdx, rowIdx);
+    }
+
+    public void setLovClassName(String lovClassName) {
+        String oldLovClassName = this.lovClassName;
+        this.lovClassName = lovClassName;
+        propertyChangeSupport.firePropertyChange("lovClassName", oldLovClassName, lovClassName);
+    }
+
+    public String getLovClassName() {
+        return lovClassName;
+    }
+
+    public void setLovCollectVar(String lovCollectVar) {
+        String oldLovCollectVar = this.lovCollectVar;
+        this.lovCollectVar = lovCollectVar;
+        propertyChangeSupport.firePropertyChange("lovCollectVar", oldLovCollectVar, lovCollectVar);
+    }
+
+    public String getLovCollectVar() {
+        return lovCollectVar;
     }
 
     public void setLovId(String lovId) {

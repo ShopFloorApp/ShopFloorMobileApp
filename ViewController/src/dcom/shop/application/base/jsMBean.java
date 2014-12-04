@@ -37,4 +37,9 @@ public class jsMBean {
         System.out.println("code is reaching before javascript "+val);
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "flipCardLayoutAnimActionFront", new Object[] {i});
     }
+    public void changeListItemValues(ActionEvent actionEvent) {
+        // Add event code here...
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "changeCardLytValues", new Object[] {});
+    }
 }
