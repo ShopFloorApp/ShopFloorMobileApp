@@ -578,4 +578,24 @@
                        EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
+  <AdapterDataControl id="SubInventoryTrf_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.SubInventoryTrf_WS"
+                      BeanClass="dcom.shop.mobile.SubInventoryTrf_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="SubInventoryTrf_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMSubInventoryTransfer!1.0*soa_464a94e4-5af5-4e99-8190-71f6be7a7f9f/dcomsubinventorytransfer_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomsubinventorytransfer_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer"
+                 connection="SubInventoryTrf_WS">
+          <port name="DCOMSubInventoryTransfer_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
 </DataControlConfigs>
