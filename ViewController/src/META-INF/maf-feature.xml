@@ -20,4 +20,9 @@
       </adfmf:amx>
     </adfmf:content>
   </adfmf:feature>
+  <adfmf:feature id="dcom.shop.subInventryTrsf" name="subInventryTrsf">
+    <adfmf:content id="dcom.shop.subInventryTrsf.1">
+      <adfmf:amx file="page/SubInventoryTrsf.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
 </adfmf:features>
