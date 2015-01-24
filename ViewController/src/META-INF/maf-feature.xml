@@ -25,4 +25,29 @@
       <adfmf:amx file="page/SubInventoryTrsf.amx"/>
     </adfmf:content>
   </adfmf:feature>
+  <adfmf:feature id="dcom.shop.DispatchList" name="DispatchList">
+    <adfmf:content id="dcom.shop.DispatchList.1">
+      <adfmf:amx/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="dcom.shop.Transaction" name="Transaction">
+    <adfmf:content id="dcom.shop.Transaction.1">
+      <adfmf:amx/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="dcom.shop.Inquiry" name="Inquiry">
+    <adfmf:content id="dcom.shop.Inquiry.1">
+      <adfmf:amx/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="dcom.shop.Settings" name="Settings">
+    <adfmf:content id="dcom.shop.Settings.1">
+      <adfmf:amx/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="dcom.shop.Preferences" name="Preferences">
+    <adfmf:content id="dcom.shop.Preferences.1">
+      <adfmf:amx/>
+    </adfmf:content>
+  </adfmf:feature>
 </adfmf:features>

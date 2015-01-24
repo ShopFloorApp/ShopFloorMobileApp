@@ -9,4 +9,13 @@
   <adfmf:featureReference id="dcom.shop.syncPref"/>
   <adfmf:featureReference id="dcom.shop.LoadLov"/>
   <adfmf:featureReference id="dcom.shop.subInventryTrsf"/>
+  <adfmf:featureReference id="dcom.shop.DispatchList"/>
+  <adfmf:featureReference id="dcom.shop.Transaction"/>
+  <adfmf:featureReference id="dcom.shop.Inquiry"/>
+  <adfmf:featureReference id="dcom.shop.Settings"/>
+  <adfmf:featureReference id="dcom.shop.Preferences"/>
+  <adfmf:navigation>
+    <adfmf:navigationBar displayHideShowNavigationBarControl="true"/>
+    <adfmf:springboard enabled="true"/>
+  </adfmf:navigation>
 </adfmf:application>
