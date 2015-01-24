@@ -10,6 +10,7 @@
     <page path="/page/LovPage/ResourcesLov.amx" usageId="dcom_shop_mobile_ResourcesLovPageDef"/>
     <page path="/page/LovPage/CostGroupsLov.amx" usageId="dcom_shop_mobile_CostGroupsLovPageDef"/>
     <page path="/page/SubInventoryTrsf.amx" usageId="dcom_shop_mobile_SubInventoryTrsfPageDef"/>
+    <page path="/dcom.shop.Springboard/springboard.amx" usageId="dcom_shop_mobile_springboardPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -20,8 +21,10 @@
     <page id="dcom_shop_mobile_ResourcesLovPageDef" path="page.LovPage.ResourcesLovPageDef"/>
     <page id="dcom_shop_mobile_CostGroupsLovPageDef" path="page.LovPage.CostGroupsLovPageDef"/>
     <page id="dcom_shop_mobile_SubInventoryTrsfPageDef" path="page.SubInventoryTrsfPageDef"/>
+    <page id="dcom_shop_mobile_springboardPageDef" path="dcom.shop.Springboard.springboardPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ApplicationFeatures" path="dcom.shop.application.ApplicationFeatures"/>
     <dc id="SubInventoryTrf_WS" path="dcom.shop.mobile.SubInventoryTrf_WS"/>
     <dc id="SyncPreferencesDC" path="dcom.shop.mobile.SyncPreferencesDC"/>
     <dc id="ResourceLOV_WS" path="dcom.shop.mobile.ResourceLOV_WS"/>

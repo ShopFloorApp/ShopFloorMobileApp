@@ -6,7 +6,17 @@
             <amx:outputText value="Sync" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" text="Back"/>
+            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+                             disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
+                             styleClass="custom-springboard-link">
+                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
+                           source="/images/springboard.png" id="i1"/>
+            </amx:commandLink>
+            <!--<amx:commandLink actionListener="#{WindowBean.showSpringboard}" styleClass="custom-springboard-link"
+                             id="cl1">
+                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
+                           source="/images/springboard.png" id="i1"/>
+            </amx:commandLink>-->
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" text="Sync All"/>
@@ -18,7 +28,7 @@
                     <amx:cellFormat id="cf1"
                                     inlineStyle="margin-bottom:10px; margin-left:10px; margin-right:10px; margin-top:10px; background-color:#0084c6;"
                                     width="40%">
-                        <amx:image id="i1" source="/images/warehouse.png"
+                        <amx:image id="i4" source="/images/warehouse.png"
                                    inlineStyle="flex-align:start; height:100px; width:auto;"/>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf2" inlineStyle="background-color:#0084c6; margin:10px;" width="60%">
@@ -393,12 +403,13 @@
                 <amx:listView var="row" value="#{bindings.syncLovs.collectionModel}"
                               fetchSize="#{bindings.syncLovs.rangeSize}"
                               selectedRowKeys="#{bindings.syncLovs.collectionModel.selectedRow}"
-                              selectionListener="#{bindings.syncLovs.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                              bufferStrategy="viewport" id="lv16" layout="cards" halign="center"
-                              styleClass="swipelistview">
+                              selectionListener="#{bindings.syncLovs.collectionModel.makeCurrent}"
+                              showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv16" layout="cards"
+                              halign="center" styleClass="swipelistview">
                     <amx:listItem id="li16" styleClass="swipelistitem">
                         <amx:panelGroupLayout id="pgl2" styleClass="front">
-                            <amx:tableLayout id="tl17" width="100%" inlineStyle="height: 50px; position: relative; padding: 10px;">
+                            <amx:tableLayout id="tl17" width="100%"
+                                             inlineStyle="height: 50px; position: relative; padding: 10px;">
                                 <amx:rowLayout id="rl39">
                                     <amx:cellFormat id="cf62" width="100%">
                                         <amx:panelGroupLayout id="pgl7" layout="horizontal">
@@ -424,7 +435,6 @@
                                     <amx:cellFormat id="cf61" inlineStyle="border: 1px solid #D6C9C9;"/>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl35">
-                                    
                                     <amx:cellFormat id="cf53" height="28px">
                                         <amx:panelGroupLayout id="pgl6" layout="horizontal">
                                             <amx:panelGroupLayout id="pgl4" layout="vertical" valign="middle"
@@ -449,7 +459,7 @@
                                         </amx:panelGroupLayout>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
-                                <amx:rowLayout id="rl37" >
+                                <amx:rowLayout id="rl37">
                                     <amx:cellFormat id="cf59" width="100%" height="12px" halign="end">
                                         <amx:commandLink id="cl1" actionListener="#{jsMBean.flipCardBack}">
                                             <amx:image id="i2" source="/images/flipback.png"
@@ -462,8 +472,7 @@
                             </amx:tableLayout>
                         </amx:panelGroupLayout>
                         <amx:panelGroupLayout id="pgl3" styleClass="back">
-                            <amx:tableLayout id="tl18"  width="100%" inlineStyle="padding: 10px;">
-                                
+                            <amx:tableLayout id="tl18" width="100%" inlineStyle="padding: 10px;">
                                 <amx:rowLayout id="rl36">
                                     <amx:cellFormat id="cf56" width="100%" inlineStyle="padding: 10px;">
                                         <amx:outputText value="#{row.lovName}" id="ot34"

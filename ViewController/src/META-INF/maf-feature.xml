@@ -50,4 +50,14 @@
       <adfmf:amx/>
     </adfmf:content>
   </adfmf:feature>
+  <adfmf:feature id="dcom.shop.Springboard" name="Springboard">
+    <adfmf:content id="dcom.shop.Springboard.1">
+      <adfmf:amx file="dcom.shop.Springboard/springboard.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="dcom.shop.Request" name="Request">
+    <adfmf:content id="dcom.shop.Request.1">
+      <adfmf:amx/>
+    </adfmf:content>
+  </adfmf:feature>
 </adfmf:features>

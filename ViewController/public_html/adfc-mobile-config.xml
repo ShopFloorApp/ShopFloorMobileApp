@@ -5,4 +5,9 @@
     <managed-bean-class>dcom.shop.application.base.jsMBean</managed-bean-class>
     <managed-bean-scope>application</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>WindowBean</managed-bean-name>
+    <managed-bean-class>dcom.shop.application.base.WindowBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
 </adfc-mobile-config>
