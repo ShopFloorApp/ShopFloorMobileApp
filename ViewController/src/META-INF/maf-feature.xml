@@ -27,7 +27,7 @@
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.DispatchList" name="DispatchList">
     <adfmf:content id="dcom.shop.DispatchList.1">
-      <adfmf:amx file="dcom.shop.DispatchList/DispatchList.amx"/>
+      <adfmf:amx file="dcom.shop.DispatchList/dispatch.xml#dispatch"/>
     </adfmf:content>
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.Transaction" name="Transaction">
