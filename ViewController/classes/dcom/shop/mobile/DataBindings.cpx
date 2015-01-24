@@ -11,7 +11,6 @@
     <page path="/page/LovPage/CostGroupsLov.amx" usageId="dcom_shop_mobile_CostGroupsLovPageDef"/>
     <page path="/page/SubInventoryTrsf.amx" usageId="dcom_shop_mobile_SubInventoryTrsfPageDef"/>
     <page path="/dcom.shop.Springboard/springboard.amx" usageId="dcom_shop_mobile_springboardPageDef"/>
-    <page path="/dcom.shop.DispatchList/page/dispatch.amx" usageId="dcom_shop_mobile_DispatchListPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -23,7 +22,6 @@
     <page id="dcom_shop_mobile_CostGroupsLovPageDef" path="page.LovPage.CostGroupsLovPageDef"/>
     <page id="dcom_shop_mobile_SubInventoryTrsfPageDef" path="page.SubInventoryTrsfPageDef"/>
     <page id="dcom_shop_mobile_springboardPageDef" path="dcom.shop.Springboard.springboardPageDef"/>
-    <page id="dcom_shop_mobile_DispatchListPageDef" path="dcom.shop.DispatchList.DispatchListPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ApplicationFeatures" path="dcom.shop.application.ApplicationFeatures"/>
