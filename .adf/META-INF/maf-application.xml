@@ -5,6 +5,14 @@
                    listener-class="dcom.shop.application.LifeCycleListenerImpl">
   <adfmf:deviceFeatureAccess>
     <adfmf:deviceNetwork access="true" id="dn1"/>
+    <adfmf:deviceFiles access="true" id="df1"/>
+    <adfmf:devicePhone access="true" id="dp1"/>
+    <adfmf:deviceCamera access="true" id="dc1"/>
+    <adfmf:deviceContacts access="true" id="dc2"/>
+    <adfmf:deviceEmails access="true" id="de1"/>
+    <adfmf:deviceSMS access="true" id="dsms1"/>
+    <adfmf:devicePushNotifications access="true" id="dpn1"/>
+    <adfmf:deviceLocation access="true" id="dl1"/>
   </adfmf:deviceFeatureAccess>
   <adfmf:featureReference id="dcom.shop.DispatchList"/>
   <adfmf:featureReference id="dcom.shop.Transaction"/>
