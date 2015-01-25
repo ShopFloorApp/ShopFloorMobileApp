@@ -157,3 +157,53 @@
     border: 2px solid #C1C1C1;
     border-radius: 9.5em;
 }
+
+.sbmt-btn > .amx-commandButton {
+    border-radius: 0.5em;
+    border: none;
+    background: limegreen;
+}
+
+.sbmt-btn > .amx-commandButton > .amx-commandButton-label {
+    color: #FFFFFF;
+    font-size: larger;
+}
+
+.srch-btn{
+    background: red;
+    border-radius: 0.5em;
+    width: 120px;
+}
+
+.srch-btn > .amx-commandButton-label{
+    color: #FFFFFF;
+}
+
+.time-btn-completed{
+    width: 39px;
+    border-radius: 10.5em;
+    background: transparent;
+    border: solid green;
+    padding: 2px;
+    border-width: thin;
+}
+
+.time-btn-warning{
+    width: 39px;
+    border-radius: 10.5em;
+    background: transparent;
+    border: solid orange;
+    padding: 2px;
+    border-width: thin;
+}
+
+.time-btn-error{
+    width: 39px;
+    border-radius: 10.5em;
+    background: transparent;
+    border: solid red;
+    padding: 2px;
+    border-width: thin;
+}
+
+

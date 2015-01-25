@@ -16,6 +16,7 @@
     <page path="/dcom.shop.Request/page/Requests.amx" usageId="dcom_shop_mobile_RequestsPageDef"/>
     <page path="/dcom.shop.Request/page/RequestForm.amx" usageId="dcom_shop_mobile_RequestFormPageDef"/>
     <page path="/dcom.shop.Request/page/SubmitRequest.amx" usageId="dcom_shop_mobile_SubmitRequestPageDef"/>
+    <page path="/dcom.shop.DispatchList/page/dispatchList.amx" usageId="dcom_shop_mobile_DispatchListPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>

@@ -103,4 +103,14 @@
       <property
          name="sdm:polyPoints">R50,632.0,204.44824,735.0,166.5459,B50</property>
    </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="WildcardControlFlowRule11"
+      to="View2">
+      <property
+         name="fromOutcome">searchRequest</property>
+      <property
+         name="sdm:polyPoints">L50,560.0,204.44824,410.0,237.24707,R50</property>
+   </ControlFlowCase>
 </SDM>

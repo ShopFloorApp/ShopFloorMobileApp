@@ -14,6 +14,19 @@
         <AttrNames>
           <Item Value="name"/>
           <Item Value="requestId"/>
+          <Item Value="completionText"/>
+          <Item Value="dateCompleted"/>
+          <Item Value="dateStarted"/>
+          <Item Value="dateSubmitted"/>
+          <Item Value="language"/>
+          <Item Value="operatingUnit"/>
+          <Item Value="parameters"/>
+          <Item Value="phase"/>
+          <Item Value="requestor"/>
+          <Item Value="status"/>
+          <Item Value="timeTakenHH"/>
+          <Item Value="timeTakenMI"/>
+          <Item Value="timeTakenSS"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

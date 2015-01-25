@@ -34,6 +34,10 @@
         <from-outcome>submitRequest</from-outcome>
         <to-activity-id>SubmitRequest</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>searchRequest</from-outcome>
+        <to-activity-id>searchRequest</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>
 </adfc-mobile-config>
