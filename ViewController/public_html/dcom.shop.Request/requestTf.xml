@@ -5,5 +5,35 @@
     <view id="searchRequest">
       <page>/dcom.shop.Request/page/searchRequest.amx</page>
     </view>
+    <view id="Requests">
+      <page>/dcom.shop.Request/page/Requests.amx</page>
+    </view>
+    <view id="RequestForm">
+      <page>/dcom.shop.Request/page/RequestForm.amx</page>
+    </view>
+    <view id="SubmitRequest">
+      <page>/dcom.shop.Request/page/SubmitRequest.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>searchRequest</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>getRequests</from-outcome>
+        <to-activity-id>Requests</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>Requests</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>requestDetails</from-outcome>
+        <to-activity-id>RequestForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>submitRequest</from-outcome>
+        <to-activity-id>SubmitRequest</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-mobile-config>

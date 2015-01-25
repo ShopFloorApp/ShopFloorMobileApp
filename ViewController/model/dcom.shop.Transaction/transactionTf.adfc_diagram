@@ -2,4 +2,21 @@
 <SDM>
    <OverallProperties
       id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">test</property>
+      <property
+         name="page">/dcom.shop.Transaction/Transaction.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>test&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">173.94824</property>
+      <property
+         name="x">564.0</property>
+   </View>
 </SDM>

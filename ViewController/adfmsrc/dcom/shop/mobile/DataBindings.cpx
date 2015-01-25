@@ -12,6 +12,10 @@
     <page path="/page/SubInventoryTrsf.amx" usageId="dcom_shop_mobile_SubInventoryTrsfPageDef"/>
     <page path="/dcom.shop.Springboard/springboard.amx" usageId="dcom_shop_mobile_springboardPageDef"/>
     <page path="/dcom.shop.DispatchList/page/dispatch.amx" usageId="dcom_shop_mobile_DispatchListPageDef"/>
+    <page path="/dcom.shop.Request/page/searchRequest.amx" usageId="dcom_shop_mobile_searchRequestPageDef"/>
+    <page path="/dcom.shop.Request/page/Requests.amx" usageId="dcom_shop_mobile_RequestsPageDef"/>
+    <page path="/dcom.shop.Request/page/RequestForm.amx" usageId="dcom_shop_mobile_RequestFormPageDef"/>
+    <page path="/dcom.shop.Request/page/SubmitRequest.amx" usageId="dcom_shop_mobile_SubmitRequestPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -24,8 +28,14 @@
     <page id="dcom_shop_mobile_SubInventoryTrsfPageDef" path="page.SubInventoryTrsfPageDef"/>
     <page id="dcom_shop_mobile_springboardPageDef" path="dcom.shop.Springboard.springboardPageDef"/>
     <page id="dcom_shop_mobile_DispatchListPageDef" path="dcom.shop.DispatchList.DispatchListPageDef"/>
+    <page id="dcom_shop_mobile_searchRequestPageDef" path="dcom.shop.Request.page.searchRequestPageDef"/>
+    <page id="dcom_shop_mobile_RequestsPageDef" path="dcom.shop.Request.page.RequestsPageDef"/>
+    <page id="dcom_shop_mobile_RequestFormPageDef" path="dcom.shop.Request.page.RequestFormPageDef"/>
+    <page id="dcom_shop_mobile_SubmitRequestPageDef" path="dcom.shop.Request.page.SubmitRequestPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>
+    <dc id="ConcurrentProgramDC" path="dcom.shop.mobile.ConcurrentProgramDC"/>
     <dc id="ApplicationFeatures" path="dcom.shop.application.ApplicationFeatures"/>
     <dc id="SubInventoryTrf_WS" path="dcom.shop.mobile.SubInventoryTrf_WS"/>
     <dc id="SyncPreferencesDC" path="dcom.shop.mobile.SyncPreferencesDC"/>

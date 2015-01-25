@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="RequestFormPageDef"
+                Package="dcom.shop.Request.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="RequestsDC" id="RequestsDCIterator"/>
+    <accessorIterator MasterBinding="RequestsDCIterator" Binds="requests" RangeSize="25" DataControl="RequestsDC"
+                      BeanClass="dcom.shop.application.mobile.txn.RequestsBO" id="requestsIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="requestsIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="requestId">
+      <AttrNames>
+        <Item Value="requestId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="operatingUnit">
+      <AttrNames>
+        <Item Value="operatingUnit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="parameters">
+      <AttrNames>
+        <Item Value="parameters"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="phase">
+      <AttrNames>
+        <Item Value="phase"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="dateSubmitted">
+      <AttrNames>
+        <Item Value="dateSubmitted"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="dateStarted">
+      <AttrNames>
+        <Item Value="dateStarted"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="completionText">
+      <AttrNames>
+        <Item Value="completionText"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="language">
+      <AttrNames>
+        <Item Value="language"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="status">
+      <AttrNames>
+        <Item Value="status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="requestor">
+      <AttrNames>
+        <Item Value="requestor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestsIterator" id="dateCompleted">
+      <AttrNames>
+        <Item Value="dateCompleted"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

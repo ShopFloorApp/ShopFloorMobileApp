@@ -76,6 +76,12 @@ public abstract class SyncUtils {
             collections = getCollectionFromDB(collectionClass);   
         return collections;
     }
+    
+    protected List getOnlineCollection(Class collectionClass, HashMap params) {
+        List collections;        
+        collections = getCollectionFromWS(collectionClass, params);   
+        return collections;
+    }
 
     private List getCollectionFromDB(Class collectionClass) {
         Connection conn = null;

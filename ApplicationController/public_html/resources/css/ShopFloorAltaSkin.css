@@ -1,28 +1,31 @@
 @charset "windows-1252";
 
-.right-nav-container{
-  position: fixed;
-  width: 350px;
-  right: -350px;
-  top: 0;
-  bottom: 0;
-  background: #CFC9C0;
-  z-index: 10;
-  -webkit-transition: right .5s ease-in-out;
-  transition: right .5s ease-in-out;
-}
-.right-nav-container.show{
-  right: 0;
+.right-nav-container {
+    position: fixed;
+    width: 350px;
+    right: -350px;
+    top: 0;
+    bottom: 0;
+    background: #CFC9C0;
+    z-index: 10;
+    -webkit-transition: right .5s ease-in-out;
+    transition: right .5s ease-in-out;
 }
 
-.rightnav-link{
-  position: absolute;
-  left: -27px;
-  background: url('../../../../ViewController/public_html/images/right.png') no-repeat center center;
+.right-nav-container.show {
+    right: 0;
 }
-.rightnav-link.hide{
+
+.rightnav-link {
+    position: absolute;
+    left: -27px;
+    background: url('../../../../ViewController/public_html/images/right.png')no-repeat center center;
+}
+
+.rightnav-link.hide {
     background-image: url('../../../../ViewController/public_html/images/left.png');
 }
+
 .card {
     margin: 10px;
     padding-bottom: 10px;
@@ -33,111 +36,124 @@
 }
 
 .front {
-		float: none;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 900;
-		width: inherit;
-		height: inherit;
-		border: 1px solid #A0A0AF;
-		background: #FFFFFF;
-		text-align: center;
-		box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: inherit;
+    height: inherit;
+    border: 1px solid #A0A0AF;
+    background: #FFFFFF;
+    text-align: center;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* -- transition is the magic sauce for animation -- */
 
-		-webkit-transform: rotateX(0deg) rotateY(0deg);
-			 -moz-transform: rotateX(0deg) rotateY(0deg);
-						transform: rotateX(0deg) rotateY(0deg);
+    -webkit-transition: all 1.4s ease-in-out;
+    transition: all 1.4s ease-in-out;
+}
 
-		-webkit-transform-style: preserve-3d;
-			 -moz-transform-style: preserve-3d;
-						transform-style: preserve-3d;
-
-		-webkit-backface-visibility: hidden;
-			 -moz-backface-visibility: hidden;
-						backface-visibility: hidden;
-
-		/* -- transition is the magic sauce for animation -- */
-		-webkit-transition: all 1.4s ease-in-out;
-						transition: all 1.4s ease-in-out;
-	}
 .front.flip {
-		z-index: 900;
-		border-color: #eee;
-		background: #FFFFFF;
-		box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-
-		-webkit-transform: rotateY(180deg);
-			 -moz-transform: rotateY(180deg);
-						transform: rotateY(180deg);
-	}
+    z-index: 900;
+    border-color: #eee;
+    background: #FFFFFF;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
 
 .back {
-		float: none;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 800;
-		width: inherit;
-		height: inherit;
-		border: 1px solid #ccc;
-		background: #727272;
-		text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 800;
+    width: inherit;
+    height: inherit;
+    border: 1px solid #ccc;
+    background: #727272;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-179deg);
+    /* setting to 180 causes an unnatural-looking half-flip */
 
-		-webkit-transform: rotateY(-180deg);
-			 -moz-transform: rotateY(-179deg); /* setting to 180 causes an unnatural-looking half-flip */
-						transform: rotateY(-179deg);
+    transform: rotateY(-179deg);
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* -- transition is the magic sauce for animation -- */
 
-		-webkit-transform-style: preserve-3d;
-			 -moz-transform-style: preserve-3d;
-						transform-style: preserve-3d;
-
-		-webkit-backface-visibility: hidden;
-			 -moz-backface-visibility: hidden;
-						backface-visibility: hidden;
-
-		/* -- transition is the magic sauce for animation -- */
-		-webkit-transition: all 1.4s ease-in-out;
-						transition: all 1.4s ease-in-out;
-	}
-
-.back.flip  {
-		z-index: 1000;
-		background: #727272;
-
-		-webkit-transform: rotateX(0deg) rotateY(0deg);
-			 -moz-transform: rotateX(0deg) rotateY(0deg);
-						transform: rotateX(0deg) rotateY(0deg);
-
-		box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-	}
-        
-.swipelistitem{
-    width: 400px !important;
-    height: 150px!important;
-    border: #F3F3F3!important;
-    background-color: #F3F3F3!important;
-    margin: 15px!important;
+    -webkit-transition: all 1.4s ease-in-out;
+    transition: all 1.4s ease-in-out;
 }
-.swipelistview{
+
+.back.flip {
+    z-index: 1000;
+    background: #727272;
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.swipelistitem {
+    width: 400px !important;
+    height: 150px !important;
+    border: #F3F3F3 !important;
+    background-color: #F3F3F3 !important;
+    margin: 15px !important;
+}
+
+.swipelistview {
     background-color: #F3F3F3;
 }
-.btncardlyt{
+
+.btncardlyt {
     border-radius: 10px;
-    -moz-border-radius: 10px; 
+    -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     display: inline-block;
     width: 100px;
     background: cornflowerblue;
-    padding-top: 5px; 
-    padding-left: 0px; 
+    padding-top: 5px;
+    padding-left: 0px;
     padding-right: 0px;
     color: white;
 }
 
-.dimLyt{
+.dimLyt {
     opacity: 0.5;
     pointer-events: none;
 }
 
+.test-text > .field-value > .wrap,.amx-wrap-active {
+    border-image: none;
+    border-style: none;
+}
 
+.test-text > .field-value input {
+    height: 30px;
+    overflow: hidden;
+    border-radius: 9.5em;
+    background: white;
+    border: 2px solid #C1C1C1;
+}
+
+.test-text > .field-value > .amx-inputDate-trigger-dateTime{
+    background: white;
+    border: 2px solid #C1C1C1;
+    border-radius: 9.5em;
+}

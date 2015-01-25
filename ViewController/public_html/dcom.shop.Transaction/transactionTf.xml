@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
-  <task-flow-definition id="transactionTf"/>
+  <task-flow-definition id="transactionTf">
+    <default-activity>test</default-activity>
+    <view id="test">
+      <page>/dcom.shop.Transaction/Transaction.amx</page>
+    </view>
+  </task-flow-definition>
 </adfc-mobile-config>

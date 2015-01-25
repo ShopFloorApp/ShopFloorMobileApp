@@ -502,4 +502,32 @@
       </XmlRefAddr>
     </RefAddresses>
   </Reference>
+  <Reference name="ConcurrentProgramLOV_WS"
+             className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/default/getConcurrentProgDetailsLoV/getconcurrentprogdetailslov_client_ep?WSDL"
+                        service="{http://www.deloitte.com/DCOM/getConcurrentProgDetailsLoV}getconcurrentprogdetailslov_client_ep">
+            <model name="{http://www.deloitte.com/DCOM/getConcurrentProgDetailsLoV}getconcurrentprogdetailslov_client_ep"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://www.deloitte.com/DCOM/getConcurrentProgDetailsLoV}getconcurrentprogdetailslov_client_ep">
+                <port name="getConcurrentProgDetailsLoV_pt"
+                      binding="{http://www.deloitte.com/DCOM/getConcurrentProgDetailsLoV}getConcurrentProgDetailsLoVBinding">
+                  <soap addressUrl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/default/getConcurrentProgDetailsLoV/getconcurrentprogdetailslov_client_ep"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="process">
+                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
 </References>

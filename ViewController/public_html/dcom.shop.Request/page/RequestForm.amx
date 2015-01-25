@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelGroupLayout id="pgl4" layout="horizontal">
+      <amx:spacer id="s3" width="30"/>
+      <amx:tableLayout id="tl2">
+        <amx:rowLayout id="rl9">
+          <amx:cellFormat id="cf17">
+            <amx:commandLink id="cl1" action="__back">
+              <amx:image id="i3" source="/images/Caret_Left_AltaBlue_mdpi.png"/>
+            </amx:commandLink>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf18" halign="end">
+            <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
+                               action="submitRequest"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+    </amx:panelGroupLayout>
+    <amx:panelFormLayout id="pfl1">
+      <amx:panelLabelAndMessage label="#{bindings.name.hints.label}" id="plam3">
+        <amx:outputText value="#{bindings.name.inputValue}" id="ot4"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.requestId.hints.label}" id="plam8">
+        <amx:outputText value="#{bindings.requestId.inputValue}" id="ot9"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.operatingUnit.hints.label}" id="plam11">
+        <amx:outputText value="#{bindings.operatingUnit.inputValue}" id="ot12"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.parameters.hints.label}" id="plam10">
+        <amx:outputText value="#{bindings.parameters.inputValue}" id="ot11"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.phase.hints.label}" id="plam6">
+        <amx:outputText value="#{bindings.phase.inputValue}" id="ot7"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.dateSubmitted.hints.label}" id="plam7">
+        <amx:outputText value="#{bindings.dateSubmitted.inputValue}" id="ot8"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.dateStarted.hints.label}" id="plam5">
+        <amx:outputText value="#{bindings.dateStarted.inputValue}" id="ot6"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.completionText.hints.label}" id="plam9">
+        <amx:outputText value="#{bindings.completionText.inputValue}" id="ot10"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.language.hints.label}" id="plam12">
+        <amx:outputText value="#{bindings.language.inputValue}" id="ot13"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.status.hints.label}" id="plam2">
+        <amx:outputText value="#{bindings.status.inputValue}" id="ot3"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.requestor.hints.label}" id="plam1">
+        <amx:outputText value="#{bindings.requestor.inputValue}" id="ot2"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.dateCompleted.hints.label}" id="plam4">
+        <amx:outputText value="#{bindings.dateCompleted.inputValue}" id="ot5"/>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>
