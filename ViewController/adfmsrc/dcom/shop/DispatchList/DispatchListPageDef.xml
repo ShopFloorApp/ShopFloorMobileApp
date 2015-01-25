@@ -17,6 +17,7 @@
         <AttrNames>
           <Item Value="whse"/>
           <Item Value="desc"/>
+          <Item Value="deptCode"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
