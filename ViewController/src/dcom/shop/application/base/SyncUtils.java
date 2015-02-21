@@ -125,7 +125,7 @@ public abstract class SyncUtils {
                         continue;
                     }
                     System.out.println("adding rows to hashmap");
-                    map.put(fields[i].getName().toLowerCase(), (String) result.getObject(fields[i].getName()));
+                    map.put(fields[i].getName().toLowerCase(),  result.getObject(fields[i].getName()));
                 }
                 System.out.println("before invoking the method");
                 Object obj = collectionClass.newInstance();
