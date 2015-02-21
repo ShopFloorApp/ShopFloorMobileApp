@@ -1,7 +1,7 @@
 package dcom.shop.application.dc.txn;
 
 import dcom.shop.application.base.SyncUtils;
-import dcom.shop.application.mobile.ConcurrentProgramBO;
+import dcom.shop.application.mobile.txn.ConcurrentProgramBO;
 import dcom.shop.application.mobile.txn.RequestsBO;
 
 import java.text.SimpleDateFormat;

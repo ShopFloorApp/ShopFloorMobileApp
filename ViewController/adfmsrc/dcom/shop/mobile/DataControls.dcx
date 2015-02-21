@@ -624,11 +624,11 @@
                       ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
                       SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
                       SupportsFindMode="false" SupportsUpdates="true"
-                      Definition="dcom.shop.application.dc.ConcurrentProgramDC"
-                      BeanClass="dcom.shop.application.dc.ConcurrentProgramDC"
+                      Definition="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                      BeanClass="dcom.shop.application.dc.txn.ConcurrentProgramDC"
                       xmlns="http://xmlns.oracle.com/adfm/datacontrol">
     <Source>
-      <bean-definition BeanClass="dcom.shop.application.dc.ConcurrentProgramDC"
+      <bean-definition BeanClass="dcom.shop.application.dc.txn.ConcurrentProgramDC"
                        DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
                        EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>

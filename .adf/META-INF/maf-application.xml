@@ -3,27 +3,18 @@
                    version="1.0" name="ShopFloorMobileApp" id="com.company.ShopFloorMobileApp"
                    appControllerFolder="ApplicationController"
                    listener-class="dcom.shop.application.LifeCycleListenerImpl">
-  <adfmf:deviceFeatureAccess>
-    <adfmf:deviceNetwork access="true" id="dn1"/>
-    <adfmf:deviceFiles access="true" id="df1"/>
-    <adfmf:devicePhone access="true" id="dp1"/>
-    <adfmf:deviceCamera access="true" id="dc1"/>
-    <adfmf:deviceContacts access="true" id="dc2"/>
-    <adfmf:deviceEmails access="true" id="de1"/>
-    <adfmf:deviceSMS access="true" id="dsms1"/>
-    <adfmf:devicePushNotifications access="true" id="dpn1"/>
-    <adfmf:deviceLocation access="true" id="dl1"/>
-  </adfmf:deviceFeatureAccess>
-  <adfmf:featureReference id="dcom.shop.syncPref"/>
-  <adfmf:featureReference id="dcom.shop.DispatchList"/>
-  <adfmf:featureReference id="dcom.shop.Transaction"/>
-  <adfmf:featureReference id="dcom.shop.Inquiry"/>
-  <adfmf:featureReference id="dcom.shop.Request"/>
-  <adfmf:featureReference id="dcom.shop.Settings"/>
-  <adfmf:featureReference id="dcom.shop.Preferences"/>
-  <adfmf:featureReference id="dcom.shop.LoadLov"/>
-  <adfmf:featureReference id="dcom.shop.subInventryTrsf" showOnNavigationBar="false" showOnSpringboard="false"/>
-  <adfmf:featureReference id="dcom.shop.Springboard" showOnNavigationBar="false" showOnSpringboard="false"/>
+  <adfmf:featureReference id="fr1" refId="dcom.shop.syncPref"/>
+  <adfmf:featureReference id="fr2" refId="dcom.shop.DispatchList"/>
+  <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction"/>
+  <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry"/>
+  <adfmf:featureReference id="fr5" refId="dcom.shop.Request"/>
+  <adfmf:featureReference id="fr6" refId="dcom.shop.Settings"/>
+  <adfmf:featureReference id="fr7" refId="dcom.shop.Preferences"/>
+  <adfmf:featureReference id="fr8" refId="dcom.shop.LoadLov"/>
+  <adfmf:featureReference id="fr9" showOnNavigationBar="false" showOnSpringboard="false"
+                          refId="dcom.shop.subInventryTrsf"/>
+  <adfmf:featureReference id="fr10" showOnNavigationBar="false" showOnSpringboard="false"
+                          refId="dcom.shop.Springboard"/>
   <adfmf:navigation>
     <adfmf:navigationBar displayHideShowNavigationBarControl="false" enabled="false"/>
     <adfmf:springboard enabled="true" animation="slideright" width="200" displayGotoSpringboardControl="false"

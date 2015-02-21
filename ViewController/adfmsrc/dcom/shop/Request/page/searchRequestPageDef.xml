@@ -6,7 +6,7 @@
     <variableIterator id="variables"/>
     <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
     <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concurrentPrograms" RangeSize="25"
-                      DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.ConcurrentProgramBO"
+                      DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.txn.ConcurrentProgramBO"
                       id="concurrentProgramsIterator"/>
   </executables>
   <bindings>
@@ -14,7 +14,7 @@
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
     <tree IterBinding="concurrentProgramsIterator" id="concurrentPrograms">
-      <nodeDefinition DefName="dcom.shop.application.mobile.ConcurrentProgramBO" Name="concurrentPrograms0">
+      <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcurrentProgramBO" Name="concurrentPrograms0">
         <AttrNames>
           <Item Value="PROGRAM_NAME"/>
           <Item Value="APPLICATION_SHORT_NAME"/>

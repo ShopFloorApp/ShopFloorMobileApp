@@ -1,8 +1,8 @@
-package dcom.shop.application.dc;
+package dcom.shop.application.dc.txn;
 
 import dcom.shop.application.base.SyncUtils;
 
-import dcom.shop.application.mobile.ConcurrentProgramBO;
+import dcom.shop.application.mobile.txn.ConcurrentProgramBO;
 import dcom.shop.application.mobile.WarehouseBO;
 
 import java.util.ArrayList;
@@ -23,14 +23,7 @@ public class ConcurrentProgramDC extends SyncUtils {
     
     public ConcurrentProgramDC() {
         try {
-            GenericVirtualType payload = new GenericVirtualType(null, "payload");
-            HashMap paramsMap=new HashMap();
-            paramsMap.put("resAttriName","ConcurrentProg");
-            paramsMap.put("lovDCName", "ConcurrentProgramLOV_WS");
-            paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload",payload);
-            filtered_ConcurrentPrograms = super.getCollection(ConcurrentProgramBO.class, paramsMap);
-//            filterWarehouses();
+             filtered_ConcurrentPrograms = super.getOfflineCollection(ConcurrentProgramBO.class);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
