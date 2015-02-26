@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="searchRequestPageDef"
                 Package="dcom.shop.Request.page">
-  <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
-    <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concurrentPrograms" RangeSize="25"
-                      DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.txn.ConcurrentProgramBO"
-                      id="concurrentProgramsIterator"/>
-  </executables>
-  <bindings>
-    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
-                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
-                  InstanceName="data.ApplicationFeatures.dataProvider"/>
-    <tree IterBinding="concurrentProgramsIterator" id="concurrentPrograms">
-      <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcurrentProgramBO" Name="concurrentPrograms0">
-        <AttrNames>
-          <Item Value="PROGRAM_NAME"/>
-          <Item Value="APPLICATION_SHORT_NAME"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-  </bindings>
+    <parameters/>
+    <executables>
+        <variableIterator id="variables">
+            <variable Name="programId" Type="java.lang.String"/>
+        </variableIterator>
+        <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
+        <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concurrentPrograms" RangeSize="-1"
+                          DataControl="ConcurrentProgramDC"
+                          BeanClass="dcom.shop.application.mobile.txn.ConcurrentProgramBO"
+                          id="concurrentProgramsIterator"/>
+    </executables>
+    <bindings>
+        <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                      IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                      InstanceName="data.ApplicationFeatures.dataProvider"/>
+        <tree IterBinding="concurrentProgramsIterator" id="concurrentPrograms">
+            <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcurrentProgramBO" Name="concurrentPrograms0">
+                <AttrNames>
+                    <Item Value="applicationShortName"/>
+                    <Item Value="concProgId"/>
+                    <Item Value="isNewEntity"/>
+                    <Item Value="programName"/>
+                    <Item Value="programShortName"/>
+                    <Item Value="rowOperation"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <list IterBinding="variables" id="programName" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+              StaticList="false" ListIter="concurrentProgramsIterator" >
+            <AttrNames>
+                <Item Value="programId"/>
+            </AttrNames>
+            <ListAttrNames>
+                <Item Value="concProgId"/>
+            </ListAttrNames>
+            <ListDisplayAttrNames>
+                <Item Value="programName"/>
+            </ListDisplayAttrNames>
+        </list>
+    </bindings>
 </pageDefinition>

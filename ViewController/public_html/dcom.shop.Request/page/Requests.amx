@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2" action="submitRequest"/>
-    </amx:facet>
-    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
-      <amx:rowLayout id="rl9">
-        <amx:cellFormat id="cf17">
-          <amx:commandLink id="cl1" action="__back">
-            <amx:image id="i3" source="/images/Caret_Left_AltaBlue_mdpi.png"/>
-          </amx:commandLink>
-        </amx:cellFormat>
-        <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative; right: -385px;">
-          <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
-                             action="submitRequest"/>
-        </amx:cellFormat>
-      </amx:rowLayout>
-    </amx:tableLayout>
-    <amx:listView var="row" value="#{bindings.requests.collectionModel}" fetchSize="#{bindings.requests.rangeSize}"
-                  selectedRowKeys="#{bindings.requests.collectionModel.selectedRow}"
-                  selectionListener="#{bindings.requests.collectionModel.makeCurrent}" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1" action="requestDetails">
-        <amx:tableLayout width="100%" id="tl1">
-          <amx:rowLayout id="rl2">
-            <amx:cellFormat width="40px" rowSpan="2" id="cf3">
-              <amx:image id="i1" source="/images/info-32.png"/>
-            </amx:cellFormat>
-            <amx:cellFormat width="50%" height="28px" id="cf2">
-              <amx:outputText value="#{row.name}" id="ot3"/>
-            </amx:cellFormat>
-            <amx:cellFormat width="40%" height="28px" id="cf4" halign="end">
-              <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;">
-                <amx:commandButton text="#{row.timeTakenHH}" id="cb4"
-                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
-                <amx:outputText value=":" id="ot4"/>
-                <amx:commandButton text="#{row.timeTakenMI}" id="cb5"
-                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
-                <amx:outputText value=":" id="ot5"/>
-                <amx:commandButton text="#{row.timeTakenSS}" id="cb6"
-                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
-              </amx:panelGroupLayout>
-            </amx:cellFormat>
-          </amx:rowLayout>
-          <amx:rowLayout id="rl1">
-            <amx:cellFormat width="100%" height="12px" id="cf1">
-              <amx:outputText value="#{row.requestId}" styleClass="adfmf-listItem-captionText" id="ot2"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Requests" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" action="submitRequest"/>
+        </amx:facet>
+        <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
+            <amx:rowLayout id="rl9">
+                <amx:cellFormat id="cf17">
+                    <amx:commandLink id="cl1" action="__back">
+                        <amx:image id="i3" source="/images/Caret_Left_AltaBlue_mdpi.png"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn"
+                                inlineStyle="position: relative; right: -385px;">
+                    <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
+                                       action="submitRequest"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
         </amx:tableLayout>
-      </amx:listItem>
-    </amx:listView>
-  </amx:panelPage>
+        <amx:listView var="row" value="#{bindings.requests.collectionModel}" fetchSize="#{bindings.requests.rangeSize}"
+                      selectedRowKeys="#{bindings.requests.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.requests.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                      bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1" action="requestDetails">
+                <amx:tableLayout width="100%" id="tl1">
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat width="40px" rowSpan="2" id="cf3">
+                            <amx:image id="i1" source="/images/info-32.png"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="90%" height="28px" id="cf2">
+                            <amx:outputText value="#{row.name}" id="ot3"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="40%" height="12px" id="cf1">
+                            <amx:outputText value="#{row.requestId}" styleClass="adfmf-listItem-captionText" id="ot2"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="40%" height="28px" id="cf4" halign="end">
+                            <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;">
+                                <amx:commandButton text="#{row.timeTakenHH}" id="cb4"
+                                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
+                                <amx:outputText value=":" id="ot4"/>
+                                <amx:commandButton text="#{row.timeTakenMI}" id="cb5"
+                                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
+                                <amx:outputText value=":" id="ot5"/>
+                                <amx:commandButton text="#{row.timeTakenSS}" id="cb6"
+                                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
+                            </amx:panelGroupLayout>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
 </amx:view>

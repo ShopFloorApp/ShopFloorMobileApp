@@ -110,7 +110,7 @@
 }
 
 .swipelistitem {
-    width: 400px !important;
+    width: 290px !important;
     height: 150px !important;
     border: #F3F3F3 !important;
     background-color: #F3F3F3 !important;
@@ -126,7 +126,7 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     display: inline-block;
-    width: 100px;
+    width: 50px;
     background: cornflowerblue;
     padding-top: 5px;
     padding-left: 0px;

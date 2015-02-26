@@ -3,13 +3,30 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="Inquiry" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
+      <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+                             disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
+                             styleClass="custom-springboard-link">
+                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
+                           source="/images/springboard.png" id="i1"/>
+            </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
+    <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards"
+                  styleClass="adfmf-listView-insetList">
+      <amx:listItem id="li1" inlineStyle="width:97%;" action="search">
+        <amx:outputText value="Product Search" id="ot2"/>
+      </amx:listItem>
+      <amx:listItem id="li2" inlineStyle="width:97%;" action="search">
+        <amx:outputText value="Stock On Hand Search" id="ot3"/>
+      </amx:listItem>
+      <amx:listItem id="li3" action="search">
+        <amx:outputText value="Material Transaction Inq." id="ot4"/>
+      </amx:listItem>
+    </amx:listView>
   </amx:panelPage>
 </amx:view>

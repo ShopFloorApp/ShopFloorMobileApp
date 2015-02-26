@@ -11,7 +11,30 @@ public class DepartmentBO implements Comparable {
     private String DeptCode;
     private String Desc;
     private GenericVirtualType Attributes;
+    private String jobCount;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+
+    public void setJobCount(String jobCount) {
+        String oldJobCount = this.jobCount;
+        this.jobCount = jobCount;
+        propertyChangeSupport.firePropertyChange("jobCount", oldJobCount, jobCount);
+    }
+
+    public String getJobCount() {
+        return jobCount;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
+    }
 
     public void setWhse(String Whse) {
         String oldWhse = this.Whse;

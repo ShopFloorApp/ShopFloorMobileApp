@@ -8,7 +8,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 public class ConcurrentProgramBO implements Comparable {
-    private Integer ConcProgId;
+    private String ConcProgId;
     private String ProgramShortName;
     private String ApplicationShortName;
     private String ProgramName;
@@ -16,13 +16,13 @@ public class ConcurrentProgramBO implements Comparable {
     private String RowOperation;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-    public void setConcProgId(Integer ConcProgId) {
-        Integer oldConcProgId = this.ConcProgId;
+    public void setConcProgId(String ConcProgId) {
+        String oldConcProgId = this.ConcProgId;
         this.ConcProgId = ConcProgId;
         propertyChangeSupport.firePropertyChange("ConcProgId", oldConcProgId, ConcProgId);
     }
 
-    public Integer getConcProgId() {
+    public String getConcProgId() {
         return ConcProgId;
     }
 
@@ -89,7 +89,7 @@ public class ConcurrentProgramBO implements Comparable {
         return 0;
     }
     public void setBOClassRow(HashMap hashMap) {
-        this.setConcProgId((Integer)hashMap.get("concprogid"));
+        this.setConcProgId((String)hashMap.get("concprogid"));
         this.setProgramName((String) hashMap.get("programname"));
         this.setProgramShortName((String) hashMap.get("programshortname"));
         this.setApplicationShortName((String) hashMap.get("applicationshortname"));

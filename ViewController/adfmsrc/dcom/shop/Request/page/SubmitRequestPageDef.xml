@@ -13,8 +13,8 @@
     <tree IterBinding="concurrentProgramsIterator" id="concurrentPrograms">
       <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcurrentProgramBO" Name="concurrentPrograms0">
         <AttrNames>
-          <Item Value="PROGRAM_NAME"/>
-          <Item Value="APPLICATION_SHORT_NAME"/>
+          <Item Value="applicationShortName"/>
+          <Item Value="programName"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

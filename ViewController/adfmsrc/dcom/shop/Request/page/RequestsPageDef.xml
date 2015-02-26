@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="RequestsPageDef"
                 Package="dcom.shop.Request.page">
-  <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="RequestsDC" id="RequestsDCIterator"/>
-    <accessorIterator MasterBinding="RequestsDCIterator" Binds="requests" RangeSize="25" DataControl="RequestsDC"
-                      BeanClass="dcom.shop.application.mobile.txn.RequestsBO" id="requestsIterator"/>
-  </executables>
-  <bindings>
-    <tree IterBinding="requestsIterator" id="requests">
-      <nodeDefinition DefName="dcom.shop.application.mobile.txn.RequestsBO" Name="requests0">
-        <AttrNames>
-          <Item Value="name"/>
-          <Item Value="requestId"/>
-          <Item Value="completionText"/>
-          <Item Value="dateCompleted"/>
-          <Item Value="dateStarted"/>
-          <Item Value="dateSubmitted"/>
-          <Item Value="language"/>
-          <Item Value="operatingUnit"/>
-          <Item Value="parameters"/>
-          <Item Value="phase"/>
-          <Item Value="requestor"/>
-          <Item Value="status"/>
-          <Item Value="timeTakenHH"/>
-          <Item Value="timeTakenMI"/>
-          <Item Value="timeTakenSS"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
-  </bindings>
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="root" RangeSize="25" DataControl="RequestsDC" id="RequestsDCIterator"/>
+        <accessorIterator MasterBinding="RequestsDCIterator" Binds="requests" RangeSize="25" DataControl="RequestsDC"
+                          BeanClass="dcom.shop.application.mobile.txn.RequestsBO" id="requestsIterator"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="requestsIterator" id="requests">
+            <nodeDefinition DefName="dcom.shop.application.mobile.txn.RequestsBO" Name="requests0">
+                <AttrNames>
+                    <Item Value="name"/>
+                    <Item Value="requestId"/>
+                    <Item Value="completionText"/>
+                    <Item Value="dateCompleted"/>
+                    <Item Value="dateStarted"/>
+                    <Item Value="dateSubmitted"/>
+                    <Item Value="language"/>
+                    <Item Value="operatingUnit"/>
+                    <Item Value="parameters"/>
+                    <Item Value="phase"/>
+                    <Item Value="requestor"/>
+                    <Item Value="status"/>
+                    <Item Value="timeTakenHH"/>
+                    <Item Value="timeTakenMI"/>
+                    <Item Value="timeTakenSS"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+    </bindings>
 </pageDefinition>

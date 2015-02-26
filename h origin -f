@@ -1,0 +1,211 @@
+[33mcommit 38290f3c5a9373f6aba45ea160119d5d59b4b508[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Sat Feb 21 13:59:15 2015 +0530
+
+[33mcommit 8350d7ab473de235e651dc465d570c93243523d8[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Sat Feb 21 12:55:36 2015 +0530
+
+[33mcommit 4d62954be703553757a81f3560a6ebe14500aa76[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Jan 26 00:32:29 2015 +0530
+
+[33mcommit ed3ed4e741c2e0174ca604bf75f86eed33f79cfe[m
+Merge: ee47d9a 835b69b
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Jan 26 00:31:42 2015 +0530
+
+[33mcommit ee47d9a4a8748dfb9eba5757c34c9629442b59bc[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Sun Jan 25 17:43:29 2015 +0530
+
+[33mcommit 835b69bc7e297c0ffad675230430672e60f439d3[m
+Merge: ab2a5d0 cc0440b
+Author: Diprish <diprish@gmail.com>
+Date:   Sun Jan 25 17:35:47 2015 +0530
+
+    Merge branch 'dev' of https://github.com/ShopFloorApp/ShopFloorMobileApp.git into dev
+
+[33mcommit ab2a5d0823f7fe70603f88da9d37bed78f7b3ddb[m
+Author: Diprish <diprish@gmail.com>
+Date:   Sun Jan 25 17:35:23 2015 +0530
+
+[33mcommit 2cbc0debccb39772448610f4bd79f0e163ab9283[m
+Author: Diprish <diprish@gmail.com>
+Date:   Sat Jan 24 20:02:10 2015 +0530
+
+[33mcommit cc0440beb22fb0c2f8061d5718f1a6068dc08312[m
+Merge: acd1855 e406027
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Sat Jan 24 17:17:26 2015 +0530
+
+    Merge branch 'dev' of https://github.com/ShopFloorApp/ShopFloorMobileApp.git into dev
+
+[33mcommit acd1855c9e076b9d0d5998a3552b8f76ebe31e55[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Sat Jan 24 17:15:42 2015 +0530
+
+[33mcommit e406027aa97fa553d8df50ca0de658ae08ad30cc[m
+Author: Diprish <diprish@gmail.com>
+Date:   Sat Jan 24 17:12:43 2015 +0530
+
+[33mcommit 0b4b2bfb702eb027bf13dc2a00e771835e892581[m
+Author: Diprish <diprish@gmail.com>
+Date:   Sat Jan 24 15:42:49 2015 +0530
+
+[33mcommit f255bcdba648e7cde645520309b9d566134479d0[m
+Author: Diprish <diprish@gmail.com>
+Date:   Sat Jan 24 15:42:33 2015 +0530
+
+[33mcommit 297c8779bd447d842d8aa29ed3862b6ad968cebc[m
+Author: Diprish <diprish@gmail.com>
+Date:   Sat Jan 24 14:33:49 2015 +0530
+
+[33mcommit 24ef3a41e6f021ae58f5ecd170681ecb9acf2487[m
+Author: Diprish <diprish@gmail.com>
+Date:   Wed Dec 17 20:44:51 2014 +0530
+
+    Subinventory Transfer
+
+[33mcommit 54669abcd4feaa94e23e20cc7b3747e784c702d6[m
+Author: Diprish <diprish@gmail.com>
+Date:   Wed Dec 17 19:21:58 2014 +0530
+
+    Transaction Service Data source added
+
+[33mcommit 7642bb5e2a68d1259760458d21512698d1e53727[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Thu Dec 4 18:45:46 2014 +0530
+
+[33mcommit 02f466557d46ea7cacfd0799f1edb479892dc197[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Wed Dec 3 14:35:08 2014 +0530
+
+[33mcommit c5ea41bbacf30bec3aadd69567067277c30fb2e9[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Dec 2 19:41:20 2014 +0530
+
+[33mcommit f2485f8bbdb1177f3b11c5b4785e4a3141f93054[m
+Merge: 9237eca a309d28
+Author: maniaggarwal <maniaggarwal@deloitte.com>
+Date:   Mon Dec 1 14:16:36 2014 +0530
+
+[33mcommit 9237ecaea82f93109bc00ea26075442ad5bc93b8[m
+Author: maniaggarwal <maniaggarwal@deloitte.com>
+Date:   Mon Dec 1 13:59:45 2014 +0530
+
+[33mcommit a309d28eebba12ddaeb3f9ef8f6ac109d57d1306[m
+Author: ryernagula <ryernagula@USHYDRYERNAGUL2.us.deloitte.com>
+Date:   Thu Nov 27 17:09:03 2014 +0530
+
+[33mcommit e9a9a11690f9c00a2b25cab6e6339da79b37f991[m
+Merge: 9a24cd5 361b565
+Author: ryernagula <ryernagula@USHYDRYERNAGUL2.us.deloitte.com>
+Date:   Thu Nov 27 14:34:25 2014 +0530
+
+[33mcommit 9a24cd564f2411f1d0e3af9fc1dbd41db927f10f[m
+Author: ryernagula <ryernagula@USHYDRYERNAGUL2.us.deloitte.com>
+Date:   Thu Nov 27 14:26:10 2014 +0530
+
+[33mcommit 361b5650d11da8458becd3d46f723fa7d64829b4[m
+Author: diganguly <diganguly@USHYDDIGANGULY1.us.deloitte.com>
+Date:   Wed Nov 26 20:27:49 2014 +0530
+
+    Added code for PickRule and TransactionReason
+
+[33mcommit 490f122238d6c1022486178b25edfc526ec4a18e[m
+Author: maniaggarwal <maniaggarwal@deloitte.com>
+Date:   Mon Nov 24 13:07:56 2014 +0530
+
+    Recompiled connectionfactory.java file. Getting package doesnot exist error in SyncUtils.java
+
+[33mcommit 560eee2954ed88ca3100e8c16d96f99c197c3a31[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Nov 18 19:07:00 2014 +0530
+
+[33mcommit 2d044f50b8c756bd034c54e4f0fd4a1840d2ab69[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Nov 18 17:34:59 2014 +0530
+
+[33mcommit 70495facc2828cc8e177518ba0e963fc589c376f[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Nov 18 16:43:14 2014 +0530
+
+[33mcommit 0f249ecc63aa4682a8395fd5544b75ed96f13f7e[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Nov 18 14:40:05 2014 +0530
+
+[33mcommit e6db55bd057f5c0f5fc994825fd92565e91e5221[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Nov 18 13:59:49 2014 +0530
+
+[33mcommit 09a881b450ec2bf451310b1e70023c3b5fae752f[m
+Merge: 605ce41 bb9005c
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 17 19:53:09 2014 +0530
+
+[33mcommit 605ce41429989564b657734c348722ef8672c7de[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 17 19:48:07 2014 +0530
+
+[33mcommit bb9005c3165004aa0105b582570a397db115456f[m
+Author: ryernagula <ryernagula@USHYDRYERNAGUL2.us.deloitte.com>
+Date:   Mon Nov 17 19:34:08 2014 +0530
+
+[33mcommit fe45a910cc2e9a2defd48309795a2b740a98bc3f[m
+Author: ryernagula <ryernagula@USHYDRYERNAGUL2.us.deloitte.com>
+Date:   Mon Nov 17 19:33:55 2014 +0530
+
+[33mcommit 7d4b9f736dcf7e055d2c16ddce8136eaf94a2e49[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Wed Nov 12 14:51:45 2014 +0530
+
+[33mcommit 58501234729b33eba6e19b45f4fad8b7cac5c864[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Tue Nov 11 18:19:16 2014 +0530
+
+[33mcommit f87200ee061aced94f9e9768b604c280bd937a10[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 10 18:59:05 2014 +0530
+
+[33mcommit 617a5006f22af86ce9b00c569b27794f8927e36d[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 10 18:58:57 2014 +0530
+
+[33mcommit d6181db470eb23132cfea32dbe8989db7d573831[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 10 18:58:47 2014 +0530
+
+[33mcommit e4cb7c3a4c7a7c9b78d5279208fece77c8c378af[m
+Author: dcom <dcom@10.8.124.182>
+Date:   Thu Nov 6 16:33:18 2014 +0530
+
+[33mcommit 292d2e4fa1e7db8c083ed79e539419f485e76fc4[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 3 19:43:13 2014 +0530
+
+[33mcommit 6fde22d3b988cf513ca35a335db748be8bcd4ff8[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 3 19:42:58 2014 +0530
+
+[33mcommit 29ccc2671fc8f417f855fb8cd2c563a02a4c6cb7[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 3 18:25:17 2014 +0530
+
+[33mcommit cb703edb30232a18568b726f9ebcc5a13306fa6b[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 3 17:16:18 2014 +0530
+
+[33mcommit 9a97efd6af677ebdaf72171344d2a4a66eac11e2[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 3 16:33:44 2014 +0530
+
+[33mcommit b983eef73d0dbec880478b4a8ddd63c07643cfa1[m
+Author: kauspatel <kauspatel@USHYDKAUSPATEL1.us.deloitte.com>
+Date:   Mon Nov 3 16:25:52 2014 +0530
+
+    SQL Test Change
+
+[33mcommit 8e657afac8b04923e5646d5422a8311567fcbb46[m
+Author: diprish <diprish@gmail.com>
+Date:   Mon Nov 3 14:55:42 2014 +0530

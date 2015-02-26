@@ -399,7 +399,7 @@
         <amx:panelGroupLayout id="cardt" inlineStyle="width:100%;height:100%" halign="center"
                               scrollPolicy="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'scroll' : 'auto'}">
             <amx:panelGroupLayout id="cards" inlineStyle="height:100%;width:100%" scrollPolicy="scroll" layout="wrap"
-                                  rendered="#{deviceScope.hardware.screen.diagonalSize gt 6 ? 'true' : 'false'}">
+                                  >
                 <amx:listView var="row" value="#{bindings.syncLovs.collectionModel}"
                               fetchSize="#{bindings.syncLovs.rangeSize}"
                               selectedRowKeys="#{bindings.syncLovs.collectionModel.selectedRow}"
@@ -414,7 +414,7 @@
                                     <amx:cellFormat id="cf62" width="100%">
                                         <amx:panelGroupLayout id="pgl7" layout="horizontal">
                                             <amx:outputText value="#{row.lovName}" id="ot38"
-                                                            inlineStyle="font-weight:lighter;font-family: cursive;width: 255px;"/>
+                                                            inlineStyle="font-weight:lighter;width: 190px;"/>
                                             <amx:spacer id="s2" width="20"/>
                                             <amx:commandButton text="Sync" id="cb4" styleClass="btncardlyt"
                                                                inlineStyle="font-family:Helvetica;"
@@ -439,7 +439,7 @@
                                         <amx:panelGroupLayout id="pgl6" layout="horizontal">
                                             <amx:panelGroupLayout id="pgl4" layout="vertical" valign="middle"
                                                                   halign="center"
-                                                                  inlineStyle="width: 150px; margin-top: 10px;">
+                                                                  inlineStyle="width: 100px; margin-top: 10px;">
                                                 <amx:outputText value="#{row.syncCount}" id="ot33"
                                                                 inlineStyle="color: rgb(86, 165, 7); font-size: x-large;"
                                                                 styleClass="synccount"/>
@@ -476,7 +476,7 @@
                                 <amx:rowLayout id="rl36">
                                     <amx:cellFormat id="cf56" width="100%" inlineStyle="padding: 10px;">
                                         <amx:outputText value="#{row.lovName}" id="ot34"
-                                                        inlineStyle="color: white; font-family: cursive;"/>
+                                                        inlineStyle="color: white; "/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl41">
@@ -485,7 +485,7 @@
                                 <amx:rowLayout id="rl42">
                                     <amx:cellFormat id="cf55" width="100%" inlineStyle="padding: 10px;">
                                         <amx:outputText value="#{row.lovDescription}" id="ot39"
-                                                        inlineStyle="color:white; font-family:cursive; font-size:small;"/>
+                                                        inlineStyle="color:white;  font-size:small;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl40">

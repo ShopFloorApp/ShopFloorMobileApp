@@ -17,6 +17,7 @@
     <page path="/dcom.shop.Request/page/RequestForm.amx" usageId="dcom_shop_mobile_RequestFormPageDef"/>
     <page path="/dcom.shop.Request/page/SubmitRequest.amx" usageId="dcom_shop_mobile_SubmitRequestPageDef"/>
     <page path="/dcom.shop.DispatchList/page/dispatchList.amx" usageId="dcom_shop_mobile_DispatchListPageDef"/>
+    <page path="/dcom.shop.Inquiry/page/inquiry.amx" usageId="dcom_shop_mobile_inquiryPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -33,6 +34,7 @@
     <page id="dcom_shop_mobile_RequestsPageDef" path="dcom.shop.Request.page.RequestsPageDef"/>
     <page id="dcom_shop_mobile_RequestFormPageDef" path="dcom.shop.Request.page.RequestFormPageDef"/>
     <page id="dcom_shop_mobile_SubmitRequestPageDef" path="dcom.shop.Request.page.SubmitRequestPageDef"/>
+    <page id="dcom_shop_mobile_inquiryPageDef" path="dcom.shop.Inquiry.page.inquiryPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>

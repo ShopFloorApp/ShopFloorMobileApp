@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="transactionTf">
-    <default-activity>test</default-activity>
-    <view id="test">
-      <page>/dcom.shop.Transaction/Transaction.amx</page>
+    <default-activity>Transaction</default-activity>
+    <view id="SubInventoryTxn">
+      <page>/dcom.shop.Transaction/page/SubInventoryTxn.amx</page>
     </view>
+    <view id="Transaction">
+      <page>/dcom.shop.Transaction/page/Transaction.amx</page>
+    </view>
+    <view id="MaterialMovements">
+      <page>/dcom.shop.Transaction/page/MaterialMovements.amx</page>
+    </view>
+    <view id="SubInventoryDetails">
+      <page>/dcom.shop.Transaction/page/SubInventoryDetails.amx</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>Transaction</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>matMov</from-outcome>
+        <to-activity-id>MaterialMovements</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>MaterialMovements</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>subInv</from-outcome>
+        <to-activity-id>SubInventoryTxn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>bT</from-outcome>
+        <to-activity-id>Transaction</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>SubInventoryTxn</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>bMM</from-outcome>
+        <to-activity-id>MaterialMovements</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>siDet</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>SubInventoryDetails</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>SubInventoryTxn</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-mobile-config>

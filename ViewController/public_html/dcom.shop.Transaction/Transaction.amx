@@ -3,13 +3,26 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="Transactions" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
+  <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+                             disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
+                             styleClass="custom-springboard-link">
+                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
+                           source="/images/springboard.png" id="i1"/>
+            </amx:commandLink>
     </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
+    <amx:facet name="secondary"/>
+    <amx:panelGroupLayout id="pgl1" layout="horizontal">
+      <amx:panelGroupLayout id="pgl2" layout="vertical">
+        <amx:commandButton text="Material Movements" id="cb1" action="matMov"/>
+        <amx:commandButton text="Receiving Transactions" id="cb2"/>
+      </amx:panelGroupLayout>
+      <amx:panelGroupLayout id="pgl3" layout="vertical">
+        <amx:commandButton text="Shipping Transactions" id="cb3"/>
+        <amx:commandButton text="Stock Count" id="cb4"/>
+      </amx:panelGroupLayout>
+    </amx:panelGroupLayout>
   </amx:panelPage>
 </amx:view>
