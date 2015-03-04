@@ -6,7 +6,7 @@
       <amx:outputText value="Transactions" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-  <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+      <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
                              styleClass="custom-springboard-link">
                 <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"

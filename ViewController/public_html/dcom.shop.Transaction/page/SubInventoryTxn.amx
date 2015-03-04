@@ -6,7 +6,7 @@
       <amx:outputText value="Transactions" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+       <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
                              styleClass="custom-springboard-link">
                 <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
@@ -24,7 +24,7 @@
       <amx:tableLayout id="tl1">
         <amx:rowLayout id="rl1">
           <amx:cellFormat id="cf1">
-            <amx:commandButton text="From Sub" id="cb2"/>
+            <amx:commandButton text="From Sub" action="siDet" id="cb2"/>
           </amx:cellFormat>
           <amx:cellFormat id="cf2">
             <amx:commandButton text="Item" id="cb3"/>
@@ -38,7 +38,7 @@
         </amx:rowLayout>
       </amx:tableLayout>
     </amx:panelGroupLayout>
-    <amx:listView var="row" value="#{bindings.subInventoryTxn.collectionModel}"
+    <!--amx:listView var="row" value="#{bindings.subInventoryTxn.collectionModel}"
                   fetchSize="#{bindings.subInventoryTxn.rangeSize}"
                   selectedRowKeys="#{bindings.subInventoryTxn.collectionModel.selectedRow}"
                   selectionListener="#{bindings.subInventoryTxn.collectionModel.makeCurrent}"
@@ -62,7 +62,7 @@
        <amx:listItem id="li4">
         <amx:outputText value="#{row.toInventory}" id="ot3"/>
       </amx:listItem>
-    </amx:listView>
+    </amx:listView-->
   </amx:panelPage>
   <amx:popup id="p1" autoDismiss="true">
     <amx:panelGroupLayout id="pgl5">

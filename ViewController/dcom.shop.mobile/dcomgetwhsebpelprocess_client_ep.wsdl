@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <wsdl:definitions name="DCOMGetWhseBPELProcess" targetNamespace="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess" xmlns:ns1="http://www.deloitte.com/DCOM/Warehouse/DCOMGetWhse" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:documentation>
-    <abstractWSDL>http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetWhse!1.0/DCOMGetWhseBPELProcess.wsdl</abstractWSDL>
+    <abstractWSDL>http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetWhse!1.0/DCOMGetWhseBPELProcess.wsdl</abstractWSDL>
   </wsdl:documentation>
   <plnk:partnerLinkType name="DCOMGetWhseBPELProcess">
     <plnk:role name="DCOMGetWhseBPELProcessProvider">

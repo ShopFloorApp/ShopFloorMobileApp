@@ -9,7 +9,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="WarehouseLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetWhse/dcomgetwhsebpelprocess_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetWhse/dcomgetwhsebpelprocess_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetwhsebpelprocess_client_ep"
                  namespace="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess"
@@ -40,7 +40,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CategorySetLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCatgSet/dcomgetcatgsetbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCatgSet/dcomgetcatgsetbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetcatgsetbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgSet/DCOMGetCatgSetBPEL"
@@ -73,7 +73,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="SubinventoryLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetsubinvbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL"
@@ -109,7 +109,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="LocatorLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetLocator/dcomgetlocatorbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetLocator/dcomgetlocatorbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetlocatorbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetLocator/DCOMGetLocatorBPEL"
@@ -140,7 +140,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CategoryCodeLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCatgCode/dcomgetcatgcodebpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCatgCode/dcomgetcatgcodebpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetcatgcodebpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgCode/DCOMGetCatgCodeBPEL"
@@ -176,7 +176,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="UOMLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetUOM/dcomgetuombpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetUOM/dcomgetuombpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetuombpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetUOM/DCOMGetUOMBPEL" connection="UOMLOV_WS">
@@ -206,7 +206,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CostGroupLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCostGroup/dcomgetcostgroupbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCostGroup/dcomgetcostgroupbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetcostgroupbpel_client_ep"
                  namespace="http://xmlns.oracle.com/DCOM_Application/DCOMGetCostGroup/DCOMGetCostGroupBPEL"
@@ -239,7 +239,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="TransactionTypeLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetTrxnType/dcomgettrxntypebpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetTrxnType/dcomgettrxntypebpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgettrxntypebpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetTrxnType/DCOMGetTrxnTypeBPEL"
@@ -274,7 +274,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="TransactionReasonLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetTrxnReason/dcomgettrxnreasonbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetTrxnReason/dcomgettrxnreasonbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgettrxnreasonbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetTrxnReason/DCOMGetTrxnReasonBPEL"
@@ -310,7 +310,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CarrierLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCarrier/dcomgetcarrierbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCarrier/dcomgetcarrierbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetcarrierbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCarrier/DCOMGetCarrierBPEL"
@@ -344,7 +344,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="AccountAliasLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetAccountAlias/dcomgetaccountaliasbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetAccountAlias/dcomgetaccountaliasbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetaccountaliasbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetAccountAlias/DCOMGetAccountAliasBPEL"
@@ -380,7 +380,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="PickRuleLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetPickRule/dcomgetpickrulebpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetPickRule/dcomgetpickrulebpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetpickrulebpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetPickRule/DCOMGetPickRuleBPEL"
@@ -411,7 +411,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CountTypeLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetCountType/dcomgetcounttypebpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCountType/dcomgetcounttypebpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetcounttypebpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCountType/DCOMGetCountTypeBPEL"
@@ -442,7 +442,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="PhysicalCountLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMPhyCountTag/dcomphycounttagbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMPhyCountTag/dcomphycounttagbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomphycounttagbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMPhyCountTag/DCOMPhyCountTagBPEL"
@@ -475,7 +475,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="KanbanCardLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetKanbanCard/dcomgetkanbancardbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetKanbanCard/dcomgetkanbancardbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetkanbancardbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetKanbanCard/DCOMGetKanbanCardBPEL"
@@ -507,7 +507,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="DepartmentLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetDept/dcomgetdeptbpel_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetDept/dcomgetdeptbpel_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetdeptbpel_client_ep"
                  namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetDept/DCOMGetDeptBPEL"
@@ -539,7 +539,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="ResourceLOV_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetResource/dcomgetresourcebpelprocess_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetResource/dcomgetresourcebpelprocess_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomgetresourcebpelprocess_client_ep"
                  namespace="http://www.deloitte.com/DCOM/DCOMGetResource/DCOMGetResourceBPELProcess"
@@ -586,7 +586,7 @@
     <Source>
       <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="SubInventoryTrf_WS" version="1.0"
                   provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://ussltcsnl3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMSubInventoryTransfer!1.0*soa_464a94e4-5af5-4e99-8190-71f6be7a7f9f/dcomsubinventorytransfer_client_ep?WSDL"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMSubInventoryTransfer!1.0*soa_464a94e4-5af5-4e99-8190-71f6be7a7f9f/dcomsubinventorytransfer_client_ep?WSDL"
                   ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
         <service name="dcomsubinventorytransfer_client_ep"
                  namespace="http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer"
@@ -596,6 +596,87 @@
           </port>
         </service>
       </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ConcurrentProgramLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.mobile.ConcurrentProgramLOV_WS"
+                      BeanClass="dcom.shop.mobile.ConcurrentProgramLOV_WS"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="ConcurrentProgramLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/default/getConcurrentProgDetailsLoV/getconcurrentprogdetailslov_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="getconcurrentprogdetailslov_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/getConcurrentProgDetailsLoV"
+                 connection="ConcurrentProgramLOV_WS">
+          <port name="getConcurrentProgDetailsLoV_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ConcurrentProgramDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                      BeanClass="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="RequestsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.txn.RequestsDC"
+                      BeanClass="dcom.shop.application.dc.txn.RequestsDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.txn.RequestsDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ItemLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.ItemLOV_WS"
+                      BeanClass="dcom.shop.mobile.ItemLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="ItemLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetItem/dcomgetitembpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetitembpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/Common/DCOMGetItem/DCOMGetItemBPEL" connection="ItemLOV_WS">
+          <port name="DCOMGetItemBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ItemDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.ItemDC"
+                      BeanClass="dcom.shop.application.dc.ItemDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.ItemBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.ItemDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
 </DataControlConfigs>

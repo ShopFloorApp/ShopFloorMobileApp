@@ -151,7 +151,7 @@ public abstract class SyncUtils {
         return returnValue;
     }
 
-    private List getCollectionFromWS(Class collectionClass, HashMap params) {
+    public List getCollectionFromWS(Class collectionClass, HashMap params) {
         
         System.out.println("Inside getWarehousesFromWS");
         GenericVirtualType payload = (GenericVirtualType) params.get("payload");

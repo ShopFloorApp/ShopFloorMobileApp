@@ -14,6 +14,9 @@
     <view id="SubInventoryDetails">
       <page>/dcom.shop.Transaction/page/SubInventoryDetails.amx</page>
     </view>
+    <view id="itemLOVPG">
+      <page>/page/LovPage/itemLOVPG.amx</page>
+    </view>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -48,6 +51,17 @@
       <control-flow-case id="__12">
         <from-outcome>cancel</from-outcome>
         <to-activity-id>SubInventoryTxn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__1">
+        <from-outcome>ItemLOV</from-outcome>
+        <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__2">
+      <from-activity-id>itemLOVPG</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

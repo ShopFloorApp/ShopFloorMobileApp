@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Item LOV Page" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" action="Back" text="Back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" action="MainInquiry" text="Home"/>
+            <!--amx:commandButton actionListener="#{bindings.ProcessItemOnHand.execute}" text="Select"
+                               disabled="#{!bindings.ProcessItemOnHand.enabled}" id="cb4" action="sendItem"/-->
+        </amx:facet>
+        <amx:facet name="footer">
+            <amx:outputText value="Select an Item" id="ot2"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1">
+            <amx:inputText value="#{bindings.itemNum.inputValue}" label="Item Number" id="it3"/>
+            <amx:inputText value="#{bindings.desc.inputValue}" label="Item Desc" id="it1"/>
+        </amx:panelFormLayout>
+        <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
+            <amx:commandButton actionListener="#{bindings.ProcessWS.execute}" text="Search"
+                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;">
+         </amx:commandButton>
+        </amx:panelLabelAndMessage>
+        <amx:outputText id="ot3" value="#{pageFlowScope.ItemServiceResults}"/>
+        <amx:panelGroupLayout id="pgl1"
+                              rendered='#{pageFlowScope.ItemServiceResults == "Search results" ? true : false }'
+                              inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+            <amx:tableLayout width="100%" id="tl2" rendered="#{pageFlowScope.refreshItemLov eq 'N' ?true:false}">
+                <amx:rowLayout id="rl12" >
+                    <amx:cellFormat width="40%" id="cf22">
+                        <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="60%" halign="start" id="cf33">
+                        <amx:panelLabelAndMessage label="Item Desc" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+      <amx:listView var="row" value="#{bindings.allItems.collectionModel}" fetchSize="#{bindings.allItems.rangeSize}"
+                      id="lv2">
+            <!--20-Mar amx:listItem showLinkIcon="false" actionListener="#{bindings.ProcessItemOnHand.execute}" action="sendItem"-->
+            <amx:listItem showLinkIcon="false" 
+                          action="sendItem"
+                          id="li2">
+                <amx:tableLayout width="100%" id="tl1">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf2">
+                            <!--amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:left;" id="plam22222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.itemNum}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot43"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf53"/>
+                        <amx:cellFormat width="60%" height="50px" valign="middle" halign="start" id="cf3">
+                            <!--amx:panelLabelAndMessage label="Item Desc" inlineStyle="text-align:left;" id="plam2222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.desc}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot4"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                        <!--amx:cellFormat width="100%" height="40px" id="cf2">
+                            <amx:outputText value="Item: #{row.segment1} ItemDesc: #{row.description}" id="ot5"/>
+                        </amx:cellFormat-->
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.itemNum}" type="action" to="#{pageFlowScope.itemNumber}"
+                                         id="spl1"/>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}"
+                                         id="spl2"/>
+                </amx:listItem>
+        </amx:listView>
+     </amx:panelPage>
+</amx:view>

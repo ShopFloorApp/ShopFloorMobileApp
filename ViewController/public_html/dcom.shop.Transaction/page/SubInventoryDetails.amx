@@ -1,157 +1,182 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
             <amx:outputText value="Transactions" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-     <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
                              styleClass="custom-springboard-link">
                 <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
                            source="/images/springboard.png" id="i1"/>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl1" layout="horizontal">
-      <amx:commandButton text="&lt;" id="cb1"/>
-      <amx:spacer id="s1" width="50"/>
-      <amx:outputText value="Material Movements" id="ot2"/>
-    </amx:panelGroupLayout>
-    <amx:panelGroupLayout id="pgl2">
-      <amx:panelGroupLayout id="pgl5" layout="horizontal">
-        <amx:spacer id="s2" width="60"/>
-        <amx:outputText value="Transaction Details" id="ot3"/>
-      </amx:panelGroupLayout>
-      <amx:panelGroupLayout id="pgl3">
-        <amx:tableLayout id="tl1">
-          <amx:rowLayout id="rl1">
-            <amx:cellFormat id="cf2">
-              <amx:outputText value="LPN" id="ot4"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf1">
-              <amx:inputText id="it1"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
-          <amx:rowLayout id="rl2">
-            <amx:cellFormat id="cf4">
-              <amx:outputText value="Item" id="ot5"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf3">
-              <amx:inputText id="it2"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
-          <amx:rowLayout id="rl3">
-            <amx:cellFormat id="cf6">
-              <amx:outputText value="Item Details" id="ot6"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf7">
-              <amx:inputText label="Available :" id="it8"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf8">
-              <amx:inputText label="On Hand :" id="it9"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf5">
-              <amx:inputText label="UOM :" id="it10"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
-          <amx:rowLayout id="rl4">
-            <amx:cellFormat id="cf10">
-              <amx:outputText value="From" id="ot7"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf11">
-              <amx:inputText label="Sub" id="it6"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf9">
-              <amx:inputText label="Loc" id="it7"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
-          <amx:rowLayout id="rl5">
-            <amx:cellFormat id="cf14">
-              <amx:outputText value="To" id="ot8"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf13">
-              <amx:inputText label="Sub" id="it4"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf12">
-              <amx:inputText label="Loc" id="it5"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
-          <amx:rowLayout id="rl6">
-            <amx:cellFormat id="cf16">
-              <amx:outputText value="Quantity" id="ot9"/>
-            </amx:cellFormat>
-            <amx:cellFormat id="cf15">
-              <amx:outputText value="outputText1" id="ot10"/>
-              <amx:commandButton text="commandButton1" id="cb10">
-                <amx:showPopupBehavior id="spb1" popupId="serLot" type="action" align="cornerBottomEnd" alignId="cb10"/>
-              </amx:commandButton>
-              <amx:inputText id="it3"/>
-            </amx:cellFormat>
-          </amx:rowLayout>
-        </amx:tableLayout>
-      </amx:panelGroupLayout>
-      <amx:spacer id="s3" height="50"/>
-      <amx:panelGroupLayout id="pgl4" layout="horizontal">
-        <amx:commandButton text="Cancel" id="cb3" action="cancel"/>
-        <amx:commandButton text="Add to Queue" id="cb4"/>
-        <amx:commandButton text="Save &amp; Complete" id="cb5"/>
-      </amx:panelGroupLayout>
-    </amx:panelGroupLayout>
-  </amx:panelPage>
-  <amx:popup id="serLot">
-    <amx:panelGroupLayout id="pgl17" layout="horizontal">
-      <amx:filmStrip id="fs1">
-        <amx:filmStripItem text="Serial Entry" id="fsi1">
-          <amx:panelGroupLayout id="pgl6">
-            <amx:panelGroupLayout id="pgl8" layout="horizontal">
-              <amx:panelGroupLayout id="pgl11">
-                <amx:inputText label="Item" id="it12"/>
-                <amx:inputText label="Quantity" id="it11"/>
-              </amx:panelGroupLayout>
-              <amx:selectBooleanSwitch label="Ranges" id="sbs1"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1" layout="horizontal">
+            <amx:commandButton text="&lt;" id="cb1"/>
+            <amx:spacer id="s1" width="50"/>
+            <amx:outputText value="Material Movements" id="ot2"/>
+        </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl2">
+            <amx:panelGroupLayout id="pgl5" layout="horizontal">
+                <amx:spacer id="s2" width="60"/>
+                <amx:outputText value="Transaction Details" id="ot3"/>
             </amx:panelGroupLayout>
-            <amx:spacer id="s4" height="20"/>
-            <amx:panelGroupLayout id="pgl10">
-              <amx:inputText label="Quantity Entered" id="it13"/>
-              <amx:commandButton text="+" id="cb6"/>
-              <amx:panelGroupLayout id="pgl12" layout="horizontal">
-                <amx:inputText id="it15"/>
-                <amx:inputText id="it16"/>
-                <amx:commandButton text="s" id="cb8"/>
-              </amx:panelGroupLayout>
-              <amx:panelGroupLayout id="pgl13" layout="horizontal">
-                <amx:inputText id="it14"/>
-                <amx:commandButton text="s" id="cb7"/>
-              </amx:panelGroupLayout>
+            <amx:panelGroupLayout id="pgl3">
+                <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
+                    <amx:listItem id="li1" action="ItemLOV">
+                        <amx:panelLabelAndMessage label="Item Number" showRequired="true"
+                                                  inlineStyle="text-align:center;" id="plam2">
+                            <amx:outputText value="#{bindings.itemNum.inputValue}"
+                                            styleClass="adfmf-listItem-captionText" id="ot11"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:listItem>
+                </amx:listView>
+                <amx:tableLayout id="tl1">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat id="cf2">
+                            <amx:outputText value="LPN" id="ot4"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf1">
+                            <amx:inputText id="it1"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat id="cf4">
+                            <amx:outputText value="Item" id="ot5"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf3">
+                            <amx:inputText id="it2"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat id="cf6">
+                            <amx:outputText value="Item Details" id="ot6"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf7">
+                            <amx:inputText label="Available :" id="it8"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf8">
+                            <amx:inputText label="On Hand :" id="it9"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf5">
+                            <amx:inputText label="UOM :" id="it10"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl4">
+                        <amx:cellFormat id="cf10">
+                            <amx:outputText value="From" id="ot7"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf11">
+                            <!--amx:inputText label="Sub" id="it6"/-->
+                            <amx:selectOneChoice value="#{bindings.subinv.inputValue}" label="#{bindings.subinv.label}"
+                                                 id="soc1">
+                                <amx:selectItems value="#{bindings.subinv.items}" id="si1"/>
+                            </amx:selectOneChoice>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf9">
+                            <!--amx:inputText label="Loc" id="it7"/-->
+                            <amx:selectOneChoice value="#{bindings.locator.inputValue}"
+                                                 label="#{bindings.locator.label}" id="soc2">
+                                <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
+                            </amx:selectOneChoice>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl5">
+                        <amx:cellFormat id="cf14">
+                            <amx:outputText value="To" id="ot8"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf13">
+                            <amx:inputText label="Sub" id="it4"/>
+                            <amx:selectOneChoice value="#{bindings.subinv1.inputValue}"
+                                                 label="#{bindings.subinv1.label}" id="soc4">
+                                <amx:selectItems value="#{bindings.subinv1.items}" id="si4"/>
+                            </amx:selectOneChoice>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf12">
+                            <amx:inputText label="Loc" id="it5"/>
+                            <amx:selectOneChoice value="#{bindings.locator1.inputValue}"
+                                                 label="#{bindings.locator1.label}" id="soc3">
+                                <amx:selectItems value="#{bindings.locator1.items}" id="si3"/>
+                            </amx:selectOneChoice>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl6">
+                        <amx:cellFormat id="cf16">
+                            <amx:outputText value="Quantity" id="ot9"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf15">
+                            <amx:outputText value="outputText1" id="ot10"/>
+                            <amx:commandButton text="commandButton1" id="cb10">
+                                <amx:showPopupBehavior id="spb1" popupId="serLot" type="action" align="cornerBottomEnd"
+                                                       alignId="cb10"/>
+                            </amx:commandButton>
+                            <amx:inputText id="it3"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
             </amx:panelGroupLayout>
-            <amx:spacer id="s5" height="20"/>
-            <amx:panelGroupLayout id="pgl9"/>
-          </amx:panelGroupLayout>
-        </amx:filmStripItem>
-        <amx:filmStripItem text="Lot Entry" id="fsi2">
-          <amx:panelGroupLayout id="pgl7">
-            <amx:panelGroupLayout id="pgl15">
-              <amx:inputText label="Item" id="it17"/>
-              <amx:inputText label="Quantity" id="it18"/>
+            <amx:spacer id="s3" height="50"/>
+            <amx:panelGroupLayout id="pgl4" layout="horizontal">
+                <amx:commandButton text="Cancel" id="cb3" action="cancel"/>
+                <amx:commandButton text="Add to Queue" id="cb4"/>
+                <amx:commandButton text="Save &amp; Complete" id="cb5"/>
             </amx:panelGroupLayout>
-            <amx:spacer id="s6" height="20"/>
-            <amx:panelGroupLayout id="pgl16">
-              <amx:inputText label="Quantity Entered" id="it19"/>
-              <amx:commandButton text="+" id="cb9"/>
-            </amx:panelGroupLayout>
-            <amx:spacer id="s7" height="20"/>
-            <amx:panelGroupLayout id="pgl14"/>
-          </amx:panelGroupLayout>
-        </amx:filmStripItem>
-      </amx:filmStrip>
-      <amx:commandButton text="x" id="cb11">
-        <amx:closePopupBehavior id="cpb1" popupId="serLot" type="action"/>
-      </amx:commandButton>
-    </amx:panelGroupLayout>
-  </amx:popup>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
+    <amx:popup id="serLot">
+        <amx:panelGroupLayout id="pgl17" layout="horizontal">
+            <amx:filmStrip id="fs1">
+                <amx:filmStripItem text="Serial Entry" id="fsi1">
+                    <amx:panelGroupLayout id="pgl6">
+                        <amx:panelGroupLayout id="pgl8" layout="horizontal">
+                            <amx:panelGroupLayout id="pgl11">
+                                <amx:inputText label="Item" id="it12"/>
+                                <amx:inputText label="Quantity" id="it11"/>
+                            </amx:panelGroupLayout>
+                            <amx:selectBooleanSwitch label="Ranges" id="sbs1"/>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="s4" height="20"/>
+                        <amx:panelGroupLayout id="pgl10">
+                            <amx:inputText label="Quantity Entered" id="it13"/>
+                            <amx:commandButton text="+" id="cb6"/>
+                            <amx:panelGroupLayout id="pgl12" layout="horizontal">
+                                <amx:inputText id="it15"/>
+                                <amx:inputText id="it16"/>
+                                <amx:commandButton text="s" id="cb8"/>
+                            </amx:panelGroupLayout>
+                            <amx:panelGroupLayout id="pgl13" layout="horizontal">
+                                <amx:inputText id="it14"/>
+                                <amx:commandButton text="s" id="cb7"/>
+                            </amx:panelGroupLayout>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="s5" height="20"/>
+                        <amx:panelGroupLayout id="pgl9"/>
+                    </amx:panelGroupLayout>
+                </amx:filmStripItem>
+                <amx:filmStripItem text="Lot Entry" id="fsi2">
+                    <amx:panelGroupLayout id="pgl7">
+                        <amx:panelGroupLayout id="pgl15">
+                            <amx:inputText label="Item" id="it17"/>
+                            <amx:inputText label="Quantity" id="it18"/>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="s6" height="20"/>
+                        <amx:panelGroupLayout id="pgl16">
+                            <amx:inputText label="Quantity Entered" id="it19"/>
+                            <amx:commandButton text="+" id="cb9"/>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="s7" height="20"/>
+                        <amx:panelGroupLayout id="pgl14"/>
+                    </amx:panelGroupLayout>
+                </amx:filmStripItem>
+            </amx:filmStrip>
+            <amx:commandButton text="x" id="cb11">
+                <amx:closePopupBehavior id="cpb1" popupId="serLot" type="action"/>
+            </amx:commandButton>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>
