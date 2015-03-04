@@ -1,5 +1,7 @@
 package dcom.shop.application.mobile;
 
+import java.math.BigDecimal;
+
 import java.util.HashMap;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
@@ -7,22 +9,65 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.util.GenericVirtualType;
 
 public class DepartmentBO implements Comparable {
-    private String Whse;
-    private String DeptCode;
-    private String Desc;
+    private String orgCode;
+    private BigDecimal deptId;
+    private String deptDesc;
+
+    private BigDecimal openJob;
+    private String deptName;
     private GenericVirtualType Attributes;
-    private String jobCount;
+
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
-    public void setJobCount(String jobCount) {
-        String oldJobCount = this.jobCount;
-        this.jobCount = jobCount;
-        propertyChangeSupport.firePropertyChange("jobCount", oldJobCount, jobCount);
+    public void setOrgCode(String orgCode) {
+        String oldOrgCode = this.orgCode;
+        this.orgCode = orgCode;
+        propertyChangeSupport.firePropertyChange("orgCode", oldOrgCode, orgCode);
     }
 
-    public String getJobCount() {
-        return jobCount;
+    public String getOrgCode() {
+        return orgCode;
+    }
+
+    public void setDeptId(BigDecimal deptId) {
+        BigDecimal oldDeptId = this.deptId;
+        this.deptId = deptId;
+        propertyChangeSupport.firePropertyChange("deptId", oldDeptId, deptId);
+    }
+
+    public BigDecimal getDeptId() {
+        return deptId;
+    }
+
+    public void setDeptDesc(String deptDesc) {
+        String oldDeptDesc = this.deptDesc;
+        this.deptDesc = deptDesc;
+        propertyChangeSupport.firePropertyChange("deptDesc", oldDeptDesc, deptDesc);
+    }
+
+    public String getDeptDesc() {
+        return deptDesc;
+    }
+
+    public void setOpenJob(BigDecimal openJob) {
+        BigDecimal oldOpenJob = this.openJob;
+        this.openJob = openJob;
+        propertyChangeSupport.firePropertyChange("openJob", oldOpenJob, openJob);
+    }
+
+    public BigDecimal getOpenJob() {
+        return openJob;
+    }
+
+    public void setDeptName(String deptName) {
+        String oldDeptName = this.deptName;
+        this.deptName = deptName;
+        propertyChangeSupport.firePropertyChange("deptName", oldDeptName, deptName);
+    }
+
+    public String getDeptName() {
+        return deptName;
     }
 
     public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
@@ -36,35 +81,6 @@ public class DepartmentBO implements Comparable {
         return propertyChangeSupport;
     }
 
-    public void setWhse(String Whse) {
-        String oldWhse = this.Whse;
-        this.Whse = Whse;
-        propertyChangeSupport.firePropertyChange("Whse", oldWhse, Whse);
-    }
-
-    public String getWhse() {
-        return Whse;
-    }
-
-    public void setDeptCode(String DeptCode) {
-        String oldDeptCode = this.DeptCode;
-        this.DeptCode = DeptCode;
-        propertyChangeSupport.firePropertyChange("DeptCode", oldDeptCode, DeptCode);
-    }
-
-    public String getDeptCode() {
-        return DeptCode;
-    }
-
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
-    }
-
-    public String getDesc() {
-        return Desc;
-    }
 
     public void setAttributes(GenericVirtualType Attributes) {
         GenericVirtualType oldAttributes = this.Attributes;
@@ -79,8 +95,8 @@ public class DepartmentBO implements Comparable {
     public DepartmentBO() {
         super();
     }
-    
-    public void setBOClassRow(HashMap hashMap) {
+
+    /* public void setBOClassRow(HashMap hashMap) {
         this.setWhse((String) hashMap.get("whse"));
         this.setDeptCode((String) hashMap.get("deptcode"));
         this.setDesc((String) hashMap.get("desc"));
@@ -92,7 +108,7 @@ public class DepartmentBO implements Comparable {
         map.put("deptcode", department.getDeptCode());
         map.put("desc", department.getDesc());
         return map;
-    }
+    } */
 
     public int compareTo(Object o) {
         // TODO Implement this method
