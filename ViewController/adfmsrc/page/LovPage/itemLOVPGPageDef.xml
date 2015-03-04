@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="itemLOVPGPageDef"
+                Package="page.LovPage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ItemDC" id="ItemDCIterator"/>
+    <accessorIterator MasterBinding="ItemDCIterator" Binds="allItems" RangeSize="25" DataControl="ItemDC"
+                      BeanClass="dcom.shop.application.mobile.ItemBO" id="allItemsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="ProcessWS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="ItemDC" InstanceName="data.ItemDC.dataProvider"/>
+    <attributeValues IterBinding="ItemDCIterator" id="itemNum">
+      <AttrNames>
+        <Item Value="itemNum"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ItemDCIterator" id="desc">
+      <AttrNames>
+        <Item Value="desc"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="allItemsIterator" id="allItems">
+      <nodeDefinition DefName="dcom.shop.application.mobile.ItemBO" Name="allItems0">
+        <AttrNames>
+          <Item Value="inventoryItemId"/>
+          <Item Value="itemNum"/>
+          <Item Value="desc"/>
+          <Item Value="primaryUOMCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
