@@ -44,7 +44,7 @@
                       id="lv2">
             <!--20-Mar amx:listItem showLinkIcon="false" actionListener="#{bindings.ProcessItemOnHand.execute}" action="sendItem"-->
             <amx:listItem showLinkIcon="false" 
-                          action="sendItem"
+                          action="Back"
                           id="li2">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
@@ -75,6 +75,9 @@
                                          id="spl1"/>
                 <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}"
                                          id="spl2"/>
+                <amx:setPropertyListener from="#{row.primaryUOMCode}" type="action" to="#{pageFlowScope.uom}"
+                                         id="sp10"/>
+                                         
                 </amx:listItem>
         </amx:listView>
      </amx:panelPage>

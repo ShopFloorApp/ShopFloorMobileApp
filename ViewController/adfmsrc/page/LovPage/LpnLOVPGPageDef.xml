@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LpnLOVPGPageDef"
+                Package="page.LovPage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LPNDC" id="LPNDCIterator"/>
+    <accessorIterator MasterBinding="LPNDCIterator" Binds="allLpns" RangeSize="25" DataControl="LPNDC"
+                      BeanClass="dcom.shop.application.mobile.LPNBO" id="allLpnsIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LPNDCIterator" id="LPNNum">
+      <AttrNames>
+        <Item Value="LPNNum"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="invokeLPNLovDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="LPNDC" InstanceName="data.LPNDC.dataProvider"/>
+    <tree IterBinding="allLpnsIterator" id="allLpns">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LPNBO" Name="allLpns0">
+        <AttrNames>
+          <Item Value="whse"/>
+          <Item Value="locator"/>
+          <Item Value="LPNNum"/>
+          <Item Value="LPNStatus"/>
+          <Item Value="subinv"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

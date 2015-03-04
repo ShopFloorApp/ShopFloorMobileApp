@@ -14,6 +14,8 @@ public class ItemBO {
     private String ItemNum;
     private String Desc;
     private String PrimaryUOMCode;
+    private GenericVirtualType Attributes;
+
 
     public void setInventoryItemId(String InventoryItemId) {
         String oldInventoryItemId = this.InventoryItemId;
@@ -64,7 +66,6 @@ public class ItemBO {
     public GenericVirtualType getAttributes() {
         return Attributes;
     }
-    private GenericVirtualType Attributes;
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);

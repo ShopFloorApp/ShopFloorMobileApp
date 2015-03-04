@@ -558,12 +558,67 @@
       </XmlRefAddr>
     </RefAddresses>
   </Reference>
-  <Reference name="REST" className="oracle.adf.model.connection.rest.RestConnection" credentialStoreKey="REST" xmlns="">
+  <Reference name="LPNLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetLPN/dcomgetlpnbpel_client_ep?WSDL"
+                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}dcomgetlpnbpel_client_ep">
+            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}dcomgetlpnbpel_client_ep"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}dcomgetlpnbpel_client_ep">
+                <port name="DCOMGetLPNBPEL_pt"
+                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}DCOMGetLPNBPELBinding">
+                  <soap addressUrl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetLPN/dcomgetlpnbpel_client_ep"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="process">
+                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="ItemOnHand_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
+             xmlns="">
+    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="WebServiceConnection">
+        <Contents>
+          <wsconnection description="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand?WSDL"
+                        service="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}DCOMGetOnhand">
+            <model name="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}DCOMGetOnhand"
+                   xmlns="http://oracle.com/ws/model">
+              <service name="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}DCOMGetOnhand">
+                <port name="execute_pt"
+                      binding="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}execute_pttBinding">
+                  <soap addressUrl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand"
+                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                  <operation name="execute">
+                    <soap soapAction="execute" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                    <input name=""/>
+                    <output name=""/>
+                  </operation>
+                </port>
+              </service>
+            </model>
+          </wsconnection>
+        </Contents>
+      </XmlRefAddr>
+    </RefAddresses>
+  </Reference>
+  <Reference name="Rest" className="oracle.adf.model.connection.rest.RestConnection" credentialStoreKey="Rest" xmlns="">
     <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
     <RefAddresses>
-      <XmlRefAddr addrType="REST">
+      <XmlRefAddr addrType="Rest">
         <Contents>
-          <restconnection name="REST" url="http://10.118.32.41:8000">
+          <restconnection name="Rest" url="http://10.118.32.41:8000">
             <authentication style="challenge">
               <type>basic</type>
             </authentication>

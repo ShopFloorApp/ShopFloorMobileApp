@@ -17,6 +17,9 @@
     <view id="itemLOVPG">
       <page>/page/LovPage/itemLOVPG.amx</page>
     </view>
+    <view id="LpnLOVPG">
+      <page>/page/LovPage/LpnLOVPG.amx</page>
+    </view>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -56,10 +59,21 @@
         <from-outcome>ItemLOV</from-outcome>
         <to-activity-id>itemLOVPG</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>lpnLOV</from-outcome>
+        <to-activity-id>LpnLOVPG</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__2">
       <from-activity-id>itemLOVPG</from-activity-id>
       <control-flow-case id="__13">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>LpnLOVPG</from-activity-id>
+      <control-flow-case id="__15">
         <from-outcome>Back</from-outcome>
         <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>

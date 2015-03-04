@@ -28,17 +28,17 @@
             </amx:panelGroupLayout>
             <amx:panelGroupLayout id="pgl3">
                 <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
-                    <amx:listItem id="li2" showLinkIcon="true" action="ItemLOV">
+                    <amx:listItem id="li2" showLinkIcon="true" action="lpnLOV">
                         <amx:panelLabelAndMessage label="LPN" showRequired="true" inlineStyle="text-align:center;"
                                                   id="plam1">
-                            <amx:outputText value="#{bindings.itemNum.inputValue}"
+                            <amx:outputText value="#{pageFlowScope.lpnText}"
                                             styleClass="adfmf-listItem-captionText" id="ot12"/>
                         </amx:panelLabelAndMessage>
                     </amx:listItem>
                     <amx:listItem id="li1" showLinkIcon="true" action="ItemLOV">
                         <amx:panelLabelAndMessage label="Item Number" showRequired="true"
                                                   inlineStyle="text-align:center;" id="plam2">
-                            <amx:outputText value="#{bindings.itemNum.inputValue}"
+                            <amx:outputText value="#{pageFlowScope.itemNumber}"
                                             styleClass="adfmf-listItem-captionText" id="ot11"/>
                         </amx:panelLabelAndMessage>
                     </amx:listItem>

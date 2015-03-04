@@ -44,11 +44,11 @@ public class ItemDC  extends SyncUtils {
            String itemDesc = getDesc();
            GenericVirtualType payload = new GenericVirtualType(null, "payload");
            payload.defineAttribute(null, "ItemNum", String.class, itemNum);
-           payload.defineAttribute(null, "OrganizationId", String.class, "100");
+           payload.defineAttribute(null, "OrganizationId", String.class, "102");
            payload.defineAttribute(null, "Desc", String.class, itemDesc);
            
            HashMap paramsMap = new HashMap();
-           paramsMap.put("resAttriName", "Item");
+           paramsMap.put("resAttriName", "ItemList");
            paramsMap.put("lovDCName", "ItemLOV_WS");
            paramsMap.put("opeartionName", "process");
            paramsMap.put("payload", payload);
