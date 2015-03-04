@@ -558,4 +558,20 @@
       </XmlRefAddr>
     </RefAddresses>
   </Reference>
+  <Reference name="REST" className="oracle.adf.model.connection.rest.RestConnection" credentialStoreKey="REST" xmlns="">
+    <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
+    <RefAddresses>
+      <XmlRefAddr addrType="REST">
+        <Contents>
+          <restconnection name="REST" url="http://10.118.32.41:8000">
+            <authentication style="challenge">
+              <type>basic</type>
+            </authentication>
+          </restconnection>
+        </Contents>
+      </XmlRefAddr>
+      <SecureRefAddr addrType="username"/>
+      <SecureRefAddr addrType="password"/>
+    </RefAddresses>
+  </Reference>
 </References>
