@@ -28,60 +28,66 @@
             </amx:panelGroupLayout>
             <amx:panelGroupLayout id="pgl3">
                 <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
-                    <amx:listItem id="li1" action="ItemLOV">
+                    <amx:listItem id="li2" showLinkIcon="true" action="ItemLOV">
+                        <amx:panelLabelAndMessage label="LPN" showRequired="true" inlineStyle="text-align:center;"
+                                                  id="plam1">
+                            <amx:outputText value="#{bindings.itemNum.inputValue}"
+                                            styleClass="adfmf-listItem-captionText" id="ot12"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:listItem>
+                    <amx:listItem id="li1" showLinkIcon="true" action="ItemLOV">
                         <amx:panelLabelAndMessage label="Item Number" showRequired="true"
                                                   inlineStyle="text-align:center;" id="plam2">
                             <amx:outputText value="#{bindings.itemNum.inputValue}"
                                             styleClass="adfmf-listItem-captionText" id="ot11"/>
                         </amx:panelLabelAndMessage>
                     </amx:listItem>
+                    <amx:listItem id="li3" showLinkIcon="false">
+                        <amx:panelLabelAndMessage label="Description" inlineStyle="text-align:center;" id="plam3">
+                            <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
+                                            id="it3"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:listItem>
+                    <amx:listItem id="li10" showLinkIcon="false">
+                        <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:center;" id="plam14">
+                            <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText"
+                                            id="it10"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:listItem>
+                    <amx:listItem id="li4" showLinkIcon="false">
+                        <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam4">
+                            <amx:outputText value="#{pageFlowScope.availableQty}"
+                                            styleClass="adfmf-listItem-captionText" id="it4"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:listItem>
+                    <amx:listItem id="li5" showLinkIcon="false">
+                        <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:center;" id="plam5">
+                            <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
+                                            id="it5"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:listItem>
+                    <amx:listItem id="li11" showLinkIcon="false">
+                        <amx:panelFormLayout id="pfl2">
+                            <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:center;"
+                                           value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText"
+                                           id="it11"/>
+                        </amx:panelFormLayout>
+                    </amx:listItem>
                 </amx:listView>
                 <amx:tableLayout id="tl1">
-                    <amx:rowLayout id="rl1">
-                        <amx:cellFormat id="cf2">
-                            <amx:outputText value="LPN" id="ot4"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf1">
-                            <amx:inputText id="it1"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl2">
-                        <amx:cellFormat id="cf4">
-                            <amx:outputText value="Item" id="ot5"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf3">
-                            <amx:inputText id="it2"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl3">
-                        <amx:cellFormat id="cf6">
-                            <amx:outputText value="Item Details" id="ot6"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf7">
-                            <amx:inputText label="Available :" id="it8"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf8">
-                            <amx:inputText label="On Hand :" id="it9"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf5">
-                            <amx:inputText label="UOM :" id="it10"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat id="cf10">
                             <amx:outputText value="From" id="ot7"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf11">
                             <!--amx:inputText label="Sub" id="it6"/-->
-                            <amx:selectOneChoice value="#{bindings.subinv.inputValue}" label="#{bindings.subinv.label}"
-                                                 id="soc1">
+                            <amx:selectOneChoice value="#{bindings.subinv.inputValue}" label="Sub" id="soc1">
                                 <amx:selectItems value="#{bindings.subinv.items}" id="si1"/>
                             </amx:selectOneChoice>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf9">
                             <!--amx:inputText label="Loc" id="it7"/-->
-                            <amx:selectOneChoice value="#{bindings.locator.inputValue}"
-                                                 label="#{bindings.locator.label}" id="soc2">
+                            <amx:selectOneChoice value="#{bindings.locator.inputValue}" label="Loc" id="soc2">
                                 <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
                             </amx:selectOneChoice>
                         </amx:cellFormat>
@@ -91,31 +97,26 @@
                             <amx:outputText value="To" id="ot8"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf13">
-                            <amx:inputText label="Sub" id="it4"/>
-                            <amx:selectOneChoice value="#{bindings.subinv1.inputValue}"
-                                                 label="#{bindings.subinv1.label}" id="soc4">
+                            <amx:inputText label="Sub" id="it24"/>
+                            <amx:selectOneChoice value="#{bindings.subinv1.inputValue}" label="Sub" id="soc4">
                                 <amx:selectItems value="#{bindings.subinv1.items}" id="si4"/>
                             </amx:selectOneChoice>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf12">
-                            <amx:inputText label="Loc" id="it5"/>
-                            <amx:selectOneChoice value="#{bindings.locator1.inputValue}"
-                                                 label="#{bindings.locator1.label}" id="soc3">
+                            <amx:inputText label="Loc" id="it25"/>
+                            <amx:selectOneChoice value="#{bindings.locator1.inputValue}" label="Loc" id="soc3">
                                 <amx:selectItems value="#{bindings.locator1.items}" id="si3"/>
                             </amx:selectOneChoice>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl6">
-                        <amx:cellFormat id="cf16">
-                            <amx:outputText value="Quantity" id="ot9"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf15">
+                           <amx:cellFormat id="cf15">
                             <amx:outputText value="outputText1" id="ot10"/>
-                            <amx:commandButton text="commandButton1" id="cb10">
+                            <amx:commandButton text="Serial/Lot" id="cb10">
                                 <amx:showPopupBehavior id="spb1" popupId="serLot" type="action" align="cornerBottomEnd"
                                                        alignId="cb10"/>
                             </amx:commandButton>
-                            <amx:inputText id="it3"/>
+                            <amx:inputText id="it23"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -136,7 +137,7 @@
                         <amx:panelGroupLayout id="pgl8" layout="horizontal">
                             <amx:panelGroupLayout id="pgl11">
                                 <amx:inputText label="Item" id="it12"/>
-                                <amx:inputText label="Quantity" id="it11"/>
+                                <amx:inputText label="Quantity" id="it121"/>
                             </amx:panelGroupLayout>
                             <amx:selectBooleanSwitch label="Ranges" id="sbs1"/>
                         </amx:panelGroupLayout>
