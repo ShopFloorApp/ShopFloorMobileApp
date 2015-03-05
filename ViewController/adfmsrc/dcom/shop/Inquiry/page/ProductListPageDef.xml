@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="ProductListPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="ProductSearchDC" id="ProductSearchDCIterator"/>
+    <accessorIterator MasterBinding="ProductSearchDCIterator" Binds="allProdItems" RangeSize="25"
+                      DataControl="ProductSearchDC" BeanClass="dcom.shop.Inquiry.ProductSearchEntity"
+                      id="allProdItemsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allProdItemsIterator" id="allProdItems">
+      <nodeDefinition DefName="dcom.shop.Inquiry.ProductSearchEntity" Name="allProdItems0">
+        <AttrNames>
+          <Item Value="ITEM"/>
+          <Item Value="ITEMSTATUS"/>
+          <Item Value="ITEMDESC"/>
+          <Item Value="PRIMARYUOM"/>
+          <Item Value="ITEMTYPE"/>
+          <Item Value="ITEMCATALOG"/>
+          <Item Value="ORGCODE"/>
+          <Item Value="ITEMID"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
