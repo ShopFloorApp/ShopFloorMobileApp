@@ -24,6 +24,10 @@
     <page path="/dcom.shop.Transaction/page/SubInventoryDetails.amx"
           usageId="dcom_shop_mobile_SubInventoryDetailsPageDef"/>
     <page path="/page/LovPage/itemLOVPG.amx" usageId="dcom_shop_mobile_itemLOVPGPageDef"/>
+
+    <page path="/dcom.shop.Inquiry/page/ProductList.amx" usageId="dcom_shop_mobile_ProductListPageDef"/>
+
+    <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -47,8 +51,17 @@
     <page id="dcom_shop_mobile_SubInventoryDetailsPageDef"
           path="dcom.shop.Transaction.page.SubInventoryDetailsPageDef"/>
     <page id="dcom_shop_mobile_itemLOVPGPageDef" path="page.LovPage.itemLOVPGPageDef"/>
+    <page id="dcom_shop_mobile_ProductListPageDef" path="dcom.shop.Inquiry.page.ProductListPageDef"/>
+
+    <page id="dcom_shop_mobile_LpnLOVPGPageDef" path="page.LovPage.LpnLOVPGPageDef"/>
+
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/>
+
+      <dc id="LPNDC" path="dcom.shop.mobile.LPNDC"/>
+    <dc id="LPNLOV_WS" path="dcom.shop.mobile.LPNLOV_WS"/>
+
     <dc id="ItemDC" path="dcom.shop.mobile.ItemDC"/>
     <dc id="ItemLOV_WS" path="dcom.shop.mobile.ItemLOV_WS"/>
     <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>

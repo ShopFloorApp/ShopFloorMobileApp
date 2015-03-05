@@ -3,13 +3,28 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="Product Search Results" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
+      <amx:commandButton id="cb1" rendered="false"/>
     </amx:facet>
     <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
+      <amx:commandLink id="cl1" action = "productlistBack">
+        <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+      </amx:commandLink>
+      </amx:facet>
+     <amx:panelGroupLayout id="pgl">
+      <amx:listView var="row" value="#{bindings.allProdItems1.collectionModel}"
+                    fetchSize="#{bindings.allProdItems1.rangeSize}"
+                    selectedRowKeys="#{bindings.allProdItems1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.allProdItems1.collectionModel.makeCurrent}"
+                    showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+        <amx:listItem id="li1" action= "details" showLinkIcon="true">
+          <amx:outputText value="#{row.ITEM}" id="ot2"/>
+          <amx:outputText value="#{row.ORGCODE}" id="ot3"/>
+        </amx:listItem>
+      </amx:listView>
+      </amx:panelGroupLayout>
+    
   </amx:panelPage>
 </amx:view>

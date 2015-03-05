@@ -3,7 +3,52 @@
    <OverallProperties
       id="OverallProperties1"/>
    <View
-      id="View2">
+      id="View9">
+      <property
+         name="activityId">ProductList</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/ProductList.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ProductList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">106.29297</property>
+      <property
+         name="x">774.5</property>
+   </View>
+   <View
+      id="View10">
+      <property
+         name="activityId">productDetails</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/productDetails.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>productDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">152.0459</property>
+      <property
+         name="x">1061.3525</property>
+   </View>
+   <View
+      id="View11">
+      <property
+         name="activityId">searchProduct</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/searchProduct.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>searchProduct&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">103.69531</property>
+      <property
+         name="x">420.68652</property>
+   </View>
+   <View
+      id="View12">
       <property
          name="activityId">inquiry</property>
       <property
@@ -15,74 +60,43 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">197.94824</property>
+         name="y">193.09766</property>
       <property
-         name="x">550.0</property>
-   </View>
-   <View
-      id="View3">
-      <property
-         name="activityId">searchProduct</property>
-      <property
-         name="page">/dcom.shop.Inquiry/page/searchProduct.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>searchProduct&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">72.5</property>
-      <property
-         name="x">63.686523</property>
-   </View>
-   <View
-      id="View4">
-      <property
-         name="activityId">ProductList</property>
-      <property
-         name="page">/dcom.shop.Inquiry/page/ProductList.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>ProductList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">72.5</property>
-      <property
-         name="x">145.5</property>
-   </View>
-   <View
-      id="View5">
-      <property
-         name="activityId">productDetails</property>
-      <property
-         name="page">/dcom.shop.Inquiry/page/productDetails.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>productDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">72.5</property>
-      <property
-         name="x">243.35254</property>
+         name="x">243.5</property>
    </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase6"
-      from="View2"
-      to="View3">
+      id="ControlFlowCase13"
+      from="View12"
+      to="View11">
       <property
-         name="fromOutcome">search</property>
+         name="fromOutcome">productSearch</property>
       <property
          name="tosrcid">__2</property>
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">L50,509.0,197.59766,60.186523,132.6363,B44</property>
+         name="sdm:polyPoints">R46,284.5,189.24707,376.91467,99.84473,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase7"
-      from="View4"
-      to="View5">
+      id="ControlFlowCase14"
+      from="View9"
+      to="View11">
+      <property
+         name="fromOutcome">productlistBack</property>
+      <property
+         name="tosrcid">__8</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">L46,733.5,102.44238,461.71997,99.84473,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View9"
+      to="View10">
       <property
          name="fromOutcome">details</property>
       <property
@@ -90,13 +104,13 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">R50,186.5,72.149414,202.35254,72.149414,L50</property>
+         name="sdm:polyPoints">R50,815.5,105.94238,1020.35254,151.69531,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase8"
-      from="View3"
-      to="View4">
+      id="ControlFlowCase16"
+      from="View11"
+      to="View9">
       <property
          name="fromOutcome">productlist</property>
       <property
@@ -104,6 +118,20 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">B56,67.18652,126.149414,145.5,126.149414,B50</property>
+         name="sdm:polyPoints">R54,461.68652,106.84473,733.46655,109.44238,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View11"
+      to="View12">
+      <property
+         name="fromOutcome">searchBack</property>
+      <property
+         name="tosrcid">__7</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">L54,379.68652,106.84473,287.30182,196.24707,R54</property>
    </ControlFlowCase>
 </SDM>

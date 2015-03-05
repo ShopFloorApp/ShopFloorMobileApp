@@ -6,15 +6,18 @@
       <amx:outputText value="Product Search" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandLink id="cl1">
+      <amx:commandLink id="cl1" action = "searchBack">
         <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
       </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2" rendered="false"/>
     </amx:facet>
+    
     <amx:panelFormLayout id="pfl1">
-      <amx:inputText label="label1" id="it1"/>
+      <amx:inputText label="Keyword" id="it1" value = "#{pageFlowScope.searchKeyword}"/>
+    
     </amx:panelFormLayout>
+    <amx:commandButton text="Search" id="cb1" action ="productlist" />
   </amx:panelPage>
 </amx:view>

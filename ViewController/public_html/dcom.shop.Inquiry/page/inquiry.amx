@@ -18,7 +18,7 @@
     </amx:facet>
     <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards"
                   styleClass="adfmf-listView-insetList">
-      <amx:listItem id="li1" inlineStyle="width:97%;" action="search">
+      <amx:listItem id="li1" inlineStyle="width:97%;" action="productSearch">
         <amx:outputText value="Product Search" id="ot2"/>
       </amx:listItem>
       <amx:listItem id="li2" inlineStyle="width:97%;" action="search">

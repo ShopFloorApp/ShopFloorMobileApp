@@ -54,7 +54,7 @@ public class RestCallerUtil {
         //set URL connection defined for this sample. In this sample, the "hrresrconn" connection resolves 
         //to http://127.0.0.1:7101/hrrest/resources/hrappsrvc . The connection has been created for this 
         //sample choosing File | New | From Gallery | General | Connections | URL connection from the JDeveloper menu
-        restServiceAdapter.setConnectionName("Rest");
+        restServiceAdapter.setConnectionName("REST");
         
         //set GET, POST, DELETE, PUT
         restServiceAdapter.setRequestType(httpMethod);
@@ -87,7 +87,7 @@ public class RestCallerUtil {
         }
 
         try {
-            response = (String) restServiceAdapter.send(restPayload);
+            response = (restServiceAdapter.send(restPayload)).toString();
         } catch (Exception e) {
             //log error
             Trace.log("REST_JSON",Level.SEVERE, this.getClass(),"invokeRestRequest", "Invoke of REST Resource failed for "+httpMethod+" to "+requestURI);

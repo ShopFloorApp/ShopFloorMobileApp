@@ -17,7 +17,7 @@
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
-                <from-outcome>search</from-outcome>
+                <from-outcome>productSearch</from-outcome>
                 <to-activity-id>searchProduct</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
@@ -27,12 +27,20 @@
                 <from-outcome>productlist</from-outcome>
                 <to-activity-id>ProductList</to-activity-id>
             </control-flow-case>
+            <control-flow-case id="__7">
+                <from-outcome>searchBack</from-outcome>
+                <to-activity-id>inquiry</to-activity-id>
+            </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__5">
             <from-activity-id>ProductList</from-activity-id>
             <control-flow-case id="__6">
                 <from-outcome>details</from-outcome>
                 <to-activity-id>productDetails</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__8">
+                <from-outcome>productlistBack</from-outcome>
+                <to-activity-id>searchProduct</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>
