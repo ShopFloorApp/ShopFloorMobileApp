@@ -13,9 +13,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">106.29297</property>
+         name="y">87.5918</property>
       <property
-         name="x">774.5</property>
+         name="x">686.5</property>
    </View>
    <View
       id="View10">
@@ -28,9 +28,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">152.0459</property>
+         name="y">100.34473</property>
       <property
-         name="x">1061.3525</property>
+         name="x">908.35254</property>
    </View>
    <View
       id="View11">
@@ -90,7 +90,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">L46,733.5,102.44238,461.71997,99.84473,R46</property>
+         name="sdm:polyPoints">L46,645.194,83.74121,461.68652,99.84473,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -104,7 +104,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">R50,815.5,105.94238,1020.35254,151.69531,L50</property>
+         name="sdm:polyPoints">R50,727.5,87.24121,867.35254,99.99414,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -118,7 +118,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">R54,461.68652,106.84473,733.46655,109.44238,L54</property>
+         name="sdm:polyPoints">R54,461.99283,106.84473,645.5,90.74121,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

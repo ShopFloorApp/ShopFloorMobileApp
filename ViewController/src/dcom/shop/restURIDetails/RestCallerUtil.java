@@ -54,7 +54,7 @@ public class RestCallerUtil {
         //set URL connection defined for this sample. In this sample, the "hrresrconn" connection resolves 
         //to http://127.0.0.1:7101/hrrest/resources/hrappsrvc . The connection has been created for this 
         //sample choosing File | New | From Gallery | General | Connections | URL connection from the JDeveloper menu
-        restServiceAdapter.setConnectionName("REST");
+        restServiceAdapter.setConnectionName("Rest");
         
         //set GET, POST, DELETE, PUT
         restServiceAdapter.setRequestType(httpMethod);

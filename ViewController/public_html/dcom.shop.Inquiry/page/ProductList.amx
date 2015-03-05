@@ -14,17 +14,39 @@
       </amx:commandLink>
       </amx:facet>
      <amx:panelGroupLayout id="pgl">
-      <amx:listView var="row" value="#{bindings.allProdItems1.collectionModel}"
-                    fetchSize="#{bindings.allProdItems1.rangeSize}"
-                    selectedRowKeys="#{bindings.allProdItems1.collectionModel.selectedRow}"
-                    selectionListener="#{bindings.allProdItems1.collectionModel.makeCurrent}"
+      <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}"
+                    fetchSize="#{bindings.allProdItems.rangeSize}"
+                    selectedRowKeys="#{bindings.allProdItems.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.allProdItems.collectionModel.makeCurrent}"
                     showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-        <amx:listItem id="li1" action= "details" showLinkIcon="true">
-          <amx:outputText value="#{row.ITEM}" id="ot2"/>
-          <amx:outputText value="#{row.ORGCODE}" id="ot3"/>
+        <amx:listItem id="li1" showLinkIcon="true" action="details">
+            <amx:tableLayout width="100%" id="tl">
+                        <amx:rowLayout id="rl">
+                            <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
+                            <amx:cellFormat width="60%" height="28px" id="cf4">
+                                <amx:outputText value="#{row.ITEM}" id="ot5"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
+                            <amx:cellFormat width="40%" halign="end" id="cf3">
+                                <amx:outputText value="#{row.ITEMDESC}" styleClass="adfmf-listItem-highlightText"
+                                                id="ot4"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="r2">
+                            <amx:cellFormat width="60%" height="12px" id="cf1">
+                                <amx:outputText value="#{row.ITEMSTATUS}" styleClass="adfmf-listItem-captionText"
+                                                id="ot2"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat width="40%" halign="end" id="cf2">
+                                <amx:outputText value="#{row.ITEMTYPE} #{row.ITEMCATALOG} #{row.UOM} #{row.ORGCODE}"
+                                                styleClass="adfmf-listItem-captionText" id="ot3"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+         
         </amx:listItem>
       </amx:listView>
-      </amx:panelGroupLayout>
+    </amx:panelGroupLayout>
     
   </amx:panelPage>
 </amx:view>
