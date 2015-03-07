@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52"
+                id="MiscellaneousTransactionPageDef" Package="dcom.shop.Transaction.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="p_AccountAlias" Type="java.lang.String"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="AccountAliasDC" id="AccountAliasDCIterator"/>
+    <accessorIterator MasterBinding="AccountAliasDCIterator" Binds="accountAlias" RangeSize="-1"
+                      DataControl="AccountAliasDC" BeanClass="dcom.shop.application.mobile.AccountAliasBO"
+                      id="accountAliasIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="variables" id="accountAlias" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="accountAliasIterator">
+      <AttrNames>
+        <Item Value="p_AccountAlias"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="accountAlias"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="accountAlias"/>
+        <Item Value="accountSegment"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="invokeGetSubInvByOrgIdDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="SubinventoryDC"
+                  InstanceName="data.SubinventoryDC.dataProvider"/>
+    <methodAction id="invokeLocatorDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider">
+      <NamedData NDName="subInv" NDValue="#{pageFlowScope.MiscTrxnSubinv}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

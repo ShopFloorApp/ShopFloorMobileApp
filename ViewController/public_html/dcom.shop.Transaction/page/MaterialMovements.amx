@@ -27,7 +27,7 @@
                 <amx:outputText value="Subinventory Transfers" id="ot4"/>
                 <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderButton}" id="sp10"/>
             </amx:listItem>
-            <amx:listItem id="li4" action="miscTransactionsTF">
+            <amx:listItem id="li4" action="mtrTrxn">
                 <amx:outputText value="Misc. Transactions" id="ot5"/>
                 <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.miscTxnRenderButton}"
                                          id="sp20"/>
