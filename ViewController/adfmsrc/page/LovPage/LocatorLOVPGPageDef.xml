@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LocatorLOVPGPageDef"
+                Package="page.LovPage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="locatorsIterator" id="allLocators">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LocatorBO" Name="locators0">
+        <AttrNames>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Locator" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1" action="sendLocator" text="Back"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" text="Home" action="MainInquiry"/>
+        </amx:facet>
+        <amx:facet name="footer">
+            <amx:outputText value="Select a Locator" id="ot2"/>
+        </amx:facet>
+        <!--amx:panelFormLayout id="pfl1">
+            <amx:inputText value="#{bindings.subInv.inputValue}" label="Subinv" id="it2"/>
+        </amx:panelFormLayout>
+        <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
+            <amx:commandButton actionListener="#{bindings.ProcessWS.execute}" text="Search"
+                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;"/>
+        </amx:panelLabelAndMessage-->
+        <!--amx:selectOneRadio value="#{bindings.allLocators.inputValue}" id="sor1"
+                        valueChangeListener="#{SelectLocatorBean.selectLocator}">
+      <amx:selectItems value="#{bindings.allLocators.items}" id="si1"/>
+    </amx:selectOneRadio-->
+        <amx:outputText id="ot3" value="#{pageFlowScope.LocatorResults"/>
+        <amx:panelGroupLayout id="pgl1" rendered='#{pageFlowScope.LocatorResults == "Search results" ? true : false }'
+                              inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+            <amx:tableLayout width="100%" id="tl2">
+                <amx:rowLayout id="rl12">
+                    <!--amx:cellFormat width="40%" id="cf22">
+                        <amx:panelLabelAndMessage label="Locator ID" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
+                    </amx:cellFormat-->
+                    <amx:cellFormat width="60%" halign="start" id="cf33">
+                        <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+         <amx:listView var="row" value="#{bindings.allLocators.collectionModel}"
+                      rendered="#{pageFlowScope.LocatorPage == 'FromSubInv' ? true : false}"
+                      fetchSize="#{bindings.allLocators.rangeSize}" id="lv2">
+            <amx:listItem showLinkIcon="false" 
+                          action="Back" id="li2">
+                <amx:tableLayout width="100%" id="tl1">
+                    <amx:rowLayout id="rl1">
+                        <!--amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf2">
+                            <amx:outputText value="#{row.LOCATOR_ID}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot43"/>
+                        </amx:cellFormat-->
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf25"/>
+                        <amx:cellFormat width="60%" halign="start" height="50px" id="cf3">
+                            <!--amx:panelLabelAndMessage label="Locator Code" inlineStyle="text-align:left;" id="plam2222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.desc}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot4"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                        <!--amx:cellFormat width="100%" height="40px" id="cf2">
+                            <amx:outputText value="LocatorId: #{row.LOCATOR_ID} Locator: #{row.LOCATOR}" id="ot5"/>
+                        </amx:cellFormat-->
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.FromLocator}"
+                                         id="spl2"/>
+                 <amx:setPropertyListener from="SubInvLocatorPage" type="action" to="#{pageFlowScope.CallingPage}"
+                                         id="splss2"/>
+            </amx:listItem>
+        </amx:listView>
+        <amx:listView var="row" value="#{bindings.allLocators.collectionModel}"
+                      rendered="#{pageFlowScope.LocatorPage == 'ToSubInv' ? true : false}"
+                      fetchSize="#{bindings.allLocators.rangeSize}" id="lv3">
+            <amx:listItem showLinkIcon="false" action="Back" id="li3">
+                <amx:tableLayout width="100%" id="tl12">
+                    <amx:rowLayout id="rl2">
+                        <!--amx:cellFormat width="20px" rowSpan="2" id="cf245"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf235">
+                            <amx:outputText value="#{row.LOCATOR_ID}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        </amx:cellFormat-->
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf56"/>
+                        <amx:cellFormat width="60%" halign="start" height="50px" id="cf6">
+                            <!--amx:panelLabelAndMessage label="Locator Code" inlineStyle="text-align:left;" id="plam22">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.desc}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot6"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.ToLocator}" id="spl3"/>
+            </amx:listItem>
+        </amx:listView>
+        <amx:listView var="row" value="#{bindings.allLocators.collectionModel}"
+                      rendered="#{pageFlowScope.LocatorPage == 'OnHand' ? true : false}"
+                      fetchSize="#{bindings.allLocators.rangeSize}" id="lv4">
+            <amx:listItem showLinkIcon="false" action="Back" id="li4">
+                <amx:tableLayout width="100%" id="tl3">
+                    <amx:rowLayout id="rl3">
+                        <!--amx:cellFormat width="20px" rowSpan="2" id="cf57"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf7">
+                            <amx:outputText value="#{row.LOCATOR_ID}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot7"/>
+                        </amx:cellFormat-->
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf58"/>
+                        <amx:cellFormat width="60%" halign="start" height="50px" id="cf8">
+                            <!--amx:panelLabelAndMessage label="Locator Code" inlineStyle="text-align:left;" id="plam4">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.desc}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot8"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.OnHandLocator}"
+                                         id="spl4"/>
+           </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
+</amx:view>

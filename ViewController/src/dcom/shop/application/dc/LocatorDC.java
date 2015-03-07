@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
@@ -23,9 +24,11 @@ public class LocatorDC extends SyncUtils {
 
     
     public LocatorDC() {
-        try{
+      /*  try{
         GenericVirtualType payload = new GenericVirtualType(null, "payload");
         payload.defineAttribute(null, "Whse", String.class, "100");
+        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fromSubInv}");
+        if(subInv == null)
         payload.defineAttribute(null, "Subinv", String.class, "RAW");
         HashMap paramsMap=new HashMap();
         paramsMap.put("resAttriName","LocatorDetails");
@@ -36,7 +39,22 @@ public class LocatorDC extends SyncUtils {
             filterLocators();
         }catch(Exception e){
             throw new RuntimeException(e);
-        }
+        }*/
+    }
+    
+    public void ProcessWS(String subInv) {
+        GenericVirtualType payload = new GenericVirtualType(null, "payload");
+        payload.defineAttribute(null, "Whse", String.class, "100");
+        //String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fromSubInv}");
+        if(subInv == null)
+        payload.defineAttribute(null, "Subinv", String.class, "RAW");
+        HashMap paramsMap=new HashMap();
+        paramsMap.put("resAttriName","LocatorDetails");
+        paramsMap.put("lovDCName", "LocatorLOV_WS");
+        paramsMap.put("opeartionName", "process");
+        paramsMap.put("payload",payload);
+        s_locator = super.getCollection(LocatorBO.class, paramsMap);
+        providerChangeSupport.fireProviderRefresh("locators");
     }
 
     public void setLocatorFilter(String locatorFilter) {
@@ -63,7 +81,7 @@ public class LocatorDC extends SyncUtils {
 
         try {
             LocatorBO[] locators = null;            
-            locators = (LocatorBO[]) filtered_Locators.toArray(new LocatorBO[filtered_Locators.size()]);
+            locators = (LocatorBO[]) s_locator.toArray(new LocatorBO[s_locator.size()]);
             return locators;
         } catch (Exception e) {
             throw new RuntimeException(e);

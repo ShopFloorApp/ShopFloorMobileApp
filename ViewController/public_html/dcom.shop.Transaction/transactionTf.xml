@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="transactionTf">
     <default-activity>Transaction</default-activity>
+    <managed-bean id="__17">
+      <managed-bean-name>StateListenerBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
     <view id="SubInventoryTxn">
       <page>/dcom.shop.Transaction/page/SubInventoryTxn.amx</page>
     </view>
@@ -20,6 +25,15 @@
     <view id="LpnLOVPG">
       <page>/page/LovPage/LpnLOVPG.amx</page>
     </view>
+    <view id="SubinventoryLov">
+      <page>/page/LovPage/SubinventoryLov.amx</page>
+    </view>
+    <view id="LocatorLOVPG">
+      <page>/page/LovPage/LocatorLOVPG.amx</page>
+    </view>
+    <view id="MaterialTransaction">
+      <page>/dcom.shop.Transaction/page/MiscellaneousTransaction.amx</page>
+    </view>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -36,6 +50,10 @@
       <control-flow-case id="__7">
         <from-outcome>bT</from-outcome>
         <to-activity-id>Transaction</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome>mtrTrxn</from-outcome>
+        <to-activity-id>MaterialTransaction</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__8">
@@ -63,6 +81,14 @@
         <from-outcome>lpnLOV</from-outcome>
         <to-activity-id>LpnLOVPG</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>Subinv</from-outcome>
+        <to-activity-id>SubinventoryLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome>Locator</from-outcome>
+        <to-activity-id>LocatorLOVPG</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__2">
       <from-activity-id>itemLOVPG</from-activity-id>
@@ -76,6 +102,35 @@
       <control-flow-case id="__15">
         <from-outcome>Back</from-outcome>
         <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>SubinventoryLov</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id>LocatorLOVPG</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__25">
+      <from-activity-id>MaterialTransaction</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>MaterialMovements</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome>Subinv</from-outcome>
+        <to-activity-id>SubinventoryLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome>Locator</from-outcome>
+        <to-activity-id>LocatorLOVPG</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

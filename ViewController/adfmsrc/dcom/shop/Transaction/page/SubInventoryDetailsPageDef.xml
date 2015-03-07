@@ -79,5 +79,32 @@
         <Item Value="itemNum"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="invokeItemDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="ItemDC" InstanceName="data.ItemDC.dataProvider"/>
+    <methodAction id="invokeInvTrnDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider"/>
+    <tree IterBinding="locatorsIterator" id="locators">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LocatorBO" Name="locators0">
+        <AttrNames>
+          <Item Value="locator"/>
+          <Item Value="alias"/>
+          <Item Value="desc"/>
+          <Item Value="locatorType"/>
+          <Item Value="subinv"/>
+          <Item Value="whse"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  <methodAction id="invokeGetSubInvByOrgIdDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="SubinventoryDC"
+                  InstanceName="data.SubinventoryDC.dataProvider"/>
+    <methodAction id="invokeLocatorDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider">
+      <NamedData NDName="subInv" NDValue="#{pageFlowScope.FromSubinventory}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="invokeLocatorDC1" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider">
+      <NamedData NDName="subInv" NDValue="#{pageFlowScope.ToSubinventory}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

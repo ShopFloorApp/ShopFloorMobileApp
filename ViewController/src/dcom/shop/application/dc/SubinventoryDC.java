@@ -3,6 +3,7 @@ package dcom.shop.application.dc;
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.CategorySetBO;
 
+import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.application.mobile.SubinventoryBO;
 
 import dcom.shop.application.mobile.WarehouseBO;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
@@ -26,7 +28,7 @@ public class SubinventoryDC extends SyncUtils {
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public SubinventoryDC() {
-        try {
+        /*try {
             GenericVirtualType payload = new GenericVirtualType(null, "payload");
             payload.defineAttribute(null, "Whse", String.class, "100");
             HashMap paramsMap = new HashMap();
@@ -38,7 +40,19 @@ public class SubinventoryDC extends SyncUtils {
             filterSubinventories();
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*/
+    }
+    
+    public void ProcessWS() {
+        GenericVirtualType payload = new GenericVirtualType(null, "payload");
+        payload.defineAttribute(null, "Whse", String.class, "100");
+        HashMap paramsMap = new HashMap();
+        paramsMap.put("resAttriName", "SubinvDetails");
+        paramsMap.put("lovDCName", "SubinventoryLOV_WS");
+        paramsMap.put("opeartionName", "process");
+        paramsMap.put("payload", payload);
+        s_subInventories = super.getCollection(SubinventoryBO.class, paramsMap);
+        providerChangeSupport.fireProviderRefresh("subinventories");
     }
 
     public void setSubinvFilter(String subinvFilter) {
@@ -66,7 +80,7 @@ public class SubinventoryDC extends SyncUtils {
         try {
             SubinventoryBO[] subInventories = null;
             subInventories =
-                (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
+                (SubinventoryBO[]) s_subInventories.toArray(new SubinventoryBO[s_subInventories.size()]);
             return subInventories;
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -11,17 +11,18 @@
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
+    <amx:outputText id="ot3" value="#{pageFlowScope.FromSubInvResults}"/>
     <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
                   fetchSize="#{bindings.subinventories.rangeSize}"
                   selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
                   selectionListener="#{bindings.subinventories.collectionModel.makeCurrent}"
                   showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1">
+      <amx:listItem id="li1" action="Back" rendered="#{pageFlowScope.SubinventoryPage == 'From' ? true : false}">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl2">
             <amx:cellFormat width="10px" rowSpan="2" id="cf3"/>
             <amx:cellFormat width="100%" height="28px" id="cf2">
-              <amx:outputText value="#{row.subinv}" id="ot3"/>
+              <amx:outputText value="#{row.subinv}" id="ot33"/>
             </amx:cellFormat>
           </amx:rowLayout>
           <amx:rowLayout id="rl1">
@@ -30,6 +31,27 @@
             </amx:cellFormat>
           </amx:rowLayout>
         </amx:tableLayout>
+         <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.FromSubinventory}"
+                                         id="spl2"/>
+               <amx:setPropertyListener from="SubInvSubinventoryPage" type="action" to="#{pageFlowScope.CallingPage}"
+                                         id="spl7"/>
+      </amx:listItem>
+      <amx:listItem id="li12" action="Back" rendered="#{pageFlowScope.SubinventoryPage == 'To' ? true : false}">
+        <amx:tableLayout width="100%" id="tl21">
+          <amx:rowLayout id="rl22">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf32"/>
+            <amx:cellFormat width="100%" height="28px" id="cf22">
+              <amx:outputText value="#{row.subinv}" id="ot332"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl21">
+            <amx:cellFormat width="100%" height="12px" id="cf21">
+              <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText" id="ot42"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+         <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.ToSubinventory}"
+                                         id="spl32"/>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>
