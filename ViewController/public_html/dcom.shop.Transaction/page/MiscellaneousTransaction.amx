@@ -105,17 +105,17 @@
                         <amx:panelLabelAndMessage label="Subinventory" showRequired="true" inlineStyle="text-align:center;" id="plam6">
                         <amx:outputText value="#{pageFlowScope.MiscTrxnSubinv}" styleClass="adfmf-listItem-captionText" id="it6"/>
                     </amx:panelLabelAndMessage>
-                   <amx:setPropertyListener id="spl3" from="From" to="#{pageFlowScope.SubinventoryPage}"
+                   <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.SubinventoryPage}"
                                              type="action"/>
                 </amx:listItem>
                      <amx:listItem id="li7"
                               showLinkIcon='#{(pageFlowScope.FromSubInvLocatorControl == "1" ? false : true)}' 
                               action="#{StateListenerBean.callFromMiscTrxnLoc}"
                               actionListener="#{bindings.invokeLocatorDC.execute}">
-                    <amx:panelLabelAndMessage label="From Locator" showRequired="true" inlineStyle="text-align:center;" id="plam7">
-                        <amx:outputText value="#{pageFlowScope.FromLocator}" styleClass="adfmf-listItem-captionText" id="it7"/>
+                    <amx:panelLabelAndMessage label="Locator" showRequired="true" inlineStyle="text-align:center;" id="plam7">
+                        <amx:outputText value="#{pageFlowScope.MiscTrxnLocator}" styleClass="adfmf-listItem-captionText" id="it7"/>
                     </amx:panelLabelAndMessage>
-                    <amx:setPropertyListener id="spl5" from="FromSubInv" to="#{pageFlowScope.LocatorPage}"
+                    <amx:setPropertyListener id="spl5" from="MiscTrxn" to="#{pageFlowScope.LocatorPage}"
                                              type="action"/>
                 </amx:listItem>
                 </amx:listView>

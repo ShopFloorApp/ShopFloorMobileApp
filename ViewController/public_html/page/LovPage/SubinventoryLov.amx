@@ -53,6 +53,25 @@
          <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.ToSubinventory}"
                                          id="spl32"/>
       </amx:listItem>
+      <amx:listItem id="li122" action="BackToPage" rendered="#{pageFlowScope.SubinventoryPage == 'MiscTrxn' ? true : false}">
+        <amx:tableLayout width="100%" id="tl132">
+          <amx:rowLayout id="rl242">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf344"/>
+            <amx:cellFormat width="100%" height="28px" id="cf42">
+              <amx:outputText value="#{row.subinv}" id="ot34443"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl41">
+            <amx:cellFormat width="100%" height="12px" id="cf14">
+              <amx:outputText value="#{row.desc}" styleClass="adfmf-listItem-captionText" id="ot24"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+         <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.MiscTrxnSubinv}"
+                                         id="spl24"/>
+               <amx:setPropertyListener from="MiscTrxnSubinventoryPage" type="action" to="#{pageFlowScope.CallingPage}"
+                                         id="spl47"/>
+      </amx:listItem>
     </amx:listView>
   </amx:panelPage>
 </amx:view>

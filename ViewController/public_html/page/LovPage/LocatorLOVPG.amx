@@ -98,9 +98,9 @@
             </amx:listItem>
         </amx:listView>
         <amx:listView var="row" value="#{bindings.allLocators.collectionModel}"
-                      rendered="#{pageFlowScope.LocatorPage == 'OnHand' ? true : false}"
                       fetchSize="#{bindings.allLocators.rangeSize}" id="lv4">
-            <amx:listItem showLinkIcon="false" action="Back" id="li4">
+            <amx:listItem showLinkIcon="false" rendered="#{pageFlowScope.LocatorPage == 'OnHand' ? true : false}" 
+            action="Back" id="li4">
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl3">
                         <!--amx:cellFormat width="20px" rowSpan="2" id="cf57"/>
@@ -122,6 +122,24 @@
                 </amx:tableLayout>
                 <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.OnHandLocator}"
                                          id="spl4"/>
+           </amx:listItem>
+           <amx:listItem showLinkIcon="false" rendered="#{pageFlowScope.LocatorPage == 'MiscTrxn' ? true : false}" 
+            action="BackToPage" id="li54">
+                <amx:tableLayout width="100%" id="tl35">
+                    <amx:rowLayout id="rl34">
+                         <amx:cellFormat width="20px" rowSpan="2" id="cf548"/>
+                        <amx:cellFormat width="60%" halign="start" height="50px" id="cf48">
+                            <!--amx:panelLabelAndMessage label="Locator Code" inlineStyle="text-align:left;" id="plam4">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.desc}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot48"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.MiscTrxnLocator}"
+                                         id="spl24"/>
            </amx:listItem>
         </amx:listView>
     </amx:panelPage>
