@@ -20,6 +20,8 @@
                                            value="#{pageFlowScope.itemNumber}" inlineStyle="width:320px;"/>
                             <amx:commandLink id="cb3" action="ItemLOV">
                                 <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                                  <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.ItemLovPage}"
+                                             type="action"/>
                             </amx:commandLink>
                         </amx:panelGroupLayout>
                     </amx:cellFormat>

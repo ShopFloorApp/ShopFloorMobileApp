@@ -55,10 +55,6 @@
         <from-outcome>mtrTrxn</from-outcome>
         <to-activity-id>MaterialTransaction</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__29">
-        <from-outcome>ItemLOV</from-outcome>
-        <to-activity-id>itemLOVPG</to-activity-id>
-      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__8">
       <from-activity-id>SubInventoryTxn</from-activity-id>
@@ -135,6 +131,10 @@
       <control-flow-case id="__28">
         <from-outcome>Locator</from-outcome>
         <to-activity-id>LocatorLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome>ItemLOV</from-outcome>
+        <to-activity-id>itemLOVPG</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__31">
