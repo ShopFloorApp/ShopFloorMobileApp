@@ -14,4 +14,18 @@ public class RestURI {
     public static String PostInvTrxnURI() {
         return PROCESS_INV_TRXN_URI;
     }
+	
+		
+		
+		    private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
+        private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";
+        private static final String ProgramParamLovURI = "/webservices/rest/DCOMSRS/getlov/";
+        private static final String SubmitProgramURI = "/webservices/rest/DCOMSRS/submitprog/";
+        private static final String RequestsURI = "/webservices/rest/DCOMSRS/getrequest/";
+		
+		    public static String PostProgramListURI(){ return ProgramListURI;}
+        public static String PostProgramParamsURI(){ return ProgramParamsURI;}
+        public static String PostProgramParamLovURI(){ return ProgramParamLovURI;}
+        public static String PostSubmitProgramURI(){ return SubmitProgramURI;}
+        public static String PostRequestsURI(){ return RequestsURI;}
 }
