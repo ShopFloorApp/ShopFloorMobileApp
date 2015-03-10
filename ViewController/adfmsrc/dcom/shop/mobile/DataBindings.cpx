@@ -24,10 +24,15 @@
     <page path="/dcom.shop.Transaction/page/SubInventoryDetails.amx"
           usageId="dcom_shop_mobile_SubInventoryDetailsPageDef"/>
     <page path="/page/LovPage/itemLOVPG.amx" usageId="dcom_shop_mobile_itemLOVPGPageDef"/>
+
+    <page path="/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef"/>
+    <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
+
     <page path="/dcom.shop.Inquiry/page/ProductList.amx" usageId="dcom_shop_mobile_ProductListPageDef"/>
     <page path="/page/LovPage/LocatorLOVPG.amx" usageId="dcom_shop_mobile_LocatorLOVPGPageDef"/>
     <page path="/dcom.shop.Transaction/page/MiscellaneousTransaction.amx"
           usageId="dcom_shop_mobile_MiscellaneousTransactionPageDef"/>
+
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -51,10 +56,15 @@
     <page id="dcom_shop_mobile_SubInventoryDetailsPageDef"
           path="dcom.shop.Transaction.page.SubInventoryDetailsPageDef"/>
     <page id="dcom_shop_mobile_itemLOVPGPageDef" path="page.LovPage.itemLOVPGPageDef"/>
+
+    <page id="dcom_shop_mobile_ProgramparamsPageDef" path="dcom.shop.mobile.pageDefs.ProgramparamsPageDef"/>
+    <page id="dcom_shop_mobile_ProgramparamsPageDef1" path="dcom.shop.Request.page.ProgramparamsPageDef"/>
+
     <page id="dcom_shop_mobile_ProductListPageDef" path="dcom.shop.Inquiry.page.ProductListPageDef"/>
     <page id="dcom_shop_mobile_LocatorLOVPGPageDef" path="page.LovPage.LocatorLOVPGPageDef"/>
     <page id="dcom_shop_mobile_MiscellaneousTransactionPageDef"
           path="dcom.shop.Transaction.page.MiscellaneousTransactionPageDef"/>
+
   </pageDefinitionUsages>
   <dataControlUsages>
  <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/> <dc id="InvTrnDC" path="dcom.shop.mobile.InvTrnDC"/>    <dc id="ItemDC" path="dcom.shop.mobile.ItemDC"/>
