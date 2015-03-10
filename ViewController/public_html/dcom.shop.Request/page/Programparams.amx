@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Back" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:iterator id="i1" value="#{bindings.concProgramParams.collectionModel}" var="row">
+        <amx:inputText label="#{row.paramName}" id="it1" rendered="#{row.isLov!='Y'}"
+                       showRequired="#{row.required=='Y'}" required="#{row.required=='Y'}"
+                       />
+        <amx:selectOneChoice label="#{row.paramName}" id="soc2"
+                             rendered="#{row.isLov=='Y'}" showRequired="#{row.required=='Y'}" required="#{row.required=='Y'}">
+          <amx:selectItems id="si2" value="#{row.paramList}"/>          
+        </amx:selectOneChoice>
+      </amx:iterator>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>

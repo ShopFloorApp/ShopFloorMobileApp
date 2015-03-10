@@ -25,34 +25,32 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-        <amx:listView var="row" value="#{bindings.requests.collectionModel}" fetchSize="#{bindings.requests.rangeSize}"
-                      selectedRowKeys="#{bindings.requests.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.requests.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+        <amx:listView var="row" value="#{bindings.request.collectionModel}" fetchSize="#{bindings.request.rangeSize}"
+                      selectedRowKeys="#{bindings.request.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.request.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv1">
             <amx:listItem id="li1" action="requestDetails">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl2">
-                        <amx:cellFormat width="40px" rowSpan="2" id="cf3">
-                            <amx:image id="i1" source="/images/info-32.png"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="90%" height="28px" id="cf2">
-                            <amx:outputText value="#{row.name}" id="ot3"/>
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf2"/>
+                        <amx:cellFormat width="50%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3">
+                            <amx:outputText value="#{row.progName}" id="ot3"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl1">
-                        <amx:cellFormat width="40%" height="12px" id="cf1">
-                            <amx:outputText value="#{row.requestId}" styleClass="adfmf-listItem-captionText" id="ot2"/>
+                        <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1">
+                            <amx:outputText value="#{row.applName}" styleClass="adfmf-listItem-captionText" id="ot2"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="40%" height="28px" id="cf4" halign="end">
-                            <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;">
-                                <amx:commandButton text="#{row.timeTakenHH}" id="cb4"
-                                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
+                        <amx:cellFormat id="cf4" width="70%">
+                        <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;">
+                                <amx:commandButton text="#{row.hrsTaken}" id="cb4"
+                                                   styleClass="#{row.colorStyle}"/>
                                 <amx:outputText value=":" id="ot4"/>
-                                <amx:commandButton text="#{row.timeTakenMI}" id="cb5"
-                                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
+                                <amx:commandButton text="#{row.minTaken}" id="cb5"
+                                                   styleClass="#{row.colorStyle}"/>
                                 <amx:outputText value=":" id="ot5"/>
-                                <amx:commandButton text="#{row.timeTakenSS}" id="cb6"
-                                                   styleClass="#{row.phase == 'Completed' ? 'time-btn-completed' : (row.phase == 'Warning' ? 'time-btn-warning' : 'time-btn-error')}"/>
+                                <amx:commandButton text="#{row.ssTaken}" id="cb6"
+                                                   styleClass="#{row.colorStyle}"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
