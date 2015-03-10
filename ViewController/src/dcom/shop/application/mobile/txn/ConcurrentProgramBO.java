@@ -7,75 +7,64 @@ import java.util.HashMap;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ConcurrentProgramBO implements Comparable {
-    private String ConcProgId;
-    private String ProgramShortName;
-    private String ApplicationShortName;
-    private String ProgramName;
-    private String IsNewEntity;
-    private String RowOperation;
+public class ConcurrentProgramBO  {
+    private String shortName;
+    private String name;
+    private String applCode;
+    private String applName;
+    private String hasParam;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
-    public void setConcProgId(String ConcProgId) {
-        String oldConcProgId = this.ConcProgId;
-        this.ConcProgId = ConcProgId;
-        propertyChangeSupport.firePropertyChange("ConcProgId", oldConcProgId, ConcProgId);
+
+    public void setShortName(String shortName) {
+        String oldShortName = this.shortName;
+        this.shortName = shortName;
+        propertyChangeSupport.firePropertyChange("shortName", oldShortName, shortName);
     }
 
-    public String getConcProgId() {
-        return ConcProgId;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setProgramShortName(String ProgramShortName) {
-        String oldProgramShortName = this.ProgramShortName;
-        this.ProgramShortName = ProgramShortName;
-        propertyChangeSupport.firePropertyChange("ProgramShortName", oldProgramShortName, ProgramShortName);
+    public void setName(String name) {
+        String oldName = this.name;
+        this.name = name;
+        propertyChangeSupport.firePropertyChange("name", oldName, name);
     }
 
-    public String getProgramShortName() {
-        return ProgramShortName;
+    public String getName() {
+        return name;
     }
 
-    public void setApplicationShortName(String ApplicationShortName) {
-        String oldApplicationShortName = this.ApplicationShortName;
-        this.ApplicationShortName = ApplicationShortName;
-        propertyChangeSupport.firePropertyChange("ApplicationShortName", oldApplicationShortName, ApplicationShortName);
+    public void setApplCode(String applCode) {
+        String oldApplCode = this.applCode;
+        this.applCode = applCode;
+        propertyChangeSupport.firePropertyChange("applCode", oldApplCode, applCode);
     }
 
-    public String getApplicationShortName() {
-        return ApplicationShortName;
+    public String getApplCode() {
+        return applCode;
     }
 
-    public void setProgramName(String ProgramName) {
-        String oldProgramName = this.ProgramName;
-        this.ProgramName = ProgramName;
-        propertyChangeSupport.firePropertyChange("ProgramName", oldProgramName, ProgramName);
+    public void setApplName(String applName) {
+        String oldApplName = this.applName;
+        this.applName = applName;
+        propertyChangeSupport.firePropertyChange("applName", oldApplName, applName);
     }
 
-    public String getProgramName() {
-        return ProgramName;
+    public String getApplName() {
+        return applName;
     }
 
-    public void setIsNewEntity(String IsNewEntity) {
-        String oldIsNewEntity = this.IsNewEntity;
-        this.IsNewEntity = IsNewEntity;
-        propertyChangeSupport.firePropertyChange("IsNewEntity", oldIsNewEntity, IsNewEntity);
+    public void setHasParam(String hasParam) {
+        String oldHasParam = this.hasParam;
+        this.hasParam = hasParam;
+        propertyChangeSupport.firePropertyChange("hasParam", oldHasParam, hasParam);
     }
 
-    public String getIsNewEntity() {
-        return IsNewEntity;
+    public String getHasParam() {
+        return hasParam;
     }
-
-    public void setRowOperation(String RowOperation) {
-        String oldRowOperation = this.RowOperation;
-        this.RowOperation = RowOperation;
-        propertyChangeSupport.firePropertyChange("RowOperation", oldRowOperation, RowOperation);
-    }
-
-    public String getRowOperation() {
-        return RowOperation;
-    }
-
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
@@ -83,28 +72,5 @@ public class ConcurrentProgramBO implements Comparable {
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
-    }
-    public int compareTo(Object o) {
-        // TODO Implement this method
-        return 0;
-    }
-    public void setBOClassRow(HashMap hashMap) {
-        this.setConcProgId((String)hashMap.get("concprogid"));
-        this.setProgramName((String) hashMap.get("programname"));
-        this.setProgramShortName((String) hashMap.get("programshortname"));
-        this.setApplicationShortName((String) hashMap.get("applicationshortname"));
-        this.setIsNewEntity((String) hashMap.get("isnewentity"));
-        this.setRowOperation((String) hashMap.get("rowoperation"));
-    }
-
-    public HashMap getBOClassRow(ConcurrentProgramBO concurrentProgram) {
-        HashMap map = new HashMap();
-        map.put("concprogid", concurrentProgram.getConcProgId());
-        map.put("programname", concurrentProgram.getProgramName());
-        map.put("programshortname", concurrentProgram.getProgramShortName());
-        map.put("applicationshortname", concurrentProgram.getApplicationShortName());
-        map.put("isnewentity", concurrentProgram.getIsNewEntity());
-        map.put("rowoperation", concurrentProgram.getRowOperation());
-        return map;
     }
 }
