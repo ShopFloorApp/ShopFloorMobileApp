@@ -4,7 +4,7 @@
     <parameters/>
     <executables>
         <variableIterator id="variables">
-            <variable Name="programId" Type="java.lang.String"/>
+            <variable Name="pragramName" Type="java.lang.String"/>
         </variableIterator>
         <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
         <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concurrentPrograms" RangeSize="-1"
@@ -16,28 +16,16 @@
         <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                       IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                       InstanceName="data.ApplicationFeatures.dataProvider"/>
-        <tree IterBinding="concurrentProgramsIterator" id="concurrentPrograms">
-            <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcurrentProgramBO" Name="concurrentPrograms0">
-                <AttrNames>
-                    <Item Value="applicationShortName"/>
-                    <Item Value="concProgId"/>
-                    <Item Value="isNewEntity"/>
-                    <Item Value="programName"/>
-                    <Item Value="programShortName"/>
-                    <Item Value="rowOperation"/>
-                </AttrNames>
-            </nodeDefinition>
-        </tree>
-        <list IterBinding="variables" id="programName" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-              StaticList="false" ListIter="concurrentProgramsIterator" >
+        <list IterBinding="variables" id="name" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+              StaticList="false" ListIter="concurrentProgramsIterator">
             <AttrNames>
-                <Item Value="programId"/>
+                <Item Value="pragramName"/>
             </AttrNames>
             <ListAttrNames>
-                <Item Value="concProgId"/>
+                <Item Value="name"/>
             </ListAttrNames>
             <ListDisplayAttrNames>
-                <Item Value="programName"/>
+                <Item Value="name"/>
             </ListDisplayAttrNames>
         </list>
     </bindings>

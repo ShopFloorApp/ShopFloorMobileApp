@@ -4,29 +4,33 @@
     <parameters/>
     <executables>
         <variableIterator id="variables"/>
-        <iterator Binds="root" RangeSize="25" DataControl="RequestsDC" id="RequestsDCIterator"/>
-        <accessorIterator MasterBinding="RequestsDCIterator" Binds="requests" RangeSize="25" DataControl="RequestsDC"
-                          BeanClass="dcom.shop.application.mobile.txn.RequestsBO" id="requestsIterator"/>
+        <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
+        <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="request" RangeSize="25"
+                          DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.txn.RequestsBO"
+                          id="requestIterator"/>
     </executables>
     <bindings>
-        <tree IterBinding="requestsIterator" id="requests">
-            <nodeDefinition DefName="dcom.shop.application.mobile.txn.RequestsBO" Name="requests0">
+        <tree IterBinding="requestIterator" id="request">
+            <nodeDefinition DefName="dcom.shop.application.mobile.txn.RequestsBO" Name="request0">
                 <AttrNames>
-                    <Item Value="name"/>
-                    <Item Value="requestId"/>
-                    <Item Value="completionText"/>
-                    <Item Value="dateCompleted"/>
-                    <Item Value="dateStarted"/>
-                    <Item Value="dateSubmitted"/>
-                    <Item Value="language"/>
-                    <Item Value="operatingUnit"/>
-                    <Item Value="parameters"/>
+                    <Item Value="progName"/>
+                    <Item Value="applName"/>
+                    <Item Value="actualCompl"/>
+                    <Item Value="actualStart"/>
+                    <Item Value="logSize"/>
+                    <Item Value="ofileType"/>
+                    <Item Value="outPutSize"/>
                     <Item Value="phase"/>
-                    <Item Value="requestor"/>
+                    <Item Value="requestId"/>
+                    <Item Value="respName"/>
                     <Item Value="status"/>
-                    <Item Value="timeTakenHH"/>
-                    <Item Value="timeTakenMI"/>
-                    <Item Value="timeTakenSS"/>
+                    <Item Value="submitDate"/>
+                    <Item Value="submittedBy"/>
+                    <Item Value="hrsTaken"/>
+                    <Item Value="minTaken"/>
+                    <Item Value="msTaken"/>
+                    <Item Value="ssTaken"/>
+                    <Item Value="colorStyle"/>
                 </AttrNames>
             </nodeDefinition>
         </tree>

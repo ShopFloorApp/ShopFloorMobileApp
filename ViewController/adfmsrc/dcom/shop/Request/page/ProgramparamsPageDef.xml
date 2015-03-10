@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="ProgramparamsPageDef"
+                Package="dcom.shop.Request.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
+    <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concProgramParams" RangeSize="25"
+                      DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.txn.ConcProgramParamsBO"
+                      id="concProgramParamsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="concProgramParamsIterator" id="concProgramParams">
+      <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcProgramParamsBO" Name="concProgramParams0">
+        <AttrNames>
+          <Item Value="seqNum"/>
+          <Item Value="defaultType"/>
+          <Item Value="defaultValue"/>
+          <Item Value="displayed"/>
+          <Item Value="isLov"/>
+          <Item Value="paramName"/>
+          <Item Value="paramType"/>
+          <Item Value="refParam1"/>
+          <Item Value="refParam2"/>
+          <Item Value="refParam3"/>
+          <Item Value="refParam4"/>
+          <Item Value="refParam5"/>
+          <Item Value="required"/>
+          <Item Value="valueSetName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="paramList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adfmf.javax.faces.model.SelectItem" Name="concProgramParams1">
+        <AttrNames>
+          <Item Value="value"/>
+          <Item Value="description"/>
+          <Item Value="disabled"/>
+          <Item Value="escape"/>
+          <Item Value="label"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -4,69 +4,80 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="RequestsDC" id="RequestsDCIterator"/>
-    <accessorIterator MasterBinding="RequestsDCIterator" Binds="requests" RangeSize="25" DataControl="RequestsDC"
-                      BeanClass="dcom.shop.application.mobile.txn.RequestsBO" id="requestsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
+    <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="request" RangeSize="25"
+                      DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.txn.RequestsBO"
+                      id="requestIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="requestsIterator" id="name">
-      <AttrNames>
-        <Item Value="name"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="requestId">
+    <attributeValues IterBinding="requestIterator" id="requestId">
       <AttrNames>
         <Item Value="requestId"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="operatingUnit">
+    <attributeValues IterBinding="requestIterator" id="progName">
       <AttrNames>
-        <Item Value="operatingUnit"/>
+        <Item Value="progName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="parameters">
+    <attributeValues IterBinding="requestIterator" id="applName">
       <AttrNames>
-        <Item Value="parameters"/>
+        <Item Value="applName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="phase">
+    <attributeValues IterBinding="requestIterator" id="phase">
       <AttrNames>
         <Item Value="phase"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="dateSubmitted">
-      <AttrNames>
-        <Item Value="dateSubmitted"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="dateStarted">
-      <AttrNames>
-        <Item Value="dateStarted"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="completionText">
-      <AttrNames>
-        <Item Value="completionText"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="language">
-      <AttrNames>
-        <Item Value="language"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="status">
+    <attributeValues IterBinding="requestIterator" id="status">
       <AttrNames>
         <Item Value="status"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="requestor">
+    <attributeValues IterBinding="requestIterator" id="timeTaken">
       <AttrNames>
-        <Item Value="requestor"/>
+        <Item Value="timeTaken"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestsIterator" id="dateCompleted">
+    <attributeValues IterBinding="requestIterator" id="submitDate">
       <AttrNames>
-        <Item Value="dateCompleted"/>
+        <Item Value="submitDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="actualStart">
+      <AttrNames>
+        <Item Value="actualStart"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="actualCompl">
+      <AttrNames>
+        <Item Value="actualCompl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="submittedBy">
+      <AttrNames>
+        <Item Value="submittedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="respName">
+      <AttrNames>
+        <Item Value="respName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="ofileType">
+      <AttrNames>
+        <Item Value="ofileType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="logSize">
+      <AttrNames>
+        <Item Value="logSize"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="outPutSize">
+      <AttrNames>
+        <Item Value="outPutSize"/>
       </AttrNames>
     </attributeValues>
   </bindings>
