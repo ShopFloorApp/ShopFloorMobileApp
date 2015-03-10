@@ -1,10 +1,14 @@
 package dcom.shop.application.base;
 
+import java.util.ArrayList;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.javax.faces.model.SelectItem;
 
 public class jsMBean {
+    private static int lov_count=0;
     public jsMBean() {
     }
 
@@ -41,5 +45,22 @@ public class jsMBean {
         // Add event code here...
         String featureID = AdfmfJavaUtilities.getFeatureId();
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "changeCardLytValues", new Object[] {});
+    }
+    
+    public ArrayList<SelectItem> getParamLov(){
+        ArrayList<SelectItem> lov=new ArrayList<SelectItem>();
+        if(lov_count==0){
+            SelectItem s=new SelectItem();
+            s.setValue("one");
+            s.setLabel("one");
+            lov.add(s);
+            lov_count++;
+        }else{
+            SelectItem s=new SelectItem();
+            s.setValue("two");
+            s.setLabel("two");
+            lov.add(s);
+        }
+        return lov;
     }
 }
