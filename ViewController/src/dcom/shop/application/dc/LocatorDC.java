@@ -17,8 +17,17 @@ import oracle.adfmf.util.GenericVirtualType;
 public class LocatorDC extends SyncUtils {
     private List filtered_Locators=new ArrayList();
     private String locatorFilter = "";
+
+    public void setFiltered_Locators(List filtered_Locators) {
+        this.filtered_Locators = filtered_Locators;
+    }
+
+    public List getFiltered_Locators() {
+        return filtered_Locators;
+    }
     private String aliasFilter = "";
     protected static List s_locator = new ArrayList();
+    protected static List s_to_locator = new ArrayList();
     private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
@@ -45,7 +54,7 @@ public class LocatorDC extends SyncUtils {
     public void ProcessWS(String subInv) {
         GenericVirtualType payload = new GenericVirtualType(null, "payload");
         payload.defineAttribute(null, "Whse", String.class, "100");
-        //String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fromSubInv}");
+         subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
         if(subInv == null)
         payload.defineAttribute(null, "Subinv", String.class, "RAW");
         HashMap paramsMap=new HashMap();
@@ -80,7 +89,17 @@ public class LocatorDC extends SyncUtils {
     public LocatorBO[] getLocators() {
 
         try {
-            LocatorBO[] locators = null;            
+            LocatorBO[] locators = null; 
+            GenericVirtualType payload = new GenericVirtualType(null, "payload");
+            payload.defineAttribute(null, "Whse", String.class, "100");
+             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
+            payload.defineAttribute(null, "Subinv", String.class, subInv==null?"RAW":subInv );
+            HashMap paramsMap=new HashMap();
+            paramsMap.put("resAttriName","LocatorDetails");
+            paramsMap.put("lovDCName", "LocatorLOV_WS");
+            paramsMap.put("opeartionName", "process");
+            paramsMap.put("payload",payload);
+            s_locator = super.getCollection(LocatorBO.class, paramsMap);
             locators = (LocatorBO[]) s_locator.toArray(new LocatorBO[s_locator.size()]);
             return locators;
         } catch (Exception e) {
@@ -88,14 +107,46 @@ public class LocatorDC extends SyncUtils {
         }
     }
     
+    public LocatorBO[] getToLocators() {
+
+        try {
+            LocatorBO[] locators = null; 
+            GenericVirtualType payload = new GenericVirtualType(null, "payload");
+            payload.defineAttribute(null, "Whse", String.class, "100");
+             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
+            payload.defineAttribute(null, "Subinv", String.class, subInv==null?"RAW":subInv );
+            HashMap paramsMap=new HashMap();
+            paramsMap.put("resAttriName","LocatorDetails");
+            paramsMap.put("lovDCName", "LocatorLOV_WS");
+            paramsMap.put("opeartionName", "process");
+            paramsMap.put("payload",payload);
+            s_to_locator = super.getCollection(LocatorBO.class, paramsMap);
+            locators = (LocatorBO[]) s_to_locator.toArray(new LocatorBO[s_to_locator.size()]);
+            return locators;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void refresh(){
+                providerChangeSupport.fireProviderRefresh("locators");
+            }
+   
+    public void refreshToLocators(){
+                providerChangeSupport.fireProviderRefresh("toLocators");
+            }
+    
     public void filterLocators() {
         try {
             System.out.println("inside filter code");
             filtered_Locators.clear();
 
             HashMap filterFileds = new HashMap();
-            filterFileds.put("locator", getLocatorFilter());
-            filterFileds.put("alias", getAliasFilter());
+            String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
+            if(subInv == null)
+            subInv = "RAW";
+            filterFileds.put("subinv", subInv);
+         //   filterFileds.put("alias", getAliasFilter());
             
 
             HashMap paramMap = new HashMap();

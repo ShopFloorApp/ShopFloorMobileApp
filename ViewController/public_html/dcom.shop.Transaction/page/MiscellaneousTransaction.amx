@@ -1,134 +1,148 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:tableLayout id="tl1" width="100%">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Header" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-        <amx:rowLayout id="rl4">
-                    <amx:cellFormat id="cf5">
-                        <amx:panelGroupLayout id="pgsl1" layout="horizontal">
-                            <amx:inputText hintText="Item Number" label="Item Number" id="it2"
-                                           value="#{pageFlowScope.itemNumber}" inlineStyle="width:320px;"/>
-                            <amx:commandLink id="cb3" action="ItemLOV">
-                                <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                                  <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.ItemLovPage}"
-                                             type="action"/>
-                            </amx:commandLink>
-                        </amx:panelGroupLayout>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-                <amx:rowLayout id="rl">
-                    <amx:cellFormat id="cf2">
-                        <amx:panelLabelAndMessage label="Description" inlineStyle="text-align:center;" id="plam3">
-                            <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
-                                            id="it3"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-                <amx:rowLayout id="r2">
-                    <amx:cellFormat id="cf3">
-                        <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:center;" id="plam14">
-                            <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText"
-                                            id="it10"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-                 <amx:rowLayout id="r3">
-                    <amx:cellFormat id="cf4">
-                        <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam4">
-                            <amx:outputText value="#{pageFlowScope.availableQty}"
-                                            styleClass="adfmf-listItem-captionText" id="it4"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-                <amx:rowLayout id="r4">
-                    <amx:cellFormat id="cf6">
-                        <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:center;" id="plam5">
-                            <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
-                                            id="it5"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-                 <amx:rowLayout id="r52">
-                    <amx:cellFormat id="cf27">
-                    <amx:selectOneChoice value="#{pageFlowScope.accountAlias}"
-                                         label="#{bindings.accountAlias.label}" id="soc1">
-                        <amx:selectItems value="#{bindings.accountAlias.items}" id="si1"/>
+            </amx:commandButton>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+            </amx:commandButton>
+        </amx:facet>
+        <amx:tableLayout id="tl1" width="90%">
+            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+            <amx:rowLayout id="rl4">
+                <amx:cellFormat id="cf3s252">
+                    <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf5" width="60%">
+                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}"/>
+                </amx:cellFormat>
+                <amx:cellFormat width="10px" halign="end" id="cf1">
+                    <amx:commandLink id="cb3" action="ItemLOV">
+                        <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.ItemLovPage}"
+                                                 type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl">
+                <amx:cellFormat id="cfs3s252">
+                    <amx:panelLabelAndMessage label="Description" inlineStyle="text-align:center;" id="plam133"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf2">
+                    <amx:panelLabelAndMessage inlineStyle="text-align:center;" id="plam3">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
+                                        id="it3"/>
+                    </amx:panelLabelAndMessage>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="r2">
+                <amx:cellFormat id="cfs3s25s2">
+                    <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:center;" id="plam233"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf3">
+                    <amx:panelLabelAndMessage inlineStyle="text-align:center;" id="plam14">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
+                    </amx:panelLabelAndMessage>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="r3">
+                <amx:cellFormat id="cfs3s225s2">
+                    <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam10"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf4">
+                    <amx:panelLabelAndMessage inlineStyle="text-align:center;" id="plam4">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"
+                                        id="it4"/>
+                    </amx:panelLabelAndMessage>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="r4">
+                <amx:cellFormat id="cfs32s225s2">
+                    <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:center;" id="plam2"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf6">
+                    <amx:panelLabelAndMessage inlineStyle="text-align:center;" id="plam5">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
+                                        id="it5"/>
+                    </amx:panelLabelAndMessage>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="r52">
+                <amx:cellFormat id="cf8">
+                    <amx:panelLabelAndMessage label="Transaction Type" inlineStyle="text-align:center;" id="plam1"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf27">
+                    <amx:selectOneChoice value="#{pageFlowScope.TrxType}" id="soc1">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:selectItems value="#{bindings.TrxTypeList.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
-                   </amx:rowLayout>
-                   </amx:tableLayout>
-                    <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
-                    <!--amx:listItem id="li2" showLinkIcon="true" action="lpnLOV">
-                        <amx:panelLabelAndMessage label="LPN" showRequired="true" inlineStyle="text-align:center;"
-                                                  id="plam1">
-                            <amx:outputText value="#{pageFlowScope.lpnText}" styleClass="adfmf-listItem-captionText"
-                                            id="ot12"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:listItem>
-                    <amx:listItem id="li1" showLinkIcon="true" action="ItemLOV">
-                        <amx:panelLabelAndMessage label="Item Number" showRequired="true"
-                                                  inlineStyle="text-align:center;" id="plam2">
-                            <amx:outputText value="#{pageFlowScope.itemNumber}" styleClass="adfmf-listItem-captionText"
-                                            id="ot11"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:listItem>
-                    <amx:listItem id="li4" showLinkIcon="false">
-                        <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam4">
-                            <amx:outputText value="#{pageFlowScope.availableQty}"
-                                            styleClass="adfmf-listItem-captionText" id="it4"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:listItem>
-                    <amx:listItem id="li5" showLinkIcon="false">
-                        <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:center;" id="plam5">
-                            <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
-                                            id="it5"/>
-                        </amx:panelLabelAndMessage>
-                    </amx:listItem>
-                    <amx:listItem id="li11" showLinkIcon="false">
-                        <amx:panelFormLayout id="pfl2">
-                            <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:center;"
-                                           value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText"
-                                           id="it11"/>
-                        </amx:panelFormLayout>
-                    </amx:listItem-->
-            <amx:listItem id="li6" actionListener="#{bindings.invokeGetSubInvByOrgIdDC.execute}"
-                              action="#{StateListenerBean.callFromMiscTrxn}"
-                showLinkIcon='true'>
-                        <amx:panelLabelAndMessage label="Subinventory" showRequired="true" inlineStyle="text-align:center;" id="plam6">
-                        <amx:outputText value="#{pageFlowScope.MiscTrxnSubinv}" styleClass="adfmf-listItem-captionText" id="it6"/>
-                    </amx:panelLabelAndMessage>
-                   <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.SubinventoryPage}"
-                                             type="action"/>
-                </amx:listItem>
-                     <amx:listItem id="li7"
-                              showLinkIcon='#{(pageFlowScope.FromSubInvLocatorControl == "1" ? false : true)}' 
-                              action="#{StateListenerBean.callFromMiscTrxnLoc}"
-                              actionListener="#{bindings.invokeLocatorDC.execute}">
-                    <amx:panelLabelAndMessage label="Locator" showRequired="true" inlineStyle="text-align:center;" id="plam7">
-                        <amx:outputText value="#{pageFlowScope.MiscTrxnLocator}" styleClass="adfmf-listItem-captionText" id="it7"/>
-                    </amx:panelLabelAndMessage>
-                    <amx:setPropertyListener id="spl5" from="MiscTrxn" to="#{pageFlowScope.LocatorPage}"
-                                             type="action"/>
-                </amx:listItem>
-                </amx:listView>
-                <amx:tableLayout>
-                <amx:rowLayout id="r5">
-                    <amx:cellFormat id="cf7">
-                        <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:center;"
-                                       value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText"
-                                       id="it11"/>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-                </amx:tableLayout>
-  </amx:panelPage>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf14">
+                    <amx:panelLabelAndMessage label="Account Alias" inlineStyle="text-align:center;" id="plam9"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf15">
+                    <amx:selectOneChoice value="#{pageFlowScope.accountAlias}" id="soc3">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:selectItems value="#{bindings.accountAlias.items}" id="si3"/>
+                    </amx:selectOneChoice>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl42">
+                <amx:cellFormat id="cf10">
+                    <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf11" width="60%">
+                    <amx:selectOneChoice value="#{bindings.subinventories.inputValue}" id="soc5"
+                                         valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:selectItems value="#{bindings.subinventories.items}" id="si5"/>
+                    </amx:selectOneChoice>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl3">
+                <amx:cellFormat id="cf9">
+                    <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam7"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf12" width="60%">
+                    <amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
+                        <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
+                    </amx:selectOneChoice>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="r5">
+                <amx:cellFormat id="cf13">
+                    <amx:panelLabelAndMessage showRequired="true" label="Quantity" inlineStyle="text-align:center;"
+                                              id="plam8"></amx:panelLabelAndMessage>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf7">
+                    <amx:inputText inlineStyle="text-align:center;" value="#{pageFlowScope.quantity}"
+                                   styleClass="adfmf-listItem-captionText" id="it11">
+                        <?audit suppress oracle.maf.warning-missing-hintText?>
+                    </amx:inputText>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:spacer id="s3" height="50"/>
+        <amx:panelGroupLayout id="pgl4" layout="horizontal">
+            <amx:commandButton text="Cancel" id="cb23" action="cancel"/>
+            <amx:commandButton text="Add to Queue" id="cb4"/>
+            <amx:commandButton text="Save &amp; Complete" action="cancel"
+                               actionListener="#{bindings.invokeInvTrnDC.execute}" id="cb5"/>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
 </amx:view>

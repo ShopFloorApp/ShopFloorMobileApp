@@ -22,15 +22,14 @@
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
             <amx:commandButton actionListener="#{bindings.ProcessWS.execute}" text="Search"
-                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;">
-         </amx:commandButton>
+                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;"></amx:commandButton>
         </amx:panelLabelAndMessage>
         <amx:outputText id="ot3" value="#{pageFlowScope.ItemServiceResults}"/>
         <amx:panelGroupLayout id="pgl1"
                               rendered='#{pageFlowScope.ItemServiceResults == "Search results" ? true : false }'
                               inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
             <amx:tableLayout width="100%" id="tl2" rendered="#{pageFlowScope.refreshItemLov eq 'N' ?true:false}">
-                <amx:rowLayout id="rl12" >
+                <amx:rowLayout id="rl12">
                     <amx:cellFormat width="40%" id="cf22">
                         <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
@@ -40,12 +39,11 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
-      <amx:listView var="row" value="#{bindings.allItems.collectionModel}" fetchSize="#{bindings.allItems.rangeSize}"
+        <amx:listView var="row" value="#{bindings.allItems.collectionModel}" fetchSize="#{bindings.allItems.rangeSize}"
                       id="lv2">
             <!--20-Mar amx:listItem showLinkIcon="false" actionListener="#{bindings.ProcessItemOnHand.execute}" action="sendItem"-->
-            <amx:listItem showLinkIcon="false" 
-                          action="Back"
-                          id="li2">
+            <amx:listItem showLinkIcon="false" action="BackToPage"
+                          rendered="#{pageFlowScope.ItemLovPage == 'MiscTrxn' ? true : false}" id="li2">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
@@ -73,12 +71,43 @@
                 </amx:tableLayout>
                 <amx:setPropertyListener from="#{row.itemNum}" type="action" to="#{pageFlowScope.itemNumber}"
                                          id="spl1"/>
-                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}"
-                                         id="spl2"/>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}" id="spl2"/>
                 <amx:setPropertyListener from="#{row.primaryUOMCode}" type="action" to="#{pageFlowScope.uom}"
                                          id="sp10"/>
-                                         
-                </amx:listItem>
+            </amx:listItem>
+            <amx:listItem showLinkIcon="false" action="Back"
+                          rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? true : false}" id="li22">
+                <amx:tableLayout width="100%" id="tl21">
+                    <amx:rowLayout id="rl21">
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf25"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf222">
+                            <!--amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:left;" id="plam22222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.itemNum}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot243"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf253"/>
+                        <amx:cellFormat width="60%" height="50px" valign="middle" halign="start" id="cf23">
+                            <!--amx:panelLabelAndMessage label="Item Desc" inlineStyle="text-align:left;" id="plam2222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.desc}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot24"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                        <!--amx:cellFormat width="100%" height="40px" id="cf2">
+                            <amx:outputText value="Item: #{row.segment1} ItemDesc: #{row.description}" id="ot5"/>
+                        </amx:cellFormat-->
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.itemNum}" type="action" to="#{pageFlowScope.itemNumber}"
+                                         id="spl221"/>
+                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}" id="sp223"/>
+                <amx:setPropertyListener from="#{row.primaryUOMCode}" type="action" to="#{pageFlowScope.uom}"
+                                         id="sp22"/>
+            </amx:listItem>
         </amx:listView>
-     </amx:panelPage>
+    </amx:panelPage>
 </amx:view>
