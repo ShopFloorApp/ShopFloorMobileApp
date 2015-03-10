@@ -32,7 +32,7 @@ public class StateListener {
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-        pageFlow.put("fromSubInv", subinv);
+        pageFlow.put("FromSubinventory", subinv);
 
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                      });
@@ -112,7 +112,7 @@ public class StateListener {
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-        pageFlow.put("toSubInv", subinv);
+        pageFlow.put("ToSubinventory", subinv);
 
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
                                                                      });
