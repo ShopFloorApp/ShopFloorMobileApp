@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="requestTf">
     <default-activity>searchRequest</default-activity>
+    <managed-bean id="__8">
+      <managed-bean-name>RequestUtilBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Request.bean.RequestUtilBean</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
     <view id="searchRequest">
       <page>/dcom.shop.Request/page/searchRequest.amx</page>
     </view>
@@ -13,6 +18,9 @@
     </view>
     <view id="SubmitRequest">
       <page>/dcom.shop.Request/page/SubmitRequest.amx</page>
+    </view>
+    <view id="Programparams">
+      <page>/dcom.shop.Request/page/Programparams.amx</page>
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>searchRequest</from-activity-id>
@@ -37,6 +45,13 @@
       <control-flow-case id="__5">
         <from-outcome>searchRequest</from-outcome>
         <to-activity-id>searchRequest</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>SubmitRequest</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>setParams</from-outcome>
+        <to-activity-id>Programparams</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>
