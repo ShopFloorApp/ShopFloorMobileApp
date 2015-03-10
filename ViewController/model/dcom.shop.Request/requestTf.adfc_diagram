@@ -113,4 +113,29 @@
       <property
          name="sdm:polyPoints">L50,560.0,204.44824,410.0,237.24707,R50</property>
    </ControlFlowCase>
+   <View
+      id="View11">
+      <property
+         name="activityId">Programparams</property>
+      <property
+         name="page">/dcom.shop.Request/page/Programparams.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Programparams&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">106.59766</property>
+      <property
+         name="x">963.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="View7"
+      to="View11">
+      <property
+         name="fromOutcome">setParams</property>
+      <property
+         name="sdm:polyPoints">R50,776.0,112.5459,922.0,106.24707,L50</property>
+   </ControlFlowCase>
 </SDM>
