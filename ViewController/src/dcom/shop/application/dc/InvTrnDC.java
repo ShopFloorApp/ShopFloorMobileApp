@@ -53,6 +53,7 @@ public class InvTrnDC extends RestCallerUtil {
         String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToLocator}");
         String trxnUom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
+        String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpn}");
         String reason = "";
         String glAccount = "";
         String trxRef = "";

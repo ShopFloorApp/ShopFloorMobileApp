@@ -14,34 +14,11 @@
       </amx:commandLink>
       </amx:facet>
      <amx:panelGroupLayout id="pgl">
-      <amx:listView var="row" value="#{bindings.allProdItems1.collectionModel}"
-                    fetchSize="#{bindings.allProdItems1.rangeSize}"
-                    selectedRowKeys="#{bindings.allProdItems1.collectionModel.selectedRow}"
-                    selectionListener="#{bindings.allProdItems1.collectionModel.makeCurrent}"
       <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}"
                     fetchSize="#{bindings.allProdItems.rangeSize}"
                     selectedRowKeys="#{bindings.allProdItems.collectionModel.selectedRow}"
                     selectionListener="#{bindings.allProdItems.collectionModel.makeCurrent}"
                     showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-        <amx:listItem id="li1" action= "details" showLinkIcon="true">
-          <amx:outputText value="#{row.ITEM}" id="ot2"/>
-          <amx:outputText value="#{row.ORGCODE}" id="ot3"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <amx:listItem id="li1" showLinkIcon="true" action="details">
             <amx:tableLayout width="100%" id="tl">
                         <amx:rowLayout id="rl">
@@ -64,19 +41,7 @@
                                 <amx:outputText value="#{row.ITEMTYPE} #{row.ITEMCATALOG} #{row.PRIMARYUOM} #{row.ORGCODE}"
                                                 styleClass="adfmf-listItem-captionText" id="ot3"/>
                             </amx:cellFormat>
-                        </amx:rowLayout>
-                        <amx:rowLayout id="r3">
-                            <amx:cellFormat width="10px" rowSpan="2" id="cf10"/>
-                            <amx:cellFormat width="60%" height="28px" id="c11">
-                                <amx:outputText value="#{row.ITEMID}" id="ot7"/>
-                            </amx:cellFormat>
-                            <amx:cellFormat width="10px" rowSpan="2" id="cf8"/>
-                            <amx:cellFormat width="40%" halign="end" id="cf9">
-                                <amx:outputText value="#{row.ORGID}" styleClass="adfmf-listItem-highlightText"
-                                                id="ot10"/>
-                            </amx:cellFormat>
-                        </amx:rowLayout>
-                        
+                        </amx:rowLayout>                     
                     </amx:tableLayout>
                     <amx:setPropertyListener id="spl" from="#{row.ITEM} " type="action"
                                              to="#{pageFlowScope.itemId}"/>
@@ -84,8 +49,6 @@
                                              to="#{pageFlowScope.orgId}"/>
         </amx:listItem>
       </amx:listView>
-      </amx:panelGroupLayout>
-    </amx:panelGroupLayout>
-    
+      </amx:panelGroupLayout>  
   </amx:panelPage>
 </amx:view>
