@@ -9,6 +9,21 @@ public class RestURI {
     public static String PostItemInquiryURI() {
         return ITEM_INQUIRY_URI;
     }
+    
+    private static final String ITEM_DETAILS_URI = "/webservices/rest/DCOMInquiry/getitem/";
+
+    public static String PostItemDetailsURI() {
+        return ITEM_DETAILS_URI;
+    }
+    
+    private static final String LPN_DETAILS_URI = "/webservices/rest/DCOMInquiry/getlpn/";
+
+    public static String PostLpnDetailsURI() {
+        return LPN_DETAILS_URI;
+    }
+    
+    
+    
     private static final String PROCESS_INV_TRXN_URI = "/webservices/rest/DcomTrns/processinvtxn/";
 
     public static String PostInvTrxnURI() {

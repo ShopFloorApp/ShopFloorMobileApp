@@ -14,11 +14,24 @@
         <view id="productDetails">
             <page>/dcom.shop.Inquiry/page/productDetails.amx</page>
         </view>
+        <view id="lpnSearch">
+            <page>/dcom.shop.Inquiry/page/lpnSearch.amx</page>
+        </view>
+        <view id="LpnList">
+            <page>/dcom.shop.Inquiry/page/LpnList.amx</page>
+        </view>
+        <view id="LpnDetails">
+            <page>/dcom.shop.Inquiry/page/LpnDetails.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
                 <from-outcome>productSearch</from-outcome>
                 <to-activity-id>searchProduct</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__11">
+                <from-outcome>lpnInquiry</from-outcome>
+                <to-activity-id>lpnSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__3">
@@ -41,6 +54,42 @@
             <control-flow-case id="__8">
                 <from-outcome>productlistBack</from-outcome>
                 <to-activity-id>searchProduct</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__12">
+            <from-activity-id>lpnSearch</from-activity-id>
+            <control-flow-case id="__13">
+                <from-outcome>lpnInquiryBack</from-outcome>
+                <to-activity-id>inquiry</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__9">
+                <from-outcome>lpnlist</from-outcome>
+                <to-activity-id>LpnList</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__17">
+            <from-activity-id>productDetails</from-activity-id>
+            <control-flow-case id="__18">
+                <from-outcome>detailsBack</from-outcome>
+                <to-activity-id>searchProduct</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__10">
+            <from-activity-id>LpnList</from-activity-id>
+            <control-flow-case id="__14">
+                <from-outcome>lpnlistBack</from-outcome>
+                <to-activity-id>lpnSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__15">
+                <from-outcome>lpnDetails</from-outcome>
+                <to-activity-id>LpnDetails</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__16">
+            <from-activity-id>LpnDetails</from-activity-id>
+            <control-flow-case id="__19">
+                <from-outcome>lpnDetailsBack</from-outcome>
+                <to-activity-id>lpnSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>

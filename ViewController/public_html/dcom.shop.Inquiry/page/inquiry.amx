@@ -21,11 +21,14 @@
       <amx:listItem id="li1" inlineStyle="width:97%;" action="productSearch">
         <amx:outputText value="Product Search" id="ot2"/>
       </amx:listItem>
+      <amx:listItem id="li4" inlineStyle="width:97%;" action="lpnInquiry">
+        <amx:outputText value="LPN Inquiry" id="ot4"/>
+      </amx:listItem>
       <amx:listItem id="li2" inlineStyle="width:97%;" action="search">
         <amx:outputText value="Stock On Hand Search" id="ot3"/>
       </amx:listItem>
       <amx:listItem id="li3" action="search">
-        <amx:outputText value="Material Transaction Inq." id="ot4"/>
+        <amx:outputText value="Material Transaction Inq." id="ot5"/>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>

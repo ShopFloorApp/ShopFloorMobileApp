@@ -7,6 +7,10 @@
     <accessorIterator MasterBinding="ProductSearchDCIterator" Binds="allProdItems" RangeSize="25"
                       DataControl="ProductSearchDC" BeanClass="dcom.shop.Inquiry.ProductSearchEntity"
                       id="allProdItemsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ProductDetailsDC" id="ProductDetailsDCIterator"/>
+    <accessorIterator MasterBinding="ProductDetailsDCIterator" Binds="allProdDetails" RangeSize="10"
+                      DataControl="ProductDetailsDC" BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsEntity"
+                      id="allProdDetailsIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="allProdItemsIterator" id="allProdItems">
@@ -20,8 +24,19 @@
           <Item Value="ITEMCATALOG"/>
           <Item Value="ORGCODE"/>
           <Item Value="ITEMID"/>
+          <Item Value="ORGID"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <attributeValues IterBinding="allProdItemsIterator" id="ITEMID">
+      <AttrNames>
+        <Item Value="ITEMID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdItemsIterator" id="ORGID">
+      <AttrNames>
+        <Item Value="ORGID"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

@@ -3,13 +3,39 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="Product Details" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
       <amx:commandButton id="cb1"/>
     </amx:facet>
     <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
+      <amx:commandLink id="cl1" action = "detailsBack">
+        <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+      </amx:commandLink>
     </amx:facet>
+    <amx:panelFormLayout id="pf1">
+        <amx:panelLabelAndMessage label="Item" id="plam1" inlineStyle="text-align:center;">
+        <amx:outputText value="#{bindings.ITEM.inputValue}" id="ot2"/>
+      </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="Revision" id="plam2" inlineStyle="text-align:center;">
+        <amx:outputText value="#{bindings.REVISION.inputValue}" id="ot3"/>
+      </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="Description" id="plam3" inlineStyle="text-align:center;">
+        <amx:outputText value="#{bindings.ITEMDESC.inputValue}" id="ot4"/>
+      </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="Organization Code" id="plam4" inlineStyle="text-align:center;">
+        <amx:outputText value="999" id="ot8"/>
+        </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="Item Status" id="plam5" inlineStyle="text-align:center;">
+        <amx:outputText value="#{bindings.ITEMSTATUS.inputValue}" id="ot5"/>
+      </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="Primary UOM" id="plam6" inlineStyle="text-align:center;">
+        <amx:outputText value="#{bindings.PRIMARYUOM.inputValue}" id="ot6"/>
+      </amx:panelLabelAndMessage>
+        <amx:panelLabelAndMessage label="User Item Type" id="plam7" inlineStyle="text-align:center;">
+        <amx:outputText value="#{bindings.ITEMTYPE.inputValue}" id="ot7"/>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+    
   </amx:panelPage>
 </amx:view>

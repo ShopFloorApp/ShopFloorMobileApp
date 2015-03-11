@@ -2,6 +2,16 @@
 <SDM>
    <OverallProperties
       id="OverallProperties1"/>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase19"
+      from="View13"
+      to="View12">
+      <property
+         name="fromOutcome">lpnInquiryBack</property>
+      <property
+         name="sdm:polyPoints">L46,457.0,258.74707,285.73315,196.24707,R54</property>
+   </ControlFlowCase>
    <View
       id="View9">
       <property
@@ -13,10 +23,26 @@
       <property
          name="exceptionHandler">false</property>
       <property
+         name="y">106.29297</property>
          name="y">87.5918</property>
       <property
+         name="x">774.5</property>
          name="x">686.5</property>
    </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View9"
+      to="View10">
+      <property
+         name="fromOutcome">details</property>
+      <property
+         name="tosrcid">__6</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">R50,727.5,87.24121,867.35254,99.99414,L50</property>
+   </ControlFlowCase>
    <View
       id="View10">
       <property
@@ -28,10 +54,26 @@
       <property
          name="exceptionHandler">false</property>
       <property
+         name="y">152.0459</property>
          name="y">100.34473</property>
       <property
+         name="x">1061.3525</property>
          name="x">908.35254</property>
    </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View11"
+      to="View12">
+      <property
+         name="fromOutcome">searchBack</property>
+      <property
+         name="tosrcid">__7</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">L46,377.0775,99.84473,284.5,182.24707,R38</property>
+   </ControlFlowCase>
    <View
       id="View11">
       <property
@@ -47,6 +89,45 @@
       <property
          name="x">420.68652</property>
    </View>
+   <View
+      id="View13">
+      <property
+         name="activityId">lpnSearch</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/lpnSearch.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>lpnSearch&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">262.59766</property>
+      <property
+         name="x">498.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="View12"
+      to="View11">
+      <property
+         name="fromOutcome">productSearch</property>
+      <property
+         name="tosrcid">__2</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R46,287.13654,189.24707,379.68652,106.84473,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View12"
+      to="View13">
+      <property
+         name="fromOutcome">lpnInquiry</property>
+      <property
+         name="sdm:polyPoints">R62,284.5,203.24707,455.77097,265.74707,L54</property>
+   </ControlFlowCase>
    <View
       id="View12">
       <property
@@ -64,19 +145,41 @@
       <property
          name="x">243.5</property>
    </View>
+   <View
+      id="View20">
+      <property
+         name="activityId">LpnList</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/LpnList.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">257.89648</property>
+      <property
+         name="x">679.0</property>
+   </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase13"
       from="View12"
       to="View11">
+      id="ControlFlowCase16"
+      from="View11"
+      to="View9">
       <property
          name="fromOutcome">productSearch</property>
+         name="fromOutcome">productlist</property>
       <property
          name="tosrcid">__2</property>
+         name="tosrcid">__4</property>
       <property
          name="fromsrcid">__1</property>
+         name="fromsrcid">__3</property>
       <property
          name="sdm:polyPoints">R46,284.5,189.24707,376.91467,99.84473,L46</property>
+         name="sdm:polyPoints">R46,461.68652,99.84473,645.194,83.74121,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -90,6 +193,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
+         name="sdm:polyPoints">L46,733.5,102.44238,461.71997,99.84473,R46</property>
          name="sdm:polyPoints">L46,645.194,83.74121,461.68652,99.84473,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
@@ -97,41 +201,86 @@
       id="ControlFlowCase15"
       from="View9"
       to="View10">
+      id="ControlFlowCase23"
+      from="View10"
+      to="View11">
       <property
          name="fromOutcome">details</property>
+         name="fromOutcome">detailsBack</property>
       <property
          name="tosrcid">__6</property>
+         name="sdm:polyPoints">B50,908.35254,153.99414,420.68652,157.34473,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase35"
+      from="View13"
+      to="View20">
       <property
          name="fromsrcid">__5</property>
+         name="fromOutcome">lpnlist</property>
       <property
-         name="sdm:polyPoints">R50,727.5,87.24121,867.35254,99.99414,L50</property>
+         name="sdm:polyPoints">R50,815.5,105.94238,1020.35254,151.69531,L50</property>
+         name="sdm:polyPoints">R46,539.0,258.74707,637.83374,254.0459,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase16"
       from="View11"
       to="View9">
+      id="ControlFlowCase36"
+      from="View20"
+      to="View13">
       <property
          name="fromOutcome">productlist</property>
+         name="fromOutcome">lpnlistBack</property>
       <property
          name="tosrcid">__4</property>
+         name="sdm:polyPoints">L54,638.0,261.0459,539.16614,265.74707,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View25">
       <property
          name="fromsrcid">__3</property>
+         name="activityId">LpnDetails</property>
       <property
-         name="sdm:polyPoints">R54,461.99283,106.84473,645.5,90.74121,L54</property>
+         name="sdm:polyPoints">R54,461.68652,106.84473,733.46655,109.44238,L54</property>
    </ControlFlowCase>
+         name="page">/dcom.shop.Inquiry/page/LpnDetails.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">246.24707</property>
+      <property
+         name="x">888.0</property>
+   </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase17"
       from="View11"
       to="View12">
+      id="ControlFlowCase26"
+      from="View20"
+      to="View25">
       <property
          name="fromOutcome">searchBack</property>
+         name="fromOutcome">lpnDetails</property>
       <property
          name="tosrcid">__7</property>
+         name="sdm:polyPoints">R50,720.0,257.5459,847.0,245.89648,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase27"
+      from="View25"
+      to="View13">
       <property
          name="fromsrcid">__3</property>
+         name="fromOutcome">lpnDetailsBack</property>
       <property
          name="sdm:polyPoints">L54,379.68652,106.84473,287.30182,196.24707,R54</property>
+         name="sdm:polyPoints">B50,888.0,299.89648,498.0,316.24707,B50</property>
    </ControlFlowCase>
 </SDM>

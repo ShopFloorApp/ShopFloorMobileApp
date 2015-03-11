@@ -78,7 +78,7 @@ public class ProductSearchDC {
                            prodItems.setITEMTYPE((jsObject2.get("ITEMTYPE").toString())); 
                            prodItems.setITEMCATALOG((jsObject2.get("ITEMCATALOG").toString())); 
                            prodItems.setITEMID(Integer.parseInt((jsObject2.get("ITEMID").toString())));    
-                           prodItems.setORGID(Integer.parseInt((jsObject2.get("ORGID").toString()))); 
+                          prodItems.setORGID(Integer.parseInt((jsObject2.get("ORGID").toString()))); 
                            s_ProdList.add(prodItems);
 
                       
