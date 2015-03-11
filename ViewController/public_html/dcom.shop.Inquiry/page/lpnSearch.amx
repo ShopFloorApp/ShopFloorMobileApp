@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="LPN Search" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandLink id="cl1" action = "lpnInquiryBack">
+        <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+      </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" rendered="false"/>
+    </amx:facet>
+    
+    <amx:panelFormLayout id="pfl1">
+      <amx:inputText label="Keyword" id="it1" value = "#{pageFlowScope.searchLpnKeyword}"/>
+    
+    </amx:panelFormLayout>
+    <amx:commandButton text="Search" id="cb1" action = "lpnlist" />
+  </amx:panelPage>
+</amx:view>

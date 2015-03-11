@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandLink id="cl1" action = "lpnDetailsBack">
+        <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+      </amx:commandLink>
+    </amx:facet>
+    <amx:panelGroupLayout id="pgl1" 
+                inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+                 <amx:tableLayout width="100%" id="tl2">
+                    <amx:rowLayout id="rl12">
+                        <amx:cellFormat width="50%" id="cf22">
+                            <amx:panelLabelAndMessage label="LPN" inlineStyle="text-al;ign:left;"
+                                                      id="plam222223"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" halign="start" id="cf33">
+                            <amx:panelLabelAndMessage label="LPN Status" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl212">
+                        <amx:cellFormat width="50%" id="cf222">
+                            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:left;"
+                                                      id="plam2222223"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" halign="start" id="cf323">
+                            <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:left;" id="pl3am22222"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+    </amx:panelGroupLayout>
+    <amx:panelGroupLayout id="pgl2" 
+                inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+                 <amx:tableLayout width="100%" id="tl3">
+                    <amx:rowLayout id="rl13">
+                        <amx:cellFormat width="50%" id="cf23">
+                            <amx:outputText value="#{pageFlowScope.lpn}"
+                                                styleClass="adfmf-listItem-captionText" id="ot15"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" halign="start" id="cf3">
+                            <amx:outputText value="#{pageFlowScope.lpnstatus}"
+                                                styleClass="adfmf-listItem-captionText" id="ot16"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl21">
+                        <amx:cellFormat width="50%" id="cf2442">
+                            <amx:outputText value="#{pageFlowScope.subinv}"
+                                                styleClass="adfmf-listItem-captionText" id="ot17"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" halign="start" id="cf453">
+                            <amx:outputText value="#{pageFlowScope.locator}"
+                                                styleClass="adfmf-listItem-captionText" id="ot18"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+    </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl3" 
+                inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+                 <amx:tableLayout width="100%" id="tl4">
+                    <amx:rowLayout id="rl6">
+                        <amx:cellFormat width="50%" id="cf91">
+                            <amx:panelLabelAndMessage label="ITEM" inlineStyle="text-al;ign:left;"
+                                                      id="plam223"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" halign="start" id="cf92">
+                            <amx:panelLabelAndMessage label="ITEM DESC" inlineStyle="text-align:left;" id="plam224"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl7">
+                        <amx:cellFormat width="50%" id="cf93">
+                            <amx:panelLabelAndMessage label="On-HandQty/Avail Qty" inlineStyle="text-align:left;"
+                                                      id="plam225"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" halign="start" id="cf94">
+                            <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:left;" id="plam226"></amx:panelLabelAndMessage>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+    </amx:panelGroupLayout>
+        <amx:listView var="row" value="#{bindings.allLpnDetails.collectionModel}"
+                      fetchSize="#{bindings.allLpnDetails.rangeSize}"
+                      selectedRowKeys="#{bindings.allLpnDetails.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.allLpnDetails.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1">
+                <amx:tableLayout width="100%" id="t4">
+                        
+                        <amx:rowLayout id="rl">
+                            <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
+                            <amx:cellFormat width="60%" height="28px" id="cf4">
+                                <amx:outputText value="#{row.ITEM}" id="ot2"/>
+                             </amx:cellFormat>
+                            <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
+                            <amx:cellFormat width="40%" halign="end" id="cf38">
+                                <amx:outputText value="#{row.ITEMDESC}" styleClass="adfmf-listItem-highlightText"
+                                                id="ot4"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="r2">
+                            <amx:cellFormat width="60%" height="12px" id="cf1">
+                                <amx:outputText value="#{row.ONHANDQTY}/#{row.AVAILABLEQTY}" styleClass="adfmf-listItem-captionText"
+                                                id="ot3"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat width="40%" halign="end" id="cf2">
+                                <amx:outputText value="#{row.UOM}"
+                                                styleClass="adfmf-listItem-captionText" id="ot5"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout> 
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
+</amx:view>
