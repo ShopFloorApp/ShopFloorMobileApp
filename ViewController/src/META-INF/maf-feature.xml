@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
-  <adfmf:feature id="dcom.shop.syncPref" name="syncPref">
+  <adfmf:feature id="dcom.shop.syncPref" name="syncPref" securityEnabled="false">
     <adfmf:content id="dcom.shop.syncPref.1">
       <adfmf:amx file="dcom.shop.syncPref/syncPrefTF.xml#syncPrefTF">
         <adfmf:includes>
