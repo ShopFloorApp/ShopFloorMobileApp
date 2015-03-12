@@ -1,8 +1,10 @@
 package dcom.shop.application.mobile.txn;
 
+import dcom.shop.Request.bean.RequestUtilBean;
 import dcom.shop.application.dc.txn.ConcurrentProgramDC;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
@@ -25,6 +27,31 @@ public class ConcProgramParamsBO {
     private String refParam3;
     private String refParam4;
     private String refParam5;
+    private String paramValue;
+    private String paramDispValue;
+    private String itemType;
+    public static HashMap valueMap = new HashMap();
+    public static HashMap valueDispMap = new HashMap();
+    
+
+    public void setItemType(String itemType) {
+        String oldItemType = this.itemType;
+        this.itemType = itemType;
+        propertyChangeSupport.firePropertyChange("itemType", oldItemType, itemType);
+    }
+
+    public String getItemType() {
+        if(this.valueSetName.equalsIgnoreCase("FND_DATE4_REQUIRED_STANDARD") ||this.valueSetName.equalsIgnoreCase("FND_DATE4_STANDARD")||this.valueSetName.equalsIgnoreCase("FND_DATE_REQUIRED_STANDARD")
+            ||this.valueSetName.equalsIgnoreCase("FND_STANDARD_DATE")||this.valueSetName.equalsIgnoreCase("FND_STANDARD_DATE_REQUIRED")
+           ||this.valueSetName.equalsIgnoreCase("FND_STANDARD_DATETIME")||this.valueSetName.equalsIgnoreCase("FND_STANDARD_DATE_TIME")||this.valueSetName.equalsIgnoreCase("WIP_SRS_DATES_OPT_STANDARD")){
+               itemType="DATE";
+        }else if(this.isLov.equalsIgnoreCase("Y")){
+            itemType="LOV";
+        }else{
+            itemType="TEXT";
+        }
+        return itemType;
+    }
     private SelectItem[] paramList;
     private static int mycount=0;
 
@@ -33,6 +60,38 @@ public class ConcProgramParamsBO {
 
     public ConcProgramParamsBO() {
         super();
+        String seqNo = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}"));   
+        String selectedDispValue = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.selectedDispParamsLovVal}"));                                                                                                        
+        String selectedValue = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.selectedParamsLovVal}"));
+        if(seqNo!=null){
+            valueMap.put(seqNo, selectedValue);
+            valueDispMap.put(seqNo, selectedDispValue);
+        }
+        
+    }
+
+    public void setParamDispValue(String paramDispValue) {
+        String oldParamDispValue = this.paramDispValue;
+        this.paramDispValue = paramDispValue;
+        valueDispMap.put(this.getSeqNum(), paramDispValue);
+        propertyChangeSupport.firePropertyChange("paramDispValue", oldParamDispValue, paramDispValue);
+    }
+
+    public String getParamDispValue() {
+            paramDispValue = (String) valueDispMap.get(this.getSeqNum());
+        return paramDispValue;
+    }
+
+    public void setParamValue(String paramValue) {
+        String oldParamValue = this.paramValue;
+        this.paramValue = paramValue;
+        propertyChangeSupport.firePropertyChange("paramValue", oldParamValue, paramValue);
+    }
+
+    public String getParamValue() {
+        
+            paramValue = (String) valueMap.get(this.getSeqNum());
+        return paramValue;
     }
 
     public void setParamList(SelectItem[] paramList) {
@@ -43,18 +102,18 @@ public class ConcProgramParamsBO {
 
     public SelectItem[] getParamList() {
         ArrayList s_array=new ArrayList();
-        if(this.isLov.equalsIgnoreCase("Y")){
-        ConcurrentProgramDC concurrentProgramDC=new ConcurrentProgramDC();
-        String shortName = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}"));
-        List lovCollection=concurrentProgramDC.getConcProgramParamLov(shortName, this.getSeqNum(), this.getValueSetName());        
-        for(int i=0;i<lovCollection.size();i++){
-            ConcProgramParamLovBO lovRow = (ConcProgramParamLovBO) lovCollection.get(i);
-            SelectItem s=new SelectItem();
-            s.setLabel(lovRow.getValue());
-            s.setValue(lovRow.getRef());
-            s_array.add(s);
-        }
-        }
+//        if(this.isLov.equalsIgnoreCase("Y")){
+//        RequestUtilBean requestUtil=new RequestUtilBean();
+//        String shortName = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}"));
+//        List lovCollection=requestUtil.getConcProgramParamLov(shortName, this.getSeqNum(), this.getValueSetName());        
+//        for(int i=0;i<lovCollection.size();i++){
+//            ConcProgramParamLovBO lovRow = (ConcProgramParamLovBO) lovCollection.get(i);
+//            SelectItem s=new SelectItem();
+//            s.setLabel(lovRow.getValue());
+//            s.setValue(lovRow.getRef());
+//            s_array.add(s);
+//        }
+//        }
         return (SelectItem[]) s_array.toArray(new SelectItem[s_array.size()]);
     }
 
