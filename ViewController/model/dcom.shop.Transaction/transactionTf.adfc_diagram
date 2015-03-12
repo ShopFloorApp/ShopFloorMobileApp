@@ -276,7 +276,7 @@
       <property
          name="fromOutcome">Locator</property>
       <property
-         name="sdm:polyPoints">R46,585.2529,57.5459,723.6875,176.44824,L42</property>
+         name="sdm:polyPoints">R54,585.1356,64.5459,723.6875,176.44824,L42</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -286,7 +286,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L50,721.11194,183.44824,582.6953,64.5459,R54</property>
+         name="sdm:polyPoints">L50,721.23047,183.44824,582.6953,71.5459,R62</property>
    </ControlFlowCase>
    <View
       id="View25">
@@ -341,7 +341,7 @@
       <property
          name="fromOutcome">Locator</property>
       <property
-         name="sdm:polyPoints">R46,276.43634,61.29297,719.3394,190.44824,L58</property>
+         name="sdm:polyPoints">R46,276.43616,61.29297,719.5166,190.44824,L58</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -371,5 +371,40 @@
          name="fromOutcome">BackToPage</property>
       <property
          name="sdm:polyPoints">R50,-42.0,226.44824,193.0,71.79297,L58</property>
+   </ControlFlowCase>
+   <View
+      id="View33">
+      <property
+         name="activityId">SerialEntry</property>
+      <property
+         name="page">/page/SerialEntry.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SerialEntry&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-19.902344</property>
+      <property
+         name="x">748.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase35"
+      from="View5"
+      to="View33">
+      <property
+         name="fromOutcome">SerialEntry</property>
+      <property
+         name="sdm:polyPoints">R38,582.6953,50.5459,705.56116,-23.75293,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase36"
+      from="View33"
+      to="View5">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">L54,707.5,-16.75293,584.6212,57.5459,R46</property>
    </ControlFlowCase>
 </SDM>

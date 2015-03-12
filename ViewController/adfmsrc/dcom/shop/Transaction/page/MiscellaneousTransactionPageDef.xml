@@ -67,5 +67,10 @@
                   IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider">
       <NamedData NDName="trxType" NDValue="#{pageFlowScope.TrxType}" NDType="java.lang.String"/>
     </methodAction>
+    <attributeValues IterBinding="subinventoriesIterator" id="FromSubInv">
+      <AttrNames>
+        <Item Value="subinv"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

@@ -128,5 +128,17 @@
     </attributeValues>
     <methodAction id="refreshToLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshToLocators"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+    <attributeValues IterBinding="locatorsIterator" id="FromLocator">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="toLocatorsIterator" id="ToLocator">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
+                  IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

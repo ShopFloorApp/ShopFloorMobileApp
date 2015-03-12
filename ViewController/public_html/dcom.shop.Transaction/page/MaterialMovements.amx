@@ -14,10 +14,12 @@
             </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
+     <amx:commandButton text="&lt;" id="cb1" action="bT"/>
+       
     </amx:facet>
     <amx:panelGroupLayout id="pgl1">
       <amx:panelGroupLayout id="pgl2" layout="horizontal">
-        <amx:commandButton text="&lt;" id="cb1" action="bT"/>
+        <!--amx:commandButton text="&lt;" id="cb1" action="bT"/-->
         <amx:spacer id="s1" width="50"/>
         <amx:outputText value="Material Movements" id="ot2"/>
       </amx:panelGroupLayout>

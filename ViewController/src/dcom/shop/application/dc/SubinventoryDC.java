@@ -22,7 +22,7 @@ public class SubinventoryDC extends SyncUtils {
     protected static List s_subInventories = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
-
+    
 
     public SubinventoryBO[] getSubinventory() {
         String networkStatus =
@@ -68,7 +68,9 @@ public class SubinventoryDC extends SyncUtils {
                             SubinventoryBO SubinventoryItems = new SubinventoryBO();
                             JSONObject jsObject2 = (JSONObject) array.get(i);
 
-                            SubinventoryItems.setWhse((jsObject2.get("WHSE").toString()));
+        try {
+           SubinventoryBO[] subInventories = null;
+            SubinventoryItems.setWhse((jsObject2.get("WHSE").toString()));
                             SubinventoryItems.setSubinv((jsObject2.get("SUBINV").toString()));
                             SubinventoryItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             SubinventoryItems.setLocatorControl((jsObject2.get("LOCATORCONTROL").toString()));
@@ -77,18 +79,47 @@ public class SubinventoryDC extends SyncUtils {
                             SubinventoryItems.setDefCostGrp((jsObject2.get("DEFCOSTGRP").toString()));
                             s_subInventories.add(SubinventoryItems);
 
+            filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+            subInventories =
+                (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
+            return subInventories;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
 
-                        }
+        }
 
-                        super.updateSqlLiteTable(SubinventoryBO.class, s_subInventories);
-                    }
+    public void filterSubinventories() {
+        try {
+            System.out.println("inside filter code");
+            filtered_Subinventories.clear();
+
+            HashMap filterFileds = new HashMap();
+            filterFileds.put("subinv", getSubinvFilter());
+            filterFileds.put("desc", getDescFilter());
+            filterFileds.put("whse", "100");
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_subInventories);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+
+            filtered_Subinventories = (List) super.getFileteredCollection(SubinventoryBO.class, paramMap);
+            System.out.println("collection size is " + filtered_Subinventories.size());
+            providerChangeSupport.fireProviderRefresh("subinventories");
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
                 } catch (ParseException e) {
                     e.getMessage();
-                }
-            }
-        }
+    }
+    }
+    }
         SubinventoryBO[] SubinventoryArray =
             (SubinventoryBO[]) s_subInventories.toArray(new SubinventoryBO[s_subInventories.size()]);
         return SubinventoryArray;
     }
-}
+    }

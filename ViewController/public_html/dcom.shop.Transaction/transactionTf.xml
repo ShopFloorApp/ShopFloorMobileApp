@@ -34,6 +34,9 @@
     <view id="MaterialTransaction">
       <page>/dcom.shop.Transaction/page/MiscellaneousTransaction.amx</page>
     </view>
+    <view id="SerialEntry">
+      <page>/page/SerialEntry.amx</page>
+    </view>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -89,6 +92,10 @@
         <from-outcome>Locator</from-outcome>
         <to-activity-id>LocatorLOVPG</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__30">
+        <from-outcome>SerialEntry</from-outcome>
+        <to-activity-id>SerialEntry</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__2">
       <from-activity-id>itemLOVPG</from-activity-id>
@@ -142,6 +149,13 @@
       <control-flow-case id="__32">
         <from-outcome>BackToPage</from-outcome>
         <to-activity-id>MaterialTransaction</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id>SerialEntry</from-activity-id>
+      <control-flow-case id="__35">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

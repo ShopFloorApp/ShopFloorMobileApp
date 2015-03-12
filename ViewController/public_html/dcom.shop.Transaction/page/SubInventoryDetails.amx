@@ -14,7 +14,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2"/>
+            <amx:commandButton id="cb2" text="Back" action="cancel"/>
         </amx:facet>
         <amx:panelGroupLayout id="pgl1" layout="horizontal">
             <amx:commandButton text="&lt;" id="cb1" action="__back"/>
@@ -61,7 +61,7 @@
                     <amx:cellFormat id="cf5" width="60%">
                         <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}"/>
                     </amx:cellFormat>
-                    <amx:cellFormat width="10px" halign="end">
+                    <amx:cellFormat width="10px" halign="end" id="cf18">
                         <amx:commandLink id="cb3" action="ItemLOV">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="SubinvTrfr" to="#{pageFlowScope.ItemLovPage}"
@@ -139,7 +139,8 @@
                         <amx:panelLabelAndMessage label="From Locator" inlineStyle="text-align:center;" id="plam7"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf12" width="60%">
-                        <amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc1">
+                        <amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc1"
+                        valueChangeListener="#{StateListenerBean.FromLocValueChange}">
                             <amx:selectItems value="#{bindings.locators.items}" id="si1"/>
                         </amx:selectOneChoice>
                     </amx:cellFormat>
@@ -160,9 +161,26 @@
                         <amx:panelLabelAndMessage label="To Locator" inlineStyle="text-align:center;" id="plam9"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf14" width="60%">
-                        <amx:selectOneChoice value="#{bindings.toLocators.inputValue}" id="soc3">
+                        <amx:selectOneChoice value="#{bindings.toLocators.inputValue}" id="soc3"
+                                             valueChangeListener="#{StateListenerBean.ToLocValueChange}">
                             <amx:selectItems value="#{bindings.toLocators.items}" id="si3"/>
                         </amx:selectOneChoice>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl1">
+                  <amx:cellFormat id="cf16" >
+                  <amx:spacer width="13" id="s6"></amx:spacer>
+                        <amx:commandLink id="cl1" text="Serial Entry" action="SerialEntry">
+                        <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.SerialQty}" id="spl1"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.itemNumber}" to="#{pageFlowScope.SerialItem}"
+                                                 id="spl2"/>
+                          <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}"
+                                                 id="spl4"/>                         
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf17">
+                    <amx:spacer width="25" id="s7"></amx:spacer>
+                        <amx:commandLink id="cl2" text="Lot Entry"></amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
@@ -230,60 +248,9 @@
             <amx:panelGroupLayout id="pgl4" layout="horizontal">
                 <amx:commandButton text="Cancel" id="cb23" action="cancel"/>
                 <amx:commandButton text="Add to Queue" id="cb4"/>
-                <amx:commandButton text="Save &amp; Complete" action="cancel"
-                                   actionListener="#{bindings.invokeInvTrnDC.execute}" id="cb5"/>
+                 <amx:commandButton text="Save &amp; Complete" action="cancel"
+                                   actionListener="#{bindings.InsertTransaction.execute}" id="cb5"/>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:panelPage>
-    <amx:popup id="serLot">
-        <amx:panelGroupLayout id="pg2l17" layout="horizontal">
-            <amx:filmStrip id="f2s1">
-                <amx:filmStripItem text="Serial Entry" id="fsi1">
-                    <amx:panelGroupLayout id="pgl6">
-                        <amx:panelGroupLayout id="pgl8" layout="horizontal">
-                            <amx:panelGroupLayout id="pgl11">
-                                <amx:inputText label="Item" id="it12"/>
-                                <amx:inputText label="Quantity" id="it121"/>
-                            </amx:panelGroupLayout>
-                            <amx:selectBooleanSwitch label="Ranges" id="sbs1"/>
-                        </amx:panelGroupLayout>
-                        <amx:spacer id="s4" height="20"/>
-                        <amx:panelGroupLayout id="pgl10">
-                            <amx:inputText label="Quantity Entered" id="it13"/>
-                            <amx:commandButton text="+" id="cb6"/>
-                            <amx:panelGroupLayout id="pgl12" layout="horizontal">
-                                <amx:inputText id="it15"/>
-                                <amx:inputText id="it16"/>
-                                <amx:commandButton text="s" id="cb8"/>
-                            </amx:panelGroupLayout>
-                            <amx:panelGroupLayout id="pgl13" layout="horizontal">
-                                <amx:inputText id="it14"/>
-                                <amx:commandButton text="s" id="cb7"/>
-                            </amx:panelGroupLayout>
-                        </amx:panelGroupLayout>
-                        <amx:spacer id="s5" height="20"/>
-                        <amx:panelGroupLayout id="pgl9"/>
-                    </amx:panelGroupLayout>
-                </amx:filmStripItem>
-                <amx:filmStripItem text="Lot Entry" id="fsi22">
-                    <amx:panelGroupLayout id="pgl227">
-                        <amx:panelGroupLayout id="pgl215">
-                            <amx:inputText label="Item" id="it22217"/>
-                            <amx:inputText label="Quantity" id="it218"/>
-                        </amx:panelGroupLayout>
-                        <amx:spacer id="s26" height="20"/>
-                        <amx:panelGroupLayout id="pg2l16">
-                            <amx:inputText label="Quantity Entered" id="it219"/>
-                            <amx:commandButton text="+" id="cb29"/>
-                        </amx:panelGroupLayout>
-                        <amx:spacer id="s27" height="20"/>
-                        <amx:panelGroupLayout id="pg2l14"/>
-                    </amx:panelGroupLayout>
-                </amx:filmStripItem>
-            </amx:filmStrip>
-            <amx:commandButton text="x" id="cb211">
-                <amx:closePopupBehavior id="cp22b1" popupId="serLot" type="action"/>
-            </amx:commandButton>
-        </amx:panelGroupLayout>
-    </amx:popup>
 </amx:view>

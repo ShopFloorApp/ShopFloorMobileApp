@@ -4,10 +4,31 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SubInventoryTxnDC" id="SubInventoryTxnDCIterator"/>
+    <accessorIterator MasterBinding="SubInventoryTxnDCIterator" Binds="subinventories" RangeSize="25"
+                      DataControl="SubInventoryTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.SubInventoryTxnBO"
+                      id="subinventoriesIterator"/>
   </executables>
   <bindings>
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <tree IterBinding="subinventoriesIterator" id="subinventories">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.SubInventoryTxnBO" Name="subinventories0">
+        <AttrNames>
+          <Item Value="trxnId"/>
+          <Item Value="fromInventory"/>
+          <Item Value="toInventory"/>
+          <Item Value="itemName"/>
+          <Item Value="itemNumber"/>
+          <Item Value="fromLoc"/>
+          <Item Value="toLoc"/>
+          <Item Value="LPN"/>
+          <Item Value="quantity"/>
+          <Item Value="txnTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

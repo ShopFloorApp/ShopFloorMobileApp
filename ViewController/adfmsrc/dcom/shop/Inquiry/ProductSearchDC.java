@@ -1,12 +1,10 @@
 package dcom.shop.Inquiry;
 
-import dcom.shop.restURIDetails.RestURI;
-
 import dcom.shop.restURIDetails.RestCallerUtil;
+import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.logging.Level;
 
 import javax.el.ValueExpression;

@@ -2,12 +2,8 @@ package dcom.shop.application.mobile;
 
 import dcom.shop.application.dc.LocatorDC;
 
-import dcom.shop.application.mobile.txn.RequestsBO;
-
 import java.util.ArrayList;
-
 import java.util.List;
-
 import java.util.Map;
 
 import javax.el.MethodExpression;
@@ -114,8 +110,58 @@ public class StateListener {
 
         pageFlow.put("ToSubinventory", subinv);
 
-        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+
+    public void FromSerialChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.fromSerial}", String.class);
+        String fromSerial = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        //   ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.toSerial}", String.class);
+        // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), fromSerial);
+
+    }
+
+    public void ToSerialChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.insertSerials.execute}", Object.class, new Class[] {
                                                                      });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+
+    public void SerialChangeListener(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+     /*   ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.fromSerialRangeOff}", String.class);
+        String serial = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.fromSerial}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), serial);
+        ValueExpression tove = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.toSerial}", String.class);
+        tove.setValue(AdfmfJavaUtilities.getAdfELContext(), serial);*/
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.insertSerials.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+
+    public void FromLocValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.FromLocator.inputValue}", String.class);
+        String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        //          String subinv = (String)valueChangeEvent.getNewValue();
+
+        pageFlow.put("FromLocator", subinv);
+    }
+
+    public void ToLocValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.ToLocator.inputValue}", String.class);
+        String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        //          String subinv = (String)valueChangeEvent.getNewValue();
+
+        pageFlow.put("ToLocator", subinv);
     }
 }

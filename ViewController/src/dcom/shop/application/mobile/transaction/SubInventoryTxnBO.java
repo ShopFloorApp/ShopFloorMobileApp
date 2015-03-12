@@ -2,24 +2,40 @@ package dcom.shop.application.mobile.transaction;
 
 import dcom.shop.application.base.CustomPojo;
 
-import dcom.shop.application.mobile.WarehouseBO;
-
-import java.sql.Time;
-
 import java.util.HashMap;
 
 public class SubInventoryTxnBO extends CustomPojo {
-    private String PrimaryKeyId;
+    public SubInventoryTxnBO(int trxnid,String isNewEntity, String rowOperation, String fromInventory, String toInventory,
+                             String itemNumber, String itemName, String quantity, String txnTime,String completeFlag,
+                             String lpn, String fromLoc, String toLoc, String status){
+        this.setTrxnId(trxnid);
+        this.setIsNewEntity(isNewEntity);
+        this.setRowOperation(rowOperation);
+        this.setFromInventory(fromInventory);
+        this.setToInventory(toInventory);
+        this.setFromLoc(fromLoc);
+        this.setToLoc(toLoc);
+        this.setQuantity(quantity);
+        this.setTxnTime(txnTime);
+        this.setStatus(status);
+        this.setItemName(itemName);
+        this.setItemNumber(itemNumber);
+        this.setLPN(lpn);
+        this.setCompleteFlag(completeFlag);
+        this.setRowOperation(rowOperation);
+        
+    }
+    private int TrxnId;
     private String IsNewEntity;
     private String RowOperation;
 
 
-    public void setPrimaryKeyId(String PrimaryKeyId) {
-        this.PrimaryKeyId = PrimaryKeyId;
+    public void setTrxnId(Integer TrxnId) {
+        this.TrxnId = TrxnId;
     }
 
-    public String getPrimaryKeyId() {
-        return PrimaryKeyId;
+    public Integer getTrxnId() {
+        return TrxnId;
     }
 
     public void setIsNewEntity(String IsNewEntity) {
@@ -152,6 +168,9 @@ public class SubInventoryTxnBO extends CustomPojo {
 
         
     public void setBOClassRow(HashMap hashMap) {
+        this.setTrxnId((Integer)hashMap.get("trxnid"));
+        this.setIsNewEntity((String)hashMap.get("isnewentity"));
+        this.setRowOperation((String)hashMap.get("rowoperation"));
         this.setFromInventory((String) hashMap.get("frominventory"));
         this.setToInventory((String) hashMap.get("toinventory"));
         this.setFromLoc((String) hashMap.get("fromloc"));
@@ -168,6 +187,9 @@ public class SubInventoryTxnBO extends CustomPojo {
 
     public HashMap getBOClassRow(SubInventoryTxnBO subInventoryTxn) {
         HashMap map = new HashMap();
+        map.put("trxnid",subInventoryTxn.getTrxnId());
+        map.put("isnewentity",subInventoryTxn.getIsNewEntity());
+        map.put("rowoperation",subInventoryTxn.getRowOperation());
         map.put("frominventory", subInventoryTxn.getFromInventory());
         map.put("toinventory", subInventoryTxn.getToInventory());
         map.put("fromloc", subInventoryTxn.getFromLoc());

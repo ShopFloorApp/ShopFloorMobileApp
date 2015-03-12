@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Transactions" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-       <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Transactions" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
                              styleClass="custom-springboard-link">
                 <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
                            source="/images/springboard.png" id="i1"/>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl3" layout="horizontal">
-      <amx:commandButton text="&lt;" id="cb1" action="bMM"/>
-      <amx:spacer id="s1" width="50"/>
-      <amx:outputText value="Material Movements" id="ot8"/>
-    </amx:panelGroupLayout>
-    <amx:panelGroupLayout id="pgl4">
-      <amx:tableLayout id="tl1">
-        <amx:rowLayout id="rl1">
-          <amx:cellFormat id="cf1">
-            <amx:commandButton text="From Sub" action="siDet" id="cb2"/>
-          </amx:cellFormat>
-          <amx:cellFormat id="cf2">
-            <amx:commandButton text="Item" id="cb3"/>
-          </amx:cellFormat>
-          <amx:cellFormat id="cf3">
-            <amx:commandButton text="Qty" id="cb4"/>
-          </amx:cellFormat>
-          <amx:cellFormat id="cf4">
-            <amx:commandButton text="To Sub" id="cb5"/>
-          </amx:cellFormat>
-        </amx:rowLayout>
-      </amx:tableLayout>
-    </amx:panelGroupLayout>
-    <!--amx:listView var="row" value="#{bindings.subInventoryTxn.collectionModel}"
-                  fetchSize="#{bindings.subInventoryTxn.rangeSize}"
-                  selectedRowKeys="#{bindings.subInventoryTxn.collectionModel.selectedRow}"
-                  selectionListener="#{bindings.subInventoryTxn.collectionModel.makeCurrent}"
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cb3" action="siDet">
+                <amx:outputHtml id="oh3" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl3" layout="horizontal">
+            <amx:commandButton text="&lt;" id="cb1" action="bMM"/>
+            <amx:spacer id="s1" width="50"/>
+            <amx:outputText value="Material Movements" id="ot8"/>
+        </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl4">
+            <amx:tableLayout id="tl1">
+                <amx:rowLayout id="rl1">
+                    <amx:cellFormat id="cf1">
+                        <amx:commandButton text="From Sub" id="cb2"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf2">
+                        <amx:commandButton text="Item" id="cb9"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf3">
+                        <amx:commandButton text="Qty" id="cb4"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf4">
+                        <amx:commandButton text="To Sub" id="cb5"/>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
+                  fetchSize="#{bindings.subinventories.rangeSize}"
+                  selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.subinventories.collectionModel.makeCurrent}"
                   showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
       <amx:listItem id="li1">
         <amx:outputText value="#{row.fromInventory}" id="ot2"/>
@@ -62,13 +65,13 @@
        <amx:listItem id="li4">
         <amx:outputText value="#{row.toInventory}" id="ot3"/>
       </amx:listItem>
-    </amx:listView-->
-  </amx:panelPage>
-  <amx:popup id="p1" autoDismiss="true">
-    <amx:panelGroupLayout id="pgl5">
-      <amx:commandButton text="Edit" id="cb6" action="siDet"/>
-      <amx:commandButton text="Complete" id="cb7"/>
-      <amx:commandButton text="Delete" id="cb8"/>
-    </amx:panelGroupLayout>
-  </amx:popup>
+    </amx:listView>
+    </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="true">
+        <amx:panelGroupLayout id="pgl5">
+            <amx:commandButton text="Edit" id="cb6" action="siDet"/>
+            <amx:commandButton text="Complete" id="cb7"/>
+            <amx:commandButton text="Delete" id="cb8"/>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

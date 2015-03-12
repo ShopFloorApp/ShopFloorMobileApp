@@ -1,29 +1,22 @@
 package dcom.shop.application.base;
 
 import dcom.shop.application.database.ConnectionFactory;
-import dcom.shop.application.mobile.WarehouseBO;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-import java.security.Key;
-
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import java.util.Map;
-
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.api.GenericTypeBeanSerializationHelper;
@@ -31,7 +24,7 @@ import oracle.adfmf.util.GenericType;
 import oracle.adfmf.util.GenericVirtualType;
 import oracle.adfmf.util.Utility;
 
-public abstract class SyncUtils {
+public class SyncUtils {
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
 
     protected static GenericVirtualType getTransactionHeader() {
@@ -56,7 +49,7 @@ public abstract class SyncUtils {
     }
 
 
-    protected List getCollection(Class collectionClass,HashMap params) {
+    protected List getCollection(Class collectionClass, HashMap params) {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -70,16 +63,16 @@ public abstract class SyncUtils {
         }
         return collections;
     }
-    
+
     protected List getOfflineCollection(Class collectionClass) {
-        List collections;        
-            collections = getCollectionFromDB(collectionClass);   
+        List collections;
+        collections = getCollectionFromDB(collectionClass);
         return collections;
     }
-    
+
     protected List getOnlineCollection(Class collectionClass, HashMap params) {
-        List collections;        
-        collections = getCollectionFromWS(collectionClass, params);   
+        List collections;
+        collections = getCollectionFromWS(collectionClass, params);
         return collections;
     }
 
@@ -102,7 +95,7 @@ public abstract class SyncUtils {
             for (int i = 0; i < fields.length; i++) {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
-                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -119,13 +112,13 @@ public abstract class SyncUtils {
                 HashMap map = new HashMap();
                 for (int i = 0; i < fields.length; i++) {
                     if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
-                        (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                        (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
                     }
                     System.out.println("adding rows to hashmap");
-                    map.put(fields[i].getName().toLowerCase(),  result.getObject(fields[i].getName()));
+                    map.put(fields[i].getName().toLowerCase(), result.getObject(fields[i].getName()));
                 }
                 System.out.println("before invoking the method");
                 Object obj = collectionClass.newInstance();
@@ -136,7 +129,14 @@ public abstract class SyncUtils {
                 while (entries.hasNext()) {
                     Map.Entry entry = (Map.Entry) entries.next();
                     String key = (String) entry.getKey();
-                    String value = (String) entry.getValue();
+                    String value = null;
+                    if (entry.getValue() != null) {
+                        if (entry.getValue().getClass().toString().contains("Integer")) {
+                            value = Integer.toString((Integer) entry.getValue());
+                        } else {
+                            value = (String) entry.getValue();
+                        }
+                    }
                     System.out.println("Key = " + key + ", Value = " + value);
                 }
                 System.out.println("after iterating hashmap");
@@ -152,7 +152,7 @@ public abstract class SyncUtils {
     }
 
     public List getCollectionFromWS(Class collectionClass, HashMap params) {
-        
+
         System.out.println("Inside getWarehousesFromWS");
         GenericVirtualType payload = (GenericVirtualType) params.get("payload");
         String lovDCName = (String) params.get("lovDCName");
@@ -184,7 +184,7 @@ public abstract class SyncUtils {
                 GenericType entityGenericType = (GenericType) respListType.getAttribute(i);
                 // Now create Department instance out of this GenericType
                 // this works fine if payload attr names match department attr names
-                
+
                 obj = GenericTypeBeanSerializationHelper.fromGenericType(collectionClass, entityGenericType);
                 collection.add(obj);
             }
@@ -195,7 +195,7 @@ public abstract class SyncUtils {
         }
     }
 
-    protected void updateSqlLiteTable(Class collectionClass, List collections) {
+    public void updateSqlLiteTable(Class collectionClass, List collections) {
         Connection conn = null;
 
         String tableName = collectionClass.getName();
@@ -217,7 +217,7 @@ public abstract class SyncUtils {
             for (int i = 0; i < fields.length; i++) {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
-                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -241,7 +241,7 @@ public abstract class SyncUtils {
 
                 for (int j = 0; j < fields.length; j++) {
                     if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
-                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport"))||
+                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
@@ -267,65 +267,171 @@ public abstract class SyncUtils {
         }
     }
 
+
+    public boolean insertSqlLiteTable(Class collectionClass, List collections) {
+        Connection conn = null;
+        boolean update = false;
+        String tableName = collectionClass.getName();
+        String tabName = tableName.substring(tableName.lastIndexOf(".") + 1, tableName.length() - 2);
+
+        try {
+            conn = ConnectionFactory.getConnection();
+
+            Statement stmt = conn.createStatement();
+
+            //stmt.executeQuery("DELETE FROM " + tabName.toUpperCase() + ";");
+
+            Field[] fields = collectionClass.getDeclaredFields();
+
+            StringBuffer query = new StringBuffer();
+            query.append("INSERT INTO " + tabName.toUpperCase() + " (");
+
+            StringBuffer fieldNames = new StringBuffer();
+            for (int i = 0; i < fields.length; i++) {
+
+                if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
+                    continue;
+                }
+                fieldNames.append(fields[i].getName().toUpperCase() + ",");
+            }
+            String fieldNamesStr = fieldNames.substring(0, fieldNames.length() - 1);
+
+            query.append(fieldNamesStr + " ) VALUES ( ");
+
+            System.out.println("after resultset logic query is " + query);
+            Object obj = collectionClass.newInstance();
+            for (int i = 0; i < collections.size(); i++) {
+                stmt = conn.createStatement();
+                StringBuffer insertQueryValues = new StringBuffer();
+                System.out.println("row is " + collections.get(i));
+                System.out.println("row class is " + collections.get(i).getClass());
+                Method method = collectionClass.getMethod("getBOClassRow", new Class[] { collectionClass });
+                System.out.println("invoking the method and getting the output");
+                HashMap pojoRowMap = (HashMap) method.invoke(obj, new Object[] { collections.get(i) });
+
+                for (int j = 0; j < fields.length; j++) {
+                    if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
+                        continue;
+                    }
+                    System.out.println("getting row from hashmap");
+                    String columnValue = null;
+
+                    if (pojoRowMap.get(fields[j].getName().toLowerCase()) != null) {
+                        
+                    
+                if (pojoRowMap.get(fields[j].getName().toLowerCase()).getClass().toString().contains("Integer")) {
+                        columnValue = Integer.toString((Integer) pojoRowMap.get(fields[j].getName().toLowerCase()));
+                    }
+                else {
+                        columnValue = (String) pojoRowMap.get(fields[j].getName().toLowerCase());
+                    }
+                    }
+                    System.out.println("field name is " + fields[j].getName().toLowerCase());
+
+                    insertQueryValues.append("'" + columnValue + "'" + ",");
+                }
+                System.out.println("insert value is " + insertQueryValues);
+                String valuesStr = insertQueryValues.substring(0, insertQueryValues.length() - 1);
+                String finalQuery = query.toString() + valuesStr + ");";
+                System.out.println("insert query is " + finalQuery);
+                int updateCount = stmt.executeUpdate(finalQuery);
+                if(updateCount>0){
+                  update=true;  
+                }
+                  
+
+            }
+            return update;
+
+        } catch (Exception ex) {
+            Utility.ApplicationLogger.severe(ex.getMessage());
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+    }
+
     public String toCamelCase(String s) {
         String finalString = s.substring(0, 1).toUpperCase() + s.substring(1);
         return finalString;
 
     }
-    
-    public List getFileteredCollection(Class classPOJO,HashMap params){
-        List filteredRows=new ArrayList();
-        try{
+
+    public List getFileteredCollection(Class classPOJO, HashMap params) {
+        List filteredRows = new ArrayList();
+        try {
             System.out.println("code inside try");
-        List allRowsCollection = (List) params.get("collection");
-        HashMap filterFieldsValues = (HashMap) params.get("filterFieldsValues");
-            String filter="";
-            int fieldsCount=0;
+            List allRowsCollection = (List) params.get("collection");
+            HashMap filterFieldsValues = (HashMap) params.get("filterFieldsValues");
+            String filter = "";
+            int fieldsCount = 0;
             Iterator entriesFields = filterFieldsValues.entrySet().iterator();
             while (entriesFields.hasNext()) {
                 Map.Entry entry = (Map.Entry) entriesFields.next();
-                String value = (String) entry.getValue();
-                    filter=filter+value;
-                    fieldsCount=fieldsCount+1;
-                } 
-            System.out.println("filter text is "+filter+" and length is "+filter.length());
-            boolean nofilter = (filter.length() == 0);                                                                                                                                                                                           
-        
-                
-        Object obj=classPOJO.newInstance();
-        for (int x = 0; x < allRowsCollection.size(); x++) {
-            System.out.println("inside for code");
-            
-            if (nofilter) {
-                filteredRows.add(allRowsCollection.get(x));
-            } else {
-                System.out.println("inside else condition");
-                Method method = classPOJO.getMethod("getBOClassRow", new Class[] { classPOJO });
-                System.out.println("invoking the method and getting the output");
-                HashMap pojoRowMap = (HashMap) method.invoke(obj, new Object[] { allRowsCollection.get(x) });
-                int i=0;
-                Iterator filterFields = filterFieldsValues.entrySet().iterator();
-                while (filterFields.hasNext()) {
-                    Map.Entry entry = (Map.Entry) filterFields.next();
-                    String key = (String) entry.getKey();
-                    System.out.println("filter column name is "+key);
-                    String filtervalue = (String) entry.getValue();
-                    System.out.println("filter value for column "+key+" is "+filtervalue);
-                    String attribValue = (String) pojoRowMap.get(key);
-                    System.out.println("column row value is "+attribValue);
-                    if(attribValue.indexOf(filtervalue) != -1||attribValue == null || attribValue.equals("")){
-                        System.out.println("inside if of while");
-                        i=i+1;
-                    }
-                    } 
-                if (i==fieldsCount) {
-                    System.out.println("inside if..row is filtered");
+                // String value = (String) entry.getValue();
+                String value = null;
+                if (entry.getValue().getClass().toString().contains("Integer")) {
+                    value = Integer.toString((Integer) entry.getValue());
+                } else {
+                    value = (String) entry.getValue();
+                }
+                filter = filter + value;
+                fieldsCount = fieldsCount + 1;
+            }
+            System.out.println("filter text is " + filter + " and length is " + filter.length());
+            boolean nofilter = (filter.length() == 0);
+
+
+            Object obj = classPOJO.newInstance();
+            for (int x = 0; x < allRowsCollection.size(); x++) {
+                System.out.println("inside for code");
+
+                if (nofilter) {
                     filteredRows.add(allRowsCollection.get(x));
+                } else {
+                    System.out.println("inside else condition");
+                    Method method = classPOJO.getMethod("getBOClassRow", new Class[] { classPOJO });
+                    System.out.println("invoking the method and getting the output");
+                    HashMap pojoRowMap = (HashMap) method.invoke(obj, new Object[] { allRowsCollection.get(x) });
+                    int i = 0;
+                    Iterator filterFields = filterFieldsValues.entrySet().iterator();
+                    while (filterFields.hasNext()) {
+                        Map.Entry entry = (Map.Entry) filterFields.next();
+                        String key = (String) entry.getKey();
+                        System.out.println("filter column name is " + key);
+                        // String filtervalue = (String) entry.getValue();
+                        String filtervalue = null;
+                        if (entry.getValue().getClass().toString().contains("Integer")) {
+                            filtervalue = Integer.toString((Integer) entry.getValue());
+                        } else {
+                            filtervalue = (String) entry.getValue();
+                        }
+                        System.out.println("filter value for column " + key + " is " + filtervalue);
+                        //String attribValue = (String) pojoRowMap.get(key);
+                        String attribValue = null;
+                        if (pojoRowMap.get(key).getClass().toString().contains("Integer")) {
+                            attribValue = Integer.toString((Integer) pojoRowMap.get(key));
+                        } else {
+                            attribValue = (String) pojoRowMap.get(key);
+                        }
+                        System.out.println("column row value is " + attribValue);
+                        if (attribValue.indexOf(filtervalue) != -1 || attribValue == null || attribValue.equals("")) {
+                            System.out.println("inside if of while");
+                            i = i + 1;
+                        }
+                    }
+                    if (i == fieldsCount) {
+                        System.out.println("inside if..row is filtered");
+                        filteredRows.add(allRowsCollection.get(x));
+                    }
                 }
             }
-        }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return filteredRows;

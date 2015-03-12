@@ -720,11 +720,11 @@
          </hash>
       </hash>
       <list n="profileList">
+         <string v="ShopFloorMobileApp_ViewController"/>
          <string v="ViewController_MobileFeatureArchive1"/>
          <string v="ViewController_MobileFeatureArchive2"/>
          <string v="ViewController_MobileFeatureArchive3"/>
          <string v="ViewController_MobileFeatureArchive4"/>
-         <string v="ShopFloorMobileApp_ViewController"/>
          <string v="ViewController_MobileFeatureArchive5"/>
          <string v="ViewController_MobileFeatureArchive6"/>
          <string v="ViewController_MobileFeatureArchive7"/>

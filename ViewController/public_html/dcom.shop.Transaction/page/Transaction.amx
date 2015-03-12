@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Transactions" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Transactions" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
                              styleClass="custom-springboard-link">
                 <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
                            source="/images/springboard.png" id="i1"/>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary"/>
-    <amx:panelGroupLayout id="pgl1" layout="horizontal">
-      <amx:panelGroupLayout id="pgl2" layout="vertical">
-        <amx:commandButton text="Material Movements" id="cb1" action="matMov"/>
-        <amx:commandButton text="Receiving Transactions" id="cb2"/>
-      </amx:panelGroupLayout>
-      <amx:panelGroupLayout id="pgl3" layout="vertical">
-        <amx:commandButton text="Shipping Transactions" id="cb3"/>
-        <amx:commandButton text="Stock Count" id="cb4"/>
-      </amx:panelGroupLayout>
-    </amx:panelGroupLayout>
-  </amx:panelPage>
+        </amx:facet>
+        <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
+            <!--actionListener="#{bindings.ProcessWS.execute}"-->
+            <amx:listItem id="li3" action="matMov">
+                <amx:outputText value="Material Movements" id="ot4"/>
+            </amx:listItem>
+            <amx:listItem id="li4" action="">
+                <amx:outputText value="Receiving Transactions" id="ot5"/>
+            </amx:listItem>
+            <amx:listItem id="li6" action="">
+                <amx:outputText value="Shipping Transactions" id="ot7"/>
+            </amx:listItem>
+            <amx:listItem id="li5" action="">
+                <amx:outputText value="Stock Count" id="ot6"/>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
 </amx:view>
