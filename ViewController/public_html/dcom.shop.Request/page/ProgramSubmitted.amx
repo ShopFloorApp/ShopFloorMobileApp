@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
+      <amx:rowLayout id="rl9">
+        <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative; right: -385px;">
+          <amx:commandButton text="Search Request" id="cb3" inlineStyle="border-radius: 9.5em;"
+                             action="searchRequest"/>
+        </amx:cellFormat>
+      </amx:rowLayout>
+    </amx:tableLayout>
+    <amx:panelFormLayout id="pfl1">
+    <amx:panelLabelAndMessage label="Request Id" inlineStyle="text-align:center;" id="plam3">
+        <amx:outputText value="#{pageFlowScope.requestId}" id="ot2"/>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+  
+</amx:view>

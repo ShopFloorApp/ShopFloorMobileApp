@@ -25,34 +25,40 @@
       </amx:rowLayout>
     </amx:tableLayout>
     <amx:panelFormLayout id="pfl1">
-      <amx:panelLabelAndMessage label="#{bindings.requestId.hints.label}" id="plam6">
+      <amx:panelLabelAndMessage label="Request Id" id="plam6">
         <amx:outputText value="#{bindings.requestId.inputValue}" id="ot7"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.progName.hints.label}" id="plam13">
+      <amx:panelLabelAndMessage label="Program Name" id="plam13">
         <amx:outputText value="#{bindings.progName.inputValue}" id="ot14"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.applName.hints.label}" id="plam2">
+      <amx:panelLabelAndMessage label="Application Name" id="plam2">
         <amx:outputText value="#{bindings.applName.inputValue}" id="ot3"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.phase.hints.label}" id="plam7">
+      <amx:panelLabelAndMessage label="Phase" id="plam7">
         <amx:outputText value="#{bindings.phase.inputValue}" id="ot8"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.status.hints.label}" id="plam4">
+      <amx:panelLabelAndMessage label="Status" id="plam4">
         <amx:outputText value="#{bindings.status.inputValue}" id="ot5"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.timeTaken.hints.label}" id="plam3">
-        <amx:outputText value="#{bindings.timeTaken.inputValue}" id="ot4"/>
+      <amx:panelLabelAndMessage label="Time Taken" id="plam3">
+        <amx:panelGroupLayout id="pgl1" layout="horizontal">
+          <amx:outputText value="#{bindings.hrsTaken.inputValue}" id="ot4"/>
+          <amx:outputText value=":" id="ot222"/>
+          <amx:outputText value="#{bindings.minTaken.inputValue}" id="ot16"/>
+          <amx:outputText value=":" id="ot17"/>
+          <amx:outputText value="#{bindings.ssTaken.inputValue}" id="ot18"/>
+        </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.submitDate.hints.label}" id="plam14">
+      <amx:panelLabelAndMessage label="Submitted Date" id="plam14">
         <amx:outputText value="#{bindings.submitDate.inputValue}" id="ot15"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.actualStart.hints.label}" id="plam5">
+      <amx:panelLabelAndMessage label="Actual Start Date" id="plam5">
         <amx:outputText value="#{bindings.actualStart.inputValue}" id="ot6"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.actualCompl.hints.label}" id="plam11">
+      <amx:panelLabelAndMessage label="Actual Completion Date" id="plam11">
         <amx:outputText value="#{bindings.actualCompl.inputValue}" id="ot12"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.submittedBy.hints.label}" id="plam9">
+      <amx:panelLabelAndMessage label="Submitted By" id="plam9">
         <amx:outputText value="#{bindings.submittedBy.inputValue}" id="ot10"/>
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage label="#{bindings.respName.hints.label}" id="plam8">
