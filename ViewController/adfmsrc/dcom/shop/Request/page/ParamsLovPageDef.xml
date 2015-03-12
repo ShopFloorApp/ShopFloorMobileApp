@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="ParamsLovPageDef"
+                Package="dcom.shop.Request.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ConcurrentProgramDC" id="ConcurrentProgramDCIterator"/>
+    <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concProgramParamLov" RangeSize="25"
+                      DataControl="ConcurrentProgramDC"
+                      BeanClass="dcom.shop.application.mobile.txn.ConcProgramParamLovBO"
+                      id="concProgramParamLovIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="concProgramParamLovIterator" id="concProgramParamLov">
+      <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcProgramParamLovBO" Name="concProgramParamLov0">
+        <AttrNames>
+          <Item Value="value"/>
+          <Item Value="ref"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -27,6 +27,9 @@
           <Item Value="refParam5"/>
           <Item Value="required"/>
           <Item Value="valueSetName"/>
+          <Item Value="paramValue"/>
+          <Item Value="paramDispValue"/>
+          <Item Value="itemType"/>
         </AttrNames>
         <Accessors>
           <Item Value="paramList"/>
@@ -35,9 +38,6 @@
       <nodeDefinition DefName="oracle.adfmf.javax.faces.model.SelectItem" Name="concProgramParams1">
         <AttrNames>
           <Item Value="value"/>
-          <Item Value="description"/>
-          <Item Value="disabled"/>
-          <Item Value="escape"/>
           <Item Value="label"/>
         </AttrNames>
       </nodeDefinition>

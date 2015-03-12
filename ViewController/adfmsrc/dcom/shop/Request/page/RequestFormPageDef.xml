@@ -35,11 +35,6 @@
         <Item Value="status"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="requestIterator" id="timeTaken">
-      <AttrNames>
-        <Item Value="timeTaken"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="requestIterator" id="submitDate">
       <AttrNames>
         <Item Value="submitDate"/>
@@ -78,6 +73,21 @@
     <attributeValues IterBinding="requestIterator" id="outPutSize">
       <AttrNames>
         <Item Value="outPutSize"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="hrsTaken">
+      <AttrNames>
+        <Item Value="hrsTaken"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="minTaken">
+      <AttrNames>
+        <Item Value="minTaken"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="requestIterator" id="ssTaken">
+      <AttrNames>
+        <Item Value="ssTaken"/>
       </AttrNames>
     </attributeValues>
   </bindings>
