@@ -241,4 +241,17 @@
     
     }
 
-
+.amx-listView-cards .amx-listItem {
+    display: inline-block;
+    vertical-align: top; /* top for removal of excess inline-block gaps */
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    background-image: none;
+    border: 1px solid #E7E7E9;
+    background-color: #FFFFFF;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    padding: 10px;
+}
