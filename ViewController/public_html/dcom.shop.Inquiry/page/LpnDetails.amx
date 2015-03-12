@@ -13,7 +13,7 @@
         <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
       </amx:commandLink>
     </amx:facet>
-    <amx:panelGroupLayout id="pgl1" 
+        <amx:panelGroupLayout id="pgl1" 
                 inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
                  <amx:tableLayout width="100%" id="tl2">
                     <amx:rowLayout id="rl12">

@@ -22,6 +22,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+
 public class ProductDetailsDC {
     List s_ProdDetailsList = new ArrayList();
     public ProductDetailsDC() {

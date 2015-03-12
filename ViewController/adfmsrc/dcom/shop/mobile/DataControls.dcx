@@ -1,5 +1,694 @@
 <DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.2.36" id="DataControls"
                     Package="dcom.shop.mobile">
+  <AdapterDataControl id="WarehouseLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.WarehouseLOV_WS"
+                      BeanClass="dcom.shop.mobile.WarehouseLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="WarehouseLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetWhse/dcomgetwhsebpelprocess_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetwhsebpelprocess_client_ep"
+                 namespace="http://xmlns.oracle.com/DCOM/DCOMGetWhse/DCOMGetWhseBPELProcess"
+                 connection="WarehouseLOV_WS">
+          <port name="DCOMGetWhseBPELProcess_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="WarehouseDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.WarehouseDC"
+                      BeanClass="dcom.shop.application.dc.WarehouseDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.WarehouseDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CategorySetLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.CategorySetLOV_WS"
+                      BeanClass="dcom.shop.mobile.CategorySetLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CategorySetLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCatgSet/dcomgetcatgsetbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetcatgsetbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgSet/DCOMGetCatgSetBPEL"
+                 connection="CategorySetLOV_WS">
+          <port name="DCOMGetCatgSetBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CategorySetDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.CategorySetDC"
+                      BeanClass="dcom.shop.application.dc.CategorySetDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.CategorySetDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SubinventoryLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.SubinventoryLOV_WS"
+                      BeanClass="dcom.shop.mobile.SubinventoryLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="SubinventoryLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetsubinvbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL"
+                 connection="SubinventoryLOV_WS">
+          <port name="DCOMGetSubinvBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SubinventoryDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.SubinventoryDC"
+                      BeanClass="dcom.shop.application.dc.SubinventoryDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.SubinventoryBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.SubinventoryDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LocatorLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.LocatorLOV_WS"
+                      BeanClass="dcom.shop.mobile.LocatorLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="LocatorLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetLocator/dcomgetlocatorbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetlocatorbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetLocator/DCOMGetLocatorBPEL"
+                 connection="LocatorLOV_WS">
+          <port name="DCOMGetLocatorBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LocatorDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.LocatorDC"
+                      BeanClass="dcom.shop.application.dc.LocatorDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.LocatorDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CategoryCodeLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.CategoryCodeLOV_WS"
+                      BeanClass="dcom.shop.mobile.CategoryCodeLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CategoryCodeLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCatgCode/dcomgetcatgcodebpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetcatgcodebpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCatgCode/DCOMGetCatgCodeBPEL"
+                 connection="CategoryCodeLOV_WS">
+          <port name="DCOMGetCatgCodeBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CategoryCodeDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.CategoryCodeDC"
+                      BeanClass="dcom.shop.application.dc.CategoryCodeDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.CategoryCodeBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.CategoryCodeDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="UOMLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.UOMLOV_WS"
+                      BeanClass="dcom.shop.mobile.UOMLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="UOMLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetUOM/dcomgetuombpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetuombpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetUOM/DCOMGetUOMBPEL" connection="UOMLOV_WS">
+          <port name="DCOMGetUOMBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="UOMDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.UOMDC"
+                      BeanClass="dcom.shop.application.dc.UOMDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.UOMDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CostGroupLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.CostGroupLOV_WS"
+                      BeanClass="dcom.shop.mobile.CostGroupLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CostGroupLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCostGroup/dcomgetcostgroupbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetcostgroupbpel_client_ep"
+                 namespace="http://xmlns.oracle.com/DCOM_Application/DCOMGetCostGroup/DCOMGetCostGroupBPEL"
+                 connection="CostGroupLOV_WS">
+          <port name="DCOMGetCostGroupBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CostGroupDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.CostGroupDC"
+                      BeanClass="dcom.shop.application.dc.CostGroupDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.CostGroupDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="TransactionTypeLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.mobile.TransactionTypeLOV_WS"
+                      BeanClass="dcom.shop.mobile.TransactionTypeLOV_WS"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="TransactionTypeLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetTrxnType/dcomgettrxntypebpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgettrxntypebpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetTrxnType/DCOMGetTrxnTypeBPEL"
+                 connection="TransactionTypeLOV_WS">
+          <port name="DCOMGetTrxnTypeBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="TransactionTypeDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.TransactionTypeDC"
+                      BeanClass="dcom.shop.application.dc.TransactionTypeDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.TransactionTypeDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="TransactionReasonLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.mobile.TransactionReasonLOV_WS"
+                      BeanClass="dcom.shop.mobile.TransactionReasonLOV_WS"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="TransactionReasonLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetTrxnReason/dcomgettrxnreasonbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgettrxnreasonbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetTrxnReason/DCOMGetTrxnReasonBPEL"
+                 connection="TransactionReasonLOV_WS">
+          <port name="DCOMGetTrxnReasonBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="TransactionReasonDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.TransactionReasonDC"
+                      BeanClass="dcom.shop.application.dc.TransactionReasonDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.TransactionReasonBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.TransactionReasonDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CarrierLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.CarrierLOV_WS"
+                      BeanClass="dcom.shop.mobile.CarrierLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CarrierLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCarrier/dcomgetcarrierbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetcarrierbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCarrier/DCOMGetCarrierBPEL"
+                 connection="CarrierLOV_WS">
+          <port name="DCOMGetCarrierBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CarrierDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.CarrierDC"
+                      BeanClass="dcom.shop.application.dc.CarrierDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.CarrierBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.CarrierDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AccountAliasLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.AccountAliasLOV_WS"
+                      BeanClass="dcom.shop.mobile.AccountAliasLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="AccountAliasLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetAccountAlias/dcomgetaccountaliasbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetaccountaliasbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetAccountAlias/DCOMGetAccountAliasBPEL"
+                 connection="AccountAliasLOV_WS">
+          <port name="DCOMGetAccountAliasBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AccountAliasDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.AccountAliasDC"
+                      BeanClass="dcom.shop.application.dc.AccountAliasDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.AccountAliasBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.AccountAliasDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="PickRuleLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.PickRuleLOV_WS"
+                      BeanClass="dcom.shop.mobile.PickRuleLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="PickRuleLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetPickRule/dcomgetpickrulebpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetpickrulebpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetPickRule/DCOMGetPickRuleBPEL"
+                 connection="PickRuleLOV_WS">
+          <port name="DCOMGetPickRuleBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="PickRuleDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.PickRuleDC"
+                      BeanClass="dcom.shop.application.dc.PickRuleDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.PickRuleDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CountTypeLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.CountTypeLOV_WS"
+                      BeanClass="dcom.shop.mobile.CountTypeLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="CountTypeLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetCountType/dcomgetcounttypebpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetcounttypebpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetCountType/DCOMGetCountTypeBPEL"
+                 connection="CountTypeLOV_WS">
+          <port name="DCOMGetCountTypeBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CountTypeDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.CountTypeDC"
+                      BeanClass="dcom.shop.application.dc.CountTypeDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.CountTypeDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="PhysicalCountLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.PhysicalCountLOV_WS"
+                      BeanClass="dcom.shop.mobile.PhysicalCountLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="PhysicalCountLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMPhyCountTag/dcomphycounttagbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomphycounttagbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMPhyCountTag/DCOMPhyCountTagBPEL"
+                 connection="PhysicalCountLOV_WS">
+          <port name="DCOMPhyCountTagBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="PhysicalCountDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.PhysicalCountDC"
+                      BeanClass="dcom.shop.application.dc.PhysicalCountDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.PhysicalCountDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="KanbanCardLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.KanbanCardLOV_WS"
+                      BeanClass="dcom.shop.mobile.KanbanCardLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="KanbanCardLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetKanbanCard/dcomgetkanbancardbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetkanbancardbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetKanbanCard/DCOMGetKanbanCardBPEL"
+                 connection="KanbanCardLOV_WS">
+          <port name="DCOMGetKanbanCardBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="KanbanCardDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.KanbanCardDC"
+                      BeanClass="dcom.shop.application.dc.KanbanCardDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.KanbanCardDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DepartmentLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.DepartmentLOV_WS"
+                      BeanClass="dcom.shop.mobile.DepartmentLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="DepartmentLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetDept/dcomgetdeptbpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetdeptbpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetDept/DCOMGetDeptBPEL"
+                 connection="DepartmentLOV_WS">
+          <port name="DCOMGetDeptBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DepartmentDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.DepartmentDC"
+                      BeanClass="dcom.shop.application.dc.DepartmentDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.DepartmentDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ResourceLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.ResourceLOV_WS"
+                      BeanClass="dcom.shop.mobile.ResourceLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="ResourceLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetResource/dcomgetresourcebpelprocess_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetresourcebpelprocess_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/DCOMGetResource/DCOMGetResourceBPELProcess"
+                 connection="ResourceLOV_WS">
+          <port name="DCOMGetResourceBPELProcess_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ResourceDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.ResourceDC"
+                      BeanClass="dcom.shop.application.dc.ResourceDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.ResourceBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.ResourceDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SyncPreferencesDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.SyncPreferencesDC"
+                      BeanClass="dcom.shop.application.dc.SyncPreferencesDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.SyncPreferencesDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SubInventoryTrf_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.SubInventoryTrf_WS"
+                      BeanClass="dcom.shop.mobile.SubInventoryTrf_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="SubInventoryTrf_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMSubInventoryTransfer!1.0*soa_464a94e4-5af5-4e99-8190-71f6be7a7f9f/dcomsubinventorytransfer_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomsubinventorytransfer_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer"
+                 connection="SubInventoryTrf_WS">
+          <port name="DCOMSubInventoryTransfer_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ConcurrentProgramLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.mobile.ConcurrentProgramLOV_WS"
+                      BeanClass="dcom.shop.mobile.ConcurrentProgramLOV_WS"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="ConcurrentProgramLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/default/getConcurrentProgDetailsLoV/getconcurrentprogdetailslov_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="getconcurrentprogdetailslov_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/getConcurrentProgDetailsLoV"
+                 connection="ConcurrentProgramLOV_WS">
+          <port name="getConcurrentProgDetailsLoV_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ConcurrentProgramDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                      BeanClass="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.txn.ConcurrentProgramDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="RequestsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.application.dc.txn.RequestsDC"
+                      BeanClass="dcom.shop.application.dc.txn.RequestsDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.txn.RequestsDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ItemLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.ItemLOV_WS"
+                      BeanClass="dcom.shop.mobile.ItemLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="ItemLOV_WS" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetItem/dcomgetitembpel_client_ep?WSDL"
+                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
+        <service name="dcomgetitembpel_client_ep"
+                 namespace="http://www.deloitte.com/DCOM/Common/DCOMGetItem/DCOMGetItemBPEL" connection="ItemLOV_WS">
+          <port name="DCOMGetItemBPEL_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ItemDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.ItemDC"
+                      BeanClass="dcom.shop.application.dc.ItemDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="dcom.shop.application.mobile.ItemBO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.ItemDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.ProductSearchDC"
+                      BeanClass="dcom.shop.Inquiry.ProductSearchDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.ProductSearchDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
     <AdapterDataControl id="WarehouseLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                         ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                         SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
@@ -750,29 +1439,84 @@
         </Source>
     </AdapterDataControl>
     <AdapterDataControl id="InvTrnDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-                        ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
-                        SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
-                        SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.InvTrnDC"
-                        BeanClass="dcom.shop.application.dc.InvTrnDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-        <Source>
-            <bean-definition BeanClass="dcom.shop.application.dc.InvTrnDC"
-                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
-                             AccessMode="scrollable" EagerPersist="false"
-                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
-        </Source>
-    </AdapterDataControl>
-    <AdapterDataControl id="ProductDetailsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-                        ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
-                        SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
-                        SupportsFindMode="false" SupportsUpdates="true"
-                        Definition="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
-                        BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
-                        xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-        <Source>
-            <bean-definition BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
-                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
-                             AccessMode="scrollable" EagerPersist="false"
-                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.InvTrnDC"
+                      BeanClass="dcom.shop.application.dc.InvTrnDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.InvTrnDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductDetailsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
+                      BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LpnSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.lpn.LpnSearchDC"
+                      BeanClass="dcom.shop.Inquiry.lpn.LpnSearchDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.lpn.LpnSearchDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LpnDetailsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.lpn.LpnDetailsDC"
+                      BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>
+
+
+
+
+
+
+
+
+
+
+
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.InvTrnDC"
+                      BeanClass="dcom.shop.application.dc.InvTrnDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.InvTrnDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductDetailsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
+                      BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
         </Source>
     </AdapterDataControl>
     <AdapterDataControl id="LPNLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
@@ -794,30 +1538,28 @@
                     </port>
                 </service>
             </definition>
-        </Source>
-    </AdapterDataControl>
-    <AdapterDataControl id="LpnSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-                        ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
-                        SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
-                        SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.lpn.LpnSearchDC"
-                        BeanClass="dcom.shop.Inquiry.lpn.LpnSearchDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-        <Source>
-            <bean-definition BeanClass="dcom.shop.Inquiry.lpn.LpnSearchDC"
-                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
-                             AccessMode="scrollable" EagerPersist="false"
-                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
-        </Source>
-    </AdapterDataControl>
-    <AdapterDataControl id="LpnDetailsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-                        ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
-                        SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
-                        SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.lpn.LpnDetailsDC"
-                        BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-        <Source>
-            <bean-definition BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsDC"
-                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
-                             AccessMode="scrollable" EagerPersist="false"
-                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LpnSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.lpn.LpnSearchDC"
+                      BeanClass="dcom.shop.Inquiry.lpn.LpnSearchDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.lpn.LpnSearchDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LpnDetailsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.Inquiry.lpn.LpnDetailsDC"
+                      BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
         </Source>
     </AdapterDataControl>
     <AdapterDataControl id="ItemOnHand_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
@@ -853,18 +1595,77 @@
                              DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
                              AccessMode="scrollable" EagerPersist="false"
                              xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
-        </Source>
-    </AdapterDataControl>
-    <AdapterDataControl id="LPNDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-                        ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
-                        SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
-                        SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.LPNDC"
-                        BeanClass="dcom.shop.application.dc.LPNDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-        <Source>
-            <bean-definition BeanClass="dcom.shop.application.dc.LPNDC"
-                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
-                             AccessMode="scrollable" EagerPersist="false"
-                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
-        </Source>
-    </AdapterDataControl>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LPNDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.LPNDC"
+                      BeanClass="dcom.shop.application.dc.LPNDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.LPNDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
 </DataControlConfigs>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

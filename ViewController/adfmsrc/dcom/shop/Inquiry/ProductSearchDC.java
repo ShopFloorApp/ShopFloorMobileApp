@@ -12,8 +12,6 @@ import java.util.logging.Level;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
-import oracle.adfmf.framework.api.JSONBeanSerializationHelper;
-
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -55,6 +53,7 @@ public class ProductSearchDC {
         ProductSearchEntity[] prodArray =  null;
         //ashish
         try{
+    
             JSONParser parser = new JSONParser();
             Object object = parser.parse(jsonArrayAsString);
             JSONObject jsonObject = (JSONObject)object;

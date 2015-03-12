@@ -159,9 +159,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">-85.30469</property>
+         name="y">-78.00586</property>
       <property
-         name="x">223.00977</property>
+         name="x">224.00977</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -171,7 +171,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">L38,500.6953,50.5459,265.92822,-89.15527,R46</property>
+         name="sdm:polyPoints">L38,500.6953,50.5459,266.8476,-81.856445,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -181,7 +181,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">R54,264.00977,-82.15527,498.78357,57.5459,L46</property>
+         name="sdm:polyPoints">R54,265.00977,-74.856445,498.8637,57.5459,L46</property>
    </ControlFlowCase>
    <View
       id="View16">
@@ -351,7 +351,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">T50,234.0,10.792969,223.00977,-31.655273,B50</property>
+         name="sdm:polyPoints">T50,234.0,10.792969,224.00977,-24.356445,B50</property>
    </ControlFlowCase>
    <WildcardControlFlowRule
       id="WildcardControlFlowRule32">

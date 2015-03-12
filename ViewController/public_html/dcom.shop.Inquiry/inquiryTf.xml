@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
     <task-flow-definition id="inquiryTf">
         <default-activity>inquiry</default-activity>
+        <managed-bean id="__26">
+            <managed-bean-name>StateListenerBean</managed-bean-name>
+            <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+            <managed-bean-scope>application</managed-bean-scope>
+        </managed-bean>
         <view id="inquiry">
             <page>/dcom.shop.Inquiry/page/inquiry.amx</page>
         </view>
@@ -23,6 +28,12 @@
         <view id="LpnDetails">
             <page>/dcom.shop.Inquiry/page/LpnDetails.amx</page>
         </view>
+        <view id="onHandSearch">
+            <page>/dcom.shop.Inquiry/page/onHandSearch.amx</page>
+        </view>
+        <view id="itemLOVPG">
+            <page>/page/LovPage/itemLOVPG.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
@@ -32,6 +43,10 @@
             <control-flow-case id="__11">
                 <from-outcome>lpnInquiry</from-outcome>
                 <to-activity-id>lpnSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__20">
+                <from-outcome>onHandInquiry</from-outcome>
+                <to-activity-id>onHandSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__3">
@@ -90,6 +105,24 @@
             <control-flow-case id="__19">
                 <from-outcome>lpnDetailsBack</from-outcome>
                 <to-activity-id>lpnSearch</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__21">
+            <from-activity-id>onHandSearch</from-activity-id>
+            <control-flow-case id="__22">
+                <from-outcome>onHandSearchBack</from-outcome>
+                <to-activity-id>inquiry</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__23">
+                <from-outcome>ItemLOV</from-outcome>
+                <to-activity-id>itemLOVPG</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__24">
+            <from-activity-id>itemLOVPG</from-activity-id>
+            <control-flow-case id="__25">
+                <from-outcome>Back</from-outcome>
+                <to-activity-id>onHandSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>
