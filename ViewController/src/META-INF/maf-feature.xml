@@ -27,7 +27,12 @@
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.DispatchList" name="DispatchList">
     <adfmf:content id="dcom.shop.DispatchList.1">
-      <adfmf:amx file="dcom.shop.DispatchList/dispatch.xml#dispatch"/>
+      <adfmf:amx file="dcom.shop.DispatchList/dispatch.xml#dispatch">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="dcom.shop.DispatchList/js/openJob.js" id="i5"/>
+          <adfmf:include type="StyleSheet" file="dcom.shop.DispatchList/css/openJob.css" id="i6"/>
+        </adfmf:includes>
+      </adfmf:amx>
     </adfmf:content>
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.Transaction" name="Transaction">

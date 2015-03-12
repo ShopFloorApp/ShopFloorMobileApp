@@ -9,7 +9,7 @@ import oracle.adfmf.util.GenericVirtualType;
 public class SubinventoryBO implements Comparable {
     private String Whse;
     private String Subinv;
-    private String Desc;
+    private String Description;
     private String LocatorControl;
     private String LPNControl;
     private String DefLocator;
@@ -37,14 +37,14 @@ public class SubinventoryBO implements Comparable {
         return Subinv;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
     }
 
     public void setLocatorControl(String LocatorControl) {
@@ -117,7 +117,7 @@ public class SubinventoryBO implements Comparable {
     public void setBOClassRow(HashMap hashMap) {
         this.setWhse((String) hashMap.get("whse"));
         this.setSubinv((String) hashMap.get("subinv"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("desc"));
         this.setLocatorControl((String) hashMap.get("locatorcontrol"));
         this.setLPNControl((String) hashMap.get("lpncontrol"));
         this.setDefLocator((String) hashMap.get("deflocator"));
@@ -128,7 +128,7 @@ public class SubinventoryBO implements Comparable {
         HashMap map = new HashMap();
         map.put("whse", subInventories.getWhse());
         map.put("subinv", subInventories.getSubinv());
-        map.put("desc", subInventories.getDesc());
+        map.put("desc", subInventories.getDescription());
         map.put("locatorcontrol", subInventories.getLocatorControl());
         map.put("lpncontrol", subInventories.getLPNControl());
         map.put("deflocator", subInventories.getDefLocator());

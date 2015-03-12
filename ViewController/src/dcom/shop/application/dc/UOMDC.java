@@ -2,107 +2,88 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.UOMBO;
+import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import oracle.adfmf.java.beans.PropertyChangeListener;
-import oracle.adfmf.java.beans.PropertyChangeSupport;
-import oracle.adfmf.java.beans.ProviderChangeListener;
-import oracle.adfmf.java.beans.ProviderChangeSupport;
-import oracle.adfmf.util.GenericVirtualType;
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.util.Utility;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class UOMDC extends SyncUtils {
-    private List filtered_UOM=new ArrayList();
-    private String uomcodeFilter = "";
-    private String uomFilter = "";
-    protected static List s_uom = new ArrayList();
-    private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
-
     public UOMDC() {
-        try{
-        GenericVirtualType payload = new GenericVirtualType(null, "payload");
-        HashMap paramsMap=new HashMap();
-        paramsMap.put("resAttriName","UOMDetails");
-        paramsMap.put("lovDCName", "UOMLOV_WS");
-        paramsMap.put("opeartionName", "process");
-        paramsMap.put("payload",payload);
-        s_uom = super.getCollection(UOMBO.class, paramsMap);
-            filterUOMs();   
-        }catch(Exception e){
-            throw new RuntimeException(e);
+        super();
+    }
+    protected static List s_uom = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public UOMBO[] getUOM() {
+        String networkStatus =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
+        List collections;
+        if (networkStatus.equals(NOT_REACHABLE)) {
+            s_uom = super.getCollectionFromDB(UOMBO.class);
+        } else {
+            System.out.println("Inside orgItem");
+            Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
+            String restURI = "/webservices/rest/DCOMLOV/getuom/";
+            RestCallerUtil rcu = new RestCallerUtil();
+            String payload =
+                "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
+                "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
+                "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/header\",\n" +
+                "                  \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "                  \"RespApplication\": \"ONT\",\n" +
+                "                  \"SecurityGroup\": \"STANDARD\",\n" +
+                "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+                "                 },\n" + "   \"InputParameters\": \n" + "      {\"PUOM\": \"\" }\n" + "}\n" +
+                "}\n";
+            System.out.println("Calling create method");
+            String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
+            System.out.println("Received response");
+            //            UOMBO[] warehouse = null;
+            if (jsonArrayAsString != null) {
+                try {
+                    JSONParser parser = new JSONParser();
+                    Object object;
+
+                    object = parser.parse(jsonArrayAsString);
+
+                    JSONObject jsonObject = (JSONObject) object;
+                    JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                    JSONObject jsObject1 = (JSONObject) jsObject.get("XUOM");
+                    JSONArray array = (JSONArray) jsObject1.get("XUOM_ITEM");
+                    if (array != null) {
+                        int size = array.size();
+                        //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
+                        for (int i = 0; i < size; i++) {
+
+
+                            UOMBO uomItems = new UOMBO();
+                            JSONObject jsObject2 = (JSONObject) array.get(i);
+
+                            uomItems.setUOMCode((jsObject2.get("UOMCODE").toString()));
+                            uomItems.setUOM((jsObject2.get("UOM").toString()));
+                            s_uom.add(uomItems);
+
+
+                        }
+
+                        super.updateSqlLiteTable(UOMBO.class, s_uom);
+                    }
+                } catch (ParseException e) {
+                    e.getMessage();
+                }
+            }
         }
-    }
-
-    public void setUomcodeFilter(String uomcodeFilter) {
-        String oldUomcodeFilter = this.uomcodeFilter;
-        this.uomcodeFilter = uomcodeFilter;
-        propertyChangeSupport.firePropertyChange("uomcodeFilter", oldUomcodeFilter, uomcodeFilter);
-    }
-
-    public String getUomcodeFilter() {
-        return uomcodeFilter;
-    }
-
-    public void setUomFilter(String uomFilter) {
-        String oldUomFilter = this.uomFilter;
-        this.uomFilter = uomFilter;
-        propertyChangeSupport.firePropertyChange("uomFilter", oldUomFilter, uomFilter);
-    }
-
-    public String getUomFilter() {
-        return uomFilter;
-    }
-
-    public UOMBO[] getUOMs() {
-
-        try {
-            UOMBO[] uoms = null;            
-            uoms = (UOMBO[]) filtered_UOM.toArray(new UOMBO[filtered_UOM.size()]);
-            return uoms;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    
-    public void filterUOMs() {
-        try {
-            System.out.println("inside filter code");
-            filtered_UOM.clear();
-
-            HashMap filterFileds = new HashMap();
-            filterFileds.put("uomcode", getUomcodeFilter());
-            filterFileds.put("uom", getUomFilter());
-            
-
-            HashMap paramMap = new HashMap();
-            paramMap.put("collection", s_uom);
-            paramMap.put("filterFieldsValues", filterFileds);
-            System.out.println("called super filtered class");
-            
-            filtered_UOM = (List)super.getFileteredCollection(UOMBO.class, paramMap);
-            System.out.println("collection size is " + filtered_UOM.size());
-            providerChangeSupport.fireProviderRefresh("UOMs");
-        } catch (Exception e) {
-            throw new RuntimeException("My Code Error " + e);
-        }
-    }
-    
-    public void addPropertyChangeListener(PropertyChangeListener l) {
-        propertyChangeSupport.addPropertyChangeListener(l);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener l) {
-        propertyChangeSupport.removePropertyChangeListener(l);
-    }
-    
-    public void addProviderChangeListener(ProviderChangeListener l) {
-        providerChangeSupport.addProviderChangeListener(l);
-    }
-
-    public void removeProviderChangeListener(ProviderChangeListener l) {
-        providerChangeSupport.removeProviderChangeListener(l);
+        UOMBO[] uomArray = (UOMBO[]) s_uom.toArray(new UOMBO[s_uom.size()]);
+        return uomArray;
     }
 }

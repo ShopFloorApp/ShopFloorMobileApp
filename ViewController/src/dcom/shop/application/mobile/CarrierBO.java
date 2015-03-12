@@ -12,7 +12,28 @@ public class CarrierBO implements Comparable {
     private String FreightCode;
     private String SCAC;
     private String ShipMethod;
-    private String Desc;
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
+    }
+    private String Description;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -26,7 +47,7 @@ public class CarrierBO implements Comparable {
         this.setFreightCode((String) hashMap.get("freightcode"));
         this.setSCAC((String) hashMap.get("scac"));
         this.setShipMethod((String) hashMap.get("shipmethod"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
     }
 
     public HashMap getBOClassRow(CarrierBO carrier) {
@@ -36,7 +57,7 @@ public class CarrierBO implements Comparable {
         map.put("freightcode", carrier.getFreightCode());
         map.put("scac", carrier.getSCAC());
         map.put("shipmethod", carrier.getShipMethod());
-        map.put("desc", carrier.getDesc());
+        map.put("description", carrier.getDescription());
         return map;
     }
 
@@ -93,16 +114,6 @@ public class CarrierBO implements Comparable {
 
     public String getShipMethod() {
         return ShipMethod;
-    }
-
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
-    }
-
-    public String getDesc() {
-        return Desc;
     }
 
     public void setAttributes(GenericVirtualType Attributes) {

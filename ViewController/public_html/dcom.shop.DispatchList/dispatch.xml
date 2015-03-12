@@ -5,5 +5,36 @@
     <view id="dispatchList">
       <page>/dcom.shop.DispatchList/page/dispatchList.amx</page>
     </view>
+    <view id="jobOperations">
+      <page>/dcom.shop.DispatchList/page/jobOperations.amx</page>
+    </view>
+    <view id="workContent">
+      <page>/dcom.shop.DispatchList/page/workContent.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>dispatchList</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>toJobOpr</from-outcome>
+        <to-activity-id>jobOperations</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>jobOperations</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>dispatchList</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>toWorkContent</from-outcome>
+        <to-activity-id>workContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>workContent</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>jobOperations</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-mobile-config>

@@ -83,7 +83,7 @@ public abstract class SyncUtils {
         return collections;
     }
 
-    private List getCollectionFromDB(Class collectionClass) {
+    public List getCollectionFromDB(Class collectionClass) {
         Connection conn = null;
         List returnValue = new ArrayList();
 

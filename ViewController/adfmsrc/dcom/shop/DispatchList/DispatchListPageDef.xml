@@ -15,11 +15,17 @@
     <tree IterBinding="departmentsIterator" id="departments">
       <nodeDefinition DefName="dcom.shop.application.mobile.DepartmentBO" Name="departments0">
         <AttrNames>
-          <Item Value="whse"/>
-          <Item Value="desc"/>
-          <Item Value="deptCode"/>
+          <Item Value="deptName"/>
+          <Item Value="deptDesc"/>
+          <Item Value="deptId"/>
+          <Item Value="openJob"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <action IterBinding="departmentsIterator" id="setCurrentRowWithKey"
+            InstanceName="dcom.shop.application.dc.DepartmentDC.departments" DataControl="DepartmentDC"
+            RequiresUpdateModel="false" Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKey" NDValue="#{pageFlowScope.rowKey}" NDType="java.lang.String"/>
+    </action>
   </bindings>
 </pageDefinition>

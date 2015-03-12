@@ -1,19 +1,15 @@
 package dcom.shop.application.mobile;
 
-import java.math.BigDecimal;
-
-import java.util.HashMap;
-
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.util.GenericVirtualType;
 
 public class DepartmentBO implements Comparable {
     private String orgCode;
-    private BigDecimal deptId;
+    private String deptId;
     private String deptDesc;
 
-    private BigDecimal openJob;
+    private String openJob;
     private String deptName;
     private GenericVirtualType Attributes;
 
@@ -30,33 +26,33 @@ public class DepartmentBO implements Comparable {
         return orgCode;
     }
 
-    public void setDeptId(BigDecimal deptId) {
-        BigDecimal oldDeptId = this.deptId;
+
+    public void setDeptId(String deptId) {
         this.deptId = deptId;
-        propertyChangeSupport.firePropertyChange("deptId", oldDeptId, deptId);
     }
 
-    public BigDecimal getDeptId() {
+    public String getDeptId() {
         return deptId;
     }
 
     public void setDeptDesc(String deptDesc) {
-        String oldDeptDesc = this.deptDesc;
-        this.deptDesc = deptDesc;
-        propertyChangeSupport.firePropertyChange("deptDesc", oldDeptDesc, deptDesc);
+        if (!deptDesc.contains("@")) {
+            String oldDeptDesc = this.deptDesc;
+            this.deptDesc = deptDesc;
+            propertyChangeSupport.firePropertyChange("deptDesc", oldDeptDesc, deptDesc);
+        }
     }
 
     public String getDeptDesc() {
         return deptDesc;
     }
 
-    public void setOpenJob(BigDecimal openJob) {
-        BigDecimal oldOpenJob = this.openJob;
+
+    public void setOpenJob(String openJob) {
         this.openJob = openJob;
-        propertyChangeSupport.firePropertyChange("openJob", oldOpenJob, openJob);
     }
 
-    public BigDecimal getOpenJob() {
+    public String getOpenJob() {
         return openJob;
     }
 

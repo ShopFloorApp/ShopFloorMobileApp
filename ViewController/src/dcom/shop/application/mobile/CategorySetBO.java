@@ -7,13 +7,13 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.util.GenericVirtualType;
 
 public class CategorySetBO implements Comparable {
-        private String CatgSetName;
-        private String StructureId;
-        private String Desc;
-        private String DefCatgCode;
-        private String ControlLevel;
-        private String MultiCatgAssign;
-        private GenericVirtualType Attributes;
+    private String CatgSetName;
+    private String StructureId;
+    private String Description;
+    private String DefCatgCode;
+    private String ControlLevel;
+    private String MultiCatgAssign;
+    private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public CategorySetBO() {
@@ -40,14 +40,26 @@ public class CategorySetBO implements Comparable {
         return StructureId;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
     }
 
     public void setDefCatgCode(String DefCatgCode) {
@@ -102,11 +114,11 @@ public class CategorySetBO implements Comparable {
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
     }
-    
+
     public void setBOClassRow(HashMap hashMap) {
         this.setCatgSetName((String) hashMap.get("catgsetname"));
         this.setStructureId((String) hashMap.get("structureid"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
         this.setDefCatgCode((String) hashMap.get("defcatgcode"));
         this.setControlLevel((String) hashMap.get("controllevel"));
         this.setMultiCatgAssign((String) hashMap.get("multicatgassign"));
@@ -116,7 +128,7 @@ public class CategorySetBO implements Comparable {
         HashMap map = new HashMap();
         map.put("catgsetname", categorySet.getCatgSetName());
         map.put("structureid", categorySet.getStructureId());
-        map.put("desc", categorySet.getDesc());
+        map.put("description", categorySet.getDescription());
         map.put("defcatgcode", categorySet.getDefCatgCode());
         map.put("controllevel", categorySet.getControlLevel());
         map.put("multicatgassign", categorySet.getMultiCatgAssign());

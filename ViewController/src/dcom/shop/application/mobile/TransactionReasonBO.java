@@ -8,22 +8,23 @@ import oracle.adfmf.util.GenericVirtualType;
 
 public class TransactionReasonBO implements Comparable {
     private String ReasonName;
-    private String Desc;
+    private String Description;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public TransactionReasonBO() {
         super();
     }
+
     public void setBOClassRow(HashMap hashMap) {
         this.setReasonName((String) hashMap.get("reasonname"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("desc"));
     }
 
     public HashMap getBOClassRow(TransactionReasonBO transactionReason) {
         HashMap map = new HashMap();
         map.put("reasonname", transactionReason.getReasonName());
-        map.put("desc", transactionReason.getDesc());
+        map.put("desc", transactionReason.getDescription());
         return map;
     }
 
@@ -37,14 +38,15 @@ public class TransactionReasonBO implements Comparable {
         return ReasonName;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
     }
 
     public void setAttributes(GenericVirtualType Attributes) {

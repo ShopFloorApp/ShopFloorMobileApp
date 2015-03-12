@@ -10,7 +10,7 @@ public class ResourceBO implements Comparable {
     private String Whse;
     private String ResourceCode;
     private String DeptCode;
-    private String Desc;
+    private String Description;
     private String ResourceType;
     private String UOM;
     private String ChargeType;
@@ -48,14 +48,26 @@ public class ResourceBO implements Comparable {
         return DeptCode;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
     }
 
     public void setResourceType(String ResourceType) {
@@ -116,7 +128,7 @@ public class ResourceBO implements Comparable {
         this.setWhse((String) hashMap.get("whse"));
         this.setResourceCode((String) hashMap.get("resourcecode"));
         this.setDeptCode((String) hashMap.get("deptcode"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
         this.setResourceType((String) hashMap.get("resourcetype"));
         this.setUOM((String) hashMap.get("uom"));
         this.setChargeType((String) hashMap.get("chargetype"));
@@ -128,7 +140,7 @@ public class ResourceBO implements Comparable {
         map.put("whse", resource.getWhse());
         map.put("resourcecode", resource.getResourceCode());
         map.put("deptcode", resource.getDeptCode());
-        map.put("desc", resource.getDesc());
+        map.put("description", resource.getDescription());
         map.put("resourcetype", resource.getResourceType());
         map.put("uom", resource.getUOM());
         map.put("chargetype", resource.getChargeType());

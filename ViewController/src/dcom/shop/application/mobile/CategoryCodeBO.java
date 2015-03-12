@@ -10,7 +10,7 @@ public class CategoryCodeBO implements Comparable {
     
     private String CatgCode;
     private String StructureId;
-    private String Desc;
+    private String Description;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -22,14 +22,14 @@ public class CategoryCodeBO implements Comparable {
     public void setBOClassRow(HashMap hashMap) {
         this.setCatgCode((String) hashMap.get("catgcode"));
         this.setStructureId((String) hashMap.get("structureid"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
     }
 
     public HashMap getBOClassRow(CategoryCodeBO categoryCodes) {
         HashMap map = new HashMap();
         map.put("catgcode", categoryCodes.getCatgCode());
         map.put("structureid", categoryCodes.getStructureId());
-        map.put("desc", categoryCodes.getDesc());
+        map.put("description", categoryCodes.getDescription());
         return map;
     }
 
@@ -53,14 +53,26 @@ public class CategoryCodeBO implements Comparable {
         return StructureId;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
     }
 
     public void setAttributes(GenericVirtualType Attributes) {

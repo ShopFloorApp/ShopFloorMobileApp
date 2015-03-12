@@ -1,92 +1,90 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
-import dcom.shop.application.mobile.CategorySetBO;
 import dcom.shop.application.mobile.CostGroupBO;
-import dcom.shop.application.mobile.UOMBO;
+import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import oracle.adfmf.util.GenericVirtualType;
-import oracle.adfmf.java.beans.PropertyChangeListener;
-import oracle.adfmf.java.beans.PropertyChangeSupport;
-import oracle.adfmf.java.beans.ProviderChangeListener;
-import oracle.adfmf.java.beans.ProviderChangeSupport;
-import oracle.adfmf.util.GenericVirtualType;
-import oracle.adfmf.util.GenericVirtualType;
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.util.Utility;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class CostGroupDC extends SyncUtils {
-    private List filtered_CostGroups=new ArrayList();
-    private String costGroupsFilter = "";
-    protected static List s_costGroups = new ArrayList();
-    private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);      
     public CostGroupDC() {
-        GenericVirtualType payload = new GenericVirtualType(null, "payload");
-        HashMap paramsMap=new HashMap();
-        paramsMap.put("resAttriName","CostGroupDetails");
-        paramsMap.put("lovDCName", "CostGroupLOV_WS");
-        paramsMap.put("opeartionName", "process");
-        paramsMap.put("payload",payload);
-        s_costGroups = super.getCollection(CostGroupBO.class, paramsMap);
-        filterCostGroups();
+        super();
     }
+    protected static List s_costGroups = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
 
-    public void setCostGroupsFilter(String costGroupsFilter) {
-        String oldCostGroupsFilter = this.costGroupsFilter;
-        this.costGroupsFilter = costGroupsFilter;
-        propertyChangeSupport.firePropertyChange("costGroupsFilter", oldCostGroupsFilter, costGroupsFilter);
-    }
 
-    public String getCostGroupsFilter() {
-        return costGroupsFilter;
-    }
+    public CostGroupBO[] getCostGroup() {
+        String networkStatus =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
+        List collections;
+        if (networkStatus.equals(NOT_REACHABLE)) {
+            s_costGroups = super.getCollectionFromDB(CostGroupBO.class);
+        } else {
+            System.out.println("Inside orgItem");
+            Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
+            String restURI = "/webservices/rest/DCOMLOV/getcostgroup/";
+            RestCallerUtil rcu = new RestCallerUtil();
+            String payload =
+                "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
+                "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
+                "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/header\",\n" +
+                "                  \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "                  \"RespApplication\": \"ONT\",\n" +
+                "                  \"SecurityGroup\": \"STANDARD\",\n" +
+                "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+                "                 },\n" + "   \"InputParameters\": \n" + "      {\"PWAREHOUSE\": \"\",\n" +
+                "       \"PCG\": \"\"\n }\n" + "}\n" + "}\n";
+            System.out.println("Calling create method");
+            String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
+            System.out.println("Received response");
+            if (jsonArrayAsString != null) {
+                try {
+                    JSONParser parser = new JSONParser();
+                    Object object;
 
-    public CostGroupBO[] getCostGroups() {
+                    object = parser.parse(jsonArrayAsString);
 
-        try {
-            CostGroupBO[] costGroups = null;                        
-            costGroups = (CostGroupBO[]) filtered_CostGroups.toArray(new CostGroupBO[filtered_CostGroups.size()]);
-            return costGroups;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+                    JSONObject jsonObject = (JSONObject) object;
+                    JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                    JSONObject jsObject1 = (JSONObject) jsObject.get("XCG");
+                    JSONArray array = (JSONArray) jsObject1.get("XCG_ITEM");
+                    if (array != null) {
+                        int size = array.size();
+                        //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
+                        for (int i = 0; i < size; i++) {
+
+
+                            CostGroupBO costgroupItems = new CostGroupBO();
+                            JSONObject jsObject2 = (JSONObject) array.get(i);
+
+                            costgroupItems.setWhse((jsObject2.get("WHSE").toString()));
+                            costgroupItems.setCostGroup((jsObject2.get("COSTGROUP").toString()));
+                            costgroupItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                            s_costGroups.add(costgroupItems);
+
+
+                        }
+
+                        super.updateSqlLiteTable(CostGroupBO.class, s_costGroups);
+                    }
+                } catch (ParseException e) {
+                    e.getMessage();
+                }
+            }
         }
-    }
-    
-    public void filterCostGroups() {
-    try{
-        filtered_CostGroups.clear();
-        
-        HashMap filterFileds = new HashMap();
-        filterFileds.put("costgroup",getCostGroupsFilter());
-        HashMap paramMap = new HashMap();
-       
-        paramMap.put("collection", s_costGroups);
-        paramMap.put("filterFieldsValues", filterFileds);
-        System.out.println("called super filtered class");
-        
-        filtered_CostGroups = (List)super.getFileteredCollection(CostGroupBO.class, paramMap);
-        System.out.println("collection size is " + filtered_CostGroups.size());
-        providerChangeSupport.fireProviderRefresh("costGroups");        
-    }catch (Exception e) {
-            throw new RuntimeException("My Code Error " + e);
-        }
-    }
-    public void addPropertyChangeListener(PropertyChangeListener l) {
-        propertyChangeSupport.addPropertyChangeListener(l);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener l) {
-        propertyChangeSupport.removePropertyChangeListener(l);
-    }
-    public void addProviderChangeListener(ProviderChangeListener l) {
-        providerChangeSupport.addProviderChangeListener(l);
-    }
-
-    public void removeProviderChangeListener(ProviderChangeListener l) {
-        providerChangeSupport.removeProviderChangeListener(l);
+        CostGroupBO[] costgroupArray = (CostGroupBO[]) s_costGroups.toArray(new CostGroupBO[s_costGroups.size()]);
+        return costgroupArray;
     }
 
 }

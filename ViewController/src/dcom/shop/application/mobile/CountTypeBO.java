@@ -10,9 +10,30 @@ public class CountTypeBO implements Comparable {
     private String Whse;
     private String CountType;
     private String CountName;
-    private String Desc;
+    private String Description;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
+    }
 
     public CountTypeBO() {
         super();
@@ -53,16 +74,6 @@ public class CountTypeBO implements Comparable {
         return CountName;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
-    }
-
-    public String getDesc() {
-        return Desc;
-    }
-
     public void setAttributes(GenericVirtualType Attributes) {
         GenericVirtualType oldAttributes = this.Attributes;
         this.Attributes = Attributes;
@@ -80,12 +91,12 @@ public class CountTypeBO implements Comparable {
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
     }
-    
+
     public void setBOClassRow(HashMap hashMap) {
         this.setWhse((String) hashMap.get("whse"));
         this.setCountType((String) hashMap.get("counttype"));
         this.setCountName((String) hashMap.get("countname"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
     }
 
     public HashMap getBOClassRow(CountTypeBO countType) {
@@ -93,7 +104,7 @@ public class CountTypeBO implements Comparable {
         map.put("whse", countType.getWhse());
         map.put("counttype", countType.getCountType());
         map.put("countname", countType.getCountName());
-        map.put("desc", countType.getDesc());
+        map.put("description", countType.getDescription());
         return map;
     }
 }

@@ -9,7 +9,7 @@ import oracle.adfmf.util.GenericVirtualType;
 public class AccountAliasBO implements Comparable {
     private String Whse;
     private String AccountAlias;
-    private String Desc;
+    private String Description;
     private String AccountSegment;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -21,7 +21,7 @@ public class AccountAliasBO implements Comparable {
     public void setBOClassRow(HashMap hashMap) {
         this.setWhse((String) hashMap.get("whse"));
         this.setAccountAlias((String) hashMap.get("accountalias"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("desc"));
         this.setAccountSegment((String) hashMap.get("accountsegment"));
     }
 
@@ -29,7 +29,7 @@ public class AccountAliasBO implements Comparable {
         HashMap map = new HashMap();
         map.put("whse", accountAlias.getWhse());
         map.put("accountalias", accountAlias.getAccountAlias());
-        map.put("desc", accountAlias.getDesc());
+        map.put("desc", accountAlias.getDescription());
         map.put("accountsegment", accountAlias.getAccountSegment());
         return map;
     }
@@ -59,14 +59,15 @@ public class AccountAliasBO implements Comparable {
         return AccountAlias;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
     }
 
     public void setAccountSegment(String AccountSegment) {

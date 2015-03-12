@@ -24,21 +24,19 @@
     <page path="/dcom.shop.Transaction/page/SubInventoryDetails.amx"
           usageId="dcom_shop_mobile_SubInventoryDetailsPageDef"/>
     <page path="/page/LovPage/itemLOVPG.amx" usageId="dcom_shop_mobile_itemLOVPGPageDef"/>
-
+    <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
+    <page path="/dcom.shop.DispatchList/page/jobOperations.amx" usageId="dcom_shop_mobile_jobOperationsPageDef"/>
+    <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
     <page path="/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef"/>
     <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
-
     <page path="/dcom.shop.Inquiry/page/ProductList.amx" usageId="dcom_shop_mobile_ProductListPageDef"/>
-
     <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
- <page path="/page/LovPage/LocatorLOVPG.amx" usageId="dcom_shop_mobile_LocatorLOVPGPageDef"/>
+    <page path="/page/LovPage/LocatorLOVPG.amx" usageId="dcom_shop_mobile_LocatorLOVPGPageDef"/>
     <page path="/dcom.shop.Transaction/page/MiscellaneousTransaction.amx"
           usageId="dcom_shop_mobile_MiscellaneousTransactionPageDef"/>
-
     <page path="/dcom.shop.Inquiry/page/productDetails.amx" usageId="dcom_shop_mobile_productDetailsPageDef"/>
     <page path="/dcom.shop.Inquiry/page/LpnList.amx" usageId="dcom_shop_mobile_LpnListPageDef"/>
     <page path="/dcom.shop.Inquiry/page/LpnDetails.amx" usageId="dcom_shop_mobile_LpnDetailsPageDef"/>
-
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -62,38 +60,29 @@
     <page id="dcom_shop_mobile_SubInventoryDetailsPageDef"
           path="dcom.shop.Transaction.page.SubInventoryDetailsPageDef"/>
     <page id="dcom_shop_mobile_itemLOVPGPageDef" path="page.LovPage.itemLOVPGPageDef"/>
-   <page id="dcom_shop_mobile_LpnLOVPGPageDef" path="page.LovPage.LpnLOVPGPageDef"/>
-
+    <page id="dcom_shop_mobile_LpnLOVPGPageDef" path="page.LovPage.LpnLOVPGPageDef"/>
     <page id="dcom_shop_mobile_ProgramparamsPageDef" path="dcom.shop.mobile.pageDefs.ProgramparamsPageDef"/>
     <page id="dcom_shop_mobile_ProgramparamsPageDef1" path="dcom.shop.Request.page.ProgramparamsPageDef"/>
-
     <page id="dcom_shop_mobile_ProductListPageDef" path="dcom.shop.Inquiry.page.ProductListPageDef"/>
-   <page id="dcom_shop_mobile_LocatorLOVPGPageDef" path="page.LovPage.LocatorLOVPGPageDef"/>
+    <page id="dcom_shop_mobile_LocatorLOVPGPageDef" path="page.LovPage.LocatorLOVPGPageDef"/>
     <page id="dcom_shop_mobile_MiscellaneousTransactionPageDef"
           path="dcom.shop.Transaction.page.MiscellaneousTransactionPageDef"/>
-
-
-
     <page id="dcom_shop_mobile_productDetailsPageDef" path="dcom.shop.Inquiry.page.productDetailsPageDef"/>
     <page id="dcom_shop_mobile_LpnListPageDef" path="dcom.shop.Inquiry.page.LpnListPageDef"/>
     <page id="dcom_shop_mobile_LpnDetailsPageDef" path="dcom.shop.Inquiry.page.LpnDetailsPageDef"/>
-
+    <page id="dcom_shop_mobile_jobOperationsPageDef" path="dcom.shop.DispatchList.page.jobOperationsPageDef"/>
+    <page id="dcom_shop_mobile_workContentPageDef" path="dcom.shop.DispatchList.page.workContentPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/>
-
-      <dc id="LPNDC" path="dcom.shop.mobile.LPNDC"/>
+    <dc id="JobOperationDC" path="dcom.shop.mobile.JobOperationDC"/>
+    <dc id="LPNDC" path="dcom.shop.mobile.LPNDC"/>
     <dc id="LPNLOV_WS" path="dcom.shop.mobile.LPNLOV_WS"/>
-
     <dc id="ItemDC" path="dcom.shop.mobile.ItemDC"/>
-     
-     <dc id="InvTrnDC" path="dcom.shop.mobile.InvTrnDC"/> 
-    
+    <dc id="InvTrnDC" path="dcom.shop.mobile.InvTrnDC"/>
     <dc id="LpnDetailsDC" path="dcom.shop.mobile.LpnDetailsDC"/>
     <dc id="LpnSearchDC" path="dcom.shop.mobile.LpnSearchDC"/>
     <dc id="ProductDetailsDC" path="dcom.shop.mobile.ProductDetailsDC"/>
-  
-   
     <dc id="ItemLOV_WS" path="dcom.shop.mobile.ItemLOV_WS"/>
     <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>
     <dc id="ConcurrentProgramDC" path="dcom.shop.mobile.ConcurrentProgramDC"/>

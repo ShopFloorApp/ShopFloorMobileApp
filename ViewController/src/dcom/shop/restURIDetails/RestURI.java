@@ -1,5 +1,6 @@
 package dcom.shop.restURIDetails;
 
+
 public class RestURI {
     public RestURI() {
         super();
@@ -9,38 +10,67 @@ public class RestURI {
     public static String PostItemInquiryURI() {
         return ITEM_INQUIRY_URI;
     }
-    
-    private static final String ITEM_DETAILS_URI = "/webservices/rest/DCOMInquiry/getitem/";
-
-    public static String PostItemDetailsURI() {
-        return ITEM_DETAILS_URI;
-    }
-    
-    private static final String LPN_DETAILS_URI = "/webservices/rest/DCOMInquiry/getlpn/";
-
-    public static String PostLpnDetailsURI() {
-        return LPN_DETAILS_URI;
-    }
-    
-    
-    
     private static final String PROCESS_INV_TRXN_URI = "/webservices/rest/DcomTrns/processinvtxn/";
 
     public static String PostInvTrxnURI() {
         return PROCESS_INV_TRXN_URI;
     }
-	
-		
-		
-		    private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
-        private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";
-        private static final String ProgramParamLovURI = "/webservices/rest/DCOMSRS/getlov/";
-        private static final String SubmitProgramURI = "/webservices/rest/DCOMSRS/submitprog/";
-        private static final String RequestsURI = "/webservices/rest/DCOMSRS/getrequest/";
-		
-		    public static String PostProgramListURI(){ return ProgramListURI;}
-        public static String PostProgramParamsURI(){ return ProgramParamsURI;}
-        public static String PostProgramParamLovURI(){ return ProgramParamLovURI;}
-        public static String PostSubmitProgramURI(){ return SubmitProgramURI;}
-        public static String PostRequestsURI(){ return RequestsURI;}
+
+
+    private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
+    private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";
+    private static final String ProgramParamLovURI = "/webservices/rest/DCOMSRS/getlov/";
+    private static final String SubmitProgramURI = "/webservices/rest/DCOMSRS/submitprog/";
+    private static final String RequestsURI = "/webservices/rest/DCOMSRS/getrequest/";
+
+    public static String PostProgramListURI() {
+        return ProgramListURI;
+    }
+
+    public static String PostProgramParamsURI() {
+        return ProgramParamsURI;
+    }
+
+    public static String PostProgramParamLovURI() {
+        return ProgramParamLovURI;
+    }
+
+    public static String PostSubmitProgramURI() {
+        return SubmitProgramURI;
+    }
+
+    public static String PostRequestsURI() {
+        return RequestsURI;
+    }
+    private static final String LPN_DETAILS_URI = "/webservices/rest/DCOMInquiry/getlpn/";
+
+    public static String PostLpnDetailsURI() {
+        return LPN_DETAILS_URI;
+
+    }
+    private static final String ITEM_DETAILS_URI = "/webservices/rest/DCOMInquiry/getitem/";
+
+    public static String PostItemDetailsURI() {
+        return ITEM_DETAILS_URI;
+    }
+    /*
+     * Dispatch Module
+     */
+    private static final String GET_DEPT = "/webservices/rest/DCOMDispatchTxn/getdept/";
+
+    public static String PostGetDeptURI() {
+        return GET_DEPT;
+    }
+
+    private static final String GET_JOBOPS = "/webservices/rest/DCOMDispatchTxn/getjobops/";
+
+    public static String PostGetJobOps() {
+        return GET_JOBOPS;
+    }
+
+    private static final String GET_JOBOP = "/webservices/rest/DCOMDispatchTxn/getjobop/";
+
+    public static String PostGetJobOp() {
+        return GET_JOBOP;
+    }
 }
