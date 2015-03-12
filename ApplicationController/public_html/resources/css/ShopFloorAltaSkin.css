@@ -173,7 +173,7 @@
 .srch-btn{
     background: red;
     border-radius: 0.5em;
-    width: 120px;
+    width: 200px;
 }
 
 .srch-btn > .amx-commandButton-label{
