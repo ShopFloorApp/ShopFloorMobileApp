@@ -33,6 +33,7 @@ public class ConcurrentProgramDC extends SyncUtils {
     protected static List s_concurrentProgram = new ArrayList();
     protected static List s_concurrentProgramParams = new ArrayList();
     protected static List s_concurrentProgramParamLov = new ArrayList();
+    
 
     public ConcurrentProgramDC() {
         super();
@@ -335,15 +336,14 @@ public class ConcurrentProgramDC extends SyncUtils {
         }
         return null;
     }
-
-    public List getConcProgramParamLov(String progCode,String seq,String valueSet) {
+    public ConcProgramParamLovBO[] getConcProgramParamLov() {
         System.out.println("Inside orgItem");
         s_concurrentProgramParamLov.clear();
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String restURI = RestURI.PostProgramParamLovURI();
-//        String progCode = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.progCode}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.progCode}"));
-//        String seq = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}"));
-//        String valueSet = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}"));
+            String progCode = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}"));
+            String seq = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}"));
+            String valueSet = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}"));
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
@@ -389,9 +389,9 @@ public class ConcurrentProgramDC extends SyncUtils {
                         s_concurrentProgramParamLov.add(concurrentProgramParamLovItems);
 
                     }
-//                    ConcProgramParamLovBO[] concurrentProgramParamLovArray =
-//                        (ConcProgramParamLovBO[]) s_concurrentProgramParamLov.toArray(new ConcProgramParamLovBO[s_concurrentProgramParamLov.size()]);
-                    return s_concurrentProgramParamLov;
+                        ConcProgramParamLovBO[] concurrentProgramParamLovArray =
+                            (ConcProgramParamLovBO[]) s_concurrentProgramParamLov.toArray(new ConcProgramParamLovBO[s_concurrentProgramParamLov.size()]);
+                    return concurrentProgramParamLovArray;
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -415,9 +415,9 @@ public class ConcurrentProgramDC extends SyncUtils {
                     s_concurrentProgramParamLov.add(concurrentProgramParamLovItems);
 
                     
-//                    ConcProgramParamLovBO[] concurrentProgramParamLovArray =
-//                    (ConcProgramParamLovBO[]) s_concurrentProgramParamLov.toArray(new ConcProgramParamLovBO[s_concurrentProgramParamLov.size()]);
-                    return s_concurrentProgramParamLov;
+                        ConcProgramParamLovBO[] concurrentProgramParamLovArray =
+                        (ConcProgramParamLovBO[]) s_concurrentProgramParamLov.toArray(new ConcProgramParamLovBO[s_concurrentProgramParamLov.size()]);
+                    return concurrentProgramParamLovArray;
                     
                 }catch(ParseException e) {
                 e.getMessage();
@@ -428,4 +428,5 @@ public class ConcurrentProgramDC extends SyncUtils {
         }
         return null;
     }
+    
 }
