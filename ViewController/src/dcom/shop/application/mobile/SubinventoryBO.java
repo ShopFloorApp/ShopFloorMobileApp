@@ -117,7 +117,7 @@ public class SubinventoryBO implements Comparable {
     public void setBOClassRow(HashMap hashMap) {
         this.setWhse((String) hashMap.get("whse"));
         this.setSubinv((String) hashMap.get("subinv"));
-        this.setDescription((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
         this.setLocatorControl((String) hashMap.get("locatorcontrol"));
         this.setLPNControl((String) hashMap.get("lpncontrol"));
         this.setDefLocator((String) hashMap.get("deflocator"));
@@ -128,7 +128,7 @@ public class SubinventoryBO implements Comparable {
         HashMap map = new HashMap();
         map.put("whse", subInventories.getWhse());
         map.put("subinv", subInventories.getSubinv());
-        map.put("desc", subInventories.getDescription());
+        map.put("description", subInventories.getDescription());
         map.put("locatorcontrol", subInventories.getLocatorControl());
         map.put("lpncontrol", subInventories.getLPNControl());
         map.put("deflocator", subInventories.getDefLocator());

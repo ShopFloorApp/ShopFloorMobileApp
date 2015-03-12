@@ -18,13 +18,13 @@ public class TransactionReasonBO implements Comparable {
 
     public void setBOClassRow(HashMap hashMap) {
         this.setReasonName((String) hashMap.get("reasonname"));
-        this.setDescription((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
     }
 
     public HashMap getBOClassRow(TransactionReasonBO transactionReason) {
         HashMap map = new HashMap();
         map.put("reasonname", transactionReason.getReasonName());
-        map.put("desc", transactionReason.getDescription());
+        map.put("description", transactionReason.getDescription());
         return map;
     }
 

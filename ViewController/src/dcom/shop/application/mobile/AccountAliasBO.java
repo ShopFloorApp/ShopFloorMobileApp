@@ -21,7 +21,7 @@ public class AccountAliasBO implements Comparable {
     public void setBOClassRow(HashMap hashMap) {
         this.setWhse((String) hashMap.get("whse"));
         this.setAccountAlias((String) hashMap.get("accountalias"));
-        this.setDescription((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
         this.setAccountSegment((String) hashMap.get("accountsegment"));
     }
 
@@ -29,7 +29,7 @@ public class AccountAliasBO implements Comparable {
         HashMap map = new HashMap();
         map.put("whse", accountAlias.getWhse());
         map.put("accountalias", accountAlias.getAccountAlias());
-        map.put("desc", accountAlias.getDescription());
+        map.put("description", accountAlias.getDescription());
         map.put("accountsegment", accountAlias.getAccountSegment());
         return map;
     }

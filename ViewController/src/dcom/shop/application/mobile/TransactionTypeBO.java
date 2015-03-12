@@ -15,16 +15,16 @@ public class TransactionTypeBO implements Comparable {
     public TransactionTypeBO() {
         super();
     }
-    
+
     public void setBOClassRow(HashMap hashMap) {
         this.setTransactionType((String) hashMap.get("transactiontype"));
-        this.setDescription((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
     }
 
     public HashMap getBOClassRow(TransactionTypeBO transactionType) {
         HashMap map = new HashMap();
         map.put("transactiontype", transactionType.getTransactionType());
-        map.put("desc", transactionType.getDescription());
+        map.put("description", transactionType.getDescription());
         return map;
     }
 
