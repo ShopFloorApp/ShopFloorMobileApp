@@ -105,7 +105,7 @@ public class ConcurrentProgramDC extends SyncUtils {
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String restURI = RestURI.PostRequestsURI();
         RestCallerUtil rcu = new RestCallerUtil();
-        String requestId = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestId}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestId}"));
+        String requestId = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestIdS}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestIdS}"));
         String program = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.name}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.name}"));
         String application = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applicationName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applicationName}"));
         String username = "";
@@ -114,7 +114,7 @@ public class ConcurrentProgramDC extends SyncUtils {
         String status = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.status}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.status}"));
         String startdate = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.startDate}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.startDate}"));
         String enddate = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.endDate}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.endDate}"));
-        String dateType="C";
+        String dateType=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.dateType}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.dateType}"));
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
             "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
