@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="jobOperationsPageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="JobOperationDC" id="JobOperationDCIterator"/>
+    <accessorIterator MasterBinding="JobOperationDCIterator" Binds="jobOperationBO" RangeSize="25"
+                      DataControl="JobOperationDC" BeanClass="dcom.shop.application.mobile.dispatch.JobOperationBO"
+                      id="jobOperationBOIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="jobOperationBOIterator" id="jobOperationBO">
+      <nodeDefinition DefName="dcom.shop.application.mobile.dispatch.JobOperationBO" Name="jobOperationBO0">
+        <AttrNames>
+          <Item Value="jobNumber"/>
+          <Item Value="assembly"/>
+          <Item Value="assemblyDesc"/>
+          <Item Value="jobDesc"/>
+          <Item Value="jobOps"/>
+          <Item Value="jobStatus"/>
+          <Item Value="readyStatus"/>
+          <Item Value="schStartDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

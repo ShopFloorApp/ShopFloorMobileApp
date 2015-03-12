@@ -1,0 +1,27 @@
+@charset "windows-1252";
+
+.notification-badge-hidden {
+    display: none;
+}
+
+.notification-badge {  
+display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    line-height: 16px;
+    padding: 0 5px;    
+    color: white;
+    border-color: #FFFFFF;
+    border: 1px solid;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.08);
+    background-image: -webkit-linear-gradient(top, #FF6161, #BD0000);
+    background-image: -moz-linear-gradient(top, #FF6161, #BD0000);
+    background-image: -o-linear-gradient(top, #FF6161, #BD0000);
+    background-image: linear-gradient(to bottom, #FF6161, #BD0000);
+    font-family: Arial, sans-serif;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+}
