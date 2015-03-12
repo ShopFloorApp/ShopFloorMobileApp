@@ -22,6 +22,12 @@
     <view id="Programparams">
       <page>/dcom.shop.Request/page/Programparams.amx</page>
     </view>
+    <view id="ParamsLov">
+      <page>/dcom.shop.Request/page/ParamsLov.amx</page>
+    </view>
+    <view id="ProgramSubmitted">
+      <page>/dcom.shop.Request/page/ProgramSubmitted.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>searchRequest</from-activity-id>
       <control-flow-case id="__2">
@@ -52,6 +58,17 @@
       <control-flow-case id="__7">
         <from-outcome>setParams</from-outcome>
         <to-activity-id>Programparams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>Programparams</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>getLov</from-outcome>
+        <to-activity-id>ParamsLov</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome>result</from-outcome>
+        <to-activity-id>ProgramSubmitted</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>
