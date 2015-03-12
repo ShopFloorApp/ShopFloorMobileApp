@@ -16,17 +16,19 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2"/>
         </amx:facet>
-        <amx:tableLayout id="tl2">
+        <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
             <amx:rowLayout id="rl9">
-                <amx:cellFormat id="cf18" halign="end">
-                    <amx:commandButton text="Submit New Request" id="cb3" action="submitRequest"/>
+                  <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn"
+                                inlineStyle="position: relative; right: -385px;">
+                    <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
+                                       action="submitRequest"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelGroupLayout id="pgl1" layout="horizontal">
             <amx:spacer id="s1" width="20"/>
             <amx:panelFormLayout id="pfl1">
-                <amx:inputText id="it1" label="Request Id" value="#{pageFlowScope.requestId}"/>
+                <amx:inputText id="it1" label="Request Id" value="#{pageFlowScope.requestIdS}"/>
                 <amx:selectOneChoice value="#{pageFlowScope.name}" label="#{bindings.name.label}" id="soc1">
                     <amx:selectItem id="si2"/>
                     <amx:selectItems value="#{bindings.name.items}" id="si1"/>
@@ -69,6 +71,13 @@
                     <amx:selectItem id="si33" label="Waiting" value="A"/>
                     <amx:selectItem id="si34" label="Warning" value="G"/>
                 </amx:selectOneChoice>
+                <amx:selectManyChoice label="label1" id="smc1">
+                    <amx:selectItem id="si35"/>
+                </amx:selectManyChoice>
+                <amx:selectOneRadio label="Date Type" id="sor1" value="#{pageFlowScope.dateType}">
+                    <amx:selectItem id="si36" label="Start Date" value="S"/>
+                    <amx:selectItem label="Completion Date" id="si37" value="C"/>
+                </amx:selectOneRadio>
                 <amx:inputDate id="id1" label="Start" value="#{pageFlowScope.startDate}"/>
                 <amx:inputDate id="id2" label="End" value="#{pageFlowScope.endDate}"/>
             </amx:panelFormLayout>
