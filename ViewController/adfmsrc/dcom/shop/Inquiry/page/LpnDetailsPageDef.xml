@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LpnDetailsPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LpnDetailsDC" id="LpnDetailsDCIterator"/>
+    <accessorIterator MasterBinding="LpnDetailsDCIterator" Binds="allLpnDetails" RangeSize="25"
+                      DataControl="LpnDetailsDC" BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsEntity"
+                      id="allLpnDetailsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allLpnDetailsIterator" id="allLpnDetails">
+      <nodeDefinition DefName="dcom.shop.Inquiry.lpn.LpnDetailsEntity" Name="allLpnDetails0">
+        <AttrNames>
+          <Item Value="ITEM"/>
+          <Item Value="AVAILABLEQTY"/>
+          <Item Value="ITEMDESC"/>
+          <Item Value="ONHANDQTY"/>
+          <Item Value="UOM"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

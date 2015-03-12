@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="productDetailsPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ProductDetailsDC" id="ProductDetailsDCIterator"/>
+    <accessorIterator MasterBinding="ProductDetailsDCIterator" Binds="allProdDetails" RangeSize="25"
+                      DataControl="ProductDetailsDC" BeanClass="dcom.shop.Inquiry.ProductDetails.ProductDetailsEntity"
+                      id="allProdDetailsIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="allProdDetailsIterator" id="ITEM">
+      <AttrNames>
+        <Item Value="ITEM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="REVISION">
+      <AttrNames>
+        <Item Value="REVISION"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="ITEMDESC">
+      <AttrNames>
+        <Item Value="ITEMDESC"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="ITEMSTATUS">
+      <AttrNames>
+        <Item Value="ITEMSTATUS"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="PRIMARYUOM">
+      <AttrNames>
+        <Item Value="PRIMARYUOM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="ITEMTYPE">
+      <AttrNames>
+        <Item Value="ITEMTYPE"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
