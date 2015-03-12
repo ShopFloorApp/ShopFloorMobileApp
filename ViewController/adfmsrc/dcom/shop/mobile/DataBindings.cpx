@@ -34,10 +34,10 @@
     <page path="/page/LovPage/LocatorLOVPG.amx" usageId="dcom_shop_mobile_LocatorLOVPGPageDef"/>
     <page path="/dcom.shop.Transaction/page/MiscellaneousTransaction.amx"
           usageId="dcom_shop_mobile_MiscellaneousTransactionPageDef"/>
+    <page path="/dcom.shop.Request/page/ParamsLov.amx" usageId="dcom_shop_mobile_ParamsLovPageDef"/>
     <page path="/dcom.shop.Inquiry/page/productDetails.amx" usageId="dcom_shop_mobile_productDetailsPageDef"/>
     <page path="/dcom.shop.Inquiry/page/LpnList.amx" usageId="dcom_shop_mobile_LpnListPageDef"/>
     <page path="/dcom.shop.Inquiry/page/LpnDetails.amx" usageId="dcom_shop_mobile_LpnDetailsPageDef"/>
-
     <page path="/dcom.shop.Inquiry/page/onHandSearch.amx" usageId="dcom_shop_mobile_onHandSearchPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
@@ -69,14 +69,13 @@
     <page id="dcom_shop_mobile_LocatorLOVPGPageDef" path="page.LovPage.LocatorLOVPGPageDef"/>
     <page id="dcom_shop_mobile_MiscellaneousTransactionPageDef"
           path="dcom.shop.Transaction.page.MiscellaneousTransactionPageDef"/>
+    <page id="dcom_shop_mobile_ParamsLovPageDef" path="dcom.shop.Request.page.ParamsLovPageDef"/>
     <page id="dcom_shop_mobile_productDetailsPageDef" path="dcom.shop.Inquiry.page.productDetailsPageDef"/>
     <page id="dcom_shop_mobile_LpnListPageDef" path="dcom.shop.Inquiry.page.LpnListPageDef"/>
     <page id="dcom_shop_mobile_LpnDetailsPageDef" path="dcom.shop.Inquiry.page.LpnDetailsPageDef"/>
     <page id="dcom_shop_mobile_jobOperationsPageDef" path="dcom.shop.DispatchList.page.jobOperationsPageDef"/>
     <page id="dcom_shop_mobile_workContentPageDef" path="dcom.shop.DispatchList.page.workContentPageDef"/>
-  
     <page id="dcom_shop_mobile_onHandSearchPageDef" path="dcom.shop.Inquiry.page.onHandSearchPageDef"/>
-
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/>
