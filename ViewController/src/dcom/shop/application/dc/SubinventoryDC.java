@@ -5,9 +5,15 @@ import dcom.shop.application.mobile.SubinventoryBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.PropertyChangeListener;
+import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
+import oracle.adfmf.util.GenericVirtualType;
 import oracle.adfmf.util.Utility;
 
 import org.json.simple.JSONArray;
@@ -19,10 +25,56 @@ public class SubinventoryDC extends SyncUtils {
     public SubinventoryDC() {
         super();
     }
+    private List filtered_Subinventories = new ArrayList();
+    private String subinvFilter = "";
+    private String descFilter = "";
     protected static List s_subInventories = new ArrayList();
+    protected static List s_to_subInventories = new ArrayList();
+    private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
-    
+    public SubinventoryBO[] getSubinventories() {
+
+        try {
+            SubinventoryBO[] subInventories = null;
+            /**Commented as data will be coming from local DB
+                 * GenericVirtualType payload = new GenericVirtualType(null, "payload");
+                payload.defineAttribute(null, "Whse", String.class, "100");
+                HashMap paramsMap = new HashMap();
+                paramsMap.put("resAttriName", "SubinvDetails");
+                paramsMap.put("lovDCName", "SubinventoryLOV_WS");
+                paramsMap.put("opeartionName", "process");
+                paramsMap.put("payload", payload);
+                s_subInventories = super.getCollection(SubinventoryBO.class, paramsMap);*/
+            filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+            subInventories =
+                (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
+            return subInventories;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public SubinventoryBO[] getToSubinventories() {
+
+        try {
+            SubinventoryBO[] subInventories = null;
+            GenericVirtualType payload = new GenericVirtualType(null, "payload");
+            payload.defineAttribute(null, "Whse", String.class, "100");
+            HashMap paramsMap = new HashMap();
+            paramsMap.put("resAttriName", "SubinvDetails");
+            paramsMap.put("lovDCName", "SubinventoryLOV_WS");
+            paramsMap.put("opeartionName", "process");
+            paramsMap.put("payload", payload);
+            s_to_subInventories = super.getCollection(SubinventoryBO.class, paramsMap);
+            subInventories =
+                (SubinventoryBO[]) s_to_subInventories.toArray(new SubinventoryBO[s_to_subInventories.size()]);
+            return subInventories;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public SubinventoryBO[] getSubinventory() {
         String networkStatus =
@@ -68,9 +120,7 @@ public class SubinventoryDC extends SyncUtils {
                             SubinventoryBO SubinventoryItems = new SubinventoryBO();
                             JSONObject jsObject2 = (JSONObject) array.get(i);
 
-        try {
-           SubinventoryBO[] subInventories = null;
-            SubinventoryItems.setWhse((jsObject2.get("WHSE").toString()));
+                            SubinventoryItems.setWhse((jsObject2.get("WHSE").toString()));
                             SubinventoryItems.setSubinv((jsObject2.get("SUBINV").toString()));
                             SubinventoryItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             SubinventoryItems.setLocatorControl((jsObject2.get("LOCATORCONTROL").toString()));
@@ -79,17 +129,40 @@ public class SubinventoryDC extends SyncUtils {
                             SubinventoryItems.setDefCostGrp((jsObject2.get("DEFCOSTGRP").toString()));
                             s_subInventories.add(SubinventoryItems);
 
-            filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
-            subInventories =
-                (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
-            return subInventories;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-    
 
+                        }
+
+                        super.updateSqlLiteTable(SubinventoryBO.class, s_subInventories);
+                    }
+                } catch (ParseException e) {
+                    e.getMessage();
+                }
+            }
         }
+        SubinventoryBO[] SubinventoryArray =
+            (SubinventoryBO[]) s_subInventories.toArray(new SubinventoryBO[s_subInventories.size()]);
+        return SubinventoryArray;
+    }
+
+    public void setSubinvFilter(String subinvFilter) {
+        String oldSubinvFilter = this.subinvFilter;
+        this.subinvFilter = subinvFilter;
+        propertyChangeSupport.firePropertyChange("subinvFilter", oldSubinvFilter, subinvFilter);
+    }
+
+    public String getSubinvFilter() {
+        return subinvFilter;
+    }
+
+    public void setDescFilter(String descFilter) {
+        String oldDescFilter = this.descFilter;
+        this.descFilter = descFilter;
+        propertyChangeSupport.firePropertyChange("descFilter", oldDescFilter, descFilter);
+    }
+
+    public String getDescFilter() {
+        return descFilter;
+    }
 
     public void filterSubinventories() {
         try {
@@ -113,13 +186,21 @@ public class SubinventoryDC extends SyncUtils {
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
         }
-                } catch (ParseException e) {
-                    e.getMessage();
     }
+
+    public void addPropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.addPropertyChangeListener(l);
     }
+
+    public void removePropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.removePropertyChangeListener(l);
     }
-        SubinventoryBO[] SubinventoryArray =
-            (SubinventoryBO[]) s_subInventories.toArray(new SubinventoryBO[s_subInventories.size()]);
-        return SubinventoryArray;
+
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
     }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
+}
