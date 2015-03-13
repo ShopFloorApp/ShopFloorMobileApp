@@ -18,13 +18,6 @@ import org.json.simple.parser.ParseException;
 public class CostGroupDC extends SyncUtils {
     public CostGroupDC() {
         super();
-    }
-    protected static List s_costGroups = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
-
-    public CostGroupBO[] getCostGroup() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -83,6 +76,14 @@ public class CostGroupDC extends SyncUtils {
                 }
             }
         }
+    }
+    protected static List s_costGroups = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public CostGroupBO[] getCostGroup() {
+        
         CostGroupBO[] costgroupArray = (CostGroupBO[]) s_costGroups.toArray(new CostGroupBO[s_costGroups.size()]);
         return costgroupArray;
     }

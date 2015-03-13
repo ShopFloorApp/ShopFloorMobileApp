@@ -18,13 +18,6 @@ import org.json.simple.parser.ParseException;
 public class CategorySetDC extends SyncUtils {
     public CategorySetDC() {
         super();
-    }
-    protected static List s_categorySets = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
-
-    public CategorySetBO[] getCategorySet() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -86,6 +79,14 @@ public class CategorySetDC extends SyncUtils {
                 }
             }
         }
+    }
+    protected static List s_categorySets = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public CategorySetBO[] getCategorySet() {
+        
         CategorySetBO[] categsetArray = (CategorySetBO[]) s_categorySets.toArray(new CategorySetBO[s_categorySets.size()]);
         return categsetArray;
     }

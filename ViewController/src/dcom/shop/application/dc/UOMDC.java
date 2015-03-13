@@ -18,13 +18,6 @@ import org.json.simple.parser.ParseException;
 public class UOMDC extends SyncUtils {
     public UOMDC() {
         super();
-    }
-    protected static List s_uom = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
-
-    public UOMBO[] getUOM() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -83,6 +76,14 @@ public class UOMDC extends SyncUtils {
                 }
             }
         }
+    }
+    protected static List s_uom = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public UOMBO[] getUOM() {
+        
         UOMBO[] uomArray = (UOMBO[]) s_uom.toArray(new UOMBO[s_uom.size()]);
         return uomArray;
     }

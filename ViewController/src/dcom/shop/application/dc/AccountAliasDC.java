@@ -21,13 +21,6 @@ import org.json.simple.parser.ParseException;
 public class AccountAliasDC extends SyncUtils {
     public AccountAliasDC() {
         super();
-    }
-    protected static List s_accountAlias = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
-
-    public AccountAliasBO[] getAccountAlias() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -87,6 +80,14 @@ public class AccountAliasDC extends SyncUtils {
                 }
             }
         }
+    }
+    protected static List s_accountAlias = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public AccountAliasBO[] getAccountAlias() {
+        
         AccountAliasBO[] aliasArray = (AccountAliasBO[]) s_accountAlias.toArray(new AccountAliasBO[s_accountAlias.size()]);
         return aliasArray;
     }

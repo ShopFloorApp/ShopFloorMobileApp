@@ -18,13 +18,6 @@ import org.json.simple.parser.ParseException;
 public class TransactionTypeDC extends SyncUtils {
     public TransactionTypeDC() {
         super();
-    }
-    protected static List s_transactionType = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
-
-    public TransactionTypeBO[] getTransactionType() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -82,6 +75,14 @@ public class TransactionTypeDC extends SyncUtils {
                 }
             }
         }
+    }
+    protected static List s_transactionType = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public TransactionTypeBO[] getTransactionType() {
+        
         TransactionTypeBO[] TransactionTypeArray =
             (TransactionTypeBO[]) s_transactionType.toArray(new TransactionTypeBO[s_transactionType.size()]);
         return TransactionTypeArray;

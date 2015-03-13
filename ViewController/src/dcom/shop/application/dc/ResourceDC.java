@@ -18,13 +18,6 @@ import org.json.simple.parser.ParseException;
 public class ResourceDC extends SyncUtils {
     public ResourceDC() {
         super();
-    }
-    protected static List s_resources = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
-
-    public ResourceBO[] getResource() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -88,6 +81,14 @@ public class ResourceDC extends SyncUtils {
                 }
             }
         }
+    }
+    protected static List s_resources = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+
+
+    public ResourceBO[] getResource() {
+        
         ResourceBO[] ResourceArray = (ResourceBO[]) s_resources.toArray(new ResourceBO[s_resources.size()]);
         return ResourceArray;
     }
