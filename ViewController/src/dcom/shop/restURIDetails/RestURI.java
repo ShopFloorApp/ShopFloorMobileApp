@@ -73,4 +73,22 @@ public class RestURI {
     public static String PostGetJobOp() {
         return GET_JOBOP;
     }
+    
+    private static final String GET_SALES_ORDER = "/webservices/rest/DCOMLOV/getsalesorder/";
+
+    public static String PostGetSalesOrder() {
+        return GET_SALES_ORDER;
+    }
+    
+    private static final String GET_REQUISITION = "/webservices/rest/DCOMLOV/getreq/";
+
+    public static String PostGetRequisition() {
+        return GET_REQUISITION;
+    }
+    
+    private static final String GET_PURCHASE_ORDER = "/webservices/rest/DCOMLOV/getpo/";
+
+    public static String PostGetPurchaseOrder() {
+        return GET_PURCHASE_ORDER;
+    }
 }
