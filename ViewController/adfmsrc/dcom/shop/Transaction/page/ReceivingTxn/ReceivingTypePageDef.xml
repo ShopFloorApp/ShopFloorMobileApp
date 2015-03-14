@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="ReceivingTypePageDef"
+                Package="dcom.shop.Transaction.page.ReceivingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ReceivingTxnDC" id="ReceivingTxnDCIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="purchaseOrder" RangeSize="25"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO"
+                      id="purchaseOrderIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="requisition" RangeSize="25"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.RequisitionBO"
+                      id="requisitionIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="salesOrder" RangeSize="25"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderBO"
+                      id="salesOrderIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="purchaseOrderIterator" ListOperMode="navigation" ListIter="purchaseOrderIterator"
+          id="purchaseOrder" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="poNumber"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="requisitionIterator" ListOperMode="navigation" ListIter="requisitionIterator" id="requisition"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="reqNumber"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="salesOrderIterator" ListOperMode="navigation" ListIter="salesOrderIterator" id="salesOrder"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="orderNumber"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>
