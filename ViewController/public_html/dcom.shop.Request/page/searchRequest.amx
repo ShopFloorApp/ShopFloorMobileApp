@@ -19,7 +19,7 @@
         <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
             <amx:rowLayout id="rl9">
                   <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn"
-                                inlineStyle="position: relative; right: -385px;">
+                                >
                     <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
                                        action="submitRequest"/>
                 </amx:cellFormat>
@@ -74,10 +74,10 @@
                 <amx:selectManyChoice label="label1" id="smc1">
                     <amx:selectItem id="si35"/>
                 </amx:selectManyChoice>
-                <amx:selectOneRadio label="Date Type" id="sor1" value="#{pageFlowScope.dateType}">
+                <amx:selectOneButton label="Date Type" id="sor1" value="#{pageFlowScope.dateType}">
                     <amx:selectItem id="si36" label="Start Date" value="S"/>
                     <amx:selectItem label="Completion Date" id="si37" value="C"/>
-                </amx:selectOneRadio>
+                </amx:selectOneButton>
                 <amx:inputDate id="id1" label="Start" value="#{pageFlowScope.startDate}"/>
                 <amx:inputDate id="id2" label="End" value="#{pageFlowScope.endDate}"/>
             </amx:panelFormLayout>

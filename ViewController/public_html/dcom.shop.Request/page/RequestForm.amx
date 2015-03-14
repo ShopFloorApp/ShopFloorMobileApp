@@ -13,7 +13,7 @@
     </amx:facet>
     <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
       <amx:rowLayout id="rl9">
-        <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative; right: -385px;">
+        <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative;">
           <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
                              action="submitRequest"/>
         </amx:cellFormat>
