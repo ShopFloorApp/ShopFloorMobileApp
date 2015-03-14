@@ -146,7 +146,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">B44,-129.15234,117.49098,27.850586,117.643555,B44</property>
+         name="sdm:polyPoints">B50,-125.65234,117.48759,27.850586,117.643555,B44</property>
    </ControlFlowCase>
    <View
       id="View13">
@@ -372,6 +372,35 @@
       <property
          name="sdm:polyPoints">R50,-42.0,226.44824,193.0,71.79297,L58</property>
    </ControlFlowCase>
+
+   <TaskFlowCall
+      id="TaskFlowCall33">
+      <property
+         name="taskFlowId">ReceivingTransaction</property>
+      <property
+         name="activityId">ReceivingTransaction</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/ReceivingTransaction.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ReceivingTransaction&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">245.14941</property>
+      <property
+         name="x">-237.30566</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase34"
+      from="View6"
+      to="TaskFlowCall33">
+      <property
+         name="fromOutcome">receiveTxn</property>
+      <property
+         name="sdm:polyPoints">B39,-132.65234,110.643555,-237.30566,190.79883,T50</property>
+   </ControlFlowCase>
+
    <View
       id="View33">
       <property
@@ -407,4 +436,5 @@
       <property
          name="sdm:polyPoints">L54,707.5,-16.75293,584.6212,57.5459,R46</property>
    </ControlFlowCase>
+
 </SDM>
