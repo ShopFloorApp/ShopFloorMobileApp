@@ -34,14 +34,27 @@
     <view id="MaterialTransaction">
       <page>/dcom.shop.Transaction/page/MiscellaneousTransaction.amx</page>
     </view>
+
+    <task-flow-call id="ReceivingTransaction">
+      <task-flow-reference>
+        <document>/dcom.shop.Transaction/ReceivingTransaction.xml</document>
+        <id>ReceivingTransaction</id>
+      </task-flow-reference>
+    </task-flow-call>
+
     <view id="SerialEntry">
       <page>/page/SerialEntry.amx</page>
     </view>
+
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
         <from-outcome>matMov</from-outcome>
         <to-activity-id>MaterialMovements</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>receiveTxn</from-outcome>
+        <to-activity-id>ReceivingTransaction</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__5">
