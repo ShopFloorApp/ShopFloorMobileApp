@@ -445,9 +445,11 @@
                   <value n="deployTarget" v="Emulator"/>
                </hash>
                <value n="custom" v="false"/>
+               <value n="debugPort" v="8000"/>
                <value n="mobilePlatform" v="Android"/>
                <value n="name" v="Android Emulator"/>
                <value n="profileName" v="Android1"/>
+               <url n="targetURL" path="ViewController/src/META-INF/maf-feature.xml"/>
             </hash>
             <hash n="iOS Simulator">
                <value n="custom" v="false"/>
@@ -458,10 +460,9 @@
             </hash>
          </hash>
          <list n="runConfigurationList">
-            <string v="Shared"/>
-            <string v="iOS Simulator"/>
-            <string v="Android Emulator"/>
             <string v="Android Device"/>
+            <string v="Android Emulator"/>
+            <string v="iOS Simulator"/>
          </list>
       </hash>
    </hash>

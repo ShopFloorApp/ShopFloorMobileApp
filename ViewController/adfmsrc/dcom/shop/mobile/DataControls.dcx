@@ -881,7 +881,7 @@
                              xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
         </Source>
     </AdapterDataControl>
-</DataControlConfigs>
+
   <AdapterDataControl id="SerialDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
                       ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
                       SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
@@ -894,39 +894,6 @@
       <bean-definition BeanClass="dcom.shop.application.dc.SerialDC"
                        DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
                        EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
-    </Source>
-  </AdapterDataControl>
-  <AdapterDataControl id="LPNDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
-                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
-                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.LPNDC"
-                      BeanClass="dcom.shop.application.dc.LPNDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-    <CreatableTypes>
-      <TypeInfo FullName="dcom.shop.application.mobile.LPNBO"/>
-    </CreatableTypes>
-    <Source>
-      <bean-definition BeanClass="dcom.shop.application.dc.LPNDC"
-                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
-                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
-    </Source>
-  </AdapterDataControl>
-  <AdapterDataControl id="LPNLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
-                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
-                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
-                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.LPNLOV_WS"
-                      BeanClass="dcom.shop.mobile.LPNLOV_WS" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
-    <Source>
-      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice" name="LPNLOV_WS" version="1.0"
-                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
-                  wsdl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetLPN/dcomgetlpnbpel_client_ep?WSDL"
-                  ensureKeyAttribute="true" useWSDLIdentity="true" dcStructureVersion="2" UsePersistedStructure="false">
-        <service name="dcomgetlpnbpel_client_ep"
-                 namespace="http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL" connection="LPNLOV_WS">
-          <port name="DCOMGetLPNBPEL_pt">
-            <operation name="process"/>
-          </port>
-        </service>
-      </definition>
     </Source>
   </AdapterDataControl>
   <AdapterDataControl id="SubInventoryTxnDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
@@ -945,3 +912,4 @@
                        EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
+</DataControlConfigs>

@@ -10,7 +10,9 @@
     <view id="ReceivingType">
       <page>/dcom.shop.Transaction/page/ReceivingTxn/ReceivingType.amx</page>
     </view>
-    <view id="DocumentNo"></view>
+    <view id="DocumentNo">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">

@@ -18,7 +18,7 @@
             <amx:listItem id="li3" action="matMov">
                 <amx:outputText value="Material Movements" id="ot4"/>
             </amx:listItem>
-            <amx:listItem id="li4" action="">
+            <amx:listItem id="li4" action="receiveTxn">
                 <amx:outputText value="Receiving Transactions" id="ot5"/>
             </amx:listItem>
             <amx:listItem id="li6" action="">
@@ -29,5 +29,4 @@
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
->>>>>>> .r174
 </amx:view>
