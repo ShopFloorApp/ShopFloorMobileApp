@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Receiving Transaction" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:selectOneButton id="sob1" layout="horizontal" value="#{pageFlowScope.receivingType}">
+      <amx:selectItem id="si1" label="Supplier" value="S"/>
+      <amx:selectItem label="Customer" id="si2" value="C"/>
+      <amx:selectItem label="Internal" id="si3" value="I"/>
+    </amx:selectOneButton>
+    <amx:panelFormLayout id="pfl1">
+      <amx:selectOneChoice label="PO Number"
+                           id="soc1" rendered="#{pageFlowScope.receivingType=='S'}">
+        <amx:selectItems value="#{bindings.purchaseOrder.items}" id="si4"/>
+      </amx:selectOneChoice>
+      <amx:selectOneChoice label="Requisition Number" id="soc2"
+                           rendered="#{pageFlowScope.receivingType=='I'}">
+        <amx:selectItems value="#{bindings.requisition.items}" id="si5"/>
+      </amx:selectOneChoice>
+      <amx:selectOneChoice label="Sales Order Number" id="soc3"
+                           rendered="#{pageFlowScope.receivingType=='C'}">
+        <amx:selectItems value="#{bindings.salesOrder.items}" id="si6"/>
+      </amx:selectOneChoice>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>
