@@ -3,7 +3,6 @@
              SeparateXMLFiles="false" Package="dcom.shop.mobile" ClientType="Generic">
     <pageMap>
         <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
-        <page path="/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef"/>
         <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/page/syncPrefPG.amx" usageId="dcom_shop_mobile_syncPrefPGPageDef"/>
         <page path="/page/LovPage/WarehouseLov.amx" usageId="dcom_shop_mobile_WarehouseLovPageDef"/>
@@ -39,93 +38,112 @@
         <page path="/dcom.shop.Inquiry/page/LpnDetails.amx" usageId="dcom_shop_mobile_LpnDetailsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/onHandSearch.amx" usageId="dcom_shop_mobile_onHandSearchPageDef"/>
     <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
-        <page path="/page/SerialEntry.amx" usageId="dcom_shop_mobile_SerialEntryPageDef"/>
-        <page path="/dcom.shop.DispatchList/page/jobOperations.amx" usageId="dcom_shop_mobile_jobOperationsPageDef"/></pageMap>
-    <pageDefinitionUsages>
-        <page id="dcom_shop_mobile_ProgramparamsPageDef1" path="dcom.shop.Request.page.ProgramparamsPageDef"/>
-        <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
-        <page id="dcom_shop_mobile_WarehouseLovPageDef" path="page.LovPage.WarehouseLovPageDef"/>
-        <page id="dcom_shop_mobile_SubinventoryLovPageDef" path="page.LovPage.SubinventoryLovPageDef"/>
-        <page id="dcom_shop_mobile_LovFragmentTestPageDef" path="page.LovFragmentTestPageDef"/>
-        <page id="dcom_shop_mobile_CategorySetNameLovPageDef" path="page.LovPage.CategorySetNameLovPageDef"/>
-        <page id="dcom_shop_mobile_ResourcesLovPageDef" path="page.LovPage.ResourcesLovPageDef"/>
-        <page id="dcom_shop_mobile_CostGroupsLovPageDef" path="page.LovPage.CostGroupsLovPageDef"/>
-        <page id="dcom_shop_mobile_SubInventoryTrsfPageDef" path="page.SubInventoryTrsfPageDef"/>
-        <page id="dcom_shop_mobile_springboardPageDef" path="dcom.shop.Springboard.springboardPageDef"/>
-        <page id="dcom_shop_mobile_DispatchListPageDef" path="dcom.shop.DispatchList.DispatchListPageDef"/>
-        <page id="dcom_shop_mobile_searchRequestPageDef" path="dcom.shop.Request.page.searchRequestPageDef"/>
-        <page id="dcom_shop_mobile_RequestsPageDef" path="dcom.shop.Request.page.RequestsPageDef"/>
-        <page id="dcom_shop_mobile_RequestFormPageDef" path="dcom.shop.Request.page.RequestFormPageDef"/>
-        <page id="dcom_shop_mobile_SubmitRequestPageDef" path="dcom.shop.Request.page.SubmitRequestPageDef"/>
-        <page id="dcom_shop_mobile_inquiryPageDef" path="dcom.shop.Inquiry.page.inquiryPageDef"/>
-        <page id="dcom_shop_mobile_MaterialMovementsPageDef"
-              path="dcom.shop.Transaction.page.MaterialMovementsPageDef"/>
-        <page id="dcom_shop_mobile_TransactionPageDef" path="dcom.shop.Transaction.page.TransactionPageDef"/>
-        <page id="dcom_shop_mobile_SubInventoryTxnPageDef" path="dcom.shop.Transaction.page.SubInventoryTxnPageDef"/>
-        <page id="dcom_shop_mobile_SubInventoryDetailsPageDef"
-              path="dcom.shop.Transaction.page.SubInventoryDetailsPageDef"/>
-        <page id="dcom_shop_mobile_itemLOVPGPageDef" path="page.LovPage.itemLOVPGPageDef"/>
-        <page id="dcom_shop_mobile_ProductListPageDef" path="dcom.shop.Inquiry.page.ProductListPageDef"/>
-        <page id="dcom_shop_mobile_LocatorLOVPGPageDef" path="page.LovPage.LocatorLOVPGPageDef"/>
-        <page id="dcom_shop_mobile_MiscellaneousTransactionPageDef"
-              path="dcom.shop.Transaction.page.MiscellaneousTransactionPageDef"/>
-        <page id="dcom_shop_mobile_ParamsLovPageDef" path="dcom.shop.Request.page.ParamsLovPageDef"/>
-        <page id="dcom_shop_mobile_productDetailsPageDef" path="dcom.shop.Inquiry.page.productDetailsPageDef"/>
-        <page id="dcom_shop_mobile_LpnListPageDef" path="dcom.shop.Inquiry.page.LpnListPageDef"/>
-        <page id="dcom_shop_mobile_LpnDetailsPageDef" path="dcom.shop.Inquiry.page.LpnDetailsPageDef"/>
-        <page id="dcom_shop_mobile_jobOperationsPageDef" path="dcom.shop.DispatchList.page.jobOperationsPageDef"/>
-        <page id="dcom_shop_mobile_workContentPageDef" path="dcom.shop.DispatchList.page.workContentPageDef"/>
-        <page id="dcom_shop_mobile_onHandSearchPageDef" path="dcom.shop.Inquiry.page.onHandSearchPageDef"/>
-<page id="dcom_shop_mobile_ProgramparamsPageDef" path="dcom.shop.mobile.pageDefs.ProgramparamsPageDef"/>    
-        <page id="dcom_shop_mobile_SerialEntryPageDef" path="page.SerialEntryPageDef"/>
-        <page id="dcom_shop_mobile_LpnLOVPGPageDef" path="page.LovPage.LpnLOVPGPageDef"/></pageDefinitionUsages>
-    <dataControlUsages>
-         <dc id="SubInventoryTxnDC" path="dcom.shop.mobile.SubInventoryTxnDC"/>
-        <dc id="SerialDC" path="dcom.shop.mobile.SerialDC"/>
-        <dc id="LPNDC" path="dcom.shop.mobile.LPNDC"/>
-        <dc id="LPNLOV_WS" path="dcom.shop.mobile.LPNLOV_WS"/>
-        <dc id="LpnDetailsDC" path="dcom.shop.mobile.LpnDetailsDC"/>
-        <dc id="LpnSearchDC" path="dcom.shop.mobile.LpnSearchDC"/>
-        <dc id="ProductDetailsDC" path="dcom.shop.mobile.ProductDetailsDC"/>
-        <dc id="JobOperationDC" path="dcom.shop.mobile.JobOperationDC"/>
-        <dc id="InvTrnDC" path="dcom.shop.mobile.InvTrnDC"/>
-        <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/>
-        <dc id="ItemDC" path="dcom.shop.mobile.ItemDC"/>
-        <dc id="ItemLOV_WS" path="dcom.shop.mobile.ItemLOV_WS"/>
-        <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>
-        <dc id="ConcurrentProgramDC" path="dcom.shop.mobile.ConcurrentProgramDC"/>
-        <dc id="ApplicationFeatures" path="dcom.shop.application.ApplicationFeatures"/>
-        <dc id="SubInventoryTrf_WS" path="dcom.shop.mobile.SubInventoryTrf_WS"/>
-        <dc id="SyncPreferencesDC" path="dcom.shop.mobile.SyncPreferencesDC"/>
-        <dc id="ResourceLOV_WS" path="dcom.shop.mobile.ResourceLOV_WS"/>
-        <dc id="ResourceDC" path="dcom.shop.mobile.ResourceDC"/>
-        <dc id="DepartmentLOV_WS" path="dcom.shop.mobile.DepartmentLOV_WS"/>
-        <dc id="DepartmentDC" path="dcom.shop.mobile.DepartmentDC"/>
-        <dc id="CountTypeLOV_WS" path="dcom.shop.mobile.CountTypeLOV_WS"/>
-        <dc id="CountTypeDC" path="dcom.shop.mobile.CountTypeDC"/>
-        <dc id="PickRuleLOV_WS" path="dcom.shop.mobile.PickRuleLOV_WS"/>
-        <dc id="PickRuleDC" path="dcom.shop.mobile.PickRuleDC"/>
-        <dc id="AccountAliasLOV_WS" path="dcom.shop.mobile.AccountAliasLOV_WS"/>
-        <dc id="AccountAliasDC" path="dcom.shop.mobile.AccountAliasDC"/>
-        <dc id="CarrierLOV_WS" path="dcom.shop.mobile.CarrierLOV_WS"/>
-        <dc id="CarrierDC" path="dcom.shop.mobile.CarrierDC"/>
-        <dc id="TransactionReasonLOV_WS" path="dcom.shop.mobile.TransactionReasonLOV_WS"/>
-        <dc id="TransactionReasonDC" path="dcom.shop.mobile.TransactionReasonDC"/>
-        <dc id="TransactionTypeLOV_WS" path="dcom.shop.mobile.TransactionTypeLOV_WS"/>
-        <dc id="TransactionTypeDC" path="dcom.shop.mobile.TransactionTypeDC"/>
-        <dc id="CostGroupDC" path="dcom.shop.mobile.CostGroupDC"/>
-        <dc id="CostGroupLOV_WS" path="dcom.shop.mobile.CostGroupLOV_WS"/>
-        <dc id="UOMDC" path="dcom.shop.mobile.UOMDC"/>
-        <dc id="UOMLOV_WS" path="dcom.shop.mobile.UOMLOV_WS"/>
-        <dc id="CategoryCodeDC" path="dcom.shop.mobile.CategoryCodeDC"/>
-        <dc id="CategoryCodeLOV_WS" path="dcom.shop.mobile.CategoryCodeLOV_WS"/>
-        <dc id="LocatorDC" path="dcom.shop.mobile.LocatorDC"/>
-        <dc id="LocatorLOV_WS" path="dcom.shop.mobile.LocatorLOV_WS"/>
-        <dc id="SubinventoryDC" path="dcom.shop.mobile.SubinventoryDC"/>
-        <dc id="SubinventoryLOV_WS" path="dcom.shop.mobile.SubinventoryLOV_WS"/>
-        <dc id="CategorySetDC" path="dcom.shop.mobile.CategorySetDC"/>
-        <dc id="CategorySetLOV_WS" path="dcom.shop.mobile.CategorySetLOV_WS"/>
-        <dc id="WarehouseLOV_WS" path="dcom.shop.mobile.WarehouseLOV_WS"/>
-        <dc id="WarehouseDC" path="dcom.shop.mobile.WarehouseDC"/>
-    </dataControlUsages>
+    <page path="/dcom.shop.DispatchList/page/jobOperations.amx" usageId="dcom_shop_mobile_jobOperationsPageDef"/>
+    <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
+    <page path="/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef"/>
+    <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
+    <page path="/dcom.shop.Inquiry/page/ProductList.amx" usageId="dcom_shop_mobile_ProductListPageDef"/>
+    <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
+    <page path="/page/LovPage/LocatorLOVPG.amx" usageId="dcom_shop_mobile_LocatorLOVPGPageDef"/>
+    <page path="/dcom.shop.Transaction/page/MiscellaneousTransaction.amx"
+          usageId="dcom_shop_mobile_MiscellaneousTransactionPageDef"/>
+    <page path="/dcom.shop.Request/page/ParamsLov.amx" usageId="dcom_shop_mobile_ParamsLovPageDef"/>
+    <page path="/dcom.shop.Inquiry/page/productDetails.amx" usageId="dcom_shop_mobile_productDetailsPageDef"/>
+    <page path="/dcom.shop.Inquiry/page/LpnList.amx" usageId="dcom_shop_mobile_LpnListPageDef"/>
+    <page path="/dcom.shop.Inquiry/page/LpnDetails.amx" usageId="dcom_shop_mobile_LpnDetailsPageDef"/>
+    <page path="/dcom.shop.Inquiry/page/onHandSearch.amx" usageId="dcom_shop_mobile_onHandSearchPageDef"/>
+    <page path="/dcom.shop.Transaction/page/ReceivingTxn/ReceivingType.amx"
+          usageId="dcom_shop_mobile_ReceivingTypePageDef"/>
+          <page path="/page/SerialEntry.amx" usageId="dcom_shop_mobile_SerialEntryPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/jobOperations.amx" usageId="dcom_shop_mobile_jobOperationsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
+    <page id="dcom_shop_mobile_WarehouseLovPageDef" path="page.LovPage.WarehouseLovPageDef"/>
+    <page id="dcom_shop_mobile_SubinventoryLovPageDef" path="page.LovPage.SubinventoryLovPageDef"/>
+    <page id="dcom_shop_mobile_LovFragmentTestPageDef" path="page.LovFragmentTestPageDef"/>
+    <page id="dcom_shop_mobile_CategorySetNameLovPageDef" path="page.LovPage.CategorySetNameLovPageDef"/>
+    <page id="dcom_shop_mobile_ResourcesLovPageDef" path="page.LovPage.ResourcesLovPageDef"/>
+    <page id="dcom_shop_mobile_CostGroupsLovPageDef" path="page.LovPage.CostGroupsLovPageDef"/>
+    <page id="dcom_shop_mobile_SubInventoryTrsfPageDef" path="page.SubInventoryTrsfPageDef"/>
+    <page id="dcom_shop_mobile_springboardPageDef" path="dcom.shop.Springboard.springboardPageDef"/>
+    <page id="dcom_shop_mobile_DispatchListPageDef" path="dcom.shop.DispatchList.DispatchListPageDef"/>
+    <page id="dcom_shop_mobile_searchRequestPageDef" path="dcom.shop.Request.page.searchRequestPageDef"/>
+    <page id="dcom_shop_mobile_RequestsPageDef" path="dcom.shop.Request.page.RequestsPageDef"/>
+    <page id="dcom_shop_mobile_RequestFormPageDef" path="dcom.shop.Request.page.RequestFormPageDef"/>
+    <page id="dcom_shop_mobile_SubmitRequestPageDef" path="dcom.shop.Request.page.SubmitRequestPageDef"/>
+    <page id="dcom_shop_mobile_inquiryPageDef" path="dcom.shop.Inquiry.page.inquiryPageDef"/>
+    <page id="dcom_shop_mobile_MaterialMovementsPageDef" path="dcom.shop.Transaction.page.MaterialMovementsPageDef"/>
+    <page id="dcom_shop_mobile_TransactionPageDef" path="dcom.shop.Transaction.page.TransactionPageDef"/>
+    <page id="dcom_shop_mobile_SubInventoryTxnPageDef" path="dcom.shop.Transaction.page.SubInventoryTxnPageDef"/>
+    <page id="dcom_shop_mobile_SubInventoryDetailsPageDef"
+          path="dcom.shop.Transaction.page.SubInventoryDetailsPageDef"/>
+    <page id="dcom_shop_mobile_itemLOVPGPageDef" path="page.LovPage.itemLOVPGPageDef"/>
+    <page id="dcom_shop_mobile_LpnLOVPGPageDef" path="page.LovPage.LpnLOVPGPageDef"/>
+    <page id="dcom_shop_mobile_ProgramparamsPageDef" path="dcom.shop.mobile.pageDefs.ProgramparamsPageDef"/>
+    <page id="dcom_shop_mobile_ProgramparamsPageDef1" path="dcom.shop.Request.page.ProgramparamsPageDef"/>
+    <page id="dcom_shop_mobile_ProductListPageDef" path="dcom.shop.Inquiry.page.ProductListPageDef"/>
+    <page id="dcom_shop_mobile_LocatorLOVPGPageDef" path="page.LovPage.LocatorLOVPGPageDef"/>
+    <page id="dcom_shop_mobile_MiscellaneousTransactionPageDef"
+          path="dcom.shop.Transaction.page.MiscellaneousTransactionPageDef"/>
+    <page id="dcom_shop_mobile_ParamsLovPageDef" path="dcom.shop.Request.page.ParamsLovPageDef"/>
+    <page id="dcom_shop_mobile_productDetailsPageDef" path="dcom.shop.Inquiry.page.productDetailsPageDef"/>
+    <page id="dcom_shop_mobile_LpnListPageDef" path="dcom.shop.Inquiry.page.LpnListPageDef"/>
+    <page id="dcom_shop_mobile_LpnDetailsPageDef" path="dcom.shop.Inquiry.page.LpnDetailsPageDef"/>
+    <page id="dcom_shop_mobile_jobOperationsPageDef" path="dcom.shop.DispatchList.page.jobOperationsPageDef"/>
+    <page id="dcom_shop_mobile_workContentPageDef" path="dcom.shop.DispatchList.page.workContentPageDef"/>
+    <page id="dcom_shop_mobile_onHandSearchPageDef" path="dcom.shop.Inquiry.page.onHandSearchPageDef"/>
+    <page id="dcom_shop_mobile_ReceivingTypePageDef"
+          path="dcom.shop.Transaction.page.ReceivingTxn.ReceivingTypePageDef"/>
+           <page id="dcom_shop_mobile_SerialEntryPageDef" path="page.SerialEntryPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ReceivingTxnDC" path="dcom.shop.mobile.ReceivingTxnDC"/>
+    <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/>
+    <dc id="JobOperationDC" path="dcom.shop.mobile.JobOperationDC"/>
+    <dc id="LPNDC" path="dcom.shop.mobile.LPNDC"/>
+    <dc id="LPNLOV_WS" path="dcom.shop.mobile.LPNLOV_WS"/>
+    <dc id="ItemDC" path="dcom.shop.mobile.ItemDC"/>
+    <dc id="InvTrnDC" path="dcom.shop.mobile.InvTrnDC"/>
+    <dc id="LpnDetailsDC" path="dcom.shop.mobile.LpnDetailsDC"/>
+    <dc id="LpnSearchDC" path="dcom.shop.mobile.LpnSearchDC"/>
+    <dc id="ProductDetailsDC" path="dcom.shop.mobile.ProductDetailsDC"/>
+    <dc id="ItemLOV_WS" path="dcom.shop.mobile.ItemLOV_WS"/>
+    <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>
+    <dc id="ConcurrentProgramDC" path="dcom.shop.mobile.ConcurrentProgramDC"/>
+    <dc id="ApplicationFeatures" path="dcom.shop.application.ApplicationFeatures"/>
+    <dc id="SubInventoryTrf_WS" path="dcom.shop.mobile.SubInventoryTrf_WS"/>
+    <dc id="SyncPreferencesDC" path="dcom.shop.mobile.SyncPreferencesDC"/>
+    <dc id="ResourceLOV_WS" path="dcom.shop.mobile.ResourceLOV_WS"/>
+    <dc id="ResourceDC" path="dcom.shop.mobile.ResourceDC"/>
+    <dc id="DepartmentLOV_WS" path="dcom.shop.mobile.DepartmentLOV_WS"/>
+    <dc id="DepartmentDC" path="dcom.shop.mobile.DepartmentDC"/>
+    <dc id="CountTypeLOV_WS" path="dcom.shop.mobile.CountTypeLOV_WS"/>
+    <dc id="CountTypeDC" path="dcom.shop.mobile.CountTypeDC"/>
+    <dc id="PickRuleLOV_WS" path="dcom.shop.mobile.PickRuleLOV_WS"/>
+    <dc id="PickRuleDC" path="dcom.shop.mobile.PickRuleDC"/>
+    <dc id="AccountAliasLOV_WS" path="dcom.shop.mobile.AccountAliasLOV_WS"/>
+    <dc id="AccountAliasDC" path="dcom.shop.mobile.AccountAliasDC"/>
+    <dc id="CarrierLOV_WS" path="dcom.shop.mobile.CarrierLOV_WS"/>
+    <dc id="CarrierDC" path="dcom.shop.mobile.CarrierDC"/>
+    <dc id="TransactionReasonLOV_WS" path="dcom.shop.mobile.TransactionReasonLOV_WS"/>
+    <dc id="TransactionReasonDC" path="dcom.shop.mobile.TransactionReasonDC"/>
+    <dc id="TransactionTypeLOV_WS" path="dcom.shop.mobile.TransactionTypeLOV_WS"/>
+    <dc id="TransactionTypeDC" path="dcom.shop.mobile.TransactionTypeDC"/>
+    <dc id="CostGroupDC" path="dcom.shop.mobile.CostGroupDC"/>
+    <dc id="CostGroupLOV_WS" path="dcom.shop.mobile.CostGroupLOV_WS"/>
+    <dc id="UOMDC" path="dcom.shop.mobile.UOMDC"/>
+    <dc id="UOMLOV_WS" path="dcom.shop.mobile.UOMLOV_WS"/>
+    <dc id="CategoryCodeDC" path="dcom.shop.mobile.CategoryCodeDC"/>
+    <dc id="CategoryCodeLOV_WS" path="dcom.shop.mobile.CategoryCodeLOV_WS"/>
+    <dc id="LocatorDC" path="dcom.shop.mobile.LocatorDC"/>
+    <dc id="LocatorLOV_WS" path="dcom.shop.mobile.LocatorLOV_WS"/>
+    <dc id="SubinventoryDC" path="dcom.shop.mobile.SubinventoryDC"/>
+    <dc id="SubinventoryLOV_WS" path="dcom.shop.mobile.SubinventoryLOV_WS"/>
+    <dc id="CategorySetDC" path="dcom.shop.mobile.CategorySetDC"/>
+    <dc id="CategorySetLOV_WS" path="dcom.shop.mobile.CategorySetLOV_WS"/>
+    <dc id="WarehouseLOV_WS" path="dcom.shop.mobile.WarehouseLOV_WS"/>
+    <dc id="WarehouseDC" path="dcom.shop.mobile.WarehouseDC"/>
+  </dataControlUsages>
 </Application>
+
