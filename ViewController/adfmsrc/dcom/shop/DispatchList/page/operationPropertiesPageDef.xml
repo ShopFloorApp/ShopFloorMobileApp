@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="operationPropertiesPageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="JobOperationsDC" id="JobOperationsDCIterator"/>
+    <accessorIterator MasterBinding="JobOperationsDCIterator" Binds="jobOperations" RangeSize="25"
+                      DataControl="JobOperationsDC" BeanClass="dcom.shop.application.mobile.dispatch.JobOperationsBO"
+                      id="jobOperationsIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="jobOperationsIterator" id="opSeq">
+      <AttrNames>
+        <Item Value="opSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="opDesc">
+      <AttrNames>
+        <Item Value="opDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="dept">
+      <AttrNames>
+        <Item Value="dept"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="opStartDate">
+      <AttrNames>
+        <Item Value="opStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="opComplDate">
+      <AttrNames>
+        <Item Value="opComplDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qtyQueue">
+      <AttrNames>
+        <Item Value="qtyQueue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qtyRun">
+      <AttrNames>
+        <Item Value="qtyRun"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qty2move">
+      <AttrNames>
+        <Item Value="qty2move"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qtyScrapped">
+      <AttrNames>
+        <Item Value="qtyScrapped"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qtyRejected">
+      <AttrNames>
+        <Item Value="qtyRejected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qtyCompleted">
+      <AttrNames>
+        <Item Value="qtyCompleted"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationsIterator" id="qtyCScrapQty">
+      <AttrNames>
+        <Item Value="qtyCScrapQty"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

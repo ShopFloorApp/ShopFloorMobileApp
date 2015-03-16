@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="resourceDetailsPageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ResourcesDC" id="ResourcesDCIterator"/>
+    <accessorIterator MasterBinding="ResourcesDCIterator" Binds="resourcesBO" RangeSize="25" DataControl="ResourcesDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.ResourcesBO" id="resourcesBOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="resourcesBOIterator" id="uom">
+      <AttrNames>
+        <Item Value="uom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="basis">
+      <AttrNames>
+        <Item Value="basis"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="usagerate">
+      <AttrNames>
+        <Item Value="usagerate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="qtyRequired">
+      <AttrNames>
+        <Item Value="qtyRequired"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="qtyApplied">
+      <AttrNames>
+        <Item Value="qtyApplied"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="qtyOpen">
+      <AttrNames>
+        <Item Value="qtyOpen"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="assignedunits">
+      <AttrNames>
+        <Item Value="assignedunits"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="startDate">
+      <AttrNames>
+        <Item Value="startDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="resourcesBOIterator" id="endDate">
+      <AttrNames>
+        <Item Value="endDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

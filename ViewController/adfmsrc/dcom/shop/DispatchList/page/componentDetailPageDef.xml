@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="componentDetailPageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ComponentsDC" id="ComponentsDCIterator"/>
+    <accessorIterator MasterBinding="ComponentsDCIterator" Binds="componentsBO" RangeSize="25"
+                      DataControl="ComponentsDC" BeanClass="dcom.shop.application.mobile.dispatch.ComponentsBO"
+                      id="componentsBOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="componentsBOIterator" id="dateRequired">
+      <AttrNames>
+        <Item Value="dateRequired"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="basis">
+      <AttrNames>
+        <Item Value="basis"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="uom">
+      <AttrNames>
+        <Item Value="uom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="qtyPerAssembly">
+      <AttrNames>
+        <Item Value="qtyPerAssembly"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="qtyRequired">
+      <AttrNames>
+        <Item Value="qtyRequired"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="qtyIssued">
+      <AttrNames>
+        <Item Value="qtyIssued"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="qtyOpen">
+      <AttrNames>
+        <Item Value="qtyOpen"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="qtyAllocated">
+      <AttrNames>
+        <Item Value="qtyAllocated"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="qtyOnHand">
+      <AttrNames>
+        <Item Value="qtyOnHand"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="supplyType">
+      <AttrNames>
+        <Item Value="supplyType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="subInv">
+      <AttrNames>
+        <Item Value="subInv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="componentsBOIterator" id="locator">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

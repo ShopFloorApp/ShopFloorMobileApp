@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Resource Detail" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="__back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1">
+            <amx:panelLabelAndMessage label="UOM" id="plam5">
+                <amx:outputText value="#{bindings.uom.inputValue}" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Basis" id="plam3">
+                <amx:outputText value="#{bindings.basis.inputValue}" id="ot4"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Usage Rate or Amount" id="plam7">
+                <amx:outputText value="#{bindings.usagerate.inputValue}" id="ot8"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Required" id="plam8">
+                <amx:outputText value="#{bindings.qtyRequired.inputValue}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Applied" id="plam4">
+                <amx:outputText value="#{bindings.qtyApplied.inputValue}" id="ot5"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Open" id="plam2">
+                <amx:outputText value="#{bindings.qtyOpen.inputValue}" id="ot3"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Assigned Units" id="plam9">
+                <amx:outputText value="#{bindings.assignedunits.inputValue}" id="ot10"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Start Date" id="plam1">
+                <amx:outputText value="#{bindings.startDate.inputValue}" id="ot2"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="End Date" id="plam6">
+                <amx:outputText value="#{bindings.endDate.inputValue}" id="ot7"/>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
+    </amx:panelPage>
+</amx:view>

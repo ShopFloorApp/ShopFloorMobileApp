@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Resources" id="ot1"/>
+    </amx:facet>
+   <amx:facet name="primary">
+      <amx:commandLink id="cl1" action="__back">
+        <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+      </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:listView var="row" value="#{bindings.resourcesBO.collectionModel}"
+                  fetchSize="#{bindings.resourcesBO.rangeSize}"
+                  selectedRowKeys="#{bindings.resourcesBO.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.resourcesBO.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1" layout="cards">
+      <amx:listItem id="li1" showLinkIcon="false" action="toDetails">
+        <amx:tableLayout id="tl1">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat id="cf1">
+              <amx:outputText value="#{row.resourceName}" id="ot2"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat id="cf2">
+              <amx:outputText value="Resource Type: #{row.resourceType}" id="ot3"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl3">
+            <amx:cellFormat id="cf3">
+              <amx:outputText value="Quantity Required: #{row.qtyRequired}" id="ot4"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl4">
+            <amx:cellFormat id="cf4">
+              <amx:outputText value="Quantity Applied: #{row.qtyApplied}" id="ot5"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl5">
+            <amx:cellFormat id="cf5">
+              <amx:outputText value="Quantity Open: #{row.qtyOpen}" id="ot6"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

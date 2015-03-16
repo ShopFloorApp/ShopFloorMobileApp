@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="resourcesPageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ResourcesDC" id="ResourcesDCIterator"/>
+    <accessorIterator MasterBinding="ResourcesDCIterator" Binds="resourcesBO" RangeSize="25" DataControl="ResourcesDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.ResourcesBO" id="resourcesBOIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="resourcesBOIterator" id="resourcesBO">
+      <nodeDefinition DefName="dcom.shop.application.mobile.dispatch.ResourcesBO" Name="resourcesBO0">
+        <AttrNames>
+          <Item Value="resourceName"/>
+          <Item Value="resourceType"/>
+          <Item Value="qtyRequired"/>
+          <Item Value="qtyApplied"/>
+          <Item Value="qtyOpen"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

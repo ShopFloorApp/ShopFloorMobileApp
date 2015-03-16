@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Job Properties" id="ot1"/>
+    </amx:facet>
+     <amx:facet name="primary">
+      <amx:commandLink id="cl1" action="__back">
+        <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+      </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:panelLabelAndMessage label="#{bindings.jobNumber.hints.label}" id="plam5">
+        <amx:outputText value="#{bindings.jobNumber.inputValue}" id="ot6"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.jobDesc.hints.label}" id="plam10">
+        <amx:outputText value="#{bindings.jobDesc.inputValue}" id="ot11"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.assembly.hints.label}" id="plam6">
+        <amx:outputText value="#{bindings.assembly.inputValue}" id="ot7"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.assemblyDesc.hints.label}" id="plam7">
+        <amx:outputText value="#{bindings.assemblyDesc.inputValue}" id="ot8"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.nextDept.hints.label}" id="plam8">
+        <amx:outputText value="#{bindings.nextDept.inputValue}" id="ot9"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.jobStatus.hints.label}" id="plam1">
+        <amx:outputText value="#{bindings.jobStatus.inputValue}" id="ot2"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.schStartDate.hints.label}" id="plam11">
+        <amx:outputText value="#{bindings.schStartDate.inputValue}" id="ot12"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.schComplDate.hints.label}" id="plam12">
+        <amx:outputText value="#{bindings.schComplDate.inputValue}" id="ot13"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.dueDate.hints.label}" id="plam2">
+        <amx:outputText value="#{bindings.dueDate.inputValue}" id="ot3"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.jobQty.hints.label}" id="plam4">
+        <amx:outputText value="#{bindings.jobQty.inputValue}" id="ot5"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.uom.hints.label}" id="plam13">
+        <amx:outputText value="#{bindings.uom.inputValue}" id="ot14"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.project.hints.label}" id="plam9">
+        <amx:outputText value="#{bindings.project.inputValue}" id="ot10"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="#{bindings.tasks.hints.label}" id="plam3">
+        <amx:outputText value="#{bindings.tasks.inputValue}" id="ot4"/>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>

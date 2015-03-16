@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="jobPropertiesPageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="JobPropertiesDC" id="JobPropertiesDCIterator"/>
+    <accessorIterator MasterBinding="JobPropertiesDCIterator" Binds="jobPropertiesBO" RangeSize="25"
+                      DataControl="JobPropertiesDC" BeanClass="dcom.shop.application.mobile.dispatch.JobPropertiesBO"
+                      id="jobPropertiesBOIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="jobNumber">
+      <AttrNames>
+        <Item Value="jobNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="jobDesc">
+      <AttrNames>
+        <Item Value="jobDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="assembly">
+      <AttrNames>
+        <Item Value="assembly"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="assemblyDesc">
+      <AttrNames>
+        <Item Value="assemblyDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="nextDept">
+      <AttrNames>
+        <Item Value="nextDept"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="jobStatus">
+      <AttrNames>
+        <Item Value="jobStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="schStartDate">
+      <AttrNames>
+        <Item Value="schStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="schComplDate">
+      <AttrNames>
+        <Item Value="schComplDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="dueDate">
+      <AttrNames>
+        <Item Value="dueDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="jobQty">
+      <AttrNames>
+        <Item Value="jobQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="uom">
+      <AttrNames>
+        <Item Value="uom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="project">
+      <AttrNames>
+        <Item Value="project"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobPropertiesBOIterator" id="tasks">
+      <AttrNames>
+        <Item Value="tasks"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
