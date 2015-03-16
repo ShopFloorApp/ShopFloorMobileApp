@@ -17,6 +17,9 @@
                       DataControl="ReceivingTxnDC"
                       BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderBO"
                       id="salesOrderIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="carriers" RangeSize="25"
+                      DataControl="ReceivingTxnDC" BeanClass="dcom.shop.application.mobile.CarrierBO"
+                      id="carriersIterator"/>
   </executables>
   <bindings>
     <list IterBinding="purchaseOrderIterator" ListOperMode="navigation" ListIter="purchaseOrderIterator"
@@ -37,5 +40,16 @@
         <Item Value="orderNumber"/>
       </AttrNames>
     </list>
+    <list IterBinding="carriersIterator" ListOperMode="navigation" ListIter="carriersIterator" id="carriers"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="carrierName"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="ReceivingTxnDCIterator" id="supplierCustomerName">
+      <AttrNames>
+        <Item Value="supplierCustomerName"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

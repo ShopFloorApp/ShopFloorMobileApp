@@ -111,4 +111,9 @@ public class RestURI {
     public static String PostGetPurchaseOrder() {
         return GET_PURCHASE_ORDER;
     }
+	private static final String GET_SHIPMENT = "/webservices/rest/DCOMRCV/getshipment/";
+
+    public static String PostGetShipment() {
+        return GET_SHIPMENT;
+    }
 }

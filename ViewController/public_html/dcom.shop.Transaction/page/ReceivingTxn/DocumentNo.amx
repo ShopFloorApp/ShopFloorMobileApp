@@ -11,5 +11,71 @@
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
+    <amx:listView var="row" value="#{bindings.purchaseOrder.collectionModel}"
+                  fetchSize="#{bindings.purchaseOrder.rangeSize}"
+                  selectedRowKeys="#{bindings.purchaseOrder.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.purchaseOrder.collectionModel.makeCurrent}"
+                  showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
+                  rendered="#{pageFlowScope.receivingType=='S'}">
+      <amx:listItem id="li1" action="__back">
+        <amx:tableLayout width="100%" id="tl1">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf1"/>
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf2">
+              <amx:outputText value="#{row.poNumber}" id="ot2"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf3">
+              <amx:outputText value="#{row.ouName}" styleClass="adfmf-listItem-captionText" id="ot3"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl1" to="#{pageFlowScope.documnetNumber}" from="#{row.poNumber}"/>
+      </amx:listItem>
+    </amx:listView>
+    <amx:listView var="row" value="#{bindings.requisition.collectionModel}"
+                  fetchSize="#{bindings.requisition.rangeSize}"
+                  selectedRowKeys="#{bindings.requisition.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.requisition.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv2" rendered="#{pageFlowScope.receivingType=='I'}">
+      <amx:listItem id="li2" action="__back">
+        <amx:tableLayout width="100%" id="tl2">
+          <amx:rowLayout id="rl3">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf4">
+              <amx:outputText value="#{row.reqNumber}" id="ot4"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl4">
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf6">
+              <amx:outputText value="#{row.ouName}" styleClass="adfmf-listItem-captionText" id="ot5"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl2" to="#{pageFlowScope.documnetNumber}" from="#{row.reqNumber}"/>
+      </amx:listItem>
+    </amx:listView>
+    <amx:listView var="row" value="#{bindings.salesOrder.collectionModel}" fetchSize="#{bindings.salesOrder.rangeSize}"
+                  selectedRowKeys="#{bindings.salesOrder.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.salesOrder.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv3" rendered="#{pageFlowScope.receivingType=='C'}">
+      <amx:listItem id="li3" action="__back">
+        <amx:tableLayout width="100%" id="tl3">
+          <amx:rowLayout id="rl6">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf9"/>
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf8">
+              <amx:outputText value="#{row.orderNumber}" id="ot7"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl5">
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf7">
+              <amx:outputText value="#{row.orderType}" styleClass="adfmf-listItem-captionText" id="ot6"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl3" to="#{pageFlowScope.documnetNumber}" from="#{row.orderNumber}"/>
+      </amx:listItem>
+    </amx:listView>
   </amx:panelPage>
 </amx:view>

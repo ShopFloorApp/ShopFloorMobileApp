@@ -67,6 +67,7 @@
               usageId="dcom_shop_mobile_componentDetailPageDef"/>
         <page path="/dcom.shop.DispatchList/page/transactComponent.amx"
               usageId="dcom_shop_mobile_transactComponentPageDef"/>
+			  <page path="/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx" usageId="dcom_shop_mobile_DocumentNoPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -117,6 +118,7 @@
         <page id="dcom_shop_mobile_componentDetailPageDef" path="dcom.shop.DispatchList.page.componentDetailPageDef"/>
         <page id="dcom_shop_mobile_transactComponentPageDef"
               path="dcom.shop.DispatchList.page.transactComponentPageDef"/>
+			  <page id="dcom_shop_mobile_DocumentNoPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.DocumentNoPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
