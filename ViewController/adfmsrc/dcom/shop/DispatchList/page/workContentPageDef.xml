@@ -35,5 +35,10 @@
         <Item Value="jobStatus"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="jobOps">
+      <AttrNames>
+        <Item Value="jobOps"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

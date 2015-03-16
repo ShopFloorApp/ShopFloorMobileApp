@@ -1,7 +1,14 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <SDM>
    <OverallProperties
-      id="OverallProperties1"/>
+      id="OverallProperties1">
+      <property
+         name="linkStyle">Direct</property>
+      <property
+         name="y">568.40546</property>
+      <property
+         name="x">91.65625</property>
+   </OverallProperties>
    <View
       id="View3">
       <property
@@ -15,9 +22,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">177.24902</property>
+         name="y">393.20624</property>
       <property
-         name="x">224.68457</property>
+         name="x">75.65625</property>
    </View>
    <View
       id="View4">
@@ -30,9 +37,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">159.53516</property>
+         name="y">393.33905</property>
       <property
-         name="x">512.0</property>
+         name="x">265.0459</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -42,7 +49,7 @@
       <property
          name="fromOutcome">toJobOpr</property>
       <property
-         name="sdm:polyPoints">R46,265.68457,173.68262,470.69836,155.96875,L46</property>
+         name="sdm:polyPoints">R46,116.660576,389.63983,224.0459,389.77264,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -52,7 +59,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L54,471.0,162.96875,265.986,180.68262,R54</property>
+         name="sdm:polyPoints">L54,224.04156,396.77264,116.65625,396.63983,R54</property>
    </ControlFlowCase>
    <View
       id="View7">
@@ -65,9 +72,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">385.60156</property>
+         name="y">393.33905</property>
       <property
-         name="x">514.0</property>
+         name="x">424.16504</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -77,7 +84,7 @@
       <property
          name="fromOutcome">toWorkContent</property>
       <property
-         name="sdm:polyPoints">B44,508.5,213.528,510.5,331.60156,T44</property>
+         name="sdm:polyPoints">R46,306.0459,389.77264,383.16504,389.77264,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -87,6 +94,211 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">T56,517.5,331.47586,515.5,213.46875,B56</property>
+         name="sdm:polyPoints">L54,383.16504,396.77264,306.0459,396.77264,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View10">
+      <property
+         name="activityId">jobProperties</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/jobProperties.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>jobProperties&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">255.63281</property>
+      <property
+         name="x">598.92285</property>
+   </View>
+   <View
+      id="View11">
+      <property
+         name="activityId">resources</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/resources.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>resources&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">83.5</property>
+      <property
+         name="x">598.92285</property>
+   </View>
+   <View
+      id="View12">
+      <property
+         name="activityId">components</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/components.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>components&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">427.76562</property>
+      <property
+         name="x">598.92285</property>
+   </View>
+   <View
+      id="View13">
+      <property
+         name="activityId">operationProperties</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/operationProperties.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>operationProperties&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">599.89844</property>
+      <property
+         name="x">598.92285</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase14"
+      from="View13"
+      to="View7">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="tosrcid">__10</property>
+      <property
+         name="fromsrcid">__9</property>
+      <property
+         name="sdm:polyPoints">T44,595.42285,545.83203,420.66504,451.3613,B44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View7"
+      to="View11">
+      <property
+         name="fromOutcome">toResources</property>
+      <property
+         name="tosrcid">__12</property>
+      <property
+         name="fromsrcid">__6</property>
+      <property
+         name="sdm:polyPoints">T50,424.16504,336.08496,598.92285,137.4336,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase16"
+      from="View7"
+      to="View13">
+      <property
+         name="fromOutcome">toOpProp</property>
+      <property
+         name="tosrcid">__8</property>
+      <property
+         name="fromsrcid">__6</property>
+      <property
+         name="sdm:polyPoints">B56,427.66504,447.27264,602.42285,541.70105,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View7"
+      to="View10">
+      <property
+         name="fromOutcome">toJobProps</property>
+      <property
+         name="tosrcid">__11</property>
+      <property
+         name="fromsrcid">__6</property>
+      <property
+         name="sdm:polyPoints">T61,431.16504,339.27264,557.92285,255.5664,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View7"
+      to="View12">
+      <property
+         name="fromOutcome">toComponents</property>
+      <property
+         name="tosrcid">__13</property>
+      <property
+         name="fromsrcid">__6</property>
+      <property
+         name="sdm:polyPoints">R50,465.16504,393.27264,557.92285,427.69922,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View19">
+      <property
+         name="activityId">resourceDetails</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/resourceDetails.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>resourceDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">83.60156</property>
+      <property
+         name="x">360.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="View11"
+      to="View19">
+      <property
+         name="fromOutcome">toDetails</property>
+      <property
+         name="sdm:polyPoints">L50,557.92285,83.43359,401.0,83.53516,R50</property>
+   </ControlFlowCase>
+   <View
+      id="View21">
+      <property
+         name="activityId">componentDetail</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/componentDetail.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>componentDetail&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">432.66797</property>
+      <property
+         name="x">763.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase22"
+      from="View12"
+      to="View21">
+      <property
+         name="fromOutcome">toDetails</property>
+      <property
+         name="sdm:polyPoints">R50,639.92285,427.69922,722.0,432.60156,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View23">
+      <property
+         name="activityId">transact</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/transact.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>transact&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">223.86719</property>
+      <property
+         name="x">368.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase24"
+      from="View7"
+      to="View23">
+      <property
+         name="fromOutcome">toTransact</property>
+      <property
+         name="sdm:polyPoints">T39,417.16504,339.27264,368.0,277.80078,B50</property>
    </ControlFlowCase>
 </SDM>

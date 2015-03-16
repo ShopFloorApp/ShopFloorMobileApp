@@ -75,11 +75,13 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl1" from="#{row.deptId}" to="#{pageFlowScope.deptId}"
-                                                 type="action"/>
                         <amx:setPropertyListener id="spl2" to="#{pageFlowScope.rowKey}" from="#{row.rowKey}"
                                                  type="action"/>
                         <amx:actionListener id="al1" binding="#{bindings.setCurrentRowWithKey.execute}" type="action"/>
+                        <amx:setPropertyListener id="spl1" from="#{row.deptName}" to="#{pageFlowScope.deptName}"
+                                                 type="action"/>
+                        <amx:setPropertyListener id="spl3" from="#{row.orgCode}" to="#{pageFlowScope.orgCode}"
+                                                 type="action"/>
                     </amx:listItem>
                 </amx:listView>
             </amx:facet>

@@ -11,6 +11,27 @@
     <view id="workContent">
       <page>/dcom.shop.DispatchList/page/workContent.amx</page>
     </view>
+    <view id="operationProperties">
+      <page>/dcom.shop.DispatchList/page/operationProperties.amx</page>
+    </view>
+    <view id="jobProperties">
+      <page>/dcom.shop.DispatchList/page/jobProperties.amx</page>
+    </view>
+    <view id="resources">
+      <page>/dcom.shop.DispatchList/page/resources.amx</page>
+    </view>
+    <view id="components">
+      <page>/dcom.shop.DispatchList/page/components.amx</page>
+    </view>
+    <view id="resourceDetails">
+      <page>/dcom.shop.DispatchList/page/resourceDetails.amx</page>
+    </view>
+    <view id="componentDetail">
+      <page>/dcom.shop.DispatchList/page/componentDetail.amx</page>
+    </view>
+    <view id="transact">
+      <page>/dcom.shop.DispatchList/page/transact.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>dispatchList</from-activity-id>
       <control-flow-case id="__2">
@@ -34,6 +55,47 @@
       <control-flow-case id="__7">
         <from-outcome>back</from-outcome>
         <to-activity-id>jobOperations</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>toOpProp</from-outcome>
+        <to-activity-id>operationProperties</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>toJobProps</from-outcome>
+        <to-activity-id>jobProperties</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>toResources</from-outcome>
+        <to-activity-id>resources</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__13">
+        <from-outcome>toComponents</from-outcome>
+        <to-activity-id>components</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>toTransact</from-outcome>
+        <to-activity-id>transact</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>operationProperties</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>workContent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>resources</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>toDetails</from-outcome>
+        <to-activity-id>resourceDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>components</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>toDetails</from-outcome>
+        <to-activity-id>componentDetail</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>
