@@ -19,6 +19,12 @@ import org.json.simple.parser.ParseException;
 public class WarehouseDC extends SyncUtils{
     public WarehouseDC() {
         super();
+        
+    }
+    protected static List s_warehouse = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+
+    public void syncLocalDB(){
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         //List collections;
@@ -90,9 +96,7 @@ public class WarehouseDC extends SyncUtils{
             }
         }
     }
-    protected static List s_warehouse = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-
+    
     public WarehouseBO[] getWarehouse() {
         
         WarehouseBO[] warehouseArray = (WarehouseBO[]) s_warehouse.toArray(new WarehouseBO[s_warehouse.size()]);

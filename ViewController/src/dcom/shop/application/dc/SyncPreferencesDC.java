@@ -9,6 +9,8 @@ import dcom.shop.application.mobile.WarehouseBO;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
+import java.lang.reflect.Method;
+
 import java.sql.Connection;
 import java.sql.Statement;
 
@@ -112,8 +114,13 @@ public class SyncPreferencesDC extends SyncUtils {
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "deactivateCardLayout", new Object[] {i});
             
             Class lovClass = Class.forName("dcom.shop.application.dc." + lovDCClass);
-            Constructor cons = lovClass.getConstructor(new Class[] { });
-            Object obj = cons.newInstance(null);
+//            Constructor cons = lovClass.getConstructor(new Class[] { });
+//            Object obj = cons.newInstance(null);
+            //Calling Sync Method
+            Object obj = lovClass.newInstance();
+            Method method = lovClass.getMethod("syncLocalDB", new Class[] {});
+            method.invoke(obj, new Object[] {});       
+            //End of Sync Card Method Call
             Field collectionField = lovClass.getDeclaredField(lovCollectionVar);
             List cardCollection = (List) collectionField.get(null);
             int collectionSize = cardCollection.size();

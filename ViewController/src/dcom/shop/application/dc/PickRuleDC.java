@@ -19,6 +19,12 @@ import org.json.simple.parser.ParseException;
 public class PickRuleDC extends SyncUtils {
     public PickRuleDC() {
         super();
+
+    }
+    protected static List s_pickrule = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    //SyncUtils syncUtils = new SyncUtils();
+    public void syncLocalDB(){
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -79,10 +85,6 @@ public class PickRuleDC extends SyncUtils {
             }
         }
     }
-    protected static List s_pickrule = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    //SyncUtils syncUtils = new SyncUtils();
-
 
     public PickRuleBO[] getPickRule() {
         

@@ -23,6 +23,12 @@ public class CarrierDC extends SyncUtils {
 
     public CarrierDC() {
         super();
+
+    }
+    protected static List s_carrier = new ArrayList();
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+
+    public void syncLocalDB(){
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -82,8 +88,6 @@ public class CarrierDC extends SyncUtils {
             }
         }
     }
-    protected static List s_carrier = new ArrayList();
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
 
     public CarrierBO[] getCarrier() {
         
