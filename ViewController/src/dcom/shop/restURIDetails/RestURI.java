@@ -73,19 +73,39 @@ public class RestURI {
     public static String PostGetJobOp() {
         return GET_JOBOP;
     }
+    private static final String GET_JOBPROP = "/webservices/rest/DCOMDispatchTxn/getjobdetails/";
+
+    public static String PostGetJobProp() {
+        return GET_JOBPROP;
+    }
+
+    private static final String GET_RESOURCES = "/webservices/rest/DCOMDispatchTxn/getjobresources/";
+
+    public static String PostGetResources() {
+        return GET_RESOURCES;
+    }
+
+    private static final String GET_COMPONENTS = "/webservices/rest/DCOMDispatchTxn/getjobcomponents/";
+
+    public static String PostGetComponents() {
+        return GET_COMPONENTS;
+    }
+    /*
+     * Dispatch Lists end
+     */
     
     private static final String GET_SALES_ORDER = "/webservices/rest/DCOMLOV/getsalesorder/";
 
     public static String PostGetSalesOrder() {
         return GET_SALES_ORDER;
     }
-    
+
     private static final String GET_REQUISITION = "/webservices/rest/DCOMLOV/getreq/";
 
     public static String PostGetRequisition() {
         return GET_REQUISITION;
     }
-    
+
     private static final String GET_PURCHASE_ORDER = "/webservices/rest/DCOMLOV/getpo/";
 
     public static String PostGetPurchaseOrder() {

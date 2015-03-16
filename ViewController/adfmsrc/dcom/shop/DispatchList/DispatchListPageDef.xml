@@ -19,6 +19,7 @@
           <Item Value="deptDesc"/>
           <Item Value="deptId"/>
           <Item Value="openJob"/>
+          <Item Value="orgCode"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

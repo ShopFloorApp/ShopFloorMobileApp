@@ -7,10 +7,14 @@ import dcom.shop.restURIDetails.RestURI;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
+/*
+ * Fetches the Job Operations based on the department selected on dispatch list page
+ */
 public class JobOperationDC {
     protected static List<JobOperationBO> jobOpList = new ArrayList<JobOperationBO>();
 
@@ -21,7 +25,11 @@ public class JobOperationDC {
     public JobOperationBO[] getJobOperationBO() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobOperationBO[] jobOprArray = null;
-        String strPayload =
+        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String deptCode= AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
+        
+        StringBuffer inputPayload= new StringBuffer();
+        inputPayload.append(
             "{\n" + 
             "  \"x\": {\n" + 
             "    \"RESTHeader\": {\n" + 
@@ -32,13 +40,13 @@ public class JobOperationDC {
             "      \"Org_Id\": \"82\"\n" + 
             "    },\n" + 
             "    \"InputParameters\": {\n" + 
-            "      \"PORGCODE\": \"100\",\n" + 
-            "      \"PDEPTCODE\": \"SHAKEDOWN\"\n" + 
+            "      \"PORGCODE\": \""+orgCode+"\",\n" + 
+            "      \"PDEPTCODE\": \""+deptCode+"\"\n" + 
             "    }\n" + 
             "  }\n" + 
-            "}";
+            "}");
 
-        String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetJobOp(), strPayload);
+        String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetJobOp(), inputPayload.toString());
         if (jsonArrayAsString != null) {
             try {
                 JSONParser parser = new JSONParser();

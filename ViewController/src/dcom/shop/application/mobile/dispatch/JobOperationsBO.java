@@ -24,10 +24,54 @@ public class JobOperationsBO {
     private String opCode;
     private BigDecimal qtyRun;
     private String jobNumber;
+    private String lastOpSeq;
+    private String lastDept;
+    private BigDecimal nextOpSeq;
+    private String nextDept;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public JobOperationsBO() {
         super();
+    }
+
+    public void setNextDept(String nextDept) {
+        String oldNextDept = this.nextDept;
+        this.nextDept = nextDept;
+        propertyChangeSupport.firePropertyChange("nextDept", oldNextDept, nextDept);
+    }
+
+    public String getNextDept() {
+        return nextDept;
+    }
+
+    public void setNextOpSeq(BigDecimal nextOpSeq) {
+        BigDecimal oldNextOpSeq = this.nextOpSeq;
+        this.nextOpSeq = nextOpSeq;
+        propertyChangeSupport.firePropertyChange("nextOpSeq", oldNextOpSeq, nextOpSeq);
+    }
+
+    public BigDecimal getNextOpSeq() {
+        return nextOpSeq;
+    }
+
+    public void setLastDept(String lastDept) {
+        String oldLastDept = this.lastDept;
+        this.lastDept = lastDept;
+        propertyChangeSupport.firePropertyChange("lastDept", oldLastDept, lastDept);
+    }
+
+    public String getLastDept() {
+        return lastDept;
+    }
+
+    public void setLastOpSeq(String lastOpSeq) {
+        String oldLastOpSeq = this.lastOpSeq;
+        this.lastOpSeq = lastOpSeq;
+        propertyChangeSupport.firePropertyChange("lastOpSeq", oldLastOpSeq, lastOpSeq);
+    }
+
+    public String getLastOpSeq() {
+        return lastOpSeq;
     }
 
     public void setOpStartDate(String opStartDate) {
