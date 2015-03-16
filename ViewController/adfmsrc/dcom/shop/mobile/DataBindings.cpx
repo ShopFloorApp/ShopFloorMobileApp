@@ -65,6 +65,8 @@
               usageId="dcom_shop_mobile_resourceDetailsPageDef"/>
         <page path="/dcom.shop.DispatchList/page/componentDetail.amx"
               usageId="dcom_shop_mobile_componentDetailPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/transactComponent.amx"
+              usageId="dcom_shop_mobile_transactComponentPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -113,8 +115,11 @@
         <page id="dcom_shop_mobile_componentsPageDef" path="dcom.shop.DispatchList.page.componentsPageDef"/>
         <page id="dcom_shop_mobile_resourceDetailsPageDef" path="dcom.shop.DispatchList.page.resourceDetailsPageDef"/>
         <page id="dcom_shop_mobile_componentDetailPageDef" path="dcom.shop.DispatchList.page.componentDetailPageDef"/>
+        <page id="dcom_shop_mobile_transactComponentPageDef"
+              path="dcom.shop.DispatchList.page.transactComponentPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
         <dc id="ResourcesDC" path="dcom.shop.mobile.ResourcesDC"/>
         <dc id="ComponentsDC" path="dcom.shop.mobile.ComponentsDC"/>
         <dc id="JobPropertiesDC" path="dcom.shop.mobile.JobPropertiesDC"/>
