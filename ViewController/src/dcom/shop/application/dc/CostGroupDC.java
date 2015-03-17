@@ -2,6 +2,7 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.CostGroupBO;
+import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
@@ -85,8 +86,9 @@ public class CostGroupDC extends SyncUtils {
     }
 
     public CostGroupBO[] getCostGroup() {
-        
+        s_costGroups = super.getOfflineCollection(CostGroupBO.class);
         CostGroupBO[] costgroupArray = (CostGroupBO[]) s_costGroups.toArray(new CostGroupBO[s_costGroups.size()]);
+        
         return costgroupArray;
     }
 
