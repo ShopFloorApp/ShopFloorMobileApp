@@ -11,6 +11,9 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CostGroupDC" id="CostGroupDCIterator"/>
+    <accessorIterator MasterBinding="CostGroupDCIterator" Binds="costGroup" RangeSize="25" DataControl="CostGroupDC"
+                      BeanClass="dcom.shop.application.mobile.CostGroupBO" id="costGroupIterator"/>
   </executables>
   <bindings>
     <list IterBinding="subinventoriesIterator" ListOperMode="navigation" ListIter="subinventoriesIterator"
@@ -37,6 +40,17 @@
     <attributeValues IterBinding="locatorsIterator" id="loc">
       <AttrNames>
         <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="costGroupIterator" ListOperMode="navigation" ListIter="costGroupIterator" id="costGroup"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="costGroup"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="costGroupIterator" id="costGrp">
+      <AttrNames>
+        <Item Value="costGroup"/>
       </AttrNames>
     </attributeValues>
   </bindings>

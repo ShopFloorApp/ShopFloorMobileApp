@@ -34,6 +34,15 @@
         <view id="itemLOVPG">
             <page>/page/LovPage/itemLOVPG.amx</page>
         </view>
+        <view id="mtlTxnSearch">
+            <page>/dcom.shop.Inquiry/page/mtlTxnSearch.amx</page>
+        </view>
+        <view id="onHandList">
+            <page>/dcom.shop.Inquiry/page/onHandList.amx</page>
+        </view>
+        <view id="onHandDetails">
+            <page>/onHandDetails.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
@@ -47,6 +56,10 @@
             <control-flow-case id="__20">
                 <from-outcome>onHandInquiry</from-outcome>
                 <to-activity-id>onHandSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__30">
+                <from-outcome>mtlTxnInquiry</from-outcome>
+                <to-activity-id>mtlTxnSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__3">
@@ -117,11 +130,48 @@
                 <from-outcome>ItemLOV</from-outcome>
                 <to-activity-id>itemLOVPG</to-activity-id>
             </control-flow-case>
+            <control-flow-case id="__36">
+                <from-outcome>onHandList</from-outcome>
+                <to-activity-id>onHandList</to-activity-id>
+            </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__24">
             <from-activity-id>itemLOVPG</from-activity-id>
             <control-flow-case id="__25">
                 <from-outcome>Back</from-outcome>
+                <to-activity-id>onHandSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__34">
+                <from-outcome>Back</from-outcome>
+                <to-activity-id>mtlTxnSearch</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__31">
+            <from-activity-id>mtlTxnSearch</from-activity-id>
+            <control-flow-case id="__32">
+                <from-outcome>mtlTxninquiryBack</from-outcome>
+                <to-activity-id>inquiry</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__33">
+                <from-outcome>ItemLOV</from-outcome>
+                <to-activity-id>itemLOVPG</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__37">
+            <from-activity-id>onHandList</from-activity-id>
+            <control-flow-case id="__38">
+                <from-outcome>onHandListBack</from-outcome>
+                <to-activity-id>onHandSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__39">
+                <from-outcome>onHandDetails</from-outcome>
+                <to-activity-id>onHandDetails</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__42">
+            <from-activity-id>onHandDetails</from-activity-id>
+            <control-flow-case id="__43">
+                <from-outcome>onHandDetailsBack</from-outcome>
                 <to-activity-id>onHandSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>

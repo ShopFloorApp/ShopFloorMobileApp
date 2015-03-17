@@ -65,9 +65,16 @@
               usageId="dcom_shop_mobile_resourceDetailsPageDef"/>
         <page path="/dcom.shop.DispatchList/page/componentDetail.amx"
               usageId="dcom_shop_mobile_componentDetailPageDef"/>
+
         <page path="/dcom.shop.DispatchList/page/transactComponent.amx"
               usageId="dcom_shop_mobile_transactComponentPageDef"/>
 			  <page path="/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx" usageId="dcom_shop_mobile_DocumentNoPageDef"/>
+
+
+        <page path="/dcom.shop.Inquiry/page/mtlTxnSearch.amx" usageId="dcom_shop_mobile_mtlTxnSearchPageDef"/>
+        <page path="/dcom.shop.Inquiry/page/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef"/>
+        <page path="/dcom.shop.Inquiry/page/onHandList.amx" usageId="dcom_shop_mobile_onHandListPageDef"/>
+        <page path="/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef1"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -116,12 +123,21 @@
         <page id="dcom_shop_mobile_componentsPageDef" path="dcom.shop.DispatchList.page.componentsPageDef"/>
         <page id="dcom_shop_mobile_resourceDetailsPageDef" path="dcom.shop.DispatchList.page.resourceDetailsPageDef"/>
         <page id="dcom_shop_mobile_componentDetailPageDef" path="dcom.shop.DispatchList.page.componentDetailPageDef"/>
-        <page id="dcom_shop_mobile_transactComponentPageDef"
+
+
+      <page id="dcom_shop_mobile_transactComponentPageDef"
               path="dcom.shop.DispatchList.page.transactComponentPageDef"/>
 			  <page id="dcom_shop_mobile_DocumentNoPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.DocumentNoPageDef"/>
+
+        <page id="dcom_shop_mobile_mtlTxnSearchPageDef" path="dcom.shop.Inquiry.page.mtlTxnSearchPageDef"/>
+        <page id="dcom_shop_mobile_onHandDetailsPageDef" path="dcom.shop.Inquiry.page.onHandDetailsPageDef"/>
+        <page id="dcom_shop_mobile_onHandListPageDef" path="dcom.shop.Inquiry.page.onHandListPageDef"/>
+        <page id="dcom_shop_mobile_onHandDetailsPageDef1" path="dcom.shop.mobile.pageDefs.onHandDetailsPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
-        <dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
+<dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
+        <dc id="OnHandDetailsDC" path="dcom.shop.mobile.OnHandDetailsDC"/>
+        <dc id="OnHandSearchDC" path="dcom.shop.mobile.OnHandSearchDC"/>
         <dc id="ResourcesDC" path="dcom.shop.mobile.ResourcesDC"/>
         <dc id="ComponentsDC" path="dcom.shop.mobile.ComponentsDC"/>
         <dc id="JobPropertiesDC" path="dcom.shop.mobile.JobPropertiesDC"/>

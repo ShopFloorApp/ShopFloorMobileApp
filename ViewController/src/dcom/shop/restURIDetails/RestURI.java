@@ -15,6 +15,12 @@ public class RestURI {
     public static String PostInvTrxnURI() {
         return PROCESS_INV_TRXN_URI;
     }
+    
+    private static final String ONHAND_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getonhand/";
+
+    public static String PostOnHandInquiryURI() {
+        return ONHAND_INQUIRY_URI;
+    }
 
 
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";

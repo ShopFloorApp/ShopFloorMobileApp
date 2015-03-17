@@ -3,7 +3,7 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="On Hand Search" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
       <amx:commandLink id="cl1" action = "onHandSearchBack">
@@ -53,8 +53,21 @@
                 </amx:cellFormat>
                 </amx:rowLayout>
                 
+                 <amx:rowLayout id="r4">
+                    <amx:cellFormat id="cf144222">
+                        <amx:panelLabelAndMessage label="Cost Group" inlineStyle="text-align:center;" id="plam8846"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf154333" width="60%">
+                    <amx:selectOneChoice value="#{bindings.costGroup.inputValue}" 
+                                         id="soc3">
+                        <amx:selectItems value="#{bindings.costGroup.items}" id="si3"/>
+                    </amx:selectOneChoice>
+                </amx:cellFormat>
+                </amx:rowLayout>
+                
                 
                
     </amx:tableLayout>
-  </amx:panelPage>
+        <amx:commandButton text="Show On-Hand" id="cb1" inlineStyle="vertical-align:middle;" action="onHandList"/>
+    </amx:panelPage>
 </amx:view>

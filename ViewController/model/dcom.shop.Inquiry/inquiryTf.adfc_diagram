@@ -310,7 +310,7 @@
       <property
          name="fromOutcome">onHandSearchBack</property>
       <property
-         name="sdm:polyPoints">L46,297.0,348.74707,108.0,243.29297,B56</property>
+         name="sdm:polyPoints">L46,297.0,348.74707,115.0,243.29297,B67</property>
    </ControlFlowCase>
    <View
       id="View27">
@@ -323,9 +323,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">426.79883</property>
+         name="y">477.6953</property>
       <property
-         name="x">525.00977</property>
+         name="x">498.00977</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -335,7 +335,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">R46,381.2236,348.74707,484.00977,422.94824,L46</property>
+         name="sdm:polyPoints">B44,334.5,410.42957,455.29526,473.84473,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -345,6 +345,131 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L54,481.76663,429.94824,379.0,355.74707,R54</property>
+         name="sdm:polyPoints">L38,457.00977,466.84473,341.5,406.24707,B56</property>
+   </ControlFlowCase>
+   <View
+      id="View33">
+      <property
+         name="activityId">mtlTxnSearch</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/mtlTxnSearch.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>mtlTxnSearch&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">519.8965</property>
+      <property
+         name="x">256.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase34"
+      from="View8"
+      to="View33">
+      <property
+         name="fromOutcome">mtlTxnInquiry</property>
+      <property
+         name="sdm:polyPoints">B33,94.0,252.65102,252.5,465.5459,T44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase35"
+      from="View33"
+      to="View8">
+      <property
+         name="fromOutcome">mtlTxninquiryBack</property>
+      <property
+         name="sdm:polyPoints">T56,259.5,463.236,101.0,250.41066,B44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase36"
+      from="View33"
+      to="View27">
+      <property
+         name="fromOutcome">ItemLOV</property>
+      <property
+         name="sdm:polyPoints">R46,297.0,516.0459,456.24887,480.84473,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase37"
+      from="View27"
+      to="View33">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">L62,457.00977,487.84473,297.76266,523.0459,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View40">
+      <property
+         name="activityId">onHandList</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/onHandList.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>onHandList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">357.24707</property>
+      <property
+         name="x">576.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase41"
+      from="View24"
+      to="View40">
+      <property
+         name="fromOutcome">onHandList</property>
+      <property
+         name="sdm:polyPoints">R50,379.0,352.24707,535.0,356.89648,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase42"
+      from="View40"
+      to="View24">
+      <property
+         name="fromOutcome">onHandListBack</property>
+      <property
+         name="sdm:polyPoints">L54,534.8957,360.39648,379.0,355.74707,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View43">
+      <property
+         name="activityId">onHandDetails</property>
+      <property
+         name="page">/onHandDetails.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>onHandDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">345.84473</property>
+      <property
+         name="x">850.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase44"
+      from="View40"
+      to="View43">
+      <property
+         name="fromOutcome">onHandDetails</property>
+      <property
+         name="sdm:polyPoints">R50,617.0,356.89648,809.0,345.49414,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase46"
+      from="View43"
+      to="View24">
+      <property
+         name="fromOutcome">onHandDetailsBack</property>
+      <property
+         name="sdm:polyPoints">B50,850.0,399.49414,345.0,406.24707,B61</property>
    </ControlFlowCase>
 </SDM>

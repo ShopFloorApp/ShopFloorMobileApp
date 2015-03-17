@@ -14,7 +14,7 @@
             </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
+      <amx:commandButton id="cb2" rendered="false"/>
     </amx:facet>
     <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards"
                   styleClass="adfmf-listView-insetList">
