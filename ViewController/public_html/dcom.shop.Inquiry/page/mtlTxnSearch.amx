@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Material Transaction Inquiry" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandLink id="cl1" action = "onHandSearchBack">
+        <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+      </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" rendered="false"/>
+    </amx:facet>
+    <amx:tableLayout id="tl31" width="90%">
+        <amx:rowLayout id="rl">
+                    <amx:cellFormat id="cf3s252">
+                        <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33">
+                        </amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf5" width="60%">
+                        <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}" required="true"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="10px" halign="end">
+                        <amx:commandLink id="cb3" action="ItemLOV">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                            <amx:setPropertyListener id="spl3" from="mtlTxnInq" to="#{pageFlowScope.ItemLovPage}"
+                                                     type="action"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="r2">
+                    <amx:cellFormat id="cf8">
+                        <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf11" width="60%">
+          <amx:selectOneChoice value="#{bindings.subinventories.inputValue}"  valueChangeListener="#{StateListenerBean.FromSubinvValueChange}"
+                               id="soc1">
+            <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
+          </amx:selectOneChoice>
+        </amx:cellFormat>
+                </amx:rowLayout>
+                 <amx:rowLayout id="r3">
+                    <amx:cellFormat id="cf1222">
+                        <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf1333" width="60%">
+          <amx:selectOneChoice value="#{bindings.locators.inputValue}"  id="soc2">
+            <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
+          </amx:selectOneChoice>
+        </amx:cellFormat>
+                </amx:rowLayout>
+    </amx:tableLayout>
+  </amx:panelPage>
+</amx:view>
