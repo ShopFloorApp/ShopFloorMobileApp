@@ -25,6 +25,7 @@ public class UOMDC extends SyncUtils {
     //SyncUtils syncUtils = new SyncUtils();
 
     public void syncLocalDB(){
+        s_uom.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;

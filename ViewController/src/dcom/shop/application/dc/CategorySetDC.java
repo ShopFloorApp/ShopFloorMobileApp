@@ -25,6 +25,7 @@ public class CategorySetDC extends SyncUtils {
     //SyncUtils syncUtils = new SyncUtils();
 
     public void syncLocalDB(){
+        s_categorySets.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;

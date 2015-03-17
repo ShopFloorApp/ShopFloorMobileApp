@@ -25,6 +25,7 @@ public class CountTypeDC extends SyncUtils {
 
 
     public CountTypeBO[] getCountType() {
+        s_CountType.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;

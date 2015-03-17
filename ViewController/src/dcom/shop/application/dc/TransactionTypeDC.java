@@ -25,6 +25,7 @@ public class TransactionTypeDC extends SyncUtils {
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
     public void syncLocalDB(){
+        s_transactionType.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;

@@ -25,6 +25,7 @@ public class WarehouseDC extends SyncUtils{
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
 
     public void syncLocalDB(){
+        s_warehouse.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         //List collections;

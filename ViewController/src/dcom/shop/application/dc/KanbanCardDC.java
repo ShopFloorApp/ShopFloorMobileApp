@@ -25,6 +25,7 @@ public class KanbanCardDC extends SyncUtils {
 
 
     public KanbanCardBO[] getKanbanCard() {
+        s_KanbanCard.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
