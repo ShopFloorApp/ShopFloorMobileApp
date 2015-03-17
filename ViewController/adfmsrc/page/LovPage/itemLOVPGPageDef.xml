@@ -7,6 +7,10 @@
     <iterator Binds="root" RangeSize="25" DataControl="ItemDC" id="ItemDCIterator"/>
     <accessorIterator MasterBinding="ItemDCIterator" Binds="allItems" RangeSize="25" DataControl="ItemDC"
                       BeanClass="dcom.shop.application.mobile.ItemBO" id="allItemsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ProductSearchDC" id="ProductSearchDCIterator"/>
+    <accessorIterator MasterBinding="ProductSearchDCIterator" Binds="allProdItems" RangeSize="25"
+                      DataControl="ProductSearchDC" BeanClass="dcom.shop.Inquiry.ProductSearchEntity"
+                      id="allProdItemsIterator"/>
   </executables>
   <bindings>
     <methodAction id="ProcessWS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
@@ -21,15 +25,18 @@
         <Item Value="desc"/>
       </AttrNames>
     </attributeValues>
-    <tree IterBinding="allItemsIterator" id="allItems">
-      <nodeDefinition DefName="dcom.shop.application.mobile.ItemBO" Name="allItems0">
+    <tree IterBinding="allProdItemsIterator" id="allProdItems">
+      <nodeDefinition DefName="dcom.shop.Inquiry.ProductSearchEntity" Name="allProdItems0">
         <AttrNames>
-          <Item Value="inventoryItemId"/>
-          <Item Value="itemNum"/>
-          <Item Value="desc"/>
-          <Item Value="primaryUOMCode"/>
+          <Item Value="ORGCODE"/>
+          <Item Value="ITEM"/>
+          <Item Value="ITEMDESC"/>
+          <Item Value="PRIMARYUOM"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="ProductSearchDC"
+                  InstanceName="data.ProductSearchDC.dataProvider"/>
   </bindings>
 </pageDefinition>

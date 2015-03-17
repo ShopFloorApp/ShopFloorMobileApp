@@ -6,10 +6,10 @@
             <amx:outputText value="Serial Entry" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1"/>
+            <!--amx:commandButton id="cb1"/-->
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Back" action="Back"/>
+            <amx:commandButton id="cb2" text="Save" action="Back"/>
         </amx:facet>
         <!--amx:panelStretchLayout id="psl1">
         <amx:facet name="top">
@@ -77,6 +77,23 @@
             <amx:spacer id="s5" height="20"/>
             <amx:panelGroupLayout id="pgl9"/>
         </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl1"
+                              inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+            <amx:tableLayout width="95%" id="tl2">
+                <amx:rowLayout id="rl12">
+                    <amx:cellFormat width="30%" id="cf22">
+                        <amx:panelLabelAndMessage label="From" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="30%"  id="cf33">
+                        <amx:panelLabelAndMessage label="To" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="30%" id="cf222">
+                        <amx:panelLabelAndMessage label="Quantity" inlineStyle="text-align:left;" id="plam2222223"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+                
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
         <amx:listView var="row" value="#{bindings.serials.collectionModel}" fetchSize="#{bindings.serials.rangeSize}"
                       selectedRowKeys="#{bindings.serials.collectionModel.selectedRow}"
                       selectionListener="#{bindings.serials.collectionModel.makeCurrent}"
@@ -94,9 +111,9 @@
                         <amx:cellFormat id="cf5" width="30%">
                             <amx:outputText value="#{row.serialQty}" id="ot4"/>
                         </amx:cellFormat>
-                         <amx:cellFormat id="cf1" width="30%">
+                         <!--amx:cellFormat id="cf1" width="30%">
                             <amx:outputText value="#{row.serialId}" id="ot5"/>
-                        </amx:cellFormat>
+                        </amx:cellFormat-->
                         <amx:cellFormat width="5%" halign="end" id="cf3">
                             <amx:commandLink id="cb3" actionListener="#{bindings.deleteRecord.execute}">
                                 <amx:outputHtml id="oh3" styleClass="fa fa-remove fa-lg" inlineStyle="color:#34AADC;"/>

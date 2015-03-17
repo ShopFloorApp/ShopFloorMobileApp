@@ -237,7 +237,7 @@ public class LocatorDC extends SyncUtils {
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
             if (subInv == null)
-                subInv = "RAW";
+                subInv = "DEFAULT";
             filterFileds.put("subinv", subInv);
             //   filterFileds.put("alias", getAliasFilter());
 
@@ -262,7 +262,7 @@ public class LocatorDC extends SyncUtils {
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
             if (subInv == null)
-                subInv = "RAW";
+                subInv = "DEFAULT";
             filterFileds.put("subinv", subInv);
             //   filterFileds.put("alias", getAliasFilter());
 

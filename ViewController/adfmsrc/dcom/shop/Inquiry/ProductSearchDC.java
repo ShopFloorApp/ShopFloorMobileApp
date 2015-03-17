@@ -10,6 +10,10 @@ import java.util.logging.Level;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.PropertyChangeListener;
+import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -24,6 +28,9 @@ public class ProductSearchDC {
     public ProductSearchDC() {
         super();
     }
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
+    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
 
     public ProductSearchEntity[] getAllProdItems() {
         ValueExpression ve = null;
@@ -87,6 +94,26 @@ public class ProductSearchDC {
                 Trace.log("REST_JSON",Level.SEVERE, this.getClass(),"ProductSearchEntity", e.getLocalizedMessage());
             }
         return prodArray;         
+    }
+    
+    public void refresh() {
+        providerChangeSupport.fireProviderRefresh("allProdItems");
+    }
+    
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.addPropertyChangeListener(l);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.removePropertyChangeListener(l);
     }
 
 }

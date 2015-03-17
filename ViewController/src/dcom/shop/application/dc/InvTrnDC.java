@@ -9,6 +9,7 @@ import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
@@ -92,6 +93,13 @@ public class InvTrnDC extends RestCallerUtil {
             "\", \"SOURCEORGCODE\": \"" + sourceOrg + "\", \"DESTSUBINV\": \"" + toSubInv + "\", \"DESTLOCATOR\": \"" +
             toLocator + "\"" + ", \"TRXTYPE\": \"SUBINV\" }\n" + "}}}";
         System.out.println("Calling create method");
+        SerialBO serial = new SerialBO();
+        Iterator i = s_filteredSerialTrxns.iterator();
+        while(i.hasNext()){
+            serial = (SerialBO)i.next();
+            
+        }
+        
         String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
         throw new AdfException("Transaction completed", AdfException.INFO);

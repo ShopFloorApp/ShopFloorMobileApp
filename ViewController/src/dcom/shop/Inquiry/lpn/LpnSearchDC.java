@@ -1,19 +1,19 @@
 package dcom.shop.Inquiry.lpn;
 
-import dcom.shop.restURIDetails.RestURI;
-
 import dcom.shop.restURIDetails.RestCallerUtil;
+import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.logging.Level;
 
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
-import oracle.adfmf.framework.api.JSONBeanSerializationHelper;
-
+import oracle.adfmf.java.beans.PropertyChangeListener;
+import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -26,7 +26,8 @@ public class LpnSearchDC {
         super();
     }
     List s_LpnList = new ArrayList();
-
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
+    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public LpnSearchEntity[] getAllLpns() {
         ValueExpression ve = null;
@@ -107,6 +108,26 @@ public class LpnSearchDC {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnSearchEntity", e.getLocalizedMessage());
         }
         return lpnArray;
+    }
+    
+    public void refresh() {
+        providerChangeSupport.fireProviderRefresh("allLpns");
+    }
+    
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.addPropertyChangeListener(l);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.removePropertyChangeListener(l);
     }
 
 

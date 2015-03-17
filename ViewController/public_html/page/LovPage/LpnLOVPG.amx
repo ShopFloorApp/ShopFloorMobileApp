@@ -15,12 +15,11 @@
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-             <amx:inputText value="#{bindings.LPNNum.inputValue}"  label="LPN" id="it2"/>
+             <amx:inputText value="#{pageFlowScope.searchLpnKeyword}"  label="LPN" id="it2"/>
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-             <amx:commandButton actionListener="#{bindings.invokeLPNLovDC.execute}" text="Search"
-                               disabled="#{!bindings.invokeLPNLovDC.enabled}" id="cl1"
-                               inlineStyle="vertical-align:middle;">
+            <amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
+                               disabled="#{!bindings.refresh.enabled}" id="cb3">
                 <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}" />
             </amx:commandButton>
             
@@ -48,7 +47,7 @@
                         <amx:cellFormat width="40%" height="50px" id="cf2">
                             <!--amx:panelLabelAndMessage inlineStyle="text-align:left;" id="plam22222">
                                 <amx:spacer height="8"/-->
-                                <amx:outputText value="#{row.LPNNum}" inlineStyle="white-space:pre-wrap;" styleClass="adfmf-listItem-captionText"
+                                <amx:outputText value="#{row.LPN}" inlineStyle="white-space:pre-wrap;" styleClass="adfmf-listItem-captionText"
                                                 id="ot43"/>
                             <!--/amx:panelLabelAndMessage-->
                         </amx:cellFormat>
@@ -56,7 +55,7 @@
                         <amx:cellFormat width="60%" height="50px" halign="start" id="cf3">
                             <!--amx:panelLabelAndMessage inlineStyle="text-align:left;" id="plam2222">
                                 <amx:spacer height="8"/-->
-                                <amx:outputText value="#{row.LPNStatus}" inlineStyle="white-space:pre-wrap;" styleClass="adfmf-listItem-captionText"
+                                <amx:outputText value="#{row.LPNSTATUS}" inlineStyle="white-space:pre-wrap;" styleClass="adfmf-listItem-captionText"
                                                 id="ot4"/>
                             <!--/amx:panelLabelAndMessage-->
                         </amx:cellFormat>
@@ -65,10 +64,11 @@
                         </amx:cellFormat-->
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:setPropertyListener from="#{row.LPNNum}" type="action" to="#{pageFlowScope.lpnText}"
+                <amx:setPropertyListener from="#{row.LPN}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
                                          id="spl2"/>
-                <amx:setPropertyListener from="#{row.LPNStatus}" type="action" to="#{pageFlowScope.lpnID}" id="spl4"/>
+                <amx:setPropertyListener from="#{row.LPNSTATUS}" type="action" to="#{pageFlowScope.lpnID}" id="spl4"/>
              </amx:listItem>
         </amx:listView>
+       
     </amx:panelPage>
 </amx:view>

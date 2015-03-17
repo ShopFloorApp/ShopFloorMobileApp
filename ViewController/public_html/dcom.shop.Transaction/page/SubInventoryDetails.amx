@@ -33,7 +33,7 @@
                         <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:center;" id="plam3"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf325" width="60%">
-                        <amx:inputText hintText="LPN" id="it" value="#{pageFlowScope.lpnText}"/>
+                        <amx:inputText hintText="LPN" id="it" value="#{pageFlowScope.searchLpnKeyword}"/>
                     </amx:cellFormat>
                     <amx:cellFormat width="10px" halign="end" id="cf15">
                         <amx:commandLink id="cbw3" action="lpnLOV">
@@ -59,7 +59,7 @@
                         <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf5" width="60%">
-                        <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}"/>
+                        <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}"/>
                     </amx:cellFormat>
                     <amx:cellFormat width="10px" halign="end" id="cf18">
                         <amx:commandLink id="cb3" action="ItemLOV">

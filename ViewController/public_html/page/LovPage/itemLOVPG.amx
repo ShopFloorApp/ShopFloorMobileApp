@@ -17,12 +17,14 @@
             <amx:outputText value="Select an Item" id="ot2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-            <amx:inputText value="#{bindings.itemNum.inputValue}" label="Item Number" id="it3"/>
-            <amx:inputText value="#{bindings.desc.inputValue}" label="Item Desc" id="it1"/>
+            <amx:inputText value="#{pageFlowScope.searchKeyword}" label="Keyword" id="it3"/>
+            <!--amx:inputText value="#{bindings.desc.inputValue}" label="Item Desc" id="it1"/-->
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-            <amx:commandButton actionListener="#{bindings.ProcessWS.execute}" text="Search"
-                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;"></amx:commandButton>
+            <amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
+                               disabled="#{!bindings.refresh.enabled}" id="cb4"/>
+            <!--amx:commandButton actionListener="#{bindings.ProcessWS.execute}" text="Search"
+                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;"></amx:commandButton-->
         </amx:panelLabelAndMessage>
         <amx:outputText id="ot3" value="#{pageFlowScope.ItemServiceResults}"/>
         <amx:panelGroupLayout id="pgl1"
@@ -39,8 +41,10 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout>
-        <amx:listView var="row" value="#{bindings.allItems.collectionModel}" fetchSize="#{bindings.allItems.rangeSize}"
-                      id="lv2">
+        <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}" fetchSize="#{bindings.allProdItems.rangeSize}"
+                      selectedRowKeys="#{bindings.allProdItems.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.allProdItems.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2">
             <!--20-Mar amx:listItem showLinkIcon="false" actionListener="#{bindings.ProcessItemOnHand.execute}" action="sendItem"-->
             <amx:listItem showLinkIcon="false" action="BackToPage"
                           rendered="#{pageFlowScope.ItemLovPage == 'MiscTrxn' ? true : false}" id="li2">
@@ -50,7 +54,7 @@
                         <amx:cellFormat width="40%" height="50px" id="cf2">
                             <!--amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:left;" id="plam22222">
                                 <amx:spacer height="8"/-->
-                            <amx:outputText value="#{row.itemNum}"
+                            <amx:outputText value="#{row.ITEM}"
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot43"/>
                             <!--/amx:panelLabelAndMessage-->
@@ -59,7 +63,7 @@
                         <amx:cellFormat width="60%" height="50px" valign="middle" halign="start" id="cf3">
                             <!--amx:panelLabelAndMessage label="Item Desc" inlineStyle="text-align:left;" id="plam2222">
                                 <amx:spacer height="8"/-->
-                            <amx:outputText value="#{row.desc}"
+                            <amx:outputText value="#{row.ITEMDESC}"
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot4"/>
                             <!--/amx:panelLabelAndMessage-->
@@ -69,10 +73,10 @@
                         </amx:cellFormat-->
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:setPropertyListener from="#{row.itemNum}" type="action" to="#{pageFlowScope.itemNumber}"
+                <amx:setPropertyListener from="#{row.ITEM}" type="action" to="#{pageFlowScope.searchKeyword}"
                                          id="spl1"/>
-                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}" id="spl2"/>
-                <amx:setPropertyListener from="#{row.primaryUOMCode}" type="action" to="#{pageFlowScope.uom}"
+                <amx:setPropertyListener from="#{row.ITEMDESC}" type="action" to="#{pageFlowScope.description}" id="spl2"/>
+                <amx:setPropertyListener from="#{row.PRIMARYUOM}" type="action" to="#{pageFlowScope.uom}"
                                          id="sp10"/>
             </amx:listItem>
             <amx:listItem showLinkIcon="false" action="Back"
@@ -81,22 +85,22 @@
                     <amx:rowLayout id="rl21">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf25"/>
                         <amx:cellFormat width="40%" height="50px" id="cf222">
-                             <amx:outputText value="#{row.itemNum}"
+                             <amx:outputText value="#{row.ITEM}"
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot243"/>
                         </amx:cellFormat>
                         <amx:cellFormat width="20px" rowSpan="2" id="cf253"/>
                         <amx:cellFormat width="60%" height="50px" valign="middle" halign="start" id="cf23">
-                            <amx:outputText value="#{row.desc}"
+                            <amx:outputText value="#{row.ITEMDESC}"
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot24"/>
                         </amx:cellFormat>
                       </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:setPropertyListener from="#{row.itemNum}" type="action" to="#{pageFlowScope.itemNumber}"
+                <amx:setPropertyListener from="#{row.ITEM}" type="action" to="#{pageFlowScope.searchKeyword}"
                                          id="spl221"/>
-                <amx:setPropertyListener from="#{row.desc}" type="action" to="#{pageFlowScope.description}" id="sp223"/>
-                <amx:setPropertyListener from="#{row.primaryUOMCode}" type="action" to="#{pageFlowScope.uom}"
+                <amx:setPropertyListener from="#{row.ITEMDESC}" type="action" to="#{pageFlowScope.description}" id="sp223"/>
+                <amx:setPropertyListener from="#{row.PRIMARYUOM}" type="action" to="#{pageFlowScope.uom}"
                                          id="sp22"/>
             </amx:listItem>
         </amx:listView>
