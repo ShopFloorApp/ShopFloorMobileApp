@@ -41,7 +41,7 @@
             <page>/dcom.shop.Inquiry/page/onHandList.amx</page>
         </view>
         <view id="onHandDetails">
-            <page>/onHandDetails.amx</page>
+            <page>/dcom.shop.Inquiry/page/onHandDetails.amx</page>
         </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
