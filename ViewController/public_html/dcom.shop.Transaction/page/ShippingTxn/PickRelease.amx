@@ -6,7 +6,7 @@
       <amx:outputText value="Pick Release" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" text="Back"/>
+      <amx:commandButton id="cb1" text="Back" action="backToTxn"/>
     </amx:facet>
     <amx:facet name="secondary">
       
@@ -14,8 +14,8 @@
     <amx:tableLayout id="tl1">
     <amx:rowLayout id="rl1">
         <amx:cellFormat id="cf1">
-          <amx:selectOneChoice label="Pick Rule" id="soc1" value="#{pageFlowScope.PickRule}">
-            <amx:selectItem id="si1" value="#{bindings.ruleName.items}"/>
+          <amx:selectOneChoice value="#{bindings.ruleName.inputValue}" label="Rule Name" id="soc2">
+            <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
           </amx:selectOneChoice>
         </amx:cellFormat>
       </amx:rowLayout>
@@ -31,7 +31,10 @@
       </amx:rowLayout>
     </amx:tableLayout>
     <amx:panelGroupLayout id="pgl1" halign="center">
-      <amx:commandButton text="Execute" id="cb3"/>
+      <amx:commandButton text="Execute" styleClass="srch-btn" id="cb3"
+                         actionListener="#{pageFlowScope.TransactionUtil.executePickRelease}">
+        <amx:setPropertyListener id="spl1" from="#{bindings.ruleName.inputValue}" to="#{pageFlowScope.pickRule}"/>
+      </amx:commandButton>
     </amx:panelGroupLayout>
   </amx:panelPage>
 </amx:view>

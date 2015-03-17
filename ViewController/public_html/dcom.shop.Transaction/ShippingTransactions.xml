@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="ShippingTransactions">
     <default-activity>PickRelease</default-activity>
+    <managed-bean id="__7">
+      <managed-bean-name>TransactionUtil</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.bean.transactionUtil</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="PickRelease">
       <page>/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx</page>
     </view>
@@ -25,6 +30,13 @@
       <control-flow-case id="__4">
         <from-outcome>backToTxn</from-outcome>
         <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>OrderNumLOV</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>backToPR</from-outcome>
+        <to-activity-id>PickRelease</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

@@ -9,7 +9,8 @@
                       BeanClass="dcom.shop.application.mobile.PickRuleBO" id="pickRuleIterator"/>
   </executables>
   <bindings>
-    <list ListOperMode="navigation" IterBinding="pickRuleIterator" ListIter="pickRuleIterator" id="ruleName">
+    <list ListOperMode="navigation" IterBinding="pickRuleIterator" ListIter="pickRuleIterator" id="ruleName"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="ruleName"/>
       </AttrNames>
