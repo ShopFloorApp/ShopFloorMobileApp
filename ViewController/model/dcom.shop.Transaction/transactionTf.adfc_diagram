@@ -76,7 +76,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">B33,20.850586,110.643555,-122.15234,110.643555,B56</property>
+         name="sdm:polyPoints">B33,20.850586,110.643555,-118.65234,110.643555,B61</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -372,7 +372,6 @@
       <property
          name="sdm:polyPoints">R50,-42.0,226.44824,193.0,71.79297,L58</property>
    </ControlFlowCase>
-
    <TaskFlowCall
       id="TaskFlowCall33">
       <property
@@ -400,7 +399,6 @@
       <property
          name="sdm:polyPoints">B39,-132.65234,110.643555,-237.30566,190.79883,T50</property>
    </ControlFlowCase>
-
    <View
       id="View33">
       <property
@@ -436,5 +434,31 @@
       <property
          name="sdm:polyPoints">L54,707.5,-16.75293,584.6212,57.5459,R46</property>
    </ControlFlowCase>
-
+   <TaskFlowCall
+      id="TaskFlowCall38">
+      <property
+         name="taskFlowId">ShippingTransactions</property>
+      <property
+         name="activityId">ShippingTransactions</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/ShippingTransactions.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ShippingTransactions&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-39.25293</property>
+      <property
+         name="x">-250.2998</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase39"
+      from="View6"
+      to="TaskFlowCall38">
+      <property
+         name="fromOutcome">shippingTxn</property>
+      <property
+         name="sdm:polyPoints">L50,-166.65234,56.643555,-209.2998,-39.603516,R50</property>
+   </ControlFlowCase>
 </SDM>
