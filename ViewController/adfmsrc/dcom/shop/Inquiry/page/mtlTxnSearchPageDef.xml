@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="mtlTxnSearchPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
+    <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="25"
+                      DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subinventoriesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="subinventoriesIterator" ListOperMode="navigation" ListIter="subinventoriesIterator"
+          id="subinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="subinv"/>
+        <Item Value="description"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="subinventoriesIterator" id="FromSubInv">
+      <AttrNames>
+        <Item Value="subinv"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+    <list IterBinding="locatorsIterator" ListOperMode="navigation" ListIter="locatorsIterator" id="locators"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="locator"/>
+        <Item Value="desc"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="locatorsIterator" id="loc">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
