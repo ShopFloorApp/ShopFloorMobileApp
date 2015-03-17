@@ -20,7 +20,7 @@
                         </amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf5" width="60%">
-                        <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}" required="true"/>
+                        <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}" required="true"/>
                     </amx:cellFormat>
                     <amx:cellFormat width="10px" halign="end">
                         <amx:commandLink id="cb3" action="ItemLOV">
@@ -46,7 +46,7 @@
                         <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf1333" width="60%">
-                    <amx:selectOneChoice value="#{bindings.locators.inputValue}" 
+                    <amx:selectOneChoice value="#{bindings.locators.inputValue}"  valueChangeListener="#{StateListenerBean.FromLocValueChange}"
                                          id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice>

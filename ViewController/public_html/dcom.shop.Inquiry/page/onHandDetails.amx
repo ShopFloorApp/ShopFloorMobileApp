@@ -6,42 +6,47 @@
             <amx:outputText value="On Hand Search Results" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="onHandListBack">
+            <amx:commandLink id="cl1" action="onHandDetailsBack">
                 <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-        <amx:listView var="row" value="#{bindings.allOnhands.collectionModel}"
-                      fetchSize="#{bindings.allOnhands.rangeSize}"
-                      selectedRowKeys="#{bindings.allOnhands.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.allOnhands.collectionModel.makeCurrent}"
-                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-            <amx:listItem id="li1" showLinkIcon="true">
-                <amx:tableLayout width="100%" id="tl">
-                    <amx:rowLayout id="rl">
-                        <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
-                        <amx:cellFormat width="60%" height="28px" id="cf4">
-                            <amx:outputText value="#{row.ITEM}" id="ot2"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
-                        <amx:cellFormat width="40%" halign="end" id="cf3">
-                            <amx:outputText value="#{row.ITEMDESC}" styleClass="adfmf-listItem-highlightText" id="ot4"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="r2">
-                        <amx:cellFormat width="60%" height="12px" id="cf1">
-                            <amx:outputText value="#{row.SUBINV}/#{row.LOCATOR}" styleClass="adfmf-listItem-captionText"
-                                            id="ot3"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="40%" halign="end" id="cf2">
-                            <amx:outputText value="#{row.ONHANDQTY}/#{row.AVAILABLEQTY}"
-                                            styleClass="adfmf-listItem-captionText" id="ot5"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:listItem>
-        </amx:listView>
+      <amx:panelFormLayout id="pf1">
+            <amx:panelLabelAndMessage label="Item" id="plam1">
+                <amx:outputText value="#{bindings.ITEM.inputValue}" id="ot2"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Item Description" id="plam2">
+                <amx:outputText value="#{bindings.ITEMDESC.inputValue}" id="ot3"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Subinventory" id="plam3">
+                <amx:outputText value="#{bindings.SUBINV.inputValue}" id="ot4"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Locator" id="plam4">
+                <amx:outputText value="#{bindings.LOCATOR.inputValue}" id="ot5"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="UOM" id="plam5">
+                <amx:outputText value="#{bindings.UOM.inputValue}" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="OnHand Quantity" id="plam6">
+                <amx:outputText value="#{bindings.ONHANDQTY.inputValue}" id="ot7"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Receiving Quantity" id="plam7">
+                <amx:outputText value="#{bindings.RECEIVINGQTY.inputValue}" id="ot8"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Inbound Quantity" id="plam8">
+                <amx:outputText value="#{bindings.INBOUNDQTY.inputValue}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Available Quantity" id="plam9">
+                <amx:outputText value="#{bindings.AVAILABLEQTY.inputValue}" id="ot10"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Packed Quantity" id="plam10">
+                <amx:outputText value="#{bindings.PACKEDQTY.inputValue}" id="ot11"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Loose Quantity" id="plam11">
+                <amx:outputText value="#{bindings.LOOSEQTY.inputValue}" id="ot12"/>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
     </amx:panelPage>
 </amx:view>

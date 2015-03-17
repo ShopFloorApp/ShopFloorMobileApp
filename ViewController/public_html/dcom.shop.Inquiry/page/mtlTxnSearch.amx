@@ -6,7 +6,7 @@
             <amx:outputText value="Material Transaction Inquiry" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="onHandSearchBack">
+            <amx:commandLink id="cl1" action="mtlTxninquiryBack">
                 <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
             </amx:commandLink>
         </amx:facet>
@@ -19,12 +19,12 @@
                     <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf5" width="60%">
-                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}" required="true"/>
+                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}" required="true"/>
                 </amx:cellFormat>
                 <amx:cellFormat width="10px" halign="end">
                     <amx:commandLink id="cb3" action="ItemLOV">
                         <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                        <amx:setPropertyListener id="spl3" from="mtlTxnInq" to="#{pageFlowScope.ItemLovPage}"
+                        <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.ItemLovPage}"
                                                  type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
@@ -49,13 +49,14 @@
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
+                
             </amx:rowLayout>
             <amx:rowLayout id="r4">
                 <amx:cellFormat id="cf3s23352">
                     <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:center;" id="plam3443"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf4555" width="60%">
-                    <amx:inputText hintText="LPN" id="it22" value="#{pageFlowScope.lpnText}" />
+                    <amx:inputText hintText="LPN" id="it22" value="#{pageFlowScope.searchLpnKeyword}" />
                 </amx:cellFormat>
                 <amx:cellFormat width="10px" halign="end">
                     <amx:commandLink id="cb663" action="lpnLOV">
@@ -74,6 +75,7 @@
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
+           
         </amx:tableLayout>
         <amx:commandButton text="Search" id="cb1" inlineStyle="vertical-align:middle;" action="mtlTxnList"/>
     </amx:panelPage>
