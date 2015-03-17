@@ -27,8 +27,8 @@
       <amx:listItem id="li2" inlineStyle="width:97%;" action= "onHandInquiry">
         <amx:outputText value="Stock On Hand Search" id="ot3"/>
       </amx:listItem>
-      <amx:listItem id="li3" action="search">
-        <amx:outputText value="Material Transaction Inq." id="ot5"/>
+      <amx:listItem id="li3" action="mtlTxnInquiry">
+        <amx:outputText value="Material Transaction Inquiry" id="ot5"/>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>
