@@ -24,7 +24,7 @@ import org.json.simple.parser.ParseException;
 public class SubinventoryDC extends SyncUtils {
     public SubinventoryDC() {
         super();
-        s_subInventories = getSubInventories();
+//        s_subInventories = getSubInventories();
     }
     private List filtered_Subinventories = new ArrayList();
     private String subinvFilter = "";
@@ -35,7 +35,8 @@ public class SubinventoryDC extends SyncUtils {
         propertyChangeSupport.firePropertyChange("subInventories", oldSubInventories, s_subInventories);
     }
 
-    public  List getSubInventories() {
+   // public  List getSubInventories() {
+        public void syncLocalDB(){
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -63,7 +64,7 @@ public class SubinventoryDC extends SyncUtils {
                
             System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
-            System.out.println("Received response");
+             System.out.println("Received response");
             if (jsonArrayAsString != null) {
                 try {
                     JSONParser parser = new JSONParser();
@@ -103,7 +104,7 @@ public class SubinventoryDC extends SyncUtils {
                 }
             }
         }
-        return s_subInventories;
+      //  return s_subInventories;
     }
     private String descFilter = "";
     protected  static List s_subInventories = new ArrayList();

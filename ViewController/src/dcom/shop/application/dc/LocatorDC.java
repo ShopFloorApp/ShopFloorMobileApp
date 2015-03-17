@@ -42,7 +42,7 @@ public class LocatorDC extends SyncUtils {
 
     public LocatorDC() {
         super();
-        ProcessWS("");
+       // ProcessWS("");
         /*  try{
         GenericVirtualType payload = new GenericVirtualType(null, "payload");
         payload.defineAttribute(null, "Whse", String.class, "100");
@@ -61,7 +61,11 @@ public class LocatorDC extends SyncUtils {
         }*/
     }
 
-    public void ProcessWS(String subInv) {
+  //  public void ProcessWS(String subInv) {
+        public void syncLocalDB(){
+        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fromSubInv}");
+        if(subInv == null)
+        subInv ="";
          String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -114,7 +118,7 @@ public class LocatorDC extends SyncUtils {
 
                             locatorItems.setWhse((jsObject2.get("WHSE").toString()));
                             locatorItems.setSubinv((jsObject2.get("SUBINV").toString()));
-                            locatorItems.setDesc((jsObject2.get("DESCRIPTION").toString()));
+                            locatorItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             s_locator.add(locatorItems);
 
 

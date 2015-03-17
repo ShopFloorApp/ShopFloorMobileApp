@@ -44,7 +44,7 @@ public class StateListener {
         ArrayList<SelectItem> s_array = new ArrayList<SelectItem>();
         for (int i = 0; i < loc.getFiltered_Locators().size(); i++) {
             SelectItem s = new SelectItem();
-            s.setValue(requestArray[i].getDesc());
+            s.setValue(requestArray[i].getDescription());
             s_array.add(s);
         }
         return s_array;

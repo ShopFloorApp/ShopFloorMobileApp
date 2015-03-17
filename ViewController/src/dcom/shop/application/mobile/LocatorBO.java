@@ -11,7 +11,7 @@ public class LocatorBO implements Comparable {
         private String Subinv;
         private String Locator;
         private String Alias;
-        private String Desc;
+        private String Description;
         private String LocatorType;
         private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -56,14 +56,14 @@ public class LocatorBO implements Comparable {
         return Alias;
     }
 
-    public void setDesc(String Desc) {
-        String oldDesc = this.Desc;
-        this.Desc = Desc;
-        propertyChangeSupport.firePropertyChange("Desc", oldDesc, Desc);
+    public void setDescription(String Description) {
+        String oldDescription = this.Description;
+        this.Description = Description;
+        propertyChangeSupport.firePropertyChange("Description", oldDescription, Description);
     }
 
-    public String getDesc() {
-        return Desc;
+    public String getDescription() {
+        return Description;
     }
 
     public void setLocatorType(String LocatorType) {
@@ -108,7 +108,7 @@ public class LocatorBO implements Comparable {
         this.setSubinv((String) hashMap.get("subinv"));
         this.setLocator((String) hashMap.get("locator"));
         this.setAlias((String) hashMap.get("alias"));
-        this.setDesc((String) hashMap.get("desc"));
+        this.setDescription((String) hashMap.get("description"));
         this.setLocatorType((String) hashMap.get("locatortype"));
     }
 
@@ -118,7 +118,7 @@ public class LocatorBO implements Comparable {
         map.put("subinv", locators.getSubinv());
         map.put("locator", locators.getLocator());
         map.put("alias", locators.getAlias());
-        map.put("desc", locators.getDesc());
+        map.put("description", locators.getDescription());
         map.put("locatortype", locators.getLocatorType());
         return map;
     }
