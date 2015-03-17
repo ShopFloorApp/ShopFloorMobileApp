@@ -148,7 +148,7 @@
                 <to-activity-id>onHandSearch</to-activity-id>
             </control-flow-case>
             <control-flow-case id="__34">
-                <from-outcome>Back</from-outcome>
+                <from-outcome>BackToPage</from-outcome>
                 <to-activity-id>mtlTxnSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
