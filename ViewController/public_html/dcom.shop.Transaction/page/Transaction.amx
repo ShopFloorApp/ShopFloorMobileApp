@@ -21,7 +21,7 @@
             <amx:listItem id="li4" action="receiveTxn">
                 <amx:outputText value="Receiving Transactions" id="ot5"/>
             </amx:listItem>
-            <amx:listItem id="li6" action="">
+            <amx:listItem id="li6" action="shippingTxn">
                 <amx:outputText value="Shipping Transactions" id="ot7"/>
             </amx:listItem>
             <amx:listItem id="li5" action="">
