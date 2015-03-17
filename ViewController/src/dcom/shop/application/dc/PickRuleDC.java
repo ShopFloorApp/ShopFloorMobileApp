@@ -2,6 +2,7 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.PickRuleBO;
+import dcom.shop.application.mobile.SubinventoryBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
@@ -88,7 +89,8 @@ public class PickRuleDC extends SyncUtils {
 
     public PickRuleBO[] getPickRule() {
         
-        PickRuleBO[] PickRuleArray = (PickRuleBO[]) s_pickrule.toArray(new PickRuleBO[s_pickrule.size()]);
+        s_pickrule = super.getCollectionFromDB(PickRuleBO.class);
+        PickRuleBO[] PickRuleArray =    (PickRuleBO[]) s_pickrule.toArray(new PickRuleBO[s_pickrule.size()]);
         return PickRuleArray;
     }
 }

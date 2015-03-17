@@ -14,7 +14,7 @@
     <amx:tableLayout id="tl1">
     <amx:rowLayout id="rl1">
         <amx:cellFormat id="cf1">
-          <amx:selectOneChoice value="#{bindings.ruleName.inputValue}" label="Rule Name" id="soc2">
+          <amx:selectOneChoice value="#{bindings.ruleName.inputValue}" label="Rule Name" id="soc2" showRequired="true">
             <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
           </amx:selectOneChoice>
         </amx:cellFormat>
@@ -28,6 +28,14 @@
                             <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                         </amx:commandLink>
                     </amx:cellFormat>
+      </amx:rowLayout>
+      <amx:rowLayout id="rl3">
+        <amx:cellFormat id="cf3">
+          <amx:selectOneChoice label="Event" id="soc1" value="#{pageFlowScope.Event}">
+            <amx:selectItem label="Online" id="si3" value="ONLINE"/>
+            <amx:selectItem label="Concurrent" id="si1" value="CONCURRENT"/>
+          </amx:selectOneChoice>
+        </amx:cellFormat>
       </amx:rowLayout>
     </amx:tableLayout>
     <amx:panelGroupLayout id="pgl1" halign="center">

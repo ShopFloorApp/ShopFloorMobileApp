@@ -21,6 +21,7 @@ public class transactionUtil {
             String restURI = RestURI.PostSubmitProgramURI();
             String pickRule = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pickRule}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pickRule}"));
             String orderNum = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.OrderNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.OrderNumber}"));
+            String event = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.Event}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.Event}"));
             RestCallerUtil rcu = new RestCallerUtil();
             String payload =
                 "{\n" + 
@@ -37,7 +38,7 @@ public class transactionUtil {
                 "   \"InputParameters\": \n" + 
                 "        {\"PICKRULE\": \""+pickRule+"\",\n" + 
                 "         \"ORDERNUM\": \""+orderNum+"\",\n" +
-                "       \"EVENT\": \"\"       \n" + 
+                "       \"EVENT\": \"\""+event+" \n" + 
                 "       }\n" + 
                 "}\n" + 
                 "}";
