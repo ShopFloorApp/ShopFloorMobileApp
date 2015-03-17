@@ -43,6 +43,12 @@
         <view id="onHandDetails">
             <page>/dcom.shop.Inquiry/page/onHandDetails.amx</page>
         </view>
+        <view id="LpnLOVPG">
+            <page>/page/LovPage/LpnLOVPG.amx</page>
+        </view>
+        <view id="mtlTxnList">
+            <page>/dcom.shop.Inquiry/page/mtlTxnList.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
@@ -156,6 +162,14 @@
                 <from-outcome>ItemLOV</from-outcome>
                 <to-activity-id>itemLOVPG</to-activity-id>
             </control-flow-case>
+            <control-flow-case id="__27">
+                <from-outcome>lpnLOV</from-outcome>
+                <to-activity-id>LpnLOVPG</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__35">
+                <from-outcome>mtlTxnList</from-outcome>
+                <to-activity-id>mtlTxnList</to-activity-id>
+            </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__37">
             <from-activity-id>onHandList</from-activity-id>
@@ -173,6 +187,20 @@
             <control-flow-case id="__43">
                 <from-outcome>onHandDetailsBack</from-outcome>
                 <to-activity-id>onHandSearch</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__28">
+            <from-activity-id>LpnLOVPG</from-activity-id>
+            <control-flow-case id="__29">
+                <from-outcome>Back</from-outcome>
+                <to-activity-id>mtlTxnSearch</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__40">
+            <from-activity-id>mtlTxnList</from-activity-id>
+            <control-flow-case id="__41">
+                <from-outcome>mtlTxnListBack</from-outcome>
+                <to-activity-id>mtlTxnSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>
