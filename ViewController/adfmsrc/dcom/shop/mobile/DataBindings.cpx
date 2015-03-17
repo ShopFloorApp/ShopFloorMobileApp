@@ -66,6 +66,10 @@
         <page path="/dcom.shop.DispatchList/page/componentDetail.amx"
               usageId="dcom_shop_mobile_componentDetailPageDef"/>
 
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx"
+              usageId="dcom_shop_mobile_PickReleasePageDef"/>
+
+
         <page path="/dcom.shop.DispatchList/page/transactComponent.amx"
               usageId="dcom_shop_mobile_transactComponentPageDef"/>
 			  <page path="/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx" usageId="dcom_shop_mobile_DocumentNoPageDef"/>
@@ -75,6 +79,7 @@
         <page path="/dcom.shop.Inquiry/page/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/onHandList.amx" usageId="dcom_shop_mobile_onHandListPageDef"/>
         <page path="/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef1"/>
+
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -124,6 +129,10 @@
         <page id="dcom_shop_mobile_resourceDetailsPageDef" path="dcom.shop.DispatchList.page.resourceDetailsPageDef"/>
         <page id="dcom_shop_mobile_componentDetailPageDef" path="dcom.shop.DispatchList.page.componentDetailPageDef"/>
 
+        <page id="dcom_shop_mobile_PickReleasePageDef"
+              path="dcom.shop.Transaction.page.ShippingTxn.PickReleasePageDef"/>
+
+
 
       <page id="dcom_shop_mobile_transactComponentPageDef"
               path="dcom.shop.DispatchList.page.transactComponentPageDef"/>
@@ -133,6 +142,7 @@
         <page id="dcom_shop_mobile_onHandDetailsPageDef" path="dcom.shop.Inquiry.page.onHandDetailsPageDef"/>
         <page id="dcom_shop_mobile_onHandListPageDef" path="dcom.shop.Inquiry.page.onHandListPageDef"/>
         <page id="dcom_shop_mobile_onHandDetailsPageDef1" path="dcom.shop.mobile.pageDefs.onHandDetailsPageDef"/>
+
     </pageDefinitionUsages>
     <dataControlUsages>
 <dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
