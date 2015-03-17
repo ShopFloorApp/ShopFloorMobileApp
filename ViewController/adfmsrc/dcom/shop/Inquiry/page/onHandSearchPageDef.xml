@@ -20,7 +20,7 @@
           id="subinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="subinv"/>
-        <Item Value="desc"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <attributeValues IterBinding="subinventoriesIterator" id="FromSubInv">
