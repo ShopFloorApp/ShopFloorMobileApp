@@ -345,7 +345,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L38,457.00977,466.84473,341.5,406.24707,B56</property>
+         name="sdm:polyPoints">L38,457.00977,466.84473,338.0,411.93964,B50</property>
    </ControlFlowCase>
    <View
       id="View33">
@@ -471,5 +471,75 @@
          name="fromOutcome">onHandDetailsBack</property>
       <property
          name="sdm:polyPoints">B50,850.0,399.49414,345.0,406.24707,B61</property>
+   </ControlFlowCase>
+   <View
+      id="View46">
+      <property
+         name="activityId">LpnLOVPG</property>
+      <property
+         name="page">/page/LovPage/LpnLOVPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnLOVPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">657.09766</property>
+      <property
+         name="x">445.68555</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase47"
+      from="View33"
+      to="View46">
+      <property
+         name="fromOutcome">lpnLOV</property>
+      <property
+         name="sdm:polyPoints">B50,256.0,573.5459,404.68555,656.7471,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase48"
+      from="View46"
+      to="View33">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">L46,404.68555,653.2471,259.5,573.5459,B56</property>
+   </ControlFlowCase>
+   <View
+      id="View49">
+      <property
+         name="activityId">mtlTxnList</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/mtlTxnList.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>mtlTxnList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">566.5459</property>
+      <property
+         name="x">629.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase50"
+      from="View33"
+      to="View49">
+      <property
+         name="fromOutcome">mtlTxnList</property>
+      <property
+         name="sdm:polyPoints">R54,297.4747,523.0459,588.0,562.6953,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase51"
+      from="View49"
+      to="View33">
+      <property
+         name="fromOutcome">mtlTxnListBack</property>
+      <property
+         name="sdm:polyPoints">L54,587.5249,569.6953,297.0,530.0459,R62</property>
    </ControlFlowCase>
 </SDM>
