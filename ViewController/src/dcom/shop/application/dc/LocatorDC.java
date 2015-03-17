@@ -66,7 +66,7 @@ public class LocatorDC extends SyncUtils {
         String subInv ="";
          String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
-        List collections;
+       List collections;
         if (networkStatus.equals(NOT_REACHABLE)) {
             s_locator = super.getCollectionFromDB(LocatorBO.class);
         } else {
@@ -75,22 +75,22 @@ public class LocatorDC extends SyncUtils {
             String restURI = "/webservices/rest/DCOMLOV/getLocator/";
             RestCallerUtil rcu = new RestCallerUtil();
             String payload =
-                "{\n" + 
-                "  \"Input_Parameters\": {\n" + 
-                "    \"RESTHeader\": {\n" + 
-                "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-                "      \"RespApplication\": \"ONT\",\n" + 
-                "      \"SecurityGroup\": \"STANDARD\",\n" + 
-                "      \"NLSLanguage\": \"AMERICAN\",\n" + 
-                "      \"Org_Id\": \"82\"\n" + 
-                "    },\n" + 
-                "    \"InputParameters\": {\n" + 
-                "      \"PWAREHOUSE\": \"\",\n" + 
-                "      \"PSUBINV\": \""+subInv+"\"\n" + 
-                "    }\n" + 
-                "  }\n" + 
+                "{\n" +
+                "  \"Input_Parameters\": {\n" +
+                "    \"RESTHeader\": {\n" +
+                "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "      \"RespApplication\": \"ONT\",\n" +
+                "      \"SecurityGroup\": \"STANDARD\",\n" +
+                "      \"NLSLanguage\": \"AMERICAN\",\n" +
+                "      \"Org_Id\": \"82\"\n" +
+                "    },\n" +
+                "    \"InputParameters\": {\n" +
+                "      \"PWAREHOUSE\": \"\",\n" +
+                "      \"PSUBINV\": \""+subInv+"\"\n" +
+                "    }\n" +
+                "  }\n" +
                 "}";
-                
+
              System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
@@ -267,7 +267,7 @@ public class LocatorDC extends SyncUtils {
             //   filterFileds.put("alias", getAliasFilter());
 
 
-            HashMap paramMap = new HashMap();
+           HashMap paramMap = new HashMap();
             paramMap.put("collection", s_to_locator);
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
