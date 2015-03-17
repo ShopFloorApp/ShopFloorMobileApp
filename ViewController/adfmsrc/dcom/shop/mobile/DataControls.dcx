@@ -520,8 +520,9 @@
     </CreatableTypes>
     <Source>
       <bean-definition BeanClass="dcom.shop.application.dc.SerialDC"
-                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
-                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
+                             AccessMode="scrollable" EagerPersist="false"
+                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
   <AdapterDataControl id="SubInventoryTxnDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
@@ -536,11 +537,12 @@
     </CreatableTypes>
     <Source>
       <bean-definition BeanClass="dcom.shop.application.dc.transaction.SubInventoryTxnDC"
-                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
-                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
+                             AccessMode="scrollable" EagerPersist="false"
+                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
-  <AdapterDataControl id="ComponentsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+ <AdapterDataControl id="ComponentsDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
                       ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
                       SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
                       SupportsFindMode="false" SupportsUpdates="true"

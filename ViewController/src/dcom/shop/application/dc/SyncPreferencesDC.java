@@ -1,10 +1,8 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
-
 import dcom.shop.application.database.ConnectionFactory;
 import dcom.shop.application.mobile.SyncPreferencesBO;
-import dcom.shop.application.mobile.WarehouseBO;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -21,14 +19,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import oracle.adfmf.bindings.ControlBinding;
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
-import oracle.adfmf.util.GenericVirtualType;
 
 public class SyncPreferencesDC extends SyncUtils {
     private List filtered_syncLovs = new ArrayList();
@@ -122,7 +118,7 @@ public class SyncPreferencesDC extends SyncUtils {
             method.invoke(obj, new Object[] {});       
             //End of Sync Card Method Call
             Field collectionField = lovClass.getDeclaredField(lovCollectionVar);
-            List cardCollection = (List) collectionField.get(null);
+            List cardCollection = (List) collectionField.get(obj);
             int collectionSize = cardCollection.size();
             String strCollectionSize = "" + collectionSize;
 //            String lovDCClassBOName = lovDCClass.substring(0, lovDCClass.length() - 2) + "BO";
