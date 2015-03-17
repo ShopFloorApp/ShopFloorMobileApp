@@ -29,9 +29,12 @@
     <view id="componentDetail">
       <page>/dcom.shop.DispatchList/page/componentDetail.amx</page>
     </view>
-    <view id="transact">
-      <page>/dcom.shop.DispatchList/page/transact.amx</page>
-    </view>
+    <task-flow-call id="transactTf">
+      <task-flow-reference>
+        <document>/dcom.shop.DispatchList/transactTf.xml</document>
+        <id>transactTf</id>
+      </task-flow-reference>
+    </task-flow-call>
     <control-flow-rule id="__1">
       <from-activity-id>dispatchList</from-activity-id>
       <control-flow-case id="__2">
@@ -74,7 +77,7 @@
       </control-flow-case>
       <control-flow-case id="__18">
         <from-outcome>toTransact</from-outcome>
-        <to-activity-id>transact</to-activity-id>
+        <to-activity-id>transactTf</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__9">

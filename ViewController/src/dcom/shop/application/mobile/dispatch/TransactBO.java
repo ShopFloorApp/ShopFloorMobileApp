@@ -1,5 +1,7 @@
 package dcom.shop.application.mobile.dispatch;
 
+import java.math.BigDecimal;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -7,7 +9,7 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 public class TransactBO {
     
     private String action;
-    private String trxRef;
+    private BigDecimal trxRef;
     private String sourceType;
     private String trxType;
     private String trxDate;
@@ -17,7 +19,7 @@ public class TransactBO {
     private String locator;
     private String lpn;
     private String sourceCode;
-    private String trxQty;
+    private BigDecimal trxQty;
     private String txnUom;
     private String glAccount;
     private String accountAlias;
@@ -43,6 +45,26 @@ public class TransactBO {
     }
 
 
+    public void setTrxRef(BigDecimal trxRef) {
+        BigDecimal oldTrxRef = this.trxRef;
+        this.trxRef = trxRef;
+        propertyChangeSupport.firePropertyChange("trxRef", oldTrxRef, trxRef);
+    }
+
+    public BigDecimal getTrxRef() {
+        return trxRef;
+    }
+
+    public void setTrxQty(BigDecimal trxQty) {
+        BigDecimal oldTrxQty = this.trxQty;
+        this.trxQty = trxQty;
+        propertyChangeSupport.firePropertyChange("trxQty", oldTrxQty, trxQty);
+    }
+
+    public BigDecimal getTrxQty() {
+        return trxQty;
+    }
+
     public void setAction(String action) {
         String oldAction = this.action;
         this.action = action;
@@ -53,15 +75,7 @@ public class TransactBO {
         return action;
     }
 
-    public void setTrxRef(String trxRef) {
-        String oldTrxRef = this.trxRef;
-        this.trxRef = trxRef;
-        propertyChangeSupport.firePropertyChange("trxRef", oldTrxRef, trxRef);
-    }
-
-    public String getTrxRef() {
-        return trxRef;
-    }
+    
 
     public void setSourceType(String sourceType) {
         String oldSourceType = this.sourceType;
@@ -153,15 +167,7 @@ public class TransactBO {
         return sourceCode;
     }
 
-    public void setTrxQty(String trxQty) {
-        String oldTrxQty = this.trxQty;
-        this.trxQty = trxQty;
-        propertyChangeSupport.firePropertyChange("trxQty", oldTrxQty, trxQty);
-    }
-
-    public String getTrxQty() {
-        return trxQty;
-    }
+    
 
     public void setTxnUom(String txnUom) {
         String oldTxnUom = this.txnUom;

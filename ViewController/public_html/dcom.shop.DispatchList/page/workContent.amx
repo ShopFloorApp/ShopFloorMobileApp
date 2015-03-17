@@ -155,7 +155,7 @@
                     </amx:commandLink>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf17" width="100px">
-                    <amx:commandLink id="cl9" action="transact">
+                    <amx:commandLink id="cl9" action="toTransact">
                         <amx:tableLayout id="tl11" inlineStyle="margin-top:20px;">
                             <amx:rowLayout id="rl24">
                                 <amx:cellFormat id="cf34" halign="center">

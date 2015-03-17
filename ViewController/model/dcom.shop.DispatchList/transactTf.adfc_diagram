@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">transact</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/transact.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>transact&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">137.16797</property>
+      <property
+         name="x">116.5</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">transactComponent</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/transactComponent.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>transactComponent&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">137.60156</property>
+      <property
+         name="x">494.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">toTransactComponent</property>
+      <property
+         name="sdm:polyPoints">R50,157.5,137.10156,453.0,137.53516,L50</property>
+   </ControlFlowCase>
+</SDM>

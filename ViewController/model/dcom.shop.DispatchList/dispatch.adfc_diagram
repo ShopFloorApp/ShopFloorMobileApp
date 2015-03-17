@@ -276,29 +276,31 @@
       <property
          name="sdm:polyPoints">R50,639.92285,427.69922,722.0,432.60156,L50</property>
    </ControlFlowCase>
-   <View
-      id="View23">
-      <property
-         name="activityId">transact</property>
-      <property
-         name="page">/dcom.shop.DispatchList/page/transact.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>transact&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">223.86719</property>
-      <property
-         name="x">368.0</property>
-   </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase24"
       from="View7"
-      to="View23">
+      to="TaskFlowCall25">
       <property
          name="fromOutcome">toTransact</property>
       <property
-         name="sdm:polyPoints">T39,417.16504,339.27264,368.0,277.80078,B50</property>
+         name="sdm:polyPoints">L42,383.16504,386.27264,239.0,263.60156,B50</property>
    </ControlFlowCase>
+   <TaskFlowCall
+      id="TaskFlowCall25">
+      <property
+         name="taskFlowId">transactTf</property>
+      <property
+         name="activityId">transactTf</property>
+      <property
+         name="documentReference">/dcom.shop.DispatchList/transactTf.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>transactTf&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">209.66797</property>
+      <property
+         name="x">239.0</property>
+   </TaskFlowCall>
 </SDM>
