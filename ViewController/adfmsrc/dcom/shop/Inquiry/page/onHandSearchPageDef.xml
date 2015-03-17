@@ -34,7 +34,7 @@
           DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="locator"/>
-        <Item Value="desc"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <attributeValues IterBinding="locatorsIterator" id="loc">
@@ -46,6 +46,7 @@
           DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="costGroup"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <attributeValues IterBinding="costGroupIterator" id="costGrp">

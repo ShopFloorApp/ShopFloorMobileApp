@@ -11,6 +11,10 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactionTypeDC" id="TransactionTypeDCIterator"/>
+    <accessorIterator MasterBinding="TransactionTypeDCIterator" Binds="transactionType" RangeSize="25"
+                      DataControl="TransactionTypeDC" BeanClass="dcom.shop.application.mobile.TransactionTypeBO"
+                      id="transactionTypeIterator"/>
   </executables>
   <bindings>
     <list IterBinding="subinventoriesIterator" ListOperMode="navigation" ListIter="subinventoriesIterator"
@@ -37,6 +41,18 @@
     <attributeValues IterBinding="locatorsIterator" id="loc">
       <AttrNames>
         <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="transactionTypeIterator" ListOperMode="navigation" ListIter="transactionTypeIterator"
+          id="transactionType" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="transactionType"/>
+        <Item Value="description"/>
+      </AttrNames>
+    </list>
+    <attributeValues IterBinding="transactionTypeIterator" id="trxType">
+      <AttrNames>
+        <Item Value="transactionType"/>
       </AttrNames>
     </attributeValues>
   </bindings>
