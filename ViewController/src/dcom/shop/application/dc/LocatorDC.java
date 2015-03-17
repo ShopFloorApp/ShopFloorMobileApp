@@ -13,7 +13,6 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
-import oracle.adfmf.util.GenericVirtualType;
 import oracle.adfmf.util.Utility;
 
 import org.json.simple.JSONArray;
@@ -23,6 +22,7 @@ import org.json.simple.parser.ParseException;
 
 public class LocatorDC extends SyncUtils {
     protected List filtered_Locators = new ArrayList();
+    protected List filtered_To_Locators = new ArrayList();
     protected String locatorFilter = "";
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
 
@@ -63,9 +63,7 @@ public class LocatorDC extends SyncUtils {
 
   //  public void ProcessWS(String subInv) {
         public void syncLocalDB(){
-        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fromSubInv}");
-        if(subInv == null)
-        subInv ="";
+        String subInv ="";
          String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -115,10 +113,11 @@ public class LocatorDC extends SyncUtils {
 
                             LocatorBO locatorItems = new LocatorBO();
                             JSONObject jsObject2 = (JSONObject) array.get(i);
-
+                            locatorItems.setLocator((jsObject2.get("LOCATOR").toString()));
                             locatorItems.setWhse((jsObject2.get("WHSE").toString()));
                             locatorItems.setSubinv((jsObject2.get("SUBINV").toString()));
                             locatorItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                            locatorItems.setLocatorType((jsObject2.get("LOCATORTYPE").toString()));
                             s_locator.add(locatorItems);
 
 
@@ -182,7 +181,7 @@ public class LocatorDC extends SyncUtils {
 
         try {
             LocatorBO[] locators = null;
-            GenericVirtualType payload = new GenericVirtualType(null, "payload");
+            /*GenericVirtualType payload = new GenericVirtualType(null, "payload");
             payload.defineAttribute(null, "Whse", String.class, "100");
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
             payload.defineAttribute(null, "Subinv", String.class, subInv == null ? "RAW" : subInv);
@@ -190,9 +189,10 @@ public class LocatorDC extends SyncUtils {
             paramsMap.put("resAttriName", "LocatorDetails");
             paramsMap.put("lovDCName", "LocatorLOV_WS");
             paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload", payload);
-            s_locator = super.getCollection(LocatorBO.class, paramsMap);
-            locators = (LocatorBO[]) s_locator.toArray(new LocatorBO[s_locator.size()]);
+            paramsMap.put("payload", payload);*/
+            s_locator = super.getOfflineCollection(LocatorBO.class);
+            filterLocators();
+            locators = (LocatorBO[]) filtered_Locators.toArray(new LocatorBO[filtered_Locators.size()]);
             return locators;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -203,7 +203,7 @@ public class LocatorDC extends SyncUtils {
 
         try {
             LocatorBO[] locators = null;
-            GenericVirtualType payload = new GenericVirtualType(null, "payload");
+           /* GenericVirtualType payload = new GenericVirtualType(null, "payload");
             payload.defineAttribute(null, "Whse", String.class, "100");
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
             payload.defineAttribute(null, "Subinv", String.class, subInv == null ? "RAW" : subInv);
@@ -211,9 +211,10 @@ public class LocatorDC extends SyncUtils {
             paramsMap.put("resAttriName", "LocatorDetails");
             paramsMap.put("lovDCName", "LocatorLOV_WS");
             paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload", payload);
-            s_to_locator = super.getCollection(LocatorBO.class, paramsMap);
-            locators = (LocatorBO[]) s_to_locator.toArray(new LocatorBO[s_to_locator.size()]);
+            paramsMap.put("payload", payload);*/
+            s_to_locator = super.getOfflineCollection(LocatorBO.class);
+            filterToLocators();
+            locators = (LocatorBO[]) filtered_To_Locators.toArray(new LocatorBO[filtered_To_Locators.size()]);
             return locators;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -249,6 +250,31 @@ public class LocatorDC extends SyncUtils {
             filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
             System.out.println("collection size is " + filtered_Locators.size());
             providerChangeSupport.fireProviderRefresh("locators");
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
+    }
+    public void filterToLocators() {
+        try {
+            System.out.println("inside filter code");
+            filtered_To_Locators.clear();
+
+            HashMap filterFileds = new HashMap();
+            String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
+            if (subInv == null)
+                subInv = "RAW";
+            filterFileds.put("subinv", subInv);
+            //   filterFileds.put("alias", getAliasFilter());
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_to_locator);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+
+            filtered_To_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
+            System.out.println("collection size is " + filtered_To_Locators.size());
+            providerChangeSupport.fireProviderRefresh("toLocators");
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
         }

@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.el.ValueExpression;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
-import oracle.adfmf.util.GenericVirtualType;
 import oracle.adfmf.util.Utility;
 
 import org.json.simple.JSONArray;
@@ -129,6 +130,9 @@ public class SubinventoryDC extends SyncUtils {
             filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
             subInventories =
                 (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
+            
+            ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
             return subInventories;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -139,16 +143,19 @@ public class SubinventoryDC extends SyncUtils {
 
         try {
             SubinventoryBO[] subInventories = null;
-            GenericVirtualType payload = new GenericVirtualType(null, "payload");
+           /* GenericVirtualType payload = new GenericVirtualType(null, "payload");
             payload.defineAttribute(null, "Whse", String.class, "100");
             HashMap paramsMap = new HashMap();
             paramsMap.put("resAttriName", "SubinvDetails");
             paramsMap.put("lovDCName", "SubinventoryLOV_WS");
             paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload", payload);
-            s_to_subInventories = super.getCollection(SubinventoryBO.class, paramsMap);
+            paramsMap.put("payload", payload);*/
+            s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
             subInventories =
                 (SubinventoryBO[]) s_to_subInventories.toArray(new SubinventoryBO[s_to_subInventories.size()]);
+            ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", int.class);
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
+            
             return subInventories;
         } catch (Exception e) {
             throw new RuntimeException(e);

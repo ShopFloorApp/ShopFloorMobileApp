@@ -279,7 +279,7 @@
                              xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
-  <AdapterDataControl id="SubInventoryTrf_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+  <!--AdapterDataControl id="SubInventoryTrf_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                       ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                       SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
                       SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.SubInventoryTrf_WS"
@@ -300,7 +300,7 @@
         </service>
       </definition>
     </Source>
-  </AdapterDataControl>
+  </AdapterDataControl-->
 
   <AdapterDataControl id="ConcurrentProgramDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
                       ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"

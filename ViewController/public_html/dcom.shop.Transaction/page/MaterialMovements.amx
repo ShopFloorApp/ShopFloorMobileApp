@@ -18,11 +18,10 @@
        
     </amx:facet>
     <amx:panelGroupLayout id="pgl1">
-      <amx:panelGroupLayout id="pgl2" layout="horizontal">
-        <!--amx:commandButton text="&lt;" id="cb1" action="bT"/-->
+      <!--amx:panelGroupLayout id="pgl2" layout="horizontal">
         <amx:spacer id="s1" width="50"/>
         <amx:outputText value="Material Movements" id="ot2"/>
-      </amx:panelGroupLayout>
+      </amx:panelGroupLayout-->
           <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
          <!--actionListener="#{bindings.ProcessWS.execute}"-->
             <amx:listItem id="li3" action="subInv">

@@ -90,14 +90,14 @@
           id="subinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="subinv"/>
-        <Item Value="desc"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <list IterBinding="locatorsIterator" ListOperMode="navigation" ListIter="locatorsIterator" id="locators"
           DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="locator"/>
-        <Item Value="desc"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
@@ -111,14 +111,14 @@
           DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="locator"/>
-        <Item Value="desc"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <list IterBinding="toSubinventoriesIterator" ListOperMode="navigation" ListIter="toSubinventoriesIterator"
           id="toSubinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="subinv"/>
-        <Item Value="desc"/>
+        <Item Value="description"/>
       </AttrNames>
     </list>
     <attributeValues IterBinding="toSubinventoriesIterator" id="ToSubInv">
