@@ -300,7 +300,7 @@
       <property
          name="fromOutcome">onHandInquiry</property>
       <property
-         name="sdm:polyPoints">B44,101.0,247.3751,295.18646,355.74707,L54</property>
+         name="sdm:polyPoints">B56,108.0,247.30028,295.12646,355.74707,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -335,7 +335,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">B44,334.5,410.42957,455.29526,473.84473,L46</property>
+         name="sdm:polyPoints">B39,331.0,416.17935,455.47852,473.84473,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -425,7 +425,7 @@
       <property
          name="fromOutcome">onHandList</property>
       <property
-         name="sdm:polyPoints">R50,379.0,352.24707,535.0,356.89648,L50</property>
+         name="sdm:polyPoints">R46,379.10428,348.74707,535.0,353.39648,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -442,7 +442,7 @@
       <property
          name="activityId">onHandDetails</property>
       <property
-         name="page">/onHandDetails.amx</property>
+         name="page">/dcom.shop.Inquiry/page/onHandDetails.amx</property>
       <property
          name="description">&lt;html>&lt;p>&lt;b>onHandDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
