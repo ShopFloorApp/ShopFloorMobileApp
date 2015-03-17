@@ -46,19 +46,18 @@
                         <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf1333" width="60%">
-                    <amx:selectOneChoice value="#{bindings.locators.inputValue}"
+                    <amx:selectOneChoice value="#{bindings.locators.inputValue}" 
                                          id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
                 </amx:rowLayout>
-                
                  <amx:rowLayout id="r4">
                     <amx:cellFormat id="cf144222">
                         <amx:panelLabelAndMessage label="Cost Group" inlineStyle="text-align:center;" id="plam8846"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf154333" width="60%">
-                    <amx:selectOneChoice value="#{bindings.costGroup.inputValue}" 
+                    <amx:selectOneChoice value="#{bindings.costGroup.inputValue}"
                                          id="soc3">
                         <amx:selectItems value="#{bindings.costGroup.items}" id="si3"/>
                     </amx:selectOneChoice>
