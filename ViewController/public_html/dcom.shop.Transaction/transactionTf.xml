@@ -45,7 +45,12 @@
     <view id="SerialEntry">
       <page>/page/SerialEntry.amx</page>
     </view>
-
+    <task-flow-call id="ShippingTransactions">
+      <task-flow-reference>
+        <document>/dcom.shop.Transaction/ShippingTransactions.xml</document>
+        <id>ShippingTransactions</id>
+      </task-flow-reference>
+    </task-flow-call>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -55,6 +60,10 @@
       <control-flow-case id="__29">
         <from-outcome>receiveTxn</from-outcome>
         <to-activity-id>ReceivingTransaction</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__36">
+        <from-outcome>shippingTxn</from-outcome>
+        <to-activity-id>ShippingTransactions</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__5">
