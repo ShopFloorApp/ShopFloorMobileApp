@@ -1,7 +1,6 @@
 package dcom.shop.application.dc.dispatch;
 
 import dcom.shop.application.mobile.dispatch.TransactBO;
-import dcom.shop.restURIDetails.RestURI;
 
 public class TransactDC {
     public TransactDC() {
@@ -17,6 +16,7 @@ public class TransactDC {
     
     public String saveTransaction(TransactBO transactBo){
         StringBuffer strPayload = new StringBuffer();
+        /*
         strPayload.append("{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
                           "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
                           "      \"RespApplication\": \"ONT\",\n" + "      \"SecurityGroup\": \"STANDARD\",\n" +
@@ -27,6 +27,7 @@ public class TransactDC {
 
 
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetJobProp(), strPayload.toString());
+        */
         return null;
     }
 }
