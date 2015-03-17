@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.CostGroupBO;
 import dcom.shop.application.mobile.TransactionTypeBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -84,7 +85,7 @@ public class TransactionTypeDC extends SyncUtils {
     }
 
     public TransactionTypeBO[] getTransactionType() {
-        
+        s_transactionType = super.getOfflineCollection(TransactionTypeBO.class);
         TransactionTypeBO[] TransactionTypeArray =
             (TransactionTypeBO[]) s_transactionType.toArray(new TransactionTypeBO[s_transactionType.size()]);
         return TransactionTypeArray;

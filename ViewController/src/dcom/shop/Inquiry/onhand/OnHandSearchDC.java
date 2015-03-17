@@ -33,9 +33,17 @@ public class OnHandSearchDC {
         System.out.println("Inside onhand search");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String item = null;
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemNumber}", String.class);
-        item = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        String subinv = null;
+        String locator = null;
         
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
+        item = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
+        subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
+        locator = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
         String restURI = RestURI.PostOnHandInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
@@ -48,7 +56,7 @@ public class OnHandSearchDC {
         "                  \"Org_Id\": \"82\"\n" + 
         "                 },\n" + 
         "   \"InputParameters\": \n" + 
-        "     {\"PONHANDREQ\": {\"ORGCODE\": \"100\",\"ITEM\": \""+item+"\",\"SUBINV\": \"\",\"LOCATOR\": \"\",\"COSTGROUP\": \"\"}}\n" + 
+        "     {\"PONHANDREQ\": {\"ORGCODE\": \"100\",\"ITEM\": \""+item+"\",\"SUBINV\": \""+subinv+"\",\"LOCATOR\": \""+locator+"\",\"COSTGROUP\": \"\"}}\n" + 
         "}\n" + 
         "}";
            

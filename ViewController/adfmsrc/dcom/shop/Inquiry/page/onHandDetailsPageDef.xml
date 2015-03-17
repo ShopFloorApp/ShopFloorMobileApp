@@ -8,19 +8,66 @@
     <accessorIterator MasterBinding="OnHandSearchDCIterator" Binds="allOnhands" RangeSize="25"
                       DataControl="OnHandSearchDC" BeanClass="dcom.shop.Inquiry.onhand.OnHandSearchEntity"
                       id="allOnhandsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OnHandDetailsDC" id="OnHandDetailsDCIterator"/>
+    <accessorIterator MasterBinding="OnHandDetailsDCIterator" Binds="allOnhandDetails" RangeSize="25"
+                      DataControl="OnHandDetailsDC" BeanClass="dcom.shop.Inquiry.onhand.OnHandDetailsEntity"
+                      id="allOnhandDetailsIterator"/>
   </executables>
   <bindings>
-    <tree IterBinding="allOnhandsIterator" id="allOnhands">
-      <nodeDefinition DefName="dcom.shop.Inquiry.onhand.OnHandSearchEntity" Name="allOnhands0">
-        <AttrNames>
-          <Item Value="ITEM"/>
-          <Item Value="ITEMDESC"/>
-          <Item Value="SUBINV"/>
-          <Item Value="LOCATOR"/>
-          <Item Value="AVAILABLEQTY"/>
-          <Item Value="ONHANDQTY"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="ITEM">
+      <AttrNames>
+        <Item Value="ITEM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="ITEMDESC">
+      <AttrNames>
+        <Item Value="ITEMDESC"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="SUBINV">
+      <AttrNames>
+        <Item Value="SUBINV"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="LOCATOR">
+      <AttrNames>
+        <Item Value="LOCATOR"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="UOM">
+      <AttrNames>
+        <Item Value="UOM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="ONHANDQTY">
+      <AttrNames>
+        <Item Value="ONHANDQTY"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="RECEIVINGQTY">
+      <AttrNames>
+        <Item Value="RECEIVINGQTY"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="INBOUNDQTY">
+      <AttrNames>
+        <Item Value="INBOUNDQTY"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="AVAILABLEQTY">
+      <AttrNames>
+        <Item Value="AVAILABLEQTY"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="PACKEDQTY">
+      <AttrNames>
+        <Item Value="PACKEDQTY"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allOnhandDetailsIterator" id="LOOSEQTY">
+      <AttrNames>
+        <Item Value="LOOSEQTY"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

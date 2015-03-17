@@ -398,9 +398,9 @@
       from="View27"
       to="View33">
       <property
-         name="fromOutcome">Back</property>
+         name="fromOutcome">BackToPage</property>
       <property
-         name="sdm:polyPoints">L62,457.00977,487.84473,297.76266,523.0459,R54</property>
+         name="sdm:polyPoints">L62,457.00977,487.84473,297.6133,516.0459,R46</property>
    </ControlFlowCase>
    <View
       id="View40">
