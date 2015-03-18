@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="mtlTxnListPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="MtlTxnSearchDC" id="MtlTxnSearchDCIterator"/>
+    <accessorIterator MasterBinding="MtlTxnSearchDCIterator" Binds="allmtlTxn" RangeSize="25"
+                      DataControl="MtlTxnSearchDC" BeanClass="dcom.shop.Inquiry.mtltxn.MtlTxnSearchEntity"
+                      id="allmtlTxnIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allmtlTxnIterator" id="allmtlTxn">
+      <nodeDefinition DefName="dcom.shop.Inquiry.mtltxn.MtlTxnSearchEntity" Name="allmtlTxn0">
+        <AttrNames>
+          <Item Value="TRXREF"/>
+          <Item Value="ITEM"/>
+          <Item Value="SOURCELOCATOR"/>
+          <Item Value="SOURCSUBINV"/>
+          <Item Value="TRXQTY"/>
+          <Item Value="TRXTYPE"/>
+          <Item Value="ACCOUNTALIAS"/>
+          <Item Value="COSTED"/>
+          <Item Value="CREATEDBY"/>
+          <Item Value="DEPT"/>
+          <Item Value="DESTLOCATOR"/>
+          <Item Value="DESTORG"/>
+          <Item Value="DESTSUBINV"/>
+          <Item Value="GLACCOUNT"/>
+          <Item Value="LPN"/>
+          <Item Value="REASON"/>
+          <Item Value="SOURCECODE"/>
+          <Item Value="SOURCEORGCODE"/>
+          <Item Value="SOURCETYPE"/>
+          <Item Value="TRXDATE"/>
+          <Item Value="TRXNACTION"/>
+          <Item Value="TRXSOURCE"/>
+          <Item Value="TXNUOM"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
