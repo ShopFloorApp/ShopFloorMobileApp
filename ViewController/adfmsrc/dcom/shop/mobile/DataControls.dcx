@@ -330,7 +330,7 @@
                              xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
-  <AdapterDataControl id="ItemLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+  <!--AdapterDataControl id="ItemLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                       ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                       SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
                       SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.ItemLOV_WS"
@@ -350,7 +350,7 @@
         </service>
       </definition>
     </Source>
-  </AdapterDataControl>
+  </AdapterDataControl-->
   <!--AdapterDataControl id="ItemLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                       ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                       SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
@@ -425,7 +425,7 @@
                              xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
         </Source>
     </AdapterDataControl>
-    <AdapterDataControl id="LPNLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+    <!--AdapterDataControl id="LPNLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                         ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                         SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
                         SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.LPNLOV_WS"
@@ -445,9 +445,8 @@
                 </service>
             </definition>
         </Source>
-    </AdapterDataControl>
-    <AdapterDataControl id="LpnSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
-    <!--AdapterDataControl id="LPNLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+    </AdapterDataControl-->
+        <!--AdapterDataControl id="LPNLOV_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                         ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                         SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
                         SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.LPNLOV_WS"
@@ -492,7 +491,7 @@
                              xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
         </Source>
     </AdapterDataControl>
-    <AdapterDataControl id="ItemOnHand_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+    <!--AdapterDataControl id="ItemOnHand_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                         ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                         SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
                         SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.mobile.ItemOnHand_WS"
@@ -512,8 +511,8 @@
                 </service>
             </definition>
         </Source>
-    </AdapterDataControl>
-    <AdapterDataControl id="JobOperationDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+    </AdapterDataControl-->
+
     <!--AdapterDataControl id="ItemOnHand_WS" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                         ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition" SupportsTransactions="false"
                         SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
