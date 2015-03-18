@@ -3,7 +3,9 @@
                 Package="dcom.shop.Inquiry.page">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Name="costGroup" Type="java.lang.String"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="25"
                       DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
@@ -12,7 +14,7 @@
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
     <iterator Binds="root" RangeSize="25" DataControl="CostGroupDC" id="CostGroupDCIterator"/>
-    <accessorIterator MasterBinding="CostGroupDCIterator" Binds="costGroup" RangeSize="25" DataControl="CostGroupDC"
+    <accessorIterator MasterBinding="CostGroupDCIterator" Binds="costGroup" RangeSize="-1" DataControl="CostGroupDC"
                       BeanClass="dcom.shop.application.mobile.CostGroupBO" id="costGroupIterator"/>
   </executables>
   <bindings>
@@ -37,22 +39,22 @@
         <Item Value="description"/>
       </AttrNames>
     </list>
-    <attributeValues IterBinding="locatorsIterator" id="loc">
+    <attributeValues IterBinding="locatorsIterator" id="FromLocator">
       <AttrNames>
         <Item Value="locator"/>
       </AttrNames>
     </attributeValues>
-    <list IterBinding="costGroupIterator" ListOperMode="navigation" ListIter="costGroupIterator" id="costGroup"
-          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+    <list IterBinding="variables" id="costGroup1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="costGroupIterator">
       <AttrNames>
         <Item Value="costGroup"/>
-        <Item Value="description"/>
       </AttrNames>
+      <ListAttrNames>
+        <Item Value="costGroup"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="costGroup"/>
+      </ListDisplayAttrNames>
     </list>
-    <attributeValues IterBinding="costGroupIterator" id="costGrp">
-      <AttrNames>
-        <Item Value="costGroup"/>
-      </AttrNames>
-    </attributeValues>
   </bindings>
 </pageDefinition>
