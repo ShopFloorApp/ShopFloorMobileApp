@@ -128,10 +128,14 @@
                         <amx:panelLabelAndMessage label="From Subinventory" inlineStyle="text-align:center;" id="plam6"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11" width="60%">
-                        <amx:selectOneChoice value="#{bindings.subinventories.inputValue}" id="soc5"
+                        <amx:selectOneChoice value="#{bindings.subFromInv.inputValue}"
+                                             id="soc4" valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
+                            <amx:selectItems value="#{bindings.subFromInv.items}" id="si4"/>
+                        </amx:selectOneChoice>
+                        <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}" id="soc5"
                                              valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                             <amx:selectItems value="#{bindings.subinventories.items}" id="si5"/>
-                        </amx:selectOneChoice>
+                        </amx:selectOneChoice-->
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl3">
@@ -139,10 +143,16 @@
                         <amx:panelLabelAndMessage label="From Locator" inlineStyle="text-align:center;" id="plam7"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf12" width="60%">
-                        <amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc1"
+                       <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}" 
+                         valueChangeListener="#{StateListenerBean.FromLocValueChange}"
+                                             id="soc5">
+                            <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
+                        </amx:selectOneChoice>
+                       
+                        <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc1"
                         valueChangeListener="#{StateListenerBean.FromLocValueChange}">
                             <amx:selectItems value="#{bindings.locators.items}" id="si1"/>
-                        </amx:selectOneChoice>
+                        </amx:selectOneChoice-->
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl5">
@@ -150,10 +160,14 @@
                         <amx:panelLabelAndMessage label="To Subinventory" inlineStyle="text-align:center;" id="plam8"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf10" width="60%">
-                        <amx:selectOneChoice value="#{bindings.toSubinventories.inputValue}" id="soc2"
+                        <amx:selectOneChoice value="#{bindings.subToInv.inputValue}"
+                                             valueChangeListener="#{StateListenerBean.ToSubinvValueChange}" id="soc2">
+                            <amx:selectItems value="#{bindings.subToInv.items}" id="si2"/>
+                        </amx:selectOneChoice>
+                        <!--amx:selectOneChoice value="#{bindings.toSubinventories.inputValue}" id="soc2"
                                              valueChangeListener="#{StateListenerBean.ToSubinvValueChange}">
                             <amx:selectItems value="#{bindings.toSubinventories.items}" id="si2"/>
-                        </amx:selectOneChoice>
+                        </amx:selectOneChoice-->
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl6">
@@ -161,10 +175,15 @@
                         <amx:panelLabelAndMessage label="To Locator" inlineStyle="text-align:center;" id="plam9"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf14" width="60%">
-                        <amx:selectOneChoice value="#{bindings.toLocators.inputValue}" id="soc3"
+                      <amx:selectOneChoice value="#{bindings.toLoc.inputValue}" 
+                          valueChangeListener="#{StateListenerBean.ToLocValueChange}"
+                                             id="soc3">
+                            <amx:selectItems value="#{bindings.toLoc.items}" id="si3"/>
+                        </amx:selectOneChoice>
+                        <!--amx:selectOneChoice value="#{bindings.toLocators.inputValue}" id="soc3"
                                              valueChangeListener="#{StateListenerBean.ToLocValueChange}">
                             <amx:selectItems value="#{bindings.toLocators.items}" id="si3"/>
-                        </amx:selectOneChoice>
+                        </amx:selectOneChoice-->
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl1">
@@ -172,7 +191,7 @@
                   <amx:spacer width="13" id="s6"></amx:spacer>
                         <amx:commandLink id="cl1" text="Serial Entry" action="SerialEntry">
                         <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.SerialQty}" id="spl1"/>
-                        <amx:setPropertyListener from="#{pageFlowScope.itemNumber}" to="#{pageFlowScope.SerialItem}"
+                        <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
                                                  id="spl2"/>
                           <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}"
                                                  id="spl4"/>                         
@@ -248,8 +267,8 @@
             <amx:panelGroupLayout id="pgl4" layout="horizontal">
                 <amx:commandButton text="Cancel" id="cb23" action="cancel"/>
                 <amx:commandButton text="Add to Queue" id="cb4"/>
-                 <amx:commandButton text="Save &amp; Complete" action="cancel"
-                                   actionListener="#{bindings.InsertTransaction.execute}" id="cb5"/>
+                 <amx:commandButton text="Save &amp; Complete" action="#{bindings.InsertTransaction.execute}"
+                                   id="cb5"/>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:panelPage>

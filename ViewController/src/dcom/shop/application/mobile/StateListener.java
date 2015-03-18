@@ -24,11 +24,15 @@ public class StateListener {
     public void FromSubinvValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.FromSubInv.inputValue}", String.class);
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.subFromInv.inputValue}", String.class);
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
         pageFlow.put("FromSubinventory", subinv);
+        /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromSubinventory}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
 
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                      });
@@ -104,11 +108,16 @@ public class StateListener {
     public void ToSubinvValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.ToSubInv.inputValue}", String.class);
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.subToInv.inputValue}", String.class);
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
         pageFlow.put("ToSubinventory", subinv);
+        /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToLocator}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToSubinventory}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
 
         MethodExpression me =
             AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
@@ -148,20 +157,26 @@ public class StateListener {
     public void FromLocValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.FromLocator.inputValue}", String.class);
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.fromLoc.inputValue}", String.class);
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
         pageFlow.put("FromLocator", subinv);
+        /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
+
     }
 
     public void ToLocValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.ToLocator.inputValue}", String.class);
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.toLoc.inputValue}", String.class);
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
         pageFlow.put("ToLocator", subinv);
+        /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToLocator}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
+
     }
 }

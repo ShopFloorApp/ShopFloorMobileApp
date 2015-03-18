@@ -1,7 +1,6 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
-import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.application.mobile.SerialBO;
 import dcom.shop.application.mobile.transaction.SubInventoryTxnBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -23,7 +22,7 @@ public class InvTrnDC extends RestCallerUtil {
     protected static List s_invTrxns = new ArrayList();
     protected static List s_serialTrxns = new ArrayList();
     protected static List s_filteredSerialTrxns = new ArrayList();
-    public void InsertTransaction() {
+    public String InsertTransaction() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         SubInventoryTxnBO subInvTxn = new SubInventoryTxnBO();
@@ -34,16 +33,16 @@ public class InvTrnDC extends RestCallerUtil {
             subInvTxn.setCompleteFlag("Y");
         }
         subInvTxn.setIsNewEntity("Y");
+        
         Integer trxnId = (Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
-        String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnText}");
-        String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
+        String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
+        String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
         String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
         String qty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
-        String fromSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
-        String fromSubInv1 = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.FromSubInv.inputValue}");
-        String fromLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.FromLocator.inputValue}");
-        String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
-        String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.ToLocator.inputValue}");
+        String fromSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subFromInv.inputValue}");
+        String fromLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.fromLoc.inputValue}");
+        String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subToInv.inputValue}");
+        String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.toLoc.inputValue}");
         subInvTxn.setTrxnId(trxnId);
         subInvTxn.setLPN(lpn);
         subInvTxn.setItemNumber(item);
@@ -57,6 +56,8 @@ public class InvTrnDC extends RestCallerUtil {
         s_invTrxns.add(subInvTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
+        ProcessWS(trxnId);
+        return "cancel";
     }
         
 
@@ -83,7 +84,7 @@ public class InvTrnDC extends RestCallerUtil {
         String destOrg = "100";
         String sourceOrg = "100";
         String payload =
-            "{\n" + "\"x\":\n" + "{\n" + "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+            "{\n" + "\"PROCESSINVTXN_Input\":\n" + "{\n" + "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
             "                  \"RespApplication\": \"ONT\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
@@ -91,14 +92,22 @@ public class InvTrnDC extends RestCallerUtil {
             "\",\"ITEM\": \"" + item + "\", \"SOURCSUBINV\": \"" + fromSubInv + "\", \"SOURCELOCATOR\": \"" +
             fromLocator + "\",\"TXNUOM\": \"" + uom + "\", \"TRXQTY\": \"" + qty + "\", \"DESTORG\": \"" + destOrg +
             "\", \"SOURCEORGCODE\": \"" + sourceOrg + "\", \"DESTSUBINV\": \"" + toSubInv + "\", \"DESTLOCATOR\": \"" +
-            toLocator + "\"" + ", \"TRXTYPE\": \"SUBINV\" }\n" + "}}}";
+            toLocator + "\"" + ", \"TRXTYPE\": \"SUBINV\" ,\n" + 
+            "          \"SERIALS\": {\n" + 
+            "            \"XXDCOM_SERIAL_TAB\": [";
+        String end = "}\n\" + \"}}}\"";
         System.out.println("Calling create method");
         SerialBO serial = new SerialBO();
         Iterator i = s_filteredSerialTrxns.iterator();
         while(i.hasNext()){
             serial = (SerialBO)i.next();
+            payload = payload + "{\"FROMSERIAL\":\""+serial.getFromSerial()+"\",\"TOSERIAL\": \""+serial.getToSerial()
+            +"\",\"SERIALQTY\": \""+serial.getSerialQty()+"\"},";
             
         }
+         payload = payload.substring(0, payload.length() - 1);
+         payload = payload + "]}\n" + 
+         "}}}}\"";
         
         String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
@@ -123,7 +132,7 @@ public class InvTrnDC extends RestCallerUtil {
             System.out.println("called super filtered class");
              SyncUtils sync = new SyncUtils();
              
-            s_filteredSerialTrxns = (List) sync.getFileteredCollection(LocatorBO.class, paramMap);
+            s_filteredSerialTrxns = (List) sync.getFileteredCollection(SerialBO.class, paramMap);
             System.out.println("collection size is " + s_filteredSerialTrxns.size());
          } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);

@@ -16,6 +16,10 @@
         <amx:facet name="secondary">
             <amx:commandLink id="cb3" action="siDet">
                 <amx:outputHtml id="oh3" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
+                <!--amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshFromLocator}" id="spl2"/>
+                <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshToLocator}" id="spl1"/>
+                <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshFromSubinventory}" id="spl3"/>
+                <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshToSubinventory}" id="spl4"/-->
             </amx:commandLink>
         </amx:facet>
         <amx:panelGroupLayout id="pgl3" layout="horizontal">

@@ -151,8 +151,18 @@ public class SerialDC extends SyncUtils {
     public void insertSerials(String trxnId, String fromSerial, String toSerial) {
         s_insertSerials.clear();
         int qty = Integer.parseInt(toSerial) - Integer.parseInt(fromSerial) + 1;
+        qtyEntered = qtyEntered + qty;
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SerialQty}", String.class);
+        int totalQty = Integer.parseInt(ve.getValue(AdfmfJavaUtilities.getAdfELContext()).toString().trim());
+        int diff = totalQty - qtyEntered;
+        if (diff < 0) {
+            qtyEntered = qtyEntered - qty;
+            throw new AdfException("Serial quantity exceeds the total Qty", AdfException.ERROR);
+
+        }
         SerialBO serial = new SerialBO();
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SubinvTrxnId}", int.class);
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SubinvTrxnId}", int.class);
         int serialId = s_dbSerials.size();
         serial.setSerialId(serialId);
         serial.setTrxnId((Integer) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
@@ -164,16 +174,7 @@ public class SerialDC extends SyncUtils {
         if(insertStatus){
          s_dbSerials.add(serial);
         }
-        qtyEntered = qtyEntered + qty;
-        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SerialQty}", String.class);
-        int totalQty = Integer.parseInt(ve.getValue(AdfmfJavaUtilities.getAdfELContext()).toString().trim());
-        int diff = totalQty - qtyEntered;
-        if (diff < 0) {
-            qtyEntered = qtyEntered - qty;
-            throw new AdfException("Serial entry has been completed", AdfException.ERROR);
-
-        }
+        
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyEntered}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
         this.setFromSerial("");

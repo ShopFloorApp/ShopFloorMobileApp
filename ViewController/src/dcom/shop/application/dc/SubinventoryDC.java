@@ -25,10 +25,32 @@ import org.json.simple.parser.ParseException;
 public class SubinventoryDC extends SyncUtils {
     public SubinventoryDC() {
         super();
-//        s_subInventories = getSubInventories();
+        //        s_subInventories = getSubInventories();
     }
     private List filtered_Subinventories = new ArrayList();
     private String subinvFilter = "";
+
+    public void setSubInv(String subInv) {
+        String oldSubInv = this.subInv;
+        this.subInv = subInv;
+        propertyChangeSupport.firePropertyChange("subInv", oldSubInv, subInv);
+    }
+
+    public void setSubToInv(String subToInv) {
+        String oldSubToInv = this.subToInv;
+        this.subToInv = subToInv;
+        propertyChangeSupport.firePropertyChange("subToInv", oldSubToInv, subToInv);
+    }
+
+    public String getSubToInv() {
+        return subToInv;
+    }
+
+    public String getSubInv() {
+        return subInv;
+    }
+    private String subInv;
+    private String subToInv;
 
     public void setSubInventories(List s_subInventories) {
         List oldSubInventories = s_subInventories;
@@ -36,8 +58,8 @@ public class SubinventoryDC extends SyncUtils {
         propertyChangeSupport.firePropertyChange("subInventories", oldSubInventories, s_subInventories);
     }
 
-   // public  List getSubInventories() {
-        public void syncLocalDB(){
+    // public  List getSubInventories() {
+    public void syncLocalDB() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         List collections;
@@ -49,23 +71,17 @@ public class SubinventoryDC extends SyncUtils {
             String restURI = "/webservices/rest/DCOMLOV/getSubinv/";
             RestCallerUtil rcu = new RestCallerUtil();
             String payload =
-            "{\n" + 
-            "\"Input_Parameters\":\n" + 
-            "{\n" + 
-            "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-            "                  \"RespApplication\": \"ONT\",\n" + 
-            "                  \"SecurityGroup\": \"STANDARD\",\n" + 
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-            "                  \"Org_Id\": \"82\"\n" + 
-            "                 },\n" + 
-            "   \"InputParameters\": \n" + 
-            "      {\"PSUBINV\": \"\", \"PWAREHOUSE\": \"\"}\n" + 
-            "}\n" + 
-            "}";
-               
+                "{\n" + "\"Input_Parameters\":\n" + "{\n" +
+                "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "                  \"RespApplication\": \"ONT\",\n" +
+                "                  \"SecurityGroup\": \"STANDARD\",\n" +
+                "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+                "                 },\n" + "   \"InputParameters\": \n" +
+                "      {\"PSUBINV\": \"\", \"PWAREHOUSE\": \"\"}\n" + "}\n" + "}";
+
             System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
-             System.out.println("Received response");
+            System.out.println("Received response");
             if (jsonArrayAsString != null) {
                 try {
                     JSONParser parser = new JSONParser();
@@ -105,10 +121,10 @@ public class SubinventoryDC extends SyncUtils {
                 }
             }
         }
-      //  return s_subInventories;
+        //  return s_subInventories;
     }
     private String descFilter = "";
-    protected  static List s_subInventories = new ArrayList();
+    protected static List s_subInventories = new ArrayList();
     protected static List s_to_subInventories = new ArrayList();
     private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
@@ -127,11 +143,15 @@ public class SubinventoryDC extends SyncUtils {
                 paramsMap.put("opeartionName", "process");
                 paramsMap.put("payload", payload);
                 s_subInventories = super.getCollection(SubinventoryBO.class, paramsMap);*/
-            filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+          //  String refresh =
+           //     (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshFromSubinventory}");
+            //if ("Y".equals(refresh))
+                filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
             subInventories =
                 (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
-            
-            ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
+
+            ValueExpression ve =
+                AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
             return subInventories;
         } catch (Exception e) {
@@ -143,19 +163,21 @@ public class SubinventoryDC extends SyncUtils {
 
         try {
             SubinventoryBO[] subInventories = null;
-           /* GenericVirtualType payload = new GenericVirtualType(null, "payload");
+            /* GenericVirtualType payload = new GenericVirtualType(null, "payload");
             payload.defineAttribute(null, "Whse", String.class, "100");
             HashMap paramsMap = new HashMap();
             paramsMap.put("resAttriName", "SubinvDetails");
             paramsMap.put("lovDCName", "SubinventoryLOV_WS");
             paramsMap.put("opeartionName", "process");
             paramsMap.put("payload", payload);*/
-            s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
+          //  String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshToSubinventory}");
+           // if ("Y".equals(refresh))
+                s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
             subInventories =
                 (SubinventoryBO[]) s_to_subInventories.toArray(new SubinventoryBO[s_to_subInventories.size()]);
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", int.class);
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
-            
+
             return subInventories;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -174,21 +196,15 @@ public class SubinventoryDC extends SyncUtils {
             String restURI = "/webservices/rest/DCOMLOV/getSubinventory/";
             RestCallerUtil rcu = new RestCallerUtil();
             String payload =
-                "{\n" + 
-                "\"Input_Parameters\":\n" + 
-                "{\n" + 
-                "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-                "                  \"RespApplication\": \"ONT\",\n" + 
-                "                  \"SecurityGroup\": \"STANDARD\",\n" + 
-                "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-                "                  \"Org_Id\": \"82\"\n" + 
-                "                 },\n" + 
-                "   \"InputParameters\": \n" + 
-                "      {\"PSUBINV\": \"\", \"PWAREHOUSE\": \"\"}\n" + 
-                "}\n" + 
-                "}";
-                
-           System.out.println("Calling create method");
+                "{\n" + "\"Input_Parameters\":\n" + "{\n" +
+                "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "                  \"RespApplication\": \"ONT\",\n" +
+                "                  \"SecurityGroup\": \"STANDARD\",\n" +
+                "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+                "                 },\n" + "   \"InputParameters\": \n" +
+                "      {\"PSUBINV\": \"\", \"PWAREHOUSE\": \"\"}\n" + "}\n" + "}";
+
+            System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {

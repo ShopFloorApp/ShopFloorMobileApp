@@ -48,18 +48,25 @@
         <amx:panelGroupLayout id="pgl6">
             <amx:panelGroupLayout id="pgl8" layout="horizontal">
                 <amx:panelGroupLayout id="pgl11">
-                    <amx:inputText label="Item" value="#{pageFlowScope.SerialItem}" id="it12"/>
-                    <amx:inputText label="Quantity" value="#{pageFlowScope.SerialQty}" id="it121"/>
+                    <amx:panelLabelAndMessage label="Item" inlineStyle="text-align:center;" id="pla2m3">
+                        <amx:outputText value="#{pageFlowScope.SerialItem}" styleClass="adfmf-listItem-captionText"
+                                        id="it3"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="Quantity" inlineStyle="text-align:center;" id="plam1">
+                        <amx:outputText value="#{pageFlowScope.SerialQty}" styleClass="adfmf-listItem-captionText"
+                                        id="ot5"/>
+                    </amx:panelLabelAndMessage>
+                    <!--amx:inputText label="Item" value="#{pageFlowScope.SerialItem}" id="it12"/>
+                    <amx:inputText label="Quantity" value="#{pageFlowScope.SerialQty}" id="it121"/-->
                 </amx:panelGroupLayout>
-                <amx:selectBooleanSwitch label="Ranges" id="sbs1" value="#{pageFlowScope.RangeOff}"
-                                         />
+                <amx:selectBooleanSwitch label="Ranges" id="sbs1" value="#{pageFlowScope.RangeOff}"/>
             </amx:panelGroupLayout>
             <amx:spacer id="s4" height="20"/>
             <amx:panelGroupLayout id="pgl10">
-                 <amx:panelLabelAndMessage label="Quantity Entered" inlineStyle="text-align:center;" id="pla2m3">
-                            <amx:outputText value="#{pageFlowScope.qtyEntered}" styleClass="adfmf-listItem-captionText"
-                                            id="it3"/>
-                        </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage label="Quantity Entered" inlineStyle="text-align:center;" id="plam2">
+                    <amx:outputText value="#{pageFlowScope.qtyEntered}" styleClass="adfmf-listItem-captionText"
+                                    id="ot6"/>
+                </amx:panelLabelAndMessage>
                 <!--amx:commandButton text="+" id="cb6"/-->
                 <amx:panelGroupLayout id="pgl12" rendered="#{pageFlowScope.RangeOff}" layout="horizontal">
                     <amx:inputText id="it15" value="#{bindings.fromSerial.inputValue}"
@@ -69,7 +76,7 @@
                     <!--amx:commandButton text="s" id="cb8"/-->
                 </amx:panelGroupLayout>
                 <amx:panelGroupLayout id="pgl13" rendered="#{!pageFlowScope.RangeOff}" layout="horizontal">
-                     <amx:inputText id="it14" value="#{bindings.fromSerialRange.inputValue}"
+                    <amx:inputText id="it14" value="#{bindings.fromSerialRange.inputValue}"
                                    valueChangeListener="#{StateListenerBean.SerialChangeListener}"/>
                     <!--amx:commandButton text="s" id="cb7"/ -->
                 </amx:panelGroupLayout>
@@ -78,54 +85,55 @@
             <amx:panelGroupLayout id="pgl9"/>
         </amx:panelGroupLayout>
         <amx:panelGroupLayout id="pgl1"
-                              inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
+                              inlineStyle="background-color:white; width:95%; border-color:Gray; border-style:inset; border-width:thin;">
             <amx:tableLayout width="95%" id="tl2">
                 <amx:rowLayout id="rl12">
                     <amx:cellFormat width="30%" id="cf22">
                         <amx:panelLabelAndMessage label="From" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
-                    <amx:cellFormat width="30%"  id="cf33">
+                    <amx:cellFormat width="30%" id="cf33">
                         <amx:panelLabelAndMessage label="To" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat width="30%" id="cf222">
                         <amx:panelLabelAndMessage label="Quantity" inlineStyle="text-align:left;" id="plam2222223"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                 </amx:rowLayout>
-                
             </amx:tableLayout>
-        </amx:panelGroupLayout>
-        <amx:listView var="row" value="#{bindings.serials.collectionModel}" fetchSize="#{bindings.serials.rangeSize}"
-                      selectedRowKeys="#{bindings.serials.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.serials.collectionModel.makeCurrent}"
-                      styleClass="adfmf-listView-insetList" showMoreStrategy="autoScroll" bufferStrategy="viewport"
-                      id="lv1">
-            <amx:listItem id="li1">
-                <amx:tableLayout id="tl1" width="95%">
-                    <amx:rowLayout id="rl4">
-                        <amx:cellFormat id="cf3s252" width="30%">
-                            <amx:outputText value="#{row.fromSerial}" id="ot2"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf4" width="30%">
-                            <amx:outputText value="#{row.toSerial}" id="ot3"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf5" width="30%">
-                            <amx:outputText value="#{row.serialQty}" id="ot4"/>
-                        </amx:cellFormat>
-                         <!--amx:cellFormat id="cf1" width="30%">
+            <amx:listView var="row" value="#{bindings.serials.collectionModel}"
+                          fetchSize="#{bindings.serials.rangeSize}"
+                          selectedRowKeys="#{bindings.serials.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.serials.collectionModel.makeCurrent}"
+                          styleClass="adfmf-listView-insetList" showMoreStrategy="autoScroll" bufferStrategy="viewport"
+                          id="lv1">
+                <amx:listItem id="li1">
+                    <amx:tableLayout id="tl1" width="95%">
+                        <amx:rowLayout id="rl4">
+                            <amx:cellFormat id="cf3s252" width="30%">
+                                <amx:outputText value="#{row.fromSerial}" id="ot2"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf4" width="30%">
+                                <amx:outputText value="#{row.toSerial}" id="ot3"/>
+                            </amx:cellFormat>
+                            <amx:cellFormat id="cf5" width="30%">
+                                <amx:outputText value="#{row.serialQty}" id="ot4"/>
+                            </amx:cellFormat>
+                            <!--amx:cellFormat id="cf1" width="30%">
                             <amx:outputText value="#{row.serialId}" id="ot5"/>
                         </amx:cellFormat-->
-                        <amx:cellFormat width="5%" halign="end" id="cf3">
-                            <amx:commandLink id="cb3" actionListener="#{bindings.deleteRecord.execute}">
-                                <amx:outputHtml id="oh3" styleClass="fa fa-remove fa-lg" inlineStyle="color:#34AADC;"/>
-                                 <amx:setPropertyListener from="#{row.serialId}" to="#{pageFlowScope.deleteSerialId}"
-                                                 id="spl4"/>  
-                                   <amx:setPropertyListener from="#{row.serialQty}" to="#{pageFlowScope.deleteSerialQty}"
-                                                 id="spl1"/>                 
-                             </amx:commandLink>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:listItem>
-        </amx:listView>
+                            <amx:cellFormat width="5%" halign="end" id="cf3">
+                                <amx:commandLink id="cb3" actionListener="#{bindings.deleteRecord.execute}">
+                                    <amx:outputHtml id="oh3" styleClass="fa fa-remove fa-lg"
+                                                    inlineStyle="color:#34AADC;"/>
+                                    <amx:setPropertyListener from="#{row.serialId}" to="#{pageFlowScope.deleteSerialId}"
+                                                             id="spl4"/>
+                                    <amx:setPropertyListener from="#{row.serialQty}"
+                                                             to="#{pageFlowScope.deleteSerialQty}" id="spl1"/>
+                                </amx:commandLink>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:listItem>
+            </amx:listView>
+        </amx:panelGroupLayout>
     </amx:panelPage>
 </amx:view>
