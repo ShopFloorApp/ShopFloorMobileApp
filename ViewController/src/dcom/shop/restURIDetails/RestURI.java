@@ -21,6 +21,12 @@ public class RestURI {
     public static String PostOnHandInquiryURI() {
         return ONHAND_INQUIRY_URI;
     }
+    
+    private static final String MTLTXN_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getmtltxn/";
+
+    public static String PostMtlTxnInquiryURI() {
+        return MTLTXN_INQUIRY_URI;
+    }
 
 
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";

@@ -49,6 +49,9 @@
         <view id="mtlTxnList">
             <page>/dcom.shop.Inquiry/page/mtlTxnList.amx</page>
         </view>
+        <view id="mtlTxnDetails">
+            <page>/dcom.shop.Inquiry/page/mtlTxnDetails.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
@@ -200,6 +203,17 @@
             <from-activity-id>mtlTxnList</from-activity-id>
             <control-flow-case id="__41">
                 <from-outcome>mtlTxnListBack</from-outcome>
+                <to-activity-id>mtlTxnSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__44">
+                <from-outcome>mtlTxnDetails</from-outcome>
+                <to-activity-id>mtlTxnDetails</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__45">
+            <from-activity-id>mtlTxnDetails</from-activity-id>
+            <control-flow-case id="__46">
+                <from-outcome>mtlTxnDetailsBack</from-outcome>
                 <to-activity-id>mtlTxnSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>

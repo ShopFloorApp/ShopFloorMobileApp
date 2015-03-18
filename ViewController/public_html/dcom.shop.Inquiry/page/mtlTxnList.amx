@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-  </amx:panelPage>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Header" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="mtlTxnListBack">
+                <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" rendered="false"/>
+        </amx:facet>
+        <amx:listView var="row" value="#{bindings.allmtlTxn.collectionModel}"
+                      fetchSize="#{bindings.allmtlTxn.rangeSize}"
+                      selectedRowKeys="#{bindings.allmtlTxn.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.allmtlTxn.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1" showLinkIcon="true" action="mtlTxnDetails">
+                <amx:tableLayout width="100%" id="tl">
+                    <amx:rowLayout id="rl">
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
+                        <amx:cellFormat width="60%" height="28px" id="cf4">
+                            <amx:outputText value="#{row.ITEM}" id="ot2"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
+                        <amx:cellFormat width="40%" halign="end" id="cf3">
+                            <amx:outputText value="#{row.TRXREF}/#{row.TRXTYPE}"
+                                            styleClass="adfmf-listItem-highlightText" id="ot4"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="r2">
+                        <amx:cellFormat width="60%" height="12px" id="cf1">
+                            <amx:outputText value="#{row.SOURCSUBINV}/#{row.SOURCELOCATOR}"
+                                            styleClass="adfmf-listItem-captionText" id="ot3"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="40%" halign="end" id="cf2">
+                            <amx:outputText value="#{row.TRXQTY}" styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl" from="#{row.ITEM}" type="action"
+                                         to="#{pageFlowScope.itemMtlNumber}"/>
+                <amx:setPropertyListener id="s2" from="#{row.SOURCSUBINV}" type="action"
+                                         to="#{pageFlowScope.srcSubinv}"/>
+                <amx:setPropertyListener id="sp3" from="#{row.SOURCELOCATOR}" type="action"
+                                         to="#{pageFlowScope.srcLoc}"/>
+                <amx:setPropertyListener id="sp4" from="#{row.TRXTYPE}" type="action" to="#{pageFlowScope.trnType}"/>
+                <!--amx:setPropertyListener id="sp5" from="#{row.TRXDATE} " type="action" to="#{pageFlowScope.trnDate}"/-->
+                <amx:setPropertyListener id="sp6" from="#{row.TRXREF}" type="action" to="#{pageFlowScope.trnId}"/>
+                <amx:setPropertyListener id="sp7" from="#{row.TRXQTY}" type="action" to="#{pageFlowScope.trnqty}"/>
+                <amx:setPropertyListener id="sp8" from="#{row.TXNUOM}" type="action" to="#{pageFlowScope.trnUom}"/>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
 </amx:view>

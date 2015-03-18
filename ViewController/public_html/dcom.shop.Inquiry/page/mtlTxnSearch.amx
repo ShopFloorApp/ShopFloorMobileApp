@@ -34,9 +34,13 @@
                     <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf11" width="60%">
-                    <amx:selectOneChoice value="#{bindings.subinventories.inputValue}"
+                    <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
+                    </amx:selectOneChoice-->
+                    <amx:selectOneChoice value="#{bindings.subInv.inputValue}" 
+                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                        <amx:selectItems value="#{bindings.subInv.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -45,8 +49,12 @@
                     <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf1333" width="60%">
-                    <amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
+                    <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
+                    </amx:selectOneChoice-->
+                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"  valueChangeListener="#{StateListenerBean.FromLocValueChange}"
+                                         id="soc2">
+                        <amx:selectItems value="#{bindings.fromLoc.items}" id="si2"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
                 
@@ -69,8 +77,8 @@
                     <amx:panelLabelAndMessage label="Transaction Type" inlineStyle="text-align:center;" id="plamrr886"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf133333" width="60%">
-                    <amx:selectOneChoice value="#{bindings.transactionType.inputValue}"
-                                         id="soc3">
+                    <amx:selectOneChoice value="#{pageFlowScope.txnType}"
+                                          id="soc3">
                         <amx:selectItems value="#{bindings.transactionType.items}" id="si3"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
