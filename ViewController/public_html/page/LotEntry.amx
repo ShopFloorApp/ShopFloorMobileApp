@@ -44,8 +44,8 @@
             <amx:panelGroupLayout id="pgl9"/>
         </amx:panelGroupLayout>
         <amx:panelGroupLayout id="pgl1"
-                              inlineStyle="background-color:white; width:95%; border-color:Gray; border-style:inset; border-width:thin;">
-            <amx:tableLayout width="95%" id="tl2">
+                              inlineStyle="background-color:white; width:90%; border-color:Gray; border-style:inset; border-width:thin;">
+            <amx:tableLayout width="90%" id="tl2">
                 <amx:rowLayout id="rl12">
                     <amx:cellFormat width="30%" id="cf22">
                         <amx:panelLabelAndMessage label="Lot No" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
@@ -55,6 +55,7 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
+            </amx:panelGroupLayout>
             <amx:listView var="row" value="#{bindings.lots.collectionModel}" fetchSize="#{bindings.lots.rangeSize}"
                           selectedRowKeys="#{bindings.lots.collectionModel.selectedRow}"
                           selectionListener="#{bindings.lots.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
@@ -85,6 +86,5 @@
                     </amx:tableLayout>
                 </amx:listItem>
             </amx:listView>
-        </amx:panelGroupLayout>
-    </amx:panelPage>
+        </amx:panelPage>
 </amx:view>

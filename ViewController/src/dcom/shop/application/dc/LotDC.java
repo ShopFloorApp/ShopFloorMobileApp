@@ -160,6 +160,7 @@ public class LotDC extends SyncUtils{
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyLotEntered}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
         this.setLotNo("");
+        this.setLotQty(0);
         providerChangeSupport.fireProviderRefresh("lots");
     }
 

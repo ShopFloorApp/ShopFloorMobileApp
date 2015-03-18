@@ -30,7 +30,7 @@ public class InvTrnDC extends RestCallerUtil {
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         SubInventoryTxnBO subInvTxn = new SubInventoryTxnBO();
         
-        if (networkStatus.equals(NOT_REACHABLE)||trxType != "SUBMIT") {
+        if (networkStatus.equals(NOT_REACHABLE)||"QUEUE".equals(trxType) ) {
            subInvTxn.setCompleteFlag("N"); 
         }else{
             subInvTxn.setCompleteFlag("Y");
@@ -58,8 +58,8 @@ public class InvTrnDC extends RestCallerUtil {
         subInvTxn.setItemNumber(item);
         s_invTrxns.add(subInvTxn);
         SyncUtils syncUtils = new SyncUtils();
-        syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
-        if (trxType != "QUEUE")
+       // syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
+        if ("SUBMIT".equals(trxType))
         ProcessWS(trxnId);
         return "cancel";
     }
@@ -122,10 +122,14 @@ public class InvTrnDC extends RestCallerUtil {
         }
          payload = payload.substring(0, payload.length() - 1);
          payload = payload + "]}\n" + 
-         "}}}}\"";
-        
+         "}}}}";
+         try{
         String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
-        System.out.println("Received response");
+             System.out.println("Received response"+jsonArrayAsString);
+         }catch (Exception e){
+             System.out.println("error "+e.toString());
+         }
+        
     //    throw new AdfException("Transaction completed", AdfException.INFO);
 
     }
