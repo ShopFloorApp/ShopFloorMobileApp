@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandLink id="cl1" action="mtlTxnDetailsBack">
+                <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+            </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"  rendered="false"/>
+    </amx:facet>
+     <amx:panelFormLayout id="pf1">
+     <amx:panelLabelAndMessage label="Item" id="plam1">
+                <amx:outputText value="#{pageFlowScope.itemMtlNumber}" id="ot2"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Subinventory" id="plam3">
+                <amx:outputText value="#{pageFlowScope.srcSubinv}" id="ot4"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Locator" id="plam4">
+                <amx:outputText value="#{pageFlowScope.srcLoc}" id="ot5"/>
+            </amx:panelLabelAndMessage>
+            <!--amx:panelLabelAndMessage label="LPN" id="plam5">
+                <amx:outputText value="" id="ot6"/>
+            </amx:panelLabelAndMessage-->
+            <amx:panelLabelAndMessage label="Transaction Type" id="plam6">
+                <amx:outputText value="#{pageFlowScope.trnType}" id="ot7"/>
+            </amx:panelLabelAndMessage>
+            <!--amx:panelLabelAndMessage label="Transaction Date" id="plam7">
+                <amx:outputText value="#{pageFlowScope.trnDate}" id="ot8"/>
+            </amx:panelLabelAndMessage-->
+            <amx:panelLabelAndMessage label="Transaction ID" id="plam8">
+                <amx:outputText value="#{pageFlowScope.trnId}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Transaction Quantity" id="plam9">
+                <amx:outputText value="#{pageFlowScope.trnqty}" id="ot10"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Transaction UOM" id="plam10">
+                <amx:outputText value="#{pageFlowScope.trnUom}" id="ot11"/>
+            </amx:panelLabelAndMessage>
+     </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>
