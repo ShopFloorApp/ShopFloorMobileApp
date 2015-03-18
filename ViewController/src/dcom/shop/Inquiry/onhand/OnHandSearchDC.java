@@ -35,7 +35,7 @@ public class OnHandSearchDC {
         String item = null;
         String subinv = null;
         String locator = null;
-        
+        String costGroup = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
         item = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
@@ -44,6 +44,9 @@ public class OnHandSearchDC {
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         locator = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.costGrp}", String.class);
+        costGroup = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
         String restURI = RestURI.PostOnHandInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
