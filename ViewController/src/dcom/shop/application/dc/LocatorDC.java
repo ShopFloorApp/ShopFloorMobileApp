@@ -276,7 +276,7 @@ public class LocatorDC extends SyncUtils {
 
             filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
             System.out.println("collection size is " + filtered_Locators.size());
-            providerChangeSupport.fireProviderRefresh("locators");
+          //  providerChangeSupport.fireProviderRefresh("locators");
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
         }

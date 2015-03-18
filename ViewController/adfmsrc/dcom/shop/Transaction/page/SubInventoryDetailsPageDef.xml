@@ -16,7 +16,6 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator" Refresh="always"/>
-    <iterator Binds="root" RangeSize="25" DataControl="ItemDC" id="ItemDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="toLocators" RangeSize="-1" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="toLocatorsIterator"/>
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="toSubinventories" RangeSize="-1"
@@ -24,122 +23,15 @@
                       id="toSubinventoriesIterator" RefreshCondition="#{pageFlowScope.refreshToSubinventory ne 'N'}"/>
   </executables>
   <bindings>
-    <list IterBinding="variables" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-          StaticList="false" ListIter="subinventoriesIterator">
-      <AttrNames>
-        <Item Value="FromSubinv"/>
-      </AttrNames>
-      <ListAttrNames>
-        <Item Value="subinv"/>
-      </ListAttrNames>
-      <ListDisplayAttrNames>
-        <Item Value="subinv"/>
-        <Item Value="desc"/>
-      </ListDisplayAttrNames>
-    </list>
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
-    <list IterBinding="variables" id="locator1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-          StaticList="false" ListIter="locatorsIterator">
-      <AttrNames>
-        <Item Value="ToLocator"/>
-      </AttrNames>
-      <ListAttrNames>
-        <Item Value="locator"/>
-      </ListAttrNames>
-      <ListDisplayAttrNames>
-        <Item Value="locator"/>
-        <Item Value="desc"/>
-      </ListDisplayAttrNames>
-    </list>
-    <list IterBinding="variables" id="subinv1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-          StaticList="false" ListIter="subinventoriesIterator">
-      <AttrNames>
-        <Item Value="ToSubinv"/>
-      </AttrNames>
-      <ListAttrNames>
-        <Item Value="subinv"/>
-      </ListAttrNames>
-      <ListDisplayAttrNames>
-        <Item Value="subinv"/>
-        <Item Value="desc"/>
-      </ListDisplayAttrNames>
-    </list>
-    <attributeValues IterBinding="ItemDCIterator" id="itemNum">
-      <AttrNames>
-        <Item Value="itemNum"/>
-      </AttrNames>
-    </attributeValues>
-    <methodAction id="invokeItemDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="ItemDC" InstanceName="data.ItemDC.dataProvider"/>
     <methodAction id="invokeInvTrnDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
                   IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider"/>
-  <methodAction id="invokeGetSubInvByOrgIdDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="SubinventoryDC"
-                  InstanceName="data.SubinventoryDC.dataProvider"/>
-    <methodAction id="invokeLocatorDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider">
-      <NamedData NDName="subInv" NDValue="#{pageFlowScope.FromSubinventory}" NDType="java.lang.String"/>
-    </methodAction>
-    <methodAction id="invokeLocatorDC1" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider">
-      <NamedData NDName="subInv" NDValue="#{pageFlowScope.ToSubinventory}" NDType="java.lang.String"/>
-    </methodAction>
-    <list IterBinding="subinventoriesIterator" ListOperMode="navigation" ListIter="subinventoriesIterator"
-          id="subinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="subinv"/>
-        <Item Value="description"/>
-      </AttrNames>
-    </list>
-    <list IterBinding="locatorsIterator" ListOperMode="navigation" ListIter="locatorsIterator" id="locators"
-          DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="locator"/>
-        <Item Value="description"/>
-      </AttrNames>
-    </list>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
-    <attributeValues IterBinding="subinventoriesIterator" id="FromSubInv">
-      <AttrNames>
-        <Item Value="subinv"/>
-      </AttrNames>
-    </attributeValues>
-    <list IterBinding="toLocatorsIterator" ListOperMode="navigation" ListIter="toLocatorsIterator" id="toLocators"
-          DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="locator"/>
-        <Item Value="description"/>
-      </AttrNames>
-    </list>
-    <list IterBinding="toSubinventoriesIterator" ListOperMode="navigation" ListIter="toSubinventoriesIterator"
-          id="toSubinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="subinv"/>
-        <Item Value="description"/>
-      </AttrNames>
-    </list>
-    <attributeValues IterBinding="toSubinventoriesIterator" id="ToSubInv">
-      <AttrNames>
-        <Item Value="subinv"/>
-      </AttrNames>
-    </attributeValues>
     <methodAction id="refreshToLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshToLocators"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
-    <attributeValues IterBinding="locatorsIterator" id="FromLocator">
-      <AttrNames>
-        <Item Value="locator"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="toLocatorsIterator" id="ToLocator">
-      <AttrNames>
-        <Item Value="locator"/>
-      </AttrNames>
-    </attributeValues>
-    <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
-                  IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider"/>
     <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="subinventoriesIterator">
       <AttrNames>
@@ -192,5 +84,11 @@
         <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="InsertTransaction" IsViewObjectMethod="false" DataControl="InvTrnDC"
+                  InstanceName="data.InvTrnDC.dataProvider"
+                  ReturnName="data.InvTrnDC.methodResults.InsertTransaction_InvTrnDC_dataProvider_InsertTransaction_result">
+      <NamedData NDName="status" NDValue="#{pageFlowScope.TrxnType}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

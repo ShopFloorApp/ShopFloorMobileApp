@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LotEntryPageDef" Package="page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LotDC" id="LotDCIterator"/>
+    <accessorIterator MasterBinding="LotDCIterator" Binds="lots" RangeSize="25" DataControl="LotDC"
+                      BeanClass="dcom.shop.application.mobile.LotBO" id="lotsIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="LotDCIterator" id="lotNo">
+      <AttrNames>
+        <Item Value="lotNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="LotDCIterator" id="lotQty">
+      <AttrNames>
+        <Item Value="lotQty"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="lotsIterator" id="lots">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LotBO" Name="lots0">
+        <AttrNames>
+          <Item Value="lotId"/>
+          <Item Value="lotNo"/>
+          <Item Value="lotQty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="deleteRecord" RequiresUpdateModel="true" Action="invokeMethod" MethodName="deleteRecord"
+                  IsViewObjectMethod="false" DataControl="LotDC" InstanceName="data.LotDC.dataProvider">
+      <NamedData NDName="lotId" NDValue="#{pageFlowScope.lotId}" NDType="int"/>
+      <NamedData NDName="lotQty" NDValue="#{pageFlowScope.lotQty}" NDType="int"/>
+    </methodAction>
+    <methodAction id="insertLots" RequiresUpdateModel="true" Action="invokeMethod" MethodName="insertLots"
+                  IsViewObjectMethod="false" DataControl="LotDC" InstanceName="data.LotDC.dataProvider">
+      <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.String"/>
+      <NamedData NDName="lotNo" NDValue="#{bindings.lotNo.inputValue}" NDType="java.lang.String"/>
+      <NamedData NDName="lotQty" NDValue="#{bindings.lotQty.inputValue}" NDType="int"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

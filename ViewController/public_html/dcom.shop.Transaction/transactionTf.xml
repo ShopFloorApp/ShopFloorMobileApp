@@ -51,6 +51,9 @@
         <id>ShippingTransactions</id>
       </task-flow-reference>
     </task-flow-call>
+    <view id="LotEntry">
+      <page>/page/LotEntry.amx</page>
+    </view>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -118,6 +121,10 @@
         <from-outcome>SerialEntry</from-outcome>
         <to-activity-id>SerialEntry</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__37">
+        <from-outcome>LotEntry</from-outcome>
+        <to-activity-id>LotEntry</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__2">
       <from-activity-id>itemLOVPG</from-activity-id>
@@ -176,6 +183,13 @@
     <control-flow-rule id="__34">
       <from-activity-id>SerialEntry</from-activity-id>
       <control-flow-case id="__35">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__38">
+      <from-activity-id>LotEntry</from-activity-id>
+      <control-flow-case id="__39">
         <from-outcome>Back</from-outcome>
         <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>

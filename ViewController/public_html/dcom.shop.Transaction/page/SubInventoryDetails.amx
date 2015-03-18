@@ -199,7 +199,12 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf17">
                     <amx:spacer width="25" id="s7"></amx:spacer>
-                        <amx:commandLink id="cl2" text="Lot Entry"></amx:commandLink>
+                        <amx:commandLink id="cl2" text="Lot Entry" action="LotEntry">
+                         <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.LotQty}"
+                                                  id="spl5"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"
+                                                 id="spl6"/>
+                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
@@ -266,10 +271,18 @@
             <amx:spacer id="s3" height="50"/>
             <amx:panelGroupLayout id="pgl4" layout="horizontal">
                 <amx:commandButton text="Cancel" id="cb23" action="cancel"/>
-                <amx:commandButton text="Add to Queue" id="cb4"/>
-                 <amx:commandButton text="Save &amp; Complete" action="#{bindings.InsertTransaction.execute}"
-                                   id="cb5"/>
-            </amx:panelGroupLayout>
+                <amx:commandButton actionListener="#{bindings.InsertTransaction.execute}" text="Add to Queue"
+                                   disabled="#{!bindings.InsertTransaction.enabled}" id="cb5">
+                                       <amx:setPropertyListener id="spl7" from="QUEUE" to="#{pageFlowScope.TrxnType}"
+                                                 type="action"/>
+                                   </amx:commandButton>
+                <amx:commandButton actionListener="#{bindings.InsertTransaction.execute}" text="Save &amp; Complete" 
+                                   disabled="#{!bindings.InsertTransaction.enabled}" id="cb6">
+                                       <amx:setPropertyListener id="spl8" from="SUBMIT" to="#{pageFlowScope.TrxnType}"
+                                                 type="action"/>
+                                 
+                                   </amx:commandButton>
+                   </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:panelPage>
 </amx:view>

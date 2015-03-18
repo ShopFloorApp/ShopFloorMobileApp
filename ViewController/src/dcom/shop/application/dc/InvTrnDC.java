@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.LotBO;
 import dcom.shop.application.mobile.SerialBO;
 import dcom.shop.application.mobile.transaction.SubInventoryTxnBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -21,13 +22,15 @@ public class InvTrnDC extends RestCallerUtil {
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     protected static List s_invTrxns = new ArrayList();
     protected static List s_serialTrxns = new ArrayList();
+    protected static List s_lotTrxns = new ArrayList();
     protected static List s_filteredSerialTrxns = new ArrayList();
-    public String InsertTransaction() {
+    protected static List s_filteredLotTrxns = new ArrayList();
+    public String InsertTransaction(String trxType) {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         SubInventoryTxnBO subInvTxn = new SubInventoryTxnBO();
         
-        if (networkStatus.equals(NOT_REACHABLE)) {
+        if (networkStatus.equals(NOT_REACHABLE)||trxType != "SUBMIT") {
            subInvTxn.setCompleteFlag("N"); 
         }else{
             subInvTxn.setCompleteFlag("Y");
@@ -56,6 +59,7 @@ public class InvTrnDC extends RestCallerUtil {
         s_invTrxns.add(subInvTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
+        if (trxType != "QUEUE")
         ProcessWS(trxnId);
         return "cancel";
     }
@@ -73,6 +77,8 @@ public class InvTrnDC extends RestCallerUtil {
         }
         s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
         filterSerials();
+        s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
+        filterLots();
         String lpn =  invTxn.getLPN();//(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnText}");
         String item = invTxn.getItemNumber();//(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
@@ -93,10 +99,19 @@ public class InvTrnDC extends RestCallerUtil {
             fromLocator + "\",\"TXNUOM\": \"" + uom + "\", \"TRXQTY\": \"" + qty + "\", \"DESTORG\": \"" + destOrg +
             "\", \"SOURCEORGCODE\": \"" + sourceOrg + "\", \"DESTSUBINV\": \"" + toSubInv + "\", \"DESTLOCATOR\": \"" +
             toLocator + "\"" + ", \"TRXTYPE\": \"SUBINV\" ,\n" + 
-            "          \"SERIALS\": {\n" + 
-            "            \"XXDCOM_SERIAL_TAB\": [";
-        String end = "}\n\" + \"}}}\"";
-        System.out.println("Calling create method");
+            "          \"LOTS\": {\n" + 
+            "            \"XXDCOM_LOT_TAB\": [";
+       System.out.println("Calling create method");
+        LotBO lot = new LotBO();
+        Iterator j = s_filteredLotTrxns.iterator();
+        while(j.hasNext()){
+            lot = (LotBO)j.next();
+            payload = payload + "{\"LOT\":\""+lot.getLotNo()
+            +"\",\"LOTQTY\": \""+lot.getLotQty()+"\"},";
+            
+        }
+         payload = payload.substring(0, payload.length() - 1);
+         payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
         SerialBO serial = new SerialBO();
         Iterator i = s_filteredSerialTrxns.iterator();
         while(i.hasNext()){
@@ -111,7 +126,7 @@ public class InvTrnDC extends RestCallerUtil {
         
         String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
-        throw new AdfException("Transaction completed", AdfException.INFO);
+    //    throw new AdfException("Transaction completed", AdfException.INFO);
 
     }
     
@@ -139,6 +154,29 @@ public class InvTrnDC extends RestCallerUtil {
         }
     }
 
+    public void filterLots() {
+        try {
+            System.out.println("inside filter code");
+            s_filteredLotTrxns.clear();
+
+            HashMap filterFileds = new HashMap();
+            Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+            filterFileds.put("trxnid", trxnId);
+            //   filterFileds.put("alias", getAliasFilter());
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_lotTrxns);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+             SyncUtils sync = new SyncUtils();
+             
+            s_filteredLotTrxns = (List) sync.getFileteredCollection(LotBO.class, paramMap);
+            System.out.println("collection size is " + s_filteredLotTrxns.size());
+         } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
+    }
 
     public void ProcessMiscTrxnWS(String trxType) {
         String restURI = RestURI.PostInvTrxnURI();

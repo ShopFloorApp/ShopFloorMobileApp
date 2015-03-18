@@ -75,6 +75,7 @@
         <page path="/dcom.shop.Inquiry/page/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/onHandList.amx" usageId="dcom_shop_mobile_onHandListPageDef"/>
         <page path="/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef1"/>
+        <page path="/page/LotEntry.amx" usageId="dcom_shop_mobile_LotEntryPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -132,8 +133,10 @@
         <page id="dcom_shop_mobile_onHandDetailsPageDef" path="dcom.shop.Inquiry.page.onHandDetailsPageDef"/>
         <page id="dcom_shop_mobile_onHandListPageDef" path="dcom.shop.Inquiry.page.onHandListPageDef"/>
         <page id="dcom_shop_mobile_onHandDetailsPageDef1" path="dcom.shop.mobile.pageDefs.onHandDetailsPageDef"/>
+        <page id="dcom_shop_mobile_LotEntryPageDef" path="page.LotEntryPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
         <dc id="OnHandSearchDC" path="dcom.shop.mobile.OnHandSearchDC"/>
         <dc id="SerialDC" path="dcom.shop.mobile.SerialDC"/>
         <dc id="OnHandDetailsDC" path="dcom.shop.mobile.OnHandDetailsDC"/>

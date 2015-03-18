@@ -179,4 +179,11 @@ public class StateListener {
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
 
     }
+
+    public void lotQtyChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.insertLots.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
 }
