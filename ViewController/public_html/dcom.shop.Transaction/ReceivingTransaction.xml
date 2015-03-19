@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="ReceivingTransaction">
     <default-activity>ReceivingType</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name>ReceivingTxnUtilBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <task-flow-return id="backToMain">
       <outcome>
         <name>backToMain</name>
@@ -12,6 +17,9 @@
     </view>
     <view id="DocumentNo">
       <page>/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</page>
+    </view>
+    <view id="lineDetails">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx</page>
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
@@ -25,6 +33,10 @@
       <control-flow-case id="__4">
         <from-outcome>getValue</from-outcome>
         <to-activity-id>DocumentNo</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>addLine</from-outcome>
+        <to-activity-id>lineDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

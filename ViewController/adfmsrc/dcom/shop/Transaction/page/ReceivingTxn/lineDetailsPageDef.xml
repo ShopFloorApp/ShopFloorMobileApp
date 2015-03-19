@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="lineDetailsPageDef"
+                Package="dcom.shop.Transaction.page.ReceivingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="itemVar" Type="java.lang.String"/>
+      <variable Name="subInvVar" Type="java.lang.String"/>
+      <variable Name="locatorVar" Type="java.lang.String"/>
+      <variable Name="quantityVar" Type="java.lang.String"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="ReceivingTxnDC" id="ReceivingTxnDCIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="shipmentLines" RangeSize="-1"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.ShipmentLinesBO"
+                      id="shipmentLinesIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="subInventories" RangeSize="-1"
+                      DataControl="ReceivingTxnDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subInventoriesIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="locators" RangeSize="-1"
+                      DataControl="ReceivingTxnDC" BeanClass="dcom.shop.application.mobile.LocatorBO"
+                      id="locatorsIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="lines" RangeSize="25" DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.LinesBO" id="linesIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="variables" id="item" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="shipmentLinesIterator"
+          NullValueFlag="end" NullValueId="item_null">
+      <AttrNames>
+        <Item Value="itemVar"/>
+        <Item Value="subInvVar"/>
+        <Item Value="locatorVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="item"/>
+        <Item Value="subInv"/>
+        <Item Value="locator"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="item"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="subInventoriesIterator" NullValueFlag="start" NullValueId="subinv_null">
+      <AttrNames>
+        <Item Value="subInvVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="subinv"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="subinv"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="locatorsIterator" NullValueFlag="start" NullValueId="locator_null">
+      <AttrNames>
+        <Item Value="locatorVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locator"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locator"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="refreshLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLocators"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
+    <attributeValues IterBinding="variables" id="quantityVar1">
+      <AttrNames>
+        <Item Value="quantityVar"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="linesIterator" id="lines">
+      <AttrNames>
+        <Item Value="lines"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="linesIterator" id="subInv">
+      <AttrNames>
+        <Item Value="subInv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="linesIterator" id="locator1">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="linesIterator" id="quantity">
+      <AttrNames>
+        <Item Value="quantity"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+  <ResourceBundle>
+    <XliffBundle xmlns="http://xmlns.oracle.com/adfm/resourcebundle" id="dcom.shop.mobile.ViewControllerBundle"/>
+  </ResourceBundle>
+</pageDefinition>

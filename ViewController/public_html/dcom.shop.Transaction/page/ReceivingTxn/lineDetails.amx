@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Add Lines" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="__back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:selectOneChoice value="#{bindings.lines.inputValue}" label="#{bindings.item.label}" id="soc1">
+        <amx:selectItems value="#{bindings.item.items}" id="si1"/>
+      </amx:selectOneChoice>
+      <amx:selectOneChoice value="#{bindings.subInv.inputValue}" label="#{bindings.subinv.label}" id="soc2"
+                           valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}">
+        <amx:selectItems value="#{bindings.subinv.items}" id="si2"/>
+      </amx:selectOneChoice>
+      <amx:selectOneChoice value="#{bindings.locator1.inputValue}" label="#{bindings.locator.label}" id="soc3">
+        <amx:selectItems value="#{bindings.locator.items}" id="si3"/>
+      </amx:selectOneChoice>
+      <amx:inputText label="Quantity" id="it1" value="#{bindings.quantity.inputValue}"/>
+    </amx:panelFormLayout>
+    <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="center" valign="middle">
+      <amx:commandButton text="Add" id="cb3" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"/>
+    </amx:panelGroupLayout>
+    <amx:panelFormLayout id="pfl2" rendered="false">
+      <amx:inputText value="#{bindings.lines.inputValue}" label="#{bindings.lines.hints.label}" id="it5"/>
+      <amx:inputText value="#{bindings.subInv.inputValue}" label="#{bindings.subInv.hints.label}" id="it3"/>
+      <amx:inputText value="#{bindings.locator1.inputValue}" label="#{bindings.locator1.hints.label}" id="it4"/>
+      <amx:inputText value="#{bindings.quantity.inputValue}" label="#{bindings.quantity.hints.label}" id="it2"/>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>

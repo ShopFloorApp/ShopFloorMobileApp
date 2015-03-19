@@ -80,4 +80,33 @@
       <property
          name="sdm:polyPoints">R50,460.0,342.84473,681.0,334.24707,L50</property>
    </ControlFlowCase>
+   <View
+      id="View8">
+      <property
+         name="activityId">lineDetails</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>lineDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">60.448242</property>
+      <property
+         name="x">44.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase9"
+      from="View5"
+      to="View8">
+      <property
+         name="fromOutcome">addLine</property>
+      <property
+         name="tosrcid">__6</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">L50,378.0,342.84473,44.5,114.44824,B50</property>
+   </ControlFlowCase>
 </SDM>

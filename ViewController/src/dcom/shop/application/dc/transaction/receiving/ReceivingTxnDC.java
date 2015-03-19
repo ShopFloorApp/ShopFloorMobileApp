@@ -2,6 +2,9 @@ package dcom.shop.application.dc.transaction.receiving;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.CarrierBO;
+import dcom.shop.application.mobile.LocatorBO;
+import dcom.shop.application.mobile.SubinventoryBO;
+import dcom.shop.application.mobile.transaction.receiving.LinesBO;
 import dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO;
 import dcom.shop.application.mobile.transaction.receiving.RequisitionBO;
 import dcom.shop.application.mobile.transaction.receiving.SalesOrderBO;
@@ -17,6 +20,8 @@ import java.util.List;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 
 import org.json.simple.JSONArray;
@@ -30,8 +35,12 @@ public class ReceivingTxnDC extends SyncUtils{
     protected static List s_requisition = new ArrayList();
     protected static List s_carriers = new ArrayList();
     protected static List s_shipmentLines = new ArrayList();
+    protected static List s_subInv = new ArrayList();
+    protected static List s_locator = new ArrayList();
+    public static List s_lines = new ArrayList();
     private String supplierCustomerName;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public ReceivingTxnDC() {
         super();
@@ -41,6 +50,7 @@ public class ReceivingTxnDC extends SyncUtils{
         String oldSupplierCustomerName = this.supplierCustomerName;
         this.supplierCustomerName = supplierCustomerName;
         propertyChangeSupport.firePropertyChange("supplierCustomerName", oldSupplierCustomerName, supplierCustomerName);
+        
     }
 
     public String getSupplierCustomerName() {
@@ -304,13 +314,42 @@ public class ReceivingTxnDC extends SyncUtils{
     }
     
     public CarrierBO[] getCarriers(){
+        s_carriers.clear();
         s_carriers=super.getCollectionFromDB(CarrierBO.class);
         CarrierBO[] carriersArray =
             (CarrierBO[]) s_carriers.toArray(new CarrierBO[s_carriers.size()]);
         return carriersArray;
     }
     
-    public ShipmentLinesBO[] getShipmentLines(){
+    public SubinventoryBO[] getSubInventories(){
+        s_subInv.clear();
+        s_subInv=super.getCollectionFromDB(SubinventoryBO.class);
+        SubinventoryBO[] subInventoriesArray =
+            (SubinventoryBO[]) s_subInv.toArray(new SubinventoryBO[s_subInv.size()]);
+        return subInventoriesArray;
+    }
+    
+    public void refreshLocators() {
+        providerChangeSupport.fireProviderRefresh("locators");
+    }
+    
+    public LocatorBO[] getLocators(){
+        s_locator.clear();
+        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subinv.inputValue}");
+        String whereClause="WHERE SUBINV=\""+subInv+"\"";
+        s_locator=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
+        LocatorBO[] locatorsArray =
+            (LocatorBO[]) s_locator.toArray(new LocatorBO[s_locator.size()]);
+        return locatorsArray;
+    }
+    
+    public LinesBO[] getLines(){
+        LinesBO[] linesArray =
+            (LinesBO[]) s_lines.toArray(new LinesBO[s_lines.size()]);
+        return linesArray;
+    }
+    
+    public void executeShipmentLines(){
         s_shipmentLines.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -337,7 +376,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"PORGCODE\": \"100\",\n" +
-            "                   {\"PDOCTYPE\": \""+receivingType+"\",\n" +
+            "                   \"PDOCTYPE\": \""+receivingType+"\",\n" +
             "                    \"PDOCREF\": \""+documentNo+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -358,8 +397,13 @@ public class ReceivingTxnDC extends SyncUtils{
                 }else{
                     supplierCustomerName=(String)jsObject1.get("CUSTOMER");
                 }
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", supplierCustomerName);
+                
                 
                 JSONObject jsObject2 = (JSONObject) jsObject1.get("LINES");
+                if(jsObject2==null){
+                    return;
+                }
                 JSONArray array = (JSONArray) jsObject2.get("LINES_ITEM");
                 
                 if (array != null) {
@@ -382,9 +426,7 @@ public class ReceivingTxnDC extends SyncUtils{
                         s_shipmentLines.add(shipmentLinesItems);
 
                     }
-                    ShipmentLinesBO[] shipmentLinesArray =
-                        (ShipmentLinesBO[]) s_shipmentLines.toArray(new ShipmentLinesBO[s_shipmentLines.size()]);
-                    return shipmentLinesArray;
+                    
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -404,7 +446,7 @@ public class ReceivingTxnDC extends SyncUtils{
                     }else{
                         supplierCustomerName=(String)jsObject1.get("CUSTOMER");
                     }
-                    
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", supplierCustomerName);
                     JSONObject jsObject2 = (JSONObject) jsObject1.get("LINES");
                     JSONObject jsObject3 = (JSONObject) jsObject2.get("LINES_ITEM");
              
@@ -424,17 +466,18 @@ public class ReceivingTxnDC extends SyncUtils{
                             s_shipmentLines.add(shipmentLinesItems);
 
                         
-                        ShipmentLinesBO[] shipmentLinesArray =
-                            (ShipmentLinesBO[]) s_shipmentLines.toArray(new ShipmentLinesBO[s_shipmentLines.size()]);
-                        return shipmentLinesArray;
+                        
                 } catch (ParseException e) {
                     e.getMessage();
                 }
             }
-        } else {
-            return null;
-        }
-        return null;
+        } 
+    }
+    
+    public ShipmentLinesBO[] getShipmentLines(){
+        ShipmentLinesBO[] shipmentLinesArray =
+            (ShipmentLinesBO[]) s_shipmentLines.toArray(new ShipmentLinesBO[s_shipmentLines.size()]);
+        return shipmentLinesArray;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
@@ -443,6 +486,14 @@ public class ReceivingTxnDC extends SyncUtils{
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
 }
 

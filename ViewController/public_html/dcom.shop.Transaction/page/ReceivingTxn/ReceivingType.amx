@@ -6,7 +6,7 @@
       <amx:outputText value="Receiving Transaction" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" action="__back"/>
+      <amx:commandButton id="cb1" action="backToMain"/>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
@@ -36,13 +36,9 @@
                         <amx:panelLabelAndMessage label="#{pageFlowScope.receivingType=='S' ? 'Supplier' : 'Customer'}" inlineStyle="text-align:center;" id="pldam3"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf25" width="60%">
-                        <amx:inputText id="it32" readOnly="true" value="#{bindings.supplierCustomerName.inputValue}"/>
+                        <amx:inputText id="it32" readOnly="true" value="#{pageFlowScope.suppCustName}"/>
         </amx:cellFormat>
-                    <amx:cellFormat width="10px" halign="end" id="cf5">
-                        <amx:commandLink id="cb3" action="getValue">
-                            <amx:outputHtml id="o3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-            </amx:commandLink>
-                    </amx:cellFormat>
+                    
                 </amx:rowLayout>
     </amx:tableLayout>
     <amx:spacer id="s1" height="10"/>    
@@ -58,5 +54,27 @@
       <amx:inputDate label="Shipped Date" id="id1"/>
       <amx:inputText label="Comments" id="it6" rows="4"/>
     </amx:panelFormLayout>
+    <amx:outputText value="Line Items" id="ot3323" inlineStyle="font-size:large; font-weight:bold;"/>
+    <amx:commandButton text="Add Lines" id="cb3" action="addLine"/>
+    <amx:listView var="row" value="#{bindings.lines.collectionModel}" fetchSize="#{bindings.lines.rangeSize}"
+                  selectedRowKeys="#{bindings.lines.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:tableLayout width="100%" id="tl2">
+          <amx:rowLayout id="rl1">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf2"/>
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf1">
+              <amx:outputText value="#{row.lines}" id="ot3"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf3">
+              <amx:outputText value="#{row.subInv}" styleClass="adfmf-listItem-captionText" id="ot4"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+      </amx:listItem>
+    </amx:listView>
   </amx:panelPage>
 </amx:view>

@@ -88,6 +88,8 @@
         <page path="/dcom.shop.DispatchList/page/reportTime.amx" usageId="dcom_shop_mobile_reportTimePageDef"/>
         <page path="/dcom.shop.Inquiry/page/itemCateg.amx" usageId="dcom_shop_mobile_itemCategPageDef"/>
         <page path="/dcom.shop.Inquiry/page/itemUDA.amx" usageId="dcom_shop_mobile_itemUDAPageDef"/>
+		        <page path="/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx"
+              usageId="dcom_shop_mobile_lineDetailsPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -157,6 +159,8 @@
         <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
         <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
         <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
+		        <page id="dcom_shop_mobile_lineDetailsPageDef"
+              path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="ProductUdaDC" path="dcom.shop.mobile.ProductUdaDC"/>
