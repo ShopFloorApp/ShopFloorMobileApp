@@ -69,6 +69,9 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XCPLIST");
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XCPLIST_ITEM");
                 if (array != null) {
                     int size = array.size();
@@ -149,7 +152,9 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XREQUEST");
-               
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XREQUEST_ITEM");
                 
                 if (array != null) {
@@ -260,7 +265,9 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XPARAMLIST");
-               
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XPARAMLIST_ITEM");
                 
                 if (array != null) {
@@ -371,7 +378,9 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XLOV");
-               
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XLOV_ITEM");
                 
                 if (array != null) {
