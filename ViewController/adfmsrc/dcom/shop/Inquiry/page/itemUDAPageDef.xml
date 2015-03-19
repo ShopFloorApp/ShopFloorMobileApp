@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="itemUDAPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ProductUdaDC" id="ProductUdaDCIterator"/>
+    <accessorIterator MasterBinding="ProductUdaDCIterator" Binds="allItemUda" RangeSize="25" DataControl="ProductUdaDC"
+                      BeanClass="dcom.shop.Inquiry.ProductDetails.produda.ProductUdaEntity" id="allItemUdaIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allItemUdaIterator" id="allItemUda">
+      <nodeDefinition DefName="dcom.shop.Inquiry.ProductDetails.produda.ProductUdaEntity" Name="allItemUda0">
+        <AttrNames>
+          <Item Value="CATALOGNAME"/>
+          <Item Value="ATTRIBDESC"/>
+          <Item Value="ATTRIBNAME"/>
+          <Item Value="ATTRIBVALUE"/>
+          <Item Value="GROUPNAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
