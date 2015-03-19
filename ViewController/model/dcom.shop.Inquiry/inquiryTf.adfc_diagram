@@ -577,4 +577,74 @@
       <property
          name="sdm:polyPoints">B50,865.0,573.1953,344.0,574.8447,B61</property>
    </ControlFlowCase>
+   <View
+      id="View55">
+      <property
+         name="activityId">itemCateg</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/itemCateg.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>itemCateg&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-57.103516</property>
+      <property
+         name="x">1005.0</property>
+   </View>
+   <View
+      id="View56">
+      <property
+         name="activityId">itemUDA</property>
+      <property
+         name="page">/dcom.shop.Inquiry/page/itemUDA.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>itemUDA&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">111.19531</property>
+      <property
+         name="x">1073.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase57"
+      from="View7"
+      to="View55">
+      <property
+         name="fromOutcome">itemCategDetails</property>
+      <property
+         name="sdm:polyPoints">R38,814.35254,71.04004,961.33624,-60.9541,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase58"
+      from="View7"
+      to="View56">
+      <property
+         name="fromOutcome">itemUdaDetails</property>
+      <property
+         name="sdm:polyPoints">R54,814.71027,85.04004,1032.0,107.34473,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase59"
+      from="View55"
+      to="View7">
+      <property
+         name="fromOutcome">itemCategDetailsback</property>
+      <property
+         name="sdm:polyPoints">L54,964.0,-53.9541,817.0507,81.54004,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase60"
+      from="View56"
+      to="View7">
+      <property
+         name="fromOutcome">itemUdaDetailsBack</property>
+      <property
+         name="sdm:polyPoints">L54,1031.642,114.34473,814.35254,92.04004,R62</property>
+   </ControlFlowCase>
 </SDM>

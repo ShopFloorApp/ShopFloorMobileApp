@@ -86,6 +86,8 @@
         <page path="/dcom.shop.DispatchList/page/returnFromScrap.amx"
               usageId="dcom_shop_mobile_returnFromScrapPageDef"/>
         <page path="/dcom.shop.DispatchList/page/reportTime.amx" usageId="dcom_shop_mobile_reportTimePageDef"/>
+        <page path="/dcom.shop.Inquiry/page/itemCateg.amx" usageId="dcom_shop_mobile_itemCategPageDef"/>
+        <page path="/dcom.shop.Inquiry/page/itemUDA.amx" usageId="dcom_shop_mobile_itemUDAPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -153,8 +155,12 @@
         <page id="dcom_shop_mobile_scrapAssemblyPageDef" path="dcom.shop.DispatchList.page.scrapAssemblyPageDef"/>
         <page id="dcom_shop_mobile_returnFromScrapPageDef" path="dcom.shop.DispatchList.page.returnFromScrapPageDef"/>
         <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
+        <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
+        <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="ProductUdaDC" path="dcom.shop.mobile.ProductUdaDC"/>
+        <dc id="ProductCategDC" path="dcom.shop.mobile.ProductCategDC"/>
         <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
         <dc id="MtlTxnSearchDC" path="dcom.shop.mobile.MtlTxnSearchDC"/>
         <dc id="OnHandSearchDC" path="dcom.shop.mobile.OnHandSearchDC"/>

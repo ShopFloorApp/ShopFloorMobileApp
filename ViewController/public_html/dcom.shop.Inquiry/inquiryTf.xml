@@ -52,6 +52,12 @@
         <view id="mtlTxnDetails">
             <page>/dcom.shop.Inquiry/page/mtlTxnDetails.amx</page>
         </view>
+        <view id="itemCateg">
+            <page>/dcom.shop.Inquiry/page/itemCateg.amx</page>
+        </view>
+        <view id="itemUDA">
+            <page>/dcom.shop.Inquiry/page/itemUDA.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>inquiry</from-activity-id>
             <control-flow-case id="__2">
@@ -109,6 +115,14 @@
             <control-flow-case id="__18">
                 <from-outcome>detailsBack</from-outcome>
                 <to-activity-id>searchProduct</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__47">
+                <from-outcome>itemCategDetails</from-outcome>
+                <to-activity-id>itemCateg</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__48">
+                <from-outcome>itemUdaDetails</from-outcome>
+                <to-activity-id>itemUDA</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__10">
@@ -215,6 +229,20 @@
             <control-flow-case id="__46">
                 <from-outcome>mtlTxnDetailsBack</from-outcome>
                 <to-activity-id>mtlTxnSearch</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__49">
+            <from-activity-id>itemCateg</from-activity-id>
+            <control-flow-case id="__50">
+                <from-outcome>itemCategDetailsback</from-outcome>
+                <to-activity-id>productDetails</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__51">
+            <from-activity-id>itemUDA</from-activity-id>
+            <control-flow-case id="__52">
+                <from-outcome>itemUdaDetailsBack</from-outcome>
+                <to-activity-id>productDetails</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>

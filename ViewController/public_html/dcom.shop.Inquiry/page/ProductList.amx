@@ -44,9 +44,9 @@
                         </amx:rowLayout>                     
                     </amx:tableLayout>
                     <amx:setPropertyListener id="spl" from="#{row.ITEM} " type="action"
-                                             to="#{pageFlowScope.itemId}"/>
+                                             to="#{pageFlowScope.item}"/>
                     <amx:setPropertyListener id="sp2" from="#{row.ORGCODE} " type="action"
-                                             to="#{pageFlowScope.orgId}"/>
+                                             to="#{pageFlowScope.org}"/>
         </amx:listItem>
       </amx:listView>
       </amx:panelGroupLayout>  

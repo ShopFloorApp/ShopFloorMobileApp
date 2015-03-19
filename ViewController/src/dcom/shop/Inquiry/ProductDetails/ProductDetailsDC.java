@@ -41,10 +41,10 @@ public class ProductDetailsDC {
           s_OrgList.add(orgObj);*/
         String itemId = null;
         String orgId = null;
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemId}", String.class);
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.item}", String.class);
         itemId = ((String)ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.orgId}", String.class);
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.org}", String.class);
         orgId = ((String)ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
         String restURI = RestURI.PostItemDetailsURI();

@@ -27,7 +27,17 @@ public class RestURI {
     public static String PostMtlTxnInquiryURI() {
         return MTLTXN_INQUIRY_URI;
     }
+    private static final String ITEM_CATEG_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getitemcateg/";
 
+    public static String PostItemCategInquiryURI() {
+        return ITEM_CATEG_INQUIRY_URI;
+    }
+    
+    private static final String ITEM_UDA_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getitemuda/";
+
+    public static String PostItemUdaInquiryURI() {
+        return ITEM_UDA_INQUIRY_URI;
+    }
 
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
     private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";
