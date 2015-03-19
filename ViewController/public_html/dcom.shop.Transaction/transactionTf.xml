@@ -43,7 +43,7 @@
 
       <input-parameter id="__44">
         <name>receivingType</name>
-        <value>'S'</value>
+        <value>#{'S'}</value>
       </input-parameter>
     </task-flow-call>
 
