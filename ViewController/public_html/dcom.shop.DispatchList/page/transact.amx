@@ -18,40 +18,40 @@
         <amx:tableLayout id="tl1">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1">
-                    <amx:commandLink text="Transact Components" id="cl2"/>
+                    <amx:commandLink text="Transact Components" id="cl2" action="toTransactComponent"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf2">
-                    <amx:commandLink text="Move Assembly" id="cl3"/>
+                    <amx:commandLink text="Move Assembly" id="cl3" action="toMoveAssembly"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf3">
-                    <amx:commandLink text="Return Assembly" id="cl4"/>
+                    <amx:commandLink text="Return Assembly" id="cl4" action="toReturnAssembly"/>
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl2">
                 <amx:cellFormat id="cf4">
-                    <amx:commandLink text="Complete Assembly" id="cl5"/>
+                    <amx:commandLink text="Complete Assembly" id="cl5" action="toCompleteAssembly"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf5">
-                    <amx:commandLink text="Move and Complete" id="cl6"/>
+                    <amx:commandLink text="Move and Complete" id="cl6" action="toMoveComplete"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf6">
-                    <amx:commandLink text="Return and Move" id="cl7"/>
+                    <amx:commandLink text="Return and Move" id="cl7" action="toReturnMove"/>
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl3">
                 <amx:cellFormat id="cf7">
-                    <amx:commandLink text="Scrap Assembly" id="cl8"/>
+                    <amx:commandLink text="Scrap Assembly" id="cl8" action="toScrapAssembly"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf8">
-                    <amx:commandLink text="Return from Scrap" id="cl9"/>
+                    <amx:commandLink text="Return from Scrap" id="cl9" action="toReturnFromScrap"/>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf9">
-                    <amx:commandLink text="Report Time" id="cl10"/>
+                    <amx:commandLink text="Report Time" id="cl10" action="toReportTime"/>
                 </amx:cellFormat>
             </amx:rowLayout>
             <amx:rowLayout id="rl4">
                 <amx:cellFormat id="cf10">
-                    <amx:commandLink text="Clock In/Clock Out" id="cl11"/>
+                    <amx:commandLink text="Clock In/Clock Out" id="cl11" action="toClockInClockOut"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

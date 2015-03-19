@@ -1,7 +1,12 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <SDM>
    <OverallProperties
-      id="OverallProperties1"/>
+      id="OverallProperties1">
+      <property
+         name="y">1033.1641</property>
+      <property
+         name="x">91.65625</property>
+   </OverallProperties>
    <View
       id="View2">
       <property
@@ -15,9 +20,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">137.16797</property>
+         name="y">866.03125</property>
       <property
-         name="x">116.5</property>
+         name="x">91.65625</property>
    </View>
    <View
       id="View3">
@@ -30,9 +35,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">137.60156</property>
+         name="y">603.16797</property>
       <property
-         name="x">494.0</property>
+         name="x">88.67285</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -42,6 +47,231 @@
       <property
          name="fromOutcome">toTransactComponent</property>
       <property
-         name="sdm:polyPoints">R50,157.5,137.10156,453.0,137.53516,L50</property>
+         name="sdm:polyPoints">T44,88.15625,810.2895,88.67285,657.10156,B50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">moveAssembly</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/moveAssembly.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>moveAssembly&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">778.5</property>
+      <property
+         name="x">-121.32715</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View2"
+      to="View5">
+      <property
+         name="fromOutcome">toMoveAssembly</property>
+      <property
+         name="sdm:polyPoints">L50,48.21587,865.96484,-80.32715,778.4336,R50</property>
+   </ControlFlowCase>
+   <View
+      id="View7">
+      <property
+         name="activityId">returnAssembly</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/returnAssembly.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>returnAssembly&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">619.5</property>
+      <property
+         name="x">-148.32715</property>
+   </View>
+   <View
+      id="View8">
+      <property
+         name="activityId">completeAssembly</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/completeAssembly.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>completeAssembly&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">623.7656</property>
+      <property
+         name="x">368.67285</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase9"
+      from="View2"
+      to="View7">
+      <property
+         name="fromOutcome">toReturnAssembly</property>
+      <property
+         name="sdm:polyPoints">L42,50.65625,858.96484,-148.32715,673.4336,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase10"
+      from="View2"
+      to="View8">
+      <property
+         name="fromOutcome">toCompleteAssembly</property>
+      <property
+         name="sdm:polyPoints">T56,95.15625,811.96484,327.67285,623.6992,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View11">
+      <property
+         name="activityId">moveComplete</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/moveComplete.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>moveComplete&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">772.03125</property>
+      <property
+         name="x">280.67285</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View2"
+      to="View11">
+      <property
+         name="fromOutcome">toMoveComplete</property>
+      <property
+         name="sdm:polyPoints">R46,132.65625,862.46484,239.67285,771.96484,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View13">
+      <property
+         name="activityId">returnMove</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/returnMove.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>returnMove&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">944.16406</property>
+      <property
+         name="x">280.67285</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase14"
+      from="View2"
+      to="View13">
+      <property
+         name="fromOutcome">toReturnMove</property>
+      <property
+         name="sdm:polyPoints">R54,132.65625,869.46484,239.67285,944.09766,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View15">
+      <property
+         name="activityId">scrapAssembly</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/scrapAssembly.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>scrapAssembly&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">964.16406</property>
+      <property
+         name="x">-120.32715</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase16"
+      from="View2"
+      to="View15">
+      <property
+         name="fromOutcome">toScrapAssembly</property>
+      <property
+         name="sdm:polyPoints">L58,50.65625,872.96484,-79.32715,964.09766,R50</property>
+   </ControlFlowCase>
+   <View
+      id="View17">
+      <property
+         name="activityId">returnFromScrap</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/returnFromScrap.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>returnFromScrap&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">1085.2969</property>
+      <property
+         name="x">273.67285</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View2"
+      to="View17">
+      <property
+         name="fromOutcome">toReturnFromScrap</property>
+      <property
+         name="sdm:polyPoints">B61,98.65625,919.96484,273.67285,1031.2305,T50</property>
+   </ControlFlowCase>
+   <View
+      id="View19">
+      <property
+         name="activityId">reportTime</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/reportTime.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>reportTime&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">1121.4297</property>
+      <property
+         name="x">-108.32715</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="View2"
+      to="View19">
+      <property
+         name="fromOutcome">toReportTime</property>
+      <property
+         name="sdm:polyPoints">B39,84.65625,919.96484,-108.32715,1067.3633,T50</property>
+   </ControlFlowCase>
+   <View
+      id="View21">
+      <property
+         name="activityId">clockInClockOut</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/clockInClockOut.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>clockInClockOut&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">1122.4297</property>
+      <property
+         name="x">90.67285</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase22"
+      from="View2"
+      to="View21">
+      <property
+         name="fromOutcome">toClockInClockOut</property>
+      <property
+         name="sdm:polyPoints">B50,91.65625,921.70734,90.67285,1068.3633,T50</property>
    </ControlFlowCase>
 </SDM>

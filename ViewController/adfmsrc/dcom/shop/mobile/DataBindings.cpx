@@ -76,8 +76,16 @@
         <page path="/dcom.shop.Inquiry/page/onHandList.amx" usageId="dcom_shop_mobile_onHandListPageDef"/>
         <page path="/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef1"/>
         <page path="/page/LotEntry.amx" usageId="dcom_shop_mobile_LotEntryPageDef"/>
-
         <page path="/dcom.shop.Inquiry/page/mtlTxnList.amx" usageId="dcom_shop_mobile_mtlTxnListPageDef"/>
+<page path="/dcom.shop.DispatchList/page/returnAssembly.amx" usageId="dcom_shop_mobile_returnAssemblyPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/completeAssembly.amx"
+              usageId="dcom_shop_mobile_completeAssemblyPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/moveComplete.amx" usageId="dcom_shop_mobile_moveCompletePageDef"/>
+        <page path="/dcom.shop.DispatchList/page/returnMove.amx" usageId="dcom_shop_mobile_returnMovePageDef"/>
+        <page path="/dcom.shop.DispatchList/page/scrapAssembly.amx" usageId="dcom_shop_mobile_scrapAssemblyPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/returnFromScrap.amx"
+              usageId="dcom_shop_mobile_returnFromScrapPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/reportTime.amx" usageId="dcom_shop_mobile_reportTimePageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -135,16 +143,25 @@
         <page id="dcom_shop_mobile_onHandDetailsPageDef" path="dcom.shop.Inquiry.page.onHandDetailsPageDef"/>
         <page id="dcom_shop_mobile_onHandListPageDef" path="dcom.shop.Inquiry.page.onHandListPageDef"/>
         <page id="dcom_shop_mobile_onHandDetailsPageDef1" path="dcom.shop.mobile.pageDefs.onHandDetailsPageDef"/>
-       <page id="dcom_shop_mobile_LotEntryPageDef" path="page.LotEntryPageDef"/>
+        <page id="dcom_shop_mobile_LotEntryPageDef" path="page.LotEntryPageDef"/>
         <page id="dcom_shop_mobile_mtlTxnListPageDef" path="dcom.shop.Inquiry.page.mtlTxnListPageDef"/>
+          <page id="dcom_shop_mobile_moveAssemblyPageDef" path="dcom.shop.DispatchList.page.moveAssemblyPageDef"/>
+        <page id="dcom_shop_mobile_moveAssemblyPageDef" path="dcom.shop.DispatchList.page.moveAssemblyPageDef"/>
+<page id="dcom_shop_mobile_returnAssemblyPageDef" path="dcom.shop.DispatchList.page.returnAssemblyPageDef"/>
+        <page id="dcom_shop_mobile_completeAssemblyPageDef" path="dcom.shop.DispatchList.page.completeAssemblyPageDef"/>
+        <page id="dcom_shop_mobile_moveCompletePageDef" path="dcom.shop.DispatchList.page.moveCompletePageDef"/>
+        <page id="dcom_shop_mobile_returnMovePageDef" path="dcom.shop.DispatchList.page.returnMovePageDef"/>
+        <page id="dcom_shop_mobile_scrapAssemblyPageDef" path="dcom.shop.DispatchList.page.scrapAssemblyPageDef"/>
+        <page id="dcom_shop_mobile_returnFromScrapPageDef" path="dcom.shop.DispatchList.page.returnFromScrapPageDef"/>
+        <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
-<dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
+        <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
         <dc id="MtlTxnSearchDC" path="dcom.shop.mobile.MtlTxnSearchDC"/>
         <dc id="OnHandSearchDC" path="dcom.shop.mobile.OnHandSearchDC"/>
         <dc id="SerialDC" path="dcom.shop.mobile.SerialDC"/>
         <dc id="OnHandDetailsDC" path="dcom.shop.mobile.OnHandDetailsDC"/>
-<dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
+        <dc id="TransactDC" path="dcom.shop.mobile.TransactDC"/>
         <dc id="ResourcesDC" path="dcom.shop.mobile.ResourcesDC"/>
         <dc id="ComponentsDC" path="dcom.shop.mobile.ComponentsDC"/>
         <dc id="JobPropertiesDC" path="dcom.shop.mobile.JobPropertiesDC"/>

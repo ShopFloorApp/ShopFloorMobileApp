@@ -8,11 +8,74 @@
     <view id="transactComponent">
       <page>/dcom.shop.DispatchList/page/transactComponent.amx</page>
     </view>
+    <view id="moveAssembly">
+      <page>/dcom.shop.DispatchList/page/moveAssembly.amx</page>
+    </view>
+    <view id="returnAssembly">
+      <page>/dcom.shop.DispatchList/page/returnAssembly.amx</page>
+    </view>
+    <view id="completeAssembly">
+      <page>/dcom.shop.DispatchList/page/completeAssembly.amx</page>
+    </view>
+    <view id="moveComplete">
+      <page>/dcom.shop.DispatchList/page/moveComplete.amx</page>
+    </view>
+    <view id="returnMove">
+      <page>/dcom.shop.DispatchList/page/returnMove.amx</page>
+    </view>
+    <view id="scrapAssembly">
+      <page>/dcom.shop.DispatchList/page/scrapAssembly.amx</page>
+    </view>
+    <view id="returnFromScrap">
+      <page>/dcom.shop.DispatchList/page/returnFromScrap.amx</page>
+    </view>
+    <view id="reportTime">
+      <page>/dcom.shop.DispatchList/page/reportTime.amx</page>
+    </view>
+    <view id="clockInClockOut">
+      <page>/dcom.shop.DispatchList/page/clockInClockOut.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>transact</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>toTransactComponent</from-outcome>
         <to-activity-id>transactComponent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>toMoveAssembly</from-outcome>
+        <to-activity-id>moveAssembly</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>toReturnAssembly</from-outcome>
+        <to-activity-id>returnAssembly</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>toCompleteAssembly</from-outcome>
+        <to-activity-id>completeAssembly</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>toMoveComplete</from-outcome>
+        <to-activity-id>moveComplete</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>toReturnMove</from-outcome>
+        <to-activity-id>returnMove</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>toScrapAssembly</from-outcome>
+        <to-activity-id>scrapAssembly</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>toReturnFromScrap</from-outcome>
+        <to-activity-id>returnFromScrap</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>toReportTime</from-outcome>
+        <to-activity-id>reportTime</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>toClockInClockOut</from-outcome>
+        <to-activity-id>clockInClockOut</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

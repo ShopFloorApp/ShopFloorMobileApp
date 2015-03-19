@@ -22,9 +22,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">393.20624</property>
+         name="y">397.13983</property>
       <property
-         name="x">75.65625</property>
+         name="x">74.65625</property>
    </View>
    <View
       id="View4">
@@ -37,9 +37,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">393.33905</property>
+         name="y">397.20624</property>
       <property
-         name="x">265.0459</property>
+         name="x">264.0459</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -49,7 +49,7 @@
       <property
          name="fromOutcome">toJobOpr</property>
       <property
-         name="sdm:polyPoints">R46,116.660576,389.63983,224.0459,389.77264,L46</property>
+         name="sdm:polyPoints">R46,115.65842,393.57343,223.0459,393.63983,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -59,7 +59,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L54,224.04156,396.77264,116.65625,396.63983,R54</property>
+         name="sdm:polyPoints">L54,223.04373,400.63983,115.65625,400.57343,R54</property>
    </ControlFlowCase>
    <View
       id="View7">
@@ -84,7 +84,7 @@
       <property
          name="fromOutcome">toWorkContent</property>
       <property
-         name="sdm:polyPoints">R46,306.0459,389.77264,383.16504,389.77264,L46</property>
+         name="sdm:polyPoints">R46,305.0459,393.63983,383.1486,393.27264,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -94,7 +94,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L54,383.16504,396.77264,306.0459,396.77264,R54</property>
+         name="sdm:polyPoints">L58,383.16504,400.27264,305.06235,400.63983,R54</property>
    </ControlFlowCase>
    <View
       id="View10">
@@ -137,9 +137,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">427.76562</property>
+         name="y">393.6328</property>
       <property
-         name="x">598.92285</property>
+         name="x">658.92285</property>
    </View>
    <View
       id="View13">
@@ -224,7 +224,7 @@
       <property
          name="fromsrcid">__6</property>
       <property
-         name="sdm:polyPoints">R50,465.16504,393.27264,557.92285,427.69922,L50</property>
+         name="sdm:polyPoints">R50,465.16504,393.27264,617.92285,393.5664,L50</property>
    </ControlFlowCase>
    <View
       id="View19">
@@ -262,9 +262,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">432.66797</property>
+         name="y">393.40234</property>
       <property
-         name="x">763.0</property>
+         name="x">846.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -274,7 +274,7 @@
       <property
          name="fromOutcome">toDetails</property>
       <property
-         name="sdm:polyPoints">R50,639.92285,427.69922,722.0,432.60156,L50</property>
+         name="sdm:polyPoints">R50,699.92285,393.5664,805.0,393.33594,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
