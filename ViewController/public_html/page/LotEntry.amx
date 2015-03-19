@@ -9,7 +9,10 @@
             <!--amx:commandButton id="cb1"/-->
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Save" action="Back"/>
+            <amx:commandButton id="cb2" text="Save" rendered="#{pageFlowScope.ParentPage == 'MiscTrxn' ? true : false}"
+                               action="BackToPage"/>
+            <amx:commandButton id="cb1" text="Save"
+                               rendered="#{pageFlowScope.ParentPage == 'SubinvTxfr' ? true : false}" action="Back"/>
         </amx:facet>
         <amx:panelGroupLayout id="pgl6">
             <amx:panelGroupLayout id="pgl8" layout="horizontal">
@@ -55,36 +58,35 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-            </amx:panelGroupLayout>
-            <amx:listView var="row" value="#{bindings.lots.collectionModel}" fetchSize="#{bindings.lots.rangeSize}"
-                          selectedRowKeys="#{bindings.lots.collectionModel.selectedRow}"
-                          selectionListener="#{bindings.lots.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                          bufferStrategy="viewport" id="lv2">
-                <amx:listItem id="li2">
-                    <amx:tableLayout id="tl1" width="95%">
-                        <amx:rowLayout id="rl4">
-                            <amx:cellFormat id="cf3s252" width="30%">
-                                <amx:outputText value="#{row.lotNo}" id="ot2"/>
-                            </amx:cellFormat>
-                            <amx:cellFormat id="cf5" width="30%">
-                                <amx:outputText value="#{row.lotQty}" id="ot4"/>
-                            </amx:cellFormat>
-                            <!--amx:cellFormat id="cf1" width="30%">
+        </amx:panelGroupLayout>
+        <amx:listView var="row" value="#{bindings.lots.collectionModel}" fetchSize="#{bindings.lots.rangeSize}"
+                      selectedRowKeys="#{bindings.lots.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.lots.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                      bufferStrategy="viewport" id="lv2">
+            <amx:listItem id="li2">
+                <amx:tableLayout id="tl1" width="95%">
+                    <amx:rowLayout id="rl4">
+                        <amx:cellFormat id="cf3s252" width="30%">
+                            <amx:outputText value="#{row.lotNo}" id="ot2"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf5" width="30%">
+                            <amx:outputText value="#{row.lotQty}" id="ot4"/>
+                        </amx:cellFormat>
+                        <!--amx:cellFormat id="cf1" width="30%">
                             <amx:outputText value="#{row.serialId}" id="ot5"/>
                         </amx:cellFormat-->
-                            <amx:cellFormat width="5%" halign="end" id="cf3">
-                                <amx:commandLink id="cb3" actionListener="#{bindings.deleteRecord.execute}">
-                                    <amx:outputHtml id="oh3" styleClass="fa fa-remove fa-lg"
-                                                    inlineStyle="color:#34AADC;"/>
-                                    <amx:setPropertyListener from="#{row.lotId}" to="#{pageFlowScope.deleteLotId}"
-                                                             id="spl4"/>
-                                    <amx:setPropertyListener from="#{row.lotQty}" to="#{pageFlowScope.deleteLotQty}"
-                                                             id="spl1"/>
-                                </amx:commandLink>
-                            </amx:cellFormat>
-                        </amx:rowLayout>
-                    </amx:tableLayout>
-                </amx:listItem>
-            </amx:listView>
-        </amx:panelPage>
+                        <amx:cellFormat width="5%" halign="end" id="cf3">
+                            <amx:commandLink id="cb3" actionListener="#{bindings.deleteRecord.execute}">
+                                <amx:outputHtml id="oh3" styleClass="fa fa-remove fa-lg" inlineStyle="color:#34AADC;"/>
+                                <amx:setPropertyListener from="#{row.lotId}" to="#{pageFlowScope.deleteLotId}"
+                                                         id="spl4"/>
+                                <amx:setPropertyListener from="#{row.lotQty}" to="#{pageFlowScope.deleteLotQty}"
+                                                         id="spl1"/>
+                            </amx:commandLink>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
 </amx:view>

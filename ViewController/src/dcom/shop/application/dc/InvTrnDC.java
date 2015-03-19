@@ -149,7 +149,7 @@ public class InvTrnDC extends RestCallerUtil {
 
             HashMap filterFileds = new HashMap();
             Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
-            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TrxType}");
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
             filterFileds.put("trxtype", trxnType);
 
@@ -174,7 +174,7 @@ public class InvTrnDC extends RestCallerUtil {
 
             HashMap filterFileds = new HashMap();
             Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
-            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TrxType}");
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
             filterFileds.put("trxtype", trxnType);
 
@@ -221,7 +221,7 @@ public class InvTrnDC extends RestCallerUtil {
         miscTxn.setTrxType(trxnType);
         s_miscTrxns.add(miscTxn);
         SyncUtils syncUtils = new SyncUtils();
-        syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
+        //syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
         if ("SUBMIT".equals(trxType))
             ProcessMiscTrxnWS();
         return "cancel";
@@ -267,7 +267,7 @@ public class InvTrnDC extends RestCallerUtil {
             "                 },\n" + "   \"InputParameters\": \n" + "      {\"PINVTXN\": { \"ITEM\": \"" + item +
             "\", \"SOURCSUBINV\": \"" + fromSubInv + "\", \"SOURCELOCATOR\": \"" + fromLocator + "\",\"TXNUOM\": \"" +
             uom + "\", \"TRXQTY\": \"" + qty + "\", \"ACCOUNTALIAS\": \"" + acctAlias + "\", \"SOURCEORGCODE\": \"" +
-            sourceOrg + "\", \"TRXTYPE\": \"" + trxType + "\", \"DESTORG\": \"" + destOrg + "          \"LOTS\": {\n" +
+            sourceOrg + "\", \"TRXTYPE\": \"" + trxType + "\", \"DESTORG\": \"" + destOrg + "\",          \"LOTS\": {\n" +
             "            \"XXDCOM_LOT_TAB\": [";
         System.out.println("Calling create method");
         LotBO lot = new LotBO();
@@ -292,6 +292,7 @@ public class InvTrnDC extends RestCallerUtil {
         payload = payload + "]}\n" + "}}}}";
         try {
             String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
+
             System.out.println("Received response" + jsonArrayAsString);
         } catch (Exception e) {
             System.out.println("error " + e.toString());

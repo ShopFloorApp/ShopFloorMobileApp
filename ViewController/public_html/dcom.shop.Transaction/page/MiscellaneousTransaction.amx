@@ -164,11 +164,11 @@
         <amx:panelGroupLayout id="pgl4" layout="horizontal">
             <amx:commandButton text="Cancel" id="cb23" action="Back"/>
             <amx:commandButton text="Add to Queue" action="cancel"
-                               actionListener="#{bindings.invokeInvTrnDC.execute}" id="cb5">
+                               actionListener="#{bindings.InsertMiscTransaction.execute}" id="cb5">
                 <amx:setPropertyListener id="spl8" from="QUEUE" to="#{pageFlowScope.TrxnType}" type="action"/>
             </amx:commandButton>
             <amx:commandButton text="Save &amp; Complete" action="cancel"
-                               actionListener="#{bindings.invokeInvTrnDC.execute}" id="cb2">
+                               actionListener="#{bindings.InsertMiscTransaction.execute}" id="cb2">
                 <amx:setPropertyListener id="spl10" from="SUBMIT" to="#{pageFlowScope.TrxnType}" type="action"/>
             </amx:commandButton>
         </amx:panelGroupLayout>
