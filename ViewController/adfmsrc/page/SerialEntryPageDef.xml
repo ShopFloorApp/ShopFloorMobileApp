@@ -25,6 +25,7 @@
       <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.String"/>
       <NamedData NDName="fromSerial" NDValue="#{pageFlowScope.RangeOff ? bindings.fromSerial.inputValue : bindings.fromSerialRange.inputValue}" NDType="java.lang.String"/>
       <NamedData NDName="toSerial" NDValue="#{pageFlowScope.RangeOff ? bindings.toSerial.inputValue : bindings.fromSerialRange.inputValue}" NDType="java.lang.String"/>
+      <NamedData NDName="trxType" NDValue="#{pageFlowScope.ParentPage}" NDType="java.lang.String"/>
     </methodAction>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="SerialDC" InstanceName="data.SerialDC.dataProvider"/>
@@ -32,6 +33,7 @@
                   IsViewObjectMethod="false" DataControl="SerialDC" InstanceName="data.SerialDC.dataProvider">
       <NamedData NDName="serialId" NDValue="#{pageFlowScope.deleteSerialId}" NDType="int"/>
       <NamedData NDName="serialQty" NDValue="#{pageFlowScope.deleteSerialQty}" NDType="int"/>
+      <NamedData NDName="trxType" NDValue="#{pageFlowScope.ParentPage}" NDType="java.lang.String"/>
     </methodAction>
     <attributeValues IterBinding="SerialDCIterator" id="fromSerial">
       <AttrNames>

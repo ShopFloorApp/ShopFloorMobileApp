@@ -11,11 +11,12 @@ public class LotBO {
     public LotBO() {
         super();
     }
-    public LotBO(int lotId, int trxnId, String lotNo, int lotQty) {
+    public LotBO(int lotId, int trxnId, String lotNo, int lotQty,String trxType) {
         this.LotId = lotId;
         this.TrxnId = trxnId;
         this.LotNo = lotNo;
         this.LotQty = lotQty;
+        this.TrxType = trxType;
     }
     private int LotId;
     private int TrxnId;
@@ -62,6 +63,15 @@ public class LotBO {
     private String LotNo;
     private int LotQty;
 
+    public void setTrxType(String TrxType) {
+        this.TrxType = TrxType;
+    }
+
+    public String getTrxType() {
+        return TrxType;
+    }
+    private String TrxType;
+
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
     }
@@ -90,6 +100,7 @@ public class LotBO {
         this.setTrxnId(trxnId);
         this.setLotNo((String) hashMap.get("lotno"));
          this.setLotQty(lotQty);
+         this.setTrxType((String)hashMap.get("trxtype"));
 
     }
 
@@ -99,6 +110,7 @@ public class LotBO {
         map.put("trxnid", lot.getTrxnId());
         map.put("lotno", lot.getLotNo());
          map.put("lotqty", (lot.getLotQty()));
+         map.put("trxtype",lot.getTrxType());
         return map;
     }
 }

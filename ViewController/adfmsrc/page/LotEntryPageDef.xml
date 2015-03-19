@@ -31,12 +31,14 @@
                   IsViewObjectMethod="false" DataControl="LotDC" InstanceName="data.LotDC.dataProvider">
       <NamedData NDName="lotId" NDValue="#{pageFlowScope.lotId}" NDType="int"/>
       <NamedData NDName="lotQty" NDValue="#{pageFlowScope.lotQty}" NDType="int"/>
+      <NamedData NDName="trxType" NDValue="#{pageFlowScope.ParentPage}" NDType="java.lang.String"/>
     </methodAction>
     <methodAction id="insertLots" RequiresUpdateModel="true" Action="invokeMethod" MethodName="insertLots"
                   IsViewObjectMethod="false" DataControl="LotDC" InstanceName="data.LotDC.dataProvider">
       <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.String"/>
       <NamedData NDName="lotNo" NDValue="#{bindings.lotNo.inputValue}" NDType="java.lang.String"/>
       <NamedData NDName="lotQty" NDValue="#{bindings.lotQty.inputValue}" NDType="int"/>
+      <NamedData NDName="trxType" NDValue="#{pageFlowScope.ParentPage}" NDType="java.lang.String"/>
     </methodAction>
   </bindings>
 </pageDefinition>

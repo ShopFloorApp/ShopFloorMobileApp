@@ -107,14 +107,16 @@ public class LotDC extends SyncUtils{
                 int trxnId = rs.getInt(2);
                 String lotNo = rs.getString(3);
                 int lotQty = rs.getInt(4);
+                String trxType = rs.getString(5);
                 if (lots != null && lots.size() >= recordCount) {
                     LotBO lot = (LotBO) lots.get(lotId);
                     lot.setLotId(lotId);
                     lot.setLotNo(lotNo);
                     lot.setLotQty(lotQty);
                     lot.setTrxnId(trxnId);
+                    lot.setTrxType(trxType);
                 } else {
-                    LotBO lot = new LotBO(lotId, trxnId, lotNo, lotQty);
+                    LotBO lot = new LotBO(lotId, trxnId, lotNo, lotQty,trxType);
                     lots.add(lot);
                 }
             }
@@ -132,7 +134,7 @@ public class LotDC extends SyncUtils{
         return lots;
     }
 
-    public void insertLots(String trxnId, String lotNo, int lotQty) {
+    public void insertLots(String trxnId, String lotNo, int lotQty, String trxType) {
         s_insertLots.clear();
         qtyEntered = qtyEntered + lotQty;
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
@@ -151,6 +153,7 @@ public class LotDC extends SyncUtils{
         lot.setTrxnId((Integer) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
         lot.setLotNo(lotNo);
         lot.setLotQty(lotQty);
+        lot.setTrxType(trxType);
         s_insertLots.add(lot);
         boolean insertStatus = super.insertSqlLiteTable(LotBO.class, s_insertLots);
         if(insertStatus){
@@ -164,12 +167,13 @@ public class LotDC extends SyncUtils{
         providerChangeSupport.fireProviderRefresh("lots");
     }
 
-    public void deleteRecord(int lotId, int lotQty) {
+    public void deleteRecord(int lotId, int lotQty, String trxType) {
         Connection conn = null;
         try {
             conn = ConnectionFactory.getConnection();
             Statement stmt = conn.createStatement();
-            stmt.executeQuery("DELETE FROM LOT WHERE LOTID = " + lotId + ";");
+            stmt.executeQuery("DELETE FROM LOT WHERE LOTID = " + lotId + " " +
+                "AND TRXTYPE = \""+trxType+"\" ;");
             qtyEntered = qtyEntered - lotQty;
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyLotEntered}", String.class);
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);

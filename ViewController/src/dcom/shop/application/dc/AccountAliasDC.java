@@ -1,9 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
-
 import dcom.shop.application.mobile.AccountAliasBO;
-
 import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
@@ -90,6 +88,7 @@ public class AccountAliasDC extends SyncUtils {
         }
 
     public AccountAliasBO[] getAccountAlias() {
+        s_accountAlias = super.getOfflineCollection(AccountAliasBO.class);
         
         AccountAliasBO[] aliasArray = (AccountAliasBO[]) s_accountAlias.toArray(new AccountAliasBO[s_accountAlias.size()]);
         return aliasArray;

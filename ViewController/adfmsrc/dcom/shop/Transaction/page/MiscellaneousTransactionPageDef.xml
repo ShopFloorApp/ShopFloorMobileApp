@@ -33,13 +33,6 @@
         <Item Value="accountSegment"/>
       </ListDisplayAttrNames>
     </list>
-    <methodAction id="invokeGetSubInvByOrgIdDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="SubinventoryDC"
-                  InstanceName="data.SubinventoryDC.dataProvider"/>
-    <methodAction id="invokeLocatorDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider">
-      <NamedData NDName="subInv" NDValue="#{pageFlowScope.MiscTrxnSubinv}" NDType="java.lang.String"/>
-    </methodAction>
     <list IterBinding="variables" StaticList="true" id="TrxTypeList">
       <AttrNames>
         <Item Value="p_TrxType"/>
@@ -49,11 +42,11 @@
         <Item Value="Miscellaneous Issues"/>
       </ValueList>
     </list>
-    <methodAction id="invokeInvTrnDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessMiscTrxnWS"
+    <methodAction id="invokeInvTrnDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertMiscTransaction"
                   IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider">
-      <NamedData NDName="trxType" NDValue="#{pageFlowScope.TrxType}" NDType="java.lang.String"/>
+      <NamedData NDName="trxType" NDValue="#{pageFlowScope.TrxnType}" NDType="java.lang.String"/>
     </methodAction>
-    <list IterBinding="SubinventoryDCIterator" id="subInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+    <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="subinventoriesIterator">
       <AttrNames>
         <Item Value="subInv"/>
@@ -79,5 +72,10 @@
         <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
   </bindings>
 </pageDefinition>

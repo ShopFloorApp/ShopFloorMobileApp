@@ -12,12 +12,13 @@ public class SerialBO {
         super();
     }
 
-    public SerialBO(int serialId, int trxnId, String fromSerial, String toSerial, int serialQty) {
+    public SerialBO(int serialId, int trxnId, String fromSerial, String toSerial, int serialQty, String trxType) {
         this.SerialId = serialId;
         this.TrxnId = trxnId;
         this.FromSerial = fromSerial;
         this.ToSerial = toSerial;
         this.SerialQty = serialQty;
+        this.TrxType = trxType;
     }
 
     public void setSerialId(int SerialId) {
@@ -73,7 +74,16 @@ public class SerialBO {
     public int getSerialQty() {
         return SerialQty;
     }
+
+    public void setTrxType(String TrxType) {
+        this.TrxType = TrxType;
+    }
+
+    public String getTrxType() {
+        return TrxType;
+    }
     private int SerialQty;
+    private String TrxType;
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
@@ -104,6 +114,7 @@ public class SerialBO {
         this.setFromSerial((String) hashMap.get("fromserial"));
         this.setToSerial((String) hashMap.get("toserial"));
         this.setSerialQty(serialQty);
+        this.setTrxType((String)hashMap.get("trxtype"));
 
     }
 
@@ -114,6 +125,7 @@ public class SerialBO {
         map.put("fromserial", serial.getFromSerial());
         map.put("toserial", serial.getToSerial());
         map.put("serialqty", (serial.getSerialQty()));
+        map.put("trxtype",(serial.getTrxType()));
         return map;
     }
 }

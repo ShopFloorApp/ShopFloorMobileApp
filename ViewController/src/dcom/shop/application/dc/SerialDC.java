@@ -122,6 +122,7 @@ public class SerialDC extends SyncUtils {
                 String fromSerial = rs.getString(3);
                 String toSerial = rs.getString(4);
                 int serialQty = rs.getInt(5);
+                String trxType = rs.getString(6);
                 if (serials != null && serials.size() >= recordCount) {
                     SerialBO serial = (SerialBO) serials.get(serialId);
                     serial.setSerialId(serialId);
@@ -129,8 +130,9 @@ public class SerialDC extends SyncUtils {
                     serial.setToSerial(toSerial);
                     serial.setSerialQty(serialQty);
                     serial.setTrxnId(trxnId);
+                    serial.setTrxType(trxType);
                 } else {
-                    SerialBO serial = new SerialBO(serialId, trxnId, fromSerial, toSerial, serialQty);
+                    SerialBO serial = new SerialBO(serialId, trxnId, fromSerial, toSerial, serialQty,trxType);
                     serials.add(serial);
                 }
             }
@@ -148,7 +150,7 @@ public class SerialDC extends SyncUtils {
         return serials;
     }
 
-    public void insertSerials(String trxnId, String fromSerial, String toSerial) {
+    public void insertSerials(String trxnId, String fromSerial, String toSerial, String trxType) {
         s_insertSerials.clear();
         int qty = Integer.parseInt(toSerial) - Integer.parseInt(fromSerial) + 1;
         qtyEntered = qtyEntered + qty;
@@ -169,6 +171,8 @@ public class SerialDC extends SyncUtils {
         serial.setFromSerial(fromSerial);
         serial.setToSerial(toSerial);
         serial.setSerialQty(qty);
+        serial.setTrxType(trxType);
+        
         s_insertSerials.add(serial);
         boolean insertStatus = super.insertSqlLiteTable(SerialBO.class, s_insertSerials);
         if(insertStatus){
@@ -183,12 +187,13 @@ public class SerialDC extends SyncUtils {
         providerChangeSupport.fireProviderRefresh("serials");
     }
 
-    public void deleteRecord(int serialId, int serialQty) {
+    public void deleteRecord(int serialId, int serialQty, String trxType) {
         Connection conn = null;
         try {
             conn = ConnectionFactory.getConnection();
             Statement stmt = conn.createStatement();
-            stmt.executeQuery("DELETE FROM SERIAL WHERE SERIALID = " + serialId + ";");
+            stmt.executeQuery("DELETE FROM SERIAL WHERE SERIALID = " + serialId + " " +
+                "AND TRXTYPE = \""+trxType+"\" ;");
             qtyEntered = qtyEntered - serialQty;
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyEntered}", String.class);
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
