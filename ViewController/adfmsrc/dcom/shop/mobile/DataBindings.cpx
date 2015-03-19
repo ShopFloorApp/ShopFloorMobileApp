@@ -146,7 +146,6 @@
         <page id="dcom_shop_mobile_LotEntryPageDef" path="page.LotEntryPageDef"/>
         <page id="dcom_shop_mobile_mtlTxnListPageDef" path="dcom.shop.Inquiry.page.mtlTxnListPageDef"/>
           <page id="dcom_shop_mobile_moveAssemblyPageDef" path="dcom.shop.DispatchList.page.moveAssemblyPageDef"/>
-        <page id="dcom_shop_mobile_moveAssemblyPageDef" path="dcom.shop.DispatchList.page.moveAssemblyPageDef"/>
 <page id="dcom_shop_mobile_returnAssemblyPageDef" path="dcom.shop.DispatchList.page.returnAssemblyPageDef"/>
         <page id="dcom_shop_mobile_completeAssemblyPageDef" path="dcom.shop.DispatchList.page.completeAssemblyPageDef"/>
         <page id="dcom_shop_mobile_moveCompletePageDef" path="dcom.shop.DispatchList.page.moveCompletePageDef"/>
