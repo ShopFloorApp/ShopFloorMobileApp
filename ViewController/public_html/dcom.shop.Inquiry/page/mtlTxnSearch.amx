@@ -38,9 +38,9 @@
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.subInv.inputValue}" 
+                    <amx:selectOneChoice value="#{bindings.subFromInv.inputValue}" 
                                           valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
-                        <amx:selectItems value="#{bindings.subInv.items}" id="si1"/>
+                        <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
