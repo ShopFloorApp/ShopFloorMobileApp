@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="reportTimePageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
+    <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="transactIterator" id="trxType">
+      <AttrNames>
+        <Item Value="trxType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="trxQty">
+      <AttrNames>
+        <Item Value="trxQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="txnUom">
+      <AttrNames>
+        <Item Value="txnUom"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
