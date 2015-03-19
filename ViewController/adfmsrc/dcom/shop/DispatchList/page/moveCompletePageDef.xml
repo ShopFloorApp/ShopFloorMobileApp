@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="moveCompletePageDef"
+                Package="dcom.shop.DispatchList.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
+    <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="transactIterator" id="trxType">
+      <AttrNames>
+        <Item Value="trxType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="fromOpSeq">
+      <AttrNames>
+        <Item Value="fromOpSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="toOpSeq">
+      <AttrNames>
+        <Item Value="toOpSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="txnUom">
+      <AttrNames>
+        <Item Value="txnUom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="trxQty">
+      <AttrNames>
+        <Item Value="trxQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="kanban">
+      <AttrNames>
+        <Item Value="kanban"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="subinv">
+      <AttrNames>
+        <Item Value="subinv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="locator">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="salesOrder">
+      <AttrNames>
+        <Item Value="salesOrder"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="reason">
+      <AttrNames>
+        <Item Value="reason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="reference">
+      <AttrNames>
+        <Item Value="reference"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="notes">
+      <AttrNames>
+        <Item Value="notes"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>
