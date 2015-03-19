@@ -8,7 +8,7 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 public class OpSeqBO {
     private String orgCode;
     private BigDecimal opSeq;
-    private String opcode;
+    private String oPcode;
     private String deptCode;
     private BigDecimal queueQty;
     private BigDecimal runQty;
@@ -44,14 +44,15 @@ public class OpSeqBO {
         return opSeq;
     }
 
-    public void setOpcode(String opcode) {
-        String oldOpcode = this.opcode;
-        this.opcode = opcode;
-        propertyChangeSupport.firePropertyChange("opcode", oldOpcode, opcode);
+
+    public void setOPcode(String oPcode) {
+        String oldOPcode = this.oPcode;
+        this.oPcode = oPcode;
+        propertyChangeSupport.firePropertyChange("oPcode", oldOPcode, oPcode);
     }
 
-    public String getOpcode() {
-        return opcode;
+    public String getOPcode() {
+        return oPcode;
     }
 
     public void setDeptCode(String deptCode) {

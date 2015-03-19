@@ -62,6 +62,10 @@ public class TransactDC {
         "          \"NOTES\": \""+transactBo.getNotes()+"\",\n" + 
         "          \"REFERENCE\": \""+transactBo.getReference()+"\",\n" + 
         "          \"KANBAN\": \""+transactBo.getKanban()+"\",\n" + 
+        "          \"SCRAPQTY\": \""+transactBo.getScrapQty()+"\",\n"+
+        "          \"FROMSTEP\": \""+transactBo.getFromStep()+"\",\n"+  
+        "          \"TOSTEP\": \""+transactBo.getToStep()+"\",\n"+
+        "          \"OVERCOMPLFLAG\": \""+transactBo.getOverComplFlag()+"\",\n"+
         "          \"ATTRIB\": \"\",\n" + 
         "          \"LOTS\": {\n" + 
         "            \"APPS.XXDCOM_LOT_TAB\": {\n" + 

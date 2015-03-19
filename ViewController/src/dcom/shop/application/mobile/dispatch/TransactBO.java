@@ -20,6 +20,7 @@ public class TransactBO {
     private String lpn;
     private String sourceCode;
     private BigDecimal trxQty;
+    private BigDecimal scrapQty;
     private String txnUom;
     private String glAccount;
     private String accountAlias;
@@ -28,6 +29,9 @@ public class TransactBO {
     private String trxSource;
     private String wipEntityName;
     private String dept;
+    private String fromStep;
+    private String toStep;
+    private String overComplFlag;
     private String fromOpSeq;
     private String toOpSeq;
     private String createdBy;
@@ -38,12 +42,73 @@ public class TransactBO {
     private String attrib;
     private Serials lots;
     private Lots serials;
+    private Boolean isNewEntity;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public TransactBO() {
         super();
     }
 
+    public void setIsNewEntity(Boolean isNewEntity) {
+        Boolean oldIsNewEntity = this.isNewEntity;
+        this.isNewEntity = isNewEntity;
+        propertyChangeSupport.firePropertyChange("isNewEntity", oldIsNewEntity, isNewEntity);
+    }
+
+    public Boolean getIsNewEntity() {
+        return isNewEntity;
+    }
+
+    public void setScrapQty(BigDecimal scrapQty) {
+        BigDecimal oldScrapQty = this.scrapQty;
+        this.scrapQty = scrapQty;
+        propertyChangeSupport.firePropertyChange("scrapQty", oldScrapQty, scrapQty);
+    }
+
+    public BigDecimal getScrapQty() {
+        return scrapQty;
+    }
+
+    public void setFromStep(String fromStep) {
+        String oldFromStep = this.fromStep;
+        this.fromStep = fromStep;
+        propertyChangeSupport.firePropertyChange("fromStep", oldFromStep, fromStep);
+    }
+
+    public String getFromStep() {
+        return fromStep;
+    }
+
+    public void setToStep(String toStep) {
+        String oldToStep = this.toStep;
+        this.toStep = toStep;
+        propertyChangeSupport.firePropertyChange("toStep", oldToStep, toStep);
+    }
+
+    public String getToStep() {
+        return toStep;
+    }
+
+    public void setOverComplFlag(String overComplFlag) {
+        String oldOverComplFlag = this.overComplFlag;
+        this.overComplFlag = overComplFlag;
+        propertyChangeSupport.firePropertyChange("overComplFlag", oldOverComplFlag, overComplFlag);
+    }
+
+    public String getOverComplFlag() {
+        return overComplFlag;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
+        this.propertyChangeSupport = propertyChangeSupport;
+        propertyChangeSupport.firePropertyChange("propertyChangeSupport", oldPropertyChangeSupport,
+                                                 propertyChangeSupport);
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
+    }
 
     public void setTrxRef(BigDecimal trxRef) {
         BigDecimal oldTrxRef = this.trxRef;

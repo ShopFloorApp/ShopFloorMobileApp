@@ -9,11 +9,6 @@
                       BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="transactIterator" id="trxType">
-      <AttrNames>
-        <Item Value="trxType"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="transactIterator" id="fromOpSeq">
       <AttrNames>
         <Item Value="fromOpSeq"/>
@@ -50,5 +45,14 @@
       <NamedData NDName="transactBo" NDValue="#{bindings.transactIterator.currentRow.dataProvider}"
                  NDType="dcom.shop.application.mobile.dispatch.TransactBO"/>
     </methodAction>
+    <list IterBinding="transactIterator" StaticList="true" id="trxType">
+      <AttrNames>
+        <Item Value="trxType"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="WIP Issue"/>
+        <Item Value="WIP Return"/>
+      </ValueList>
+    </list>
   </bindings>
 </pageDefinition>
