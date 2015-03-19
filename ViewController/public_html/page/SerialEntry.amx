@@ -9,7 +9,8 @@
             <!--amx:commandButton id="cb1"/-->
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Save" action="Back"/>
+            <amx:commandButton id="cb2" text="Save" rendered="#{pageFlowScope.ParentPage == 'MiscTrxn' ? true : false}" action="BackToPage"/>
+            <amx:commandButton id="cb1" text="Save" rendered="#{pageFlowScope.ParentPage == 'SubinvTxfr' ? true : false}" action="Back"/>
         </amx:facet>
         <!--amx:panelStretchLayout id="psl1">
         <amx:facet name="top">

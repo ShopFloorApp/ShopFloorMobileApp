@@ -22,7 +22,7 @@
                     <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf5" width="60%">
-                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.itemNumber}"/>
+                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}"/>
                 </amx:cellFormat>
                 <amx:cellFormat width="10px" halign="end" id="cf1">
                     <amx:commandLink id="cb3" action="ItemLOV">
@@ -106,10 +106,9 @@
                     <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf11" width="60%">
-                    <amx:selectOneChoice value="#{bindings.subinventories.inputValue}" id="soc5"
-                                         valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
-                        <?audit suppress oracle.maf.warning-missing-label?>
-                        <amx:selectItems value="#{bindings.subinventories.items}" id="si5"/>
+                    <amx:selectOneChoice value="#{bindings.subInv.inputValue}" label="#{bindings.subInv.label}"
+                                         id="soc4" valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
+                        <amx:selectItems value="#{bindings.subInv.items}" id="si4"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -118,9 +117,9 @@
                     <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam7"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf12" width="60%">
-                    <amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
-                        <?audit suppress oracle.maf.warning-missing-label?>
-                        <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
+                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}" label="#{bindings.fromLoc.label}"
+                                         id="soc5">
+                        <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -134,6 +133,29 @@
                                    styleClass="adfmf-listItem-captionText" id="it11">
                         <?audit suppress oracle.maf.warning-missing-hintText?>
                     </amx:inputText>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl2">
+                <amx:cellFormat id="cf16">
+                    <amx:spacer width="13" id="s6"></amx:spacer>
+                    <amx:commandLink id="cl1" text="Serial Entry" action="SerialEntry">
+                        <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.SerialQty}"
+                                                 id="spl1"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
+                                                 id="spl2"/>
+                        <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
+                        <amx:setPropertyListener from="MiscTrxn" to="#{pageFlowScope.ParentPage}" id="spl7"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf17">
+                    <amx:spacer width="25" id="s7"></amx:spacer>
+                    <amx:commandLink id="cl2" text="Lot Entry" action="LotEntry">
+                        <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.LotQty}"
+                                                 id="spl5"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"
+                                                 id="spl6"/>
+                        <amx:setPropertyListener from="MiscTrxn" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                    </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

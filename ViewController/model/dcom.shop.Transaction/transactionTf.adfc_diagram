@@ -286,7 +286,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L50,721.11194,183.44824,582.6953,64.5459,R54</property>
+         name="sdm:polyPoints">L50,721.23047,183.44824,582.6953,71.5459,R62</property>
    </ControlFlowCase>
    <View
       id="View25">
@@ -495,5 +495,34 @@
          name="fromOutcome">Back</property>
       <property
          name="sdm:polyPoints">L54,797.88086,64.74707,586.41425,57.5459,R46</property>
+   </ControlFlowCase>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule43">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">-55.402344</property>
+      <property
+         name="x">879.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase44"
+      from="WildcardControlFlowRule43"
+      to="View40">
+      <property
+         name="fromOutcome">LotEntry</property>
+      <property
+         name="sdm:polyPoints">B50,879.0,-12.75293,839.0,7.2470703,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase45"
+      from="WildcardControlFlowRule43"
+      to="View33">
+      <property
+         name="fromOutcome">SerialEntry</property>
+      <property
+         name="sdm:polyPoints">L50,843.0,-55.25293,805.5,-88.9541,R50</property>
    </ControlFlowCase>
 </SDM>

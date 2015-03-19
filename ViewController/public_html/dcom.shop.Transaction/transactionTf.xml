@@ -194,5 +194,16 @@
         <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
+    <control-flow-rule id="__40">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__41">
+        <from-outcome>LotEntry</from-outcome>
+        <to-activity-id>LotEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__42">
+        <from-outcome>SerialEntry</from-outcome>
+        <to-activity-id>SerialEntry</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
   </task-flow-definition>
 </adfc-mobile-config>
