@@ -12,7 +12,7 @@
       <amx:commandButton id="cb2"/>
     </amx:facet>
     <amx:panelGroupLayout id="pgl2">
-      <amx:validationGroup id="vg1">
+      <amx:panelFormLayout id="pfl1">
         <amx:selectOneChoice value="#{pageFlowScope.lineAdd}" label="#{bindings.item.label}" id="soc1">
           <amx:selectItem label=" " id="si4"/>
           <amx:selectItems value="#{bindings.item.items}" id="si1"/>
@@ -28,12 +28,12 @@
         </amx:selectOneChoice>
         <amx:inputText label="Quantity" id="it1" value="#{pageFlowScope.quantityAdd}"/>
         <amx:inputText value="#{bindings.isNewEntity.inputValue}" simple="true" id="it6" rendered="false"/>
-      </amx:validationGroup>
+      </amx:panelFormLayout>
     </amx:panelGroupLayout>
     <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="center" valign="middle">
       <amx:commandButton text="Add" id="cb3" action="__back"
                          actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}">
-        <amx:validationBehavior id="vb1" group="vg1"/>
+       
       </amx:commandButton>
 
     </amx:panelGroupLayout>
