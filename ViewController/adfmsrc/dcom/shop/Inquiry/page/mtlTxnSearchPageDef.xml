@@ -19,18 +19,6 @@
                       id="transactionTypeIterator"/>
   </executables>
   <bindings>
-    <list IterBinding="subinventoriesIterator" ListOperMode="navigation" ListIter="subinventoriesIterator"
-          id="subinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="subinv"/>
-        <Item Value="description"/>
-      </AttrNames>
-    </list>
-    <attributeValues IterBinding="subinventoriesIterator" id="FromSubInv">
-      <AttrNames>
-        <Item Value="subinv"/>
-      </AttrNames>
-    </attributeValues>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
     <list IterBinding="locatorsIterator" ListOperMode="navigation" ListIter="locatorsIterator" id="locators"
@@ -57,7 +45,7 @@
         <Item Value="transactionType"/>
       </ListDisplayAttrNames>
     </list>
-    <list IterBinding="SubinventoryDCIterator" id="subInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+    <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="subinventoriesIterator"
           NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
           NullValueFlag="start">
