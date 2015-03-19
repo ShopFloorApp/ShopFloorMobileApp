@@ -40,6 +40,11 @@
         <document>/dcom.shop.Transaction/ReceivingTransaction.xml</document>
         <id>ReceivingTransaction</id>
       </task-flow-reference>
+
+      <input-parameter id="__44">
+        <name>receivingType</name>
+        <value>'S'</value>
+      </input-parameter>
     </task-flow-call>
 
     <view id="SerialEntry">

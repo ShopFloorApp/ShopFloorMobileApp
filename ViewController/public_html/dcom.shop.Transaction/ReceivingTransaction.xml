@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="ReceivingTransaction">
     <default-activity>ReceivingType</default-activity>
+    <input-parameter-definition id="__8">
+      <name>receivingType</name>
+      <value>#{pageFlowScope.receivingType}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
     <managed-bean id="__5">
       <managed-bean-name>ReceivingTxnUtilBean</managed-bean-name>
       <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>

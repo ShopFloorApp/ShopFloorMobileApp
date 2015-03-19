@@ -8,6 +8,7 @@ public class LinesBO {
     private String subInv;
     private String locator;
     private String quantity;
+    private String isNewEntity;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public void setLines(String Lines) {
@@ -18,6 +19,16 @@ public class LinesBO {
 
     public String getLines() {
         return Lines;
+    }
+
+    public void setIsNewEntity(String isNewEntity) {
+        String oldIsNewEntity = this.isNewEntity;
+        this.isNewEntity = isNewEntity;
+        propertyChangeSupport.firePropertyChange("isNewEntity", oldIsNewEntity, isNewEntity);
+    }
+
+    public String getIsNewEntity() {
+        return isNewEntity;
     }
 
     public void setSubInv(String subInv) {
@@ -53,12 +64,13 @@ public class LinesBO {
     public LinesBO() {
         super();
     }
-    public LinesBO(String line,String subInv,String locator,String Quantity) {
+    public LinesBO(String line,String subInv,String locator,String Quantity,String isNewEntity) {
         super();
         this.Lines=line;
         this.subInv=subInv;
         this.locator=locator;
         this.quantity=Quantity;
+        this.isNewEntity=isNewEntity;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

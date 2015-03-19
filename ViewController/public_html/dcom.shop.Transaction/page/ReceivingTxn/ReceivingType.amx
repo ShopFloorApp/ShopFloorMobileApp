@@ -6,7 +6,8 @@
       <amx:outputText value="Receiving Transaction" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" action="backToMain"/>
+      <amx:commandButton id="cb1" action="backToMain"
+                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.removeRecords}"/>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
@@ -44,18 +45,19 @@
     <amx:spacer id="s1" height="10"/>    
     <amx:outputText value="Carrier Details" id="ot332" inlineStyle="font-size:large; font-weight:bold;"/>
     <amx:panelFormLayout id="pfl1">
-      <amx:selectOneChoice label="Carries" id="soc1">
+      <amx:selectOneChoice label="Carries" id="soc1" value="#{pageFlowSope.carrier}">
         <amx:selectItems value="#{bindings.carriers.items}" id="si4"/>
       </amx:selectOneChoice>
-      <amx:inputText label="Pack Slip" id="it2"/>
-      <amx:inputText label="BOL" id="it3"/>
-      <amx:inputText label="Waybill/Airbill" id="it4"/>
-      <amx:inputText label="Shipment" id="it5"/>
-      <amx:inputDate label="Shipped Date" id="id1"/>
-      <amx:inputText label="Comments" id="it6" rows="4"/>
+      <amx:inputText label="Pack Slip" id="it2" value="#{pageFlowSope.packSlip}"/>
+      <amx:inputText label="BOL" id="it3" value="#{pageFlowSope.bol}"/>
+      <amx:inputText label="Waybill/Airbill" id="it4" value="#{pageFlowSope.wayAirBill}"/>
+      <amx:inputText label="Shipment" id="it5" value="#{pageFlowSope.shipment}"/>
+      <amx:inputDate label="Shipped Date" id="id1" value="#{pageFlowSope.shippedDate}"/>
+      <amx:inputText label="Comments" id="it6" rows="4" value="#{pageFlowSope.comments}"/>
     </amx:panelFormLayout>
     <amx:outputText value="Line Items" id="ot3323" inlineStyle="font-size:large; font-weight:bold;"/>
-    <amx:commandButton text="Add Lines" id="cb3" action="addLine"/>
+    <amx:commandButton text="Add Lines" id="cb3" action="addLine"
+                       actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"/>
     <amx:listView var="row" value="#{bindings.lines.collectionModel}" fetchSize="#{bindings.lines.rangeSize}"
                   selectedRowKeys="#{bindings.lines.collectionModel.selectedRow}"
                   selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"

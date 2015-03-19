@@ -26,7 +26,8 @@
   <bindings>
     <list IterBinding="variables" id="item" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="shipmentLinesIterator"
-          NullValueFlag="end" NullValueId="item_null">
+          NullValueFlag="start"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
       <AttrNames>
         <Item Value="itemVar"/>
         <Item Value="subInvVar"/>
@@ -42,7 +43,8 @@
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="variables" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-          StaticList="false" ListIter="subInventoriesIterator" NullValueFlag="start" NullValueId="subinv_null">
+          StaticList="false" ListIter="subInventoriesIterator" NullValueFlag="start"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
       <AttrNames>
         <Item Value="subInvVar"/>
       </AttrNames>
@@ -54,7 +56,8 @@
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="variables" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-          StaticList="false" ListIter="locatorsIterator" NullValueFlag="start" NullValueId="locator_null">
+          StaticList="false" ListIter="locatorsIterator" NullValueFlag="start"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
       <AttrNames>
         <Item Value="locatorVar"/>
       </AttrNames>
@@ -93,8 +96,10 @@
         <Item Value="quantity"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="linesIterator" id="isNewEntity">
+      <AttrNames>
+        <Item Value="isNewEntity"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
-  <ResourceBundle>
-    <XliffBundle xmlns="http://xmlns.oracle.com/adfm/resourcebundle" id="dcom.shop.mobile.ViewControllerBundle"/>
-  </ResourceBundle>
 </pageDefinition>

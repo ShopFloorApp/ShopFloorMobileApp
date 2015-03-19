@@ -91,7 +91,7 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">60.448242</property>
+         name="y">60.097656</property>
       <property
          name="x">44.5</property>
    </View>
@@ -107,6 +107,6 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">L50,378.0,342.84473,44.5,114.44824,B50</property>
+         name="sdm:polyPoints">L50,378.0,342.84473,44.5,113.74707,B50</property>
    </ControlFlowCase>
 </SDM>

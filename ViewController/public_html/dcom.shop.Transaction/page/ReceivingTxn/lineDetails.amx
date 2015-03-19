@@ -11,21 +11,31 @@
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
-    <amx:panelFormLayout id="pfl1">
-      <amx:selectOneChoice value="#{bindings.lines.inputValue}" label="#{bindings.item.label}" id="soc1">
-        <amx:selectItems value="#{bindings.item.items}" id="si1"/>
-      </amx:selectOneChoice>
-      <amx:selectOneChoice value="#{bindings.subInv.inputValue}" label="#{bindings.subinv.label}" id="soc2"
-                           valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}">
-        <amx:selectItems value="#{bindings.subinv.items}" id="si2"/>
-      </amx:selectOneChoice>
-      <amx:selectOneChoice value="#{bindings.locator1.inputValue}" label="#{bindings.locator.label}" id="soc3">
-        <amx:selectItems value="#{bindings.locator.items}" id="si3"/>
-      </amx:selectOneChoice>
-      <amx:inputText label="Quantity" id="it1" value="#{bindings.quantity.inputValue}"/>
-    </amx:panelFormLayout>
+    <amx:panelGroupLayout id="pgl2">
+      <amx:validationGroup id="vg1">
+        <amx:selectOneChoice value="#{pageFlowScope.lineAdd}" label="#{bindings.item.label}" id="soc1">
+          <amx:selectItem label=" " id="si4"/>
+          <amx:selectItems value="#{bindings.item.items}" id="si1"/>
+        </amx:selectOneChoice>
+        <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="#{bindings.subinv.label}" id="soc2"
+                             valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}">
+          <amx:selectItem label=" " id="si5"/>
+          <amx:selectItems value="#{bindings.subinv.items}" id="si2"/>
+        </amx:selectOneChoice>
+        <amx:selectOneChoice value="#{pageFlowScope.locatorAdd}" label="#{bindings.locator.label}" id="soc3">
+          <amx:selectItem label=" " id="si6"/>
+          <amx:selectItems value="#{bindings.locator.items}" id="si3"/>
+        </amx:selectOneChoice>
+        <amx:inputText label="Quantity" id="it1" value="#{pageFlowScope.quantityAdd}"/>
+        <amx:inputText value="#{bindings.isNewEntity.inputValue}" simple="true" id="it6" rendered="false"/>
+      </amx:validationGroup>
+    </amx:panelGroupLayout>
     <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="center" valign="middle">
-      <amx:commandButton text="Add" id="cb3" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"/>
+      <amx:commandButton text="Add" id="cb3" action="__back"
+                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}">
+        <amx:validationBehavior id="vb1" group="vg1"/>
+      </amx:commandButton>
+
     </amx:panelGroupLayout>
     <amx:panelFormLayout id="pfl2" rendered="false">
       <amx:inputText value="#{bindings.lines.inputValue}" label="#{bindings.lines.hints.label}" id="it5"/>
