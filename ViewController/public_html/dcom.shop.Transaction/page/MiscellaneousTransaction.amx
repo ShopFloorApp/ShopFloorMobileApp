@@ -87,6 +87,7 @@
                 <amx:cellFormat id="cf27">
                     <amx:selectOneChoice value="#{pageFlowScope.TrxType}" id="soc1">
                         <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:selectItem label="Choose Transaction Type" value="0" id="si4"/>
                         <amx:selectItems value="#{bindings.TrxTypeList.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
@@ -98,6 +99,7 @@
                 <amx:cellFormat id="cf15">
                     <amx:selectOneChoice value="#{pageFlowScope.accountAlias}" id="soc3">
                         <?audit suppress oracle.maf.warning-missing-label?>
+                        <amx:selectItem label="Choose Account Alias" value="0" id="si2"/>
                         <amx:selectItems value="#{bindings.accountAlias.items}" id="si3"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
@@ -109,7 +111,8 @@
                 <amx:cellFormat id="cf11" width="60%">
                     <amx:selectOneChoice value="#{bindings.subFromInv.inputValue}" id="soc4"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
-                        <amx:selectItems value="#{bindings.subFromInv.items}" id="si4"/>
+                        <amx:selectItem label="Choose Subinventory" value="0" id="si6"/>
+                        <amx:selectItems value="#{bindings.subFromInv.items}" id="si7"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -120,6 +123,7 @@
                 <amx:cellFormat id="cf12" width="60%">
                     <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"
                                          valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc5">
+                        <amx:selectItem label="Choose Locator" value="0" id="si8"/>
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
