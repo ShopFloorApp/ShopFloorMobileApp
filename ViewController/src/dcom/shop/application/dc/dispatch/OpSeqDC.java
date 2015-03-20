@@ -22,8 +22,25 @@ public class OpSeqDC extends AViewObject {
     }
 
     public OpSeqBO[] getOpSeq() {
-        RestCallerUtil restCallerUtil = new RestCallerUtil();
         OpSeqBO[] opSeqArray = null;
+        if (opSeqList.size() > 0) {
+            opSeqList.clear();
+        }
+        //Trying to check network connectivity
+        if (!isOffline()) {
+            //Calling Web service
+            getCollectionFromWS();
+            if (opSeqList.size() > 0) {
+                opSeqArray = opSeqList.toArray(new OpSeqBO[opSeqList.size()]);
+            }
+
+        }
+        return opSeqArray;
+    }
+
+    private void getCollectionFromWS() {
+        RestCallerUtil restCallerUtil = new RestCallerUtil();
+
 
         String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
         String jobNumber = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}").toString();
@@ -73,9 +90,6 @@ public class OpSeqDC extends AViewObject {
                             opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("QUEUEQTY")));
 
                             opSeqList.add(opSeqObj);
-                            opSeqArray = opSeqList.toArray(new OpSeqBO[opSeqList.size()]);
-                            return opSeqArray;
-
                         }
                     }
                 } else {
@@ -96,14 +110,13 @@ public class OpSeqDC extends AViewObject {
 
                     opSeqObj.setScrapQty(getAttributeValue(xopObject.get("CSCRAPQTY")));
                     opSeqObj.setScrapQty(getAttributeValue(xopObject.get("QUEUEQTY")));
-                    opSeqArray = new OpSeqBO[1];
-                    opSeqArray[1] = opSeqObj;
-                    return opSeqArray;
+                    opSeqList.add(opSeqObj);
+
                 }
             } catch (Exception e) {
                 e.getMessage();
             }
         }
-        return opSeqArray;
+
     }
 }
