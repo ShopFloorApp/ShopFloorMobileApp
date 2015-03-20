@@ -59,6 +59,12 @@
     <view id="LotEntry">
       <page>/page/LotEntry.amx</page>
     </view>
+    <task-flow-call id="LpnTransaction">
+      <task-flow-reference>
+        <document>/dcom.shop.Transaction/LpnTransactionTF.xml</document>
+        <id>LpnTransactionTF</id>
+      </task-flow-reference>
+    </task-flow-call>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -87,6 +93,10 @@
       <control-flow-case id="__24">
         <from-outcome>mtrTrxn</from-outcome>
         <to-activity-id>MaterialTransaction</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__43">
+        <from-outcome>lpnTransTF</from-outcome>
+        <to-activity-id>LpnTransaction</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__8">

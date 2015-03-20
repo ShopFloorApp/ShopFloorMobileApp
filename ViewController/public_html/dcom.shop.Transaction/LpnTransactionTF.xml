@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="LpnTransactionTF">
+    <default-activity>LpnTransactions</default-activity>
+    <view id="LpnTransactions">
+      <page>/dcom.shop.Transaction/LpnTransactions.amx</page>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <view id="LpnTxnDetails">
+      <page>/dcom.shop.Transaction/LpnTxnDetails.amx</page>
+    </view>
+    <view id="LpnLOVPG">
+      <page>/page/LovPage/LpnLOVPG.amx</page>
+    </view>
+    <view id="itemLOVPG">
+      <page>/page/LovPage/itemLOVPG.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>LpnTransactions</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>unpack</from-outcome>
+        <to-activity-id>LpnTxnDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>LpnTxnDetails</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>lpnLOV</from-outcome>
+        <to-activity-id>LpnLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>ItemLOV</from-outcome>
+        <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

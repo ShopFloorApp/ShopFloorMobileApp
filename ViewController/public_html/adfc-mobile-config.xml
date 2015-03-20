@@ -10,4 +10,9 @@
     <managed-bean-class>dcom.shop.application.base.WindowBean</managed-bean-class>
     <managed-bean-scope>application</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__3">
+    <managed-bean-name>StateListener</managed-bean-name>
+    <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
 </adfc-mobile-config>

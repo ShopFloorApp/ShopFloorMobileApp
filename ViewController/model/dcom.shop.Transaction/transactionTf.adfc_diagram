@@ -525,4 +525,31 @@
       <property
          name="sdm:polyPoints">L50,843.0,-55.25293,805.5,-88.9541,R50</property>
    </ControlFlowCase>
+   <TaskFlowCall
+      id="TaskFlowCall46">
+      <property
+         name="taskFlowId">LpnTransactionTF</property>
+      <property
+         name="activityId">LpnTransaction</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/LpnTransactionTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnTransaction&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-74.4541</property>
+      <property
+         name="x">-8.0</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase47"
+      from="View4"
+      to="TaskFlowCall46">
+      <property
+         name="fromOutcome">lpnTransTF</property>
+      <property
+         name="sdm:polyPoints">T50,31.350586,2.6435547,-8.0,-20.804688,B50</property>
+   </ControlFlowCase>
 </SDM>
