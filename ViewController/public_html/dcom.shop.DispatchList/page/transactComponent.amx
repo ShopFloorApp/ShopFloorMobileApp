@@ -17,6 +17,9 @@
             <amx:selectOneChoice label="Type" id="soc1" value="#{bindings.trxType.inputValue}">
                 <amx:selectItems id="si2" value="#{bindings.trxType.items}"/>
             </amx:selectOneChoice>
+            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Op Seq" id="soc2">
+                <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
+            </amx:selectOneChoice>
             <amx:inputText value="#{bindings.fromOpSeq.inputValue}" label="#{bindings.fromOpSeq.hints.label}" id="it2"/>
             <amx:inputText value="#{bindings.item.inputValue}" label="#{bindings.item.hints.label}" id="it5"/>
             <amx:inputText value="#{bindings.subinv.inputValue}" label="#{bindings.subinv.hints.label}" id="it7"/>

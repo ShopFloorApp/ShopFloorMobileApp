@@ -32,7 +32,7 @@ public class TransactBO {
     private String fromStep;
     private String toStep;
     private String overComplFlag;
-    private String fromOpSeq;
+    private BigDecimal fromOpSeq;
     private String toOpSeq;
     private String createdBy;
     private String salesOrder;
@@ -314,13 +314,14 @@ public class TransactBO {
         return dept;
     }
 
-    public void setFromOpSeq(String fromOpSeq) {
-        String oldFromOpSeq = this.fromOpSeq;
+
+    public void setFromOpSeq(BigDecimal fromOpSeq) {
+        BigDecimal oldFromOpSeq = this.fromOpSeq;
         this.fromOpSeq = fromOpSeq;
         propertyChangeSupport.firePropertyChange("fromOpSeq", oldFromOpSeq, fromOpSeq);
     }
 
-    public String getFromOpSeq() {
+    public BigDecimal getFromOpSeq() {
         return fromOpSeq;
     }
 

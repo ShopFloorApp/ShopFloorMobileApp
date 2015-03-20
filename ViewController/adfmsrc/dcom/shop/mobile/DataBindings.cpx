@@ -163,6 +163,7 @@
               path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
         <dc id="ProductUdaDC" path="dcom.shop.mobile.ProductUdaDC"/>
         <dc id="ProductCategDC" path="dcom.shop.mobile.ProductCategDC"/>
         <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>

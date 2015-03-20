@@ -7,13 +7,11 @@
     <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
     <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
                       BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OpSeqDC" id="OpSeqDCIterator"/>
+    <accessorIterator MasterBinding="OpSeqDCIterator" Binds="opSeq" RangeSize="-1" DataControl="OpSeqDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.OpSeqBO" id="opSeqIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="transactIterator" id="fromOpSeq">
-      <AttrNames>
-        <Item Value="fromOpSeq"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="transactIterator" id="item">
       <AttrNames>
         <Item Value="item"/>
@@ -53,6 +51,17 @@
         <Item Value="WIP Issue"/>
         <Item Value="WIP Return"/>
       </ValueList>
+    </list>
+    <list StaticList="false" IterBinding="transactIterator" ListIter="opSeqIterator" id="fromOpSeq">
+      <AttrNames>
+        <Item Value="fromOpSeq"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="opSeq"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="opSeq"/>
+      </ListDisplayAttrNames>
     </list>
   </bindings>
 </pageDefinition>
