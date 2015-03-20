@@ -3,7 +3,7 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="Item Uset Defined Attributes" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
        <amx:commandLink id="cl1" action="itemCategDetailsback">
@@ -20,8 +20,8 @@
                     <amx:cellFormat width="50%" id="cf22">
                         <amx:panelLabelAndMessage label="Catalog Name" inlineStyle="text-al;ign:left;" id="plam222223"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
-                    <amx:cellFormat width="50%" id="cf22">
-                        <amx:panelLabelAndMessage label="Group Name" inlineStyle="text-al;ign:left;" id="plam222223"></amx:panelLabelAndMessage>
+                    <amx:cellFormat width="50%" id="cf2666662">
+                        <amx:panelLabelAndMessage label="Group Name" inlineStyle="text-al;ign:left;" id="plam227772223"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl212">
@@ -56,7 +56,7 @@
                         <amx:cellFormat width="50%" height="12px" id="cf1">
                             <amx:outputText value="#{row.ATTRIBNAME}" styleClass="adfmf-listItem-captionText" id="ot3"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="end" id="cf2">
+                        <amx:cellFormat width="50%"  id="cf2">
                             <amx:outputText value="#{row.ATTRIBVALUE}" styleClass="adfmf-listItem-captionText" id="ot5"/>
                         </amx:cellFormat>
                     </amx:rowLayout>

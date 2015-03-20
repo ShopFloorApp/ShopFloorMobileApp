@@ -3,10 +3,10 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="LPN Details" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
+      <amx:commandButton id="cb1" rendered="false"/>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandLink id="cl1" action = "lpnDetailsBack">
@@ -21,7 +21,7 @@
                             <amx:panelLabelAndMessage label="LPN" inlineStyle="text-al;ign:left;"
                                                       id="plam222223"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="start" id="cf33">
+                        <amx:cellFormat width="50%"  id="cf33">
                             <amx:panelLabelAndMessage label="LPN Status" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -30,7 +30,7 @@
                             <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:left;"
                                                       id="plam2222223"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="start" id="cf323">
+                        <amx:cellFormat width="50%"  id="cf323">
                             <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:left;" id="pl3am22222"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -44,7 +44,7 @@
                             <amx:outputText value="#{pageFlowScope.lpn}"
                                                 styleClass="adfmf-listItem-captionText" id="ot15"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="start" id="cf3">
+                        <amx:cellFormat width="50%"  id="cf3">
                             <amx:outputText value="#{pageFlowScope.lpnstatus}"
                                                 styleClass="adfmf-listItem-captionText" id="ot16"/>
                         </amx:cellFormat>
@@ -54,7 +54,7 @@
                             <amx:outputText value="#{pageFlowScope.subinv}"
                                                 styleClass="adfmf-listItem-captionText" id="ot17"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="start" id="cf453">
+                        <amx:cellFormat width="50%"  id="cf453">
                             <amx:outputText value="#{pageFlowScope.locator}"
                                                 styleClass="adfmf-listItem-captionText" id="ot18"/>
                         </amx:cellFormat>
@@ -69,7 +69,7 @@
                             <amx:panelLabelAndMessage label="ITEM" inlineStyle="text-al;ign:left;"
                                                       id="plam223"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="start" id="cf92">
+                        <amx:cellFormat width="50%"  id="cf92">
                             <amx:panelLabelAndMessage label="ITEM DESC" inlineStyle="text-align:left;" id="plam224"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -78,7 +78,7 @@
                             <amx:panelLabelAndMessage label="On-HandQty/Avail Qty" inlineStyle="text-align:left;"
                                                       id="plam225"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%" halign="start" id="cf94">
+                        <amx:cellFormat width="50%"  id="cf94">
                             <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:left;" id="plam226"></amx:panelLabelAndMessage>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -94,21 +94,21 @@
                         
                         <amx:rowLayout id="rl">
                             <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
-                            <amx:cellFormat width="60%" height="28px" id="cf4">
+                            <amx:cellFormat width="50%" height="28px" id="cf4">
                                 <amx:outputText value="#{row.ITEM}" id="ot2"/>
                              </amx:cellFormat>
                             <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
-                            <amx:cellFormat width="40%" halign="end" id="cf38">
+                            <amx:cellFormat width="50%"  id="cf38">
                                 <amx:outputText value="#{row.ITEMDESC}" styleClass="adfmf-listItem-highlightText"
                                                 id="ot4"/>
                             </amx:cellFormat>
                         </amx:rowLayout>
                         <amx:rowLayout id="r2">
-                            <amx:cellFormat width="60%" height="12px" id="cf1">
+                            <amx:cellFormat width="50%" height="12px" id="cf1">
                                 <amx:outputText value="#{row.ONHANDQTY}/#{row.AVAILABLEQTY}" styleClass="adfmf-listItem-captionText"
                                                 id="ot3"/>
                             </amx:cellFormat>
-                            <amx:cellFormat width="40%" halign="end" id="cf2">
+                            <amx:cellFormat width="50%" halign="end" id="cf2">
                                 <amx:outputText value="#{row.UOM}"
                                                 styleClass="adfmf-listItem-captionText" id="ot5"/>
                             </amx:cellFormat>

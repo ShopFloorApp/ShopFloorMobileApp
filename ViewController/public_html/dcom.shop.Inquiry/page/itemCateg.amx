@@ -22,10 +22,10 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl212">
-                    <amx:cellFormat width="60%" id="cf222">
+                    <amx:cellFormat width="50%" id="cf222">
                         <amx:panelLabelAndMessage label="Category Code" inlineStyle="text-align:left;" id="plam2222223"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
-                    <amx:cellFormat width="40%" halign="start" id="cf323">
+                    <amx:cellFormat width="50%"  id="cf323">
                         <amx:panelLabelAndMessage label="Category Description" inlineStyle="text-align:left;"
                                                   id="pl3am22222"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
@@ -41,16 +41,16 @@
                 <amx:tableLayout width="100%" id="tl">
                     <amx:rowLayout id="rl">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
-                        <amx:cellFormat width="60%" height="28px" id="cf4">
+                        <amx:cellFormat width="50%" height="28px" id="cf4">
                             <amx:outputText value="#{row.CATNAME}" id="ot2"/>
                         </amx:cellFormat>
                         <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
                     </amx:rowLayout>
                     <amx:rowLayout id="r2">
-                        <amx:cellFormat width="60%" height="12px" id="cf1">
+                        <amx:cellFormat width="50%" height="12px" id="cf1">
                             <amx:outputText value="#{row.CATCODE}" styleClass="adfmf-listItem-captionText" id="ot3"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="40%" halign="end" id="cf2">
+                        <amx:cellFormat width="50%"  id="cf2">
                             <amx:outputText value="#{row.CATDESC}" styleClass="adfmf-listItem-captionText" id="ot5"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
