@@ -20,14 +20,17 @@
             <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Op Seq" id="soc2">
                 <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
             </amx:selectOneChoice>
-            <amx:inputText value="#{bindings.fromOpSeq.inputValue}" label="#{bindings.fromOpSeq.hints.label}" id="it2"/>
-            <amx:inputText value="#{bindings.item.inputValue}" label="#{bindings.item.hints.label}" id="it5"/>
+            <amx:selectOneChoice value="#{bindings.item.inputValue}" label="Component" id="soc3">
+                <amx:selectItems value="#{bindings.item.items}" id="si3"/>
+            </amx:selectOneChoice>
             <amx:inputText value="#{bindings.subinv.inputValue}" label="#{bindings.subinv.hints.label}" id="it7"/>
             <amx:inputText value="#{bindings.locator.inputValue}" label="#{bindings.locator.hints.label}" id="it6"/>
             <amx:inputText value="#{bindings.trxQty.inputValue}" label="#{bindings.trxQty.hints.label}" id="it1"/>
             <amx:inputText value="#{bindings.txnUom.inputValue}" label="#{bindings.txnUom.hints.label}" id="it4"/>
         </amx:panelFormLayout>
-        <amx:commandButton actionListener="#{bindings.saveTransaction.execute}" text="saveTransaction"
-                           disabled="#{!bindings.saveTransaction.enabled}" id="cb1"/>
+        <amx:facet name="footer">
+            <amx:commandButton actionListener="#{bindings.saveTransaction.execute}" text="Save"
+                               disabled="#{!bindings.saveTransaction.enabled}" id="cb1"/>
+        </amx:facet>
     </amx:panelPage>
 </amx:view>

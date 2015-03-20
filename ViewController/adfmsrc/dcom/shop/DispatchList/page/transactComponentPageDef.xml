@@ -10,13 +10,11 @@
     <iterator Binds="root" RangeSize="25" DataControl="OpSeqDC" id="OpSeqDCIterator"/>
     <accessorIterator MasterBinding="OpSeqDCIterator" Binds="opSeq" RangeSize="-1" DataControl="OpSeqDC"
                       BeanClass="dcom.shop.application.mobile.dispatch.OpSeqBO" id="opSeqIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ItemDC" id="ItemDCIterator"/>
+    <accessorIterator MasterBinding="ItemDCIterator" Binds="allItems" RangeSize="-1" DataControl="ItemDC"
+                      BeanClass="dcom.shop.application.mobile.ItemBO" id="allItemsIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="transactIterator" id="item">
-      <AttrNames>
-        <Item Value="item"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="transactIterator" id="subinv">
       <AttrNames>
         <Item Value="subinv"/>
@@ -61,6 +59,17 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="opSeq"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list StaticList="false" IterBinding="transactIterator" ListIter="allItemsIterator" id="item">
+      <AttrNames>
+        <Item Value="item"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="inventoryItemId"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="itemNum"/>
       </ListDisplayAttrNames>
     </list>
   </bindings>
