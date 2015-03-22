@@ -20,7 +20,7 @@
                     <amx:cellFormat width="50%" id="cf22">
                         <amx:panelLabelAndMessage label="Catalog Name" inlineStyle="text-al;ign:left;" id="plam222223"/>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf3"width="50%">
+                    <amx:cellFormat id="cf3" width="50%">
                         <amx:panelLabelAndMessage label="Group Name" inlineStyle="text-al;ign:left;" id="plam1"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
