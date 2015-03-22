@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Item Uset Defined Attributes" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-       <amx:commandLink id="cl1" action="itemCategDetailsback">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Item Uset Defined Attributes" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="itemCategDetailsback">
                 <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2" rendered="false"/>
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl1"
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" rendered="false"/>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1"
                               inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
             <amx:tableLayout width="100%" id="tl2">
                 <amx:rowLayout id="rl12">
                     <amx:cellFormat width="50%" id="cf22">
-                        <amx:panelLabelAndMessage label="Catalog Name" inlineStyle="text-al;ign:left;" id="plam222223"></amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Catalog Name" inlineStyle="text-al;ign:left;" id="plam222223"/>
                     </amx:cellFormat>
-                    <amx:cellFormat width="50%" id="cf2666662">
-                        <amx:panelLabelAndMessage label="Group Name" inlineStyle="text-al;ign:left;" id="plam227772223"></amx:panelLabelAndMessage>
+                    <amx:cellFormat id="cf3"width="50%">
+                        <amx:panelLabelAndMessage label="Group Name" inlineStyle="text-al;ign:left;" id="plam1"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl212">
                     <amx:cellFormat width="50%" id="cf222">
-                        <amx:panelLabelAndMessage label="Attribute Name" inlineStyle="text-align:left;" id="plam2222223"></amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Attribute Name" inlineStyle="text-align:left;"
+                                                  id="plam2222223"/>
                     </amx:cellFormat>
                     <amx:cellFormat width="50%" halign="start" id="cf323">
                         <amx:panelLabelAndMessage label="Attribute Value" inlineStyle="text-align:left;"
-                                                  id="pl3am22222"></amx:panelLabelAndMessage>
+                                                  id="pl3am22222"/>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
@@ -47,7 +48,7 @@
                         <amx:cellFormat width="50%" height="28px" id="cf4">
                             <amx:outputText value="#{row.CATALOGNAME}" id="ot2"/>
                         </amx:cellFormat>
-                       <amx:cellFormat width="10px" rowSpan="2" id="cf555"/>
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf555"/>
                         <amx:cellFormat width="50%" height="28px" id="cf433">
                             <amx:outputText value="#{row.GROUPNAME}" id="ot2ww"/>
                         </amx:cellFormat>
@@ -56,8 +57,9 @@
                         <amx:cellFormat width="50%" height="12px" id="cf1">
                             <amx:outputText value="#{row.ATTRIBNAME}" styleClass="adfmf-listItem-captionText" id="ot3"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="50%"  id="cf2">
-                            <amx:outputText value="#{row.ATTRIBVALUE}" styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        <amx:cellFormat width="50%" id="cf2">
+                            <amx:outputText value="#{row.ATTRIBVALUE}" styleClass="adfmf-listItem-captionText"
+                                            id="ot5"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

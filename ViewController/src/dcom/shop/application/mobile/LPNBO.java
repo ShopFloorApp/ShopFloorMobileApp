@@ -2,7 +2,6 @@ package dcom.shop.application.mobile;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
-import oracle.adfmf.util.GenericVirtualType;
 
 public class LPNBO {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
@@ -10,42 +9,42 @@ public class LPNBO {
     public LPNBO() {
         super();
     }
-    private String Whse;
-    private String LPNNum;
-    private String LPNStatus;
+    private String Lpn;
+    private String LpnContext;
+    private String WeightUom;
     private String Subinv;
     private String Locator;
-    private GenericVirtualType Attributes;
+    private int GrossWeight;
+    private String VolumeUom;
 
-
-    public void setWhse(String Whse) {
-        String oldWhse = this.Whse;
-        this.Whse = Whse;
-        propertyChangeSupport.firePropertyChange("Whse", oldWhse, Whse);
+    public void setLpn(String Lpn) {
+        String oldLpn = this.Lpn;
+        this.Lpn = Lpn;
+        propertyChangeSupport.firePropertyChange("Lpn", oldLpn, Lpn);
     }
 
-    public String getWhse() {
-        return Whse;
+    public String getLpn() {
+        return Lpn;
     }
 
-    public void setLPNNum(String LPNNum) {
-        String oldLPNNum = this.LPNNum;
-        this.LPNNum = LPNNum;
-        propertyChangeSupport.firePropertyChange("LPNNum", oldLPNNum, LPNNum);
+    public void setLpnContext(String LpnContext) {
+        String oldLpnContext = this.LpnContext;
+        this.LpnContext = LpnContext;
+        propertyChangeSupport.firePropertyChange("LpnContext", oldLpnContext, LpnContext);
     }
 
-    public String getLPNNum() {
-        return LPNNum;
+    public String getLpnContext() {
+        return LpnContext;
     }
 
-    public void setLPNStatus(String LPNStatus) {
-        String oldLPNStatus = this.LPNStatus;
-        this.LPNStatus = LPNStatus;
-        propertyChangeSupport.firePropertyChange("LPNStatus", oldLPNStatus, LPNStatus);
+    public void setWeightUom(String WeightUom) {
+        String oldWeightUom = this.WeightUom;
+        this.WeightUom = WeightUom;
+        propertyChangeSupport.firePropertyChange("WeightUom", oldWeightUom, WeightUom);
     }
 
-    public String getLPNStatus() {
-        return LPNStatus;
+    public String getWeightUom() {
+        return WeightUom;
     }
 
     public void setSubinv(String Subinv) {
@@ -68,16 +67,82 @@ public class LPNBO {
         return Locator;
     }
 
-    public void setAttributes(GenericVirtualType Attributes) {
-        GenericVirtualType oldAttributes = this.Attributes;
-        this.Attributes = Attributes;
-        propertyChangeSupport.firePropertyChange("Attributes", oldAttributes, Attributes);
+    public void setGrossWeight(int GrossWeight) {
+        int oldGrossWeight = this.GrossWeight;
+        this.GrossWeight = GrossWeight;
+        propertyChangeSupport.firePropertyChange("GrossWeight", oldGrossWeight, GrossWeight);
     }
 
-    public GenericVirtualType getAttributes() {
-        return Attributes;
+    public int getGrossWeight() {
+        return GrossWeight;
     }
- 
+
+    public void setVolumeUom(String VolumeUom) {
+        String oldVolumeUom = this.VolumeUom;
+        this.VolumeUom = VolumeUom;
+        propertyChangeSupport.firePropertyChange("VolumeUom", oldVolumeUom, VolumeUom);
+    }
+
+    public String getVolumeUom() {
+        return VolumeUom;
+    }
+
+    public void setVolume(int Volume) {
+        int oldVolume = this.Volume;
+        this.Volume = Volume;
+        propertyChangeSupport.firePropertyChange("Volume", oldVolume, Volume);
+    }
+
+    public int getVolume() {
+        return Volume;
+    }
+
+    public void setParentLpn(String ParentLpn) {
+        String oldParentLpn = this.ParentLpn;
+        this.ParentLpn = ParentLpn;
+        propertyChangeSupport.firePropertyChange("ParentLpn", oldParentLpn, ParentLpn);
+    }
+
+    public String getParentLpn() {
+        return ParentLpn;
+    }
+
+    public void setOutermostLpn(String OutermostLpn) {
+        String oldOutermostLpn = this.OutermostLpn;
+        this.OutermostLpn = OutermostLpn;
+        propertyChangeSupport.firePropertyChange("OutermostLpn", oldOutermostLpn, OutermostLpn);
+    }
+
+    public String getOutermostLpn() {
+        return OutermostLpn;
+    }
+
+    public void setDeliveryId(int DeliveryId) {
+        int oldDeliveryId = this.DeliveryId;
+        this.DeliveryId = DeliveryId;
+        propertyChangeSupport.firePropertyChange("DeliveryId", oldDeliveryId, DeliveryId);
+    }
+
+    public int getDeliveryId() {
+        return DeliveryId;
+    }
+
+    public void setLoadSeq(String LoadSeq) {
+        String oldLoadSeq = this.LoadSeq;
+        this.LoadSeq = LoadSeq;
+        propertyChangeSupport.firePropertyChange("LoadSeq", oldLoadSeq, LoadSeq);
+    }
+
+    public String getLoadSeq() {
+        return LoadSeq;
+    }
+    private int Volume;
+    private String ParentLpn;
+    private String OutermostLpn;
+    private int DeliveryId;
+    private String LoadSeq;
+
+
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
     }

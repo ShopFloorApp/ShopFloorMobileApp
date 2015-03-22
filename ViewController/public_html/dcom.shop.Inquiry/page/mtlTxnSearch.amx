@@ -19,7 +19,8 @@
                     <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf5" width="60%">
-                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}" required="true"/>
+                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}"
+                                   required="true"/>
                 </amx:cellFormat>
                 <amx:cellFormat width="10px" halign="end">
                     <amx:commandLink id="cb3" action="ItemLOV">
@@ -38,8 +39,8 @@
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.subFromInv.inputValue}" 
-                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                    <amx:selectOneChoice value="#{bindings.subFromInv.inputValue}"
+                                         valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
@@ -52,23 +53,24 @@
                     <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"  valueChangeListener="#{StateListenerBean.FromLocValueChange}"
-                                         id="soc2">
+                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"
+                                         valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc2">
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si2"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
-                
             </amx:rowLayout>
             <amx:rowLayout id="r4">
                 <amx:cellFormat id="cf3s23352">
                     <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:center;" id="plam3443"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf4555" width="60%">
-                    <amx:inputText hintText="LPN" id="it22" value="#{pageFlowScope.searchLpnKeyword}" />
+                    <amx:inputText hintText="LPN" id="it22" value="#{pageFlowScope.searchLpnKeyword}"/>
                 </amx:cellFormat>
                 <amx:cellFormat width="10px" halign="end">
                     <amx:commandLink id="cb663" action="lpnLOV">
                         <amx:outputHtml id="oh6663" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener id="spl1" from="MtlTrxSearch" to="#{pageFlowScope.LpnLovPage}"
+                                                 type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -77,13 +79,11 @@
                     <amx:panelLabelAndMessage label="Transaction Type" inlineStyle="text-align:center;" id="plamrr886"></amx:panelLabelAndMessage>
                 </amx:cellFormat>
                 <amx:cellFormat id="cf133333" width="60%">
-                    <amx:selectOneChoice value="#{pageFlowScope.txnType}"
-                                          id="soc3">
+                    <amx:selectOneChoice value="#{pageFlowScope.txnType}" id="soc3">
                         <amx:selectItems value="#{bindings.transactionType.items}" id="si3"/>
                     </amx:selectOneChoice>
                 </amx:cellFormat>
             </amx:rowLayout>
-           
         </amx:tableLayout>
         <amx:commandButton text="Search" id="cb1" inlineStyle="vertical-align:middle;" action="mtlTxnList"/>
     </amx:panelPage>

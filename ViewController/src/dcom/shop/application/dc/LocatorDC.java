@@ -24,8 +24,8 @@ public class LocatorDC extends SyncUtils {
     protected List filtered_Locators = new ArrayList();
     protected List filtered_To_Locators = new ArrayList();
     protected String locatorFilter = "";
-    private String fromLoc;
-    private String toLoc;
+    private String fromLoc = "100.RAW.00.00";
+    private String toLoc="100.RAW.00.00";
 
     public void setFromLoc(String fromLoc) {
         String oldFromLoc = this.fromLoc;
@@ -264,8 +264,9 @@ public class LocatorDC extends SyncUtils {
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
             if (subInv == null)
-                subInv = "DEFAULT";
+                subInv = "RAW";
             filterFileds.put("subinv", subInv);
+            filterFileds.put("locatortype", "3");
             //   filterFileds.put("alias", getAliasFilter());
 
 

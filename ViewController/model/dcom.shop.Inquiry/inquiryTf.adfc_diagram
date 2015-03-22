@@ -635,7 +635,7 @@
       <property
          name="fromOutcome">itemCategDetailsback</property>
       <property
-         name="sdm:polyPoints">L54,964.0,-53.9541,817.0507,81.54004,R50</property>
+         name="sdm:polyPoints">L54,964.0,-53.9541,816.99854,78.04004,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

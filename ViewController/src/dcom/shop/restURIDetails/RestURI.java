@@ -70,6 +70,12 @@ public class RestURI {
         return LPN_DETAILS_URI;
 
     }
+    private static final String LPN_INQUIRY_URI = "/webservices/rest/DCOMShip/getlpn/";
+
+    public static String PostLpnInquiryURI() {
+        return LPN_INQUIRY_URI;
+
+    }
     private static final String ITEM_DETAILS_URI = "/webservices/rest/DCOMInquiry/getitem/";
 
     public static String PostItemDetailsURI() {

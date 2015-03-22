@@ -11,6 +11,10 @@
     <accessorIterator MasterBinding="ProductSearchDCIterator" Binds="allProdItems" RangeSize="25"
                       DataControl="ProductSearchDC" BeanClass="dcom.shop.Inquiry.ProductSearchEntity"
                       id="allProdItemsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LpnDetailsDC" id="LpnDetailsDCIterator"/>
+    <accessorIterator MasterBinding="LpnDetailsDCIterator" Binds="allLpnDetails" RangeSize="25"
+                      DataControl="LpnDetailsDC" BeanClass="dcom.shop.Inquiry.lpn.LpnDetailsEntity"
+                      id="allLpnDetailsIterator"/>
   </executables>
   <bindings>
     <methodAction id="ProcessWS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
@@ -38,5 +42,16 @@
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="ProductSearchDC"
                   InstanceName="data.ProductSearchDC.dataProvider"/>
+    <tree IterBinding="allLpnDetailsIterator" id="allLpnDetails">
+      <nodeDefinition DefName="dcom.shop.Inquiry.lpn.LpnDetailsEntity" Name="allLpnDetails0">
+        <AttrNames>
+          <Item Value="ITEM"/>
+          <Item Value="ITEMDESC"/>
+          <Item Value="ONHANDQTY"/>
+          <Item Value="AVAILABLEQTY"/>
+          <Item Value="UOM"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

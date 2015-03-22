@@ -15,48 +15,52 @@
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-             <amx:inputText value="#{pageFlowScope.searchLpnKeyword}"  label="LPN" id="it2"/>
+            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" label="LPN" id="it2"/>
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-            <amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
+            <amx:commandButton rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
+                               actionListener="#{bindings.refresh.execute}" text="Search"
                                disabled="#{!bindings.refresh.enabled}" id="cb3">
-                <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}" />
+                <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}"/>
             </amx:commandButton>
-            
+            <amx:commandButton rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
+                               actionListener="#{bindings.refreshLpnDC.execute}" text="Search"
+                               disabled="#{!bindings.refreshLpnDC.enabled}" id="cb4"></amx:commandButton>
         </amx:panelLabelAndMessage>
         <amx:outputText id="ot3" value="#{pageFlowScope.LpnResults}"/>
         <amx:panelGroupLayout id="pgl1" rendered='#{pageFlowScope.LpnResults == "Search results" ? true : false }'
                               inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
-                <amx:tableLayout width="100%" id="tl2" rendered="#{pageFlowScope.refreshLov eq 'N' ?true:false}">
-                    <amx:rowLayout id="rl12" >
-                        <amx:cellFormat width="40%" id="cf22">
-                            <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="60%" halign="start" id="cf33">
-                            <amx:panelLabelAndMessage label="LPN Context" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:panelGroupLayout>
-        <amx:listView var="row" value="#{bindings.allLpns.collectionModel}" fetchSize="#{bindings.allLpns.rangeSize}"
-                      id="lv1">
+            <amx:tableLayout width="100%" id="tl2" rendered="#{pageFlowScope.refreshLov eq 'N' ?true:false}">
+                <amx:rowLayout id="rl12">
+                    <amx:cellFormat width="40%" id="cf22">
+                        <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:left;" id="plam222223"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="60%" halign="start" id="cf33">
+                        <amx:panelLabelAndMessage label="LPN Context" inlineStyle="text-align:left;" id="pl3am2222"></amx:panelLabelAndMessage>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:panelGroupLayout>
+        <amx:listView var="row" value="#{bindings.allLpns.collectionModel}"
+                      rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?true:false}'
+                      fetchSize="#{bindings.allLpns.rangeSize}" id="lv1">
             <amx:listItem showLinkIcon="false" action="Back" id="li1">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl31">
-                    <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
                         <amx:cellFormat width="40%" height="50px" id="cf2">
                             <!--amx:panelLabelAndMessage inlineStyle="text-align:left;" id="plam22222">
                                 <amx:spacer height="8"/-->
-                                <amx:outputText value="#{row.LPN}" inlineStyle="white-space:pre-wrap;" styleClass="adfmf-listItem-captionText"
-                                                id="ot43"/>
+                            <amx:outputText value="#{row.LPN}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot43"/>
                             <!--/amx:panelLabelAndMessage-->
                         </amx:cellFormat>
                         <amx:cellFormat width="20px" rowSpan="2" id="cf35"/>
                         <amx:cellFormat width="60%" height="50px" halign="start" id="cf3">
                             <!--amx:panelLabelAndMessage inlineStyle="text-align:left;" id="plam2222">
                                 <amx:spacer height="8"/-->
-                                <amx:outputText value="#{row.LPNSTATUS}" inlineStyle="white-space:pre-wrap;" styleClass="adfmf-listItem-captionText"
-                                                id="ot4"/>
+                            <amx:outputText value="#{row.LPNSTATUS}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot4"/>
                             <!--/amx:panelLabelAndMessage-->
                         </amx:cellFormat>
                         <!--amx:cellFormat width="100%" height="40px" id="cf2">
@@ -67,8 +71,38 @@
                 <amx:setPropertyListener from="#{row.LPN}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
                                          id="spl2"/>
                 <amx:setPropertyListener from="#{row.LPNSTATUS}" type="action" to="#{pageFlowScope.lpnID}" id="spl4"/>
-             </amx:listItem>
+            </amx:listItem>
         </amx:listView>
-       
+        <amx:listView var="row" value="#{bindings.fromLpns.collectionModel}" fetchSize="#{bindings.fromLpns.rangeSize}"
+                      selectedRowKeys="#{bindings.fromLpns.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.fromLpns.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                      rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?false:true}' bufferStrategy="viewport" id="lv2">
+            <amx:listItem id="li2" action="#{StateListener.BackToLpnTrxn}">
+                <amx:tableLayout width="100%" id="tl3">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf1"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf4">
+                            <amx:outputText value="#{row.lpn}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf6"/>
+                        <amx:cellFormat width="60%" height="50px" halign="start" id="cf7">
+                            <amx:outputText value="#{row.lpnContext}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot6"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
+                                         id="spl1"/>
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.lpn}"
+                                         id="spl7"/>
+                <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.Subinventory}"
+                                         id="spl3"/>
+                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.Locator}"
+                                         id="spl5"/>
+                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}"
+                                         id="spl6"/>
+            </amx:listItem>
+        </amx:listView>
     </amx:panelPage>
 </amx:view>

@@ -26,6 +26,7 @@ public class SubinventoryDC extends SyncUtils {
         //        s_subInventories = getSubInventories();
     }
     private List filtered_Subinventories = new ArrayList();
+    private List filtered_ToSubinventories = new ArrayList();
     private String subinvFilter = "";
 
     public void setSubInv(String subInv) {
@@ -47,8 +48,8 @@ public class SubinventoryDC extends SyncUtils {
     public String getSubInv() {
         return subInv;
     }
-    private String subInv;
-    private String subToInv;
+    private String subInv = "RAW";
+    private String subToInv ="RAW";
 
     public void setSubInventories(List s_subInventories) {
         List oldSubInventories = s_subInventories;
@@ -144,7 +145,8 @@ public class SubinventoryDC extends SyncUtils {
           //  String refresh =
            //     (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshFromSubinventory}");
             //if ("Y".equals(refresh))
-                filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+                s_subInventories = super.getOfflineCollection(SubinventoryBO.class);
+            filterSubinventories();
             subInventories =
                 (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
 
@@ -171,8 +173,9 @@ public class SubinventoryDC extends SyncUtils {
           //  String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshToSubinventory}");
            // if ("Y".equals(refresh))
                 s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
+            filterToSubinventories();
             subInventories =
-                (SubinventoryBO[]) s_to_subInventories.toArray(new SubinventoryBO[s_to_subInventories.size()]);
+                (SubinventoryBO[]) filtered_ToSubinventories.toArray(new SubinventoryBO[filtered_ToSubinventories.size()]);
           //  ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", int.class);
            // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
 
@@ -273,13 +276,14 @@ public class SubinventoryDC extends SyncUtils {
         try {
             System.out.println("inside filter code");
             filtered_Subinventories.clear();
-
+            String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
             HashMap filterFileds = new HashMap();
-            filterFileds.put("subinv", getSubinvFilter());
-            filterFileds.put("desc", getDescFilter());
+         //   filterFileds.put("subinv", getSubinvFilter());
+          //  filterFileds.put("desc", getDescFilter());
             filterFileds.put("whse", "100");
-
-
+            if("LPN".equals(subInv))
+                filterFileds.put("lpncontrol", "1");
+           
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_subInventories);
             paramMap.put("filterFieldsValues", filterFileds);
@@ -287,7 +291,33 @@ public class SubinventoryDC extends SyncUtils {
 
             filtered_Subinventories = (List) super.getFileteredCollection(SubinventoryBO.class, paramMap);
             System.out.println("collection size is " + filtered_Subinventories.size());
-            providerChangeSupport.fireProviderRefresh("subinventories");
+        //    providerChangeSupport.fireProviderRefresh("subinventories");
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
+    }
+    
+    public void filterToSubinventories() {
+        try {
+            System.out.println("inside filter code");
+            filtered_ToSubinventories.clear();
+            String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
+            
+            HashMap filterFileds = new HashMap();
+          //  filterFileds.put("subinv", getSubinvFilter());
+           // filterFileds.put("desc", getDescFilter());
+            filterFileds.put("whse", "100");
+            if("LPN".equals(subInv))
+                filterFileds.put("lpncontrol", "1");
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_to_subInventories);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+
+            filtered_ToSubinventories = (List) super.getFileteredCollection(SubinventoryBO.class, paramMap);
+            System.out.println("collection size is " + filtered_ToSubinventories.size());
+        //    providerChangeSupport.fireProviderRefresh("subinventories");
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
         }

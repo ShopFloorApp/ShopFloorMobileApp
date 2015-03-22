@@ -32,6 +32,7 @@
                 <amx:outputText value="Misc. Transactions" id="ot5"/>
                 <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.miscTxnRenderButton}"
                                          id="sp20"/>
+           <amx:setPropertyListener from="MISC" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
             </amx:listItem>
             <amx:listItem id="li6" action="mvOrdTF">
                 <amx:outputText value="Tasks/Move Orders" id="ot7"/>

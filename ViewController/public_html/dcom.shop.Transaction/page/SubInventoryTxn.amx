@@ -16,6 +16,7 @@
         <amx:facet name="secondary">
             <amx:commandLink id="cb3" action="siDet">
                 <amx:outputHtml id="oh3" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:setPropertyListener from="SUBTXFR" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
                 <!--amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshFromLocator}" id="spl2"/>
                 <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshToLocator}" id="spl1"/>
                 <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshFromSubinventory}" id="spl3"/>

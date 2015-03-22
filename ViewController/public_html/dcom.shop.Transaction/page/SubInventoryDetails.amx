@@ -38,6 +38,8 @@
                     <amx:cellFormat width="10px" halign="end" id="cf15">
                         <amx:commandLink id="cbw3" action="lpnLOV">
                             <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                            <amx:setPropertyListener id="spl3" from="SubInvTrxn" to="#{pageFlowScope.LpnLovPage}"
+                                                     type="action"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
@@ -64,7 +66,7 @@
                     <amx:cellFormat width="10px" halign="end" id="cf18">
                         <amx:commandLink id="cb3" action="ItemLOV">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                            <amx:setPropertyListener id="spl3" from="SubinvTrfr" to="#{pageFlowScope.ItemLovPage}"
+                            <amx:setPropertyListener id="spl11" from="SubinvTrfr" to="#{pageFlowScope.ItemLovPage}"
                                                      type="action"/>
                         </amx:commandLink>
                     </amx:cellFormat>

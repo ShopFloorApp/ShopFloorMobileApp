@@ -48,10 +48,21 @@ public class ProductSearchDC {
         keyword = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         String restURI = RestURI.PostItemInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
-        String payload =
-            "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%" +
-            keyword + "%\"}}\n" + "}\n" + "}";
+        /*AJ
+         */
+        String payload = null;
+        String callingPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
+        if ("LPN".equals(callingPage)) {
+            payload =
+                "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
+                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%" +
+                keyword + "%\",\"ITEMSTATUS\": \"ONHAND\"}}\n" + "}\n" + "}";
+        } else {
+            payload =
+                "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
+                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%" +
+                keyword + "%\"}}\n" + "}\n" + "}";
+        }
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");

@@ -1,24 +1,17 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
-
 import dcom.shop.application.mobile.ItemBO;
-
-import dcom.shop.application.mobile.SubinventoryBO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.el.ValueExpression;
-
-import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfInvocationException;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
-import oracle.adfmf.util.GenericType;
 import oracle.adfmf.util.GenericVirtualType;
 
 public class ItemDC  extends SyncUtils {

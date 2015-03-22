@@ -4,21 +4,14 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="LPNDC" id="LPNDCIterator"/>
-    <accessorIterator MasterBinding="LPNDCIterator" Binds="allLpns" RangeSize="25" DataControl="LPNDC"
-                      BeanClass="dcom.shop.application.mobile.LPNBO" id="allLpnsIterator"/>
     <iterator Binds="root" RangeSize="25" DataControl="LpnSearchDC" id="LpnSearchDCIterator"/>
     <accessorIterator MasterBinding="LpnSearchDCIterator" Binds="allLpns" RangeSize="25" DataControl="LpnSearchDC"
                       BeanClass="dcom.shop.Inquiry.lpn.LpnSearchEntity" id="allLpnsIterator1"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LPNDC" id="LPNDCIterator"/>
+    <accessorIterator MasterBinding="LPNDCIterator" Binds="fromLpns" RangeSize="25" DataControl="LPNDC"
+                      BeanClass="dcom.shop.application.mobile.LPNBO" id="fromLpnsIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="LPNDCIterator" id="LPNNum">
-      <AttrNames>
-        <Item Value="LPNNum"/>
-      </AttrNames>
-    </attributeValues>
-    <methodAction id="invokeLPNLovDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="ProcessWS"
-                  IsViewObjectMethod="false" DataControl="LPNDC" InstanceName="data.LPNDC.dataProvider"/>
     <tree IterBinding="allLpnsIterator1" id="allLpns">
       <nodeDefinition DefName="dcom.shop.Inquiry.lpn.LpnSearchEntity" Name="allLpns0">
         <AttrNames>
@@ -29,5 +22,17 @@
     </tree>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LpnSearchDC" InstanceName="data.LpnSearchDC.dataProvider"/>
+    <tree IterBinding="fromLpnsIterator" id="fromLpns">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LPNBO" Name="fromLpns0">
+        <AttrNames>
+          <Item Value="lpn"/>
+          <Item Value="lpnContext"/>
+          <Item Value="subinv"/>
+          <Item Value="locator"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="refreshLpnDC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LPNDC" InstanceName="data.LPNDC.dataProvider"/>
   </bindings>
 </pageDefinition>

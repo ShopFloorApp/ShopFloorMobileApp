@@ -115,7 +115,7 @@ public class StateListener {
         pageFlow.put("ToSubinventory", subinv);
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToSubinventory}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
 
@@ -143,7 +143,7 @@ public class StateListener {
 
     public void SerialChangeListener(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
-     /*   ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.fromSerialRangeOff}", String.class);
+        /*   ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.fromSerialRangeOff}", String.class);
         String serial = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.fromSerial}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), serial);
@@ -185,5 +185,43 @@ public class StateListener {
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.insertLots.execute}", Object.class, new Class[] {
                                                                      });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+
+    public void SubinvValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.subFromInv.inputValue}", String.class);
+        String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        //          String subinv = (String)valueChangeEvent.getNewValue();
+
+        pageFlow.put("FromSubinventory", subinv);
+        /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromSubinventory}", String.class);
+        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
+
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+
+    public String BackToLpnTrxn() {
+        // Add event code here...
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.Subinventory}", String.class);
+        String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.Locator}", String.class);
+        String loc = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.RenderSubInvChoice}", String.class);
+        if ("{\"@xsi:nil\":\"true\"}".equals(subinv))
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Yes");
+        else
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "No");
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.RenderLocChoice}", String.class);
+        if ("{\"@xsi:nil\":\"true\"}".equals(loc))
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Yes");
+        else
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "No");
+        return "Back";
     }
 }

@@ -39,5 +39,7 @@
         <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
   </bindings>
 </pageDefinition>
