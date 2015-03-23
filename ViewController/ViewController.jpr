@@ -1,30 +1,23 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
-   <hash n="component-versions">
-      <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.5"/>
-   </hash>
-   <list n="contentSets">
-      <string v="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider/mdsContentSet"/>
-      <string v="oracle.mds.internal.dt.ide.MDSADFLibVirtualNodeCSProvider/mdsLibVirtualNodeContentSet"/>
-      <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
-      <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
-      <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
-      <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
-      <string v="oracle.adfdtinternal.model.ide.settings.ADFMSettings/adfmContentSet"/>
-      <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
-      <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
-   </list>
-   <hash n="oracle.ide.model.DependencyConfiguration">
-      <list n="dependencyList">
-         <hash>
-            <hash n="dependable">
-               <url n="sourceOwnerURL" path="../ShopFloorMobileApp.jws"/>
-               <url n="sourceURL" path="../ApplicationController/ApplicationController.jpr"/>
-            </hash>
-            <value n="recognizerId" v="oracle.jdeveloper.library"/>
-         </hash>
-      </list>
-   </hash>
+    <hash n="use-workspace-shared-properties">
+        <value n="oracle.jdeveloper.runner.RunConfigurations" v="true"/>
+    </hash>
+    <hash n="component-versions">
+        <value n="oracle.ideimpl.model.TechnologyScopeUpdateMigrator" v="11.1.2.0.0.5"/>
+    </hash>
+    <list n="contentSets">
+        <string v="oracle.mds.internal.dt.ide.MDSLibraryCustCSProvider/mdsContentSet"/>
+        <string v="oracle.mds.internal.dt.ide.MDSADFLibVirtualNodeCSProvider/mdsLibVirtualNodeContentSet"/>
+        <string v="oracle.jdeveloper.model.J2eeSettings/webContentSet"/>
+        <string v="oracle.jdeveloper.model.PathsConfiguration/javaContentSet"/>
+        <string v="oracle.ide.model.ResourcePaths/resourcesContentSet"/>
+        <string v="oracle.jdeveloper.offlinedb.model.OfflineDBProjectSettings/offlineDBContentSet"/>
+        <string v="oracle.adfdtinternal.model.ide.settings.ADFMSettings/adfmContentSet"/>
+        <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
+        <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
+    </list>
+
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADFm"/>
@@ -32,10 +25,7 @@
          <string v="JAVASCRIPT"/>
          <string v="Java"/>
          <string v="MAF"/>
-         <string v="WSDL"/>
-         <string v="WSPolicy"/>
          <string v="XML"/>
-         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
@@ -83,84 +73,11 @@
       <value n="target" v="1.8"/>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
-      <list n="exportedReferences">
-         <hash>
-            <value n="id" v="ADF Model Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="BC4J Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Oracle JDBC"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="MDS Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="MDS Runtime Dependencies"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="BC4J Oracle Domains"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Json-simple-1.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-      </list>
-      <hash n="internalDefinitions">
-         <list n="libraryDefinitions">
-            <hash>
-               <list n="classPath">
-                  <url path="lib/json-simple-1.1.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Json-simple-1.1.jar"/>
-               <value n="id" v="Json-simple-1.1.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-         </list>
-      </hash>
       <hash n="jdkReference">
          <value n="id" v="MAF JDK 1.8 Compact 2 Profile"/>
          <value n="isJDK" v="true"/>
-         <value n="jdkVersion" v="1.8.0_40"/>
+         <value n="jdkVersion" v="1.8.0_31"/>
       </hash>
-      <list n="libraryReferences">
-         <hash>
-            <value n="id" v="ADF Model Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="BC4J Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Oracle JDBC"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="MDS Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="MDS Runtime Dependencies"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="BC4J Oracle Domains"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Json-simple-1.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-      </list>
    </hash>
    <hash n="ResourceBundleOptions">
       <list n="AvailableResourceBundleTypes">
@@ -170,5 +87,4 @@
    </hash>
    <hash n="use-workspace-shared-properties">
       <value n="oracle.jdeveloper.runner.RunConfigurations" v="true"/>
-   </hash>
-</jpr:project>
+   </hash></jpr:project>
