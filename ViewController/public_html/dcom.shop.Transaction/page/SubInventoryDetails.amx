@@ -343,17 +343,18 @@
                     </amx:rowLayout>
                 </amx:tableLayout-->
             </amx:panelGroupLayout>
-            <amx:spacer id="s3" height="50"/>
-            <amx:panelGroupLayout id="pgl4" layout="horizontal"></amx:panelGroupLayout>
-        </amx:panelGroupLayout>
+           </amx:panelGroupLayout>
         <amx:facet name="footer">
+        <amx:spacer id="s1" width="50"/>
             <amx:commandLink id="cl5" action="cancel">
-                <amx:outputHtml id="oh2" styleClass="fa   fa-reply fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:outputHtml id="oh2" styleClass="fa fa-eraser fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
+            <amx:spacer id="s4" width="20"/>
             <amx:commandLink id="cl6" actionListener="#{bindings.InsertTransaction.execute}">
                 <amx:outputHtml id="oh4" styleClass="fa  fa-database fa-lg" inlineStyle="color:#34AADC;"/>
                 <amx:setPropertyListener id="spl7" from="QUEUE" to="#{pageFlowScope.TrxnType}" type="action"/>
             </amx:commandLink>
+            <amx:spacer id="s5" width="20"/>
             <!--amx:commandButton actionListener="#{bindings.InsertTransaction.execute}" text="Add to Queue"
                                disabled="#{!bindings.InsertTransaction.enabled}" id="cb5">
                 <amx:setPropertyListener id="spl7" from="QUEUE" to="#{pageFlowScope.TrxnType}" type="action"/>
