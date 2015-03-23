@@ -35,8 +35,8 @@
                         <amx:cellFormat id="cf5">
                             <amx:panelGroupLayout id="pgl1" layout="horizontal">
                                 <amx:inputText hintText="Search Department" label="" id="it1" simple="true"
-                                               inlineStyle="width:280px;"/>
-                                <amx:commandLink id="cb3">
+                                               inlineStyle="width:280px;" value="#{bindings.searchValue.inputValue}"/>
+                                <amx:commandLink id="cb3" actionListener="#{bindings.findDepartments.execute}">
                                     <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg"
                                                     inlineStyle="color:#34AADC;"/>
                                 </amx:commandLink>

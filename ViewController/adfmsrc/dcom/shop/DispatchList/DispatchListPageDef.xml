@@ -3,7 +3,9 @@
                 Package="dcom.shop.DispatchList">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Name="find_searchValue" Type="java.lang.String"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="DepartmentDC" id="DepartmentDCIterator"/>
     <accessorIterator MasterBinding="DepartmentDCIterator" Binds="departments" RangeSize="25" DataControl="DepartmentDC"
                       BeanClass="dcom.shop.application.mobile.DepartmentBO" id="departmentsIterator"/>
@@ -28,5 +30,14 @@
             RequiresUpdateModel="false" Action="setCurrentRowWithKey">
       <NamedData NDName="rowKey" NDValue="#{pageFlowScope.rowKey}" NDType="java.lang.String"/>
     </action>
+    <attributeValues IterBinding="variables" id="searchValue">
+      <AttrNames>
+        <Item Value="find_searchValue"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="findDepartments" RequiresUpdateModel="true" Action="invokeMethod" MethodName="findDepartments"
+                  IsViewObjectMethod="false" DataControl="DepartmentDC" InstanceName="data.DepartmentDC.dataProvider">
+      <NamedData NDName="dept" NDValue="#{bindings.find_searchValue}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

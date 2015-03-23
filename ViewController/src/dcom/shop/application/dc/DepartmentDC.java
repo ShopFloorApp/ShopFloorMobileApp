@@ -2,11 +2,17 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.AViewObject;
 import dcom.shop.application.mobile.DepartmentBO;
+import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,20 +20,26 @@ import org.json.simple.parser.JSONParser;
 
 public class DepartmentDC extends AViewObject {
     protected static List<DepartmentBO> s_dept = new ArrayList<DepartmentBO>();
-
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
+    private static boolean isSearched = false;
 
     public DepartmentDC() {
     }
 
     public DepartmentBO[] getDepartments() {
         DepartmentBO[] sDept = null;
-        s_dept.clear();
-        if (isOffline()) {
-            s_dept = getCollectionFromDB(DepartmentDC.class);
-            sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
+        if (!isSearched) {
+            s_dept.clear();
+            if (isOffline()) {
+                s_dept = getCollectionFromDB(DepartmentDC.class);
+                sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
+            } else {
+                getFromWS();
+                sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
+            }
         } else {
-            getFromWS();
-            sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
+            isSearched = false;
+            return sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
         }
         return sDept;
     }
@@ -67,6 +79,22 @@ public class DepartmentDC extends AViewObject {
                 e.getMessage();
             }
         }
+    }
+
+    public void findDepartments(String dept) {
+        s_dept.clear();
+        isSearched = true;
+        String whereClause = "WHERE DEPTNAME LIKE \"" + dept + "%\"";
+        s_dept = super.getFilteredCollectionFromDB(DepartmentBO.class, whereClause);
+        providerChangeSupport.fireProviderRefresh("departments");
+    }
+
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
 }
 
