@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="ShippingTransactions">
-    <default-activity>PickRelease</default-activity>
+    <default-activity>__ShippingTransactions2</default-activity>
     <managed-bean id="__7">
       <managed-bean-name>TransactionUtil</managed-bean-name>
       <managed-bean-class>dcom.shop.Transaction.bean.transactionUtil</managed-bean-class>
@@ -18,11 +18,21 @@
         <name>taskFlowReturn1</name>
       </outcome>
     </task-flow-return>
+    <view id="__ShippingTransactions2">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/ShippingTransactions.amx</page>
+    </view>
+    <view id="LPNship">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/LPNship.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>pickRLov</from-outcome>
         <to-activity-id>OrderNumLOV</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>backToShipT</from-outcome>
+        <to-activity-id>__ShippingTransactions2</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
@@ -37,6 +47,24 @@
       <control-flow-case id="__6">
         <from-outcome>backToPR</from-outcome>
         <to-activity-id>PickRelease</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>__ShippingTransactions2</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>pickRel</from-outcome>
+        <to-activity-id>PickRelease</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>lpnShip</from-outcome>
+        <to-activity-id>LPNship</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>LPNship</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>backToShipT</from-outcome>
+        <to-activity-id>__ShippingTransactions2</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

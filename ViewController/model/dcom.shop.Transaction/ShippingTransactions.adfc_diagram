@@ -9,15 +9,15 @@
       <property
          name="page">/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>PickRelease&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>PickRelease&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">233.79883</property>
+         name="y">182.39648</property>
       <property
-         name="x">280.34863</property>
+         name="x">593.34863</property>
    </View>
    <View
       id="View3">
@@ -30,9 +30,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">228.09766</property>
+         name="y">163.39648</property>
       <property
-         name="x">487.01074</property>
+         name="x">762.01074</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -42,7 +42,7 @@
       <property
          name="fromOutcome">pickRLov</property>
       <property
-         name="sdm:polyPoints">R50,321.34863,233.44824,446.01074,227.74707,L50</property>
+         name="sdm:polyPoints">R46,634.34863,178.5459,720.24915,159.5459,L46</property>
    </ControlFlowCase>
    <TaskFlowReturn
       id="TaskFlowReturn5">
@@ -55,18 +55,18 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">90.94824</property>
+         name="y">57.24707</property>
       <property
-         name="x">334.0</property>
+         name="x">327.0</property>
    </TaskFlowReturn>
    <WildcardControlFlowRule
       id="WildcardControlFlowRule6">
       <property
          name="activityId">*</property>
       <property
-         name="y">123.29883</property>
+         name="y">70.59766</property>
       <property
-         name="x">143.0</property>
+         name="x">131.0</property>
    </WildcardControlFlowRule>
    <ControlFlowCase
       islink="true"
@@ -76,7 +76,7 @@
       <property
          name="fromOutcome">backToTxn</property>
       <property
-         name="sdm:polyPoints">R50,179.0,123.44824,293.0,90.59766,L50</property>
+         name="sdm:polyPoints">R50,167.0,70.74707,286.0,56.896484,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -86,6 +86,78 @@
       <property
          name="fromOutcome">backToPR</property>
       <property
-         name="sdm:polyPoints">L54,446.01074,231.24707,321.5086,236.94824,R54</property>
+         name="sdm:polyPoints">L54,721.01074,166.5459,635.107,185.5459,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View10">
+      <property
+         name="activityId">__ShippingTransactions2</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ShippingTxn/ShippingTransactions.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>__ShippingTransactions2&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">284.39648</property>
+      <property
+         name="x">430.8047</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="View10"
+      to="View2">
+      <property
+         name="fromOutcome">pickRel</property>
+      <property
+         name="sdm:polyPoints">R46,471.8047,280.5459,548.9569,178.5459,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View2"
+      to="View10">
+      <property
+         name="fromOutcome">backToShipT</property>
+      <property
+         name="sdm:polyPoints">L54,552.34863,185.5459,475.24164,287.5459,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View13">
+      <property
+         name="activityId">LPNship</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ShippingTxn/LPNship.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LPNship&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">219.09766</property>
+      <property
+         name="x">279.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase14"
+      from="View10"
+      to="View13">
+      <property
+         name="fromOutcome">lpnShip</property>
+      <property
+         name="sdm:polyPoints">L50,389.8047,284.0459,320.5,218.74707,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View13"
+      to="View10">
+      <property
+         name="fromOutcome">backToShipT</property>
+      <property
+         name="sdm:polyPoints">R54,320.5,222.24707,387.02646,287.5459,L54</property>
    </ControlFlowCase>
 </SDM>

@@ -55,8 +55,12 @@ public class transactionUtil {
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                     String status=jsObject.get("XSTATUS").toString();
+                    String message=jsObject.get("XMSG").toString();
+
                     
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRelStatus}", status);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRelMsg}", message);
+
 
                     
                 } catch (ParseException e) {
