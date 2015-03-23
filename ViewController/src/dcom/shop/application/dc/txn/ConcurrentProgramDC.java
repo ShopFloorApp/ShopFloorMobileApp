@@ -177,6 +177,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                         requestItems.setMsTaken((jsObject2.get("MSTAKEN").toString()));
                         requestItems.setSubmitDate((jsObject2.get("SUBMITDATE").toString()));
                         requestItems.setActualStart((jsObject2.get("ACTUALSTART").toString()));
+                        requestItems.setActualCompl((jsObject2.get("ACTUALCOMPL").toString()));
                         requestItems.setSubmittedBy((jsObject2.get("SUBMITTEDBY").toString()));
                         requestItems.setRespName((jsObject2.get("RESPNAME").toString()));
                         requestItems.setLogSize((jsObject2.get("LOGSIZE").toString()));
@@ -212,6 +213,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                 requestItems.setMsTaken((jsObject2.get("MSTAKEN").toString()));
                 requestItems.setSubmitDate((jsObject2.get("SUBMITDATE").toString()));
                 requestItems.setActualStart((jsObject2.get("ACTUALSTART").toString()));
+                requestItems.setActualCompl((jsObject2.get("ACTUALCOMPL").toString()));
                 requestItems.setSubmittedBy((jsObject2.get("SUBMITTEDBY").toString()));
                 requestItems.setRespName((jsObject2.get("RESPNAME").toString()));
                 requestItems.setLogSize((jsObject2.get("LOGSIZE").toString()));

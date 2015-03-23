@@ -83,6 +83,7 @@ public class WarehouseDC extends SyncUtils{
                             whseItems.setCountry((jsObject2.get("COUNTRY").toString()));
                             whseItems.setLocatorControl((jsObject2.get("LOCATORCONTROL").toString()));
                             whseItems.setIsWMS((jsObject2.get("ISWMS").toString()));
+                            whseItems.setDirectShip((jsObject2.get("DIRECTSHIP").toString()));
 
                             s_warehouse.add(whseItems);
 

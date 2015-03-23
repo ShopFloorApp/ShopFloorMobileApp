@@ -8,6 +8,8 @@ public class LinesBO {
     private String subInv;
     private String locator;
     private String quantity;
+    private String Uom;
+    private String Lpn;
     private String isNewEntity;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -15,6 +17,26 @@ public class LinesBO {
         String oldLines = this.Lines;
         this.Lines = Lines;
         propertyChangeSupport.firePropertyChange("Lines", oldLines, Lines);
+    }
+
+    public void setUom(String Uom) {
+        String oldUom = this.Uom;
+        this.Uom = Uom;
+        propertyChangeSupport.firePropertyChange("Uom", oldUom, Uom);
+    }
+
+    public String getUom() {
+        return Uom;
+    }
+
+    public void setLpn(String Lpn) {
+        String oldLpn = this.Lpn;
+        this.Lpn = Lpn;
+        propertyChangeSupport.firePropertyChange("Lpn", oldLpn, Lpn);
+    }
+
+    public String getLpn() {
+        return Lpn;
     }
 
     public String getLines() {
@@ -64,13 +86,15 @@ public class LinesBO {
     public LinesBO() {
         super();
     }
-    public LinesBO(String line,String subInv,String locator,String Quantity,String isNewEntity) {
+    public LinesBO(String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String isNewEntity) {
         super();
         this.Lines=line;
         this.subInv=subInv;
         this.locator=locator;
         this.quantity=Quantity;
         this.isNewEntity=isNewEntity;
+        this.Uom=Uom;
+        this.Lpn=Lpn;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

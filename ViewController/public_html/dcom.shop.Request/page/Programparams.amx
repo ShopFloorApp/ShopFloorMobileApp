@@ -6,10 +6,14 @@
       <amx:outputText value="Requests" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" text="Back" action="__back"/>
+      <amx:commandLink id="cl1" action="__back">
+        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+      </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
-      
+      <amx:commandLink id="cl2" action="result" actionListener="#{RequestUtilBean.submitProgram}">
+        <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-lg"/>
+      </amx:commandLink>
     </amx:facet>
     <amx:tableLayout id="tl1" width="90%">
       <amx:iterator id="i1" value="#{bindings.concProgramParams.collectionModel}" var="row">
@@ -17,18 +21,20 @@
                     <amx:cellFormat id="cf3252">
                         <amx:panelLabelAndMessage label="#{row.paramName}" inlineStyle="text-align:center;" id="plam3"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf325" width="60%">
-                        <amx:inputText id="it" value="#{row.paramDispValue}" rendered="#{row.itemType!='DATE'}"/>
-                        <amx:inputDate id="id1" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"/>
-                    </amx:cellFormat>
-                    <amx:cellFormat width="10px" halign="end" id="cf15" rendered="#{row.itemType=='LOV'}">
-                        <amx:commandLink id="cbw3" action="getLov">
-                            <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                </amx:rowLayout>
+        <amx:rowLayout id="rl1">
+          <amx:cellFormat id="cf325" width="60%">
+            <amx:inputText id="it" value="#{row.paramDispValue}" rendered="#{row.itemType!='DATE'}"/>
+            <amx:inputDate id="id1" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"/>
+          </amx:cellFormat>
+          <amx:cellFormat width="10px" halign="end" id="cf15" rendered="#{row.itemType=='LOV'}">
+            <amx:commandLink id="cbw3" action="getLov">
+              <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
               <amx:setPropertyListener id="spl1" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
               <amx:setPropertyListener id="spl2" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
             </amx:commandLink>
-                    </amx:cellFormat>
-                </amx:rowLayout>
+          </amx:cellFormat>
+        </amx:rowLayout>
       </amx:iterator>
     </amx:tableLayout>
     <amx:panelGroupLayout id="pgl1" halign="center" valign="middle">

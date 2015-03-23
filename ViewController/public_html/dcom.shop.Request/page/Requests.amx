@@ -6,48 +6,44 @@
             <amx:outputText value="Requests" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" action="__back"/>
+                  <amx:commandLink id="cl1" action="__back">
+        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+      </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
            
         </amx:facet>
-        <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
-            <amx:rowLayout id="rl9">
-               
-                <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn"
-                                inlineStyle="position: relative; ">
-                    <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
-                                       action="submitRequest"/>
-                </amx:cellFormat>
-            </amx:rowLayout>
-        </amx:tableLayout>
+
         <amx:listView var="row" value="#{bindings.request.collectionModel}" fetchSize="#{bindings.request.rangeSize}"
                       selectedRowKeys="#{bindings.request.collectionModel.selectedRow}"
                       selectionListener="#{bindings.request.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                      bufferStrategy="viewport" id="lv1">
-            <amx:listItem id="li1" action="requestDetails">
-                <amx:tableLayout width="100%" id="tl1">
+                      bufferStrategy="viewport" id="lv1" layout="cards">
+            <amx:listItem id="li1" action="requestDetails" showLinkIcon="false">
+                <amx:tableLayout width="90%" id="tl1">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="90%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1">
+                            <amx:outputText value="#{row.requestId}" styleClass="adfmf-listItem-captionText" id="ot2"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf4" width="100%">
+                            <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;">
+                                <amx:commandButton text="#{row.hrsTaken}" id="cb4" styleClass="#{row.colorStyle}"/>
+                                <amx:outputText value=":" id="ot4"/>
+                                <amx:commandButton text="#{row.minTaken}" id="cb5" styleClass="#{row.colorStyle}"/>
+                                <amx:outputText value=":" id="ot5"/>
+                                <amx:commandButton text="#{row.ssTaken}" id="cb6" styleClass="#{row.colorStyle}"/>
+                            </amx:panelGroupLayout>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
                     <amx:rowLayout id="rl2">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf2"/>
-                        <amx:cellFormat width="70%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3">
+                        <amx:cellFormat width="90%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3">
                             <amx:outputText value="#{row.progName}" id="ot3"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
-                    <amx:rowLayout id="rl1">
-                        <amx:cellFormat width="70%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1">
-                            <amx:outputText value="#{row.applName}" styleClass="adfmf-listItem-captionText" id="ot2"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat id="cf4" width="70%">
-                        <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;">
-                                <amx:commandButton text="#{row.hrsTaken}" id="cb4"
-                                                   styleClass="#{row.colorStyle}"/>
-                                <amx:outputText value=":" id="ot4"/>
-                                <amx:commandButton text="#{row.minTaken}" id="cb5"
-                                                   styleClass="#{row.colorStyle}"/>
-                                <amx:outputText value=":" id="ot5"/>
-                                <amx:commandButton text="#{row.ssTaken}" id="cb6"
-                                                   styleClass="#{row.colorStyle}"/>
-                            </amx:panelGroupLayout>
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
+                        <amx:cellFormat width="90%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6">
+                            <amx:outputText value="#{row.phase}-#{row.status}" id="ot6"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

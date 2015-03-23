@@ -15,6 +15,7 @@ public class ResourceBO implements Comparable {
     private String UOM;
     private String ChargeType;
     private String Basis;
+    private String instance;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -22,6 +23,16 @@ public class ResourceBO implements Comparable {
         String oldWhse = this.Whse;
         this.Whse = Whse;
         propertyChangeSupport.firePropertyChange("Whse", oldWhse, Whse);
+    }
+
+    public void setInstance(String instance) {
+        String oldInstance = this.instance;
+        this.instance = instance;
+        propertyChangeSupport.firePropertyChange("instance", oldInstance, instance);
+    }
+
+    public String getInstance() {
+        return instance;
     }
 
     public String getWhse() {

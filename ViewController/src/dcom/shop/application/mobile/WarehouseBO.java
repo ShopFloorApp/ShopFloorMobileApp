@@ -24,6 +24,17 @@ public class WarehouseBO {
         private String country;
         private String locatorControl;
         private String isWMS;
+        private String directShip;
+
+    public void setDirectShip(String directShip) {
+        String oldDirectShip = this.directShip;
+        this.directShip = directShip;
+        propertyChangeSupport.firePropertyChange("directShip", oldDirectShip, directShip);
+    }
+
+    public String getDirectShip() {
+        return directShip;
+    }
 
     public void setLine3(String line3) {
         String oldLine3 = this.line3;

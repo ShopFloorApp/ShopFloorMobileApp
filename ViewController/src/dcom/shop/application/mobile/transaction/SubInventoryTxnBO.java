@@ -4,15 +4,10 @@ import dcom.shop.application.base.CustomPojo;
 
 import java.util.HashMap;
 
-import oracle.adfmf.java.beans.PropertyChangeListener;
-import oracle.adfmf.java.beans.PropertyChangeSupport;
-
 public class SubInventoryTxnBO extends CustomPojo {
-    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-
     public SubInventoryTxnBO(int trxnid,String isNewEntity, String rowOperation, String fromInventory, String toInventory,
                              String itemNumber, String itemName, String quantity, String txnTime,String completeFlag,
-                             String lpn, String fromLoc, String toLoc, String status, String txnUom){
+                             String lpn, String fromLoc, String toLoc, String status){
         this.setTrxnId(trxnid);
         this.setIsNewEntity(isNewEntity);
         this.setRowOperation(rowOperation);
@@ -28,7 +23,6 @@ public class SubInventoryTxnBO extends CustomPojo {
         this.setLPN(lpn);
         this.setCompleteFlag(completeFlag);
         this.setRowOperation(rowOperation);
-        this.setTxnUom(txnUom);
         
     }
     private int TrxnId;
@@ -70,15 +64,6 @@ public class SubInventoryTxnBO extends CustomPojo {
     private String FromLoc;
     private String ToLoc;
     private String Status;
-    private String TxnUom;
-
-    public void setTxnUom(String TxnUom) {
-        this.TxnUom = TxnUom;
-    }
-
-    public String getTxnUom() {
-        return TxnUom;
-    }
 
     public void setStatus(String Status) {
         this.Status = Status;
@@ -197,7 +182,7 @@ public class SubInventoryTxnBO extends CustomPojo {
         this.setItemNumber((String) hashMap.get("itemnumber"));
         this.setLPN((String) hashMap.get("lpn"));
         this.setCompleteFlag((String)hashMap.get("completeflag"));
-        this.setTxnUom((String)hashMap.get("txnuom"));
+        this.setRowOperation((String)hashMap.get("rowoperation"));
     }
 
     public HashMap getBOClassRow(SubInventoryTxnBO subInventoryTxn) {
@@ -217,7 +202,6 @@ public class SubInventoryTxnBO extends CustomPojo {
         map.put("lpn", subInventoryTxn.getLPN());
         map.put("completeflag",subInventoryTxn.getCompleteFlag());
         map.put("rowoperation", subInventoryTxn.getRowOperation());
-        map.put("txnuom", subInventoryTxn.getTxnUom());
         return map;
     }
 //    @Override
@@ -225,11 +209,4 @@ public class SubInventoryTxnBO extends CustomPojo {
 //        // TODO Implement this method
 //        return null;
 //    }
-    public void addPropertyChangeListener(PropertyChangeListener l) {
-        propertyChangeSupport.addPropertyChangeListener(l);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener l) {
-        propertyChangeSupport.removePropertyChangeListener(l);
-    }
 }

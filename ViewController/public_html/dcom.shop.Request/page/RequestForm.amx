@@ -6,12 +6,14 @@
       <amx:outputText value="Requests" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" action="__back"/>
+     <amx:commandLink id="cl1" action="__back">
+        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+      </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
      
     </amx:facet>
-    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
+    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;" rendered="false">
       <amx:rowLayout id="rl9">
         <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative;">
           <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
@@ -19,8 +21,8 @@
         </amx:cellFormat>
       </amx:rowLayout>
     </amx:tableLayout>
-    <amx:panelFormLayout id="pfl1">
-      <amx:panelLabelAndMessage label="Request Id" id="plam6">
+    <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+      <amx:panelLabelAndMessage label="Request ID" id="plam6">
         <amx:outputText value="#{bindings.requestId.inputValue}" id="ot7"/>
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage label="Program Name" id="plam13">
@@ -36,7 +38,7 @@
         <amx:outputText value="#{bindings.status.inputValue}" id="ot5"/>
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage label="Time Taken" id="plam3">
-        <amx:panelGroupLayout id="pgl1" layout="horizontal">
+        <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="end">
           <amx:outputText value="#{bindings.hrsTaken.inputValue}" id="ot4"/>
           <amx:outputText value=":" id="ot222"/>
           <amx:outputText value="#{bindings.minTaken.inputValue}" id="ot16"/>
@@ -56,17 +58,17 @@
       <amx:panelLabelAndMessage label="Submitted By" id="plam9">
         <amx:outputText value="#{bindings.submittedBy.inputValue}" id="ot10"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.respName.hints.label}" id="plam8">
+      <amx:panelLabelAndMessage label="Responsibility Name" id="plam8">
         <amx:outputText value="#{bindings.respName.inputValue}" id="ot9"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.ofileType.hints.label}" id="plam12">
+      <amx:panelLabelAndMessage label="File Type" id="plam12">
         <amx:outputText value="#{bindings.ofileType.inputValue}" id="ot13"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.logSize.hints.label}" id="plam1">
-        <amx:outputText value="#{bindings.logSize.inputValue}" id="ot2"/>
+      <amx:panelLabelAndMessage label="Log File Size" id="plam1">
+        <amx:outputText value="#{bindings.logSize.inputValue} Bytes" id="ot2"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.outPutSize.hints.label}" id="plam10">
-        <amx:outputText value="#{bindings.outPutSize.inputValue}" id="ot11"/>
+      <amx:panelLabelAndMessage label=" Output File Size" id="plam10">
+        <amx:outputText value="#{bindings.outPutSize.inputValue} Bytes" id="ot11"/>
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
   </amx:panelPage>

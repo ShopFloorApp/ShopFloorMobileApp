@@ -22,6 +22,10 @@
                       id="locatorsIterator"/>
     <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="lines" RangeSize="25" DataControl="ReceivingTxnDC"
                       BeanClass="dcom.shop.application.mobile.transaction.receiving.LinesBO" id="linesIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="lpns" RangeSize="-1" DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.LPNBO" id="lpnsIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="uoms" RangeSize="-1" DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="uomsIterator"/>
   </executables>
   <bindings>
     <list IterBinding="variables" id="item" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -101,5 +105,33 @@
         <Item Value="isNewEntity"/>
       </AttrNames>
     </attributeValues>
+    <list IterBinding="variables" id="LPNNum" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="lpnsIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="itemVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="LPNNum"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="LPNNum"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="UOM" DTSupportsMRU="true" SelectItemValueMode="ListObject" StaticList="false"
+          ListIter="uomsIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="itemVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="UOMCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

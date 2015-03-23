@@ -2,8 +2,10 @@ package dcom.shop.application.dc.transaction.receiving;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.CarrierBO;
+import dcom.shop.application.mobile.LPNBO;
 import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.application.mobile.SubinventoryBO;
+import dcom.shop.application.mobile.UOMBO;
 import dcom.shop.application.mobile.transaction.receiving.LinesBO;
 import dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO;
 import dcom.shop.application.mobile.transaction.receiving.RequisitionBO;
@@ -38,6 +40,8 @@ public class ReceivingTxnDC extends SyncUtils{
     protected static List s_subInv = new ArrayList();
     protected static List s_locator = new ArrayList();
     public static List s_lines = new ArrayList();
+    protected static List s_uom = new ArrayList();
+    protected static List s_lpn = new ArrayList();
     private String supplierCustomerName;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
@@ -71,7 +75,10 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + "                   {\"POU\": \"\",\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + 
+            "                   {\"POU\": \"\",\n" +
+            "                   \"PTYPE\": \"RMA\",\n" +
+               "                   \"PORDER\": \"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -156,7 +163,9 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + "                   {\"POU\": \"\",\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + 
+            "                   {\"POU\": \"\",\n" +
+            "                   \"PREQ\": \"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -240,7 +249,9 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + "                   {\"POU\": \"\",\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + 
+            "                   {\"POU\": \"\",\n" +
+            "                   \"PPO\": \"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -329,13 +340,29 @@ public class ReceivingTxnDC extends SyncUtils{
         return subInventoriesArray;
     }
     
+    public UOMBO[] getUoms(){
+        s_uom.clear();
+        s_uom=super.getCollectionFromDB(UOMBO.class);
+        UOMBO[] uomsArray =
+            (UOMBO[]) s_uom.toArray(new UOMBO[s_uom.size()]);
+        return uomsArray;
+    }
+    
+    public LPNBO[] getLpns(){
+        s_lpn.clear();
+        s_lpn=super.getCollectionFromDB(UOMBO.class);
+        LPNBO[] lpnArray =
+            (LPNBO[]) s_lpn.toArray(new LPNBO[s_lpn.size()]);
+        return lpnArray;
+    }
+    
     public void refreshLocators() {
         providerChangeSupport.fireProviderRefresh("locators");
     }
     
     public LocatorBO[] getLocators(){
         s_locator.clear();
-        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subinv.inputValue}");
+        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.subInvAdd}");
         String whereClause="WHERE SUBINV=\""+subInv+"\"";
         s_locator=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
         LocatorBO[] locatorsArray =

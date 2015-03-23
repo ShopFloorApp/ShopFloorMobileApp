@@ -37,7 +37,11 @@
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.Transaction" name="Transaction">
     <adfmf:content id="dcom.shop.Transaction.1">
-      <adfmf:amx file="dcom.shop.Transaction/transactionTf.xml#transactionTf"/>
+      <adfmf:amx file="dcom.shop.Transaction/transactionTf.xml#transactionTf">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i7"/>
+        </adfmf:includes>
+      </adfmf:amx>
     </adfmf:content>
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.Inquiry" name="Inquiry">

@@ -6,12 +6,14 @@
       <amx:outputText value="Requests" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-     <amx:commandButton id="cb1" action="__back"/>
+      <amx:commandLink id="cl1" action="__back">
+        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+      </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
-    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;">
+    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;" rendered="false">
       <amx:rowLayout id="rl9">
         <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative; ">
           <amx:commandButton text="Search Request" id="cb3" inlineStyle="border-radius: 9.5em;"
@@ -23,8 +25,8 @@
                   fetchSize="#{bindings.concurrentPrograms.rangeSize}"
                   selectedRowKeys="#{bindings.concurrentPrograms.collectionModel.selectedRow}"
                   selectionListener="#{bindings.concurrentPrograms.collectionModel.makeCurrent}"
-                  showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1" action="setParams" actionListener="#{RequestUtilBean.listAction}">
+                  showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
+      <amx:listItem id="li1" action="setParams" actionListener="#{RequestUtilBean.listAction}" showLinkIcon="false">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl2">
             <amx:cellFormat width="10px" rowSpan="2" id="cf3"/>
