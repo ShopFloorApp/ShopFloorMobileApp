@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import oracle.adf.model.datacontrols.device.DeviceManagerFactory;
 
-public class AViewObject {
+public abstract class AViewObject extends SyncUtils{
     public static final String NETWORK_NOT_REACHABLE = "NotReachable"; // Indicates no network connectivity.
 
     protected boolean isOffline() {

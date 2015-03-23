@@ -1,5 +1,6 @@
 package dcom.shop.application.dc;
 
+import dcom.shop.application.base.AViewObject;
 import dcom.shop.application.mobile.DepartmentBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
@@ -11,31 +12,29 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class DepartmentDC {
-    private List filtered_Departments = new ArrayList();
-    private String deptFilter = "";
-    private String nameFilter = "";
+public class DepartmentDC extends AViewObject {
     protected static List<DepartmentBO> s_dept = new ArrayList<DepartmentBO>();
 
 
     public DepartmentDC() {
-        /* try {
-            GenericVirtualType payload = new GenericVirtualType(null, "payload");
-            HashMap paramsMap=new HashMap();
-            paramsMap.put("resAttriName","DeptDetails");
-            paramsMap.put("lovDCName", "DepartmentLOV_WS");
-            paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload",payload);
-            s_dept = super.getCollection(DepartmentBO.class, paramsMap);
-            filterDepartments();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        } */
     }
 
     public DepartmentBO[] getDepartments() {
-        RestCallerUtil restCallerUtil = new RestCallerUtil();
         DepartmentBO[] sDept = null;
+        s_dept.clear();
+        if (isOffline()) {
+            s_dept = getCollectionFromDB(DepartmentDC.class);
+            sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
+        } else {
+            getFromWS();
+            sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
+        }
+        return sDept;
+    }
+
+    public void getFromWS() {
+        RestCallerUtil restCallerUtil = new RestCallerUtil();
+
         String strPayload =
             "{\"x\":{\"RESTHeader\":{\"Responsibility\":\"ORDER_MGMT_SUPER_USER\",\"RespApplication\":\"ONT\",\"SecurityGroup\":\"STANDARD\",\"NLSLanguage\":\"AMERICAN\",\"Org_Id\":\"82\"},\"InputParameters\":{\"PORGCODE\":{}}}}";
 
@@ -51,7 +50,7 @@ public class DepartmentDC {
                 JSONArray deptArray = (JSONArray) jsObject1.get("XDETPS_ITEM");
                 if (deptArray != null) {
                     int size = deptArray.size();
-                    sDept = new DepartmentBO[size];
+                    //sDept = new DepartmentBO[size];
                     for (int i = 0; i < size; i++) {
                         DepartmentBO dept = new DepartmentBO();
                         JSONObject jsObject2 = (JSONObject) deptArray.get(i);
@@ -62,37 +61,12 @@ public class DepartmentDC {
                         dept.setDeptDesc((jsObject2.get("DEPTDESC").toString()));
                         s_dept.add(dept);
                     }
-                    sDept = s_dept.toArray(new DepartmentBO[s_dept.size()]);
-                    return sDept;
+                    super.updateSqlLiteTable(DepartmentBO.class, s_dept);
                 }
             } catch (Exception e) {
                 e.getMessage();
             }
         }
-        return sDept;
     }
-
-    /* public void filterDepartments() {
-        try {
-            System.out.println("inside filter code");
-            filtered_Departments.clear();
-
-            HashMap filterFileds = new HashMap();
-            filterFileds.put("DeptCode", getDeptFilter());
-            filterFileds.put("Desc", getNameFilter());
-
-
-            HashMap paramMap = new HashMap();
-            paramMap.put("collection", deptList);
-            paramMap.put("filterFieldsValues", filterFileds);
-            System.out.println("called super filtered class");
-
-            filtered_Departments = (List) super.getFileteredCollection(DepartmentBO.class, paramMap);
-            System.out.println("collection size is " + filtered_Departments.size());
-            providerChangeSupport.fireProviderRefresh("warehouses");
-        } catch (Exception e) {
-            throw new RuntimeException("My Code Error " + e);
-        }
-    } */
 }
 
