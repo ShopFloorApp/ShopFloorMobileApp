@@ -191,10 +191,9 @@ public class StateListener {
     
     public void callLovPage(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
-        if(valueChangeEvent.getNewValue() != null){
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "adf.mf.api.amx.doNavigation", new Object[] { "ItemLOV" });
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}","SubinvTrfr");
-        }
+       
     }
 
     public void SubinvValueChange(ValueChangeEvent valueChangeEvent) {
