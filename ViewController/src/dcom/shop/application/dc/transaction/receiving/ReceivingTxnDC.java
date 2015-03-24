@@ -65,6 +65,7 @@ public class ReceivingTxnDC extends SyncUtils{
         s_salesOrder.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
+        String pType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}")==null?"RMA":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}"));
         String restURI = RestURI.PostGetSalesOrder();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
@@ -77,7 +78,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
-            "                   \"PTYPE\": \"RMA\",\n" +
+            "                   \"PTYPE\": \""+pType+"\",\n" +
                "                   \"PORDER\": \"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");

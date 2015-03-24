@@ -18,7 +18,7 @@
                       selectedRowKeys="#{bindings.request.collectionModel.selectedRow}"
                       selectionListener="#{bindings.request.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" action="requestDetails" showLinkIcon="false">
+            <amx:listItem id="li1" action="requestDetails" showLinkIcon="false" inlineStyle="width: 98%;">
                 <amx:tableLayout width="90%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="90%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1">
