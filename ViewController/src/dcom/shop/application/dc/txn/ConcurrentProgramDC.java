@@ -111,7 +111,7 @@ public class ConcurrentProgramDC extends SyncUtils {
         String requestId = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestIdS}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestIdS}"));
         String program = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.name}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.name}"));
         String application = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applicationName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applicationName}"));
-        String username = "";
+        String username = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestorName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestorName}"));;
         String role = "";
         String phase = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.phase}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.phase}"));
         String status = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.status}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.status}"));
@@ -353,6 +353,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             String progCode = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}"));
             String seq = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}"));
             String valueSet = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}"));
+        String param5 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param5}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param5}"));
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
@@ -365,6 +366,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                  {\"PPROGCODE\": \""+progCode+"\",\n" + 
             "                  \"PSEQ\": \""+seq+"\",\n" +
+        "                  \"PREFPARAM5\": \""+param5+"\",\n" +
             "                    \"PVALUESET\": \""+valueSet+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Select Request Type" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+                  <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+                             disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
+                             styleClass="custom-springboard-link">
+                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
+                           source="/images/springboard.png" id="i1"/>
+            </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
+      <amx:listItem id="li1" action="searchRequest">
+        <amx:outputText value="Search Request" id="ot2"/>
+      </amx:listItem>
+      <amx:listItem id="li2" action="submitRequest">
+        <amx:outputText value="Submit Request" id="ot3"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

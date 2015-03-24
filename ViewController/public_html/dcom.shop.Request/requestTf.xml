@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="requestTf">
-    <default-activity>searchRequest</default-activity>
+    <default-activity>requestSelect</default-activity>
     <managed-bean id="__8">
       <managed-bean-name>RequestUtilBean</managed-bean-name>
       <managed-bean-class>dcom.shop.Request.bean.RequestUtilBean</managed-bean-class>
@@ -28,6 +28,9 @@
     <view id="ProgramSubmitted">
       <page>/dcom.shop.Request/page/ProgramSubmitted.amx</page>
     </view>
+    <view id="requestSelect">
+      <page>/dcom.shop.Request/page/requestSelect.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>searchRequest</from-activity-id>
       <control-flow-case id="__2">
@@ -52,6 +55,10 @@
         <from-outcome>searchRequest</from-outcome>
         <to-activity-id>searchRequest</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>home</from-outcome>
+        <to-activity-id>requestSelect</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__6">
       <from-activity-id>SubmitRequest</from-activity-id>
@@ -69,6 +76,13 @@
       <control-flow-case id="__13">
         <from-outcome>result</from-outcome>
         <to-activity-id>ProgramSubmitted</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>ProgramSubmitted</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>getRequest</from-outcome>
+        <to-activity-id>Requests</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

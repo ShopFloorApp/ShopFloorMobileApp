@@ -32,6 +32,7 @@
               <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
               <amx:setPropertyListener id="spl1" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
               <amx:setPropertyListener id="spl2" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
+              <amx:setPropertyListener id="spl3" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/>
             </amx:commandLink>
           </amx:cellFormat>
         </amx:rowLayout>

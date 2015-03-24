@@ -9,9 +9,9 @@
       <property
          name="page">/dcom.shop.Request/page/searchRequest.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>searchRequest&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>searchRequest&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -111,7 +111,7 @@
       <property
          name="fromOutcome">searchRequest</property>
       <property
-         name="sdm:polyPoints">L50,560.0,204.44824,410.0,237.24707,R50</property>
+         name="sdm:polyPoints">L55,560.0,207.94824,410.0,237.24707,R50</property>
    </ControlFlowCase>
    <View
       id="View11">
@@ -187,5 +187,42 @@
          name="fromOutcome">result</property>
       <property
          name="sdm:polyPoints">B50,963.0,160.24707,1108.0,240.89648,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View18">
+      <property
+         name="activityId">requestSelect</property>
+      <property
+         name="page">/dcom.shop.Request/page/requestSelect.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>requestSelect&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">119.896484</property>
+      <property
+         name="x">368.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase19"
+      from="WildcardControlFlowRule11"
+      to="View18">
+      <property
+         name="fromOutcome">home</property>
+      <property
+         name="sdm:polyPoints">L45,560.0,200.94824,409.0,119.5459,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="View16"
+      to="View3">
+      <property
+         name="fromOutcome">getRequest</property>
+      <property
+         name="sdm:polyPoints">L54,1108.0,244.39648,697.0,433.74707,R46</property>
    </ControlFlowCase>
 </SDM>

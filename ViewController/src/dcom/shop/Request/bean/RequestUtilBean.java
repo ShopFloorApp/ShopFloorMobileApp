@@ -117,4 +117,38 @@ public class RequestUtilBean {
             }
         return null;
     }
+    public void clearPage(ActionEvent ae){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestIdS}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestorName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.phase}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.status}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.endDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.dateType}", null);
+    }
+    
+    public void getMyRequests(ActionEvent ae){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestIdS}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestorName}", "");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.phase}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.status}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.endDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.dateType}", null);
+    }
+    public void getRequestByRequestId(ActionEvent ae){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestIdS}", AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestId}"));
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestorName}", "");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.phase}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.status}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.endDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.dateType}", null);
+    }
 }
