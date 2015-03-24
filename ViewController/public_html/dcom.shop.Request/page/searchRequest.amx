@@ -23,7 +23,7 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelGroupLayout id="pgl1" layout="horizontal">
-            <amx:spacer id="s1" width="20"/>
+            <amx:spacer id="s1" width="10"/>
             <amx:panelFormLayout id="pfl1" labelPosition="topStart">
                 <amx:inputText id="it1" label="Request ID" value="#{pageFlowScope.requestIdS}"/>
                 <amx:selectOneChoice label="Application" id="soc2" value="#{pageFlowScope.applicationName}">

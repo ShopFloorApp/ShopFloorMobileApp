@@ -22,11 +22,11 @@
                 <amx:tableLayout width="90%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="70%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1">
-                            <amx:outputText value="#{row.requestId}" styleClass="adfmf-listItem-captionText" id="ot2"
+                            <amx:outputText value="#{row.requestId}" id="ot2"
                                             inlineStyle="font-weight:bold;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf4" width="30%">
-                            <amx:outputHtml id="oh2" value="#{row.hrsTaken} : #{row.minTaken} : #{row.ssTaken}"
+                        <amx:cellFormat id="cf4" width="40%" halign="center">
+                            <amx:outputHtml id="oh2" value="  #{row.hrsTaken} : #{row.minTaken} : #{row.ssTaken}"
                                             styleClass="fa fa-clock-o fa-lg #{row.colorStyle}"
                                             inlineStyle="font-weight:bold;"/>
                             <amx:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="right: 0px;"
