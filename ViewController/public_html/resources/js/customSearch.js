@@ -36,7 +36,7 @@
         var anchorElement = document.createElement("a");
         anchorElement.id = id+"anchor";
         anchorElement.setAttribute("href","#");
-        anchorElement.setAttribute("class","clear_button");
+        anchorElement.setAttribute("class","search_button");
         subElement.appendChild(anchorElement);
         rootElement.appendChild(subElement);
 
@@ -57,7 +57,7 @@
         adf.mf.api.amx.addBubbleEventListener(
           anchorElement,
           "tap",
-          this._clearText,
+          this._callPage,
           eventData);
       }
       catch (problem)
@@ -123,9 +123,9 @@
       var inputElementValue = inputElement.value;
 
       if (inputElementValue != null && inputElementValue.length > 0)
-        anchorElement.className = "clear_button_visible";
+        anchorElement.className = "search_button";
       else
-        anchorElement.className = "clear_button";
+        anchorElement.className = "search_button";
 
       var oldInputElementValue = null;
       var vs = amxNode.getVolatileState();
@@ -160,7 +160,12 @@
       }
     };
 
-
+csearch.prototype._callPage = function(event)
+    {
+     var amxNode = event.data["amxNode"];
+     var action = amx.getTextValue(amxNode.getAttribute("action"));
+      adf.mf.api.amx.doNavigation(action);
+    };
     /**
      * This method clears the text within the search input text compoent on
      * tapping the X icon.
@@ -172,7 +177,7 @@
       inputElement.value = "";
       var anchorElementId = event.data["anchorElement.id"];
       var anchorElement = document.getElementById(anchorElementId);
-      anchorElement.className = "clear_button";
+      anchorElement.className = "search_button";
       var context = event.data["context"];
       context._handleTextChange(event, true);
     };
