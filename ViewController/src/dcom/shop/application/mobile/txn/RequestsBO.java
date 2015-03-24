@@ -49,7 +49,7 @@ public class RequestsBO implements Comparable {
         }else if(this.getStatus().equalsIgnoreCase("Error")){
             className="time-btn-error";
         }else{
-            className="time-btn-warning";
+            className="time-btn-normal";
         }
         return className;
     }

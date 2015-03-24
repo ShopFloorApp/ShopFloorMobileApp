@@ -181,30 +181,43 @@
 }
 
 .time-btn-completed{
-    width: 39px;
+    /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid green;
     padding: 2px;
-    border-width: thin;
+    border-width: thin;*/
+    color:Green;
 }
 
 .time-btn-warning{
-    width: 39px;
+    /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid orange;
     padding: 2px;
-    border-width: thin;
+    border-width: thin;*/
+    color:Yellow;
 }
 
 .time-btn-error{
-    width: 39px;
+    /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid red;
     padding: 2px;
-    border-width: thin;
+    border-width: thin;*/
+    color:Red;
+}
+
+.time-btn-normal{
+    /*width: 39px;
+    border-radius: 10.5em;
+    background: transparent;
+    border: solid red;
+    padding: 2px;
+    border-width: thin;*/
+    color:Gray;
 }
 
 #it1__inputElement {
