@@ -10,9 +10,6 @@
     <view id="PickRelease">
       <page>/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx</page>
     </view>
-    <view id="OrderNumLOV">
-      <page>/dcom.shop.Transaction/page/ShippingTxn/OrderNumLOV.amx</page>
-    </view>
     <task-flow-return id="taskFlowReturn1">
       <outcome>
         <name>taskFlowReturn1</name>
@@ -24,15 +21,18 @@
     <view id="LPNship">
       <page>/dcom.shop.Transaction/page/ShippingTxn/LPNship.amx</page>
     </view>
+    <view id="DocumentNo">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
-      <control-flow-case id="__2">
-        <from-outcome>pickRLov</from-outcome>
-        <to-activity-id>OrderNumLOV</to-activity-id>
-      </control-flow-case>
       <control-flow-case id="__10">
         <from-outcome>backToShipT</from-outcome>
         <to-activity-id>__ShippingTransactions2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__2">
+        <from-outcome>pickRLov</from-outcome>
+        <to-activity-id>DocumentNo</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
@@ -40,13 +40,6 @@
       <control-flow-case id="__4">
         <from-outcome>backToTxn</from-outcome>
         <to-activity-id>taskFlowReturn1</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__5">
-      <from-activity-id>OrderNumLOV</from-activity-id>
-      <control-flow-case id="__6">
-        <from-outcome>backToPR</from-outcome>
-        <to-activity-id>PickRelease</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__8">
@@ -65,6 +58,13 @@
       <control-flow-case id="__13">
         <from-outcome>backToShipT</from-outcome>
         <to-activity-id>__ShippingTransactions2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>DocumentNo</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>PickRelease</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

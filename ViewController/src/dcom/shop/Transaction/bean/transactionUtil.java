@@ -20,9 +20,11 @@ public class transactionUtil {
             Utility.ApplicationLogger.info("Inside execute Pick Release");
             String restURI = RestURI.PostSubmitProgramURI();
             String pickRule = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pickRule}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pickRule}"));
-            String orderNum = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.OrderNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.OrderNumber}"));
-            String event = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.Event}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.Event}"));
+            String orderNum = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+            
+            String event =  "true".equalsIgnoreCase(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.Event}").toString())?"CONCURRENT":"ONLINE";
             RestCallerUtil rcu = new RestCallerUtil();
+            System.out.println("values to method are 1 "+pickRule+" 2 "+orderNum+" 3 "+event);
             String payload =
                 "{\n" + 
                 "\"PickRelease_Input\":\n" + 
@@ -67,5 +69,11 @@ public class transactionUtil {
                     e.getMessage();
                 }
                 }
+    }
+
+    public void clearPickRel(ActionEvent actionEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRule}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationEvent}", true);
     }
 }

@@ -19,31 +19,6 @@
       <property
          name="x">593.34863</property>
    </View>
-   <View
-      id="View3">
-      <property
-         name="activityId">OrderNumLOV</property>
-      <property
-         name="page">/dcom.shop.Transaction/page/ShippingTxn/OrderNumLOV.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>OrderNumLOV&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">163.39648</property>
-      <property
-         name="x">762.01074</property>
-   </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase4"
-      from="View2"
-      to="View3">
-      <property
-         name="fromOutcome">pickRLov</property>
-      <property
-         name="sdm:polyPoints">R46,634.34863,178.5459,720.24915,159.5459,L46</property>
-   </ControlFlowCase>
    <TaskFlowReturn
       id="TaskFlowReturn5">
       <property
@@ -77,16 +52,6 @@
          name="fromOutcome">backToTxn</property>
       <property
          name="sdm:polyPoints">R50,167.0,70.74707,286.0,56.896484,L50</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase8"
-      from="View3"
-      to="View2">
-      <property
-         name="fromOutcome">backToPR</property>
-      <property
-         name="sdm:polyPoints">L54,721.01074,166.5459,635.107,185.5459,R54</property>
    </ControlFlowCase>
    <View
       id="View10">
@@ -148,7 +113,7 @@
       <property
          name="fromOutcome">lpnShip</property>
       <property
-         name="sdm:polyPoints">L50,389.8047,284.0459,320.5,218.74707,R50</property>
+         name="sdm:polyPoints">L46,389.8047,280.5459,323.31982,215.24707,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -159,5 +124,40 @@
          name="fromOutcome">backToShipT</property>
       <property
          name="sdm:polyPoints">R54,320.5,222.24707,387.02646,287.5459,L54</property>
+   </ControlFlowCase>
+   <View
+      id="View16">
+      <property
+         name="activityId">DocumentNo</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DocumentNo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">166.39648</property>
+      <property
+         name="x">741.0156</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View2"
+      to="View16">
+      <property
+         name="fromOutcome">pickRLov</property>
+      <property
+         name="sdm:polyPoints">R50,634.34863,182.0459,700.0156,166.0459,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View16"
+      to="View2">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">L54,700.0156,169.5459,635.18915,185.5459,R54</property>
    </ControlFlowCase>
 </SDM>
