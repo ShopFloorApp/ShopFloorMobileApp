@@ -6,14 +6,14 @@
             <amx:outputText value="On Hand Search Results" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="onHandDetailsBack">
-                <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+            <amx:commandLink id="cl1" action="__back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-      <amx:panelFormLayout id="pf1">
+      <amx:panelFormLayout id="pf1" labelPosition="topStart" fieldHalign="start">
             <amx:panelLabelAndMessage label="Item" id="plam1">
                 <amx:outputText value="#{bindings.ITEM.inputValue}" id="ot2"/>
             </amx:panelLabelAndMessage>

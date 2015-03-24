@@ -5,21 +5,20 @@
     <amx:facet name="header">
       <amx:outputText value="LPN Search Results" id="ot1"/>
     </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandLink id="cl1" action = "lpnlistBack">
-        <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
-      </amx:commandLink>
-    </amx:facet>
-
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="__back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" rendered="false"/>
+        </amx:facet>
     <amx:listView var="row" value="#{bindings.allLpns.collectionModel}" fetchSize="#{bindings.allLpns.rangeSize}"
                   selectedRowKeys="#{bindings.allLpns.collectionModel.selectedRow}"
                   selectionListener="#{bindings.allLpns.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                  bufferStrategy="viewport" id="lv1">
+                  bufferStrategy="viewport" id="lv1" layout="cards">
                  
-      <amx:listItem id="li1" showLinkIcon="true" action="lpnDetails">
+      <amx:listItem id="li1" showLinkIcon="false" action="lpnDetails">
         <amx:tableLayout width="100%" id="tl">
                         
                         <amx:rowLayout id="rl">

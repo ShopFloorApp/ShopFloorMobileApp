@@ -6,8 +6,8 @@
             <amx:outputText value="Header" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="mtlTxnListBack">
-                <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
+            <amx:commandLink id="cl1" action="__back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -17,8 +17,8 @@
                       fetchSize="#{bindings.allmtlTxn.rangeSize}"
                       selectedRowKeys="#{bindings.allmtlTxn.collectionModel.selectedRow}"
                       selectionListener="#{bindings.allmtlTxn.collectionModel.makeCurrent}"
-                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-            <amx:listItem id="li1" showLinkIcon="true" action="mtlTxnDetails">
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
+            <amx:listItem id="li1" showLinkIcon="false" action="mtlTxnDetails">
                 <amx:tableLayout width="100%" id="tl">
                     <amx:rowLayout id="rl">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
