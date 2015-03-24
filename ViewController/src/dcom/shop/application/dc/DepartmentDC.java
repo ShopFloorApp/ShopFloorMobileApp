@@ -2,14 +2,11 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.AViewObject;
 import dcom.shop.application.mobile.DepartmentBO;
-import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
@@ -84,7 +81,8 @@ public class DepartmentDC extends AViewObject {
     public void findDepartments(String dept) {
         s_dept.clear();
         isSearched = true;
-        String whereClause = "WHERE DEPTNAME LIKE \"" + dept + "%\"";
+        String whereClause = "WHERE DEPTNAME LIKE '" + dept + "%'";
+        //String whereClause = "WHERE 1=1";
         s_dept = super.getFilteredCollectionFromDB(DepartmentBO.class, whereClause);
         providerChangeSupport.fireProviderRefresh("departments");
     }

@@ -11,14 +11,14 @@
                              styleClass="custom-springboard-link">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh1" styleClass="fa fa-bars fa-2x"
-                                inlineStyle="color:#34AADC; margin-top:-4px;position:relative;"/>
+                                inlineStyle="margin-top:-4px; position:relative;"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandLink id="cl1">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh2" styleClass="fa fa-ellipsis-v fa-2x"
-                                inlineStyle="color:#34AADC; margin-top:-4px;position:relative;"/>
+                                inlineStyle="margin-top:-4px; position:relative;"/>
             </amx:commandLink>
         </amx:facet>
         <amx:panelStretchLayout id="psl1">
@@ -37,8 +37,7 @@
                                 <amx:inputText hintText="Search Department" label="" id="it1" simple="true"
                                                inlineStyle="width:280px;" value="#{bindings.searchValue.inputValue}"/>
                                 <amx:commandLink id="cb3" actionListener="#{bindings.findDepartments.execute}">
-                                    <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg"
-                                                    inlineStyle="color:#34AADC;"/>
+                                    <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg"/>
                                 </amx:commandLink>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>

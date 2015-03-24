@@ -255,3 +255,11 @@
     margin-bottom: 0;
     padding: 10px;
 }
+
+.amx-listItem .amx-outputText {
+    white-space: nowrap;
+    text-overflow: clip;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+}

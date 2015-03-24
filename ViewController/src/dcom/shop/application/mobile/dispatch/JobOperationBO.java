@@ -1,5 +1,7 @@
 package dcom.shop.application.mobile.dispatch;
 
+import java.util.HashMap;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -17,6 +19,30 @@ public class JobOperationBO {
     public JobOperationBO() {
         super();
     }
+    public void setBOClassRow(HashMap hashMap) {
+        this.setJobNumber((String) hashMap.get("jobnumber"));
+        this.setJobOps((String) hashMap.get("jobops"));
+        this.setJobDesc((String) hashMap.get("jobdesc"));
+        this.setJobStatus((String) hashMap.get("jobstatus"));
+        this.setReadyStatus((String) hashMap.get("readystatus"));
+        this.setAssembly((String) hashMap.get("assembly"));
+        this.setAssemblyDesc((String) hashMap.get("assemblydesc"));
+        this.setSchStartDate((String) hashMap.get("schstartdate"));
+        
+    }
+
+    public HashMap getBOClassRow(JobOperationBO jobOperation) {
+        HashMap map = new HashMap();
+        map.put("jobnumber", jobOperation.getJobNumber());
+        map.put("jobops", jobOperation.getJobOps());
+        map.put("jobdesc", jobOperation.getJobDesc());
+        map.put("jobstatus", jobOperation.getJobStatus());
+        map.put("readystatus", jobOperation.getReadyStatus());
+        map.put("assembly", jobOperation.getAssembly());
+        map.put("assemblydesc", jobOperation.getAssemblyDesc());
+        map.put("schstartdate", jobOperation.getSchStartDate());
+        return map;
+    } 
 
     public void setJobNumber(String jobNumber) {
         String oldJobNumber = this.jobNumber;

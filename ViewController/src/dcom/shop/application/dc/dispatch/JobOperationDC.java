@@ -1,5 +1,6 @@
 package dcom.shop.application.dc.dispatch;
 
+import dcom.shop.application.base.AViewObject;
 import dcom.shop.application.mobile.dispatch.JobOperationBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,36 +18,47 @@ import org.json.simple.parser.JSONParser;
 /*
  * Fetches the Job Operations based on the department selected on dispatch list page
  */
-public class JobOperationDC {
+public class JobOperationDC extends AViewObject{
+    
     protected static List<JobOperationBO> jobOpList = new ArrayList<JobOperationBO>();
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
+    private static boolean isSortOperation = false;
 
     public JobOperationDC() {
         super();
     }
 
     public JobOperationBO[] getJobOperationBO() {
+        JobOperationBO[] sJobOperation = null;
+        if (!isSortOperation) {
+            jobOpList.clear();
+            if (isOffline()) {
+                jobOpList = getCollectionFromDB(JobOperationDC.class);
+                sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+            } else {
+                getFromWS();
+                sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+            }
+        } else {
+            isSortOperation = false;
+            return sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+        }
+        return sJobOperation;
+    }
+
+    public void getFromWS() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobOperationBO[] jobOprArray = null;
         String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
-        String deptCode= AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
-        
-        StringBuffer inputPayload= new StringBuffer();
-        inputPayload.append(
-            "{\n" + 
-            "  \"x\": {\n" + 
-            "    \"RESTHeader\": {\n" + 
-            "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-            "      \"RespApplication\": \"ONT\",\n" + 
-            "      \"SecurityGroup\": \"STANDARD\",\n" + 
-            "      \"NLSLanguage\": \"AMERICAN\",\n" + 
-            "      \"Org_Id\": \"82\"\n" + 
-            "    },\n" + 
-            "    \"InputParameters\": {\n" + 
-            "      \"PORGCODE\": \""+orgCode+"\",\n" + 
-            "      \"PDEPTCODE\": \""+deptCode+"\"\n" + 
-            "    }\n" + 
-            "  }\n" + 
-            "}");
+        String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
+
+        StringBuffer inputPayload = new StringBuffer();
+        inputPayload.append("{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
+                            "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                            "      \"RespApplication\": \"ONT\",\n" + "      \"SecurityGroup\": \"STANDARD\",\n" +
+                            "      \"NLSLanguage\": \"AMERICAN\",\n" + "      \"Org_Id\": \"82\"\n" + "    },\n" +
+                            "    \"InputParameters\": {\n" + "      \"PORGCODE\": \"" + orgCode + "\",\n" +
+                            "      \"PDEPTCODE\": \"" + deptCode + "\"\n" + "    }\n" + "  }\n" + "}");
 
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetJobOp(), inputPayload.toString());
         if (jsonArrayAsString != null) {
@@ -73,14 +87,27 @@ public class JobOperationDC {
                         jobOperationBO.setSchStartDate(jsObject2.get("SCHSTARTDATE").toString());
                         jobOpList.add(jobOperationBO);
                     }
-                    jobOprArray = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
-                    return jobOprArray;
+                    super.updateSqlLiteTable(JobOperationBO.class, jobOpList);
                 }
             } catch (Exception e) {
                 e.getMessage();
             }
         }
-        return jobOprArray;
+    }
+    
+    public void sortJobOperation(String sortByCol){
+        jobOpList.clear();
+        isSortOperation = true;
+        String orderByClause = "ORDER BY "+sortByCol+ " ASC";
+        jobOpList = super.getFilteredCollectionFromDB(JobOperationBO.class, orderByClause);
+        providerChangeSupport.fireProviderRefresh("jobOperationBO");
+        
+    }
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
 
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
 }

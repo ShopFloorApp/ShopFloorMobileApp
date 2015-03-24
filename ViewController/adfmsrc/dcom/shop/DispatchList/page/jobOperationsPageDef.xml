@@ -24,5 +24,10 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="sortJobOperation" RequiresUpdateModel="true" Action="invokeMethod" MethodName="sortJobOperation"
+                  IsViewObjectMethod="false" DataControl="JobOperationDC"
+                  InstanceName="data.JobOperationDC.dataProvider">
+      <NamedData NDName="sortByCol" NDValue="#{pageFlowScope.jobOprSortCol}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

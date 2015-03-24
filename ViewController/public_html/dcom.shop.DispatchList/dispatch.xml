@@ -2,6 +2,11 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="dispatch">
     <default-activity>dispatchList</default-activity>
+    <managed-bean id="__19">
+      <managed-bean-name>DispatchBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.DispatchList.manage.DispatchBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="dispatchList">
       <page>/dcom.shop.DispatchList/page/dispatchList.amx</page>
     </view>

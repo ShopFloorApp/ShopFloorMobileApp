@@ -442,10 +442,7 @@ public class SyncUtils {
 
         try {
             conn = ConnectionFactory.getConnection();
-
             Statement stmt = conn.createStatement();
-
-
             StringBuffer query = new StringBuffer();
             query.append("SELECT ");
 

@@ -1,5 +1,7 @@
 package dcom.shop.application.mobile;
 
+import java.util.HashMap;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.util.GenericVirtualType;
@@ -92,19 +94,24 @@ public class DepartmentBO implements Comparable {
         super();
     }
 
-    /* public void setBOClassRow(HashMap hashMap) {
-        this.setWhse((String) hashMap.get("whse"));
-        this.setDeptCode((String) hashMap.get("deptcode"));
-        this.setDesc((String) hashMap.get("desc"));
+    public void setBOClassRow(HashMap hashMap) {
+        this.setDeptDesc((String) hashMap.get("deptdesc"));
+        this.setOrgCode((String) hashMap.get("orgcode"));
+        this.setDeptId((String) hashMap.get("deptid"));
+
+        this.setOpenJob((String) hashMap.get("openjob"));
+        this.setDeptName((String) hashMap.get("deptname"));
     }
 
     public HashMap getBOClassRow(DepartmentBO department) {
         HashMap map = new HashMap();
-        map.put("whse", department.getWhse());
-        map.put("deptcode", department.getDeptCode());
-        map.put("desc", department.getDesc());
+        map.put("deptdesc", department.getDeptDesc());
+        map.put("orgcode", department.getOrgCode());
+        map.put("deptid", department.getDeptId());
+        map.put("openjob", department.getOpenJob());
+        map.put("deptname", department.getDeptName());
         return map;
-    } */
+    } 
 
     public int compareTo(Object o) {
         // TODO Implement this method
