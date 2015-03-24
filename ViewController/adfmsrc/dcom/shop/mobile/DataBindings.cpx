@@ -90,7 +90,10 @@
               usageId="dcom_shop_mobile_returnFromScrapPageDef"/>
         <page path="/dcom.shop.DispatchList/page/reportTime.amx" usageId="dcom_shop_mobile_reportTimePageDef"/>
     <page path="/dcom.shop.Transaction/LpnTxnDetails.amx" usageId="dcom_shop_mobile_LpnTxnDetailsPageDef"/>
-        <page path="/dcom.shop.Inquiry/page/itemCateg.amx" usageId="dcom_shop_mobile_itemCategPageDef"/></pageMap>
+        <page path="/dcom.shop.Inquiry/page/itemCateg.amx" usageId="dcom_shop_mobile_itemCategPageDef"/>
+        <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@executeShipmentLines"
+              usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
+    </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
@@ -161,7 +164,10 @@
         <page id="dcom_shop_mobile_returnFromScrapPageDef" path="dcom.shop.DispatchList.page.returnFromScrapPageDef"/>
         <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
     <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
-        <page id="dcom_shop_mobile_LpnTxnDetailsPageDef" path="dcom.shop.Transaction.LpnTxnDetailsPageDef"/></pageDefinitionUsages>
+        <page id="dcom_shop_mobile_LpnTxnDetailsPageDef" path="dcom.shop.Transaction.LpnTxnDetailsPageDef"/>
+        <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"
+              path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
+    </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
         <dc id="ProductUdaDC" path="dcom.shop.mobile.ProductUdaDC"/>

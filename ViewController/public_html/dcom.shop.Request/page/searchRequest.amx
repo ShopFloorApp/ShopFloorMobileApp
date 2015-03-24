@@ -82,7 +82,6 @@
             <amx:commandButton text="Search" id="cb1" action="getRequests" styleClass="srch-btn"/>
         </amx:panelGroupLayout>
         <amx:facet name="footer">
-            <amx:spacer id="s3" height="10"/>
             <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
                 <amx:commandLink id="cl3" actionListener="#{RequestUtilBean.clearPage}">
                     <amx:outputHtml id="oh3" styleClass="fa fa-times fa-lg"/>

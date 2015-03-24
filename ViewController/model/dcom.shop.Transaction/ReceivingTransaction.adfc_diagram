@@ -66,9 +66,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">334.59766</property>
+         name="y">241.19531</property>
       <property
-         name="x">722.0</property>
+         name="x">756.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -78,7 +78,7 @@
       <property
          name="fromOutcome">getValue</property>
       <property
-         name="sdm:polyPoints">R50,460.0,342.84473,681.0,334.24707,L50</property>
+         name="sdm:polyPoints">R50,460.0,342.84473,715.0,240.84473,L50</property>
    </ControlFlowCase>
    <View
       id="View8">
@@ -108,5 +108,38 @@
          name="fromsrcid">__3</property>
       <property
          name="sdm:polyPoints">L50,378.0,342.84473,44.5,113.74707,B50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall10">
+      <property
+         name="activityId">executeShipmentLines</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>executeShipmentLines&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">389.1494</property>
+      <property
+         name="x">741.70605</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase11"
+      from="View6"
+      to="MethodCall10">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">B50,756.0,294.84473,741.70605,334.79883,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="MethodCall10"
+      to="View5">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">L50,700.70605,388.79883,460.0,346.34473,R54</property>
    </ControlFlowCase>
 </SDM>

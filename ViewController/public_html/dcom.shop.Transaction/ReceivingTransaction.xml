@@ -26,6 +26,12 @@
     <view id="lineDetails">
       <page>/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx</page>
     </view>
+    <method-call id="executeShipmentLines">
+      <method>#{bindings.executeShipmentLines.execute}</method>
+      <outcome>
+        <fixed-outcome>back</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">
@@ -42,6 +48,20 @@
       <control-flow-case id="__6">
         <from-outcome>addLine</from-outcome>
         <to-activity-id>lineDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>DocumentNo</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>executeShipmentLines</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>executeShipmentLines</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>ReceivingType</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>
