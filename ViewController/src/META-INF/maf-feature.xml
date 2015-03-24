@@ -40,6 +40,8 @@
       <adfmf:amx file="dcom.shop.Transaction/transactionTf.xml#transactionTf">
         <adfmf:includes>
           <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i7"/>
+          <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i8"/>
+          <adfmf:include type="StyleSheet" file="resources/css/WorkBetter.css" id="i9"/>
         </adfmf:includes>
       </adfmf:amx>
     </adfmf:content>

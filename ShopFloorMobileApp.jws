@@ -498,7 +498,9 @@
             </hash>
             <hash n="iOS Simulator">
                <value n="custom" v="false"/>
-               <hash n="iOS_options"/>
+               <hash n="iOS_options">
+                  <value n="iosSimulatorName" v="iPhone 5s (iOS 8.2 - iPhone 5s)"/>
+               </hash>
                <value n="mobilePlatform" v="iOS"/>
                <value n="name" v="iOS Simulator"/>
                <value n="profileName" v="iOS1"/>

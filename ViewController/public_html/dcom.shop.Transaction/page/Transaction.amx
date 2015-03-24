@@ -13,18 +13,18 @@
                            source="/images/springboard.png" id="i1"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
+        <amx:listView var="row" id="lv1"  rendered="true" inlineStyle="vertical-align:middle;">
             <!--actionListener="#{bindings.ProcessWS.execute}"-->
-            <amx:listItem id="li3" action="matMov">
+            <amx:listItem id="li3"  showLinkIcon="false" action="matMov">
                 <amx:outputText value="Material Movements" id="ot4"/>
             </amx:listItem>
-            <amx:listItem id="li4" action="receiveTxn">
+            <amx:listItem id="li4" showLinkIcon="false" action="receiveTxn">
                 <amx:outputText value="Receiving Transactions" id="ot5"/>
             </amx:listItem>
-            <amx:listItem id="li6" action="shippingTxn">
+            <amx:listItem id="li6" showLinkIcon="false" action="shippingTxn">
                 <amx:outputText value="Shipping Transactions" id="ot7"/>
             </amx:listItem>
-            <amx:listItem id="li5" action="">
+            <amx:listItem id="li5" showLinkIcon="false" action="">
                 <amx:outputText value="Stock Count" id="ot6"/>
             </amx:listItem>
         </amx:listView>

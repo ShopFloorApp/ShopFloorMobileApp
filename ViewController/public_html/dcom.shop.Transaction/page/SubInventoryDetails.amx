@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
-          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:custom="http://xmlns.example.com/custom">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
             <amx:outputText value="Enter Transaction" id="ot1"/>
@@ -30,19 +30,19 @@
                 <amx:spacer id="s2" width="60"/>
                 <amx:outputText value="Transaction Details" id="ot3"/>
             </amx:panelGroupLayout>
-            <amx:tableLayout id="tl31" width="90%"
+            <amx:tableLayout id="tl31" halign="start" width="90%"
                              inlineStyle="border-left-color:ButtonHighlight; border-right-color:ButtonHighlight; border-top-color:ButtonHighlight; border-bottom-color:ButtonHighlight; border-top-style:solid; border-top-width:thin; border-left-style:solid; border-left-width:thin; border-right-width:thin; border-right-style:solid; border-bottom-style:solid; border-bottom-width:thin; outline-offset:0px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl3224">
                     <amx:cellFormat id="cf3252">
-                        <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:center;" id="plam3"></amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:start;" id="plam3"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl2">
-                    <amx:cellFormat id="cf325" width="60%">
-                        <amx:inputText hintText="LPN" id="it1" value="#{pageFlowScope.searchLpnKeyword}"/>
+                    <amx:cellFormat id="cf325" >
+                        <amx:inputText hintText="LPN" id="it12" inlineStyle="text-align:start;" value="#{pageFlowScope.searchLpnKeyword}"/>
                     </amx:cellFormat>
-                    <amx:cellFormat width="10px" halign="start" id="cf15">
+                    <amx:cellFormat width="10px"  id="cf15">
                         <amx:commandLink id="cbw3" action="lpnLOV">
                             <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="SubInvTrxn" to="#{pageFlowScope.LpnLovPage}"
@@ -68,27 +68,31 @@
                              inlineStyle="border-left-color:ButtonHighlight; border-right-color:ButtonHighlight; border-top-color:ButtonHighlight; border-bottom-color:ButtonHighlight; border-top-style:solid; border-top-width:thin; border-left-style:solid; border-left-width:thin; border-right-width:thin; border-right-style:solid; border-bottom-style:solid; border-bottom-width:thin; outline-offset:0px;">
                 <amx:rowLayout id="rl4">
                     <amx:cellFormat id="cf3s252">
-                        <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:start;" id="plam33"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl7">
-                    <amx:cellFormat id="cf5" width="60%">
-                        <amx:inputText hintText="Item Number" simple="true" label="" id="it11" value="#{pageFlowScope.searchKeyword}"/>
+                    <amx:cellFormat id="cf5">
+                    <custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
+                                    valueChangeListener="#{StateListenerBean.callLovPage}"
+                                    simple="true" rendered="true"
+                                    hintText="Search for items"/>
+                        <!--amx:inputText hintText="Item Number" inlineStyle="text-align:start;" id="it11" value="#{pageFlowScope.searchKeyword}"/-->
                     </amx:cellFormat>
-                    <amx:cellFormat width="10px" halign="start" id="cf18">
+                    <!--amx:cellFormat width="10px" halign="start" id="cf18">
                         <amx:commandLink id="cb3" action="ItemLOV">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl11" from="SubinvTrfr" to="#{pageFlowScope.ItemLovPage}"
                                                      type="action"/>
                         </amx:commandLink>
-                    </amx:cellFormat>
+                    </amx:cellFormat-->
                 </amx:rowLayout>
             </amx:tableLayout>
             <amx:tableLayout width="90%"
                              inlineStyle="border-left-color:ButtonHighlight; border-right-color:ButtonHighlight; border-top-color:ButtonHighlight; border-bottom-color:ButtonHighlight; border-top-style:solid; border-top-width:thin; border-left-style:solid; border-left-width:thin; border-right-width:thin; border-right-style:solid; border-bottom-style:solid; border-bottom-width:thin; outline-offset:0px;">
                 <amx:rowLayout id="rl">
                     <amx:cellFormat id="cfs3s252">
-                        <amx:panelLabelAndMessage label="Description" inlineStyle="text-align:center;" id="plam133"></amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="Description" inlineStyle="text-align:start;" id="plam133"></amx:panelLabelAndMessage>
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl8">
@@ -162,8 +166,8 @@
                 </amx:rowLayout>
                 <amx:rowLayout id="rl12">
                     <amx:cellFormat id="cf7">
-                        <amx:inputText inlineStyle="text-align:center;" value="#{pageFlowScope.quantity}"
-                                       styleClass="adfmf-listItem-captionText" id="it11">
+                        <amx:inputText inlineStyle="text-align:start;" value="#{pageFlowScope.quantity}"
+                                       styleClass="adfmf-listItem-captionText" id="it2">
                             <?audit suppress oracle.maf.warning-missing-hintText?>
                         </amx:inputText>
                     </amx:cellFormat>

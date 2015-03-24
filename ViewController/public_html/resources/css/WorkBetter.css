@@ -1,0 +1,117 @@
+.card {
+    margin: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 300px;
+    background-color: #f6f6f7;
+    border: 1px solid #e7e7e9;
+}
+
+.csearch {
+  padding: 3px;
+  min-width: 100px;
+  margin-top:10px;
+  margin-bottom:15px;
+}
+
+.search {
+  padding: 6px 15px 6px 30px;
+  background: url("search.svg") no-repeat 8px 6px;
+}
+
+.rounded {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #c7c7c8;
+    width: 100%;
+    box-sizing: border-box;
+    font-size:14px;
+}
+
+.tab_button {
+    display:inline-block;
+    line-height:1px;
+}
+
+.profilesummary_image {
+    width: 32px;
+    height: 32px;
+    margin-top: 4px;
+}
+
+.profilesummary_subtext {
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+.clear_button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-image: url("x_icon.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.clear_button_visible {
+  position: absolute;
+  top: 11px;
+  right: 2px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url("x_icon.svg");
+  background-repeat: no-repeat;
+}
+
+.amx-selectBooleanCheckbox.eventcheckbox .field-value {
+    font-size: 16px;
+}
+
+.amx-selectBooleanCheckbox.eventcheckbox .field-value .checkbox-text {
+    margin-top: 3px;
+}
+
+.amx-panelPage-facet-primary > .custom-springboard-link,
+.amx-panelPage-facet-secondary > .custom-springboard-link,
+.amx-panelPage-facet-primary > .custom-bookmarkable-link,
+.amx-panelPage-facet-secondary > .custom-bookmarkable-link {
+  margin: 6px 7px 0px 7px;
+}
+
+/* On Android, make the app icon shift over some more so that there is room for the springboard link */
+HTML[dir=ltr].amx-android-generic .custom-panelPage-with-springboard .amx-panelPage-header-appIcon,
+HTML[dir=ltr].amx-android-chrome .custom-panelPage-with-springboard .amx-panelPage-header-appIcon {
+  margin-left: 10px;
+}
+HTML[dir=rtl].amx-android-generic .custom-panelPage-with-springboard .amx-panelPage-header-appIcon,
+HTML[dir=rtl].amx-android-chrome .custom-panelPage-with-springboard .amx-panelPage-header-appIcon {
+  margin-right: 10px;
+}
+
+/* On Android, make the springboard link overlay the app icon */
+HTML[dir=ltr].amx-android-generic .custom-panelPage-with-springboard .custom-springboard-link,
+HTML[dir=ltr].amx-android-chrome .custom-panelPage-with-springboard .custom-springboard-link {
+  position: absolute;
+  top: 2px;
+  left: -22px;
+  padding-right: 40px;
+}
+HTML[dir=rtl].amx-android-generic .custom-panelPage-with-springboard .custom-springboard-link,
+HTML[dir=rtl].amx-android-chrome .custom-panelPage-with-springboard .custom-springboard-link {
+  position: absolute;
+  top: 2px;
+  right: -22px;
+  padding-left: 40px;
+}
+
+.listViewNoSelect .amx-listItem.amx-listItem-selected {
+  background-color: transparent;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEXV3+8aLew4AAAACklEQVQIHWNgAAAAAgABz8g15QAAAABJRU5ErkJggg==);
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
