@@ -107,23 +107,13 @@
    </View>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase14"
-      from="View10"
-      to="View13">
-      <property
-         name="fromOutcome">lpnShip</property>
-      <property
-         name="sdm:polyPoints">L46,389.8047,280.5459,323.31982,215.24707,R46</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
       id="ControlFlowCase15"
       from="View13"
       to="View10">
       <property
          name="fromOutcome">backToShipT</property>
       <property
-         name="sdm:polyPoints">R54,320.5,222.24707,387.02646,287.5459,L54</property>
+         name="sdm:polyPoints">R46,323.31982,215.24707,389.8047,280.5459,L46</property>
    </ControlFlowCase>
    <View
       id="View16">
@@ -148,7 +138,7 @@
       <property
          name="fromOutcome">pickRLov</property>
       <property
-         name="sdm:polyPoints">R50,634.34863,182.0459,700.0156,166.0459,L50</property>
+         name="sdm:polyPoints">R46,634.34863,178.5459,699.16986,162.5459,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -159,5 +149,15 @@
          name="fromOutcome">back</property>
       <property
          name="sdm:polyPoints">L54,700.0156,169.5459,635.18915,185.5459,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase23"
+      from="View10"
+      to="View13">
+      <property
+         name="fromOutcome">lpnShip</property>
+      <property
+         name="sdm:polyPoints">L54,387.02646,287.5459,320.5,222.24707,R54</property>
    </ControlFlowCase>
 </SDM>

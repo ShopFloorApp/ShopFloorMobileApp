@@ -48,7 +48,7 @@
         <from-outcome>pickRel</from-outcome>
         <to-activity-id>PickRelease</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__11">
+      <control-flow-case id="__16">
         <from-outcome>lpnShip</from-outcome>
         <to-activity-id>LPNship</to-activity-id>
       </control-flow-case>

@@ -72,8 +72,8 @@ public class transactionUtil {
     }
 
     public void clearPickRel(ActionEvent actionEvent) {
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRule}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRule}", "10");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationEvent}", true);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationEvent}", Boolean.TRUE);
     }
 }

@@ -11,5 +11,23 @@
       </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary"/>
+    <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
+      <amx:panelLabelAndMessage label="Dock Door" id="plam1">
+        <amx:panelGroupLayout id="pgl2">
+          <amx:selectOneChoice id="soc1">
+            <amx:selectItem id="si1"/>
+          </amx:selectOneChoice>
+        </amx:panelGroupLayout>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="LPN" id="plam2">
+        <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
+          <amx:inputText id="it1"/>
+          <amx:commandLink id="cl2">
+            <amx:outputHtml id="oh2" styleClass="fa fa-barcode fa-lg"/>
+          </amx:commandLink>
+          <amx:commandButton id="cb1" styleClass="fa fa-barcode fa-lg" inlineStyle="color:Blue;"/>
+        </amx:panelGroupLayout>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
   </amx:panelPage>
 </amx:view>
