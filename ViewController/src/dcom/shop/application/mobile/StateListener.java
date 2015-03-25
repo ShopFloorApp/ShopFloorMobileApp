@@ -243,4 +243,22 @@ public class StateListener {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.renderDeleteButton}",false);
         
     }
+
+    public void ClearSubInvPage(ActionEvent actionEvent) {
+        // Add event code here...
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", null);
+        AdfmfJavaUtilities.setELValue("#{bindings.fromLoc.inputValue}", "Choose Locator");
+        
+        
+        AdfmfJavaUtilities.setELValue("#{bindings.toLoc.inputValue}", "Choose Locator");
+        
+        AdfmfJavaUtilities.setELValue("#{bindings.subToInv.inputValue}", 0);
+        AdfmfJavaUtilities.setELValue("#{bindings.subFromInv.inputValue}", "Choose Subinventory");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
+    }
 }
