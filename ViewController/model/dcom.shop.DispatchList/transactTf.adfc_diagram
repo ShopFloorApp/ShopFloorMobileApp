@@ -49,21 +49,6 @@
       <property
          name="sdm:polyPoints">T44,88.15625,810.2895,88.67285,657.10156,B50</property>
    </ControlFlowCase>
-   <View
-      id="View5">
-      <property
-         name="activityId">moveAssembly</property>
-      <property
-         name="page">/dcom.shop.DispatchList/page/moveAssembly.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>moveAssembly&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">778.5</property>
-      <property
-         name="x">-121.32715</property>
-   </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase6"
@@ -72,7 +57,7 @@
       <property
          name="fromOutcome">toMoveAssembly</property>
       <property
-         name="sdm:polyPoints">L50,48.21587,865.96484,-80.32715,778.4336,R50</property>
+         name="sdm:polyPoints">L50,48.55551,865.96484,-106.32715,798.3008,R50</property>
    </ControlFlowCase>
    <View
       id="View7">
@@ -112,7 +97,7 @@
       <property
          name="fromOutcome">toReturnAssembly</property>
       <property
-         name="sdm:polyPoints">L42,50.65625,858.96484,-148.32715,673.4336,B50</property>
+         name="sdm:polyPoints">L46,50.65625,862.46484,-148.32715,673.4336,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -197,7 +182,7 @@
       <property
          name="fromOutcome">toScrapAssembly</property>
       <property
-         name="sdm:polyPoints">L58,50.65625,872.96484,-79.32715,964.09766,R50</property>
+         name="sdm:polyPoints">L54,50.65625,869.46484,-79.32715,964.09766,R50</property>
    </ControlFlowCase>
    <View
       id="View17">
@@ -274,4 +259,19 @@
       <property
          name="sdm:polyPoints">B50,91.65625,921.70734,90.67285,1068.3633,T50</property>
    </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">moveAssembly</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/moveAssembly.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>moveAssembly&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">805.3008</property>
+      <property
+         name="x">-136.32715</property>
+   </View>
 </SDM>

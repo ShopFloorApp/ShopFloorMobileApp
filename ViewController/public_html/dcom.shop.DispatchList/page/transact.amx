@@ -12,10 +12,10 @@
         </amx:facet>
         <amx:tableLayout id="tl1">
             <amx:rowLayout id="rl1">
-                <amx:cellFormat id="cf1">
+                <amx:cellFormat id="cf1" width="80px" height="80px">
                     <amx:commandLink id="cl2" action="toTransactComponent">
                         <amx:panelGroupLayout id="pgl1">
-                            <amx:outputHtml id="oh2" styleClass="fa fa-train fa-2x"/>
+                            <amx:outputHtml id="oh2"/>
                             <amx:outputHtml id="oh3" value="Transact Components"/>
                         </amx:panelGroupLayout>
                     </amx:commandLink>
