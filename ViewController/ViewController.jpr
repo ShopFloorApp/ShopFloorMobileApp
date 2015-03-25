@@ -829,6 +829,15 @@
                   <url path="adfmsrc/"/>
                </list>
             </hash>
+            <hash>
+               <url n="content-folder-url" path="adfmsrc/dcom/shop/mobile/barcode/"/>
+               <list n="pattern-filters">
+                  <string v="+dcom/shop/mobile/barcode/"/>
+               </list>
+               <list n="url-path">
+                  <url path="adfmsrc/"/>
+               </list>
+            </hash>
          </list>
          <list n="url-path"/>
       </hash>

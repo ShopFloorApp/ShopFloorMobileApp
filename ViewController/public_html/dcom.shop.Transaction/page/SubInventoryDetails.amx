@@ -2,6 +2,34 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt" xmlns:custom="http://xmlns.example.com/custom">
     <amx:panelPage id="pp1">
+        <amx:verbatim id="v1">
+         <![CDATA[
+        <script type="text/javascript" src="js/barcodescanner.js"></script>
+        <script type="text/javascript">
+        function scanBarcodeFromJavaBean(options)
+        {
+            cordova.plugins.barcodeScanner.scan(
+              function(result)
+              {
+                // Note that you could also use adf.mf.api.invokeMethod() to invoke Java methods directly if 
+                // you do not want to use EL expressions.
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                       "value": "Result = " + result.text + ", Format = " + result.format + ", Cancelled = " + result.cancelled}, 
+                                       function() {}, 
+                                       function() {});
+              },
+              function(error)
+              {
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                        "value": "Error = " + error.text }, 
+                                        function() {}, 
+                                        function() {});
+              }
+            );
+        }
+        </script>
+    ]]>
+    </amx:verbatim>
         <amx:facet name="header">
             <amx:outputText value="Enter Transaction" id="ot1"/>
         </amx:facet>
@@ -39,10 +67,11 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl2">
-                    <amx:cellFormat id="cf325" >
-                        <amx:inputText hintText="LPN" id="it12" inlineStyle="text-align:start;" value="#{pageFlowScope.searchLpnKeyword}"/>
+                    <amx:cellFormat id="cf325">
+                        <amx:inputText hintText="LPN" id="it12" inlineStyle="text-align:start;"
+                                       value="#{pageFlowScope.searchLpnKeyword}"/>
                     </amx:cellFormat>
-                    <amx:cellFormat width="10px"  id="cf15">
+                    <amx:cellFormat width="10px" id="cf15">
                         <amx:commandLink id="cbw3" action="lpnLOV">
                             <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="SubInvTrxn" to="#{pageFlowScope.LpnLovPage}"
@@ -72,27 +101,25 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
                 <amx:rowLayout id="rl7">
-                    <amx:cellFormat id="cf5">
-                    <!--custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
+                    <amx:cellFormat width="60%" id="cf5">
+                        <!--custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
                                    simple="true" action="ItemLOV" inlinestyle rendered="true"
                                     hintText="Search for items">
                             <?audit suppress oracle.ide.xml.validation-warning?>
                         </custom:csearch-->
-                        <custom:csearch id="custom1" value="#{pageFlowScope.searchKeyword}"
-                          inlineStyle="" action="ItemLOV" rendered="true" hintText="Item Number">
-            <?audit suppress oracle.ide.xml.validation-warning?>
-          </custom:csearch>
-                                    <!--  valueChangeListener="#{StateListenerBean.callLovPage}"
+                        <custom:csearch id="custom1" value="#{pageFlowScope.searchKeyword}" inlineStyle=""
+                                        action="ItemLOV" rendered="true" hintText="Item Number">
+                            <?audit suppress oracle.ide.xml.validation-warning?>
+                        </custom:csearch>
+                        <!--  valueChangeListener="#{StateListenerBean.callLovPage}"
                                    -->
                         <!--amx:inputText hintText="Item Number" inlineStyle="text-align:start;" id="it11" value="#{pageFlowScope.searchKeyword}"/-->
                     </amx:cellFormat>
-                    <!--amx:cellFormat width="10px" halign="start" id="cf18">
-                        <amx:commandLink id="cb3" action="ItemLOV">
-                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                            <amx:setPropertyListener id="spl11" from="SubinvTrfr" to="#{pageFlowScope.ItemLovPage}"
-                                                     type="action"/>
+                    <amx:cellFormat width="40%" halign="end" id="cf18">
+                        <amx:commandLink id="cb3" actionListener="#{viewScope.BarCodeBean.scanBarcode}">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC;"/>
                         </amx:commandLink>
-                    </amx:cellFormat-->
+                    </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
             <amx:tableLayout width="90%"
@@ -354,9 +381,9 @@
                     </amx:rowLayout>
                 </amx:tableLayout-->
             </amx:panelGroupLayout>
-           </amx:panelGroupLayout>
+        </amx:panelGroupLayout>
         <amx:facet name="footer">
-        <amx:spacer id="s1" width="50"/>
+            <amx:spacer id="s1" width="50"/>
             <amx:commandLink id="cl5" action="cancel">
                 <amx:outputHtml id="oh2" styleClass="fa fa-eraser fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
