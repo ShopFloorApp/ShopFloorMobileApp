@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -69,9 +70,30 @@ public class ConcProgramParamsBO {
         }
         
     }
-
+    public void callJS(String btn){
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] {btn});
+    }
     public void setParamDispValue(String paramDispValue) {
         String oldParamDispValue = this.paramDispValue;
+        if(this.getIsLov().equalsIgnoreCase("Y") && paramDispValue!=null){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", this.getSeqNum());
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.valueSet}", this.getValueSetName());  
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", this.getParamDispValue());
+            ConcurrentProgramDC concurrentProgramDC=new ConcurrentProgramDC();
+            concurrentProgramDC.getConcProgramParamLov();
+            List lovList=concurrentProgramDC.s_concurrentProgramParamLov;
+            if(lovList.size()==0){
+                paramDispValue=null;  
+                callJS("cb1");
+            }else if(lovList.size()==1){
+                ConcProgramParamLovBO concProgramParamLovBO = (ConcProgramParamLovBO) lovList.get(0);
+                paramDispValue=concProgramParamLovBO.getValue();
+            }else{
+                callJS("cb3");
+            }
+        }
+
         this.paramDispValue = paramDispValue;
         valueDispMap.put(this.getSeqNum(), paramDispValue);
         propertyChangeSupport.firePropertyChange("paramDispValue", oldParamDispValue, paramDispValue);

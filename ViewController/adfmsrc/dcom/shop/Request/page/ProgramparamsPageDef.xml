@@ -8,6 +8,10 @@
     <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concProgramParams" RangeSize="25"
                       DataControl="ConcurrentProgramDC" BeanClass="dcom.shop.application.mobile.txn.ConcProgramParamsBO"
                       id="concProgramParamsIterator"/>
+    <accessorIterator MasterBinding="ConcurrentProgramDCIterator" Binds="concProgramParamLov" RangeSize="25"
+                      DataControl="ConcurrentProgramDC"
+                      BeanClass="dcom.shop.application.mobile.txn.ConcProgramParamLovBO"
+                      id="concProgramParamLovIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="concProgramParamsIterator" id="concProgramParams">
@@ -39,6 +43,14 @@
         <AttrNames>
           <Item Value="value"/>
           <Item Value="label"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="concProgramParamLovIterator" id="concProgramParamLov">
+      <nodeDefinition DefName="dcom.shop.application.mobile.txn.ConcProgramParamLovBO" Name="concProgramParamLov0">
+        <AttrNames>
+          <Item Value="value"/>
+          <Item Value="ref"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

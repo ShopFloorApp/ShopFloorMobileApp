@@ -1,7 +1,8 @@
 (function () {
     showPopup = function () {
-       
-        var element = document.getElementById("cb3");
+               var args = arguments;
+        var str = ""+ args[0];
+        var element = document.getElementById(str);
         customTriggerEvent(element, "touchstart");
         customTriggerEvent(element, "touchend");
     }

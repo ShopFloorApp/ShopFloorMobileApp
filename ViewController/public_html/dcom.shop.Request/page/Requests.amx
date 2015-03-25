@@ -26,7 +26,7 @@
                             <amx:panelGroupLayout id="pgl2" valign="middle">
                                 <amx:outputText value="#{row.requestId}" id="ot2" inlineStyle="font-weight:bold;"/>
                                 <amx:outputText value="Request ID" id="ot7"
-                                                inlineStyle="color:Silver; font-size:small;"/>
+                                                inlineStyle="color:Silver; font-size:small;" rendered="false"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4" width="30%" halign="center" valign="middle">
@@ -34,7 +34,7 @@
                                 <amx:outputHtml id="oh2" value="  #{row.hrsTaken} : #{row.minTaken} : #{row.ssTaken}"
                                                 styleClass="fa fa-clock-o fa-lg #{row.colorStyle}"
                                                 inlineStyle="font-weight:bold;"/>
-                                <amx:outputText value="Time" id="ot8"
+                                <amx:outputText value="HH:MI:SS" id="ot8"
                                                 inlineStyle="color:Silver; font-size:small;"/>
                             </amx:panelGroupLayout>
 
@@ -43,7 +43,8 @@
                                         halign="center" valign="middle">
                             <amx:panelGroupLayout id="pgl1">
                                 <amx:outputText value="#{row.phase}-#{row.status}" id="ot6"/>
-                                <amx:outputText value="Phase-Status" id="ot4" inlineStyle="color:Silver; font-size:small;"/>
+                                <amx:outputText value="Phase-Status" id="ot4" inlineStyle="color:Silver; font-size:small;"
+                                                rendered="false"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -53,7 +54,8 @@
                                         halign="center" valign="middle">
                             <amx:panelGroupLayout id="pgl4" halign="center" valign="middle">
                                 <amx:outputText value="#{row.progName}" id="ot3"/>
-                                <amx:outputText value="Program Name" id="ot5" inlineStyle="color:Silver; font-size:small;"/>
+                                <amx:outputText value="Program Name" id="ot5" inlineStyle="color:Silver; font-size:small;"
+                                                rendered="false"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>

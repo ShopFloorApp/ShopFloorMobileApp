@@ -15,7 +15,7 @@
         <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-lg"/>
       </amx:commandLink>
     </amx:facet>
-    <amx:tableLayout id="tl1" width="90%">
+    <amx:tableLayout id="tl1" width="90%" rendered="false">
       <amx:iterator id="i1" value="#{bindings.concProgramParams.collectionModel}" var="row">
       <amx:rowLayout id="rl3224" >
                     <amx:cellFormat id="cf3252">
@@ -38,9 +38,56 @@
         </amx:rowLayout>
       </amx:iterator>
     </amx:tableLayout>
-    <amx:panelGroupLayout id="pgl1" halign="center" valign="middle">
-      <amx:commandButton text="Submit Request" id="cb3" styleClass="srch-btn" action="result"
-                         actionListener="#{RequestUtilBean.submitProgram}"/>
+    <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+    <amx:iterator id="i2" value="#{bindings.concProgramParams.collectionModel}" var="row">
+    <amx:panelLabelAndMessage label="#{row.paramName}" inlineStyle="text-align:center;" id="plam1">
+          <amx:panelGroupLayout id="pgl2" layout="horizontal">
+            <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType!='DATE'}"/>
+            <amx:inputDate id="id2" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"/>
+            <amx:commandLink id="cl3" action="getLov" rendered="#{row.itemType=='LOV'}">
+              <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+              <amx:setPropertyListener id="spl6" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
+              <amx:setPropertyListener id="spl7" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
+              <amx:setPropertyListener id="spl8" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/>
+            </amx:commandLink>
+          </amx:panelGroupLayout>
+        </amx:panelLabelAndMessage>
+    </amx:iterator>
+    </amx:panelFormLayout>
+    <amx:panelGroupLayout id="pgl1" halign="center" valign="middle" inlineStyle='display:none;'>
+      <amx:commandButton text="Submit Request" id="cb3" styleClass="srch-btn" action="getLov"/>
+      <amx:commandButton text="commandButton1" id="cb1">
+        <amx:showPopupBehavior id="spb2" popupId="p2" align="before" alignId="pgl1"/>
+      </amx:commandButton>
     </amx:panelGroupLayout>
   </amx:panelPage>
+  <amx:popup id="p1">
+    <amx:listView var="row" value="#{bindings.concProgramParamLov.collectionModel}"
+                  fetchSize="#{bindings.concProgramParamLov.rangeSize}"
+                  selectedRowKeys="#{bindings.concProgramParamLov.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.concProgramParamLov.collectionModel.makeCurrent}"
+                  showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" rendered="false">
+      <amx:listItem id="li1">
+        <amx:tableLayout width="100%" id="tl2">
+          <amx:rowLayout id="rl3">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf3"/>
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf2">
+              <amx:outputText value="#{row.value}" id="ot3"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1">
+              <amx:outputText value="#{row.ref}" styleClass="adfmf-listItem-captionText" id="ot2"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl4" from="#{row.ref}" to="#{pageFlowScope.selectedParamsLovVal}"/>
+        <amx:setPropertyListener id="spl5" from="#{row.value}" to="#{pageFlowScope.selectedDispParamsLovVal}"/>
+        <amx:closePopupBehavior id="cpb1" popupId="p1"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:popup>
+  <amx:popup id="p2" autoDismiss="true">
+    <amx:outputText value="Not a valid Value" id="ot4"/>
+  </amx:popup>
 </amx:view>

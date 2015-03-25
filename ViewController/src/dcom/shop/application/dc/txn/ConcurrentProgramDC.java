@@ -32,7 +32,7 @@ public class ConcurrentProgramDC extends SyncUtils {
     protected static List s_requests = new ArrayList();
     protected static List s_concurrentProgram = new ArrayList();
     protected static List s_concurrentProgramParams = new ArrayList();
-    protected static List s_concurrentProgramParamLov = new ArrayList();
+    public static List s_concurrentProgramParamLov = new ArrayList();
     
 
     public ConcurrentProgramDC() {

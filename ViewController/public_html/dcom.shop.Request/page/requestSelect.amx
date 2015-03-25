@@ -21,7 +21,7 @@
       <amx:listItem id="li1" action="searchRequest" showLinkIcon="false">
         <amx:outputText value="Search Request" id="ot2"/>
       </amx:listItem>
-      <amx:listItem id="li2" action="submitRequest">
+      <amx:listItem id="li2" action="submitRequest" showLinkIcon="false">
         <amx:outputText value="Submit Request" id="ot3"/>
       </amx:listItem>
     </amx:listView>
