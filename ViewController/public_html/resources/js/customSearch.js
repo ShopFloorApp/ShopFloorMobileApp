@@ -36,7 +36,7 @@
         var anchorElement = document.createElement("a");
         anchorElement.id = id+"anchor";
         anchorElement.setAttribute("href","#");
-        anchorElement.setAttribute("class","search_button");
+        anchorElement.setAttribute("class","search_button fa fa-search fa-lg");
         subElement.appendChild(anchorElement);
         rootElement.appendChild(subElement);
 

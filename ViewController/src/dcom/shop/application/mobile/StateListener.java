@@ -11,7 +11,6 @@ import javax.el.ValueExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
-import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
@@ -191,7 +190,7 @@ public class StateListener {
     
     public void callLovPage(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "adf.mf.api.amx.doNavigation", new Object[] { "ItemLOV" });
+       // AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "adf.mf.api.amx.doNavigation", new Object[] { "ItemLOV" });
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}","SubinvTrfr");
        
     }

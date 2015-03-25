@@ -7,37 +7,38 @@
     border: 1px solid #e7e7e9;
 }
 
-
 .search_button {
-  position: absolute;
-  top: 11px;
-  right: 2px;
-  display: inline-block;
+  margin-top: 12px;
+  margin-left: 12px;
+  position: relative;
   width: 25px;
   height: 25px;
-  background-image: url("search.svg");
+  text-decoration: inherit;
+  /*background-image: url("search.svg");*/
   background-repeat: no-repeat;
 }
 
 .csearch {
+  position:inherit;
   padding: 3px;
   min-width: 100px;
   margin-top:10px;
   margin-bottom:15px;
+  margin-left:30px;
 }
 
 .search {
-  padding: 6px 15px 6px 30px;
-}
+    padding: 6px 15px 6px 30px;
+  }
 
 .rounded {
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    background-color: #FFFFFF;
-    width: 100%;
-    box-sizing: border-box;
-    font-size:14px;
+  position:fixed;
+  padding-left: 40px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 50%;
+  box-sizing: border-box;
+  font-size:14px;
 }
 
 .tab_button {

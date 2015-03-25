@@ -73,11 +73,15 @@
                 </amx:rowLayout>
                 <amx:rowLayout id="rl7">
                     <amx:cellFormat id="cf5">
-                    <custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
-                                   simple="true" action="ItemLOV" rendered="true"
+                    <!--custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
+                                   simple="true" action="ItemLOV" inlinestyle rendered="true"
                                     hintText="Search for items">
                             <?audit suppress oracle.ide.xml.validation-warning?>
-                        </custom:csearch>
+                        </custom:csearch-->
+                        <custom:csearch id="custom1" value="#{pageFlowScope.searchKeyword}"
+                          inlineStyle="" action="ItemLOV" rendered="true" hintText="Item Number">
+            <?audit suppress oracle.ide.xml.validation-warning?>
+          </custom:csearch>
                                     <!--  valueChangeListener="#{StateListenerBean.callLovPage}"
                                    -->
                         <!--amx:inputText hintText="Item Number" inlineStyle="text-align:start;" id="it11" value="#{pageFlowScope.searchKeyword}"/-->
