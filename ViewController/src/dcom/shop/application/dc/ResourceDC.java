@@ -33,7 +33,7 @@ public class ResourceDC extends SyncUtils {
         } else {
             System.out.println("Inside orgItem");
             Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
-            String restURI = "/webservices/rest/DCOMLOV/getResource/";
+            String restURI = "/webservices/rest/DCOMLOV/getresources/";
             RestCallerUtil rcu = new RestCallerUtil();
             String payload =
                 "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +

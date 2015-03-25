@@ -370,7 +370,7 @@
       <property
          name="fromOutcome">mtlTxnInquiry</property>
       <property
-         name="sdm:polyPoints">B33,94.0,253.84328,333.5,467.5459,T44</property>
+         name="sdm:polyPoints">B33,94.0,253.85303,333.5,466.84473,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -505,7 +505,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L46,404.68555,653.2471,337.0,579.6326,B50</property>
+         name="sdm:polyPoints">L46,404.68555,653.2471,337.0,579.6576,B50</property>
    </ControlFlowCase>
    <View
       id="View49">

@@ -18,7 +18,7 @@
     </amx:facet>
     <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards"
                   inlineStyle="width: 98%;">
-      <amx:listItem id="li1" action="searchRequest">
+      <amx:listItem id="li1" action="searchRequest" showLinkIcon="false">
         <amx:outputText value="Search Request" id="ot2"/>
       </amx:listItem>
       <amx:listItem id="li2" action="submitRequest">
