@@ -48,11 +48,11 @@
             "context": this
           };
 
-        adf.mf.api.amx.addBubbleEventListener(
+       /* adf.mf.api.amx.addBubbleEventListener(
           inputElement,
           "keyup",
           this._handleTextChange,
-          eventData);
+          eventData);*/
 
         adf.mf.api.amx.addBubbleEventListener(
           anchorElement,
