@@ -8,5 +8,9 @@
     <core-cordova-plugin id="c5" pluginId="com.oracle.maf.sms"/>
     <core-cordova-plugin id="c6" pluginId="com.phonegap.plugins.PushPlugin"/>
     <core-cordova-plugin id="c7" pluginId="org.apache.cordova.geolocation"/>
+    <cordova-plugin id="c8" pluginId="com.phonegap.plugins.barcodescanner" path="../../src/BarcodeScanner-master/">
+      <platform id="p1" name="android" enabled="true"/>
+      <platform id="p2" name="ios" enabled="true"/>
+    </cordova-plugin>
   </cordova-plugins>
 </maf-plugins>

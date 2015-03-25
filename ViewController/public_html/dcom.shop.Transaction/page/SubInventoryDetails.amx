@@ -4,7 +4,6 @@
     <amx:panelPage id="pp1">
         <amx:verbatim id="v1">
          <![CDATA[
-        <script type="text/javascript" src="js/barcodescanner.js"></script>
         <script type="text/javascript">
         function scanBarcodeFromJavaBean(options)
         {
@@ -116,8 +115,49 @@
                         <!--amx:inputText hintText="Item Number" inlineStyle="text-align:start;" id="it11" value="#{pageFlowScope.searchKeyword}"/-->
                     </amx:cellFormat>
                     <amx:cellFormat width="40%" halign="end" id="cf18">
-                        <amx:commandLink id="cb3" actionListener="#{viewScope.BarCodeBean.scanBarcode}">
+                        <amx:commandLink id="cb3" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
                             <amx:outputHtml id="oh3" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:tableLayout width="100%">
+            <amx:rowLayout id="rl17">
+                    <amx:cellFormat width="60%" id="cf19">
+                        <!--custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
+                                   simple="true" action="ItemLOV" inlinestyle rendered="true"
+                                    hintText="Search for items">
+                            <?audit suppress oracle.ide.xml.validation-warning?>
+                        </custom:csearch-->
+                        
+                        <!--  valueChangeListener="#{StateListenerBean.callLovPage}"
+                                   -->
+                        <amx:inputText hintText="Item Number" inlineStyle="text-align:start;" id="it11" value="#{pageFlowScope.searchKeyword}"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="40%" halign="end" id="cf20">
+                        <amx:commandLink id="cl8" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
+                            <amx:outputHtml id="oh6" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+            <amx:tableLayout width="100%">
+            <amx:rowLayout id="rl18">
+                    <amx:cellFormat width="60%" id="cf21">
+                        <!--custom:csearch id="iddst1" value="#{pageFlowScope.searchKeyword}"
+                                   simple="true" action="ItemLOV" inlinestyle rendered="true"
+                                    hintText="Search for items">
+                            <?audit suppress oracle.ide.xml.validation-warning?>
+                        </custom:csearch-->
+                        
+                        <!--  valueChangeListener="#{StateListenerBean.callLovPage}"
+                                   -->
+                        <amx:inputText hintText="Bar Code Result" inlineStyle="text-align:start;" id="it1"
+                                       value="#{viewScope.BarcodeBean.barcodeResult}"/>
+                    </amx:cellFormat>
+                    <amx:cellFormat width="40%" halign="end" id="cf22">
+                        <amx:commandLink id="cl9" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
+                            <amx:outputHtml id="oh7" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC;"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>

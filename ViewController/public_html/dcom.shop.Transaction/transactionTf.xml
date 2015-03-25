@@ -7,6 +7,11 @@
       <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
       <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__45">
+      <managed-bean-name>BarcodeBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
     <view id="SubInventoryTxn">
       <page>/dcom.shop.Transaction/page/SubInventoryTxn.amx</page>
     </view>

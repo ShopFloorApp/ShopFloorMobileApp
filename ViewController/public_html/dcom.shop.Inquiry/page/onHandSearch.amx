@@ -76,7 +76,7 @@
             <amx:spacer id="s3" height="10"/>
             <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
                 <amx:commandLink id="cl3" actionListener="#{SearchUtilBean.clearOHPage}">
-                    <amx:outputHtml id="oh3" styleClass="fa fa-times fa-lg"/>
+                    <amx:outputHtml id="oh4" styleClass="fa fa-times fa-lg"/>
                     <amx:spacer id="s5" width="2"/>
                     <amx:outputText id="ot2" value="Clear"/>
                 </amx:commandLink>
