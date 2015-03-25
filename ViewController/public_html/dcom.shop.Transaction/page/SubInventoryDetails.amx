@@ -84,11 +84,11 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-            <amx:panelFormLayout id="pf1">
+            <amx:panelFormLayout labelPosition="topStart" id="pf1">
                 <amx:panelLabelAndMessage label="Item Number" id="plm1">
                     <amx:panelGroupLayout layout="horizontal" id="pgl4">
                         <amx:panelGroupLayout layout="horizontal"
-                                              inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid;"
+                                              inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
                                               id="pgl1">
                             <amx:inputText hintText="Item Number" inlineStyle="text-align:start;" id="it11"
                                            value="#{pageFlowScope.searchKeyword}"/>
