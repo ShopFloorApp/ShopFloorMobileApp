@@ -43,6 +43,11 @@ public class SubInventoryTxnDC extends SyncUtils {
         int trxnId = s_subinvs.size();
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SubinvTrxnId}", int.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
+        if (trxnId == 0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubInvTrxnResults}", "No transaction to review");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubInvTrxnResults}", "");
+              }
         return s_subinvs;
     }
 

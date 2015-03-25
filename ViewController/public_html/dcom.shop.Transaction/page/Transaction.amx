@@ -6,11 +6,8 @@
             <amx:outputText value="Transactions" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
-                             disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
-                             styleClass="custom-springboard-link">
-                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
-                           source="/images/springboard.png" id="i1"/>
+            <amx:commandLink id="cb3" action="bT">
+                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
         </amx:facet>
         <amx:listView var="row" id="lv1"  rendered="true" inlineStyle="vertical-align:middle;">

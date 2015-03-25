@@ -73,6 +73,7 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout-->
+         <amx:outputText value="#{pageFlowScope.SubInvTrxnResults}" id="ot8"/>
         <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
                       fetchSize="#{bindings.subinventories.rangeSize}"
                       selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
