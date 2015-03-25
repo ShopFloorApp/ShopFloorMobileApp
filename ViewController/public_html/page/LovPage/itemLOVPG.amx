@@ -24,6 +24,7 @@
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
         <amx:commandLink id="cl12" actionListener="#{bindings.refresh.execute}" >
                                 <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                                <amx:outputText value="Search" id="ot7"/>
                             </amx:commandLink>
             <!--amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
                                disabled="#{!bindings.refresh.enabled}" id="cb4"/-->

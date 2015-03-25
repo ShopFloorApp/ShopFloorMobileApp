@@ -6,11 +6,11 @@
             <amx:outputText value="LPN LOV Page" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" action="Back" text="Back"/>
+            <amx:commandLink id="cb3" action="bT">
+                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
         </amx:facet>
-        <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Home" action="MainInquiry"/>
-        </amx:facet>
+        <amx:facet name="secondary"></amx:facet>
         <amx:facet name="footer">
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
@@ -18,14 +18,25 @@
             <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" label="LPN" id="it2"/>
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-            <amx:commandButton rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
+            <amx:commandLink id="cl12" rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
+                             actionListener="#{bindings.refresh.execute}">
+                <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:outputText value="Search" id="ot7"/>
+                <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}"/>
+            </amx:commandLink>
+            <amx:commandLink id="cl1" rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
+                             actionListener="#{bindings.refreshLpnDC.execute}">
+                <amx:outputHtml id="oh1" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:outputText value="Search" id="ot8"/>
+            </amx:commandLink>
+            <!--amx:commandButton rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
                                actionListener="#{bindings.refresh.execute}" text="Search"
                                disabled="#{!bindings.refresh.enabled}" id="cb3">
                 <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}"/>
             </amx:commandButton>
             <amx:commandButton rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
                                actionListener="#{bindings.refreshLpnDC.execute}" text="Search"
-                               disabled="#{!bindings.refreshLpnDC.enabled}" id="cb4"></amx:commandButton>
+                               disabled="#{!bindings.refreshLpnDC.enabled}" id="cb4"></amx:commandButton-->
         </amx:panelLabelAndMessage>
         <amx:outputText id="ot3" value="#{pageFlowScope.LpnResults}"/>
         <amx:panelGroupLayout id="pgl1" rendered='#{pageFlowScope.LpnResults == "Search results" ? true : false }'
@@ -94,14 +105,11 @@
                 </amx:tableLayout>
                 <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
                                          id="spl1"/>
-                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.lpn}"
-                                         id="spl7"/>
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.lpn}" id="spl7"/>
                 <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.Subinventory}"
                                          id="spl3"/>
-                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.Locator}"
-                                         id="spl5"/>
-                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}"
-                                         id="spl6"/>
+                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.Locator}" id="spl5"/>
+                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl6"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
