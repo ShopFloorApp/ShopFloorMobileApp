@@ -2,6 +2,7 @@
 <adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
   <adfmf:feature id="dcom.shop.syncPref" name="syncPref" securityEnabled="false">
     <adfmf:content id="dcom.shop.syncPref.1">
+      <adfmf:constraints/>
       <adfmf:amx file="dcom.shop.syncPref/syncPrefTF.xml#syncPrefTF">
         <adfmf:includes>
           <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i1"/>
@@ -37,12 +38,29 @@
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.Transaction" name="Transaction">
     <adfmf:content id="dcom.shop.Transaction.1">
+      <adfmf:constraints>
+        <adfmf:constraint property="device.os" operator="equal" value="Android" id="c2"/>
+      </adfmf:constraints>
       <adfmf:amx file="dcom.shop.Transaction/transactionTf.xml#transactionTf">
         <adfmf:includes>
           <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i7"/>
           <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i8"/>
+          <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/Android/js/barcodescanner.js" id="i14"/>
           <adfmf:include type="StyleSheet" file="resources/css/WorkBetter.css" id="i9"/>
           <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/Android/js/barcodescanner.js" id="i10"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+    <adfmf:content id="dcom.shop.Transaction.2">
+      <adfmf:constraints>
+        <adfmf:constraint property="device.os" operator="equal" value="iOS" id="c1"/>
+      </adfmf:constraints>
+      <adfmf:amx file="dcom.shop.Transaction/transactionTf.xml#transactionTf">
+        <adfmf:includes>
+          <adfmf:include type="StyleSheet" file="resources/css/WorkBetter.css" id="i10"/>
+          <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i11"/>
+          <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/iOS/js/barcodescanner.js" id="i12"/>
+          <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i13"/>
         </adfmf:includes>
       </adfmf:amx>
     </adfmf:content>
