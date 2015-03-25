@@ -6,11 +6,12 @@
             <amx:outputText value="Item LOV Page" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" action="Back" text="Back"/>
+            <amx:commandLink id="cb3" action="bT">
+                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" action="MainInquiry" text="Home"/>
-            <!--amx:commandButton actionListener="#{bindings.ProcessItemOnHand.execute}" text="Select"
+             <!--amx:commandButton actionListener="#{bindings.ProcessItemOnHand.execute}" text="Select"
                                disabled="#{!bindings.ProcessItemOnHand.enabled}" id="cb4" action="sendItem"/-->
         </amx:facet>
         <amx:facet name="footer">
@@ -21,10 +22,11 @@
             <!--amx:inputText value="#{bindings.desc.inputValue}" label="Item Desc" id="it1"/-->
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-            <amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
-                               disabled="#{!bindings.refresh.enabled}" id="cb4"/>
-            <!--amx:commandButton actionListener="#{bindings.ProcessWS.execute}" text="Search"
-                               disabled="#{!bindings.ProcessWS.enabled}" id="cb3" inlineStyle="vertical-align:middle;"></amx:commandButton-->
+        <amx:commandLink id="cl12" actionListener="#{bindings.refresh.execute}" >
+                                <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                            </amx:commandLink>
+            <!--amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
+                               disabled="#{!bindings.refresh.enabled}" id="cb4"/-->
         </amx:panelLabelAndMessage>
         <amx:outputText id="ot3" value="#{pageFlowScope.ItemServiceResults}"/>
         <amx:panelGroupLayout id="pgl1"
