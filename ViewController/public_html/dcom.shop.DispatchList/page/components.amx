@@ -60,12 +60,14 @@
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
-                                        <amx:outputHtml id="oh2" styleClass="fa fa-wrench fa-lg"/>
+                                        <amx:outputHtml id="oh2" styleClass="fa fa-wrench fa-lg"
+                                                        inlineStyle="color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl9">
                                     <amx:cellFormat id="cf12" halign="center">
-                                        <amx:outputHtml id="oh19" value="Operations" inlineStyle="font-size:small;"/>
+                                        <amx:outputHtml id="oh19" value="Operations"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
@@ -76,12 +78,14 @@
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
-                                        <amx:outputHtml id="oh5" styleClass="fa fa-bus fa-lg"/>
+                                        <amx:outputHtml id="oh5" styleClass="fa fa-bus fa-lg"
+                                                        inlineStyle="color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl13">
                                     <amx:cellFormat id="cf23" halign="center">
-                                        <amx:outputHtml id="oh6" value="Properties" inlineStyle="font-size:small;"/>
+                                        <amx:outputHtml id="oh6" value="Properties"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
@@ -92,12 +96,14 @@
                             <amx:tableLayout id="tl6" halign="center">
                                 <amx:rowLayout id="rl14">
                                     <amx:cellFormat id="cf24" halign="center">
-                                        <amx:outputHtml id="oh3" styleClass="fa fa-cube fa-lg"/>
+                                        <amx:outputHtml id="oh3" styleClass="fa fa-cube fa-lg"
+                                                        inlineStyle="color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl15">
                                     <amx:cellFormat id="cf25" halign="center">
-                                        <amx:outputHtml id="oh7" value="Resources" inlineStyle="font-size:small;"/>
+                                        <amx:outputHtml id="oh7" value="Resources"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
@@ -108,12 +114,14 @@
                             <amx:tableLayout id="tl4" halign="center">
                                 <amx:rowLayout id="rl6">
                                     <amx:cellFormat id="cf9" halign="center">
-                                        <amx:outputHtml id="oh20" styleClass="fa fa-ellipsis-h fa-lg"/>
+                                        <amx:outputHtml id="oh20" styleClass="fa fa-ellipsis-h fa-lg"
+                                                        inlineStyle="color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl7">
                                     <amx:cellFormat id="cf8" halign="center">
-                                        <amx:outputHtml id="oh4" value="more" inlineStyle="font-size:small;"/>
+                                        <amx:outputHtml id="oh4" value="more"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>

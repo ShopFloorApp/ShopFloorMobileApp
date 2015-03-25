@@ -18,45 +18,32 @@
                       selectedRowKeys="#{bindings.request.collectionModel.selectedRow}"
                       selectionListener="#{bindings.request.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" action="requestDetails" showLinkIcon="false" inlineStyle="width: 98%;">
-                <amx:tableLayout width="90%" id="tl1" halign="center">
+            <amx:listItem id="li1" action="requestDetails" showLinkIcon="false" inlineStyle="width: 97%;">
+                <amx:tableLayout width="100%" id="tl1" halign="center">
                     <amx:rowLayout id="rl1">
-                        <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1"
-                                        halign="center">
+                        <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf1"
+                                        halign="start">
                             <amx:panelGroupLayout id="pgl2" valign="middle">
                                 <amx:outputText value="#{row.requestId}" id="ot2" inlineStyle="font-weight:bold;"/>
                                 <amx:outputText value="Request ID" id="ot7"
                                                 inlineStyle="color:Silver; font-size:small;" rendered="false"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf4" width="30%" halign="center" valign="middle">
+                        <amx:cellFormat id="cf4" width="100%" halign="end" valign="middle">
                             <amx:panelGroupLayout id="pgl3">
                                 <amx:outputHtml id="oh2" value="  #{row.hrsTaken} : #{row.minTaken} : #{row.ssTaken}"
                                                 styleClass="fa fa-clock-o fa-lg #{row.colorStyle}"
-                                                inlineStyle="font-weight:bold;"/>
-                                <amx:outputText value="HH:MI:SS" id="ot8"
-                                                inlineStyle="color:Silver; font-size:small;"/>
+                                                inlineStyle="font-weight:bold; font-size:small;"/>
+                                <amx:outputText value="#{row.phase}-#{row.status}" id="ot6"
+                                                inlineStyle="font-size:small;"/>
                             </amx:panelGroupLayout>
 
-                        </amx:cellFormat>
-                        <amx:cellFormat width="40%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6"
-                                        halign="center" valign="middle">
-                            <amx:panelGroupLayout id="pgl1">
-                                <amx:outputText value="#{row.phase}-#{row.status}" id="ot6"/>
-                                <amx:outputText value="Phase-Status" id="ot4" inlineStyle="color:Silver; font-size:small;"
-                                                rendered="false"/>
-                            </amx:panelGroupLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl2">
                         
-                        <amx:cellFormat width="90%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3"
-                                        halign="center" valign="middle">
-                            <amx:panelGroupLayout id="pgl4" halign="center" valign="middle">
-                                <amx:outputText value="#{row.progName}" id="ot3"/>
-                                <amx:outputText value="Program Name" id="ot5" inlineStyle="color:Silver; font-size:small;"
-                                                rendered="false"/>
-                            </amx:panelGroupLayout>
+                        <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3" valign="middle" columnSpan="3">
+                            <amx:outputText value="#{row.progName}" id="ot3" inlineStyle="color:Gray;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
  
