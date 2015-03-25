@@ -56,20 +56,22 @@
         </amx:tableLayout>
             </amx:facet>
         </amx:panelStretchLayout-->
-        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+        <amx:panelFormLayout id="pfl1">
             <amx:panelLabelAndMessage label="Item" id="pla2m3">
                 <amx:outputText value="#{pageFlowScope.SerialItem}" id="it3"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Quantity"  id="plam1">
+            <amx:panelLabelAndMessage label="Quantity" id="plam1">
                 <amx:outputText value="#{pageFlowScope.SerialQty}" id="ot5"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Quantity Entered"  id="plam2">
-                <amx:outputText value="#{pageFlowScope.qtyEntered}"  id="ot6"/>
+            <amx:panelLabelAndMessage label="Quantity Entered" id="plam2">
+                <amx:outputText value="#{pageFlowScope.qtyEntered}" id="ot6"/>
             </amx:panelLabelAndMessage>
-            <amx:selectBooleanSwitch label="Ranges"   id="sbs1" value="#{pageFlowScope.RangeOff}"/>
-            <amx:inputText id="it15" hintText="From" label="From" rendered="#{pageFlowScope.RangeOff}" value="#{bindings.fromSerial.inputValue}"
+            <amx:selectBooleanSwitch label="Ranges" id="sbs1" value="#{pageFlowScope.RangeOff}"/>
+            <amx:inputText id="it15" hintText="From" label="From" rendered="#{pageFlowScope.RangeOff}"
+                           value="#{bindings.fromSerial.inputValue}"
                            valueChangeListener="#{StateListenerBean.FromSerialChange}"/>
-            <amx:inputText id="it16" label="To" hintText="To" rendered="#{pageFlowScope.RangeOff}" value="#{bindings.toSerial.inputValue}"
+            <amx:inputText id="it16" label="To" hintText="To" rendered="#{pageFlowScope.RangeOff}"
+                           value="#{bindings.toSerial.inputValue}"
                            valueChangeListener="#{StateListenerBean.ToSerialChange}"/>
             <amx:inputText id="it14" label="From" hintText="From" rendered="#{!pageFlowScope.RangeOff}"
                            value="#{bindings.fromSerialRange.inputValue}"
@@ -134,20 +136,30 @@
                       selectionListener="#{bindings.serials.collectionModel.makeCurrent}"
                       styleClass="adfmf-listView-insetList" showMoreStrategy="autoScroll" bufferStrategy="viewport"
                       id="lv1" layout="cards">
-            <amx:listItem id="li1"  showLinkIcon="false">
+            <amx:listItem id="li1" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:tableLayout id="tl1" width="95%">
-                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                    <amx:rowLayout id="rl4">
-                        <amx:cellFormat id="cf3s252">
-                            <amx:outputText value="#{row.fromSerial}" id="ot7"/>
+                <amx:tableLayout id="tl3" width="95%">
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat id="cf2">
+                            <amx:tableLayout id="tl1" width="95%">
+                                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                                <amx:rowLayout id="rl4">
+                                    <amx:cellFormat id="cf3s252">
+                                        <amx:outputText value="#{row.fromSerial}" id="ot7"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl2">
+                                    <amx:cellFormat id="cf4" width="30%">
+                                        <amx:outputText value="#{row.toSerial}" id="ot3"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
                         </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl2">
-                        <amx:cellFormat id="cf4" width="30%">
-                            <amx:outputText value="#{row.toSerial}" id="ot3"/>
+                        <amx:cellFormat id="cf5" width="30%">
+                            <amx:outputText value="#{row.serialQty}"  id="ot4" inlineStyle="font-size:x-large;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat width="5%" rendered="#{pageFlowScope.renderDeleteButton=='true'?true:false}" halign="end" id="cf3">
+                        <amx:cellFormat width="5%" rendered="#{pageFlowScope.renderDeleteButton=='true'?true:false}"
+                                        halign="end" id="cf3">
                             <amx:commandLink id="cb3" actionListener="#{bindings.deleteRecord.execute}">
                                 <amx:outputHtml id="oh3" styleClass="fa fa-remove fa-lg" inlineStyle="color:#34AADC;"/>
                                 <amx:setPropertyListener from="#{row.serialId}" to="#{pageFlowScope.deleteSerialId}"
@@ -157,17 +169,17 @@
                             </amx:commandLink>
                         </amx:cellFormat>
                     </amx:rowLayout>
-                    <amx:rowLayout id="rl3">
+                    <!--amx:rowLayout id="rl3">
                         <amx:cellFormat id="cf5" width="30%">
                             <amx:outputText value="#{row.serialQty}" id="ot4"/>
                         </amx:cellFormat>
-                    </amx:rowLayout>
+                    </amx:rowLayout-->
                     <!--amx:cellFormat id="cf1" width="30%">
                             <amx:outputText value="#{row.serialId}" id="ot5"/>
                         </amx:cellFormat-->
                 </amx:tableLayout>
-                <amx:actionListener id="al1" type="swipeLeft"  binding="#{StateListenerBean.SwipeLeftSerial}"/>
-                <amx:actionListener id="al2" type="swipeRight"  binding="#{StateListenerBean.SwipeRightSerial}"/>
+                <amx:actionListener id="al1" type="swipeLeft" binding="#{StateListenerBean.SwipeLeftSerial}"/>
+                <amx:actionListener id="al2" type="swipeRight" binding="#{StateListenerBean.SwipeRightSerial}"/>
             </amx:listItem>
         </amx:listView>
         <!--/amx:panelGroupLayout-->
