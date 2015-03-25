@@ -21,11 +21,19 @@
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage label="LPN" id="plam2">
         <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
-          <amx:inputText id="it1"/>
+          <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
+                                inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;">
+            <amx:spacer id="s2" width="10"/>
+            <amx:inputText id="it12"/>
+            <amx:commandLink id="cl3">
+              <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
+            </amx:commandLink>
+            <amx:spacer id="s2" width="10"/>
+          </amx:panelGroupLayout>
+          <amx:spacer id="s1" width="30"/>
           <amx:commandLink id="cl2">
             <amx:outputHtml id="oh2" styleClass="fa fa-barcode fa-lg"/>
           </amx:commandLink>
-          <amx:commandButton id="cb1" styleClass="fa fa-barcode fa-lg" inlineStyle="color:Blue;"/>
         </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
