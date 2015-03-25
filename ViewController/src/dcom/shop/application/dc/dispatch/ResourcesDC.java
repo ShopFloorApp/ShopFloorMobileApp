@@ -22,6 +22,7 @@ public class ResourcesDC extends AViewObject  {
     }
 
     public ResourcesBO[] getResourcesBO() {
+        resourceList.clear();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         ResourcesBO[] resourcesArray = null;
         String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();

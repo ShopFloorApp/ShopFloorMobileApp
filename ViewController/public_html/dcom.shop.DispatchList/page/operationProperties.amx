@@ -1,55 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Operation Properties" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandLink id="cl1" action="back">
-        <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
-      </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:panelFormLayout id="pfl1">
-      <amx:panelLabelAndMessage label="#{bindings.opSeq.hints.label}" id="plam4">
-        <amx:outputText value="#{bindings.opSeq.inputValue}" id="ot5"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.opDesc.hints.label}" id="plam12">
-        <amx:outputText value="#{bindings.opDesc.inputValue}" id="ot13"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.dept.hints.label}" id="plam2">
-        <amx:outputText value="#{bindings.dept.inputValue}" id="ot3"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.opStartDate.hints.label}" id="plam8">
-        <amx:outputText value="#{bindings.opStartDate.inputValue}" id="ot9"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.opComplDate.hints.label}" id="plam9">
-        <amx:outputText value="#{bindings.opComplDate.inputValue}" id="ot10"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qtyQueue.hints.label}" id="plam3">
-        <amx:outputText value="#{bindings.qtyQueue.inputValue}" id="ot4"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qtyRun.hints.label}" id="plam1">
-        <amx:outputText value="#{bindings.qtyRun.inputValue}" id="ot2"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qty2move.hints.label}" id="plam6">
-        <amx:outputText value="#{bindings.qty2move.inputValue}" id="ot7"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qtyScrapped.hints.label}" id="plam10">
-        <amx:outputText value="#{bindings.qtyScrapped.inputValue}" id="ot11"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qtyRejected.hints.label}" id="plam7">
-        <amx:outputText value="#{bindings.qtyRejected.inputValue}" id="ot8"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qtyCompleted.hints.label}" id="plam5">
-        <amx:outputText value="#{bindings.qtyCompleted.inputValue}" id="ot6"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="#{bindings.qtyCScrapQty.hints.label}" id="plam11">
-        <amx:outputText value="#{bindings.qtyCScrapQty.inputValue}" id="ot12"/>
-      </amx:panelLabelAndMessage>
-    </amx:panelFormLayout>
-  </amx:panelPage>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Operation Properties" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="back">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:panelLabelAndMessage label="Sequence" id="plam4">
+                <amx:outputText value="#{bindings.opSeq.inputValue}" id="ot5"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Description" id="plam12">
+                <amx:outputText value="#{bindings.opDesc.inputValue}" id="ot13"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Department" id="plam2">
+                <amx:outputText value="#{bindings.dept.inputValue}" id="ot3"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Started" id="plam8">
+                <amx:outputText value="#{bindings.opStartDate.inputValue}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Completion" id="plam9">
+                <amx:outputText value="#{bindings.opComplDate.inputValue}" id="ot10"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Queue" id="plam3">
+                <amx:outputText value="#{bindings.qtyQueue.inputValue}" id="ot4"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Run" id="plam1">
+                <amx:outputText value="#{bindings.qtyRun.inputValue}" id="ot2"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity To Move" id="plam6">
+                <amx:outputText value="#{bindings.qty2move.inputValue}" id="ot7"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Total Operation Quantity" id="plam16">
+                <amx:outputText id="ot17"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Scrapped" id="plam10">
+                <amx:outputText value="#{bindings.qtyScrapped.inputValue}" id="ot11"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Rejected" id="plam7">
+                <amx:outputText value="#{bindings.qtyRejected.inputValue}" id="ot8"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Quantity Total Completed" id="plam5">
+                <amx:outputText value="#{bindings.qtyCompleted.inputValue}" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Cumulative Scrap Quantity" id="plam11">
+                <amx:outputText value="#{bindings.qtyCScrapQty.inputValue}" id="ot12"/>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
+    </amx:panelPage>
 </amx:view>

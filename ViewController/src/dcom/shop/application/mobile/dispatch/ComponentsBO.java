@@ -1,11 +1,13 @@
 package dcom.shop.application.mobile.dispatch;
 
+import dcom.shop.application.base.AEntity;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ComponentsBO {
+public class ComponentsBO extends AEntity{
     
     private String jobNumber;
     private String jobOps;
@@ -31,6 +33,7 @@ public class ComponentsBO {
 
 
     public void setJobNumber(String jobNumber) {
+        jobNumber=getAttributeValue(jobNumber);
         String oldJobNumber = this.jobNumber;
         this.jobNumber = jobNumber;
         propertyChangeSupport.firePropertyChange("jobNumber", oldJobNumber, jobNumber);
@@ -41,6 +44,7 @@ public class ComponentsBO {
     }
 
     public void setJobOps(String jobOps) {
+        jobOps = getAttributeValue(jobOps);
         String oldJobOps = this.jobOps;
         this.jobOps = jobOps;
         propertyChangeSupport.firePropertyChange("jobOps", oldJobOps, jobOps);
@@ -51,6 +55,7 @@ public class ComponentsBO {
     }
 
     public void setComponent(String components) {
+        components= getAttributeValue(components);
         String oldComponents = this.component;
         this.component = components;
         propertyChangeSupport.firePropertyChange("components", oldComponents, components);
@@ -61,6 +66,7 @@ public class ComponentsBO {
     }
 
     public void setDescription(String description) {
+        description= getAttributeValue(description);
         String oldDescription = this.description;
         this.description = description;
         propertyChangeSupport.firePropertyChange("description", oldDescription, description);
@@ -71,6 +77,7 @@ public class ComponentsBO {
     }
 
     public void setDateRequired(String dateRequired) {
+        dateRequired = getAttributeValue(dateRequired);
         String oldDateRequired = this.dateRequired;
         this.dateRequired = dateRequired;
         propertyChangeSupport.firePropertyChange("dateRequired", oldDateRequired, dateRequired);
@@ -81,6 +88,7 @@ public class ComponentsBO {
     }
 
     public void setBasis(String basis) {
+        basis= getAttributeValue(basis);
         String oldBasis = this.basis;
         this.basis = basis;
         propertyChangeSupport.firePropertyChange("basis", oldBasis, basis);
@@ -151,6 +159,7 @@ public class ComponentsBO {
     }
 
     public void setUom(String uom) {
+        uom = getAttributeValue(uom);
         String oldUom = this.uom;
         this.uom = uom;
         propertyChangeSupport.firePropertyChange("uom", oldUom, uom);
@@ -161,6 +170,7 @@ public class ComponentsBO {
     }
 
     public void setSupplyType(String supplyType) {
+        supplyType = getAttributeValue(supplyType);
         String oldSupplyType = this.supplyType;
         this.supplyType = supplyType;
         propertyChangeSupport.firePropertyChange("supplyType", oldSupplyType, supplyType);
@@ -171,6 +181,7 @@ public class ComponentsBO {
     }
 
     public void setSubInv(String subInv) {
+        subInv= getAttributeValue(subInv);
         String oldSubInv = this.subInv;
         this.subInv = subInv;
         propertyChangeSupport.firePropertyChange("subInv", oldSubInv, subInv);
@@ -181,6 +192,7 @@ public class ComponentsBO {
     }
 
     public void setLocator(String locator) {
+        locator= getAttributeValue(locator);
         String oldLocator = this.locator;
         this.locator = locator;
         propertyChangeSupport.firePropertyChange("locator", oldLocator, locator);

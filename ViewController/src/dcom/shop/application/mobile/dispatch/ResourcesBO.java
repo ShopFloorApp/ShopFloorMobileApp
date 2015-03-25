@@ -1,11 +1,13 @@
 package dcom.shop.application.mobile.dispatch;
 
+import dcom.shop.application.base.AEntity;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ResourcesBO {
+public class ResourcesBO extends AEntity{
     private String jobNumber;
     private String jobOps;
     private String resourceName;
@@ -27,6 +29,7 @@ public class ResourcesBO {
 
 
     public void setJobNumber(String jobNumber) {
+        jobNumber=getAttributeValue(jobNumber);
         String oldJobNumber = this.jobNumber;
         this.jobNumber = jobNumber;
         propertyChangeSupport.firePropertyChange("jobNumber", oldJobNumber, jobNumber);
@@ -37,6 +40,7 @@ public class ResourcesBO {
     }
 
     public void setJobOps(String jobOps) {
+        jobOps = getAttributeValue(jobOps);
         String oldJobOps = this.jobOps;
         this.jobOps = jobOps;
         propertyChangeSupport.firePropertyChange("jobOps", oldJobOps, jobOps);
@@ -47,6 +51,7 @@ public class ResourcesBO {
     }
 
     public void setResourceName(String resourceName) {
+        resourceName=getAttributeValue(resourceName);
         String oldResourceName = this.resourceName;
         this.resourceName = resourceName;
         propertyChangeSupport.firePropertyChange("resourceName", oldResourceName, resourceName);
@@ -57,6 +62,7 @@ public class ResourcesBO {
     }
 
     public void setResourceType(String resourceType) {
+        resourceType=getAttributeValue(resourceType);
         String oldResourceType = this.resourceType;
         this.resourceType = resourceType;
         propertyChangeSupport.firePropertyChange("resourceType", oldResourceType, resourceType);
@@ -97,6 +103,7 @@ public class ResourcesBO {
     }
 
     public void setUom(String uom) {
+        uom = getAttributeValue(uom);
         String oldUom = this.uom;
         this.uom = uom;
         propertyChangeSupport.firePropertyChange("uom", oldUom, uom);
@@ -107,6 +114,7 @@ public class ResourcesBO {
     }
 
     public void setBasis(String basis) {
+        basis = getAttributeValue(basis);
         String oldBasis = this.basis;
         this.basis = basis;
         propertyChangeSupport.firePropertyChange("basis", oldBasis, basis);
@@ -137,6 +145,7 @@ public class ResourcesBO {
     }
 
     public void setStartDate(String startDate) {
+        startDate = getAttributeValue(startDate);
         String oldStartDate = this.startDate;
         this.startDate = startDate;
         propertyChangeSupport.firePropertyChange("startDate", oldStartDate, startDate);
@@ -147,6 +156,7 @@ public class ResourcesBO {
     }
 
     public void setEndDate(String endDate) {
+        endDate = getAttributeValue(endDate);
         String oldEndDate = this.endDate;
         this.endDate = endDate;
         propertyChangeSupport.firePropertyChange("endDate", oldEndDate, endDate);

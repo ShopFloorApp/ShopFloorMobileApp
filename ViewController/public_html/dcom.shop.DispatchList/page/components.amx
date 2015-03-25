@@ -7,7 +7,7 @@
     </amx:facet>
     <amx:facet name="primary">
       <amx:commandLink id="cl1" action="__back">
-        <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
       </amx:commandLink>
     </amx:facet>
     <amx:facet name="secondary">
@@ -22,27 +22,27 @@
         <amx:tableLayout id="tl1">
           <amx:rowLayout id="rl1">
             <amx:cellFormat id="cf1">
-              <amx:outputText value="#{row.component}" id="ot2"/>
+              <amx:outputText value="#{row.component}" id="ot2" inlineStyle="font-weight:bold;"/>
             </amx:cellFormat>
           </amx:rowLayout>
           <amx:rowLayout id="rl2">
             <amx:cellFormat id="cf2">
-              <amx:outputText value="Description: #{row.description}" id="ot3"/>
+              <amx:outputText value="Description: #{row.description}" id="ot3" inlineStyle="color:Gray;"/>
             </amx:cellFormat>
           </amx:rowLayout>
           <amx:rowLayout id="rl3">
             <amx:cellFormat id="cf3">
-              <amx:outputText value="Quantity Required: #{row.qtyRequired}" id="ot4"/>
+              <amx:outputText value="Quantity Required: #{row.qtyRequired}" id="ot4" inlineStyle="color:Gray;"/>
             </amx:cellFormat>
           </amx:rowLayout>
           <amx:rowLayout id="rl4">
             <amx:cellFormat id="cf4">
-              <amx:outputText value="Qunatity Issued: #{row.qtyIssued}" id="ot5"/>
+              <amx:outputText value="Qunatity Issued: #{row.qtyIssued}" id="ot5" inlineStyle="color:Gray;"/>
             </amx:cellFormat>
           </amx:rowLayout>
           <amx:rowLayout id="rl5">
             <amx:cellFormat id="cf5">
-              <amx:outputText value="Quantity Open: #{row.qtyOpen}" id="ot6"/>
+              <amx:outputText value="Quantity Open: #{row.qtyOpen}" id="ot6" inlineStyle="color:Gray;"/>
             </amx:cellFormat>
           </amx:rowLayout>
         </amx:tableLayout>

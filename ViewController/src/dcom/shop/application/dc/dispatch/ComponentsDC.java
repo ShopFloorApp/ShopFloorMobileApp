@@ -21,6 +21,7 @@ public class ComponentsDC extends AViewObject {
     }
     
     public ComponentsBO[] getComponentsBO(){
+        componentList.clear();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         ComponentsBO[] componentsArray = null;
         String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();

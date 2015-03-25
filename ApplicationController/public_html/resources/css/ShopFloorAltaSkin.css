@@ -276,3 +276,17 @@
     display: block;
     text-overflow: ellipsis;
 }
+
+/* Same padding for LTR & RTL but for specificity, we are adding html[dir] to the selector */
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topStart .field-label,
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topCenter .field-label,
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topEnd .field-label,
+html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topStart .field-label,
+html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topCenter .field-label,
+html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topEnd .field-label {
+    padding: 10px 10px 0 0;
+    line-height: 23px;
+    width: 100%;
+    color: Gray;
+    font-weight: bold;
+}

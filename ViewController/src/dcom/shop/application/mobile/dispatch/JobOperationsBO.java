@@ -1,17 +1,18 @@
 package dcom.shop.application.mobile.dispatch;
 
+import dcom.shop.application.base.AEntity;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class JobOperationsBO {
+public class JobOperationsBO extends AEntity{
     private String opStartDate;
     private BigDecimal qtyQueue;
     private String jobOps;
     private String jobOn;;
     private BigDecimal qty2move;
-    
     private BigDecimal qtyCScrapQty;
     private BigDecimal qtyScrapped;
     private String opDesc;
@@ -35,6 +36,7 @@ public class JobOperationsBO {
     }
 
     public void setNextDept(String nextDept) {
+        nextDept=getAttributeValue(nextDept);
         String oldNextDept = this.nextDept;
         this.nextDept = nextDept;
         propertyChangeSupport.firePropertyChange("nextDept", oldNextDept, nextDept);
@@ -45,6 +47,7 @@ public class JobOperationsBO {
     }
 
     public void setNextOpSeq(BigDecimal nextOpSeq) {
+        
         BigDecimal oldNextOpSeq = this.nextOpSeq;
         this.nextOpSeq = nextOpSeq;
         propertyChangeSupport.firePropertyChange("nextOpSeq", oldNextOpSeq, nextOpSeq);
@@ -55,6 +58,7 @@ public class JobOperationsBO {
     }
 
     public void setLastDept(String lastDept) {
+        lastDept=getAttributeValue(lastDept);
         String oldLastDept = this.lastDept;
         this.lastDept = lastDept;
         propertyChangeSupport.firePropertyChange("lastDept", oldLastDept, lastDept);
@@ -65,6 +69,7 @@ public class JobOperationsBO {
     }
 
     public void setLastOpSeq(String lastOpSeq) {
+        lastOpSeq=getAttributeValue(lastOpSeq);
         String oldLastOpSeq = this.lastOpSeq;
         this.lastOpSeq = lastOpSeq;
         propertyChangeSupport.firePropertyChange("lastOpSeq", oldLastOpSeq, lastOpSeq);
@@ -75,6 +80,7 @@ public class JobOperationsBO {
     }
 
     public void setOpStartDate(String opStartDate) {
+        opStartDate=getAttributeValue(opStartDate);
         String oldOpStartDate = this.opStartDate;
         this.opStartDate = opStartDate;
         propertyChangeSupport.firePropertyChange("opStartDate", oldOpStartDate, opStartDate);
@@ -95,6 +101,7 @@ public class JobOperationsBO {
     }
 
     public void setJobOps(String jobOps) {
+        jobOps=getAttributeValue(jobOps);
         String oldJobOps = this.jobOps;
         this.jobOps = jobOps;
         propertyChangeSupport.firePropertyChange("jobOps", oldJobOps, jobOps);
@@ -105,6 +112,7 @@ public class JobOperationsBO {
     }
 
     public void setJobOn(String jobOn) {
+        jobOn= getAttributeValue(jobOn);
         String oldJobOn = this.jobOn;
         this.jobOn = jobOn;
         propertyChangeSupport.firePropertyChange("jobOn", oldJobOn, jobOn);
@@ -145,6 +153,7 @@ public class JobOperationsBO {
     }
 
     public void setOpDesc(String opDesc) {
+        opDesc=getAttributeValue(opDesc);
         String oldOpDesc = this.opDesc;
         this.opDesc = opDesc;
         propertyChangeSupport.firePropertyChange("opDesc", oldOpDesc, opDesc);
@@ -185,6 +194,7 @@ public class JobOperationsBO {
     }
 
     public void setOpComplDate(String opComplDate) {
+        opComplDate=getAttributeValue(opComplDate);
         String oldOpComplDate = this.opComplDate;
         this.opComplDate = opComplDate;
         propertyChangeSupport.firePropertyChange("opComplDate", oldOpComplDate, opComplDate);
@@ -205,6 +215,7 @@ public class JobOperationsBO {
     }
 
     public void setDept(String dept) {
+        dept= getAttributeValue(dept);
         String oldDept = this.dept;
         this.dept = dept;
         propertyChangeSupport.firePropertyChange("dept", oldDept, dept);
@@ -215,6 +226,7 @@ public class JobOperationsBO {
     }
 
     public void setOpCode(String opCode) {
+        opCode = getAttributeValue(opCode);
         String oldOpCode = this.opCode;
         this.opCode = opCode;
         propertyChangeSupport.firePropertyChange("opCode", oldOpCode, opCode);
@@ -235,6 +247,7 @@ public class JobOperationsBO {
     }
 
     public void setJobNumber(String jobNumber) {
+        jobNumber= getAttributeValue(jobNumber);
         String oldJobNumber = this.jobNumber;
         this.jobNumber = jobNumber;
         propertyChangeSupport.firePropertyChange("jobNumber", oldJobNumber, jobNumber);
