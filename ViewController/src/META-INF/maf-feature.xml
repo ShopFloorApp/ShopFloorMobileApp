@@ -91,7 +91,7 @@
     <adfmf:content id="dcom.shop.Request.1">
       <adfmf:amx file="dcom.shop.Request/requestTf.xml#requestTf">
         <adfmf:includes>
-          <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i10"/>
+          <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i11"/>
         </adfmf:includes>
       </adfmf:amx>
     </adfmf:content>

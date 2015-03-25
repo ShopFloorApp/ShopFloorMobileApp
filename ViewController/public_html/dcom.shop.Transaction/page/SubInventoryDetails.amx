@@ -48,7 +48,7 @@
             <amx:commandLink id="cl7" actionListener="#{bindings.InsertTransaction.execute}">
                 <amx:outputHtml id="oh5" styleClass="fa  fa-save fa-lg" inlineStyle="color:#34AADC;"/>
                 <amx:setPropertyListener id="spl8" from="SUBMIT" to="#{pageFlowScope.TrxnType}" type="action"/>
-                <amx:outputText id="ot6" value="Save &amp; Submit"/>
+                <!--amx:outputText id="ot6" value="Save &amp; Submit"/-->
             </amx:commandLink>
         </amx:facet>
         <!--amx:panelGroupLayout id="pgl1" layout="horizontal">
