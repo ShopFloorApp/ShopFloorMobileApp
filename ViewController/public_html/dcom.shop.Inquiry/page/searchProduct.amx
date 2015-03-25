@@ -13,6 +13,11 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
+    <amx:outputHtml id="ot144" value="Please enter atleast 3 characters to search!!!" 
+            rendered = "#{pageFlowScope.keywrdLenErr eq 'Yes'?true:false}"
+            inlineStyle="color:Red" 
+            />
+          
         <amx:panelFormLayout id="pfl1">
             <amx:inputText label="Keyword" id="it1" value="#{pageFlowScope.searchKeyword}"/>
         </amx:panelFormLayout>
@@ -25,7 +30,7 @@
                     <amx:outputText id="ot2" value="Clear"/>
                 </amx:commandLink>
                 <amx:spacer id="s6" width="20"/>
-                <amx:commandLink id="cl2" action="productlist">
+                <amx:commandLink id="cl2" action="#{SearchProductBean.validateKeyword}">
                     <amx:outputHtml id="oh2" styleClass="fa fa-search fa-lg"/>
                     <amx:spacer id="s4" width="2"/>
                     <amx:outputText id="ot121" value="Search"/>

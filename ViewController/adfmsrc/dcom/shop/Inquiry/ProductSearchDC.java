@@ -5,6 +5,7 @@ import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 import javax.el.ValueExpression;
@@ -34,7 +35,8 @@ public class ProductSearchDC {
 
     public ProductSearchEntity[] getAllProdItems() {
         ValueExpression ve = null;
-
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        pageFlow.put("keywrdLenErr", "");
 
         System.out.println("Inside productItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
