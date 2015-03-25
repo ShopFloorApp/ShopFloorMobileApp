@@ -70,7 +70,11 @@
   </adfmf:feature>
   <adfmf:feature id="dcom.shop.Request" name="Request" securityEnabled="false">
     <adfmf:content id="dcom.shop.Request.1">
-      <adfmf:amx file="dcom.shop.Request/requestTf.xml#requestTf"/>
+      <adfmf:amx file="dcom.shop.Request/requestTf.xml#requestTf">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i10"/>
+        </adfmf:includes>
+      </adfmf:amx>
     </adfmf:content>
   </adfmf:feature>
 </adfmf:features>

@@ -63,4 +63,9 @@ public class jsMBean {
         }
         return lov;
     }
+    
+    public void openPopup(ActionEvent actionEvent) {
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] {});
+    }
 }
