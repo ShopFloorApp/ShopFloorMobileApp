@@ -57,7 +57,7 @@
       </adfmf:constraints>
       <adfmf:amx file="dcom.shop.Transaction/transactionTf.xml#transactionTf">
         <adfmf:includes>
-          <adfmf:include type="StyleSheet" file="resources/css/WorkBetter.css" id="i10"/>
+          <adfmf:include type="StyleSheet" file="resources/css/WorkBetter.css" id="i15"/>
           <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i11"/>
           <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/iOS/js/barcodescanner.js" id="i12"/>
           <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i13"/>
@@ -91,7 +91,7 @@
     <adfmf:content id="dcom.shop.Request.1">
       <adfmf:amx file="dcom.shop.Request/requestTf.xml#requestTf">
         <adfmf:includes>
-          <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i11"/>
+          <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i16"/>
         </adfmf:includes>
       </adfmf:amx>
     </adfmf:content>
