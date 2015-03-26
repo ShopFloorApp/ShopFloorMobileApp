@@ -13,22 +13,28 @@
     <amx:facet name="secondary"/>
     <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
       <amx:panelLabelAndMessage label="Dock Door" id="plam1">
-        <amx:panelGroupLayout id="pgl2">
-          <amx:selectOneChoice id="soc1">
-            <amx:selectItem id="si1"/>
-          </amx:selectOneChoice>
+        <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start" valign="baseline">
+          <amx:inputText id="it1x"/>
+          <amx:commandLink id="cl4">
+            <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg"/>
+          </amx:commandLink>
         </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage label="LPN" id="plam2">
         <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
           <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
-                                inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;">
+                                inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;"
+                                styleClass="pglBorder">
             <amx:spacer id="s2" width="10"/>
-            <amx:inputText id="it12"/>
-            <amx:commandLink id="cl3">
+            <amx:inputText id="it12" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"/>
+            <amx:commandLink id="cl3" action="lpn">
               <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
+              <amx:setPropertyListener id="spl1" type="action" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"/>
+              <amx:setPropertyListener id="spl2" to="#{pageFlowScope.LpnPage}" type="action" from="SHIP_LPN"/>
             </amx:commandLink>
+
             <amx:spacer id="s52" width="10"/>
+
           </amx:panelGroupLayout>
           <amx:spacer id="s1" width="30"/>
           <amx:commandLink id="cl2">
