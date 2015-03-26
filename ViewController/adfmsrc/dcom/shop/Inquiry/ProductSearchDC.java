@@ -34,6 +34,7 @@ public class ProductSearchDC {
 
 
     public ProductSearchEntity[] getAllProdItems() {
+        s_ProdList.clear();
         ValueExpression ve = null;
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         pageFlow.put("keywrdLenErr", "");

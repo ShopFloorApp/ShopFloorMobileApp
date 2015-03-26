@@ -31,7 +31,7 @@ public class LpnSearchDC {
 
     public LpnSearchEntity[] getAllLpns() {
         ValueExpression ve = null;
-
+        s_LpnList.clear();
 
         System.out.println("Inside lpn search");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -65,8 +65,8 @@ public class LpnSearchDC {
 
 
                         LpnSearchEntity lpnItems = new LpnSearchEntity();
-                      //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
-                      JSONObject jsObjectArrayData = (JSONObject) array.get(i); 
+                        //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
+                        JSONObject jsObjectArrayData = (JSONObject) array.get(i);
 
                         lpnItems.setORGCODE((jsObjectArrayData.get("ORGCODE").toString()));
                         lpnItems.setLPN((jsObjectArrayData.get("LPN").toString()));
@@ -74,7 +74,7 @@ public class LpnSearchDC {
                         lpnItems.setSUBINV((jsObjectArrayData.get("SUBINV").toString()));
                         lpnItems.setLOCATOR((jsObjectArrayData.get("LOCATOR").toString()));
 
-                      
+
                         s_LpnList.add(lpnItems);
                     }
 
@@ -94,7 +94,6 @@ public class LpnSearchDC {
                     lpnItems.setSUBINV((jsObject2.get("SUBINV").toString()));
                     lpnItems.setLOCATOR((jsObject2.get("LOCATOR").toString()));
 
-                   
 
                     s_LpnList.add(lpnItems);
 
@@ -114,11 +113,11 @@ public class LpnSearchDC {
         }
         return lpnArray;
     }
-    
+
     public void refresh() {
         providerChangeSupport.fireProviderRefresh("allLpns");
     }
-    
+
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
     }
