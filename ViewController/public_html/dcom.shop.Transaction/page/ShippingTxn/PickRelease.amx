@@ -14,12 +14,13 @@
       <amx:commandLink id="cl2" actionListener="#{pageFlowScope.TransactionUtil.executePickRelease}"
                        disabled="#{pageFlowScope.pickRule eq '10'}">
         <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-lg"/>
+        <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pickRule}" from="#{bindings.ruleName.inputValue}"/>
       </amx:commandLink>
     </amx:facet>
     <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
       <amx:panelLabelAndMessage label="Rule Name" id="plam4" showRequired="true">
         <amx:panelGroupLayout id="pgl3">
-          <amx:selectOneChoice value="#{pageFlowScope.pickRule}" id="soc2">
+          <amx:selectOneChoice value="#{bindings.ruleName.inputValue}" id="soc2">
             <amx:selectItem label="Choose a Rule" id="si1" value="0"/>
             <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
           </amx:selectOneChoice>

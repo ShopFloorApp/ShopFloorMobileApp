@@ -160,4 +160,39 @@
       <property
          name="sdm:polyPoints">L54,387.02646,287.5459,320.5,222.24707,R54</property>
    </ControlFlowCase>
+   <View
+      id="View20">
+      <property
+         name="activityId">LpnLOVPG</property>
+      <property
+         name="page">/page/LovPage/LpnLOVPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnLOVPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">230.09766</property>
+      <property
+         name="x">144.68555</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase21"
+      from="View13"
+      to="View20">
+      <property
+         name="fromOutcome">lpn</property>
+      <property
+         name="sdm:polyPoints">L50,238.5,218.74707,185.68555,229.74707,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase22"
+      from="View20"
+      to="View13">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">R54,186.41167,233.24707,238.5,222.24707,L54</property>
+   </ControlFlowCase>
 </SDM>

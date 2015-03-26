@@ -40,7 +40,7 @@ public class transactionUtil {
                 "   \"InputParameters\": \n" + 
                 "        {\"PICKRULE\": \""+pickRule+"\",\n" + 
                 "         \"ORDERNUM\": \""+orderNum+"\",\n" +
-                "       \"EVENT\": \"\""+event+" \n" + 
+                "       \"EVENT\": \""+event+"\", \n" + 
                 "       }\n" + 
                 "}\n" + 
                 "}";
