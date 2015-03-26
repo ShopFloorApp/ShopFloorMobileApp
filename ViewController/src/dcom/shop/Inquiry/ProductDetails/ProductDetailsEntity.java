@@ -1,9 +1,11 @@
 package dcom.shop.Inquiry.ProductDetails;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ProductDetailsEntity {
+public class ProductDetailsEntity  extends AEntity  {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public ProductDetailsEntity() {
@@ -72,6 +74,7 @@ public class ProductDetailsEntity {
     }
 
     public void setITEMCATALOG(String ITEMCATALOG) {
+        ITEMCATALOG=getAttributeValue(ITEMCATALOG);
         String oldITEMCATALOG = this.ITEMCATALOG;
         this.ITEMCATALOG = ITEMCATALOG;
         propertyChangeSupport.firePropertyChange("ITEMCATALOG", oldITEMCATALOG, ITEMCATALOG);
@@ -92,6 +95,7 @@ public class ProductDetailsEntity {
     }
 
     public void setLOGDESC(String LOGDESC) {
+        LOGDESC=getAttributeValue(LOGDESC);
         String oldLOGDESC = this.LOGDESC;
         this.LOGDESC = LOGDESC;
         propertyChangeSupport.firePropertyChange("LOGDESC", oldLOGDESC, LOGDESC);
@@ -102,6 +106,7 @@ public class ProductDetailsEntity {
     }
 
     public void setWEIGHTUOM(String WEIGHTUOM) {
+        WEIGHTUOM=getAttributeValue(WEIGHTUOM);
         String oldWEIGHTUOM = this.WEIGHTUOM;
         this.WEIGHTUOM = WEIGHTUOM;
         propertyChangeSupport.firePropertyChange("WEIGHTUOM", oldWEIGHTUOM, WEIGHTUOM);
@@ -112,6 +117,7 @@ public class ProductDetailsEntity {
     }
 
     public void setWEIGHT(int WEIGHT) {
+        ITEMCATALOG=getAttributeValue(ITEMCATALOG);
         int oldWEIGHT = this.WEIGHT;
         this.WEIGHT = WEIGHT;
         propertyChangeSupport.firePropertyChange("WEIGHT", oldWEIGHT, WEIGHT);
@@ -122,6 +128,7 @@ public class ProductDetailsEntity {
     }
 
     public void setVOLUMEUOM(String VOLUMEUOM) {
+        VOLUMEUOM=getAttributeValue(VOLUMEUOM);
         String oldVOLUMEUOM = this.VOLUMEUOM;
         this.VOLUMEUOM = VOLUMEUOM;
         propertyChangeSupport.firePropertyChange("VOLUMEUOM", oldVOLUMEUOM, VOLUMEUOM);
@@ -132,6 +139,7 @@ public class ProductDetailsEntity {
     }
 
     public void setDIMUOM(String DIMUOM) {
+        DIMUOM=getAttributeValue(DIMUOM);
         String oldDIMUOM = this.DIMUOM;
         this.DIMUOM = DIMUOM;
         propertyChangeSupport.firePropertyChange("DIMUOM", oldDIMUOM, DIMUOM);
@@ -152,6 +160,7 @@ public class ProductDetailsEntity {
     }
 
     public void setLENGTH(int LENGTH) {
+        ITEMCATALOG=getAttributeValue(ITEMCATALOG);
         int oldLENGTH = this.LENGTH;
         this.LENGTH = LENGTH;
         propertyChangeSupport.firePropertyChange("LENGTH", oldLENGTH, LENGTH);
@@ -172,6 +181,7 @@ public class ProductDetailsEntity {
     }
 
     public void setISCONTAINER(String ISCONTAINER) {
+        ISCONTAINER=getAttributeValue(ISCONTAINER);
         String oldISCONTAINER = this.ISCONTAINER;
         this.ISCONTAINER = ISCONTAINER;
         propertyChangeSupport.firePropertyChange("ISCONTAINER", oldISCONTAINER, ISCONTAINER);
@@ -182,6 +192,7 @@ public class ProductDetailsEntity {
     }
 
     public void setCONTAINERTYPE(String CONTAINERTYPE) {
+        CONTAINERTYPE=getAttributeValue(CONTAINERTYPE);
         String oldCONTAINERTYPE = this.CONTAINERTYPE;
         this.CONTAINERTYPE = CONTAINERTYPE;
         propertyChangeSupport.firePropertyChange("CONTAINERTYPE", oldCONTAINERTYPE, CONTAINERTYPE);
@@ -192,6 +203,7 @@ public class ProductDetailsEntity {
     }
 
     public void setMAXLOAD(String MAXLOAD) {
+        MAXLOAD=getAttributeValue(MAXLOAD);
         String oldMAXLOAD = this.MAXLOAD;
         this.MAXLOAD = MAXLOAD;
         propertyChangeSupport.firePropertyChange("MAXLOAD", oldMAXLOAD, MAXLOAD);

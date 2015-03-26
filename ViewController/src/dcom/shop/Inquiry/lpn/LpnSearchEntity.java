@@ -1,10 +1,12 @@
 package dcom.shop.Inquiry.lpn;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 
-public class LpnSearchEntity {
+public class LpnSearchEntity  extends AEntity  {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public LpnSearchEntity() {
@@ -23,6 +25,7 @@ public class LpnSearchEntity {
     }
 
     public void setPARENTLPN(String PARENTLPN) {
+        PARENTLPN=getAttributeValue(PARENTLPN);
         String oldPARENTLPN = this.PARENTLPN;
         this.PARENTLPN = PARENTLPN;
         propertyChangeSupport.firePropertyChange("PARENTLPN", oldPARENTLPN, PARENTLPN);
@@ -53,6 +56,7 @@ public class LpnSearchEntity {
     }
 
     public void setSUBINV(String SUBINV) {
+        SUBINV=getAttributeValue(SUBINV);
         String oldSUBINV = this.SUBINV;
         this.SUBINV = SUBINV;
         propertyChangeSupport.firePropertyChange("SUBINV", oldSUBINV, SUBINV);
@@ -63,6 +67,7 @@ public class LpnSearchEntity {
     }
 
     public void setLOCATOR(String LOCATOR) {
+        LOCATOR=getAttributeValue(LOCATOR);
         String oldLOCATOR = this.LOCATOR;
         this.LOCATOR = LOCATOR;
         propertyChangeSupport.firePropertyChange("LOCATOR", oldLOCATOR, LOCATOR);

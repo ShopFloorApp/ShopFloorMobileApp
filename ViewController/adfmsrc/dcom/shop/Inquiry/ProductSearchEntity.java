@@ -1,9 +1,11 @@
 package dcom.shop.Inquiry;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ProductSearchEntity {
+public class ProductSearchEntity extends AEntity {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public ProductSearchEntity() {
@@ -82,6 +84,7 @@ public class ProductSearchEntity {
     }
 
     public void setITEMCATALOG(String ITEMCATALOG) {
+        ITEMCATALOG=getAttributeValue(ITEMCATALOG);
         String oldITEMCATALOG = this.ITEMCATALOG;
         this.ITEMCATALOG = ITEMCATALOG;
         propertyChangeSupport.firePropertyChange("ITEMCATALOG", oldITEMCATALOG, ITEMCATALOG);

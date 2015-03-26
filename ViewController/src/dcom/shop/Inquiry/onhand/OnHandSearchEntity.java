@@ -1,9 +1,11 @@
 package dcom.shop.Inquiry.onhand;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class OnHandSearchEntity {
+public class OnHandSearchEntity  extends AEntity  {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public OnHandSearchEntity() {
@@ -42,6 +44,7 @@ public class OnHandSearchEntity {
     }
 
     public void setLOCATOR(String LOCATOR) {
+        LOCATOR=getAttributeValue(LOCATOR);
         String oldLOCATOR = this.LOCATOR;
         this.LOCATOR = LOCATOR;
         propertyChangeSupport.firePropertyChange("LOCATOR", oldLOCATOR, LOCATOR);
@@ -52,6 +55,7 @@ public class OnHandSearchEntity {
     }
 
     public void setCOSTGROUP(String COSTGROUP) {
+        COSTGROUP=getAttributeValue(COSTGROUP);
         String oldCOSTGROUP = this.COSTGROUP;
         this.COSTGROUP = COSTGROUP;
         propertyChangeSupport.firePropertyChange("COSTGROUP", oldCOSTGROUP, COSTGROUP);

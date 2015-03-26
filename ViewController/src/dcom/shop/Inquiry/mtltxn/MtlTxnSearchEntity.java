@@ -1,11 +1,13 @@
 package dcom.shop.Inquiry.mtltxn;
 
+import dcom.shop.application.base.AEntity;
+
 import java.util.Date;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class MtlTxnSearchEntity {
+public class MtlTxnSearchEntity extends AEntity  {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public MtlTxnSearchEntity() {
@@ -24,6 +26,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setSOURCETYPE(String SOURCETYPE) {
+        SOURCETYPE=getAttributeValue(SOURCETYPE);
         String oldSOURCETYPE = this.SOURCETYPE;
         this.SOURCETYPE = SOURCETYPE;
         propertyChangeSupport.firePropertyChange("SOURCETYPE", oldSOURCETYPE, SOURCETYPE);
@@ -34,6 +37,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setTRXTYPE(String TRXTYPE) {
+        TRXTYPE=getAttributeValue(TRXTYPE);
         String oldTRXTYPE = this.TRXTYPE;
         this.TRXTYPE = TRXTYPE;
         propertyChangeSupport.firePropertyChange("TRXTYPE", oldTRXTYPE, TRXTYPE);
@@ -54,6 +58,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setSOURCEORGCODE(String SOURCEORGCODE) {
+        SOURCEORGCODE=getAttributeValue(SOURCEORGCODE);
         String oldSOURCEORGCODE = this.SOURCEORGCODE;
         this.SOURCEORGCODE = SOURCEORGCODE;
         propertyChangeSupport.firePropertyChange("SOURCEORGCODE", oldSOURCEORGCODE, SOURCEORGCODE);
@@ -84,6 +89,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setSOURCELOCATOR(String SOURCELOCATOR) {
+        SOURCELOCATOR=getAttributeValue(SOURCELOCATOR);
         String oldSOURCELOCATOR = this.SOURCELOCATOR;
         this.SOURCELOCATOR = SOURCELOCATOR;
         propertyChangeSupport.firePropertyChange("SOURCELOCATOR", oldSOURCELOCATOR, SOURCELOCATOR);
@@ -94,6 +100,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setLPN(String LPN) {
+        LPN=getAttributeValue(LPN);
         String oldLPN = this.LPN;
         this.LPN = LPN;
         propertyChangeSupport.firePropertyChange("LPN", oldLPN, LPN);
@@ -104,6 +111,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setDESTORG(String DESTORG) {
+        DESTORG=getAttributeValue(DESTORG);
         String oldDESTORG = this.DESTORG;
         this.DESTORG = DESTORG;
         propertyChangeSupport.firePropertyChange("DESTORG", oldDESTORG, DESTORG);
@@ -114,6 +122,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setDESTSUBINV(String DESTSUBINV) {
+        DESTSUBINV=getAttributeValue(DESTSUBINV);
         String oldDESTSUBINV = this.DESTSUBINV;
         this.DESTSUBINV = DESTSUBINV;
         propertyChangeSupport.firePropertyChange("DESTSUBINV", oldDESTSUBINV, DESTSUBINV);
@@ -124,6 +133,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setDESTLOCATOR(String DESTLOCATOR) {
+        DESTLOCATOR=getAttributeValue(DESTLOCATOR);
         String oldDESTLOCATOR = this.DESTLOCATOR;
         this.DESTLOCATOR = DESTLOCATOR;
         propertyChangeSupport.firePropertyChange("DESTLOCATOR", oldDESTLOCATOR, DESTLOCATOR);
@@ -134,6 +144,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setSOURCECODE(String SOURCECODE) {
+        SOURCECODE=getAttributeValue(SOURCECODE);
         String oldSOURCECODE = this.SOURCECODE;
         this.SOURCECODE = SOURCECODE;
         propertyChangeSupport.firePropertyChange("SOURCECODE", oldSOURCECODE, SOURCECODE);
@@ -144,6 +155,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setCOSTED(String COSTED) {
+        COSTED=getAttributeValue(COSTED);
         String oldCOSTED = this.COSTED;
         this.COSTED = COSTED;
         propertyChangeSupport.firePropertyChange("COSTED", oldCOSTED, COSTED);
@@ -174,6 +186,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setGLACCOUNT(String GLACCOUNT) {
+        GLACCOUNT=getAttributeValue(GLACCOUNT);
         String oldGLACCOUNT = this.GLACCOUNT;
         this.GLACCOUNT = GLACCOUNT;
         propertyChangeSupport.firePropertyChange("GLACCOUNT", oldGLACCOUNT, GLACCOUNT);
@@ -184,6 +197,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setACCOUNTALIAS(String ACCOUNTALIAS) {
+        ACCOUNTALIAS=getAttributeValue(ACCOUNTALIAS);
         String oldACCOUNTALIAS = this.ACCOUNTALIAS;
         this.ACCOUNTALIAS = ACCOUNTALIAS;
         propertyChangeSupport.firePropertyChange("ACCOUNTALIAS", oldACCOUNTALIAS, ACCOUNTALIAS);
@@ -194,6 +208,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setREASON(String REASON) {
+        REASON=getAttributeValue(REASON);
         String oldREASON = this.REASON;
         this.REASON = REASON;
         propertyChangeSupport.firePropertyChange("REASON", oldREASON, REASON);
@@ -204,6 +219,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setTRXNACTION(String TRXNACTION) {
+        TRXNACTION=getAttributeValue(TRXNACTION);
         String oldTRXNACTION = this.TRXNACTION;
         this.TRXNACTION = TRXNACTION;
         propertyChangeSupport.firePropertyChange("TRXNACTION", oldTRXNACTION, TRXNACTION);
@@ -214,6 +230,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setTRXSOURCE(String TRXSOURCE) {
+        TRXSOURCE=getAttributeValue(TRXSOURCE);
         String oldTRXSOURCE = this.TRXSOURCE;
         this.TRXSOURCE = TRXSOURCE;
         propertyChangeSupport.firePropertyChange("TRXSOURCE", oldTRXSOURCE, TRXSOURCE);
@@ -224,6 +241,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setDEPT(String DEPT) {
+        DEPT=getAttributeValue(DEPT);
         String oldDEPT = this.DEPT;
         this.DEPT = DEPT;
         propertyChangeSupport.firePropertyChange("DEPT", oldDEPT, DEPT);
@@ -234,6 +252,7 @@ public class MtlTxnSearchEntity {
     }
 
     public void setCREATEDBY(String CREATEDBY) {
+        CREATEDBY=getAttributeValue(CREATEDBY);
         String oldCREATEDBY = this.CREATEDBY;
         this.CREATEDBY = CREATEDBY;
         propertyChangeSupport.firePropertyChange("CREATEDBY", oldCREATEDBY, CREATEDBY);

@@ -34,6 +34,7 @@ public class MtlTxnSearchDC {
     List s_mtlTxnList = new ArrayList();
 
     public MtlTxnSearchEntity[] getAllmtlTxn() {
+        s_mtlTxnList.clear();
         ValueExpression ve = null;
 
         System.out.println("Inside mtl txn search");

@@ -1,9 +1,11 @@
 package dcom.shop.Inquiry.lpn;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class LpnDetailsEntity {
+public class LpnDetailsEntity extends AEntity  {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public LpnDetailsEntity() {
@@ -12,6 +14,7 @@ public class LpnDetailsEntity {
     private String ITEM;
 
     public void setITEM(String ITEM) {
+        ITEM=getAttributeValue(ITEM);
         String oldITEM = this.ITEM;
         this.ITEM = ITEM;
         propertyChangeSupport.firePropertyChange("ITEM", oldITEM, ITEM);
@@ -22,6 +25,7 @@ public class LpnDetailsEntity {
     }
 
     public void setITEMDESC(String ITEMDESC) {
+        ITEMDESC=getAttributeValue(ITEMDESC);
         String oldITEMDESC = this.ITEMDESC;
         this.ITEMDESC = ITEMDESC;
         propertyChangeSupport.firePropertyChange("ITEMDESC", oldITEMDESC, ITEMDESC);
@@ -32,6 +36,7 @@ public class LpnDetailsEntity {
     }
 
     public void setUOM(String UOM) {
+        UOM=getAttributeValue(UOM);
         String oldUOM = this.UOM;
         this.UOM = UOM;
         propertyChangeSupport.firePropertyChange("UOM", oldUOM, UOM);

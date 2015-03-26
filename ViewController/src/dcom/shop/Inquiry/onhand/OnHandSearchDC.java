@@ -27,6 +27,7 @@ public class OnHandSearchDC {
     }
     List s_onHandList = new ArrayList();
     public OnHandSearchEntity[] getAllOnhands() {
+        s_onHandList.clear();
         ValueExpression ve = null;
 
 
