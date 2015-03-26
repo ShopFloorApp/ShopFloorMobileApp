@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.el.MethodExpression;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 public class InvTrnDC extends RestCallerUtil {
@@ -26,6 +28,7 @@ public class InvTrnDC extends RestCallerUtil {
     protected static List s_lotTrxns = new ArrayList();
     protected static List s_filteredSerialTrxns = new ArrayList();
     protected static List s_filteredLotTrxns = new ArrayList();
+    protected static List s_filteredInvTrxns = new ArrayList();
 
     public String InsertTransaction(String trxType) {
         String networkStatus =
@@ -44,6 +47,7 @@ public class InvTrnDC extends RestCallerUtil {
         String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
         String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
         String qty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
+        String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
         String fromSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subFromInv.inputValue}");
         String fromLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.fromLoc.inputValue}");
         String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subToInv.inputValue}");
@@ -58,6 +62,7 @@ public class InvTrnDC extends RestCallerUtil {
         subInvTxn.setToLoc(toLocator);
         subInvTxn.setToInventory(toSubInv);
         subInvTxn.setItemNumber(item);
+        subInvTxn.setTxnuom(uom);
         s_invTrxns.add(subInvTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
@@ -65,7 +70,13 @@ public class InvTrnDC extends RestCallerUtil {
             ProcessWS(trxnId);
         return "cancel";
     }
-
+    
+    public void CompleteTrxn(Integer trxnId){
+        ProcessWS(trxnId);
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
 
     public void ProcessWS(Integer trxnId) {
         String restURI = RestURI.PostInvTrxnURI();
@@ -73,9 +84,10 @@ public class InvTrnDC extends RestCallerUtil {
         SyncUtils sync = new SyncUtils();
         SubInventoryTxnBO invTxn = null;
         s_invTrxns = sync.getCollectionFromDB(SubInventoryTxnBO.class);
+        filterInvTrxns(trxnId);
         SubInventoryTxnBO[] invTxnArray =
-            (SubInventoryTxnBO[]) s_invTrxns.toArray(new SubInventoryTxnBO[s_invTrxns.size()]);
-        for (int i = 0; i < s_invTrxns.size(); i++) {
+            (SubInventoryTxnBO[]) s_filteredInvTrxns.toArray(new SubInventoryTxnBO[s_filteredInvTrxns.size()]);
+        for (int i = 0; i < s_filteredInvTrxns.size(); i++) {
             invTxn = invTxnArray[0];
         }
         s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
@@ -85,7 +97,7 @@ public class InvTrnDC extends RestCallerUtil {
         String lpn = invTxn.getLPN(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnText}");
         String item =
             invTxn.getItemNumber(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
-        String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
+        String uom = invTxn.getTxnuom();
         String qty =
             invTxn.getQuantity(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
         String fromSubInv =
@@ -140,6 +152,30 @@ public class InvTrnDC extends RestCallerUtil {
 
         //    throw new AdfException("Transaction completed", AdfException.INFO);
 
+    }
+    
+    public void filterInvTrxns(Integer trxnId) {
+        try {
+            System.out.println("inside filter code");
+            s_filteredInvTrxns.clear();
+
+            HashMap filterFileds = new HashMap();
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
+            filterFileds.put("trxnid", trxnId);
+            filterFileds.put("trxtype", trxnType);
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_invTrxns);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+            SyncUtils sync = new SyncUtils();
+
+            s_filteredInvTrxns = (List) sync.getFileteredCollection(SubInventoryTxnBO.class, paramMap);
+            System.out.println("collection size is " + s_filteredInvTrxns.size());
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
     }
 
     public void filterSerials() {

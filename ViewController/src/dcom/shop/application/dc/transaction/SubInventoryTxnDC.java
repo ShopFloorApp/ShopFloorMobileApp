@@ -16,12 +16,15 @@ import java.util.logging.Level;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
 public class SubInventoryTxnDC extends SyncUtils {
     private List filtered_SubInventoryTxn = new ArrayList();
     protected static List<SubInventoryTxnBO> s_subinvs = null;
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public SubInventoryTxnDC() {
         try {
@@ -34,6 +37,10 @@ public class SubInventoryTxnDC extends SyncUtils {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void refresh() {
+        providerChangeSupport.fireProviderRefresh("subinventories");
     }
 
     public synchronized List<SubInventoryTxnBO> getSubinventories() {
@@ -133,6 +140,14 @@ public class SubInventoryTxnDC extends SyncUtils {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
 
 

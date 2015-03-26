@@ -75,7 +75,7 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout-->
-         <amx:outputText value="#{pageFlowScope.SubInvTrxnResults}" id="ot8"/>
+        <amx:outputText value="#{pageFlowScope.SubInvTrxnResults}" id="ot8"/>
         <amx:listView var="row" value="#{bindings.subinventories.collectionModel}"
                       fetchSize="#{bindings.subinventories.rangeSize}"
                       selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
@@ -87,7 +87,7 @@
                     <amx:rowLayout id="rl2">
                         <amx:cellFormat width="50%" height="10px" id="cf2">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                            <amx:commandLink id="cl2" action="bMM">
+                            <amx:commandLink id="cl2">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                                 <amx:outputHtml id="oh2" styleClass="fa  fa-database fa-lg"
                                                 inlineStyle="color:#34AADC;"/>
@@ -140,7 +140,8 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:showPopupBehavior id="spb1" popupId="popup1" type="swipeLeft" alignId="li1"/>
+                <amx:setPropertyListener from="#{row.trxnId}" type="action" to="#{pageFlowScope.TrxnId}" id="spl1"/>
+                <amx:showPopupBehavior id="spb1" popupId="popup1" type="swipeLeft" decoration="anchor" alignId="li1"/>
                 <!--amx:outputText value="#{row.fromInventory}" id="ot2"/>
         <amx:showPopupBehavior id="spb1" popupId="p1" type="swipeLeft" alignId="li1"/>
       </amx:listItem>
@@ -161,30 +162,51 @@
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
-    <amx:popup id="popup1" animation="pop"
-               inlineStyle="position:relative;margin-top:#{(deviceScope.hardware.screen.availableHeight-200)/2}px;margin-left:#{(deviceScope.hardware.screen.availableHeight*10)/100}px;margin-right:#{(deviceScope.hardware.screen.availableHeight*10)/100}px;width:#{deviceScope.hardware.screen.availableWidth};height:200px;">
+    <amx:popup id="popup1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
-        <amx:panelGroupLayout id="panelGroupLayout1" halign="end">
-            <amx:commandLink id="cm1">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:image id="i2" source="/images/criticalind_status.gif"/>
-                <amx:closePopupBehavior type="action" popupId="popup1" id="cpb4"/>
+        <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
+            <amx:commandLink id="cl5">
+                <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl16">
+                        <amx:cellFormat id="cf27" halign="center">
+                            <amx:outputHtml id="oh8" styleClass="fa fa-remove fa-2x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl17">
+                        <amx:cellFormat id="cf26" halign="center">
+                            <amx:outputHtml id="oh9" value="Delete" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
             </amx:commandLink>
-            <amx:commandButton id="commandButton5" text="Delete" inlineStyle="width:275px"
-                               styleClass="adfmf-commandButton-rounded adfmf-commandButton-alert">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:closePopupBehavior popupId="popup1" type="action" id="cpb3"/>
-            </amx:commandButton>
-            <amx:commandButton id="commandButton3" action="newTransaction" text="Edit/View" inlineStyle="width:275px"
-                               styleClass="adfmf-commandButton-rounded adfmf-commandButton-highlight">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:closePopupBehavior popupId="popup1" type="action" id="cpb2"/>
-            </amx:commandButton>
-            <amx:commandButton id="commandButton4" text="Complete" action="refreshPage" inlineStyle="width:275px"
-                               styleClass="adfmf-commandButton-rounded adfmf-commandButton-highlight">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:closePopupBehavior popupId="popup1" type="action" id="cpb1"/>
-            </amx:commandButton>
+            <amx:commandLink id="cl6" action="siDet">
+                <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl18">
+                        <amx:cellFormat id="cf28" halign="center">
+                            <amx:outputHtml id="oh10" styleClass="fa fa-edit fa-2x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl19">
+                        <amx:cellFormat id="cf29" halign="center">
+                            <amx:outputHtml id="oh11" value="Edit/View" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
+            <amx:commandLink id="cl8" actionListener="#{bindings.CompleteTrxn.execute}">
+                <amx:tableLayout id="tl10" halign="center" inlineStyle="margin-right: 20px;margin-left: 8px;">
+                    <amx:rowLayout id="rl22">
+                        <amx:cellFormat id="cf32" halign="center">
+                            <amx:outputHtml id="oh14" styleClass="fa fa-save fa-2x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl23">
+                        <amx:cellFormat id="cf33" halign="center">
+                            <amx:outputHtml id="oh15" value="Complete" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
         </amx:panelGroupLayout>
     </amx:popup>
 </amx:view>

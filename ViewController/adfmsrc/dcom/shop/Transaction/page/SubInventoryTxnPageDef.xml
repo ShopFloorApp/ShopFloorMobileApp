@@ -31,5 +31,12 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="CompleteTrxn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="CompleteTrxn"
+                  IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider">
+      <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.Integer"/>
+    </methodAction>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="SubInventoryTxnDC"
+                  InstanceName="data.SubInventoryTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>
