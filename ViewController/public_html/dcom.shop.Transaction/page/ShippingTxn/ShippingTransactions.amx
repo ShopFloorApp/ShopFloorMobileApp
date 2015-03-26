@@ -14,23 +14,23 @@
       <amx:commandButton id="cb2"/>
     </amx:facet>
     <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1">
+      <amx:listItem id="li1" showLinkIcon="false">
         <amx:outputText value="Pack and Direct Ship" id="ot2"/>
       </amx:listItem>
-      <amx:listItem id="li2" action="pickRel">
+      <amx:listItem id="li2" action="pickRel" showLinkIcon="false">
         <amx:outputText value="Perform Pick Release" id="ot3"/>
         <amx:setPropertyListener id="spl1" to="#{pageFlowScope.Event}" from="true" type="action"/>
       </amx:listItem>
-      <amx:listItem id="li3">
+      <amx:listItem id="li3" showLinkIcon="false">
         <amx:outputText value="Paper Based Pick" id="ot4"/>
       </amx:listItem>
-      <amx:listItem id="li4">
+      <amx:listItem id="li4" showLinkIcon="false">
         <amx:outputText value="Quick Ship" id="ot5"/>
       </amx:listItem>
-      <amx:listItem id="li5" action="lpnShip">
+      <amx:listItem id="li5" action="lpnShip" showLinkIcon="false">
         <amx:outputText value="LPN Ship" id="ot7"/>
       </amx:listItem>
-      <amx:listItem id="li6">
+      <amx:listItem id="li6" showLinkIcon="false">
         <amx:outputText value="Unload Truck" id="ot6"/>
       </amx:listItem>
     </amx:listView>

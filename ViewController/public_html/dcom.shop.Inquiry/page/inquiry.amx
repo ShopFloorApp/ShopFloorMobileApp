@@ -16,7 +16,7 @@
     <amx:facet name="secondary">
       <amx:commandButton id="cb2" rendered="false"/>
     </amx:facet>
-    <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards"
+    <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
                   styleClass="adfmf-listView-insetList">
       <amx:listItem id="li1" inlineStyle="width:97%;" action="productSearch" showLinkIcon="false">
         <amx:outputText value="Product Search" id="ot2"/>

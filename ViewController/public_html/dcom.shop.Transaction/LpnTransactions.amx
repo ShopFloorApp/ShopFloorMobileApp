@@ -13,7 +13,7 @@
         </amx:facet>
         <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
             <!--actionListener="#{bindings.ProcessWS.execute}"-->
-            <amx:listItem id="li4" action="unpack">
+            <amx:listItem id="li4" action="unpack" showLinkIcon="false">
                 <amx:outputText value="Pack LPN" id="ot8"/>
                 <amx:setPropertyListener from="PACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp20"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp21"/>
@@ -28,7 +28,7 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp27"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp28"/>
             </amx:listItem>
-            <amx:listItem id="li3" action="unpack">
+            <amx:listItem id="li3" action="unpack" showLinkIcon="false">
                 <amx:outputText value="Unpack LPN" id="ot4"/>
                 <amx:setPropertyListener from="UNPACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp10"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp11"/>
@@ -43,7 +43,7 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp17"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp18"/>
             </amx:listItem>
-            <amx:listItem id="li5" action="unpack">
+            <amx:listItem id="li5" action="unpack" showLinkIcon="false">
                 <amx:outputText value="Split Transactions" id="ot65"/>
                 <amx:setPropertyListener from="SPLIT_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp6"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp31"/>
@@ -58,7 +58,7 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp37"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp38"/>
             </amx:listItem>
-            <amx:listItem id="li6" action="unpack">
+            <amx:listItem id="li6" action="unpack" showLinkIcon="false">
                 <amx:outputText value="Merge Transactions" id="ot6"/>
                 <amx:setPropertyListener from="MERGE_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp7"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp41"/>
