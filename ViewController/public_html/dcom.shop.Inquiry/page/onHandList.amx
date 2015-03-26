@@ -18,35 +18,46 @@
                       selectedRowKeys="#{bindings.allOnhands.collectionModel.selectedRow}"
                       selectionListener="#{bindings.allOnhands.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" showLinkIcon="false" action="onHandDetails" >
+            <amx:listItem id="li1" showLinkIcon="false" action="onHandDetails">
                 <amx:tableLayout width="100%" id="tl">
                     <amx:rowLayout id="rl">
-                        <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
-                        <amx:cellFormat width="60%" height="28px" id="cf4">
-                            <amx:outputText value="#{row.ITEM}" id="ot2"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
-                        <amx:cellFormat width="40%" halign="end" id="cf3">
-                            <amx:outputText value="#{row.ITEMDESC}" styleClass="adfmf-listItem-highlightText" id="ot4"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="r2">
-                        <amx:cellFormat width="60%" height="12px" id="cf1">
-                            <amx:outputText value="#{row.SUBINV}/#{row.LOCATOR}" styleClass="adfmf-listItem-captionText"
-                                            id="ot3"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="40%" halign="end" id="cf2">
-                            <amx:outputText value="#{row.ONHANDQTY}/#{row.AVAILABLEQTY}"
-                                            styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        <amx:cellFormat id="cf5" inlineStyle="margin-left:10px;" width="100%">
+                            <amx:tableLayout id="tl3" width="100%">
+                                <amx:rowLayout id="rl4">
+                                    <amx:cellFormat id="cf4" columnSpan="1">
+                                        <amx:outputText value='#{row.ITEM}' id="ot4"
+                                                        inlineStyle="font-weight:bold;/>                                         "/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat id="cf9" columnSpan="1">
+                                        <amx:outputText id="ot7" value="{row.ONHANDQTY}"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat id="cf6" columnSpan="1">
+                                        <amx:outputText id="ot5" value="{row.UOM}"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl1">
+                                    <amx:cellFormat id="cf1" columnSpan="2">
+                                        <amx:outputText id="ot2" value="{row.ITEMDESC}"
+                                                        inlineStyle="font-size:small; color:GrayText;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl2">
+                                    <amx:cellFormat id="cf2" columnSpan="1">
+                                        <amx:outputText value='#{row.SUBINV}' id="ot6"
+                                                        inlineStyle="font-size:small; color:GrayText;"/>
+                                    </amx:cellFormat>
+                                    <amx:cellFormat id="cf3" columnSpan="1">
+                                        <amx:outputText id="ot3" value="{row.LOCATOR}"
+                                                        inlineStyle="font-size:small; color:GrayText;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:setPropertyListener id="spl" from="#{row.ITEM} " type="action"
-                                             to="#{pageFlowScope.itemNumber}"/>
-                <amx:setPropertyListener id="sp2" from="#{row.SUBINV} " type="action"
-                                             to="#{pageFlowScope.subinv}"/>
-                <amx:setPropertyListener id="sp3" from="#{row.LOCATOR} " type="action"
-                                             to="#{pageFlowScope.loc}"/>
+                <amx:setPropertyListener id="spl" from="#{row.ITEM} " type="action" to="#{pageFlowScope.itemNumber}"/>
+                <amx:setPropertyListener id="sp2" from="#{row.SUBINV} " type="action" to="#{pageFlowScope.subinv}"/>
+                <amx:setPropertyListener id="sp3" from="#{row.LOCATOR} " type="action" to="#{pageFlowScope.loc}"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>

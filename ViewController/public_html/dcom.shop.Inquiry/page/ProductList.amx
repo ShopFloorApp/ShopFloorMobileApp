@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Product Search Results" id="ot1"/>
-    </amx:facet>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Product Search Results" id="ot1"/>
+        </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="__back">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
@@ -13,42 +13,53 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-     <amx:panelGroupLayout id="pgl">
-      <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}"
-                    fetchSize="#{bindings.allProdItems.rangeSize}"
-                    selectedRowKeys="#{bindings.allProdItems.collectionModel.selectedRow}"
-                    selectionListener="#{bindings.allProdItems.collectionModel.makeCurrent}"
-                    showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-        <amx:listItem id="li1" showLinkIcon="false" action="details">
-            <amx:tableLayout width="100%" id="tl">
+        <amx:panelGroupLayout id="pgl">
+            <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}"
+                          fetchSize="#{bindings.allProdItems.rangeSize}"
+                          selectedRowKeys="#{bindings.allProdItems.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.allProdItems.collectionModel.makeCurrent}"
+                          showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
+                <amx:listItem id="li1" showLinkIcon="false" action="details">
+                    <amx:tableLayout width="100%" id="tl">
                         <amx:rowLayout id="rl">
-                            <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
-                            <amx:cellFormat width="60%" height="28px" id="cf4">
-                                <amx:outputText value="#{row.ITEM}" id="ot5"/>
-                            </amx:cellFormat>
-                            <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
-                            <amx:cellFormat width="40%" halign="end" id="cf3">
-                                <amx:outputText value="#{row.ITEMDESC}" styleClass="adfmf-listItem-highlightText"
-                                                id="ot4"/>
+                            <amx:cellFormat id="cf5" inlineStyle="margin-left:10px;" width="100%">
+                                <amx:tableLayout id="tl3" width="100%">
+                                    <amx:rowLayout id="rl4">
+                                        <amx:cellFormat id="cf4" columnSpan="1">
+                                            <amx:outputText value='#{row.ITEM}' id="ot4"
+                                                            inlineStyle="font-weight:bold;/>                                         "/>
+                                        </amx:cellFormat>
+                                        <amx:cellFormat id="cf9" columnSpan="1">
+                                            <amx:outputText id="ot7" value="{row.PRIMARYUOM}"/>
+                                        </amx:cellFormat>
+                                        <amx:cellFormat id="cf6" columnSpan="1">
+                                            <amx:outputText id="ot5" value="{row.ITEMTYPE}"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl1">
+                                        <amx:cellFormat id="cf1" columnSpan="2">
+                                            <amx:outputText id="ot2" value="{row.ITEMDESC}"
+                                                            inlineStyle="font-size:small; color:GrayText;"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl2">
+                                        <amx:cellFormat id="cf2" columnSpan="1">
+                                            <amx:outputText value='#{row.ITEMSTATUS}' id="ot6"
+                                                            inlineStyle="font-size:small; color:GrayText;"/>
+                                        </amx:cellFormat>
+                                        <amx:cellFormat id="cf3" columnSpan="1">
+                                            <amx:outputText id="ot3" value="{row.ITEMCATALOG}"
+                                                            inlineStyle="font-size:small; color:GrayText;"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
                             </amx:cellFormat>
                         </amx:rowLayout>
-                        <amx:rowLayout id="r2">
-                            <amx:cellFormat width="60%" height="12px" id="cf1">
-                                <amx:outputText value="#{row.ITEMSTATUS}" styleClass="adfmf-listItem-captionText"
-                                                id="ot2"/>
-                            </amx:cellFormat>
-                            <amx:cellFormat width="40%" halign="end" id="cf2">
-                                <amx:outputText value="#{row.ITEMTYPE} #{row.ITEMCATALOG} #{row.PRIMARYUOM} #{row.ORGCODE}"
-                                                styleClass="adfmf-listItem-captionText" id="ot3"/>
-                            </amx:cellFormat>
-                        </amx:rowLayout>                     
                     </amx:tableLayout>
-                    <amx:setPropertyListener id="spl" from="#{row.ITEM} " type="action"
-                                             to="#{pageFlowScope.item}"/>
-                    <amx:setPropertyListener id="sp2" from="#{row.ORGCODE} " type="action"
-                                             to="#{pageFlowScope.org}"/>
-        </amx:listItem>
-      </amx:listView>
-      </amx:panelGroupLayout>  
-  </amx:panelPage>
+                    <amx:setPropertyListener id="spl" from="#{row.ITEM} " type="action" to="#{pageFlowScope.item}"/>
+                    <amx:setPropertyListener id="sp2" from="#{row.ORGCODE} " type="action" to="#{pageFlowScope.org}"/>
+                </amx:listItem>
+            </amx:listView>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
 </amx:view>
