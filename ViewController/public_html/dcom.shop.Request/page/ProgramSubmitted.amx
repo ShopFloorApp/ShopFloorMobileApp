@@ -6,7 +6,7 @@
       <amx:outputText value="Request Summary" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <amx:commandLink id="cl1" action="__back" rendered="false">
         <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
       </amx:commandLink>
     </amx:facet>
@@ -15,17 +15,9 @@
         <amx:outputHtml id="oh2" styleClass="fa fa-home fa-lg"/>
       </amx:commandLink>
     </amx:facet>
-    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;" rendered="false">
-      <amx:rowLayout id="rl9">
-        <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative;">
-          <amx:commandButton text="Search Request" id="cb3" inlineStyle="border-radius: 9.5em;"
-                             action="searchRequest"/>
-        </amx:cellFormat>
-      </amx:rowLayout>
-    </amx:tableLayout>
-    <amx:panelFormLayout id="pfl1">
+    <amx:panelFormLayout id="pfl11">
     <amx:panelLabelAndMessage label="Request Id" inlineStyle="text-align:center;" id="plam3">
-        <amx:commandLink id="cl3" action="getRequest" actionListener="#{RequestUtilBean.getRequestByRequestId}">
+        <amx:commandLink id="cl63" action="getRequest" actionListener="#{RequestUtilBean.getRequestByRequestId}">
           <amx:outputText value="#{pageFlowScope.requestId}" id="ot2"/>
         </amx:commandLink>
       </amx:panelLabelAndMessage>
