@@ -17,7 +17,7 @@
                       selectionListener="#{bindings.purchaseOrder.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
                       rendered="#{pageFlowScope.receivingType=='S'}">
-            <amx:listItem id="li1" action="back">
+            <amx:listItem id="li1" action="back" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf1"/>
@@ -40,7 +40,7 @@
                       selectionListener="#{bindings.requisition.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv2"
                       rendered="#{pageFlowScope.receivingType=='I'}">
-            <amx:listItem id="li2" action="back">
+            <amx:listItem id="li2" action="back" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl2">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
@@ -63,7 +63,7 @@
                       selectionListener="#{bindings.salesOrder.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv3"
                       rendered="#{pageFlowScope.receivingType=='C'}">
-            <amx:listItem id="li3" action="back">
+            <amx:listItem id="li3" action="back" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf9"/>
