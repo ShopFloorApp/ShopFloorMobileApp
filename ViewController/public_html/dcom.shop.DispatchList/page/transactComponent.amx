@@ -7,13 +7,13 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="__back">
-                <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2"/>
         </amx:facet>
-        <amx:panelFormLayout id="pfl1">
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:selectOneChoice label="Type" id="soc1" value="#{bindings.trxType.inputValue}">
                 <amx:selectItems id="si2" value="#{bindings.trxType.items}"/>
             </amx:selectOneChoice>
@@ -23,10 +23,10 @@
             <amx:selectOneChoice value="#{bindings.item.inputValue}" label="Component" id="soc3">
                 <amx:selectItems value="#{bindings.item.items}" id="si3"/>
             </amx:selectOneChoice>
-            <amx:inputText value="#{bindings.subinv.inputValue}" label="#{bindings.subinv.hints.label}" id="it7"/>
-            <amx:inputText value="#{bindings.locator.inputValue}" label="#{bindings.locator.hints.label}" id="it6"/>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="#{bindings.trxQty.hints.label}" id="it1"/>
-            <amx:inputText value="#{bindings.txnUom.inputValue}" label="#{bindings.txnUom.hints.label}" id="it4"/>
+            <amx:inputText value="#{bindings.subinv.inputValue}" label="Subinventory" id="it7"/>
+            <amx:inputText value="#{bindings.locator.inputValue}" label="Locator" id="it6"/>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it1"/>
+            <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it4"/>
         </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:commandButton actionListener="#{bindings.saveTransaction.execute}" text="Save"

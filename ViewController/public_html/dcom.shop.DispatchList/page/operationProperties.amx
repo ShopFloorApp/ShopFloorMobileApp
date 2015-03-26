@@ -14,19 +14,19 @@
             <amx:commandButton id="cb2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-            <amx:panelLabelAndMessage label="Sequence" id="plam4">
+            <amx:panelLabelAndMessage label="Op Seq" id="plam4">
                 <amx:outputText value="#{bindings.opSeq.inputValue}" id="ot5"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Description" id="plam12">
+            <amx:panelLabelAndMessage label="Op Description" id="plam12">
                 <amx:outputText value="#{bindings.opDesc.inputValue}" id="ot13"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Department" id="plam2">
                 <amx:outputText value="#{bindings.dept.inputValue}" id="ot3"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Started" id="plam8">
+            <amx:panelLabelAndMessage label="Started On" id="plam8">
                 <amx:outputText value="#{bindings.opStartDate.inputValue}" id="ot9"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Completion" id="plam9">
+            <amx:panelLabelAndMessage label="Completion By" id="plam9">
                 <amx:outputText value="#{bindings.opComplDate.inputValue}" id="ot10"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Quantity Queue" id="plam3">

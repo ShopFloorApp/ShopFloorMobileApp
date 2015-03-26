@@ -13,28 +13,20 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-        <amx:tableLayout id="tl31" width="90%">
-            <amx:rowLayout id="rl">
-                <amx:cellFormat id="cf3s252">
-                    <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33"></amx:panelLabelAndMessage>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf5" width="60%">
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33">
+                <amx:panelGroupLayout id="pgl1">
                     <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}"
                                    required="true"/>
-                </amx:cellFormat>
-                <amx:cellFormat width="10px" halign="end">
                     <amx:commandLink id="cb3" action="ItemLOV">
                         <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                         <amx:setPropertyListener id="spl3" from="onHand" to="#{pageFlowScope.ItemLovPage}"
                                                  type="action"/>
                     </amx:commandLink>
-                </amx:cellFormat>
-            </amx:rowLayout>
-            <amx:rowLayout id="r2">
-                <amx:cellFormat id="cf8">
-                    <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6"></amx:panelLabelAndMessage>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf11" width="60%">
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6">
+                <amx:panelGroupLayout id="pgl3">
                     <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}" valueChangeListener="#{StateListenerBean.FromSubinvValueChange}"
                                id="soc1">
                                 <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
@@ -43,13 +35,10 @@
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subInv.items}" id="si2"/>
                     </amx:selectOneChoice>
-                </amx:cellFormat>
-            </amx:rowLayout>
-            <amx:rowLayout id="r3">
-                <amx:cellFormat id="cf1222">
-                    <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886"></amx:panelLabelAndMessage>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf1333" width="60%">
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886">
+                <amx:panelGroupLayout id="pgl2">
                     <!--amx:selectOneChoice value="#{bindings.locators.inputValue}"  valueChangeListener="#{StateListenerBean.FromLocValueChange}"
                                          id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
@@ -58,36 +47,57 @@
                                          valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc2">
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si1"/>
                     </amx:selectOneChoice>
-                </amx:cellFormat>
-            </amx:rowLayout>
-            <amx:rowLayout id="r4">
-                <amx:cellFormat id="cf144222">
-                    <amx:panelLabelAndMessage label="Cost Group" inlineStyle="text-align:center;" id="plam8846"></amx:panelLabelAndMessage>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf154333" width="60%">
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Cost Group" inlineStyle="text-align:center;" id="plam8846">
+                <amx:panelGroupLayout id="pgl4">
                     <amx:selectOneChoice value="#{pageFlowScope.costGrp}" id="soc3">
                         <amx:selectItems value="#{bindings.costGroup1.items}" id="si3"/>
                     </amx:selectOneChoice>
-                </amx:cellFormat>
-            </amx:rowLayout>
-        </amx:tableLayout>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
         <!--<amx:commandButton text="Show On-Hand" id="cb1" inlineStyle="vertical-align:middle;" action="onHandList"/> -->
         <amx:facet name="footer">
-            <amx:spacer id="s3" height="10"/>
-            <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
-                <amx:commandLink id="cl3" actionListener="#{SearchUtilBean.clearOHPage}">
-                    <amx:outputHtml id="oh4" styleClass="fa fa-times fa-lg"/>
-                    <amx:spacer id="s5" width="2"/>
-                    <amx:outputText id="ot2" value="Clear"/>
-                </amx:commandLink>
-                <amx:spacer id="s6" width="20"/>
-                <amx:commandLink id="cl2" action="onHandList">
-                    <amx:outputHtml id="oh2" styleClass="fa fa-search fa-lg"/>
-                    <amx:spacer id="s4" width="2"/>
-                    <amx:outputText id="ot121" value="Search"/>
-                </amx:commandLink>
-                <amx:spacer id="s7" width="20"/>
-            </amx:panelGroupLayout>
+            <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:rowLayout id="rl8">
+                    <amx:cellFormat id="cf10">
+                        <amx:commandLink id="cl2" actionListener="#{SearchUtilBean.clearOHPage}">
+                            <amx:tableLayout id="tl1" halign="center">
+                                <amx:rowLayout id="rl10">
+                                    <amx:cellFormat id="cf11" halign="center">
+                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl1">
+                                    <amx:cellFormat id="cf12" halign="center">
+                                        <amx:outputHtml id="oh19" value="Clear"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf13">
+                        <amx:commandLink id="cl3" action="onHandList">
+                            <amx:tableLayout id="tl5" halign="center">
+                                <amx:rowLayout id="rl12">
+                                    <amx:cellFormat id="cf22" halign="center">
+                                        <amx:outputHtml id="oh9" styleClass="fa fa-search fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl13">
+                                    <amx:cellFormat id="cf23" halign="center">
+                                        <amx:outputHtml id="oh6" value="Search"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
         </amx:facet>
     </amx:panelPage>
 </amx:view>

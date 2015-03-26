@@ -13,30 +13,51 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-    <amx:outputHtml id="ot144" value="Please enter atleast 3 characters to search!!!" 
-            rendered = "#{pageFlowScope.keywrdLenErr eq 'Yes'?true:false}"
-            inlineStyle="color:Red" 
-            />
-          
+        <amx:outputHtml id="ot144" value="Enter atleast 3 characters to search!!!"
+                        rendered="#{pageFlowScope.keywrdLenErr eq 'Yes'?true:false}" inlineStyle="color:Red"/>
         <amx:panelFormLayout id="pfl1">
             <amx:inputText label="Keyword" id="it1" value="#{pageFlowScope.searchKeyword}"/>
         </amx:panelFormLayout>
         <amx:facet name="footer">
-            <amx:spacer id="s3" height="10"/>
-            <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
-                <amx:commandLink id="cl3" actionListener="#{pageFlowScope.ProdSearchUtilBean.clearPage}">
-                    <amx:outputHtml id="oh3" styleClass="fa fa-times fa-lg"/>
-                    <amx:spacer id="s5" width="2"/>
-                    <amx:outputText id="ot2" value="Clear"/>
-                </amx:commandLink>
-                <amx:spacer id="s6" width="20"/>
-                <amx:commandLink id="cl2" action="#{SearchProductBean.validateKeyword}">
-                    <amx:outputHtml id="oh2" styleClass="fa fa-search fa-lg"/>
-                    <amx:spacer id="s4" width="2"/>
-                    <amx:outputText id="ot121" value="Search"/>
-                </amx:commandLink>
-                <amx:spacer id="s7" width="20"/>
-            </amx:panelGroupLayout>
+            <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:rowLayout id="rl8">
+                    <amx:cellFormat id="cf10">
+                        <amx:commandLink id="cl2" actionListener="#{SearchUtilBean.clearPage}">
+                            <amx:tableLayout id="tl1" halign="center">
+                                <amx:rowLayout id="rl10">
+                                    <amx:cellFormat id="cf11" halign="center">
+                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl1">
+                                    <amx:cellFormat id="cf12" halign="center">
+                                        <amx:outputHtml id="oh19" value="Clear"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf13">
+                        <amx:commandLink id="cl3" action="#{SearchProductBean.validateKeyword}">
+                            <amx:tableLayout id="tl5" halign="center">
+                                <amx:rowLayout id="rl12">
+                                    <amx:cellFormat id="cf22" halign="center">
+                                        <amx:outputHtml id="oh9" styleClass="fa fa-search fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl13">
+                                    <amx:cellFormat id="cf23" halign="center">
+                                        <amx:outputHtml id="oh6" value="Search"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
         </amx:facet>
     </amx:panelPage>
 </amx:view>

@@ -13,7 +13,7 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-      <amx:panelFormLayout id="pf1" labelPosition="topStart" fieldHalign="start">
+      <amx:panelFormLayout id="pf1" labelPosition="topStart">
             <amx:panelLabelAndMessage label="Item" id="plam1">
                 <amx:outputText value="#{bindings.ITEM.inputValue}" id="ot2"/>
             </amx:panelLabelAndMessage>

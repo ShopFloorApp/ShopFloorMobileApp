@@ -7,7 +7,7 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="__back">
-                <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">

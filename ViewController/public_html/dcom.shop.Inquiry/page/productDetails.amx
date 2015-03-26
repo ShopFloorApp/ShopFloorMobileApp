@@ -13,7 +13,7 @@
         <amx:image id="i1" source="/images/Caret_Left_AltaBlue_mdpi.png" inlineStyle="width:20px;height:20px"/>
       </amx:commandLink>
     </amx:facet>
-    <amx:panelFormLayout id="pf1">
+    <amx:panelFormLayout id="pf1" labelPosition="topStart">
         <amx:panelLabelAndMessage label="Item" id="plam1" inlineStyle="text-align:center;">
         <amx:outputText value="#{bindings.ITEM.inputValue}" id="ot2"/>
       </amx:panelLabelAndMessage>

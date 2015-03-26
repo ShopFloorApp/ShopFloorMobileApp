@@ -19,7 +19,7 @@
             <amx:panelLabelAndMessage label="Job" id="plam5">
                 <amx:outputText value="#{bindings.jobNumber.inputValue}" id="ot6"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Description" id="plam10">
+            <amx:panelLabelAndMessage label="Job Description" id="plam10">
                 <amx:outputText value="#{bindings.jobDesc.inputValue}" id="ot11"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Assembly" id="plam6">
