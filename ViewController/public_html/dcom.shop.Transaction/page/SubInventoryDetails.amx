@@ -165,7 +165,6 @@
                                              valueChangeListener="#{StateListenerBean.ToLocValueChange}">
                             <amx:selectItems value="#{bindings.toLocators.items}" id="si3"/>
                         </amx:selectOneChoice-->
-                <amx:panelLabelAndMessage id="plam4"/>
             </amx:panelFormLayout>
             <amx:panelGroupLayout layout="horizontal">
                 <amx:spacer width="30" id="s7"/>
