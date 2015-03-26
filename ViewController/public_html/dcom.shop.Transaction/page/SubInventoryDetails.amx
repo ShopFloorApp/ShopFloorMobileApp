@@ -180,7 +180,8 @@
                         <amx:rowLayout id="rl2">
                             <amx:cellFormat id="cf3">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                                <amx:outputText id="ot5" inlineStyle="font-weight:bold;color:#34AADC;" value="Serial Entry"/>
+                                <amx:outputText id="ot5" inlineStyle="font-weight:bold;color:#34AADC;"
+                                                value="Serial Entry"/>
                             </amx:cellFormat>
                         </amx:rowLayout>
                     </amx:tableLayout>
@@ -192,11 +193,12 @@
                     <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"
                                              id="spl6"/>
                     <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" id="spl10"/>
-                     <amx:tableLayout id="tl3">
+                    <amx:tableLayout id="tl3">
                         <amx:rowLayout id="rl3">
                             <amx:cellFormat id="cf5">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                                <amx:outputText id="ot6" inlineStyle="font-weight:bold;color:#34AADC;" value="Lot Entry"/>
+                                <amx:outputText id="ot6" inlineStyle="font-weight:bold;color:#34AADC;"
+                                                value="Lot Entry"/>
                             </amx:cellFormat>
                         </amx:rowLayout>
                     </amx:tableLayout>
@@ -226,10 +228,7 @@
                         <amx:cellFormat id="cf6">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh4" styleClass="fa  fa-database fa-lg" inlineStyle="color:#34AADC;"/>
-                            <amx:setPropertyListener id="spl7" from="QUEUE" to="#{pageFlowScope.TrxnType}"
-                                                     type="action">
-                                <?audit suppress oracle.ide.xml.validation-error?>
-                            </amx:setPropertyListener>
+                            <?audit suppress oracle.ide.xml.validation-error?>
                             <amx:spacer id="s15" width="2"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4">
@@ -237,6 +236,7 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:setPropertyListener id="spl7" from="QUEUE" to="#{pageFlowScope.TrxnType}" type="action"></amx:setPropertyListener>
             </amx:commandLink>
             <amx:spacer id="s6" width="20"/>
             <!--amx:commandButton actionListener="#{bindings.InsertTransaction.execute}" text="Add to Queue"
