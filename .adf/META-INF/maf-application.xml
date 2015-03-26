@@ -3,7 +3,7 @@
                    version="1.0" name="ShopFloorMobileApp" id="com.company.ShopFloorMobileApp"
                    appControllerFolder="ApplicationController"
                    listener-class="dcom.shop.application.LifeCycleListenerImpl">
-    <adfmf:featureReference id="fr2" refId="dcom.shop.DispatchList"/>
+    <adfmf:featureReference id="fr2" refId="dcom.shop.DispatchList" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction"/>
     <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry"/>
     <adfmf:featureReference id="fr5" refId="dcom.shop.Request"/>
@@ -20,5 +20,7 @@
         <adfmf:springboard enabled="true" animation="slideright" width="200" displayGotoSpringboardControl="false"
                            showSpringboardAtStartup="false"/>
     </adfmf:navigation>
-    <adfmf:login defaultConnRefId="ShopFloorSecurity"/>
+    <adfmf:login defaultConnRefId="ShopFloorSecurity">
+        <adfmf:localHTML url="CustomLoginPage.html"/>
+    </adfmf:login>
 </adfmf:application>
