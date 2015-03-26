@@ -7,6 +7,11 @@
             <managed-bean-class>dcom.shop.DispatchList.manage.DispatchBean</managed-bean-class>
             <managed-bean-scope>pageFlow</managed-bean-scope>
         </managed-bean>
+        <managed-bean id="__8">
+            <managed-bean-name>BarcodeBean</managed-bean-name>
+            <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
+            <managed-bean-scope>view</managed-bean-scope>
+        </managed-bean>
         <view id="dispatchList">
             <page>/dcom.shop.DispatchList/page/dispatchList.amx</page>
         </view>
@@ -63,6 +68,9 @@
         </view>
         <view id="clockInClockOut">
             <page>/dcom.shop.DispatchList/page/clockInClockOut.amx</page>
+        </view>
+        <view id="ItemLOV">
+            <page>/page/LovPage/itemLOVPG.amx</page>
         </view>
         <control-flow-rule id="__1">
             <from-activity-id>dispatchList</from-activity-id>
@@ -178,6 +186,17 @@
             <control-flow-case id="__12">
                 <from-outcome>back</from-outcome>
                 <to-activity-id>workContent</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__11">
+                <from-outcome>ItemLOV</from-outcome>
+                <to-activity-id>ItemLOV</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__35">
+            <from-activity-id>ItemLOV</from-activity-id>
+            <control-flow-case id="__36">
+                <from-outcome>Back</from-outcome>
+                <to-activity-id>transactComponent</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>

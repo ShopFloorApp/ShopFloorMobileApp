@@ -89,11 +89,12 @@
         <page path="/dcom.shop.DispatchList/page/returnFromScrap.amx"
               usageId="dcom_shop_mobile_returnFromScrapPageDef"/>
         <page path="/dcom.shop.DispatchList/page/reportTime.amx" usageId="dcom_shop_mobile_reportTimePageDef"/>
-    <page path="/dcom.shop.Transaction/LpnTxnDetails.amx" usageId="dcom_shop_mobile_LpnTxnDetailsPageDef"/>
+        <page path="/dcom.shop.Transaction/LpnTxnDetails.amx" usageId="dcom_shop_mobile_LpnTxnDetailsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/itemCateg.amx" usageId="dcom_shop_mobile_itemCategPageDef"/>
         <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@executeShipmentLines"
               usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
         <page path="/dcom.shop.Request/page/requestSelect.amx" usageId="dcom_shop_mobile_requestSelectPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/moveAssembly.amx" usageId="dcom_shop_mobile_moveAssemblyPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
@@ -164,7 +165,7 @@
         <page id="dcom_shop_mobile_scrapAssemblyPageDef" path="dcom.shop.DispatchList.page.scrapAssemblyPageDef"/>
         <page id="dcom_shop_mobile_returnFromScrapPageDef" path="dcom.shop.DispatchList.page.returnFromScrapPageDef"/>
         <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
-    <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
+        <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
         <page id="dcom_shop_mobile_LpnTxnDetailsPageDef" path="dcom.shop.Transaction.LpnTxnDetailsPageDef"/>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>

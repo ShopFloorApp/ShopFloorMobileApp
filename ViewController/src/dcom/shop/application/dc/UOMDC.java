@@ -18,13 +18,13 @@ import org.json.simple.parser.ParseException;
 public class UOMDC extends SyncUtils {
     public UOMDC() {
         super();
-        
+
     }
     protected static List s_uom = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
 
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_uom.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -44,8 +44,7 @@ public class UOMDC extends SyncUtils {
                 "                  \"RespApplication\": \"ONT\",\n" +
                 "                  \"SecurityGroup\": \"STANDARD\",\n" +
                 "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-                "                 },\n" + "   \"InputParameters\": \n" + "      {\"PUOM\": \"\" }\n" + "}\n" +
-                "}\n";
+                "                 },\n" + "   \"InputParameters\": \n" + "      {\"PUOM\": \"\" }\n" + "}\n" + "}\n";
             System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
@@ -87,7 +86,6 @@ public class UOMDC extends SyncUtils {
     }
 
     public UOMBO[] getUOM() {
-        
         UOMBO[] uomArray = (UOMBO[]) s_uom.toArray(new UOMBO[s_uom.size()]);
         return uomArray;
     }

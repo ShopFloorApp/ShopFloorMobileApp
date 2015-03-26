@@ -118,6 +118,11 @@ public class RestURI {
     public static String PostGetComponents() {
         return GET_COMPONENTS;
     }
+    private static final String GET_OPSEQ = "/webservices/rest/DCOMDispatchTxn/getopseq/";
+
+    public static String PostGetOpSeq() {
+        return GET_OPSEQ;
+    }
     /*
      * Dispatch Lists end
      */

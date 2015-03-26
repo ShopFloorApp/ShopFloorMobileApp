@@ -9,6 +9,36 @@
                       BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
   </executables>
   <bindings>
+    <attributeValues IterBinding="transactIterator" id="scrapQty">
+      <AttrNames>
+        <Item Value="scrapQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="fromStep">
+      <AttrNames>
+        <Item Value="fromStep"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="toStep">
+      <AttrNames>
+        <Item Value="toStep"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="overComplFlag">
+      <AttrNames>
+        <Item Value="overComplFlag"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="trxQty">
+      <AttrNames>
+        <Item Value="trxQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="txnUom">
+      <AttrNames>
+        <Item Value="txnUom"/>
+      </AttrNames>
+    </attributeValues>
     <attributeValues IterBinding="transactIterator" id="fromOpSeq">
       <AttrNames>
         <Item Value="fromOpSeq"/>
@@ -19,20 +49,11 @@
         <Item Value="toOpSeq"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="txnUom">
-      <AttrNames>
-        <Item Value="txnUom"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="trxRef">
-      <AttrNames>
-        <Item Value="trxRef"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="trxQty">
-      <AttrNames>
-        <Item Value="trxQty"/>
-      </AttrNames>
-    </attributeValues>
+    <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
+                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"
+                  ReturnName="data.TransactDC.methodResults.saveTransaction_TransactDC_dataProvider_saveTransaction_result">
+      <NamedData NDName="transactBo" NDValue="#{bindings.transactIterator.currentRow.dataProvider}"
+                 NDType="dcom.shop.application.mobile.dispatch.TransactBO"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

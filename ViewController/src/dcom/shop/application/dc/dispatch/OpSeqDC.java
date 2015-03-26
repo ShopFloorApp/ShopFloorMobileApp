@@ -55,7 +55,7 @@ public class OpSeqDC extends AViewObject {
                           "  }\n" + "}");
 
 
-        String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetResources(), strPayload.toString());
+        String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetOpSeq(), strPayload.toString());
         if (jsonArrayAsString != null) {
             try {
                 JSONParser parser = new JSONParser();

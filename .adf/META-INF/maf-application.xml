@@ -8,8 +8,9 @@
     <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry"/>
     <adfmf:featureReference id="fr5" refId="dcom.shop.Request"/>
     <adfmf:featureReference id="fr6" refId="dcom.shop.Settings"/>
-    <adfmf:featureReference id="fr7" refId="dcom.shop.Preferences"/>
     <adfmf:featureReference id="fr1" refId="dcom.shop.syncPref" loginConnRefId="ShopFloorSecurity"/>
+    <adfmf:featureReference id="fr7" refId="dcom.shop.Preferences" showOnNavigationBar="false"
+                            showOnSpringboard="false"/>
     <adfmf:featureReference id="fr8" refId="dcom.shop.LoadLov" showOnNavigationBar="false" showOnSpringboard="false"/>
     <adfmf:featureReference id="fr9" showOnNavigationBar="false" showOnSpringboard="false"
                             refId="dcom.shop.subInventryTrsf"/>

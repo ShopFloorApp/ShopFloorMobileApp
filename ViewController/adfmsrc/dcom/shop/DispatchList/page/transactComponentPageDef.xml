@@ -20,21 +20,14 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOM" RangeSize="-1" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="transactIterator" id="locator1">
-      <AttrNames>
-        <Item Value="locator"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="transactIterator" id="trxQty">
       <AttrNames>
         <Item Value="trxQty"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="txnUom">
-      <AttrNames>
-        <Item Value="txnUom"/>
       </AttrNames>
     </attributeValues>
     <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
@@ -98,5 +91,19 @@
         <Item Value="locator"/>
       </ListDisplayAttrNames>
     </list>
+    <list IterBinding="transactIterator" id="UOM" DTSupportsMRU="true" SelectItemValueMode="ListObject" StaticList="false"
+          ListIter="UOMIterator">
+      <AttrNames>
+        <Item Value="txnUom"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="UOMCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
   </bindings>
 </pageDefinition>

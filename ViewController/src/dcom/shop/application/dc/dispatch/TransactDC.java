@@ -4,6 +4,8 @@ import dcom.shop.application.mobile.dispatch.TransactBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -22,7 +24,7 @@ public class TransactDC {
     public String saveTransaction(TransactBO transactBo){
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
-        
+        String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();
         strPayload.append("{\n" + 
         "  \"x\": {\n" + 
         "    \"RESTHeader\": {\n" + 
@@ -38,7 +40,7 @@ public class TransactDC {
         "          \"ACTION\": \""+transactBo.getAction()+"\",\n" + 
         "          \"TRXREF\": \""+transactBo.getTrxRef()+"\",\n" + 
         "          \"SOURCETYPE\": \""+transactBo.getSourceType()+"\",\n" + 
-        "          \"TRXTYPE\": \""+transactBo.getTrxType()+"\",\n" + 
+        "          \"TRXTYPE\": \""+trxType+"\",\n" + 
         "          \"TRXDATE\": \""+transactBo.getTrxDate()+"\",\n" + 
         "          \"ORGCODE\": \""+transactBo.getOrgCode()+"\",\n" + 
         "          \"ITEM\": \""+transactBo.getItem()+"\",\n" + 

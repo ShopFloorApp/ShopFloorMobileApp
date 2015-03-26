@@ -375,3 +375,16 @@ html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topEnd .field-label {
 .style1 {
   color: #B8D30B;
 }
+
+.tableHeader1 {
+width: 80%;
+background-color:Gray;
+margin-top: 10px;
+margin-bottom: -12px;
+}
+
+.tableHeader1 span{
+color: White;
+font-weight: bold;
+padding-left: 10px;
+}
