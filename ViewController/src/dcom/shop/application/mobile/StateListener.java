@@ -24,12 +24,13 @@ public class StateListener {
 
     public void FromSubinvValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
+        String s = (String)valueChangeEvent.getOldValue();
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.subFromInv.inputValue}", String.class);
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-        pageFlow.put("FromSubinventory", subinv);
+       // pageFlow.put("FromSubinventory", subinv);
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromSubinventory}", String.class);
@@ -113,7 +114,7 @@ public class StateListener {
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-        pageFlow.put("ToSubinventory", subinv);
+     //   pageFlow.put("ToSubinventory", subinv);
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
 
@@ -162,7 +163,7 @@ public class StateListener {
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-        pageFlow.put("FromLocator", subinv);
+      //  pageFlow.put("FromLocator", subinv);
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
 
@@ -175,7 +176,7 @@ public class StateListener {
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-        pageFlow.put("ToLocator", subinv);
+      //  pageFlow.put("ToLocator", subinv);
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshToLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");*/
 
@@ -250,13 +251,13 @@ public class StateListener {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", null);
-        AdfmfJavaUtilities.setELValue("#{bindings.fromLoc.inputValue}", "Choose Locator");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", "0");
         
         
-        AdfmfJavaUtilities.setELValue("#{bindings.toLoc.inputValue}", "Choose Locator");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToLocator}", "0");
         
-        AdfmfJavaUtilities.setELValue("#{bindings.subToInv.inputValue}", 0);
-        AdfmfJavaUtilities.setELValue("#{bindings.subFromInv.inputValue}", "Choose Subinventory");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToSubinventory}", "0");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", "0");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
