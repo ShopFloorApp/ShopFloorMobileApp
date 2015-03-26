@@ -258,6 +258,13 @@ public class StateListener {
         
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToSubinventory}", "0");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", "0");
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+         me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);

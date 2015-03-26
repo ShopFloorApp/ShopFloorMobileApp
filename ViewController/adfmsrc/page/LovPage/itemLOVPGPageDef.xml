@@ -36,6 +36,8 @@
           <Item Value="ITEM"/>
           <Item Value="ITEMDESC"/>
           <Item Value="PRIMARYUOM"/>
+          <Item Value="LOTCONTROL"/>
+          <Item Value="SERIALCONTROL"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
