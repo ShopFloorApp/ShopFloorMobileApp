@@ -52,7 +52,9 @@
         <Item Value="WIP Return"/>
       </ValueList>
     </list>
-    <list StaticList="false" IterBinding="transactIterator" ListIter="opSeqIterator" id="fromOpSeq">
+    <list StaticList="false" IterBinding="transactIterator" ListIter="opSeqIterator" id="fromOpSeq"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
       <AttrNames>
         <Item Value="fromOpSeq"/>
       </AttrNames>

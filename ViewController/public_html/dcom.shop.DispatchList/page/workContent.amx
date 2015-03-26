@@ -17,7 +17,7 @@
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
             <amx:commandLink id="cl7" inlineStyle="width:20px;">
-                <amx:outputHtml id="oh13" styleClass="fa fa-edit fa-lg" inlineStyle="width:20px;"/>
+                <amx:outputHtml id="oh13" styleClass="fa fa-edit fa-lg style4" inlineStyle="width:20px;"/>
             </amx:commandLink>
         </amx:facet>
         <amx:tableLayout id="tl1" width="100%" borderWidth="0">
@@ -192,147 +192,218 @@
     </amx:popup>
     <amx:popup id="p2" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
-        <amx:panelGroupLayout id="pgl1" halign="center" valign="middle">
-            <amx:commandLink id="cl12" action="toTransactComponents">
-                <amx:tableLayout id="tl9" halign="center">
-                    <amx:rowLayout id="rl7">
-                        <amx:cellFormat id="cf10">
-                            <amx:outputHtml id="oh12" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl8">
-                        <amx:cellFormat id="cf11">
-                            <amx:outputHtml id="oh16" value="Transact Components" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl13" action="toMoveAssembly">
-                <amx:tableLayout id="tl11" halign="center">
-                    <amx:rowLayout id="rl9">
-                        <amx:cellFormat id="cf12">
-                            <amx:outputHtml id="oh17" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl10">
-                        <amx:cellFormat id="cf13">
-                            <amx:outputHtml id="oh21" value="Move Assembly" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl14" action="toReturnAssembly">
-                <amx:tableLayout id="tl12" halign="center">
-                    <amx:rowLayout id="rl11">
-                        <amx:cellFormat id="cf14">
-                            <amx:outputHtml id="oh22" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl20">
-                        <amx:cellFormat id="cf15">
-                            <amx:outputHtml id="oh23" value="Return Assembly" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl15" action="toCompleteAssembly">
-                <amx:tableLayout id="tl13" halign="center">
-                    <amx:rowLayout id="rl21">
-                        <amx:cellFormat id="cf16">
-                            <amx:outputHtml id="oh24" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl24">
-                        <amx:cellFormat id="cf17">
-                            <amx:outputHtml id="oh25" value="Complete Assembly" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl18" action="toMoveComplete">
-                <amx:tableLayout id="tl14" halign="center">
-                    <amx:rowLayout id="rl25">
-                        <amx:cellFormat id="cf18">
-                            <amx:outputHtml id="oh27" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl26">
-                        <amx:cellFormat id="cf19">
-                            <amx:outputHtml id="oh26" value="Move and Complete" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl16" action="toReturnMove">
-                <amx:tableLayout id="tl15" halign="center">
-                    <amx:rowLayout id="rl27">
-                        <amx:cellFormat id="cf20">
-                            <amx:outputHtml id="oh28" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl28">
-                        <amx:cellFormat id="cf21">
-                            <amx:outputHtml id="oh29" value="Return and Move" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl17" action="toScrapAssembly">
-                <amx:tableLayout id="tl16" halign="center">
-                    <amx:rowLayout id="rl29">
-                        <amx:cellFormat id="cf30">
-                            <amx:outputHtml id="oh30" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl30">
-                        <amx:cellFormat id="cf31">
-                            <amx:outputHtml id="oh31" value="Scrap Assembly" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl9" action="toReturnFromScrap">
-                <amx:tableLayout id="tl17" halign="center">
-                    <amx:rowLayout id="rl31">
-                        <amx:cellFormat id="cf34">
-                            <amx:outputHtml id="oh32" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl32">
-                        <amx:cellFormat id="cf35">
-                            <amx:outputHtml id="oh33" value="Return from Scrap" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl19" action="toReportTime">
-                <amx:tableLayout id="tl18" halign="center">
-                    <amx:rowLayout id="rl33">
-                        <amx:cellFormat id="cf37">
-                            <amx:outputHtml id="oh34" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl34">
-                        <amx:cellFormat id="cf36">
-                            <amx:outputHtml id="oh35" value="Report Time" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-            <amx:commandLink id="cl20" action="toClockIn">
-                <amx:tableLayout id="tl19" halign="center">
-                    <amx:rowLayout id="rl35">
-                        <amx:cellFormat id="cf38">
-                            <amx:outputHtml id="oh36" styleClass="fa fa-train fa-lg"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl36">
-                        <amx:cellFormat id="cf39">
-                            <amx:outputHtml id="oh37" value="Clock In/Clock Out" inlineStyle="font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-        </amx:panelGroupLayout>
+        <amx:tableLayout id="tl20">
+            <amx:rowLayout id="rl8">
+                <amx:cellFormat id="cf40">
+                    <amx:commandLink id="cl12" action="toTransactComponents">
+                        <amx:tableLayout id="tl9" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl7">
+                                <amx:cellFormat id="cf10">
+                                    <amx:outputHtml id="oh12" styleClass="fa fa-th-large fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf11">
+                                    <amx:outputHtml id="oh16" value="Transact Components"
+                                                    inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl9" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl10" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl10">
+                <amx:cellFormat id="cf41">
+                    <amx:commandLink id="cl13" action="toMoveAssembly">
+                        <amx:tableLayout id="tl11" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl9">
+                                <amx:cellFormat id="cf12">
+                                    <amx:outputHtml id="oh17" styleClass="fa fa-cart-arrow-down fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf13">
+                                    <amx:outputHtml id="oh21" value="Move Assembly" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl11" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl12" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl20">
+                <amx:cellFormat id="cf42">
+                    <amx:commandLink id="cl14" action="toReturnAssembly">
+                        <amx:tableLayout id="tl12" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl11">
+                                <amx:cellFormat id="cf14">
+                                    <amx:outputHtml id="oh22" styleClass="fa fa-reply fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf15">
+                                    <amx:outputHtml id="oh23" value="Return Assembly" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl13" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl14" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl24">
+                <amx:cellFormat id="cf43">
+                    <amx:commandLink id="cl15" action="toCompleteAssembly">
+                        <amx:tableLayout id="tl13" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl21">
+                                <amx:cellFormat id="cf16">
+                                    <amx:outputHtml id="oh24" styleClass="fa fa-pie-chart fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf17">
+                                    <amx:outputHtml id="oh25" value="Complete Assembly" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl15" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl16" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl26">
+                <amx:cellFormat id="cf44">
+                    <amx:commandLink id="cl18" action="toMoveComplete">
+                        <amx:tableLayout id="tl14" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl25">
+                                <amx:cellFormat id="cf18">
+                                    <amx:outputHtml id="oh27" styleClass="fa fa-shopping-cart fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf19">
+                                    <amx:outputHtml id="oh26" value="Move and Complete" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl17" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl18" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl28">
+                <amx:cellFormat id="cf45">
+                    <amx:commandLink id="cl16" action="toReturnMove">
+                        <amx:tableLayout id="tl15" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl27">
+                                <amx:cellFormat id="cf20">
+                                    <amx:outputHtml id="oh28" styleClass="fa fa-repeat fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf21">
+                                    <amx:outputHtml id="oh29" value="Return and Move" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl19" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl20" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl30">
+                <amx:cellFormat id="cf46">
+                    <amx:commandLink id="cl17" action="toScrapAssembly">
+                        <amx:tableLayout id="tl16" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl29">
+                                <amx:cellFormat id="cf30">
+                                    <amx:outputHtml id="oh30" styleClass="fa fa-trash fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf31">
+                                    <amx:outputHtml id="oh31" value="Scrap Assembly" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl21" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl22" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl32">
+                <amx:cellFormat id="cf47">
+                    <amx:commandLink id="cl9" action="toReturnFromScrap">
+                        <amx:tableLayout id="tl17" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl31">
+                                <amx:cellFormat id="cf34">
+                                    <amx:outputHtml id="oh32" styleClass="fa fa-trash-o fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf35">
+                                    <amx:outputHtml id="oh33" value="Return from Scrap" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl23" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl24" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl34">
+                <amx:cellFormat id="cf48">
+                    <amx:commandLink id="cl19" action="toReportTime">
+                        <amx:tableLayout id="tl18" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl33">
+                                <amx:cellFormat id="cf37">
+                                    <amx:outputHtml id="oh34" styleClass="fa fa-tachometer fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf36">
+                                    <amx:outputHtml id="oh35" value="Report Time" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl25" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl26" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl36">
+                <amx:cellFormat id="cf49">
+                    <amx:commandLink id="cl20" action="toClockIn">
+                        <amx:tableLayout id="tl19" inlineStyle="margin-bottom: 8px;">
+                            <amx:rowLayout id="rl35">
+                                <amx:cellFormat id="cf38">
+                                    <amx:outputHtml id="oh36" styleClass="fa fa-history fa-lg"
+                                                    inlineStyle="margin-right:10px;"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat id="cf39">
+                                    <amx:outputHtml id="oh37" value="Clock In-Out" inlineStyle="font-size:small;"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl27" to="#{pageFlowScope.jobOps}"
+                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
+                        <amx:setPropertyListener id="spl28" from="#{bindings.jobNumber.inputValue}"
+                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
     </amx:popup>
 </amx:view>

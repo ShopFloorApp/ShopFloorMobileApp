@@ -6,7 +6,7 @@
             <amx:outputText value="Transact Components" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <amx:commandLink id="cl1" action="back">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
@@ -17,7 +17,7 @@
             <amx:selectOneChoice label="Type" id="soc1" value="#{bindings.trxType.inputValue}">
                 <amx:selectItems id="si2" value="#{bindings.trxType.items}"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Op Seq" id="soc2">
+            <amx:selectOneChoice value="#{bindings.fromOpSeq}" label="Op Seq" id="soc2">
                 <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
             </amx:selectOneChoice>
             <amx:selectOneChoice value="#{bindings.item.inputValue}" label="Component" id="soc3">
