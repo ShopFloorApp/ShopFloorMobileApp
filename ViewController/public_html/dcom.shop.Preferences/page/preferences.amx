@@ -6,7 +6,8 @@
       <amx:outputText value="Header" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
+      <amx:commandButton actionListener="#{bindings.gotoSpringboard.execute}" text="gotoSpringboard"
+                         disabled="#{!bindings.gotoSpringboard.enabled}" id="cb3"/>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
