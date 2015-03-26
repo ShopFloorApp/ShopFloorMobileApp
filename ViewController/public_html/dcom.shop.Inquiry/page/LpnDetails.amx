@@ -28,11 +28,10 @@
                 <amx:outputText value="#{pageFlowScope.locator}" styleClass="adfmf-listItem-captionText" id="ot18"/>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
-        <amx:tableLayout id="tl1" inlineStyle="margin-top:20px; margin-left:6px;" width="98%">
+        <amx:tableLayout id="tl1" styleClass="tableHeader1" inlineStyle="margin-bottom:10px;">
             <amx:rowLayout id="rl1">
-                <amx:cellFormat id="cf3" inlineStyle="background-color:Highlight; color:White; height:30px;">
-                    <amx:outputText value="Contents" id="ot6"
-                                    inlineStyle="alignment-adjust:baseline; text-align:center; text-justify:distribute; margin-left:5px; font-weight:bold; color:White;"/>
+                <amx:cellFormat id="cf1">
+                    <amx:outputText value="Contents" id="ot2"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
