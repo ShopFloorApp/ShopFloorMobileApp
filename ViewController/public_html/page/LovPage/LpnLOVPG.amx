@@ -39,7 +39,7 @@
                                disabled="#{!bindings.refreshLpnDC.enabled}" id="cb4"></amx:commandButton-->
         </amx:panelLabelAndMessage>
         <amx:outputText id="ot3" value="#{pageFlowScope.LpnResults}"/>
-        <amx:panelGroupLayout id="pgl1" rendered='#{pageFlowScope.LpnResults == "Search results" ? true : false }'
+        <!--amx:panelGroupLayout id="pgl1" rendered='#{pageFlowScope.LpnResults == "Search results" ? true : false }'
                               inlineStyle="background-color:white; width:100%; border-color:Gray; border-style:inset; border-width:thin;">
             <amx:tableLayout width="100%" id="tl2" rendered="#{pageFlowScope.refreshLov eq 'N' ?true:false}">
                 <amx:rowLayout id="rl12">
@@ -51,10 +51,10 @@
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
-        </amx:panelGroupLayout>
+        </amx:panelGroupLayout-->
         <amx:listView var="row" value="#{bindings.allLpns.collectionModel}"
                       rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?true:false}'
-                      fetchSize="#{bindings.allLpns.rangeSize}" id="lv1">
+                      fetchSize="#{bindings.allLpns.rangeSize}" id="lv1" layout="cards">
             <amx:listItem showLinkIcon="false" action="Back" id="li1">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl31">
@@ -87,8 +87,10 @@
         <amx:listView var="row" value="#{bindings.fromLpns.collectionModel}" fetchSize="#{bindings.fromLpns.rangeSize}"
                       selectedRowKeys="#{bindings.fromLpns.collectionModel.selectedRow}"
                       selectionListener="#{bindings.fromLpns.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                      rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?false:true}' bufferStrategy="viewport" id="lv2">
-            <amx:listItem id="li2" action="#{StateListener.BackToLpnTrxn}">
+                      rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?false:true}' bufferStrategy="viewport" id="lv2"
+                      layout="cards">
+            <amx:listItem id="li2" showLinkIcon="false" action="#{StateListenerBean.BackToLpnTrxn}">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf1"/>

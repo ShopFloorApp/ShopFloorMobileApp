@@ -119,6 +119,11 @@ public class ProductSearchDC {
 
 
             prodArray = (ProductSearchEntity[]) s_ProdList.toArray(new ProductSearchEntity[s_ProdList.size()]);
+            if(s_ProdList.size()!=0){
+                AdfmfJavaUtilities.setELValue("{pageFlowScope.ItemServiceResults}", "");
+            }else{
+                AdfmfJavaUtilities.setELValue("{pageFlowScope.ItemServiceResults}", "No Search Results");
+            }
 
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "ProductSearchEntity", e.getLocalizedMessage());

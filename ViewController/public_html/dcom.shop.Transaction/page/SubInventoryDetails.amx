@@ -69,8 +69,8 @@
                         <amx:panelGroupLayout layout="horizontal"
                                               inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
                                               id="pgl1">
-                            <amx:inputText hintText="LPN" inlineStyle="text-align:left;" id="it11"
-                                           value="#{pageFlowScope.searchLpnKeyword}"/>
+                            <amx:inputText hintText="LPN" id="it11"
+                                           value="#{pageFlowScope.searchLpnKeyword}" inlineStyle="text-align:left;"/>
                             <amx:commandLink id="cb3" action="lpnLOV">
                                 <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                                 <amx:setPropertyListener id="spl3" from="SubInvTrxn" to="#{pageFlowScope.LpnLovPage}"
@@ -123,7 +123,7 @@
                     <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
                                     id="it5"/>
                 </amx:panelLabelAndMessage>
-                <amx:inputText label="Quantiy" showRequired="true" inlineStyle="text-align:left;"
+                <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:left;"
                                value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText" id="it2">
                     <?audit suppress oracle.maf.warning-missing-hintText?>
                 </amx:inputText>

@@ -103,7 +103,12 @@ public class LpnSearchDC {
             }
 
             lpnArray = (LpnSearchEntity[]) s_LpnList.toArray(new LpnSearchEntity[s_LpnList.size()]);
-
+            if(s_LpnList.size()!=0){
+                AdfmfJavaUtilities.setELValue("{pageFlowScope.LpnResults}", "");
+            }else{
+                AdfmfJavaUtilities.setELValue("{pageFlowScope.LpnResults}", "No Search Results");
+            }
+        
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnSearchEntity", e.getLocalizedMessage());
         }
