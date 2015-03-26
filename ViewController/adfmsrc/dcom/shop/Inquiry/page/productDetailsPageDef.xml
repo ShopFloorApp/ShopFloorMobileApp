@@ -40,5 +40,45 @@
         <Item Value="ITEMTYPE"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="WEIGHT">
+      <AttrNames>
+        <Item Value="WEIGHT"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="WEIGHTUOM">
+      <AttrNames>
+        <Item Value="WEIGHTUOM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="VOLUME">
+      <AttrNames>
+        <Item Value="VOLUME"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="VOLUMEUOM">
+      <AttrNames>
+        <Item Value="VOLUMEUOM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="DIMUOM">
+      <AttrNames>
+        <Item Value="DIMUOM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="LENGTH">
+      <AttrNames>
+        <Item Value="LENGTH"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="WIDTH">
+      <AttrNames>
+        <Item Value="WIDTH"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="allProdDetailsIterator" id="HEIGHT">
+      <AttrNames>
+        <Item Value="HEIGHT"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
