@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class SubInventoryTxnBO extends CustomPojo {
     public SubInventoryTxnBO(int trxnid,String isNewEntity, String rowOperation, String fromInventory, String toInventory,
                              String itemNumber, String itemName, String quantity, String txnTime,String completeFlag,
-                             String lpn, String fromLoc, String toLoc, String status){
+                             String lpn, String fromLoc, String toLoc, String status, String txnuom){
         this.setTrxnId(trxnid);
         this.setIsNewEntity(isNewEntity);
         this.setRowOperation(rowOperation);
@@ -23,6 +23,7 @@ public class SubInventoryTxnBO extends CustomPojo {
         this.setLPN(lpn);
         this.setCompleteFlag(completeFlag);
         this.setRowOperation(rowOperation);
+        this.setTxnuom(txnuom);
         
     }
     private int TrxnId;
@@ -65,6 +66,14 @@ public class SubInventoryTxnBO extends CustomPojo {
     private String ToLoc;
     private String Status;
 
+    public void setTxnuom(String Txnuom) {
+        this.Txnuom = Txnuom;
+    }
+
+    public String getTxnuom() {
+        return Txnuom;
+    }
+    private String Txnuom;
     public void setStatus(String Status) {
         this.Status = Status;
     }
@@ -183,6 +192,7 @@ public class SubInventoryTxnBO extends CustomPojo {
         this.setLPN((String) hashMap.get("lpn"));
         this.setCompleteFlag((String)hashMap.get("completeflag"));
         this.setRowOperation((String)hashMap.get("rowoperation"));
+        this.setTxnuom((String)hashMap.get("txnuom"));
     }
 
     public HashMap getBOClassRow(SubInventoryTxnBO subInventoryTxn) {
@@ -202,6 +212,7 @@ public class SubInventoryTxnBO extends CustomPojo {
         map.put("lpn", subInventoryTxn.getLPN());
         map.put("completeflag",subInventoryTxn.getCompleteFlag());
         map.put("rowoperation", subInventoryTxn.getRowOperation());
+        map.put("txnuom", subInventoryTxn.getTxnuom());
         return map;
     }
 //    @Override

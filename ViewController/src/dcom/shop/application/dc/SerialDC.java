@@ -215,8 +215,9 @@ public class SerialDC extends SyncUtils {
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SubinvTrxnId}", int.class);
 
             filterFileds.put("trxnid", (Integer) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
-
-
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ParentPage}", String.class);
+            filterFileds.put("trxtype", (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
+            
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_serials);
             paramMap.put("filterFieldsValues", filterFileds);
