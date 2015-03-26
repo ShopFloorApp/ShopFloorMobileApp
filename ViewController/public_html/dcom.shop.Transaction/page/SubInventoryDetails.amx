@@ -168,7 +168,7 @@
                             <amx:selectItems value="#{bindings.toLocators.items}" id="si3"/>
                         </amx:selectOneChoice-->
                 <amx:panelLabelAndMessage id="plam4">
-                    <amx:commandLink id="cl4" text="Serial Entry" action="SerialEntry">
+                    <amx:commandLink id="cl4" inlineStyle="float:left;margin:0px;padding:0px;" text="Serial Entry"  action="SerialEntry">
                         <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.SerialQty}"
                                                  id="spl1"/>
                         <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
@@ -177,7 +177,7 @@
                         <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" id="spl9"/>
                     </amx:commandLink>
                     <amx:spacer width="30" id="s7"></amx:spacer>
-                    <amx:commandLink id="cl2" text="Lot Entry" action="LotEntry">
+                    <amx:commandLink id="cl2"  text="Lot Entry" action="LotEntry">
                         <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.LotQty}"
                                                  id="spl5"/>
                         <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"

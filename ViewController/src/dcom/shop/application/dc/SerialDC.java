@@ -108,7 +108,7 @@ public class SerialDC extends SyncUtils {
         try {
             Connection conn = ConnectionFactory.getConnection();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM SERIALS ORDER BY SERIAL_ID");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM SERIAL ORDER BY SERIAL_ID");
 
             while (rs.next()) {
                 recordCount++;
@@ -152,14 +152,14 @@ public class SerialDC extends SyncUtils {
 
     public void insertSerials(String trxnId, String fromSerial, String toSerial, String trxType) {
         s_insertSerials.clear();
-        int qty = Integer.parseInt(toSerial) - Integer.parseInt(fromSerial) + 1;
-        qtyEntered = qtyEntered + qty;
+        long qty = Long.parseLong(toSerial) - Long.parseLong(fromSerial) + 1L;
+        qtyEntered = qtyEntered +  Integer.parseInt(Long.toString(qty));
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SerialQty}", String.class);
         int totalQty = Integer.parseInt(ve.getValue(AdfmfJavaUtilities.getAdfELContext()).toString().trim());
         int diff = totalQty - qtyEntered;
         if (diff < 0) {
-            qtyEntered = qtyEntered - qty;
+            qtyEntered = qtyEntered -  Integer.parseInt(Long.toString(qty));;
             throw new AdfException("Serial quantity exceeds the total Qty", AdfException.ERROR);
 
         }
@@ -170,7 +170,7 @@ public class SerialDC extends SyncUtils {
         serial.setTrxnId((Integer) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
         serial.setFromSerial(fromSerial);
         serial.setToSerial(toSerial);
-        serial.setSerialQty(qty);
+        serial.setSerialQty( Integer.parseInt(Long.toString(qty)));
         serial.setTrxType(trxType);
         
         s_insertSerials.add(serial);
