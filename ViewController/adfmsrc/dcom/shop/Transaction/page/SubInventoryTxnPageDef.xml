@@ -27,7 +27,7 @@
           <Item Value="LPN"/>
           <Item Value="quantity"/>
           <Item Value="txnTime"/>
-          <Item Value="txnUom"/>
+          <Item Value="txnuom"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
