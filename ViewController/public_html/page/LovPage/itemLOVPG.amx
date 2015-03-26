@@ -23,8 +23,20 @@
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
             <amx:commandLink id="cl12" actionListener="#{bindings.refresh.execute}">
-                <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                <amx:outputText value="Search" id="ot7"/>
+                <amx:tableLayout id="tl2" width="100%">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat id="cf12" width="40%">
+                            <amx:spacer width="50" id="s1"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf8" width="10%">
+                            <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf9">
+                            <amx:outputText value="Search" id="ot7"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
             </amx:commandLink>
             <!--amx:commandButton actionListener="#{bindings.refresh.execute}" text="Search"
                                disabled="#{!bindings.refresh.enabled}" id="cb4"/-->
