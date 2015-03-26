@@ -18,6 +18,18 @@
         <amx:panelFormLayout id="pfl1">
             <amx:inputText label="Keyword" id="it1" value="#{pageFlowScope.searchKeyword}"/>
         </amx:panelFormLayout>
+        <amx:selectBooleanSwitch label="Advanced Search" id="sbs1" value="#{pageFlowScope.advSearch}"/>
+        <amx:panelFormLayout id="pfl2">
+            <amx:inputText label="Item Catelog Category" id="it2" 
+                rendered="#{pageFlowScope.advSearch}"
+                value="#{pageFlowScope.itemCat}"/>
+            <amx:inputText label="Item Status" id="it3" 
+                rendered="#{pageFlowScope.advSearch}"
+                value="#{pageFlowScope.itemStatus}"/>
+            <amx:inputText label="Item Type" id="it4" 
+                rendered="#{pageFlowScope.advSearch}"
+                value="#{pageFlowScope.itemType}"/>
+        </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>

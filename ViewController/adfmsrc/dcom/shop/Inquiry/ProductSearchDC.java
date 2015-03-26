@@ -46,8 +46,21 @@ public class ProductSearchDC {
           orgObj.setOrgItem("REN");
           s_OrgList.add(orgObj);*/
         String keyword = null;
+        String itemCat = null;
+        String itemType = null;
+        String itemStatus = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
         keyword = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemCat}", String.class);
+        itemCat = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemStatus}", String.class);
+        itemType = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemType}", String.class);
+        itemStatus = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());        
+        
         String restURI = RestURI.PostItemInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
         /*AJ
@@ -61,9 +74,18 @@ public class ProductSearchDC {
                 keyword + "%\",\"ITEMSTATUS\": \"ONHAND\"}}\n" + "}\n" + "}";
         } else {
             payload =
-                "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%" +
-                keyword + "%\"}}\n" + "}\n" + "}";
+                "{\"x\":\n" + 
+                "{\n" + 
+                "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
+                "                  \"RespApplication\": \"ONT\",\n" + 
+                "                  \"SecurityGroup\": \"STANDARD\",\n" + 
+                "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
+                "                  \"Org_Id\": \"82\"\n" + 
+                "                 },\n" + 
+                "   \"InputParameters\": \n" + 
+                "      {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%"+keyword+"%\",\"ITEMSTATUS\": \""+itemStatus+"\",\"ITEMTYPE\": \""+itemType+"\",\"ITEMCATALOG\": \""+itemCat+"\"}}\n" + 
+                "}\n" + 
+                "}";
         }
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();

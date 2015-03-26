@@ -10,6 +10,10 @@ public class SearchUtilBean {
 
     public void clearPage(ActionEvent ae) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemCat}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemType}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemStatus}", null);
+        
     }
     public void clearLPNPage(ActionEvent ae) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);

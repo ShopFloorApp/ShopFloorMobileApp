@@ -28,7 +28,7 @@
             <amx:commandLink id="cl3">
               <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
             </amx:commandLink>
-            <amx:spacer id="s2" width="10"/>
+            <amx:spacer id="s52" width="10"/>
           </amx:panelGroupLayout>
           <amx:spacer id="s1" width="30"/>
           <amx:commandLink id="cl2">
