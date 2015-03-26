@@ -22,10 +22,17 @@
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh1" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
                 <amx:setPropertyListener from="SUBTXFR" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
-                <!--amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshFromLocator}" id="spl2"/>
-                <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshToLocator}" id="spl1"/>
-                <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshFromSubinventory}" id="spl3"/>
-                <amx:setPropertyListener from="Y" to="#{pageFlowScope.refreshToSubinventory}" id="spl4"/-->
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.ToSubinventory}" id="spl2"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl12"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.ToLocator}" id="spl13"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="spl5"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchKeyword}" id="spl4"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="spl6"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="spl10"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchLpnKeyword}" id="spl9"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
             </amx:commandLink>
         </amx:facet>
         <!--amx:panelGroupLayout id="pgl3" layout="horizontal">
@@ -141,6 +148,25 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
                 <amx:setPropertyListener from="#{row.trxnId}" type="action" to="#{pageFlowScope.TrxnId}" id="spl1"/>
+                <amx:setPropertyListener from="#{row.toInventory}" type="action" to="#{pageFlowScope.ToSubinventory}"
+                                         id="spl14"/>
+                <amx:setPropertyListener from="#{row.fromInventory}" type="action" to="#{pageFlowScope.FromSubinventory}"
+                                         id="spl15"/>
+                <amx:setPropertyListener from="#{row.quantity}" type="action" to="#{pageFlowScope.quantity}"
+                                         id="spl16"/>
+                <amx:setPropertyListener from="#{row.itemNumber}" type="action" to="#{pageFlowScope.searchKeyword}"
+                                         id="spl17"/>
+                <amx:setPropertyListener from="#{row.txnuom}" type="action" to="#{pageFlowScope.uom}" id="spl18"/>
+                <amx:setPropertyListener from="#{row.itemName}" type="action" to="#{pageFlowScope.description}"
+                                         id="spl19"/>
+                <amx:setPropertyListener from="#{row.LPN}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
+                                         id="spl20"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl21"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl22"/>
+                <amx:setPropertyListener from="#{row.fromLoc}" type="action" to="#{pageFlowScope.FromLocator}"
+                                         id="spl23"/>
+                <amx:setPropertyListener from="#{row.toLoc}" type="action" to="#{pageFlowScope.ToLocator}" id="spl24"/>
+                
                 <amx:showPopupBehavior id="spb1" popupId="popup1" type="swipeLeft" decoration="anchor" alignId="li1"/>
                 <!--amx:outputText value="#{row.fromInventory}" id="ot2"/>
         <amx:showPopupBehavior id="spb1" popupId="p1" type="swipeLeft" alignId="li1"/>
