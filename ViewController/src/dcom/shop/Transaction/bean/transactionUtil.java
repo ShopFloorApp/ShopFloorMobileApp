@@ -4,6 +4,7 @@ import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import oracle.adfmf.amx.event.ActionEvent;
+import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
 
@@ -40,7 +41,7 @@ public class transactionUtil {
                 "   \"InputParameters\": \n" + 
                 "        {\"PICKRULE\": \""+pickRule+"\",\n" + 
                 "         \"ORDERNUM\": \""+orderNum+"\",\n" +
-                "       \"EVENT\": \""+event+"\", \n" + 
+                "       \"EVENT\": \""+event+"\" \n" + 
                 "       }\n" + 
                 "}\n" + 
                 "}";
@@ -76,4 +77,6 @@ public class transactionUtil {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.Event}", Boolean.TRUE);
     }
+
+
 }
