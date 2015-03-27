@@ -37,13 +37,25 @@ public class ReceivingTxnUtilBean {
                                                    });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
-    public void addRecord(ActionEvent ae){        
+    public void addRecord(ActionEvent ae){       
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
     }
     public void updateRecord(ActionEvent ae){
+        Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowIdxAdd}");
+        ArrayList coll=new ArrayList();
+                for(int i=0;i<receiveDc.s_lines.size();i++){
+                    LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
+                    if(lines.getRowIdx()==currentItem){
+                        coll.remove(i);
+                    }
+                }
+        receiveDc.s_lines=coll;
         String line = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lineAdd}");
         String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.subInvAdd}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.locatorAdd}");
@@ -53,15 +65,26 @@ public class ReceivingTxnUtilBean {
         ReceivingTxnDC.s_lines.add(new LinesBO(line,subInv,locator,quantity,uom,lpn,"Y"));
     }
     public void removeRecords(ActionEvent ae){
-//        ArrayList coll=new ArrayList();
-//        for(int i=0;i<receiveDc.s_lines.size();i++){
-//            LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
-//            if(!lines.getIsNewEntity().equalsIgnoreCase("Y")){
-//                coll.add(lines);
-//            }
-//        }
-//        receiveDc.s_lines=coll;
         receiveDc.s_lines.clear();
+    }
+    public void deleteCurrectRecord(ActionEvent ae){
+        Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentItem}");
+        ArrayList coll=new ArrayList();
+                for(int i=0;i<receiveDc.s_lines.size();i++){
+                    LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
+                    if(lines.getRowIdx()==currentItem){
+                        coll.remove(i);
+                    }
+                }
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
+    }
+    
+    public void addMore(ActionEvent ae){
+        updateRecord(ae);
+        addRecord(ae);
     }
     
     public void processReceive(ActionEvent ae){

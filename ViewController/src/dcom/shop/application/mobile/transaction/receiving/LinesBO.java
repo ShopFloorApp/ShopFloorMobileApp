@@ -4,6 +4,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 public class LinesBO {
+    private Integer rowIdx;
     private String Lines;
     private String subInv;
     private String locator;
@@ -11,7 +12,20 @@ public class LinesBO {
     private String Uom;
     private String Lpn;
     private String isNewEntity;
+    private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    public void setRowIdx(Integer rowIdx) {
+        Integer oldRowIdx = this.rowIdx;
+        this.rowIdx = rowIdx;
+        propertyChangeSupport.firePropertyChange("rowIdx", oldRowIdx, rowIdx);
+    }
+
+    public Integer getRowIdx() {
+        idx=new Integer(idx.intValue()+1);
+        rowIdx=idx;
+        return rowIdx;
+    }
 
     public void setLines(String Lines) {
         String oldLines = this.Lines;

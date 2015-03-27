@@ -361,6 +361,10 @@ public class ReceivingTxnDC extends SyncUtils{
         providerChangeSupport.fireProviderRefresh("locators");
     }
     
+    public void refreshLines() {
+        providerChangeSupport.fireProviderRefresh("lines");
+    }
+    
     public LocatorBO[] getLocators(){
         s_locator.clear();
         String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.subInvAdd}");

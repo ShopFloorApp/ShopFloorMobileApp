@@ -53,8 +53,17 @@
         <AttrNames>
           <Item Value="lines"/>
           <Item Value="subInv"/>
+          <Item Value="isNewEntity"/>
+          <Item Value="locator"/>
+          <Item Value="lpn"/>
+          <Item Value="quantity"/>
+          <Item Value="uom"/>
+          <Item Value="rowIdx"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="refreshLines" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLines"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

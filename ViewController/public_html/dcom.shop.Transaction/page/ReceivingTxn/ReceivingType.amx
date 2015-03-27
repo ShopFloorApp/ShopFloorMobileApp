@@ -54,6 +54,7 @@
         </amx:tableLayout>
     <amx:panelFormLayout id="pfl1" labelPosition="topStart">
       <amx:selectOneChoice label="Carrier" id="soc1" value="#{pageFlowScope.carrier}">
+        <amx:selectItem label=" " id="si5"/>
         <amx:selectItems value="#{bindings.carriers.items}" id="si4"/>
       </amx:selectOneChoice>
       <amx:inputText label="Pack Slip" id="it2" value="#{pageFlowScope.packSlip}"/>
@@ -77,22 +78,27 @@
                          actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"
                          >
             <amx:outputHtml id="oh2" styleClass="fa fa-plus fa-2x"/>
-          </amx:commandLink>
+      <amx:validationBehavior id="vb1" group="dnog"/>
+    </amx:commandLink>
     <amx:listView var="row" value="#{bindings.lines.collectionModel}" fetchSize="#{bindings.lines.rangeSize}"
                   selectedRowKeys="#{bindings.lines.collectionModel.selectedRow}"
                   selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                   bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1" showLinkIcon="false">
+      <amx:listItem id="li1" showLinkIcon="false" action="addLine">
         <amx:tableLayout width="100%" id="tl2">
           <amx:rowLayout id="rl4">
             <amx:cellFormat id="cf2" width="10px"/>
             <amx:cellFormat width="70%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6">
               <amx:outputText value="#{row.lines}" id="ot3"/>
             </amx:cellFormat>
-            <amx:cellFormat id="cf4" width="30%">
+            <amx:cellFormat id="cf4" width="30%" halign="center">
               <amx:panelGroupLayout id="pgl2" halign="end" layout="horizontal">
                 
-                <amx:commandLink id="cl2" styleClass="fa fa-trash fa-lg"/>
+                <amx:commandLink id="cl2" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.deleteCurrectRecord}"
+                                 inlineStyle="width:inherit;">
+                  <amx:outputHtml id="oh3" styleClass="fa fa-trash fa-lg"/>
+                  <amx:setPropertyListener id="spl8" from="#{row.rowIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
+                </amx:commandLink>
               </amx:panelGroupLayout>
             </amx:cellFormat>
           </amx:rowLayout>
@@ -103,6 +109,13 @@
             </amx:cellFormat>
           </amx:rowLayout>
         </amx:tableLayout>
+        <amx:setPropertyListener id="spl1" from="#{row.rowIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
+        <amx:setPropertyListener id="spl7" from="#{row.lines}" to="#{pageFlowScope.lineAdd}"/>
+        <amx:setPropertyListener id="spl2" from="#{row.subInv}" to="#{pageFlowScope.subInvAdd}"/>
+        <amx:setPropertyListener id="spl3" from="#{row.locator}" to="#{pageFlowScope.locatorAdd}"/>
+        <amx:setPropertyListener id="spl4" from="#{row.quantity}" to="#{pageFlowScope.quantityAdd}"/>
+        <amx:setPropertyListener id="spl5" from="#{row.uom}" to="#{pageFlowScope.uomAdd}"/>
+        <amx:setPropertyListener id="spl6" from="#{row.lpn}" to="#{pageFlowScope.lpnAdd}"/>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>

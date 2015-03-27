@@ -101,6 +101,13 @@ public class SyncPreferencesDC extends SyncUtils {
             throw new RuntimeException("My Code Error " + e);
         }
     }
+    
+    public void syncAll(){
+        for(int i=0;i<filtered_syncLovs.size();i++){
+            SyncPreferencesBO syncPreferencesBO = (SyncPreferencesBO) filtered_syncLovs.get(i);
+            syncCard(syncPreferencesBO.getLovId(),syncPreferencesBO.getLovClassName(),syncPreferencesBO.getLovCollectVar(),syncPreferencesBO.getRowIdx());
+        }
+    }
 
     public void syncCard(String lovId, String lovDCClass, String lovCollectionVar,String rowIdx) {
         try {

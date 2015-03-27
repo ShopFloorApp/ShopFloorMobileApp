@@ -133,5 +133,20 @@
         <Item Value="UOM"/>
       </ListDisplayAttrNames>
     </list>
+    <attributeValues IterBinding="shipmentLinesIterator" id="qty">
+      <AttrNames>
+        <Item Value="qty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="subInv1">
+      <AttrNames>
+        <Item Value="subInv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="uom">
+      <AttrNames>
+        <Item Value="uom"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
