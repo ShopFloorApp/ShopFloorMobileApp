@@ -12,6 +12,11 @@
             <managed-bean-class>dcom.shop.Inquiry.SearchProductBean</managed-bean-class>
             <managed-bean-scope>application</managed-bean-scope>
         </managed-bean>
+        <managed-bean id="__54">
+            <managed-bean-name>BarcodeBean</managed-bean-name>
+            <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
+            <managed-bean-scope>view</managed-bean-scope>
+        </managed-bean>
         <view id="inquiry">
             <page>/dcom.shop.Inquiry/page/inquiry.amx</page>
         </view>
