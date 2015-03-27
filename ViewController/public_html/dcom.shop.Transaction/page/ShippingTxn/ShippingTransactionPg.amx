@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Shipping Transactions" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Back" action="backToTxn"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1" action="pickRelease">
+        <amx:outputText value="Pick Release" id="ot2"/>
+      </amx:listItem>
+      <amx:listItem id="li2" action="packAndDirectShip">
+        <amx:outputText value="Pack and Direct Ship" id="ot3"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

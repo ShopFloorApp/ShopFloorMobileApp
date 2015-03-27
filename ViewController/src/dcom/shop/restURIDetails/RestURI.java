@@ -21,7 +21,7 @@ public class RestURI {
     public static String PostOnHandInquiryURI() {
         return ONHAND_INQUIRY_URI;
     }
-    
+
     private static final String MTLTXN_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getmtltxn/";
 
     public static String PostMtlTxnInquiryURI() {
@@ -68,7 +68,12 @@ public class RestURI {
 
     public static String PostLpnDetailsURI() {
         return LPN_DETAILS_URI;
+    }
 
+    private static final String DOCKDOOR_DETAILS_URI = "/webservices/rest/DCOMInquiry/getdockdoor/";
+
+    public static String PostDockDoorDetailsURI() {
+        return DOCKDOOR_DETAILS_URI;
     }
     private static final String LPN_INQUIRY_URI = "/webservices/rest/DCOMShip/getlpn/";
 

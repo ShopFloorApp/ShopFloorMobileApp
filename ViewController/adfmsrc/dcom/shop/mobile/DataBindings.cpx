@@ -2,11 +2,10 @@
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.36" id="DataBindings"
              SeparateXMLFiles="false" Package="dcom.shop.mobile" ClientType="Generic">
     <pageMap>
+        <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Inquiry/page/itemUDA.amx" usageId="dcom_shop_mobile_itemUDAPageDef"/>
         <page path="/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx"
               usageId="dcom_shop_mobile_lineDetailsPageDef"/>
-        <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
-        <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/page/syncPrefPG.amx" usageId="dcom_shop_mobile_syncPrefPGPageDef"/>
         <page path="/page/LovPage/WarehouseLov.amx" usageId="dcom_shop_mobile_WarehouseLovPageDef"/>
         <page path="/page/LovPage/SubinventoryLov.amx" usageId="dcom_shop_mobile_SubinventoryLovPageDef"/>
@@ -95,9 +94,11 @@
               usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
         <page path="/dcom.shop.Request/page/requestSelect.amx" usageId="dcom_shop_mobile_requestSelectPageDef"/>
         <page path="/dcom.shop.DispatchList/page/moveAssembly.amx" usageId="dcom_shop_mobile_moveAssemblyPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/PackAndDirectShip.amx"
+              usageId="dcom_shop_mobile_PackAndDirectShipPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
-        <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
               path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -170,13 +171,17 @@
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
         <page id="dcom_shop_mobile_requestSelectPageDef" path="dcom.shop.Request.page.requestSelectPageDef"/>
+        <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
+        <page id="dcom_shop_mobile_PackAndDirectShipPageDef"
+              path="dcom.shop.Transaction.page.ShippingTxn.PackAndDirectShipPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
-        <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
         <dc id="ProductUdaDC" path="dcom.shop.mobile.ProductUdaDC"/>
         <dc id="ProductCategDC" path="dcom.shop.mobile.ProductCategDC"/>
         <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
         <dc id="MtlTxnSearchDC" path="dcom.shop.mobile.MtlTxnSearchDC"/>
+        <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
+        <dc id="PackAndDirectShipDC" path="dcom.shop.mobile.PackAndDirectShipDC"/>
         <dc id="OnHandSearchDC" path="dcom.shop.mobile.OnHandSearchDC"/>
         <dc id="SerialDC" path="dcom.shop.mobile.SerialDC"/>
         <dc id="OnHandDetailsDC" path="dcom.shop.mobile.OnHandDetailsDC"/>

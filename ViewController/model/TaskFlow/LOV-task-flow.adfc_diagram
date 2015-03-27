@@ -65,7 +65,7 @@
       <property
          name="fromOutcome">goToSubinventory</property>
       <property
-         name="sdm:polyPoints">B72,296.27225,217.82057,552.77124,381.0459,L50</property>
+         name="sdm:polyPoints">B67,293.5,216.89648,553.6953,381.0459,L50</property>
    </ControlFlowCase>
    <View
       id="View8">
@@ -90,7 +90,7 @@
       <property
          name="fromOutcome">goToCategorySet</property>
       <property
-         name="sdm:polyPoints">B57,287.42407,221.54156,417.03027,420.71945,T50</property>
+         name="sdm:polyPoints">B56,286.5,219.84749,417.03027,421.64355,T50</property>
    </ControlFlowCase>
    <View
       id="View10">
@@ -115,7 +115,7 @@
       <property
          name="fromOutcome">goToCostGroups</property>
       <property
-         name="sdm:polyPoints">B43,278.57593,219.88062,263.00003,426.81714,T50</property>
+         name="sdm:polyPoints">B44,279.5,218.53716,263.0,427.7412,T50</property>
    </ControlFlowCase>
    <View
       id="View12">
@@ -140,7 +140,7 @@
       <property
          name="fromOutcome">goToResources</property>
       <property
-         name="sdm:polyPoints">B28,269.72775,217.82057,77.35254,401.12186,T50</property>
+         name="sdm:polyPoints">B33,272.5,216.89648,77.35254,402.0459,T50</property>
    </ControlFlowCase>
    <View
       id="View14">
@@ -165,6 +165,6 @@
       <property
          name="fromOutcome">goToRequisitionNumber</property>
       <property
-         name="sdm:polyPoints">L50,241.07591,162.89648,95.92409,249.5459,R50</property>
+         name="sdm:polyPoints">L50,242.0,162.89648,95.0,249.5459,R50</property>
    </ControlFlowCase>
 </SDM>
