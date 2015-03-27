@@ -30,6 +30,12 @@
     <view id="dockLOV">
       <page>/dcom.shop.Transaction/page/ShippingTxn/dockLOV.amx</page>
     </view>
+    <view id="quickShip">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/quickShip.amx</page>
+    </view>
+    <view id="deliveryLOVPG">
+      <page>/page/LovPage/deliveryLOVPG.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
       <control-flow-case id="__10">
@@ -57,6 +63,10 @@
       <control-flow-case id="__16">
         <from-outcome>lpnShip</from-outcome>
         <to-activity-id>LPNship</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>quickShip</from-outcome>
+        <to-activity-id>quickShip</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__12">
@@ -86,6 +96,24 @@
       <control-flow-case id="__15">
         <from-outcome>Back</from-outcome>
         <to-activity-id>LPNship</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>quickShip</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>quickShipBack</from-outcome>
+        <to-activity-id>__ShippingTransactions2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome>delvLov</from-outcome>
+        <to-activity-id>deliveryLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id>deliveryLOVPG</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome>backToPage</from-outcome>
+        <to-activity-id>quickShip</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>
