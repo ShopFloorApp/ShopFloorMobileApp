@@ -1,60 +1,59 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <SDM>
    <OverallProperties
-      id="OverallProperties1"/>
+      id="OverallProperties1">
+      <property
+         name="y">434.20117</property>
+      <property
+         name="x">88.01758</property>
+   </OverallProperties>
    <View
       id="View2">
+      <property
+         name="activityId">LPNship</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ShippingTxn/LPNship.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LPNship&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">266.5</property>
+      <property
+         name="x">645.14453</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">DocumentNo</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DocumentNo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">266.5</property>
+      <property
+         name="x">88.01758</property>
+   </View>
+   <View
+      id="View4">
       <property
          name="activityId">PickRelease</property>
       <property
          name="page">/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx</property>
       <property
-         name="start">false</property>
-      <property
          name="description">&lt;html>&lt;p>&lt;b>PickRelease&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">182.39648</property>
+         name="y">266.5</property>
       <property
-         name="x">593.34863</property>
+         name="x">267.53516</property>
    </View>
-   <TaskFlowReturn
-      id="TaskFlowReturn5">
-      <property
-         name="activityId">taskFlowReturn1</property>
-      <property
-         name="finish">true</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>taskFlowReturn1&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  taskFlowReturn1&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">57.24707</property>
-      <property
-         name="x">327.0</property>
-   </TaskFlowReturn>
-   <WildcardControlFlowRule
-      id="WildcardControlFlowRule6">
-      <property
-         name="activityId">*</property>
-      <property
-         name="y">70.59766</property>
-      <property
-         name="x">131.0</property>
-   </WildcardControlFlowRule>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase7"
-      from="WildcardControlFlowRule6"
-      to="TaskFlowReturn5">
-      <property
-         name="fromOutcome">backToTxn</property>
-      <property
-         name="sdm:polyPoints">R50,167.0,71.03125,286.0,57.180664,L50</property>
-   </ControlFlowCase>
    <View
-      id="View10">
+      id="View5">
       <property
          name="activityId">__ShippingTransactions2</property>
       <property
@@ -66,102 +65,38 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">284.39648</property>
+         name="y">274.1494</property>
       <property
-         name="x">430.8047</property>
+         name="x">466.83984</property>
    </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase11"
-      from="View10"
-      to="View2">
-      <property
-         name="fromOutcome">pickRel</property>
-      <property
-         name="sdm:polyPoints">R46,471.8047,280.5459,548.9569,178.5459,L46</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase12"
-      from="View2"
-      to="View10">
-      <property
-         name="fromOutcome">backToShipT</property>
-      <property
-         name="sdm:polyPoints">L54,552.34863,185.5459,475.24164,287.5459,R54</property>
-   </ControlFlowCase>
    <View
-      id="View13">
+      id="View6">
       <property
-         name="activityId">LPNship</property>
+         name="activityId">dockLOV</property>
       <property
-         name="page">/dcom.shop.Transaction/page/ShippingTxn/LPNship.amx</property>
+         name="page">/dcom.shop.Transaction/page/ShippingTxn/dockLOV.amx</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>LPNship&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>dockLOV&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">219.09766</property>
+         name="y">180.14941</property>
       <property
-         name="x">279.5</property>
+         name="x">786.3301</property>
    </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase15"
-      from="View13"
-      to="View10">
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule7">
       <property
-         name="fromOutcome">backToShipT</property>
+         name="activityId">*</property>
       <property
-         name="sdm:polyPoints">R46,323.31982,215.53125,389.8047,280.83008,L46</property>
-   </ControlFlowCase>
+         name="srcid">__3</property>
+      <property
+         name="y">91.649414</property>
+      <property
+         name="x">88.01758</property>
+   </WildcardControlFlowRule>
    <View
-      id="View16">
-      <property
-         name="activityId">DocumentNo</property>
-      <property
-         name="page">/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>DocumentNo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">166.39648</property>
-      <property
-         name="x">741.0156</property>
-   </View>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase17"
-      from="View2"
-      to="View16">
-      <property
-         name="fromOutcome">pickRLov</property>
-      <property
-         name="sdm:polyPoints">R46,634.34863,178.83008,699.16986,162.83008,L46</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase18"
-      from="View16"
-      to="View2">
-      <property
-         name="fromOutcome">back</property>
-      <property
-         name="sdm:polyPoints">L54,700.0156,169.83008,635.18915,185.83008,R54</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase23"
-      from="View10"
-      to="View13">
-      <property
-         name="fromOutcome">lpnShip</property>
-      <property
-         name="sdm:polyPoints">L54,387.02646,287.5459,320.5,222.24707,R54</property>
-   </ControlFlowCase>
-   <View
-      id="View20">
+      id="View8">
       <property
          name="activityId">LpnLOVPG</property>
       <property
@@ -171,28 +106,163 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">230.09766</property>
+         name="y">352.8506</property>
       <property
-         name="x">144.68555</property>
+         name="x">786.3301</property>
    </View>
+   <TaskFlowReturn
+      id="TaskFlowReturn9">
+      <property
+         name="activityId">taskFlowReturn1</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>taskFlowReturn1&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  taskFlowReturn1&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">98.79883</property>
+      <property
+         name="x">267.53516</property>
+   </TaskFlowReturn>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase21"
-      from="View13"
-      to="View20">
+      id="ControlFlowCase10"
+      from="WildcardControlFlowRule7"
+      to="TaskFlowReturn9">
       <property
-         name="fromOutcome">lpn</property>
+         name="fromOutcome">backToTxn</property>
       <property
-         name="sdm:polyPoints">L46,237.77878,215.53125,185.68555,226.53125,R46</property>
+         name="tosrcid">__4</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">R50,124.01758,91.79883,226.53516,98.44824,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase22"
-      from="View20"
-      to="View13">
+      id="ControlFlowCase11"
+      from="View5"
+      to="View2">
+      <property
+         name="fromOutcome">lpnShip</property>
+      <property
+         name="tosrcid">__16</property>
+      <property
+         name="fromsrcid">__8</property>
+      <property
+         name="sdm:polyPoints">R46,507.83984,270.29883,603.86694,262.6494,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase12"
+      from="View8"
+      to="View2">
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">R54,186.41167,233.53125,238.5,222.53125,L54</property>
+         name="tosrcid">__15</property>
+      <property
+         name="fromsrcid">__14</property>
+      <property
+         name="sdm:polyPoints">L46,745.3301,349.0,689.74664,266.1494,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase13"
+      from="View2"
+      to="View5">
+      <property
+         name="fromOutcome">backToShipT</property>
+      <property
+         name="tosrcid">__13</property>
+      <property
+         name="fromsrcid">__12</property>
+      <property
+         name="sdm:polyPoints">L54,604.14453,269.6494,508.1178,277.29883,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase14"
+      from="View3"
+      to="View4">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="tosrcid">__6</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">R46,129.01758,262.6494,226.53516,262.6494,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View2"
+      to="View6">
+      <property
+         name="fromOutcome">dock</property>
+      <property
+         name="tosrcid">__17</property>
+      <property
+         name="fromsrcid">__12</property>
+      <property
+         name="sdm:polyPoints">R42,686.14453,259.1494,745.3301,179.79883,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase16"
+      from="View4"
+      to="View5">
+      <property
+         name="fromOutcome">backToShipT</property>
+      <property
+         name="tosrcid">__10</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">R46,308.76315,262.6494,425.83984,270.29883,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View5"
+      to="View4">
+      <property
+         name="fromOutcome">pickRel</property>
+      <property
+         name="tosrcid">__9</property>
+      <property
+         name="fromsrcid">__8</property>
+      <property
+         name="sdm:polyPoints">L54,425.61163,277.29883,308.53516,269.6494,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View2"
+      to="View8">
+      <property
+         name="fromOutcome">lpn</property>
+      <property
+         name="tosrcid">__11</property>
+      <property
+         name="fromsrcid">__12</property>
+      <property
+         name="sdm:polyPoints">R58,686.14453,273.1494,741.6625,356.0,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase19"
+      from="View4"
+      to="View3">
+      <property
+         name="fromOutcome">pickRLov</property>
+      <property
+         name="tosrcid">__2</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">L54,226.53516,269.6494,129.01758,269.6494,R54</property>
    </ControlFlowCase>
 </SDM>
