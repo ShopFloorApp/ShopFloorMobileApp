@@ -6,13 +6,14 @@
             <amx:outputText value="Move Assembly" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="back">
+            <amx:commandLink id="cl1" action="backToWorkContent">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;">
                 <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="MOVE_ASSEMBLY"/>
             </amx:commandLink>
         </amx:facet>
         <amx:tableLayout id="tl1" styleClass="tableHeader1">
@@ -23,8 +24,19 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
-            <amx:inputText value="#{bindings.fromOpSeq.inputValue}" label="#{bindings.fromOpSeq.hints.label}" id="it6"/>
-            <amx:inputText value="#{bindings.fromStep.inputValue}" label="#{bindings.fromStep.hints.label}" id="it5"/>
+            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc1">
+                <amx:selectItem label="Choose" id="si5" value="0"/>
+                <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
+            </amx:selectOneChoice>
+            <amx:panelLabelAndMessage label="Code" id="plam1">
+                <amx:outputText id="ot5" value="#{bindings.fromOpCode.inputValue}"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Department" id="plam2">
+                <amx:outputText value="#{bindings.fromDept.inputValue}" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}">
+                <amx:selectItems id="si2" value="#{bindings.fromStep.items}"/>
+            </amx:selectOneChoice>
         </amx:panelFormLayout>
         <amx:tableLayout id="tl2" styleClass="tableHeader1">
             <amx:rowLayout id="rl2">
@@ -34,8 +46,19 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-            <amx:inputText value="#{bindings.toOpSeq.inputValue}" label="#{bindings.toOpSeq.hints.label}" id="it4"/>
-            <amx:inputText value="#{bindings.toStep.inputValue}" label="#{bindings.toStep.hints.label}" id="it2"/>
+            <amx:selectOneChoice label="Sequence" id="soc3" value="#{bindings.toOpSeq.inputValue}">
+                <amx:selectItem label="Choose" id="si6" value="0"/>
+                <amx:selectItems id="si4" value="#{bindings.toOpSeq.items}"/>
+            </amx:selectOneChoice>
+            <amx:panelLabelAndMessage label="Code" id="plam3">
+                <amx:outputText id="ot7" value="#{bindings.toOpCode.inputValue}"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Department" id="plam4">
+                <amx:outputText value="#{bindings.toDept.inputValue}" id="ot8"/>
+            </amx:panelLabelAndMessage>
+            <amx:selectOneChoice label="Step" id="soc4" value="#{bindings.toStep.inputValue}">
+                <amx:selectItems id="si3" value="#{bindings.toStep.items}"/>
+            </amx:selectOneChoice>
         </amx:panelFormLayout>
         <amx:tableLayout id="tl3" styleClass="tableHeader1">
             <amx:rowLayout id="rl3">
@@ -45,11 +68,14 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl3" labelPosition="topStart">
-            <amx:inputText value="#{bindings.txnUom.inputValue}" label="#{bindings.txnUom.hints.label}" id="it3"/>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="#{bindings.trxQty.hints.label}" id="it1"/>
-            <amx:inputText value="#{bindings.scrapQty.inputValue}" label="#{bindings.scrapQty.hints.label}" id="it7"/>
-            <amx:inputText value="#{bindings.overComplFlag.inputValue}" label="#{bindings.overComplFlag.hints.label}"
-                           id="it8"/>
+            <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it3"/>
+            <amx:panelLabelAndMessage label="Available" id="plam5">
+                <amx:outputText value="#{pageFlowScope.availableQty}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Move Quantity" id="it1"/>
+            <amx:inputText value="#{bindings.scrapQty.inputValue}" label="Scrap Quantity" id="it7"/>
+            <amx:selectBooleanCheckbox id="sbc1" value="#{bindings.overComplFlag.inputValue}"
+                                       text="Over complete assembly" simple="true"/>
         </amx:panelFormLayout>
     </amx:panelPage>
 </amx:view>

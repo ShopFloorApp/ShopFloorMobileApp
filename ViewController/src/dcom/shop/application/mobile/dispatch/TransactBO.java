@@ -33,7 +33,7 @@ public class TransactBO {
     private String toStep;
     private String overComplFlag;
     private BigDecimal fromOpSeq;
-    private String toOpSeq;
+    private BigDecimal toOpSeq;
     private String createdBy;
     private String salesOrder;
     private String notes;
@@ -43,10 +43,54 @@ public class TransactBO {
     private Serials lots;
     private Lots serials;
     private Boolean isNewEntity;
+    private String fromOpCode;
+    private String toOpCode;
+    private String fromDept;
+    private String toDept;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public TransactBO() {
         super();
+    }
+
+    public void setFromDept(String fromDept) {
+        String oldFromDept = this.fromDept;
+        this.fromDept = fromDept;
+        propertyChangeSupport.firePropertyChange("fromDept", oldFromDept, fromDept);
+    }
+
+    public String getFromDept() {
+        return fromDept;
+    }
+
+    public void setToDept(String toDept) {
+        String oldToDept = this.toDept;
+        this.toDept = toDept;
+        propertyChangeSupport.firePropertyChange("toDept", oldToDept, toDept);
+    }
+
+    public String getToDept() {
+        return toDept;
+    }
+
+    public void setFromOpCode(String fromOpCode) {
+        String oldFromOpCode = this.fromOpCode;
+        this.fromOpCode = fromOpCode;
+        propertyChangeSupport.firePropertyChange("fromOpCode", oldFromOpCode, fromOpCode);
+    }
+
+    public String getFromOpCode() {
+        return fromOpCode;
+    }
+
+    public void setToOpCode(String toOpCode) {
+        String oldToOpCode = this.toOpCode;
+        this.toOpCode = toOpCode;
+        propertyChangeSupport.firePropertyChange("toOpCode", oldToOpCode, toOpCode);
+    }
+
+    public String getToOpCode() {
+        return toOpCode;
     }
 
     public void setIsNewEntity(Boolean isNewEntity) {
@@ -325,13 +369,14 @@ public class TransactBO {
         return fromOpSeq;
     }
 
-    public void setToOpSeq(String toOpSeq) {
-        String oldToOpSeq = this.toOpSeq;
+
+    public void setToOpSeq(BigDecimal toOpSeq) {
+        BigDecimal oldToOpSeq = this.toOpSeq;
         this.toOpSeq = toOpSeq;
         propertyChangeSupport.firePropertyChange("toOpSeq", oldToOpSeq, toOpSeq);
     }
 
-    public String getToOpSeq() {
+    public BigDecimal getToOpSeq() {
         return toOpSeq;
     }
 

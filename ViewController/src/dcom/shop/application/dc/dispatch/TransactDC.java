@@ -22,6 +22,7 @@ public class TransactDC {
     }
     
     public String saveTransaction(TransactBO transactBo){
+        //Reset #{pageFlowScope.serviceResponse} variable
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();

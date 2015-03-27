@@ -11,7 +11,7 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.LoadLov" name="LoadLov">
+    <adfmf:feature id="dcom.shop.LoadLov" name="LoadLov" securityEnabled="false">
         <adfmf:content id="dcom.shop.LoadLov.1">
             <adfmf:amx file="page/LovFragmentTest.amx">
                 <adfmf:includes>
@@ -21,12 +21,12 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.subInventryTrsf" name="subInventryTrsf">
+    <adfmf:feature id="dcom.shop.subInventryTrsf" name="subInventryTrsf" securityEnabled="false">
         <adfmf:content id="dcom.shop.subInventryTrsf.1">
             <adfmf:amx file="page/SubInventoryTrsf.amx"/>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.DispatchList" name="Dispatch List" securityEnabled="false">
+    <adfmf:feature id="dcom.shop.DispatchList" name="Dispatch List" securityEnabled="true">
         <adfmf:content id="dcom.shop.DispatchList.1">
             <adfmf:amx file="dcom.shop.DispatchList/dispatch.xml#dispatch">
                 <adfmf:includes>
@@ -36,7 +36,7 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Transaction" name="Transaction">
+    <adfmf:feature id="dcom.shop.Transaction" name="Transaction" securityEnabled="false">
         <adfmf:content id="dcom.shop.Transaction.1">
             <adfmf:constraints>
                 <adfmf:constraint property="device.os" operator="equal" value="Android" id="c2"/>
@@ -67,7 +67,7 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Inquiry" name="Inquiry">
+    <adfmf:feature id="dcom.shop.Inquiry" name="Inquiry" securityEnabled="false">
         <adfmf:content id="dcom.shop.Inquiry.1">
             <adfmf:amx file="dcom.shop.Inquiry/inquiryTf.xml#inquiryTf">
                 <adfmf:includes/>

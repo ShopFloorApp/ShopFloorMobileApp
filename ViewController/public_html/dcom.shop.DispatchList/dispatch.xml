@@ -72,6 +72,9 @@
         <view id="ItemLOV">
             <page>/page/LovPage/itemLOVPG.amx</page>
         </view>
+        <view id="DocumentNo">
+            <page>/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>dispatchList</from-activity-id>
             <control-flow-case id="__2">
@@ -184,19 +187,16 @@
                 <to-activity-id>components</to-activity-id>
             </control-flow-case>
             <control-flow-case id="__12">
-                <from-outcome>back</from-outcome>
+                <from-outcome>backToWorkContent</from-outcome>
                 <to-activity-id>workContent</to-activity-id>
             </control-flow-case>
             <control-flow-case id="__11">
                 <from-outcome>ItemLOV</from-outcome>
                 <to-activity-id>ItemLOV</to-activity-id>
             </control-flow-case>
-        </control-flow-rule>
-        <control-flow-rule id="__35">
-            <from-activity-id>ItemLOV</from-activity-id>
-            <control-flow-case id="__36">
-                <from-outcome>Back</from-outcome>
-                <to-activity-id>transactComponent</to-activity-id>
+            <control-flow-case id="__37">
+                <from-outcome>pickRLov</from-outcome>
+                <to-activity-id>DocumentNo</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>

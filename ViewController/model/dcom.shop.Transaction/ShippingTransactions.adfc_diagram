@@ -51,7 +51,7 @@
       <property
          name="fromOutcome">backToTxn</property>
       <property
-         name="sdm:polyPoints">R50,167.0,70.74707,286.0,56.896484,L50</property>
+         name="sdm:polyPoints">R50,167.0,71.03125,286.0,57.180664,L50</property>
    </ControlFlowCase>
    <View
       id="View10">
@@ -113,7 +113,7 @@
       <property
          name="fromOutcome">backToShipT</property>
       <property
-         name="sdm:polyPoints">R46,323.31982,215.24707,389.8047,280.5459,L46</property>
+         name="sdm:polyPoints">R46,323.31982,215.53125,389.8047,280.83008,L46</property>
    </ControlFlowCase>
    <View
       id="View16">
@@ -138,7 +138,7 @@
       <property
          name="fromOutcome">pickRLov</property>
       <property
-         name="sdm:polyPoints">R46,634.34863,178.5459,699.16986,162.5459,L46</property>
+         name="sdm:polyPoints">R46,634.34863,178.83008,699.16986,162.83008,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -148,7 +148,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L54,700.0156,169.5459,635.18915,185.5459,R54</property>
+         name="sdm:polyPoints">L54,700.0156,169.83008,635.18915,185.83008,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -183,7 +183,7 @@
       <property
          name="fromOutcome">lpn</property>
       <property
-         name="sdm:polyPoints">L50,238.5,218.74707,185.68555,229.74707,R50</property>
+         name="sdm:polyPoints">L46,237.77878,215.53125,185.68555,226.53125,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -193,6 +193,6 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">R54,186.41167,233.24707,238.5,222.24707,L54</property>
+         name="sdm:polyPoints">R54,186.41167,233.53125,238.5,222.53125,L54</property>
    </ControlFlowCase>
 </SDM>

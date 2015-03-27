@@ -1,11 +1,13 @@
 package dcom.shop.application.mobile.dispatch;
 
+import dcom.shop.application.base.AEntity;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class OpSeqBO {
+public class OpSeqBO extends AEntity{
     private String orgCode;
     private BigDecimal opSeq;
     private String oPcode;
@@ -46,6 +48,7 @@ public class OpSeqBO {
 
 
     public void setOPcode(String oPcode) {
+        oPcode= getAttributeValue(oPcode);
         String oldOPcode = this.oPcode;
         this.oPcode = oPcode;
         propertyChangeSupport.firePropertyChange("oPcode", oldOPcode, oPcode);
@@ -56,6 +59,7 @@ public class OpSeqBO {
     }
 
     public void setDeptCode(String deptCode) {
+        deptCode= getAttributeValue(deptCode);
         String oldDeptCode = this.deptCode;
         this.deptCode = deptCode;
         propertyChangeSupport.firePropertyChange("deptCode", oldDeptCode, deptCode);

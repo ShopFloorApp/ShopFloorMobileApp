@@ -7,21 +7,14 @@
     <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
     <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
                       BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="OpSeqDC" id="OpSeqDCIterator"/>
+    <accessorIterator MasterBinding="OpSeqDCIterator" Binds="opSeq" RangeSize="-1" DataControl="OpSeqDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.OpSeqBO" id="opSeqIterator"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="transactIterator" id="scrapQty">
       <AttrNames>
         <Item Value="scrapQty"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="fromStep">
-      <AttrNames>
-        <Item Value="fromStep"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="toStep">
-      <AttrNames>
-        <Item Value="toStep"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="transactIterator" id="overComplFlag">
@@ -39,21 +32,82 @@
         <Item Value="txnUom"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="fromOpSeq">
-      <AttrNames>
-        <Item Value="fromOpSeq"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="toOpSeq">
-      <AttrNames>
-        <Item Value="toOpSeq"/>
-      </AttrNames>
-    </attributeValues>
     <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
                   IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"
                   ReturnName="data.TransactDC.methodResults.saveTransaction_TransactDC_dataProvider_saveTransaction_result">
       <NamedData NDName="transactBo" NDValue="#{bindings.transactIterator.currentRow.dataProvider}"
                  NDType="dcom.shop.application.mobile.dispatch.TransactBO"/>
     </methodAction>
+    <list IterBinding="transactIterator" id="fromOpSeq" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="opSeqIterator">
+      <AttrNames>
+        <Item Value="fromOpSeq"/>
+        <Item Value="fromDept"/>
+        <Item Value="fromOpCode"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="opSeq"/>
+        <Item Value="deptCode"/>
+        <Item Value="OPcode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="opSeq"/>
+      </ListDisplayAttrNames>
+    </list>
+    <attributeValues IterBinding="transactIterator" id="fromOpCode">
+      <AttrNames>
+        <Item Value="fromOpCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="toOpCode">
+      <AttrNames>
+        <Item Value="toOpCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="fromDept">
+      <AttrNames>
+        <Item Value="fromDept"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="transactIterator" id="toDept">
+      <AttrNames>
+        <Item Value="toDept"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="transactIterator" StaticList="true" id="fromStep">
+      <AttrNames>
+        <Item Value="fromStep"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Queue"/>
+        <Item Value="Run"/>
+        <Item Value="In Move"/>
+      </ValueList>
+    </list>
+    <list IterBinding="transactIterator" StaticList="true" id="toStep">
+      <AttrNames>
+        <Item Value="toStep"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Queue"/>
+        <Item Value="Run"/>
+        <Item Value="In Move"/>
+      </ValueList>
+    </list>
+    <list StaticList="false" IterBinding="transactIterator" ListIter="opSeqIterator" id="toOpSeq">
+      <AttrNames>
+        <Item Value="toOpSeq"/>
+        <Item Value="toDept"/>
+        <Item Value="toOpCode"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="opSeq"/>
+        <Item Value="deptCode"/>
+        <Item Value="OPcode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="opSeq"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>
