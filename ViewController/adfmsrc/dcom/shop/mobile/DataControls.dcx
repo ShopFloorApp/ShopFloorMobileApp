@@ -467,6 +467,7 @@
             </definition>
         </Source>
     </AdapterDataControl-->
+    <AdapterDataControl id="LpnSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
      <AdapterDataControl id="LpnSearchDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
                         ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
                         SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
@@ -534,6 +535,7 @@
             </definition>
         </Source>
     </AdapterDataControl-->
+    <AdapterDataControl id="JobOperationDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
    <AdapterDataControl id="JobOperationDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
                         ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
                         SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
@@ -775,6 +777,7 @@
                        EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
+
   <AdapterDataControl id="PackAndDirectShipDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
                       ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
                       SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
@@ -784,6 +787,17 @@
                       xmlns="http://xmlns.oracle.com/adfm/datacontrol">
     <Source>
       <bean-definition BeanClass="dcom.shop.application.dc.PackAndDirectShipDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+ <AdapterDataControl id="DeliveryDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="dcom.shop.application.dc.DeliveryDC"
+                      BeanClass="dcom.shop.application.dc.DeliveryDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="dcom.shop.application.dc.DeliveryDC"
                        DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
                        EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>

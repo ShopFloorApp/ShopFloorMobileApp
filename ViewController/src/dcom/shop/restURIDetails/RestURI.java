@@ -22,6 +22,18 @@ public class RestURI {
         return ONHAND_INQUIRY_URI;
     }
 
+    private static final String DELIVERY_INQUIRY_URI = "/webservices/rest/DCOMShip/getdelivery/";
+
+    public static String PostDeliveryInquiryURI() {
+        return DELIVERY_INQUIRY_URI;
+    }
+    
+    private static final String QUICK_SHIP_URI = "/webservices/rest/DCOMShip/quickship/";
+
+    public static String PostQuickShipURI() {
+        return QUICK_SHIP_URI;
+    }
+    
     private static final String MTLTXN_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getmtltxn/";
 
     public static String PostMtlTxnInquiryURI() {

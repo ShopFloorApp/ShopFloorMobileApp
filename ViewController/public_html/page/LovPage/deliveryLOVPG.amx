@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+     <amx:commandLink id="cb3" action="__back">
+                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2" rendered="false"/>
+    </amx:facet>
+    <amx:facet name="footer">
+            <amx:outputText value="Select a delivery" id="ot2"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1">
+            <amx:inputText value="#{pageFlowScope.delvName}" label="Delivery Name" id="it1"/>
+          
+        </amx:panelFormLayout>
+        <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
+            <amx:commandLink id="cl12" actionListener="#{bindings.refresh.execute}" >
+                <amx:tableLayout id="tl2" width="100%">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat id="cf12" width="40%">
+                            <amx:spacer width="50" id="s1"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf8" width="10%">
+                            <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf9">
+                            <amx:outputText value="Search" id="ot7"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
+           
+        </amx:panelLabelAndMessage>
+         
+        <amx:outputText id="ot3" value="#{pageFlowScope.DeliveryServiceResults}"/>
+        
+        <amx:listView var="row" value="#{bindings.deliveryDetails.collectionModel}"
+                      fetchSize="#{bindings.deliveryDetails.rangeSize}"
+                      selectedRowKeys="#{bindings.deliveryDetails.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.deliveryDetails.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" 
+                     layout="cards"
+                      bufferStrategy="viewport" id="lv1">
+            <amx:listItem id="li1" action="backToPage" 
+           
+                showLinkIcon="false">
+                <amx:tableLayout width="100%" id="tl1">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf2">
+                         
+                                 <amx:outputText value="#{row.DLVNAME}" id="ot4" 
+                                 inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText"/>
+         
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                        </amx:rowLayout>
+                        </amx:tableLayout>
+            
+               
+                <amx:setPropertyListener from="#{row.DLVNAME}" type="action" to="#{pageFlowScope.dlvNumber}"
+                                         id="spl1"/>
+                <amx:setPropertyListener from="#{row.GROSSWEIGHT}" type="action" to="#{pageFlowScope.grossWt}"
+                                         id="spl2"/>
+                <amx:setPropertyListener from="#{row.WEIGHTUOM}" type="action" to="#{pageFlowScope.wtUOM}"
+                                         id="spl3"/>
+                <amx:setPropertyListener from="#{row.WAYBILL}" type="action" to="#{pageFlowScope.waybill}"
+                                         id="spl4"/>
+                <amx:setPropertyListener from="#{row.SHIPMETHODCODE}" type="action" to="#{pageFlowScope.shipMthCode}"
+                                         id="spl5"/>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
+</amx:view>
