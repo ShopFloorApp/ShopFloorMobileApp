@@ -27,6 +27,9 @@
     <view id="LpnLOVPG">
       <page>/page/LovPage/LpnLOVPG.amx</page>
     </view>
+    <view id="dockLOV">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/dockLOV.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
       <control-flow-case id="__10">
@@ -65,6 +68,10 @@
       <control-flow-case id="__11">
         <from-outcome>lpn</from-outcome>
         <to-activity-id>LpnLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>dock</from-outcome>
+        <to-activity-id>dockLOV</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__5">
