@@ -14,13 +14,24 @@
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-            <amx:panelLabelAndMessage label="Item Number" inlineStyle="text-align:center;" id="plam33">
-                <amx:panelGroupLayout id="pgl1">
-                    <amx:inputText hintText="Item Number" id="it2" value="#{pageFlowScope.searchKeyword}"
-                                   required="true"/>
-                    <amx:commandLink id="cb3" action="ItemLOV">
-                        <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                        <amx:setPropertyListener id="spl3" from="onHand" to="#{pageFlowScope.ItemLovPage}"
+            <amx:panelLabelAndMessage label="Item Number" id="plm1">
+                <amx:spacer width="10" id="s11"/>
+                <amx:panelGroupLayout layout="horizontal" id="pgl6">
+                    <amx:spacer width="10" id="s12"/>
+                    <amx:panelGroupLayout layout="horizontal"
+                                          inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
+                                          id="pgl7">
+                        <amx:inputText hintText="Item Number" inlineStyle="text-align:left;" id="it6"
+                                       value="#{pageFlowScope.searchKeyword}"/>
+                        <amx:commandLink id="cl12" action="ItemLOV">
+                            <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
+                        <amx:spacer width="10" id="s13"/>
+                    </amx:panelGroupLayout>
+                    <amx:spacer width="10" id="s14"/>
+                    <amx:commandLink id="cl13" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
+                        <amx:outputHtml id="oh11" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC; "/>
+                        <amx:setPropertyListener id="spl11" from="Item" to="#{pageFlowScope.barCodeField}"
                                                  type="action"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>

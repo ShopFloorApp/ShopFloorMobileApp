@@ -21,18 +21,26 @@
             <amx:listItem id="li1" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl">
                     <amx:rowLayout id="rl">
-                        <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
-                        <amx:cellFormat width="50%" height="28px" id="cf4">
-                            <amx:outputText value="#{row.CATNAME}" id="ot2"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="r2">
-                        <amx:cellFormat width="50%" height="12px" id="cf1">
-                            <amx:outputText value="#{row.CATCODE}" styleClass="adfmf-listItem-captionText" id="ot3"/>
-                        </amx:cellFormat>
-                        <amx:cellFormat width="50%"  id="cf2">
-                            <amx:outputText value="#{row.CATDESC}" styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        <amx:cellFormat id="cf5" inlineStyle="margin-left:10px;" width="100%">
+                            <amx:tableLayout id="tl3" width="100%">
+                                <amx:rowLayout id="rl4">
+                                    <amx:cellFormat id="cf4" columnSpan="2">
+                                        <amx:outputText value='#{row.CATNAME}' id="ot4"
+                                                        inlineStyle="font-weight:bold;/>                                         "/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl1">
+                                    <amx:cellFormat id="cf1" columnSpan="2">
+                                        <amx:outputText value='#{row.CATCODE}' id="ot2"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl2">
+                                    <amx:cellFormat id="cf3" columnSpan="2">
+                                        <amx:outputText id="ot3" value="#{row.CATDESC}"
+                                                        inlineStyle="font-size:small; color:GrayText;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

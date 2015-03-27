@@ -30,15 +30,15 @@
                                                             inlineStyle="font-weight:bold;/>                                         "/>
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf9" columnSpan="1">
-                                            <amx:outputText id="ot7" value="{row.PRIMARYUOM}"/>
+                                            <amx:outputText id="ot7" value="#{row.PRIMARYUOM}"/>
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf6" columnSpan="1">
-                                            <amx:outputText id="ot5" value="{row.ITEMTYPE}"/>
+                                            <amx:outputText id="ot5" value="#{row.ITEMTYPE}"/>
                                         </amx:cellFormat>
                                     </amx:rowLayout>
                                     <amx:rowLayout id="rl1">
                                         <amx:cellFormat id="cf1" columnSpan="2">
-                                            <amx:outputText id="ot2" value="{row.ITEMDESC}"
+                                            <amx:outputText id="ot2" value="#{row.ITEMDESC}"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
                                     </amx:rowLayout>
@@ -48,7 +48,7 @@
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf3" columnSpan="1">
-                                            <amx:outputText id="ot3" value="{row.ITEMCATALOG}"
+                                            <amx:outputText id="ot3" value="#{row.ITEMCATALOG}"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
                                     </amx:rowLayout>
