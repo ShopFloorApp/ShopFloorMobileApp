@@ -15,7 +15,7 @@
       <amx:panelLabelAndMessage label="Dock Door" id="plam1">
         <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start" valign="baseline">
           <amx:inputText id="it1x"/>
-          <amx:commandLink id="cl4">
+          <amx:commandLink id="cl4" action="dock">
             <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg"/>
           </amx:commandLink>
         </amx:panelGroupLayout>
