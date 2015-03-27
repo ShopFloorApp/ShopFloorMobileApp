@@ -38,5 +38,9 @@
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="SubInventoryTxnDC"
                   InstanceName="data.SubInventoryTxnDC.dataProvider"/>
+    <methodAction id="DeleteTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="DeleteTransaction"
+                  IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider">
+      <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.Integer"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

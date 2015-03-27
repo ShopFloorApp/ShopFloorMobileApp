@@ -30,12 +30,6 @@
     <view id="LpnLOVPG">
       <page>/page/LovPage/LpnLOVPG.amx</page>
     </view>
-    <view id="SubinventoryLov">
-      <page>/page/LovPage/SubinventoryLov.amx</page>
-    </view>
-    <view id="LocatorLOVPG">
-      <page>/page/LovPage/LocatorLOVPG.amx</page>
-    </view>
     <view id="MaterialTransaction">
       <page>/dcom.shop.Transaction/page/MiscellaneousTransaction.amx</page>
     </view>
@@ -121,36 +115,9 @@
         <from-outcome>cancel</from-outcome>
         <to-activity-id>SubInventoryTxn</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__1">
-        <from-outcome>ItemLOV</from-outcome>
-        <to-activity-id>itemLOVPG</to-activity-id>
-      </control-flow-case>
       <control-flow-case id="__16">
         <from-outcome>lpnLOV</from-outcome>
         <to-activity-id>LpnLOVPG</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__18">
-        <from-outcome>Subinv</from-outcome>
-        <to-activity-id>SubinventoryLov</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__21">
-        <from-outcome>Locator</from-outcome>
-        <to-activity-id>LocatorLOVPG</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__30">
-        <from-outcome>SerialEntry</from-outcome>
-        <to-activity-id>SerialEntry</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__37">
-        <from-outcome>LotEntry</from-outcome>
-        <to-activity-id>LotEntry</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__2">
-      <from-activity-id>itemLOVPG</from-activity-id>
-      <control-flow-case id="__13">
-        <from-outcome>Back</from-outcome>
-        <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__14">
@@ -160,61 +127,14 @@
         <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__19">
-      <from-activity-id>SubinventoryLov</from-activity-id>
-      <control-flow-case id="__20">
-        <from-outcome>Back</from-outcome>
-        <to-activity-id>SubInventoryDetails</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__22">
-      <from-activity-id>LocatorLOVPG</from-activity-id>
-      <control-flow-case id="__23">
-        <from-outcome>Back</from-outcome>
-        <to-activity-id>SubInventoryDetails</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
     <control-flow-rule id="__25">
       <from-activity-id>MaterialTransaction</from-activity-id>
       <control-flow-case id="__26">
-        <from-outcome>Back</from-outcome>
+        <from-outcome>bMM</from-outcome>
         <to-activity-id>MaterialMovements</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__27">
-        <from-outcome>Subinv</from-outcome>
-        <to-activity-id>SubinventoryLov</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__28">
-        <from-outcome>Locator</from-outcome>
-        <to-activity-id>LocatorLOVPG</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__33">
-        <from-outcome>ItemLOV</from-outcome>
-        <to-activity-id>itemLOVPG</to-activity-id>
-      </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__31">
-      <from-activity-id>*</from-activity-id>
-      <control-flow-case id="__32">
-        <from-outcome>BackToPage</from-outcome>
-        <to-activity-id>MaterialTransaction</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__34">
-      <from-activity-id>SerialEntry</from-activity-id>
-      <control-flow-case id="__35">
-        <from-outcome>Back</from-outcome>
-        <to-activity-id>SubInventoryDetails</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__38">
-      <from-activity-id>LotEntry</from-activity-id>
-      <control-flow-case id="__39">
-        <from-outcome>Back</from-outcome>
-        <to-activity-id>SubInventoryDetails</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__40">
+     <control-flow-rule id="__40">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__41">
         <from-outcome>LotEntry</from-outcome>
@@ -223,6 +143,18 @@
       <control-flow-case id="__42">
         <from-outcome>SerialEntry</from-outcome>
         <to-activity-id>SerialEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome>BackToPage</from-outcome>
+        <to-activity-id>MaterialTransaction</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>ItemLOV</from-outcome>
+        <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__21">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>SubInventoryDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

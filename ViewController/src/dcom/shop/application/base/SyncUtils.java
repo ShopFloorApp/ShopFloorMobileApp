@@ -355,6 +355,55 @@ public class SyncUtils {
         }
     }
 
+    public boolean deleteSqlLiteTable(Class collectionClass, HashMap whereClause) {
+
+        Connection conn = null;
+        boolean update = false;
+        try {
+
+            conn = ConnectionFactory.getConnection();
+
+            Statement stmt = conn.createStatement();
+
+            System.out.println("Inside deleteSQLLiteTable");
+            String tableName = collectionClass.getName();
+            String tabName = tableName.substring(tableName.lastIndexOf(".") + 1, tableName.length() - 2);
+
+            StringBuffer query = new StringBuffer();
+            query.append("DELETE FROM " + tabName.toUpperCase() + " WHERE ");
+            StringBuffer where = new StringBuffer();
+            Iterator filterWhereClause = whereClause.entrySet().iterator();
+
+            while (filterWhereClause.hasNext()) {
+                Map.Entry entry = (Map.Entry) filterWhereClause.next();
+
+                String key = (String) entry.getKey();
+                System.out.println(" column name is " + key);
+                // String filtervalue = (String) entry.getValue();
+                String filtervalue = null;
+                if (entry.getValue().getClass().toString().contains("Integer")) {
+                    filtervalue = Integer.toString((Integer) entry.getValue());
+                } else {
+                    filtervalue = (String) entry.getValue();
+                }
+                where.append(key.toUpperCase() + " = " + filtervalue.toUpperCase() + " AND ");
+            }
+            String queryStmt = where.substring(0, where.length() - 4);
+            String finalQuery = query.toString() + queryStmt + ");";
+            int updateCount = stmt.executeUpdate(finalQuery);
+            if (updateCount > 0) {
+                update = true;
+            }
+
+
+            return update;
+
+
+        } catch (Exception aie) {
+            throw new RuntimeException(aie);
+        }
+    }
+
     public String toCamelCase(String s) {
         String finalString = s.substring(0, 1).toUpperCase() + s.substring(1);
         return finalString;

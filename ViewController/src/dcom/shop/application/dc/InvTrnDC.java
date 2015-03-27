@@ -29,6 +29,20 @@ public class InvTrnDC extends RestCallerUtil {
     protected static List s_filteredSerialTrxns = new ArrayList();
     protected static List s_filteredLotTrxns = new ArrayList();
     protected static List s_filteredInvTrxns = new ArrayList();
+    
+    public void DeleteTransaction(Integer trxnId){
+        SyncUtils syncUtils = new SyncUtils();
+        HashMap whereClause = new HashMap();
+        whereClause.put("trxnid", trxnId);
+       // whereClause.put("trxtype", trxnType);
+
+        boolean result = syncUtils.deleteSqlLiteTable(SubInventoryTxnBO.class, whereClause);
+        if(result){
+            MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                         });
+            me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        }
+    }
 
     public String InsertTransaction(String trxType) {
         String networkStatus =
@@ -66,7 +80,7 @@ public class InvTrnDC extends RestCallerUtil {
         s_invTrxns.add(subInvTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
-        if ("SUBMIT".equals(trxType))
+        if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))) )
             ProcessWS(trxnId);
         return "cancel";
     }
@@ -260,7 +274,7 @@ public class InvTrnDC extends RestCallerUtil {
         //syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
         if ("SUBMIT".equals(trxType))
             ProcessMiscTrxnWS();
-        return "cancel";
+        return "Back";
     }
 
     public void ProcessMiscTrxnWS() {
