@@ -98,4 +98,9 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
+    <adfmf:feature id="dcom.shop.SecuredFeature" name="SecuredFeature" securityEnabled="true">
+        <adfmf:content id="dcom.shop.SecuredFeature.1">
+            <adfmf:amx file="dcom.shop.SecuredFeature/SecuredFeature-task-flow.xml#SecuredFeature-task-flow"/>
+        </adfmf:content>
+    </adfmf:feature>
 </adfmf:features>

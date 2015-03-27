@@ -3,6 +3,8 @@
                    version="1.0" name="ShopFloorMobileApp" id="com.company.ShopFloorMobileApp"
                    appControllerFolder="ApplicationController"
                    listener-class="dcom.shop.application.LifeCycleListenerImpl">
+    <adfmf:featureReference refId="dcom.shop.SecuredFeature" id="fr11" showOnSpringboard="false"
+                            showOnNavigationBar="false"/>
     <adfmf:featureReference id="fr2" refId="dcom.shop.DispatchList" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction"/>
     <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry"/>

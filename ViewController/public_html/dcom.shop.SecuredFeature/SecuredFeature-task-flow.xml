@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="SecuredFeature-task-flow">
+    <default-activity>dispatch</default-activity>
+    <task-flow-call id="dispatch">
+      <task-flow-reference>
+        <document>/dcom.shop.DispatchList/dispatch.xml</document>
+        <id>dispatch</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>
