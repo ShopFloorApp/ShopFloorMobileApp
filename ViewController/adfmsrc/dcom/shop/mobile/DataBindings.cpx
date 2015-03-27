@@ -173,13 +173,12 @@
         <page id="dcom_shop_mobile_returnFromScrapPageDef" path="dcom.shop.DispatchList.page.returnFromScrapPageDef"/>
         <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
     <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
-        <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
+
         <page id="dcom_shop_mobile_LpnTxnDetailsPageDef" path="dcom.shop.Transaction.LpnTxnDetailsPageDef"/>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
         <page id="dcom_shop_mobile_requestSelectPageDef" path="dcom.shop.Request.page.requestSelectPageDef"/>
 
-        <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
         <page id="dcom_shop_mobile_PackAndDirectShipPageDef"
               path="dcom.shop.Transaction.page.ShippingTxn.PackAndDirectShipPageDef"/>
 	      <page id="dcom_shop_mobile_deliveryLOVPGPageDef" path="page.LovPage.deliveryLOVPGPageDef"/>
@@ -192,7 +191,6 @@
         <dc id="ProductCategDC" path="dcom.shop.mobile.ProductCategDC"/>
         <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
         <dc id="MtlTxnSearchDC" path="dcom.shop.mobile.MtlTxnSearchDC"/>
-        <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
         <dc id="PackAndDirectShipDC" path="dcom.shop.mobile.PackAndDirectShipDC"/>
         <dc id="OnHandSearchDC" path="dcom.shop.mobile.OnHandSearchDC"/>
         <dc id="SerialDC" path="dcom.shop.mobile.SerialDC"/>
