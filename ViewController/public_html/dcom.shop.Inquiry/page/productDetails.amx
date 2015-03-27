@@ -38,24 +38,25 @@
 
     </amx:panelFormLayout>
     <amx:selectBooleanSwitch label="Physical attributes" id="sbs1" value="#{pageFlowScope.phyAttr}"/>
-    <amx:panelFormLayout id="pf2" labelPosition="topStart">
-      <amx:panelLabelAndMessage label="Weight" id="plam8">
+    <amx:panelFormLayout id="pf2" labelPosition="topStart" rendered="#{pageFlowScope.phyAttr}">
+      <amx:panelLabelAndMessage label="Weight" id="plam8" >
         <amx:outputText value="#{bindings.WEIGHT.inputValue}" id="ot9" rendered="#{pageFlowScope.phyAttr}"/>
       </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Weight UOM" id="plam9">
+      <amx:panelLabelAndMessage label="Weight UOM" id="plam9" rendered="#{pageFlowScope.phyAttr}">
         <amx:outputText value="#{bindings.WEIGHTUOM.inputValue}" id="ot10" rendered="#{pageFlowScope.phyAttr}"/>
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
     
-    <amx:panelFormLayout id="pf3" labelPosition="topStart">
-      <amx:panelLabelAndMessage label="Volume" id="plam10">
+    <amx:panelFormLayout id="pf3" labelPosition="topStart" rendered="#{pageFlowScope.phyAttr}">
+      <amx:panelLabelAndMessage label="Volume" id="plam10" >
         <amx:outputText value="#{bindings.VOLUME.inputValue}" id="ot11" rendered="#{pageFlowScope.phyAttr}"/>
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage label="Volume UOM" id="plam11">
         <amx:outputText value="#{bindings.VOLUMEUOM.inputValue}" id="ot12" rendered="#{pageFlowScope.phyAttr}"/>
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
-    <amx:panelFormLayout id="pf4" labelPosition="topStart">
+    
+    <amx:panelFormLayout id="pf4" labelPosition="topStart" rendered="#{pageFlowScope.phyAttr}">
       <amx:panelLabelAndMessage label="Dimension UOM" id="plam12">
         <amx:outputText value="#{bindings.DIMUOM.inputValue}" id="ot13" rendered="#{pageFlowScope.phyAttr}"/>
       </amx:panelLabelAndMessage>
