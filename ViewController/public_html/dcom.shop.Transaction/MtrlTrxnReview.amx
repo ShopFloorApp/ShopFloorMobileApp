@@ -85,7 +85,7 @@
                             <!--/amx:panelLabelAndMessage-->
                             <!--amx:outputText value="Item: #{row.segment1} ItemDesc: #{row.description}" id="ot5"/-->
                         </amx:cellFormat>
-                        <amx:cellFormat shortDesc="To Subinv" width="50%" height="50px" id="cf3e3">
+                        <amx:cellFormat shortDesc="Locator" width="50%" height="50px" id="cf3e3">
                             <!--amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:left;" id="plam22">
                                 <amx:spacer height="8"/-->
                             <amx:outputText value="#{row.locator}"

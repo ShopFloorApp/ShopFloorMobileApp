@@ -63,10 +63,10 @@ public class InvTrnDC extends RestCallerUtil {
         String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
         String qty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
-        String fromSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subFromInv.inputValue}");
-        String fromLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.fromLoc.inputValue}");
-        String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subToInv.inputValue}");
-        String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.toLoc.inputValue}");
+        String fromSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
+        String fromLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
+        String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
+        String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToLocator}");
         subInvTxn.setTrxnId(trxnId);
         subInvTxn.setLPN(lpn);
         subInvTxn.setItemNumber(item);
@@ -304,11 +304,12 @@ public class InvTrnDC extends RestCallerUtil {
         String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
         String qty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
         String acctAlias = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}");
-        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subFromInv.inputValue}");
-        String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.fromLoc.inputValue}");
+        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
+        String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
         String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TrxType}");
         String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.serialControl}");
         String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lotControl}");
+        String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
         miscTxn.setTrxnId(trxnId);
         miscTxn.setItemNumber(item);
         miscTxn.setItemName(itemName);
@@ -319,6 +320,7 @@ public class InvTrnDC extends RestCallerUtil {
         miscTxn.setTrxType(trxnType);
         miscTxn.setSerialControl(serialControl);
         miscTxn.setLotControl(lotControl);
+        miscTxn.setTxnUom(uom);
         s_miscTrxns.add(miscTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
