@@ -64,6 +64,9 @@
         <id>LpnTransactionTF</id>
       </task-flow-reference>
     </task-flow-call>
+    <view id="MtrlTrxnReview">
+      <page>/dcom.shop.Transaction/MtrlTrxnReview.amx</page>
+    </view>
     <control-flow-rule id="__3">
       <from-activity-id>Transaction</from-activity-id>
       <control-flow-case id="__4">
@@ -91,7 +94,7 @@
       </control-flow-case>
       <control-flow-case id="__24">
         <from-outcome>mtrTrxn</from-outcome>
-        <to-activity-id>MaterialTransaction</to-activity-id>
+        <to-activity-id>MtrlTrxnReview</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__43">
         <from-outcome>lpnTransTF</from-outcome>
@@ -131,7 +134,7 @@
       <from-activity-id>MaterialTransaction</from-activity-id>
       <control-flow-case id="__26">
         <from-outcome>bMM</from-outcome>
-        <to-activity-id>MaterialMovements</to-activity-id>
+        <to-activity-id>MtrlTrxnReview</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
      <control-flow-rule id="__40">
@@ -155,6 +158,17 @@
       <control-flow-case id="__21">
         <from-outcome>Back</from-outcome>
         <to-activity-id>SubInventoryDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__22">
+      <from-activity-id>MtrlTrxnReview</from-activity-id>
+      <control-flow-case id="__23">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>MaterialMovements</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__27">
+        <from-outcome>miscTransaction</from-outcome>
+        <to-activity-id>MaterialTransaction</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Transactions" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cb3" action="cancel">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cl1" action="miscTransaction">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:outputHtml id="oh1" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:setPropertyListener from="MISC" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl12"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="spl5"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchKeyword}" id="spl4"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="spl6"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="spl10"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:popup id="popup1" autoDismiss="true">
+            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+            <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
+                <amx:commandLink id="cl5" actionListener="#{bindings.DeleteTransaction.execute}">
+                    <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
+                        <amx:rowLayout id="rl16">
+                            <amx:cellFormat id="cf27" halign="center">
+                                <amx:outputHtml id="oh8" styleClass="fa fa-remove fa-2x"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl17">
+                            <amx:cellFormat id="cf26" halign="center">
+                                <amx:outputHtml id="oh9" value="Delete" inlineStyle="font-size:small;"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:commandLink>
+                <amx:commandLink id="cl6" action="siDet">
+                    <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
+                        <amx:rowLayout id="rl18">
+                            <amx:cellFormat id="cf28" halign="center">
+                                <amx:outputHtml id="oh10" styleClass="fa fa-edit fa-2x"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl19">
+                            <amx:cellFormat id="cf29" halign="center">
+                                <amx:outputHtml id="oh11" value="Edit/View" inlineStyle="font-size:small;"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:commandLink>
+                <amx:commandLink id="cl8" actionListener="#{bindings.CompleteTrxn.execute}">
+                    <amx:tableLayout id="tl10" halign="center" inlineStyle="margin-right: 20px;margin-left: 8px;">
+                        <amx:rowLayout id="rl22">
+                            <amx:cellFormat id="cf32" halign="center">
+                                <amx:outputHtml id="oh14" styleClass="fa fa-save fa-2x"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                        <amx:rowLayout id="rl23">
+                            <amx:cellFormat id="cf33" halign="center">
+                                <amx:outputHtml id="oh15" value="Complete" inlineStyle="font-size:small;"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:commandLink>
+            </amx:panelGroupLayout>
+        </amx:popup>
+    </amx:panelPage>
+</amx:view>

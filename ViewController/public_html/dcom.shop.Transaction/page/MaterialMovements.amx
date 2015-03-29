@@ -1,54 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Transactions" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-        <amx:commandLink id="cb3" action="bT">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Transactions" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cb3" action="bT">
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-     
-       
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl1">
-      <!--amx:panelGroupLayout id="pgl2" layout="horizontal">
+        </amx:facet>
+        <amx:facet name="secondary"></amx:facet>
+        <amx:panelGroupLayout id="pgl1">
+            <!--amx:panelGroupLayout id="pgl2" layout="horizontal">
         <amx:spacer id="s1" width="50"/>
         <amx:outputText value="Material Movements" id="ot2"/>
       </amx:panelGroupLayout-->
-          <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
-         <!--actionListener="#{bindings.ProcessWS.execute}"-->
-            <amx:listItem id="li3" showLinkIcon="false" action="subInv">
-                <amx:outputText value="Subinventory Transfers" id="ot4"/>
-                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderButton}" id="sp10"/>
-            </amx:listItem>
-            <amx:listItem id="li4" showLinkIcon="false" action="mtrTrxn">
-                <amx:outputText value="Misc. Transactions" id="ot5"/>
-                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.miscTxnRenderButton}"
-                                         id="sp20"/>
-           <amx:setPropertyListener from="MISC" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
-            </amx:listItem>
-            <amx:listItem id="li6"  showLinkIcon="false" action="mvOrdTF">
-                <amx:outputText value="Tasks/Move Orders" id="ot7"/>
-                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.mvOrderRenderButton}"
-                                         id="sp22"/>
-            </amx:listItem>
-             <amx:listItem id="li5" showLinkIcon="false" action="lpnTransTF">
-                <amx:outputText value="LPN Transactions" id="ot6"/>
-                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.lpnRenderButton}"
-                                         id="sp21"/>
-            </amx:listItem>
-            
-       </amx:listView>
-      <!--amx:panelGroupLayout id="pgl3">
+            <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
+                <!--actionListener="#{bindings.ProcessWS.execute}"-->
+                <amx:listItem id="li3" showLinkIcon="false" action="subInv">
+                    <amx:outputText value="Subinventory Transfers" id="ot4"/>
+                    <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderButton}" id="sp10"/>
+                </amx:listItem>
+                <amx:listItem id="li4" showLinkIcon="false" action="mtrTrxn">
+                    <amx:outputText value="Misc. Transactions" id="ot5"/>
+                    <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.miscTxnRenderButton}"
+                                             id="sp20"/>
+                </amx:listItem>
+                <amx:listItem id="li6" showLinkIcon="false" action="mvOrdTF">
+                    <amx:outputText value="Tasks/Move Orders" id="ot7"/>
+                    <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.mvOrderRenderButton}"
+                                             id="sp22"/>
+                </amx:listItem>
+                <amx:listItem id="li5" showLinkIcon="false" action="lpnTransTF">
+                    <amx:outputText value="LPN Transactions" id="ot6"/>
+                    <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.lpnRenderButton}"
+                                             id="sp21"/>
+                </amx:listItem>
+            </amx:listView>
+            <!--amx:panelGroupLayout id="pgl3">
         <amx:commandButton text="SubInventory Transactions" id="cb2" action="subInv"/>
         <amx:commandButton text="Miscellaneous Transactions" id="cb3"/>
         <amx:commandButton text="Tasks/ Move Orders" id="cb4"/>
         <amx:commandButton text="LPN Transactions" id="cb5"/>
       </amx:panelGroupLayout-->
-    </amx:panelGroupLayout>
-  </amx:panelPage>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
 </amx:view>

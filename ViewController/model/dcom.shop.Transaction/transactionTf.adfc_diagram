@@ -196,7 +196,7 @@
       <property
          name="fromOutcome">lpnLOV</property>
       <property
-         name="sdm:polyPoints">B56,500.1953,241.0652,500.18555,287.19727,T56</property>
+         name="sdm:polyPoints">B56,500.1953,241.0652,500.18555,287.06445,T56</property>
    </ControlFlowCase>
    <View
       id="View25">
@@ -217,21 +217,21 @@
       islink="true"
       id="ControlFlowCase26"
       from="View4"
-      to="View25">
+      to="View57">
       <property
          name="fromOutcome">mtrTrxn</property>
       <property
-         name="sdm:polyPoints">R42,77.75202,49.927734,451.90866,-69.82129,L46</property>
+         name="sdm:polyPoints">R50,80.63385,56.927734,223.0,-52.83203,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase27"
       from="View25"
-      to="View4">
+      to="View57">
       <property
          name="fromOutcome">bMM</property>
       <property
-         name="sdm:polyPoints">L54,453.0,-62.82129,78.82712,56.927734,R50</property>
+         name="sdm:polyPoints">L54,453.0,-62.82129,305.23615,-52.83203,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -241,7 +241,7 @@
       <property
          name="fromOutcome">BackToPage</property>
       <property
-         name="sdm:polyPoints">T50,494.0,17.101562,494.0,-12.188477,B50</property>
+         name="sdm:polyPoints">T50,494.0,17.101562,494.0,-12.321289,B50</property>
    </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall33">
@@ -405,4 +405,39 @@
       <property
          name="x">494.0</property>
    </WildcardControlFlowRule>
+   <View
+      id="View57">
+      <property
+         name="activityId">MtrlTrxnReview</property>
+      <property
+         name="page">/dcom.shop.Transaction/MtrlTrxnReview.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MtrlTrxnReview&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-56.265625</property>
+      <property
+         name="x">264.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase58"
+      from="View57"
+      to="View4">
+      <property
+         name="fromOutcome">cancel</property>
+      <property
+         name="sdm:polyPoints">L50,223.0,-56.33203,78.32464,49.927734,R42</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase59"
+      from="View57"
+      to="View25">
+      <property
+         name="fromOutcome">miscTransaction</property>
+      <property
+         name="sdm:polyPoints">R54,305.23615,-52.83203,453.0,-62.82129,L54</property>
+   </ControlFlowCase>
 </SDM>
