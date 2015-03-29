@@ -30,15 +30,15 @@ public class InvTrnDC extends RestCallerUtil {
     protected static List s_filteredLotTrxns = new ArrayList();
     protected static List s_filteredInvTrxns = new ArrayList();
     protected static List s_filteredMiscTrxns = new ArrayList();
-    
-    public void DeleteTransaction(Integer trxnId){
+
+    public void DeleteTransaction(Integer trxnId) {
         SyncUtils syncUtils = new SyncUtils();
         HashMap whereClause = new HashMap();
         whereClause.put("trxnid", trxnId);
-       // whereClause.put("trxtype", trxnType);
+        // whereClause.put("trxtype", trxnType);
 
         boolean result = syncUtils.deleteSqlLiteTable(SubInventoryTxnBO.class, whereClause);
-        if(result){
+        if (result) {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
@@ -81,12 +81,12 @@ public class InvTrnDC extends RestCallerUtil {
         s_invTrxns.add(subInvTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
-        if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))) )
+        if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))))
             ProcessWS(trxnId);
         return "cancel";
     }
-    
-    public void CompleteTrxn(Integer trxnId){
+
+    public void CompleteTrxn(Integer trxnId) {
         ProcessWS(trxnId);
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                      });
@@ -168,7 +168,7 @@ public class InvTrnDC extends RestCallerUtil {
         //    throw new AdfException("Transaction completed", AdfException.INFO);
 
     }
-    
+
     public void filterInvTrxns(Integer trxnId) {
         try {
             System.out.println("inside filter code");
@@ -242,28 +242,28 @@ public class InvTrnDC extends RestCallerUtil {
             throw new RuntimeException("My Code Error " + e);
         }
     }
-    
-    public void DeleteMiscTransaction(Integer trxnId){
+
+    public void DeleteMiscTransaction(Integer trxnId) {
         SyncUtils syncUtils = new SyncUtils();
         HashMap whereClause = new HashMap();
         whereClause.put("trxnid", trxnId);
-       // whereClause.put("trxtype", trxnType);
+        // whereClause.put("trxtype", trxnType);
 
         boolean result = syncUtils.deleteSqlLiteTable(SubInventoryTxnBO.class, whereClause);
-        if(result){
+        if (result) {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
         }
     }
-    
-    public void CompleteMiscTrxn(Integer trxnId){
+
+    public void CompleteMiscTrxn(Integer trxnId) {
         ProcessMiscTrxnWS(trxnId);
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                      });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
-    
+
     public void filterMiscTrxns(Integer trxnId) {
         try {
             System.out.println("inside filter code");
@@ -321,7 +321,7 @@ public class InvTrnDC extends RestCallerUtil {
         miscTxn.setLotControl(lotControl);
         s_miscTrxns.add(miscTxn);
         SyncUtils syncUtils = new SyncUtils();
-        //syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
+        syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
         if ("SUBMIT".equals(trxType))
             ProcessMiscTrxnWS(trxnId);
         return "Back";
@@ -336,7 +336,7 @@ public class InvTrnDC extends RestCallerUtil {
         MiscTxnBO invTxn = null;
         s_miscTrxns = sync.getCollectionFromDB(MiscTxnBO.class);
         filterMiscTrxns(trxnId);
-        
+
         MiscTxnBO[] invTxnArray = (MiscTxnBO[]) s_filteredMiscTrxns.toArray(new MiscTxnBO[s_filteredMiscTrxns.size()]);
         for (int i = 0; i < s_filteredMiscTrxns.size(); i++) {
             invTxn = invTxnArray[0];
@@ -369,8 +369,8 @@ public class InvTrnDC extends RestCallerUtil {
             "                 },\n" + "   \"InputParameters\": \n" + "      {\"PINVTXN\": { \"ITEM\": \"" + item +
             "\", \"SOURCSUBINV\": \"" + fromSubInv + "\", \"SOURCELOCATOR\": \"" + fromLocator + "\",\"TXNUOM\": \"" +
             uom + "\", \"TRXQTY\": \"" + qty + "\", \"ACCOUNTALIAS\": \"" + acctAlias + "\", \"SOURCEORGCODE\": \"" +
-            sourceOrg + "\", \"TRXTYPE\": \"" + trxType + "\", \"DESTORG\": \"" + destOrg + "\",          \"LOTS\": {\n" +
-            "            \"XXDCOM_LOT_TAB\": [";
+            sourceOrg + "\", \"TRXTYPE\": \"" + trxType + "\", \"DESTORG\": \"" + destOrg +
+            "\",          \"LOTS\": {\n" + "            \"XXDCOM_LOT_TAB\": [";
         System.out.println("Calling create method");
         LotBO lot = new LotBO();
         Iterator j = s_filteredLotTrxns.iterator();
