@@ -24,6 +24,10 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="spl10"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.TrxType}" id="spl2"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.accountAlias}"
+                                         id="spl9"/>
+                
             </amx:commandLink>
         </amx:facet>
         <amx:outputText value="#{pageFlowScope.MiscTrxnResults}" id="ot8"/>
