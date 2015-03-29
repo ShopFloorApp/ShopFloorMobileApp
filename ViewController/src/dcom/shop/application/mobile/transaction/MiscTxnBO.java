@@ -10,7 +10,7 @@ public class MiscTxnBO {
 
     public MiscTxnBO(int trxnid, String fromInventory, String itemNumber, String itemName, String quantity,
                      String txnTime, String completeFlag, String locator, String status, String trxType,
-                     String accountAlias) {
+                     String accountAlias, String txnUom, String serialControl, String lotControl) {
         this.setTrxnId(trxnid);
         this.setFromInventory(fromInventory);
         this.setItemName(itemName);
@@ -22,6 +22,9 @@ public class MiscTxnBO {
         this.setLocator(locator);
         this.setStatus(status);
         this.setCompleteFlag(completeFlag);
+        this.setTxnUom(txnUom);
+        this.setSerialControl(serialControl);
+        this.setLotControl(lotControl);
 
     }
 
@@ -37,7 +40,9 @@ public class MiscTxnBO {
         this.setLocator((String) hashMap.get("locator"));
         this.setStatus((String) hashMap.get("status"));
         this.setCompleteFlag((String) hashMap.get("completeflag"));
-
+        this.setTxnUom((String) hashMap.get("txnuom"));
+        this.setSerialControl((String) hashMap.get("serialcontrol"));
+        this.setLotControl((String) hashMap.get("lotcontrol"));
     }
 
     public HashMap getBOClassRow(MiscTxnBO miscTxn) {
@@ -53,6 +58,9 @@ public class MiscTxnBO {
         map.put("itemnumber", miscTxn.getItemNumber());
         map.put("trxtype", miscTxn.getTrxType());
         map.put("completeflag", miscTxn.getCompleteFlag());
+        map.put("txnuom", miscTxn.getTxnUom());
+        map.put("serialcontrol", miscTxn.getSerialControl());
+        map.put("lotcontrol", miscTxn.getLotControl());
         return map;
     }
     private int TrxnId;
@@ -155,7 +163,34 @@ public class MiscTxnBO {
     private String AccountAlias;
     private String FromInventory;
     private String Locator;
+
+    public void setTxnUom(String TxnUom) {
+        this.TxnUom = TxnUom;
+    }
+
+    public String getTxnUom() {
+        return TxnUom;
+    }
+
+    public void setSerialControl(String serialControl) {
+        this.serialControl = serialControl;
+    }
+
+    public String getSerialControl() {
+        return serialControl;
+    }
+
+    public void setLotControl(String lotControl) {
+        this.lotControl = lotControl;
+    }
+
+    public String getLotControl() {
+        return lotControl;
+    }
     private String Status;
+    private String TxnUom;
+    private String serialControl;
+    private String lotControl;
 
 
 }

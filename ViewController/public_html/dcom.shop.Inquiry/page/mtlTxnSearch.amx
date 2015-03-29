@@ -99,7 +99,7 @@
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
-                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"/>
+                                        <amx:outputHtml id="oh2" styleClass="fa fa-times fa-lg"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl1">

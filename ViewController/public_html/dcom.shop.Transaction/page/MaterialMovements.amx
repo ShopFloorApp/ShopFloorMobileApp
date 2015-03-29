@@ -7,6 +7,7 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cb3" action="bT">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
         </amx:facet>
@@ -19,20 +20,24 @@
             <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
                 <!--actionListener="#{bindings.ProcessWS.execute}"-->
                 <amx:listItem id="li3" showLinkIcon="false" action="subInv">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:outputText value="Subinventory Transfers" id="ot4"/>
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderButton}" id="sp10"/>
                 </amx:listItem>
                 <amx:listItem id="li4" showLinkIcon="false" action="mtrTrxn">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:outputText value="Misc. Transactions" id="ot5"/>
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.miscTxnRenderButton}"
                                              id="sp20"/>
                 </amx:listItem>
                 <amx:listItem id="li6" showLinkIcon="false" action="mvOrdTF">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:outputText value="Tasks/Move Orders" id="ot7"/>
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.mvOrderRenderButton}"
                                              id="sp22"/>
                 </amx:listItem>
                 <amx:listItem id="li5" showLinkIcon="false" action="lpnTransTF">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:outputText value="LPN Transactions" id="ot6"/>
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.lpnRenderButton}"
                                              id="sp21"/>

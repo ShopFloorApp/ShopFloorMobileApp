@@ -102,6 +102,7 @@
         <page path="/dcom.shop.Transaction/page/ShippingTxn/PackAndDirectShip.amx"
               usageId="dcom_shop_mobile_PackAndDirectShipPageDef"/>
 	      <page path="/page/LovPage/deliveryLOVPG.amx" usageId="dcom_shop_mobile_deliveryLOVPGPageDef"/>
+        <page path="/dcom.shop.Transaction/MtrlTrxnReview.amx" usageId="dcom_shop_mobile_MtrlTrxnReviewPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
@@ -182,8 +183,10 @@
         <page id="dcom_shop_mobile_PackAndDirectShipPageDef"
               path="dcom.shop.Transaction.page.ShippingTxn.PackAndDirectShipPageDef"/>
 	      <page id="dcom_shop_mobile_deliveryLOVPGPageDef" path="page.LovPage.deliveryLOVPGPageDef"/>
+        <page id="dcom_shop_mobile_MtrlTrxnReviewPageDef" path="dcom.shop.Transaction.MtrlTrxnReviewPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="MiscTxnDC" path="dcom.shop.mobile.MiscTxnDC"/>
         <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
 	<dc id="DeliveryDC" path="dcom.shop.mobile.DeliveryDC"/>
 

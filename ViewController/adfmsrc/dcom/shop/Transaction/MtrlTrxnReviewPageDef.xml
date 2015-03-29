@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="MtrlTrxnReviewPageDef"
+                Package="dcom.shop.Transaction">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="MiscTxnDC" id="MiscTxnDCIterator"/>
+    <accessorIterator MasterBinding="MiscTxnDCIterator" Binds="miscTrxns" RangeSize="25" DataControl="MiscTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.MiscTxnBO" id="miscTrxnsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="miscTrxnsIterator" id="miscTrxns">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.MiscTxnBO" Name="miscTrxns0">
+        <AttrNames>
+          <Item Value="trxnId"/>
+          <Item Value="completeFlag"/>
+          <Item Value="accountAlias"/>
+          <Item Value="fromInventory"/>
+          <Item Value="itemName"/>
+          <Item Value="itemNumber"/>
+          <Item Value="locator"/>
+          <Item Value="quantity"/>
+          <Item Value="status"/>
+          <Item Value="txnUom"/>
+          <Item Value="trxType"/>
+          <Item Value="txnTime"/>
+          <Item Value="lotControl"/>
+          <Item Value="serialControl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="DeleteMiscTransaction" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="DeleteMiscTransaction" IsViewObjectMethod="false" DataControl="InvTrnDC"
+                  InstanceName="data.InvTrnDC.dataProvider">
+      <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.Integer"/>
+    </methodAction>
+    <methodAction id="CompleteMiscTrxn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="CompleteMiscTrxn"
+                  IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider">
+      <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.Integer"/>
+    </methodAction>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="MiscTxnDC" InstanceName="data.MiscTxnDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

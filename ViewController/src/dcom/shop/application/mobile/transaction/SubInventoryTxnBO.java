@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class SubInventoryTxnBO extends CustomPojo {
     public SubInventoryTxnBO(int trxnid,String isNewEntity, String rowOperation, String fromInventory, String toInventory,
                              String itemNumber, String itemName, String quantity, String txnTime,String completeFlag,
-                             String lpn, String fromLoc, String toLoc, String status, String txnuom){
+                             String lpn, String fromLoc, String toLoc, String status, String txnuom, String serialControl, String lotControl){
         this.setTrxnId(trxnid);
         this.setIsNewEntity(isNewEntity);
         this.setRowOperation(rowOperation);
@@ -24,7 +24,8 @@ public class SubInventoryTxnBO extends CustomPojo {
         this.setCompleteFlag(completeFlag);
         this.setRowOperation(rowOperation);
         this.setTxnuom(txnuom);
-        
+        this.setSerialControl(serialControl);
+        this.setLotControl(lotControl);
     }
     private int TrxnId;
     private String IsNewEntity;
@@ -65,6 +66,24 @@ public class SubInventoryTxnBO extends CustomPojo {
     private String FromLoc;
     private String ToLoc;
     private String Status;
+
+    public void setSerialControl(String SerialControl) {
+        this.SerialControl = SerialControl;
+    }
+
+    public String getSerialControl() {
+        return SerialControl;
+    }
+
+    public void setLotControl(String LotControl) {
+        this.LotControl = LotControl;
+    }
+
+    public String getLotControl() {
+        return LotControl;
+    }
+    private String SerialControl;
+    private String LotControl;
 
     public void setTxnuom(String Txnuom) {
         this.Txnuom = Txnuom;
@@ -193,6 +212,8 @@ public class SubInventoryTxnBO extends CustomPojo {
         this.setCompleteFlag((String)hashMap.get("completeflag"));
         this.setRowOperation((String)hashMap.get("rowoperation"));
         this.setTxnuom((String)hashMap.get("txnuom"));
+        this.setSerialControl((String)hashMap.get("serialcontrol"));
+        this.setLotControl((String)hashMap.get("lotcontrol"));
     }
 
     public HashMap getBOClassRow(SubInventoryTxnBO subInventoryTxn) {
@@ -213,6 +234,8 @@ public class SubInventoryTxnBO extends CustomPojo {
         map.put("completeflag",subInventoryTxn.getCompleteFlag());
         map.put("rowoperation", subInventoryTxn.getRowOperation());
         map.put("txnuom", subInventoryTxn.getTxnuom());
+        map.put("serialcontrol", subInventoryTxn.getSerialControl());
+        map.put("lotcontrol", subInventoryTxn.getLotControl());
         return map;
     }
 //    @Override

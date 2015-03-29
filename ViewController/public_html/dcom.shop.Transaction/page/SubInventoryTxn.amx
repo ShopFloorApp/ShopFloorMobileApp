@@ -31,8 +31,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="spl6"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="spl10"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchLpnKeyword}" id="spl9"/>
-                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
-                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
             </amx:commandLink>
         </amx:facet>
         <!--amx:panelGroupLayout id="pgl3" layout="horizontal">
@@ -87,7 +87,7 @@
                       fetchSize="#{bindings.subinventories.rangeSize}"
                       selectedRowKeys="#{bindings.subinventories.collectionModel.selectedRow}"
                       selectionListener="#{bindings.subinventories.collectionModel.makeCurrent}"
-                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
             <amx:listItem id="li1" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl1">
@@ -161,8 +161,8 @@
                                          id="spl19"/>
                 <amx:setPropertyListener from="#{row.LPN}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
                                          id="spl20"/>
-                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl21"/>
-                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl22"/>
+                <amx:setPropertyListener from="#{row.serialControl}" type="action" to="#{pageFlowScope.serialControl}" id="spl21"/>
+                <amx:setPropertyListener from="#{row.lotControl}" type="action" to="#{pageFlowScope.lotControl}" id="spl22"/>
                 <amx:setPropertyListener from="#{row.fromLoc}" type="action" to="#{pageFlowScope.FromLocator}"
                                          id="spl23"/>
                 <amx:setPropertyListener from="#{row.toLoc}" type="action" to="#{pageFlowScope.ToLocator}" id="spl24"/>

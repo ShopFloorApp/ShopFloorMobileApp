@@ -438,6 +438,6 @@
       <property
          name="fromOutcome">miscTransaction</property>
       <property
-         name="sdm:polyPoints">R54,305.23615,-52.83203,453.0,-62.82129,L54</property>
+         name="sdm:polyPoints">R46,305.0,-59.83203,452.76404,-69.82129,L46</property>
    </ControlFlowCase>
 </SDM>

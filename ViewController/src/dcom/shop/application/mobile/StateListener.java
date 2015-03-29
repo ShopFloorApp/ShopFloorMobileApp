@@ -272,7 +272,8 @@ public class StateListener {
 
     public void ClearMiscTrxnPage(ActionEvent actionEvent) {
         // Add event code here...
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.TrxType}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.accountAlias}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", null);

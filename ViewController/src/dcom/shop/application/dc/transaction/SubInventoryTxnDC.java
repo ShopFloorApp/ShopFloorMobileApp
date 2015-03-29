@@ -90,6 +90,8 @@ public class SubInventoryTxnDC extends SyncUtils {
                 String toLoc = rs.getString(13);
                 String status = rs.getString(14);
                 String txnuom = rs.getString(15);
+                String serialControl = rs.getString(16);
+                String lotControl = rs.getString(17);
 
                 if (subinvs != null && subinvs.size() >= recordCount) {
                     SubInventoryTxnBO subinv = (SubInventoryTxnBO) subinvs.get(trxnid);
@@ -109,10 +111,12 @@ public class SubInventoryTxnDC extends SyncUtils {
                     subinv.setCompleteFlag(completeFlag);
                     subinv.setRowOperation(rowOperation);
                     subinv.setTxnuom(txnuom);
+                    subinv.setSerialControl(serialControl);
+                    subinv.setLotControl(lotControl);
                 } else {
                     SubInventoryTxnBO subinv =
                         new SubInventoryTxnBO(trxnid, isNewEntity, rowOperation, fromSubinv, toSubinv, itemNumber,
-                                              itemName, qty, trxntime, completeFlag, lpn, fromLoc, toLoc, status,txnuom);
+                                              itemName, qty, trxntime, completeFlag, lpn, fromLoc, toLoc, status,txnuom, serialControl, lotControl);
                     subinvs.add(subinv);
                 }
             }

@@ -29,6 +29,7 @@ public class InvTrnDC extends RestCallerUtil {
     protected static List s_filteredSerialTrxns = new ArrayList();
     protected static List s_filteredLotTrxns = new ArrayList();
     protected static List s_filteredInvTrxns = new ArrayList();
+    protected static List s_filteredMiscTrxns = new ArrayList();
     
     public void DeleteTransaction(Integer trxnId){
         SyncUtils syncUtils = new SyncUtils();
@@ -241,6 +242,51 @@ public class InvTrnDC extends RestCallerUtil {
             throw new RuntimeException("My Code Error " + e);
         }
     }
+    
+    public void DeleteMiscTransaction(Integer trxnId){
+        SyncUtils syncUtils = new SyncUtils();
+        HashMap whereClause = new HashMap();
+        whereClause.put("trxnid", trxnId);
+       // whereClause.put("trxtype", trxnType);
+
+        boolean result = syncUtils.deleteSqlLiteTable(SubInventoryTxnBO.class, whereClause);
+        if(result){
+            MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                         });
+            me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        }
+    }
+    
+    public void CompleteMiscTrxn(Integer trxnId){
+        ProcessMiscTrxnWS(trxnId);
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public void filterMiscTrxns(Integer trxnId) {
+        try {
+            System.out.println("inside filter code");
+            s_filteredMiscTrxns.clear();
+
+            HashMap filterFileds = new HashMap();
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
+            filterFileds.put("trxnid", trxnId);
+            filterFileds.put("trxtype", trxnType);
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_miscTrxns);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+            SyncUtils sync = new SyncUtils();
+
+            s_filteredMiscTrxns = (List) sync.getFileteredCollection(MiscTxnBO.class, paramMap);
+            System.out.println("collection size is " + s_filteredMiscTrxns.size());
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
+    }
 
     public String InsertMiscTransaction(String trxType) {
         String networkStatus =
@@ -261,6 +307,8 @@ public class InvTrnDC extends RestCallerUtil {
         String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.subFromInv.inputValue}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.fromLoc.inputValue}");
         String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TrxType}");
+        String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.serialControl}");
+        String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lotControl}");
         miscTxn.setTrxnId(trxnId);
         miscTxn.setItemNumber(item);
         miscTxn.setItemName(itemName);
@@ -269,15 +317,17 @@ public class InvTrnDC extends RestCallerUtil {
         miscTxn.setAccountAlias(acctAlias);
         miscTxn.setLocator(locator);
         miscTxn.setTrxType(trxnType);
+        miscTxn.setSerialControl(serialControl);
+        miscTxn.setLotControl(lotControl);
         s_miscTrxns.add(miscTxn);
         SyncUtils syncUtils = new SyncUtils();
         //syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
         if ("SUBMIT".equals(trxType))
-            ProcessMiscTrxnWS();
+            ProcessMiscTrxnWS(trxnId);
         return "Back";
     }
 
-    public void ProcessMiscTrxnWS() {
+    public void ProcessMiscTrxnWS(Integer trxnId) {
         String restURI = RestURI.PostInvTrxnURI();
         s_miscTrxns.clear();
         s_serialTrxns.clear();
@@ -285,8 +335,10 @@ public class InvTrnDC extends RestCallerUtil {
         SyncUtils sync = new SyncUtils();
         MiscTxnBO invTxn = null;
         s_miscTrxns = sync.getCollectionFromDB(MiscTxnBO.class);
-        MiscTxnBO[] invTxnArray = (MiscTxnBO[]) s_miscTrxns.toArray(new MiscTxnBO[s_miscTrxns.size()]);
-        for (int i = 0; i < s_miscTrxns.size(); i++) {
+        filterMiscTrxns(trxnId);
+        
+        MiscTxnBO[] invTxnArray = (MiscTxnBO[]) s_filteredMiscTrxns.toArray(new MiscTxnBO[s_filteredMiscTrxns.size()]);
+        for (int i = 0; i < s_filteredMiscTrxns.size(); i++) {
             invTxn = invTxnArray[0];
         }
         s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
