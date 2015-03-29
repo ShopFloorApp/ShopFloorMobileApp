@@ -120,6 +120,8 @@ public class ProductSearchDC {
                         prodItems.setITEMCATALOG((jsObjectArrayData.get("ITEMCATALOG").toString()));
                         prodItems.setITEMID(Integer.parseInt((jsObjectArrayData.get("ITEMID").toString())));
                         prodItems.setORGID(Integer.parseInt((jsObjectArrayData.get("ORGID").toString())));
+                        prodItems.setSERIALCONTROL((jsObjectArrayData.get("SERIALCONTROL").toString()));
+                        prodItems.setLOTCONTROL((jsObjectArrayData.get("LOTCONTROL").toString()));
                         s_ProdList.add(prodItems);
                     }
                 }
@@ -136,6 +138,8 @@ public class ProductSearchDC {
                     prodItems.setITEMCATALOG((jsObject2.get("ITEMCATALOG").toString()));
                     prodItems.setITEMID(Integer.parseInt((jsObject2.get("ITEMID").toString())));
                     prodItems.setORGID(Integer.parseInt((jsObject2.get("ORGID").toString())));
+                    prodItems.setSERIALCONTROL((jsObject2.get("SERIALCONTROL").toString()));
+                    prodItems.setLOTCONTROL((jsObject2.get("LOTCONTROL").toString()));
                     s_ProdList.add(prodItems);
                 }
             }
