@@ -109,9 +109,9 @@
                 <amx:setPropertyListener from="#{row.lotControl}" type="action" to="#{pageFlowScope.lotControl}" id="spl22"/>
                 <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.FromLocator}"
                                          id="spl23"/>
-                <amx:setPropertyListener from="#{row.trxType}" type="action" to="#{pageFlowScope.TrxType}" id="spl2"/>
+                <amx:setPropertyListener from="#{row.trxType}" type="action" to="#{pageFlowScope.TrxType}" id="spl13"/>
                 <amx:setPropertyListener from="#{row.accountAlias}" type="action" to="#{pageFlowScope.accountAlias}"
-                                         id="spl9"/>
+                                         id="spl14"/>
                 <amx:showPopupBehavior id="spb1" popupId="popup1" type="swipeLeft" decoration="anchor" alignId="li1"/>
             </amx:listItem>
         </amx:listView>
