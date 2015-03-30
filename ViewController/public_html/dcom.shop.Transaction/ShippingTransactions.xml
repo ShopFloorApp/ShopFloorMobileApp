@@ -7,6 +7,11 @@
       <managed-bean-class>dcom.shop.Transaction.bean.transactionUtil</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__24">
+      <managed-bean-name>QuickShipUtilBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.page.ShippingTxn.QuickShipUtilBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="PickRelease">
       <page>/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx</page>
     </view>
