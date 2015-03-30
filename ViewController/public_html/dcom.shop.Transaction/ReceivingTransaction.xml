@@ -75,6 +75,10 @@
         <from-outcome>addLine</from-outcome>
         <to-activity-id>lineDetails</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome>pendingTxn</from-outcome>
+        <to-activity-id>getPendingReceiveTxn</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__7">
       <from-activity-id>DocumentNo</from-activity-id>

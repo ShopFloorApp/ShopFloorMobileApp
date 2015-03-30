@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">L46,378.0,339.34473,58.5,113.74707,B73</property>
+         name="sdm:polyPoints">L42,378.0,335.84473,58.5,113.74707,B73</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -190,7 +190,7 @@
       <property
          name="fromOutcome">serial</property>
       <property
-         name="sdm:polyPoints">B61,51.5,116.70568,169.0,271.70685,T56</property>
+         name="sdm:polyPoints">B61,51.5,116.72202,169.0,271.70667,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -200,7 +200,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T44,162.0,274.0459,44.5,118.99645,B50</property>
+         name="sdm:polyPoints">T44,162.0,274.0459,44.5,119.012794,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -273,7 +273,7 @@
       <property
          name="fromOutcome">getPendingReceiveTxn</property>
       <property
-         name="sdm:polyPoints">R50,64.03906,531.7471,198.0,520.14355,L50</property>
+         name="sdm:polyPoints">R54,65.1979,535.2471,198.0,520.14355,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -283,7 +283,7 @@
       <property
          name="fromOutcome">createTxn</property>
       <property
-         name="sdm:polyPoints">T50,239.0,466.14355,378.0,346.34473,L54</property>
+         name="sdm:polyPoints">T50,239.0,466.14355,378.0,349.84473,L58</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -294,5 +294,15 @@
          name="fromOutcome">pendingList</property>
       <property
          name="sdm:polyPoints">R50,280.0,520.14355,506.0,600.2471,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase26"
+      from="View5"
+      to="MethodCall19">
+      <property
+         name="fromOutcome">pendingTxn</property>
+      <property
+         name="sdm:polyPoints">L50,375.77264,342.84473,64.03906,528.2471,R46</property>
    </ControlFlowCase>
 </SDM>
