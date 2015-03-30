@@ -166,4 +166,10 @@ public class RestURI {
     public static String PostGetShipment() {
         return GET_SHIPMENT;
     }
+    
+    private static final String POST_RECEIVE = "/webservices/rest/DCOMRCV/receive/";
+
+    public static String PostReceiveTxn() {
+    return POST_RECEIVE;
+    }
 }
