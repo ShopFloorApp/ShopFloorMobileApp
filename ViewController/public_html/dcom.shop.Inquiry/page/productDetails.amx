@@ -109,6 +109,25 @@
                             </amx:tableLayout>
                         </amx:commandLink>
                     </amx:cellFormat>
+                    <amx:cellFormat id="cf140">
+                        <amx:commandLink id="cl42" action="prodOnHandList">
+                            <amx:tableLayout id="tl2" halign="center">
+                                <amx:rowLayout id="rl101">
+                                    <amx:cellFormat id="cf111" halign="center">
+                                        <amx:outputHtml id="oh18" styleClass="fa fa-hand-o-up fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl11">
+                                    <amx:cellFormat id="cf112" halign="center">
+                                        <amx:outputHtml id="oh119" value="On Hand"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                            <amx:setPropertyListener id="spl" from="prodInq" type="action" to="#{pageFlowScope.callingPg}"/>
+                            <amx:setPropertyListener id="sp2" from="#{pageFlowScope.item}" type="action" to="#{pageFlowScope.searchKeyword}"/>   
+                        </amx:commandLink>
+                    </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>

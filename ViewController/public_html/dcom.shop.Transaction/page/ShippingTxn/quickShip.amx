@@ -14,7 +14,7 @@
       <amx:commandButton id="cb2" rendered = "false"/>
     </amx:facet>
     
-    <amx:panelFormLayout id="pf1">
+    <amx:panelFormLayout id="pf1" labelPosition="topStart">
             
             <amx:panelLabelAndMessage label="Delivery Number" inlineStyle="text-align:center;" id="plam33">
                 <amx:panelGroupLayout id="pgl1">

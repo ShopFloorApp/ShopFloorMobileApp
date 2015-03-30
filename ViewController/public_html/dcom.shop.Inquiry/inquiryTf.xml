@@ -17,6 +17,11 @@
             <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
             <managed-bean-scope>view</managed-bean-scope>
         </managed-bean>
+        <managed-bean id="__58">
+            <managed-bean-name>NavigationVarUtilBean</managed-bean-name>
+            <managed-bean-class>dcom.shop.Inquiry.NavigationVarUtilBean</managed-bean-class>
+            <managed-bean-scope>pageFlow</managed-bean-scope>
+        </managed-bean>
         <view id="inquiry">
             <page>/dcom.shop.Inquiry/page/inquiry.amx</page>
         </view>
@@ -134,6 +139,10 @@
                 <from-outcome>itemUdaDetails</from-outcome>
                 <to-activity-id>itemUDA</to-activity-id>
             </control-flow-case>
+            <control-flow-case id="__55">
+                <from-outcome>prodOnHandList</from-outcome>
+                <to-activity-id>onHandList</to-activity-id>
+            </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__10">
             <from-activity-id>LpnList</from-activity-id>
@@ -208,12 +217,20 @@
                 <from-outcome>onHandDetails</from-outcome>
                 <to-activity-id>onHandDetails</to-activity-id>
             </control-flow-case>
+            <control-flow-case id="__56">
+                <from-outcome>prodOnhandListBack</from-outcome>
+                <to-activity-id>productDetails</to-activity-id>
+            </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__42">
             <from-activity-id>onHandDetails</from-activity-id>
             <control-flow-case id="__43">
                 <from-outcome>onHandDetailsBack</from-outcome>
                 <to-activity-id>onHandSearch</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__57">
+                <from-outcome>prodOnhandDetailsBack</from-outcome>
+                <to-activity-id>productDetails</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__28">

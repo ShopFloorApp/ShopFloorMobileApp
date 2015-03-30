@@ -6,13 +6,14 @@
             <amx:outputText value="On Hand Search Results" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <amx:commandLink id="cl1" action="#{pageFlowScope.NavigationVarUtilBean.getOnhandNavigations}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
+        <amx:outputText id = "oh111"  value = "#{pageFlowScope.callingPg"/>
         <amx:listView var="row" value="#{bindings.allOnhands.collectionModel}"
                       fetchSize="#{bindings.allOnhands.rangeSize}"
                       selectedRowKeys="#{bindings.allOnhands.collectionModel.selectedRow}"
