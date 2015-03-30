@@ -1,9 +1,11 @@
 package dcom.shop.Inquiry.ProductDetails.prodcateg;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ProductCategEntity {
+public class ProductCategEntity  extends AEntity {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public ProductCategEntity() {
@@ -32,6 +34,7 @@ public class ProductCategEntity {
     }
 
     public void setCATDESC(String CATDESC) {
+        CATDESC=getAttributeValue(CATDESC);
         String oldCATDESC = this.CATDESC;
         this.CATDESC = CATDESC;
         propertyChangeSupport.firePropertyChange("CATDESC", oldCATDESC, CATDESC);

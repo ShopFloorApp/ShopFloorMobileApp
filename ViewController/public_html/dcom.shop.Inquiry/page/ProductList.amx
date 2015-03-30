@@ -47,7 +47,7 @@
                                             <amx:outputText value='#{row.ITEMSTATUS}' id="ot6"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
-                                        <amx:cellFormat id="cf3" columnSpan="1">
+                                        <amx:cellFormat id="cf3" columnSpan="1" halign="end">
                                             <amx:outputText id="ot3" value="#{row.ITEMCATALOG}"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>

@@ -1,9 +1,11 @@
 package dcom.shop.Inquiry.ProductDetails.produda;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ProductUdaEntity {
+public class ProductUdaEntity extends AEntity {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public ProductUdaEntity() {
@@ -12,6 +14,7 @@ public class ProductUdaEntity {
     private String CATALOGNAME;
 
     public void setCATALOGNAME(String CATALOGNAME) {
+        CATALOGNAME=getAttributeValue(CATALOGNAME);
         String oldCATALOGNAME = this.CATALOGNAME;
         this.CATALOGNAME = CATALOGNAME;
         propertyChangeSupport.firePropertyChange("CATALOGNAME", oldCATALOGNAME, CATALOGNAME);
@@ -22,6 +25,7 @@ public class ProductUdaEntity {
     }
 
     public void setGROUPNAME(String GROUPNAME) {
+        GROUPNAME=getAttributeValue(GROUPNAME);
         String oldGROUPNAME = this.GROUPNAME;
         this.GROUPNAME = GROUPNAME;
         propertyChangeSupport.firePropertyChange("GROUPNAME", oldGROUPNAME, GROUPNAME);
@@ -32,6 +36,7 @@ public class ProductUdaEntity {
     }
 
     public void setATTRIBNAME(String ATTRIBNAME) {
+        ATTRIBNAME=getAttributeValue(ATTRIBNAME);
         String oldATTRIBNAME = this.ATTRIBNAME;
         this.ATTRIBNAME = ATTRIBNAME;
         propertyChangeSupport.firePropertyChange("ATTRIBNAME", oldATTRIBNAME, ATTRIBNAME);
@@ -42,6 +47,7 @@ public class ProductUdaEntity {
     }
 
     public void setATTRIBDESC(String ATTRIBDESC) {
+        ATTRIBDESC=getAttributeValue(ATTRIBDESC);
         String oldATTRIBDESC = this.ATTRIBDESC;
         this.ATTRIBDESC = ATTRIBDESC;
         propertyChangeSupport.firePropertyChange("ATTRIBDESC", oldATTRIBDESC, ATTRIBDESC);
@@ -52,6 +58,7 @@ public class ProductUdaEntity {
     }
 
     public void setATTRIBVALUE(String ATTRIBVALUE) {
+        ATTRIBVALUE=getAttributeValue(ATTRIBVALUE);
         String oldATTRIBVALUE = this.ATTRIBVALUE;
         this.ATTRIBVALUE = ATTRIBVALUE;
         propertyChangeSupport.firePropertyChange("ATTRIBVALUE", oldATTRIBVALUE, ATTRIBVALUE);
