@@ -336,3 +336,16 @@ color: White;
 font-weight: bold;
 padding-left: 10px;
 }
+
+.tableError1 {
+width: 80%;
+background-color:Red;
+margin-top: 10px;
+margin-bottom: -12px;
+}
+
+.tableError1 span{
+color: White;
+font-weight: bold;
+padding-left: 10px;
+}

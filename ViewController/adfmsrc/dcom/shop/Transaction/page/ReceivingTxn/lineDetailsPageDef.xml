@@ -148,5 +148,20 @@
         <Item Value="uom"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="lotControl">
+      <AttrNames>
+        <Item Value="lotControl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="serialControl">
+      <AttrNames>
+        <Item Value="serialControl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="locator2">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

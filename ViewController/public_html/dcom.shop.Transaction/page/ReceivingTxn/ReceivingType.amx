@@ -25,6 +25,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
+
     <amx:panelFormLayout id="pfl2" labelPosition="topStart">
       <amx:panelLabelAndMessage label="#{pageFlowScope.receivingType=='S' ? 'PO Number' : (pageFlowScope.receivingType=='C'?'RMA Number' : 'Requisition Number')}"
                                 inlineStyle="text-align:center;" id="plam3">
@@ -37,6 +38,8 @@
           </amx:commandLink>
         </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage id="plam1" label="No Line Items for selected Document. Please select other Document # "
+                                rendered="#{pageFlowScope.shipmentLinesCount==0 &amp;&amp; pageFlowScope.documnetNumber!=null}"/>
       <amx:panelLabelAndMessage label="#{pageFlowScope.receivingType=='S' ? 'Supplier' : 'Customer'}"
                                 inlineStyle="text-align:center;" id="pldam3">
         <amx:panelGroupLayout id="pgl4">
@@ -65,10 +68,11 @@
       <amx:inputText label="Comments" id="it6" rows="4" value="#{pageFlowScope.comments}"/>
     </amx:panelFormLayout>
     <amx:spacer id="s4" height="10"/>
-    <amx:tableLayout id="tl4" styleClass="tableHeader1">
+    <amx:tableLayout id="tl4" styleClass="tableHeader1" rendered="#{pageFlowScope.shipmentLinesCount!=0}">
             <amx:rowLayout id="rl5">
                 <amx:cellFormat id="cf7">
                     <amx:outputText value="Line Items" id="ot6"/>
+                    <amx:outputText value="No Line Items for selected Document " id="ot7" rendered="#{pageFlowScope.shipmentLinesCount==0}"/>
           
         </amx:cellFormat>
         <amx:cellFormat id="cf8"/>
@@ -76,14 +80,14 @@
         </amx:tableLayout>
         <amx:commandLink  id="cl4" action="addLine"
                          actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"
-                         >
+                         rendered="#{pageFlowScope.shipmentLinesCount!=0}">
             <amx:outputHtml id="oh2" styleClass="fa fa-plus fa-2x"/>
       <amx:validationBehavior id="vb1" group="dnog"/>
     </amx:commandLink>
     <amx:listView var="row" value="#{bindings.lines.collectionModel}" fetchSize="#{bindings.lines.rangeSize}"
                   selectedRowKeys="#{bindings.lines.collectionModel.selectedRow}"
                   selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                  bufferStrategy="viewport" id="lv1">
+                  bufferStrategy="viewport" id="lv1" rendered="#{pageFlowScope.shipmentLinesCount!=0}">
       <amx:listItem id="li1" showLinkIcon="false" action="addLine">
         <amx:tableLayout width="100%" id="tl2">
           <amx:rowLayout id="rl4">

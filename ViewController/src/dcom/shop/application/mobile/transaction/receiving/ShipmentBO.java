@@ -4,6 +4,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 public class ShipmentBO {
+    private Integer receiveTxnId;
     private String orgCode;
     private String docType;
     private String docRef;
@@ -17,6 +18,16 @@ public class ShipmentBO {
     private String shippedDate;
     private String comments;    
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    public void setReceiveTxnId(Integer receiveTxnId) {
+        Integer oldReceiveTxnId = this.receiveTxnId;
+        this.receiveTxnId = receiveTxnId;
+        propertyChangeSupport.firePropertyChange("receiveTxnId", oldReceiveTxnId, receiveTxnId);
+    }
+
+    public Integer getReceiveTxnId() {
+        return receiveTxnId;
+    }
 
     public ShipmentBO() {
         super();

@@ -454,11 +454,13 @@ public class ReceivingTxnDC extends SyncUtils{
                         shipmentLinesItems.setQty((jsObject3.get("QTY").toString()));
                         shipmentLinesItems.setDocRefLine((jsObject3.get("DOCREFLINE").toString()));
                         shipmentLinesItems.setShipmentLine((jsObject3.get("SHIPMENTLINE").toString()));               
+                        shipmentLinesItems.setLotControl((jsObject3.get("LOTCONTROL").toString()));
+                        shipmentLinesItems.setSerialControl((jsObject3.get("SERIALCONTROL").toString()));
 
                         s_shipmentLines.add(shipmentLinesItems);
 
                     }
-                    
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLinesCount}", s_shipmentLines.size());
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -484,7 +486,6 @@ public class ReceivingTxnDC extends SyncUtils{
              
                             ShipmentLinesBO shipmentLinesItems = new ShipmentLinesBO();
                
-
                             shipmentLinesItems.setItem((jsObject3.get("ITEM").toString()));
                             shipmentLinesItems.setItemDecs((jsObject3.get("ITEMDESC").toString()));
                             shipmentLinesItems.setUom((jsObject3.get("UOM").toString()));
@@ -494,9 +495,11 @@ public class ReceivingTxnDC extends SyncUtils{
                             shipmentLinesItems.setQty((jsObject3.get("QTY").toString()));
                             shipmentLinesItems.setDocRefLine((jsObject3.get("DOCREFLINE").toString()));
                             shipmentLinesItems.setShipmentLine((jsObject3.get("SHIPMENTLINE").toString()));        
-
+                            shipmentLinesItems.setLotControl((jsObject3.get("LOTCONTROL").toString()));
+                            shipmentLinesItems.setSerialControl((jsObject3.get("SERIALCONTROL").toString()));
+                    
                             s_shipmentLines.add(shipmentLinesItems);
-
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLinesCount}", s_shipmentLines.size());
                         
                         
                 } catch (ParseException e) {

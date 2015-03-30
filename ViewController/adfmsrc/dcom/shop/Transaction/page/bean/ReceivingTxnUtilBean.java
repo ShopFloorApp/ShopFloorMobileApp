@@ -37,6 +37,14 @@ public class ReceivingTxnUtilBean {
                                                    });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
+    
+    public void lineItemChange(ValueChangeEvent valueChangeEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.subInv1.inputValue}"));
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.locator2.inputValue}"));
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}"));
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.uom.inputValue}"));
+    }
+    
     public void addRecord(ActionEvent ae){       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);

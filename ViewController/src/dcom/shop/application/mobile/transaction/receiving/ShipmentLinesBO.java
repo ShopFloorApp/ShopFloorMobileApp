@@ -1,9 +1,12 @@
 package dcom.shop.application.mobile.transaction.receiving;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class ShipmentLinesBO {
+public class ShipmentLinesBO extends AEntity{
+    private Integer receiveTxnId;
     private String item;
     private String itemDecs;
     private String uom;
@@ -11,12 +14,44 @@ public class ShipmentLinesBO {
     private String subInv;
     private String locator;
     private String qty;
+    private String lotControl;
+    private String serialControl;
     private String docRefLine;
     private String shipmentLine;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public ShipmentLinesBO() {
         super();
+    }
+
+    public void setReceiveTxnId(Integer receiveTxnId) {
+        Integer oldReceiveTxnId = this.receiveTxnId;
+        this.receiveTxnId = receiveTxnId;
+        propertyChangeSupport.firePropertyChange("receiveTxnId", oldReceiveTxnId, receiveTxnId);
+    }
+
+    public Integer getReceiveTxnId() {
+        return receiveTxnId;
+    }
+
+    public void setLotControl(String lotControl) {
+        String oldLotControl = this.lotControl;
+        this.lotControl = lotControl;
+        propertyChangeSupport.firePropertyChange("lotControl", oldLotControl, lotControl);
+    }
+
+    public String getLotControl() {
+        return lotControl;
+    }
+
+    public void setSerialControl(String serialControl) {
+        String oldSerialControl = this.serialControl;
+        this.serialControl = serialControl;
+        propertyChangeSupport.firePropertyChange("serialControl", oldSerialControl, serialControl);
+    }
+
+    public String getSerialControl() {
+        return serialControl;
     }
 
     public void setItem(String item) {
@@ -46,7 +81,7 @@ public class ShipmentLinesBO {
     }
 
     public String getUom() {
-        return uom;
+        return super.getAttributeValue(uom);
     }
 
     public void setLpn(String lpn) {
@@ -56,7 +91,7 @@ public class ShipmentLinesBO {
     }
 
     public String getLpn() {
-        return lpn;
+        return super.getAttributeValue(lpn);
     }
 
     public void setSubInv(String subInv) {
@@ -66,7 +101,7 @@ public class ShipmentLinesBO {
     }
 
     public String getSubInv() {
-        return subInv;
+        return super.getAttributeValue(subInv);
     }
 
     public void setLocator(String locator) {
@@ -76,7 +111,7 @@ public class ShipmentLinesBO {
     }
 
     public String getLocator() {
-        return locator;
+        return super.getAttributeValue(locator);
     }
 
     public void setQty(String qty) {
@@ -86,7 +121,7 @@ public class ShipmentLinesBO {
     }
 
     public String getQty() {
-        return qty;
+        return super.getAttributeValue(qty);
     }
 
     public void setDocRefLine(String docRefLine) {

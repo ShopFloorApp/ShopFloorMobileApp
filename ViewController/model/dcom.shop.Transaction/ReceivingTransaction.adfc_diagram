@@ -78,7 +78,7 @@
       <property
          name="fromOutcome">getValue</property>
       <property
-         name="sdm:polyPoints">R50,460.0,342.84473,715.0,240.84473,L50</property>
+         name="sdm:polyPoints">R46,460.0,339.34473,715.0,240.84473,L50</property>
    </ControlFlowCase>
    <View
       id="View8">
@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">L50,378.0,342.84473,44.5,113.74707,B50</property>
+         name="sdm:polyPoints">L50,378.0,342.84473,58.5,113.74707,B73</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -141,5 +141,75 @@
          name="fromOutcome">back</property>
       <property
          name="sdm:polyPoints">L50,700.70605,388.79883,460.0,346.34473,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View13">
+      <property
+         name="activityId">LotEntry</property>
+      <property
+         name="page">/page/LotEntry.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LotEntry&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">312.39648</property>
+      <property
+         name="x">-63.5</property>
+   </View>
+   <View
+      id="View14">
+      <property
+         name="activityId">SerialEntry</property>
+      <property
+         name="page">/page/SerialEntry.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SerialEntry&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">328.39648</property>
+      <property
+         name="x">165.5</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase15"
+      from="View8"
+      to="View13">
+      <property
+         name="fromOutcome">lot</property>
+      <property
+         name="sdm:polyPoints">B39,37.5,113.74707,-63.5,258.74707,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase16"
+      from="View8"
+      to="View14">
+      <property
+         name="fromOutcome">serial</property>
+      <property
+         name="sdm:polyPoints">B61,51.5,116.689575,169.0,271.70706,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase17"
+      from="View14"
+      to="View8">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">T44,162.0,274.0459,44.5,118.98034,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase18"
+      from="View13"
+      to="View8">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">T56,-60.0,258.0459,37.5,115.89027,B39</property>
    </ControlFlowCase>
 </SDM>

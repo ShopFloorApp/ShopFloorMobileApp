@@ -32,6 +32,12 @@
         <fixed-outcome>back</fixed-outcome>
       </outcome>
     </method-call>
+    <view id="LotEntry">
+      <page>/page/LotEntry.amx</page>
+    </view>
+    <view id="SerialEntry">
+      <page>/page/SerialEntry.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">
@@ -62,6 +68,31 @@
       <control-flow-case id="__11">
         <from-outcome>back</from-outcome>
         <to-activity-id>ReceivingType</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>lineDetails</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>lot</from-outcome>
+        <to-activity-id>LotEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>serial</from-outcome>
+        <to-activity-id>SerialEntry</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>SerialEntry</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>lineDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>LotEntry</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>lineDetails</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>
