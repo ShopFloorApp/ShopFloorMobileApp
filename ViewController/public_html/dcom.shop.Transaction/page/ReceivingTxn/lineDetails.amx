@@ -121,6 +121,8 @@
                     <amx:setPropertyListener from="#{pageFlowScope.lineAdd}" to="#{pageFlowScope.LotItem}"
                                              id="spl6"/>
                     <amx:setPropertyListener from="ReceiveTxn" to="#{pageFlowScope.ParentPage}" id="spl10"/>
+                                        <amx:setPropertyListener from="#{pageFlowScope.rowIdxAdd}" to="#{pageFlowScope.SubinvTrxnId}"
+                                             id="spl3"/>
               <amx:validationBehavior id="vb2" group="vg1"/>
             </amx:commandLink>
                     </amx:cellFormat>
@@ -146,6 +148,8 @@
                                              id="spl2"/>
                     <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
                     <amx:setPropertyListener from="ReceiveTxn" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                    <amx:setPropertyListener from="#{pageFlowScope.rowIdxAdd}" to="#{pageFlowScope.SubinvTrxnId}"
+                                             id="spl7"/>
               <amx:validationBehavior id="vb3" group="vg1"/>
             </amx:commandLink>
                     </amx:cellFormat>

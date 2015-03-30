@@ -4,8 +4,11 @@ import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.CarrierBO;
 import dcom.shop.application.mobile.LPNBO;
 import dcom.shop.application.mobile.LocatorBO;
+import dcom.shop.application.mobile.LotBO;
+import dcom.shop.application.mobile.SerialBO;
 import dcom.shop.application.mobile.SubinventoryBO;
 import dcom.shop.application.mobile.UOMBO;
+import dcom.shop.application.mobile.transaction.SubInventoryTxnBO;
 import dcom.shop.application.mobile.transaction.receiving.LinesBO;
 import dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO;
 import dcom.shop.application.mobile.transaction.receiving.RequisitionBO;
@@ -17,8 +20,12 @@ import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.el.MethodExpression;
+
+import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -533,12 +540,119 @@ public class ReceivingTxnDC extends SyncUtils{
     }
     public void getPendingReceiveTxn(){
         s_quedReceiveTxn=super.getOfflineCollection(ShipmentBO.class);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}",s_quedReceiveTxn.size());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ReceiveTxnId}",s_quedReceiveTxn.size());
     }
     public ShipmentBO[] getShipments(){
         ShipmentBO[] shipmentArray =
             (ShipmentBO[]) s_quedReceiveTxn.toArray(new ShipmentBO[s_quedReceiveTxn.size()]);
         return shipmentArray;
     }
+    
+    public void refreshShipments(){
+        providerChangeSupport.fireProviderRefresh("shipments");
+    }
+    
+    public void DeleteTransaction(Integer trxnId) {
+     
+        HashMap whereClause = new HashMap();
+        whereClause.put("receiveTxnId", trxnId);
+        // whereClause.put("trxtype", trxnType);
+
+        boolean resultShipment = super.deleteSqlLiteTable(ShipmentBO.class, whereClause);
+        boolean resultShipmentLines = super.deleteSqlLiteTable(ShipmentLinesBO.class, whereClause);
+        
+        whereClause.clear();
+        whereClause.put("trxnid", trxnId);
+        whereClause.put("trxtype", "ReceiveTxn");
+        boolean resultLot = super.deleteSqlLiteTable(LotBO.class, whereClause);
+        boolean resultSerial = super.deleteSqlLiteTable(SerialBO.class, whereClause);
+        
+        
+        
+        if (resultShipment) {
+            refreshShipments();
+        }
+    }
+    
+    public void processReceive(String actionType){
+        System.out.println("Inside orgItem");
+
+        String documentNo = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String receivingType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receivingType}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receivingType}"));
+        String carrier = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.carrier}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.carrier}"));
+        String packSlip = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.packSlip}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.packSlip}"));
+        String bol = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.bol}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.bol}"));
+        String wayAirBill = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.wayAirBill}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.wayAirBill}"));
+        String shipment = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipment}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipment}"));
+        String shippedDate = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shippedDate}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shippedDate}"));
+        String comments = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.comments}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.comments}"));        
+        String customer = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.suppCustName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.suppCustName}"));
+        if(("I").equals(receivingType)){
+            receivingType="IR";
+        }else if(("S").equals(receivingType)){
+            receivingType="PO";
+        }else if(("C").equals(receivingType)){
+            receivingType="RMA";
+        }else{
+            receivingType="";
+        }
+        ShipmentBO shipmentBO=new ShipmentBO();
+        shipmentBO.setBol(bol);
+        shipmentBO.setCarrier(carrier);
+        shipmentBO.setComments(comments);
+        shipmentBO.setCustomer(customer);
+        shipmentBO.setDocRef(documentNo);
+        shipmentBO.setDocType(receivingType);
+        shipmentBO.setOrgCode("100");
+        shipmentBO.setPackingSlip(packSlip);
+        shipmentBO.setReceiveTxnId((Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}"));
+        shipmentBO.setShipmentNum(shipment);
+        shipmentBO.setShippedDate(shippedDate);
+        shipmentBO.setVendor(customer);
+        shipmentBO.setWayAirBill(wayAirBill);
+        
+        ArrayList s_shipmentValues=new ArrayList();
+        s_shipmentValues.add(shipmentBO);
+        if(actionType.equalsIgnoreCase("SAVE")){
+            super.insertSqlLiteTable(ShipmentBO.class, s_shipmentValues);
+            super.insertSqlLiteTable(LinesBO.class, s_lines);
+        }else{
+            submitReceiveRequest(s_shipmentValues,s_lines);
+        }
+        
+ 
+    }
+    
+    public void completeTxn(){
+        Integer receiveTxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receiveTxnIdProc}");
+        ArrayList<ShipmentBO> shipmentBO =
+            (ArrayList<ShipmentBO>) super.getFilteredCollectionFromDB(ShipmentBO.class,
+                                                                      "WHERE RECEIVETXNID=" + receiveTxnId);
+        ArrayList<LinesBO> linesBO =
+            (ArrayList<LinesBO>) super.getFilteredCollectionFromDB(LinesBO.class,
+                                                                      "WHERE RECEIVETXNID=" + receiveTxnId);
+        submitReceiveRequest(shipmentBO,linesBO);
+    }
+    
+    public void submitReceiveRequest(List<ShipmentBO> shipmentList,List<LinesBO> linesList){   
+        Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
+        String restURI = RestURI.PostReceiveTxn();
+        RestCallerUtil rcu = new RestCallerUtil();
+        String payload =
+            "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
+            "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
+            "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/header\",\n" +
+            "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
+            "                  \"RespApplication\": \"INV\",\n" +
+            "                  \"SecurityGroup\": \"STANDARD\",\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + 
+            "                   {\"POU\": \"\",\n" +
+            "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
+        System.out.println("Calling create method");
+        String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
+        System.out.println("Received response");
+    }
+
 }
 

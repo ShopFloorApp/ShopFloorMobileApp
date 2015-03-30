@@ -15,8 +15,22 @@
         <AttrNames>
           <Item Value="docRef"/>
           <Item Value="docType"/>
+          <Item Value="bol"/>
+          <Item Value="carrier"/>
+          <Item Value="comments"/>
+          <Item Value="customer"/>
+          <Item Value="orgCode"/>
+          <Item Value="packingSlip"/>
+          <Item Value="receiveTxnId"/>
+          <Item Value="shipmentNum"/>
+          <Item Value="shippedDate"/>
+          <Item Value="vendor"/>
+          <Item Value="wayAirBill"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="completeTxn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="completeTxn"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

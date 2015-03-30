@@ -19,10 +19,18 @@
                   selectedRowKeys="#{bindings.shipments.collectionModel.selectedRow}"
                   selectionListener="#{bindings.shipments.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                   bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1">
+      <amx:listItem id="li1" showLinkIcon="false" actionListener="#{bindings.completeTxn.execute}">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl1">
             <amx:cellFormat width="10px" rowSpan="2" id="cf2"/>
+                                    <amx:cellFormat width="20%" height="10px" id="cf4">
+                            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                            <amx:commandLink id="cl2">
+                                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                                <amx:outputHtml id="oh3" styleClass="fa  fa-database fa-lg"
+                                                inlineStyle="color:#34AADC;"/>
+                            </amx:commandLink>
+                        </amx:cellFormat>
             <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf1">
               <amx:outputText value="#{row.docRef}" id="ot2"/>
             </amx:cellFormat>
@@ -33,6 +41,7 @@
             </amx:cellFormat>
           </amx:rowLayout>
         </amx:tableLayout>
+        <amx:setPropertyListener id="spl1" from="#{row.receiveTxnId}" to="#{pageFlowScope.receiveTxnIdProc}"/>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>

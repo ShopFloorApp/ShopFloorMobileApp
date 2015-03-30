@@ -11,9 +11,10 @@
             </amx:commandLink>      
     </amx:facet>
     <amx:facet name="secondary">
-              <amx:commandLink id="cl7" action="backToMain" >
+              <amx:commandLink id="cl7" action="backToMain" actionListener="#{bindings.processReceive.execute}">
                 <amx:outputHtml id="oh5" styleClass="fa  fa-save fa-lg" inlineStyle="color:#34AADC;"/>
-            </amx:commandLink>
+        <amx:setPropertyListener id="spl9" from="#{'PROCESS'}" to="#{pageFlowScope.actionType}"/>
+      </amx:commandLink>
     </amx:facet>
     <amx:selectOneButton id="sob1" layout="horizontal" value="#{pageFlowScope.receivingType}">
       <amx:selectItem id="si1" label="Supplier" value="S"/>
@@ -145,7 +146,7 @@
             </amx:commandLink>
           </amx:cellFormat>
           <amx:cellFormat id="cf13">
-            <amx:commandLink id="cl3" action="pendingTxn">
+            <amx:commandLink id="cl3" action="pendingTxn" actionListener="#{bindings.processReceive.execute}">
               <amx:tableLayout id="tl5" halign="center">
                 <amx:rowLayout id="rl12">
                   <amx:cellFormat id="cf22" halign="center">
@@ -158,6 +159,7 @@
                   </amx:cellFormat>
                 </amx:rowLayout>
               </amx:tableLayout>
+              <amx:setPropertyListener id="spl10" from="#{'SAVE'}" to="#{pageFlowScope.actionType}"/>
             </amx:commandLink>
           </amx:cellFormat>
         </amx:rowLayout>

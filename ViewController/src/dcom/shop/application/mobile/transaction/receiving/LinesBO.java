@@ -1,5 +1,6 @@
 package dcom.shop.application.mobile.transaction.receiving;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -12,6 +13,7 @@ public class LinesBO {
     private String Uom;
     private String Lpn;
     private String isNewEntity;
+    private Integer receiveTxnId;
     private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -21,9 +23,20 @@ public class LinesBO {
         propertyChangeSupport.firePropertyChange("rowIdx", oldRowIdx, rowIdx);
     }
 
+    public void setReceiveTxnId(Integer receiveTxnId) {
+        Integer oldReceiveTxnId = this.receiveTxnId;
+        this.receiveTxnId = receiveTxnId;
+        propertyChangeSupport.firePropertyChange("receiveTxnId", oldReceiveTxnId, receiveTxnId);
+    }
+
+    public Integer getReceiveTxnId() {
+       receiveTxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}");
+        return receiveTxnId;
+    }
+
     public Integer getRowIdx() {
-        idx=new Integer(idx.intValue()+1);
-        rowIdx=idx;
+//        idx=new Integer(idx.intValue()+1);
+//        rowIdx=idx;
         return rowIdx;
     }
 
@@ -100,8 +113,9 @@ public class LinesBO {
     public LinesBO() {
         super();
     }
-    public LinesBO(String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String isNewEntity) {
+    public LinesBO(Integer rowIdx,String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String isNewEntity) {
         super();
+        this.rowIdx=rowIdx;
         this.Lines=line;
         this.subInv=subInv;
         this.locator=locator;
