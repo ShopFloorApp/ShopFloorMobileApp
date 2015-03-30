@@ -45,9 +45,9 @@
       <property
          name="page">/dcom.shop.Transaction/page/ReceivingTxn/ReceivingType.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>ReceivingType&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>ReceivingType&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">L50,378.0,342.84473,58.5,113.74707,B73</property>
+         name="sdm:polyPoints">L46,378.0,339.34473,58.5,113.74707,B73</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -180,7 +180,7 @@
       <property
          name="fromOutcome">lot</property>
       <property
-         name="sdm:polyPoints">B39,37.5,113.74707,-63.5,258.74707,T50</property>
+         name="sdm:polyPoints">B27,30.5,113.74707,-67.0,255.88936,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -190,7 +190,7 @@
       <property
          name="fromOutcome">serial</property>
       <property
-         name="sdm:polyPoints">B61,51.5,116.689575,169.0,271.70706,T56</property>
+         name="sdm:polyPoints">B61,51.5,116.70568,169.0,271.70685,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -200,7 +200,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T44,162.0,274.0459,44.5,118.98034,B50</property>
+         name="sdm:polyPoints">T44,162.0,274.0459,44.5,118.99645,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -211,5 +211,88 @@
          name="fromOutcome">Back</property>
       <property
          name="sdm:polyPoints">T56,-60.0,258.0459,37.5,115.89027,B39</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall19">
+      <property
+         name="activityId">getPendingReceiveTxn</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>getPendingReceiveTxn&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">532.09766</property>
+      <property
+         name="x">23.039062</property>
+   </MethodCall>
+   <View
+      id="View20">
+      <property
+         name="activityId">PendingReceiveTxn</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/PendingReceiveTxn.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>PendingReceiveTxn&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">600.59766</property>
+      <property
+         name="x">547.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase21"
+      from="View20"
+      to="View5">
+      <property
+         name="fromOutcome">new</property>
+      <property
+         name="sdm:polyPoints">T50,547.0,546.2471,419.0,396.84473,B50</property>
+   </ControlFlowCase>
+   <Router
+      id="Router22">
+      <property
+         name="activityId">router1</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>router1&lt;/b>&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">520.49414</property>
+      <property
+         name="x">239.0</property>
+   </Router>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase23"
+      from="MethodCall19"
+      to="Router22">
+      <property
+         name="fromOutcome">getPendingReceiveTxn</property>
+      <property
+         name="sdm:polyPoints">R50,64.03906,531.7471,198.0,520.14355,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase24"
+      from="Router22"
+      to="View5">
+      <property
+         name="fromOutcome">createTxn</property>
+      <property
+         name="sdm:polyPoints">T50,239.0,466.14355,378.0,346.34473,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase25"
+      from="Router22"
+      to="View20">
+      <property
+         name="fromOutcome">pendingList</property>
+      <property
+         name="sdm:polyPoints">R50,280.0,520.14355,506.0,600.2471,L50</property>
    </ControlFlowCase>
 </SDM>

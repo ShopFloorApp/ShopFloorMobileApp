@@ -42,6 +42,7 @@ public class ReceivingTxnDC extends SyncUtils{
     public static List s_lines = new ArrayList();
     protected static List s_uom = new ArrayList();
     protected static List s_lpn = new ArrayList();
+    protected static List s_quedReceiveTxn = new ArrayList();
     private String supplierCustomerName;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
@@ -529,6 +530,15 @@ public class ReceivingTxnDC extends SyncUtils{
 
     public void removeProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.removeProviderChangeListener(l);
+    }
+    public void getPendingReceiveTxn(){
+        s_quedReceiveTxn=super.getOfflineCollection(ShipmentBO.class);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}",s_quedReceiveTxn.size());
+    }
+    public ShipmentBO[] getShipments(){
+        ShipmentBO[] shipmentArray =
+            (ShipmentBO[]) s_quedReceiveTxn.toArray(new ShipmentBO[s_quedReceiveTxn.size()]);
+        return shipmentArray;
     }
 }
 

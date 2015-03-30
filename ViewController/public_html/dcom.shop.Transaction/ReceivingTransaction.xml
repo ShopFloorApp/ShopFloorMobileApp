@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="ReceivingTransaction">
-    <default-activity>ReceivingType</default-activity>
+    <default-activity>getPendingReceiveTxn</default-activity>
     <input-parameter-definition id="__8">
       <name>receivingType</name>
       <value>#{pageFlowScope.receivingType}</value>
@@ -38,6 +38,26 @@
     <view id="SerialEntry">
       <page>/page/SerialEntry.amx</page>
     </view>
+    <method-call id="getPendingReceiveTxn">
+      <method>#{bindings.getPendingReceiveTxn.execute}</method>
+      <outcome>
+        <fixed-outcome>getPendingReceiveTxn</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="PendingReceiveTxn">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/PendingReceiveTxn.amx</page>
+    </view>
+    <router id="router1">
+      <case id="__23">
+        <expression>#{pageFlowScope.SubinvTrxnId==0}</expression>
+        <outcome>createTxn</outcome>
+      </case>
+      <case id="__27">
+        <expression>#{pageFlowScope.SubinvTrxnId!=0}</expression>
+        <outcome>pendingList</outcome>
+      </case>
+      <default-outcome>createTxn</default-outcome>
+    </router>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">
@@ -93,6 +113,31 @@
       <control-flow-case id="__20">
         <from-outcome>Back</from-outcome>
         <to-activity-id>lineDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>PendingReceiveTxn</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>new</from-outcome>
+        <to-activity-id>ReceivingType</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>getPendingReceiveTxn</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>getPendingReceiveTxn</from-outcome>
+        <to-activity-id>router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome>createTxn</from-outcome>
+        <to-activity-id>ReceivingType</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>pendingList</from-outcome>
+        <to-activity-id>PendingReceiveTxn</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

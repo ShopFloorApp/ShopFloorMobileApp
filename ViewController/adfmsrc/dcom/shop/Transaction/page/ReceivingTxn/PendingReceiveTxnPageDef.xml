@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="PendingReceiveTxnPageDef"
+                Package="dcom.shop.Transaction.page.ReceivingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ReceivingTxnDC" id="ReceivingTxnDCIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="shipments" RangeSize="25"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.ShipmentBO" id="shipmentsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="shipmentsIterator" id="shipments">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.receiving.ShipmentBO" Name="shipments0">
+        <AttrNames>
+          <Item Value="docRef"/>
+          <Item Value="docType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
