@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">L42,378.0,335.84473,58.5,113.74707,B73</property>
+         name="sdm:polyPoints">L38,378.0,332.34473,62.0,113.74707,B79</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -190,7 +190,7 @@
       <property
          name="fromOutcome">serial</property>
       <property
-         name="sdm:polyPoints">B61,51.5,116.72202,169.0,271.70667,T56</property>
+         name="sdm:polyPoints">B56,48.0,120.3894,169.0,271.6059,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -200,7 +200,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T44,162.0,274.0459,44.5,119.012794,B50</property>
+         name="sdm:polyPoints">T44,162.0,274.0459,41.0,122.73476,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -273,7 +273,7 @@
       <property
          name="fromOutcome">getPendingReceiveTxn</property>
       <property
-         name="sdm:polyPoints">R54,65.1979,535.2471,198.0,520.14355,L50</property>
+         name="sdm:polyPoints">R54,65.182106,535.2471,198.0,520.14355,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -304,5 +304,15 @@
          name="fromOutcome">pendingTxn</property>
       <property
          name="sdm:polyPoints">L50,375.77264,342.84473,64.03906,528.2471,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase27"
+      from="View8"
+      to="View5">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">B67,55.0,117.39922,375.80612,339.34473,L46</property>
    </ControlFlowCase>
 </SDM>

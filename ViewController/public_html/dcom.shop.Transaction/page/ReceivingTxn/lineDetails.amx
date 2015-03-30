@@ -6,11 +6,11 @@
       <amx:outputText value="Add Lines" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1" action="__back"/>
+      <amx:commandButton id="cb1" action="back"/>
     </amx:facet>
     <amx:facet name="secondary">
                   <amx:commandLink id="cl7" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}"
-                                   action="__back">
+                                   action="back">
                 <amx:outputHtml id="oh5" styleClass="fa  fa-save fa-lg" inlineStyle="color:#34AADC;"/>
         <amx:validationBehavior id="vb1" group="vg1"/>
       </amx:commandLink>
@@ -25,22 +25,22 @@
           <amx:selectItem label=" " id="si4"/>
           <amx:selectItems value="#{bindings.item.items}" id="si1"/>
         </amx:selectOneChoice>
-          <amx:panelLabelAndMessage label="#{bindings.qty.hints.label}" id="plam1">
+          <amx:panelLabelAndMessage label="#{bindings.qty.hints.label}" id="plam1" rendered="false">
             <amx:outputText value="#{bindings.qty.inputValue}" id="ot2"/>
           </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.subInv1.hints.label}" id="plam2">
+          <amx:panelLabelAndMessage label="#{bindings.subInv1.hints.label}" id="plam2" rendered="false">
             <amx:outputText value="#{bindings.subInv1.inputValue}" id="ot3"/>
           </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.uom.hints.label}" id="plam3">
+          <amx:panelLabelAndMessage label="#{bindings.uom.hints.label}" id="plam3" rendered="false">
             <amx:outputText value="#{bindings.uom.inputValue}" id="ot4"/>
           </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.lotControl.hints.label}" id="plam4">
+          <amx:panelLabelAndMessage label="#{bindings.lotControl.hints.label}" id="plam4" rendered="false">
             <amx:outputText value="#{bindings.lotControl.inputValue}" id="ot5"/>
           </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.serialControl.hints.label}" id="plam5">
+          <amx:panelLabelAndMessage label="#{bindings.serialControl.hints.label}" id="plam5" rendered="false">
             <amx:outputText value="#{bindings.serialControl.inputValue}" id="ot6"/>
           </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.locator2.hints.label}" id="plam6">
+          <amx:panelLabelAndMessage label="#{bindings.locator2.hints.label}" id="plam6" rendered="false">
             <amx:outputText value="#{bindings.locator2.inputValue}" id="ot7"/>
           </amx:panelLabelAndMessage>
           <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="#{bindings.subinv.label}" id="soc2"

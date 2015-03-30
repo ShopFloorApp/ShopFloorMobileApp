@@ -104,6 +104,10 @@
         <from-outcome>serial</from-outcome>
         <to-activity-id>SerialEntry</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>ReceivingType</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__17">
       <from-activity-id>SerialEntry</from-activity-id>
