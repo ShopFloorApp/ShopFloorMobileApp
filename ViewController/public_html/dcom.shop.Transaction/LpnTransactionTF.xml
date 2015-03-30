@@ -2,6 +2,16 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="LpnTransactionTF">
     <default-activity>LpnTransactions</default-activity>
+    <managed-bean id="__12">
+      <managed-bean-name>BarcodeBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__13">
+      <managed-bean-name>StateListenerBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
     <view id="LpnTransactions">
       <page>/dcom.shop.Transaction/LpnTransactions.amx</page>
     </view>

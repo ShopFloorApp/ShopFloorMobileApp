@@ -135,7 +135,7 @@
                       selectionListener="#{bindings.allLpnDetails.collectionModel.makeCurrent}"
                       rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? false : true}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" showLinkIcon="false" action="__back">
+            <amx:listItem id="li1" showLinkIcon="false" action="Back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl3">

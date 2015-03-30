@@ -6,7 +6,10 @@
             <amx:outputText value="LPN Transactions" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandButton id="cb1" text="Back" action="Back"/>
+        <amx:commandLink id="cb3" action="Back">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <!--amx:commandButton id="cb2"/-->
@@ -14,6 +17,7 @@
         <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
             <!--actionListener="#{bindings.ProcessWS.execute}"-->
             <amx:listItem id="li4" action="unpack" showLinkIcon="false">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Pack LPN" id="ot8"/>
                 <amx:setPropertyListener from="PACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp20"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp21"/>

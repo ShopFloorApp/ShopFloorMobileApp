@@ -41,7 +41,7 @@ public class MiscTxnDC extends SyncUtils {
 
 
     public void refresh() {
-        providerChangeSupport.fireProviderRefresh("subinventories");
+        providerChangeSupport.fireProviderRefresh("miscTrxns");
     }
 
     public synchronized List<MiscTxnBO> getMiscTrxns() {
