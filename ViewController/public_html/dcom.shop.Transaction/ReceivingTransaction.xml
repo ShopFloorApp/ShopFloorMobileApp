@@ -12,6 +12,11 @@
       <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__30">
+      <managed-bean-name>StateListenerBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
     <task-flow-return id="backToMain">
       <outcome>
         <name>backToMain</name>
