@@ -39,6 +39,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ReceivingTxnDC extends SyncUtils{
+    private static final String NOT_REACHABLE = "NotReachable";
     protected static List s_salesOrder = new ArrayList();
     protected static List s_purchaseOrder = new ArrayList();
     protected static List s_requisition = new ArrayList();
@@ -611,13 +612,21 @@ public class ReceivingTxnDC extends SyncUtils{
         shipmentBO.setVendor(customer);
         shipmentBO.setWayAirBill(wayAirBill);
         
+        String networkStatus =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         ArrayList s_shipmentValues=new ArrayList();
         s_shipmentValues.add(shipmentBO);
         if(actionType.equalsIgnoreCase("SAVE")){
             super.insertSqlLiteTable(ShipmentBO.class, s_shipmentValues);
             super.insertSqlLiteTable(LinesBO.class, s_lines);
         }else{
-            submitReceiveRequest(s_shipmentValues,s_lines);
+            if (networkStatus.equals(NOT_REACHABLE)) {
+                super.insertSqlLiteTable(ShipmentBO.class, s_shipmentValues);
+                super.insertSqlLiteTable(LinesBO.class, s_lines);
+            } else {
+                submitReceiveRequest(s_shipmentValues,s_lines);
+            }
+            
         }
         
  
@@ -638,6 +647,7 @@ public class ReceivingTxnDC extends SyncUtils{
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String restURI = RestURI.PostReceiveTxn();
         RestCallerUtil rcu = new RestCallerUtil();
+        String linesJson="";
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
             "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
@@ -647,8 +657,17 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
-            "                   {\"POU\": \"\",\n" +
-            "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
+            "                   {\"PORGCODE\": \"100\",\n" +
+            "                   \"PDOCTYPE\": \""+shipmentList.get(0).getDocType()+"\",\n" +
+            "                   \"PDOCREF\": \""+shipmentList.get(0).getDocRef()+"\",\n" +
+            "                   \"CARRIER\": \""+shipmentList.get(0).getCarrier()+"\",\n" +
+            "                   \"PACKINGSLIP\": \""+shipmentList.get(0).getPackingSlip()+"\",\n" +
+            "                   \"BOL\": \""+shipmentList.get(0).getBol()+"\",\n" +
+            "                   \"WAYAIRBILL\": \""+shipmentList.get(0).getWayAirBill()+"\",\n" +
+            "                   \"SHIPMENTNUM\": \""+shipmentList.get(0).getShipmentNum()+"\",\n" +
+            "                   \"SHIPPEDDATE\": \""+shipmentList.get(0).getShippedDate()+"\",\n" +
+            "                   \"COMMENTS\": \""+shipmentList.get(0).getComments()+"\",\n" +
+            "                    \"LINES\": \""+linesJson+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
