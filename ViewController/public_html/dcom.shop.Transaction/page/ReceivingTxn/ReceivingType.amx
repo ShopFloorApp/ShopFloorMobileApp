@@ -42,7 +42,7 @@
         </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
       <amx:panelLabelAndMessage id="plam1" label="No Line Items for selected Document. Please select other Document # "
-                                rendered="#{pageFlowScope.shipmentLinesCount==0 &amp;&amp; pageFlowScope.documnetNumber!=null}"/>
+                                rendered="#{pageFlowScope.shipmentLinesCount==0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}"/>
       <amx:panelLabelAndMessage label="#{pageFlowScope.receivingType=='S' ? 'Supplier' : 'Customer'}"
                                 inlineStyle="text-align:center;" id="pldam3">
         <amx:panelGroupLayout id="pgl4">
