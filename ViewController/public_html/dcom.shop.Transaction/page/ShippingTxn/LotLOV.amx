@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Lots" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" styleClass="fa fa-angle-left fa-lg" action="Back"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:facet name="footer">
+      <amx:outputText value="Footer" id="ot2"/>
+    </amx:facet>
+    <amx:listView var="row" value="#{bindings.lotNumbers.collectionModel}" fetchSize="#{bindings.lotNumbers.rangeSize}"
+                  selectedRowKeys="#{bindings.lotNumbers.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.lotNumbers.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1" action="Back">
+        <amx:outputText value="#{row.LOTNUM}" id="ot3"/>
+        <amx:setPropertyListener id="spl1" from="#{row.LOTNUM}" to="#{pageFlowScope.lotNo}" type="action"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema targetNamespace="http://xmlns.oracle.com/apps/inv/rest/DCOMShip/getdockdoor/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:db="http://xmlns.oracle.com/apps/inv/rest/DCOMShip/getdockdoor/" elementFormDefault="qualified" xmlns:head="http://xmlns.oracle.com/apps/inv/rest/DCOMShip/header" xmlns:isgf="http://xmlns.oracle.com/isg/servicefault">
+   <import namespace="http://xmlns.oracle.com/isg/servicefault" schemaLocation="http://ussltcovm016.solutions.glbsnet.com:8000/webservices/rest/DCOMShip/?XSD=ISGServiceFault.xsd"/>
+   <import namespace="http://xmlns.oracle.com/apps/inv/rest/DCOMShip/header" schemaLocation="http://ussltcovm016.solutions.glbsnet.com:8000/webservices/rest/DCOMShip/?XSD=RESTHeader.xsd"/>
+   <element name="InputParameters">
+      <complexType>
+         <sequence>
+            <element name="PDOCKTYPE" type="string" db:index="1" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="PORGCODE" type="string" db:index="2" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="PDOCKNAME" type="string" db:index="3" db:default="true" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <element name="OutputParameters">
+      <complexType>
+         <sequence>
+            <element name="XDOCK" type="db:APPS.XXDCOM_DOCK_DOOR_TAB" db:index="4" db:type="Array" minOccurs="0" nillable="true"/>
+            <element name="XSTATUS" type="string" db:index="5" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+            <element name="XMSG" type="string" db:index="6" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         </sequence>
+      </complexType>
+   </element>
+   <complexType name="APPS.XXDCOM_DOCK_DOOR">
+      <sequence>
+         <element name="DOCKDOOR" type="db:string50" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         <element name="DOCKDOORID" type="decimal" db:type="NUMBER" minOccurs="0" nillable="true"/>
+         <element name="SUBINV" type="db:string30" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+         <element name="STGLANE" type="db:string50" db:type="VARCHAR2" minOccurs="0" nillable="true"/>
+      </sequence>
+   </complexType>
+   <complexType name="APPS.XXDCOM_DOCK_DOOR_TAB">
+      <sequence>
+         <element name="XDOCK_ITEM" type="db:APPS.XXDCOM_DOCK_DOOR" db:type="Struct" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+      </sequence>
+   </complexType>
+   <simpleType name="string50">
+      <restriction base="string">
+         <maxLength value="50"/>
+      </restriction>
+   </simpleType>
+   <simpleType name="string30">
+      <restriction base="string">
+         <maxLength value="30"/>
+      </restriction>
+   </simpleType>
+<element name="GETDOCKDOOR_Input">
+      <complexType>
+         <sequence>
+            <element ref="head:RESTHeader"/>
+            <element ref="db:InputParameters"/>
+         </sequence>
+      </complexType>
+   </element>
+   <element name="GETDOCKDOOR_Output">
+      <complexType>
+         <choice>
+            <element ref="db:OutputParameters"/>
+            <element ref="isgf:ISGServiceFault"/>
+         </choice>
+      </complexType>
+   </element>
+</schema>

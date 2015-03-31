@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="PackAndDirectShipTF">
+    <default-activity>PackAndDirectShip</default-activity>
+    <view id="PackAndDirectShip">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/PackAndDirectShip.amx</page>
+    </view>
+    <view id="dockLOV">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/dockLOV.amx</page>
+    </view>
+    <view id="LpnLOVPG">
+      <page>/page/LovPage/LpnLOVPG.amx</page>
+    </view>
+    <view id="itemLOVPG">
+      <page>/page/LovPage/itemLOVPG.amx</page>
+    </view>
+    <view id="LotLOV">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/LotLOV.amx</page>
+    </view>
+    <view id="SerialLOVPG">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/SerialLOVPG.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>PackAndDirectShip</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>DockLOV</from-outcome>
+        <to-activity-id>dockLOV</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>LpnLOV</from-outcome>
+        <to-activity-id>LpnLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>ItemLOV</from-outcome>
+        <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>LotLOV</from-outcome>
+        <to-activity-id>LotLOV</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>SerialLOV</from-outcome>
+        <to-activity-id>SerialLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>dockLOV</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>LpnLOVPG</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>itemLOVPG</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>LotLOV</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>SerialLOVPG</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

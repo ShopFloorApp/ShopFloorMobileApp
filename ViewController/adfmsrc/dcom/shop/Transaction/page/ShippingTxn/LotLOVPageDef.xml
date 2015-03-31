@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LotLOVPageDef"
+                Package="dcom.shop.Transaction.page.ShippingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LotDC" id="LotDCIterator"/>
+    <accessorIterator MasterBinding="LotDCIterator" Binds="lots" RangeSize="25" DataControl="LotDC"
+                      BeanClass="dcom.shop.application.mobile.LotBO" id="lotsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LotNumberDC" id="LotNumberDCIterator"/>
+    <accessorIterator MasterBinding="LotNumberDCIterator" Binds="lotNumbers" RangeSize="25" DataControl="LotNumberDC"
+                      BeanClass="dcom.shop.application.mobile.LotNumberBO" id="lotNumbersIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="lotNumbersIterator" id="lotNumbers">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LotNumberBO" Name="lotNumbers0">
+        <AttrNames>
+          <Item Value="WHSE"/>
+          <Item Value="ATTRIBUTES"/>
+          <Item Value="ITEM"/>
+          <Item Value="LOCATOR"/>
+          <Item Value="LOTNUM"/>
+          <Item Value="LOTSTATUS"/>
+          <Item Value="SUBINV"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
