@@ -21,6 +21,7 @@ import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.el.MethodExpression;
@@ -648,6 +649,45 @@ public class ReceivingTxnDC extends SyncUtils{
         String restURI = RestURI.PostReceiveTxn();
         RestCallerUtil rcu = new RestCallerUtil();
         String linesJson="";
+        if(linesList.size() > 0) {
+            linesJson = "{\"LINES_ITEM\":[";
+            for (int i = 0; i < linesList.size(); i++) {
+                String lotJson="";
+                String seriesJson="";
+                ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE=ReceiveTxn AND TRXID="+linesList.get(i).getRowIdx());
+                ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE=ReceiveTxn AND TRXID="+linesList.get(i).getRowIdx());
+                
+                LotBO lot = new LotBO();
+                Iterator j = s_lotLines.iterator();
+                while (j.hasNext()) {
+                    lot = (LotBO) j.next();
+                    lotJson = "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
+
+                }
+                lotJson = lotJson.substring(0, lotJson.length() - 1);
+                
+                SerialBO serial = new SerialBO();
+                Iterator k = s_serialLines.iterator();
+                while (k.hasNext()) {
+                    serial = (SerialBO) k.next();
+                    seriesJson ="{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" + serial.getToSerial() +
+                        "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
+
+                }
+                seriesJson = seriesJson.substring(0, seriesJson.length() - 1);
+                
+                linesJson =
+                    "{\"ITEM\":" + linesList.get(i).getLines() + ",\"UOM\":" + linesList.get(i).getUom() +
+                    ",\"LPN\":" + linesList.get(i).getLpn() + ",\"SUBINV\":" + linesList.get(i).getSubInv() +
+                    ",\"LOCATOR\":" + linesList.get(i).getLocator() + ",\"QTY\":" + linesList.get(i).getQuantity() +",\"LOTS\":{\"XXDCOM_LOT_TAB\":["+lotJson+"]},\"SERIALS\":{\"XXDCOM_SERIAL_TAB\":["+seriesJson+"]}},";
+            }
+            linesJson=linesJson.substring(0,linesJson.length()-1);
+            linesJson=linesJson+"]}";
+        } else {
+            linesJson="";
+        }
+        
+        
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
             "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
@@ -671,6 +711,7 @@ public class ReceivingTxnDC extends SyncUtils{
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
+        DeleteTransaction(shipmentList.get(0).getReceiveTxnId());
     }
 
 }
