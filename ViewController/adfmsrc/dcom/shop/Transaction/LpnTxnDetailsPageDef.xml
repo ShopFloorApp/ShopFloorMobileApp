@@ -41,5 +41,9 @@
     </list>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+    <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
+                  IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider">
+      <NamedData NDName="trxType" NDValue="#{pageFlowScope.LpnPage}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

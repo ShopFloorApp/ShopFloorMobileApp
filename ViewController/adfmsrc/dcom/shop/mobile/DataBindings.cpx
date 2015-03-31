@@ -194,6 +194,7 @@
               path="dcom.shop.Transaction.page.ReceivingTxn.PendingReceiveTxnPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="LpnTxnDC" path="dcom.shop.mobile.LpnTxnDC"/>
         <dc id="MiscTxnDC" path="dcom.shop.mobile.MiscTxnDC"/>
         <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
 	<dc id="DeliveryDC" path="dcom.shop.mobile.DeliveryDC"/>
