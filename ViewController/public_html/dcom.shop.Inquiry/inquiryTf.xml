@@ -22,6 +22,11 @@
             <managed-bean-class>dcom.shop.Inquiry.NavigationVarUtilBean</managed-bean-class>
             <managed-bean-scope>pageFlow</managed-bean-scope>
         </managed-bean>
+        <managed-bean id="__59">
+            <managed-bean-name>SearchUtilBean</managed-bean-name>
+            <managed-bean-class>dcom.shop.Inquiry.SearchUtilBean</managed-bean-class>
+            <managed-bean-scope>application</managed-bean-scope>
+        </managed-bean>
         <view id="inquiry">
             <page>/dcom.shop.Inquiry/page/inquiry.amx</page>
         </view>

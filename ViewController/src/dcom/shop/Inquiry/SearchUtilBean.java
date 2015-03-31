@@ -33,5 +33,19 @@ public class SearchUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnLovPage}", null);       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnType}", null);       
-    }       
+    }
+
+    public void clearOnHandPageStart(ActionEvent actionEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", null); 
+    }
+
+    public void clearTrxPageStart(ActionEvent actionEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);       
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnLovPage}", null);       
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnType}", null);   
+    }
 }
