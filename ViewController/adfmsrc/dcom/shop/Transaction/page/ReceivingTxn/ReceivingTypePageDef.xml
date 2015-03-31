@@ -3,7 +3,9 @@
                 Package="dcom.shop.Transaction.page.ReceivingTxn">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Name="carrierVar" Type="java.lang.String"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="ReceivingTxnDC" id="ReceivingTxnDCIterator"/>
     <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="purchaseOrder" RangeSize="25"
                       DataControl="ReceivingTxnDC"
@@ -17,7 +19,7 @@
                       DataControl="ReceivingTxnDC"
                       BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderBO"
                       id="salesOrderIterator"/>
-    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="carriers" RangeSize="25"
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="carriers" RangeSize="-1"
                       DataControl="ReceivingTxnDC" BeanClass="dcom.shop.application.mobile.CarrierBO"
                       id="carriersIterator"/>
     <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="lines" RangeSize="25" DataControl="ReceivingTxnDC"
@@ -42,12 +44,6 @@
         <Item Value="orderNumber"/>
       </AttrNames>
     </list>
-    <list IterBinding="carriersIterator" ListOperMode="navigation" ListIter="carriersIterator" id="carriers"
-          DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="carrierName"/>
-      </AttrNames>
-    </list>
     <tree IterBinding="linesIterator" id="lines">
       <nodeDefinition DefName="dcom.shop.application.mobile.transaction.receiving.LinesBO" Name="lines0">
         <AttrNames>
@@ -70,5 +66,19 @@
                   InstanceName="data.ReceivingTxnDC.dataProvider">
       <NamedData NDName="actionType" NDValue="#{pageFlowScope.actionType}" NDType="java.lang.String"/>
     </methodAction>
+    <list IterBinding="variables" id="carrierName" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="carriersIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="carrierVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="carrierName"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="carrierName"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

@@ -1,5 +1,7 @@
 package dcom.shop.application.mobile.transaction.receiving;
 
+import java.util.HashMap;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -16,6 +18,32 @@ public class LinesBO {
     private Integer receiveTxnId;
     private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    public void setBOClassRow(HashMap hashMap) {
+        this.setRowIdx((Integer)hashMap.get("rowidx"));
+        this.setLines((String) hashMap.get("lines"));
+        this.setSubInv((String) hashMap.get("subinv"));
+        this.setLocator((String) hashMap.get("locator"));
+        this.setQuantity((String) hashMap.get("quantity"));
+        this.setUom((String) hashMap.get("uom"));
+        this.setLpn((String) hashMap.get("lpn"));
+        this.setIsNewEntity((String) hashMap.get("isnewentity"));
+        this.setReceiveTxnId((Integer) hashMap.get("receivetxnid"));
+    }
+
+    public HashMap getBOClassRow(LinesBO lines) {
+        HashMap map = new HashMap();
+        map.put("rowidx", lines.getRowIdx());
+        map.put("lines", lines.getLines());
+        map.put("subinv", lines.getSubInv());
+        map.put("locator", lines.getLocator());
+        map.put("quantity", lines.getQuantity());
+        map.put("uom", lines.getUom());
+        map.put("lpn", lines.getLpn());
+        map.put("isnewentity", lines.getIsNewEntity());
+        map.put("receivetxnid", lines.getReceiveTxnId());
+        return map;
+    }
 
     public void setRowIdx(Integer rowIdx) {
         Integer oldRowIdx = this.rowIdx;

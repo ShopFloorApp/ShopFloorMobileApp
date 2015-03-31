@@ -59,9 +59,8 @@
             </amx:rowLayout>
         </amx:tableLayout>
     <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-      <amx:selectOneChoice label="Carrier" id="soc1" value="#{pageFlowScope.carrier}">
-        <amx:selectItem label=" " id="si5"/>
-        <amx:selectItems value="#{bindings.carriers.items}" id="si4"/>
+      <amx:selectOneChoice value="#{pageFlowScope.carrier}" label="Carrier" id="soc1">
+        <amx:selectItems value="#{bindings.carrierName.items}" id="si4"/>
       </amx:selectOneChoice>
       <amx:inputText label="Pack Slip" id="it2" value="#{pageFlowScope.packSlip}"/>
       <amx:inputText label="BOL" id="it3" value="#{pageFlowScope.bol}"/>

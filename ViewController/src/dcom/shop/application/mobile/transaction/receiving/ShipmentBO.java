@@ -1,5 +1,9 @@
 package dcom.shop.application.mobile.transaction.receiving;
 
+
+
+import java.util.HashMap;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -18,6 +22,40 @@ public class ShipmentBO {
     private String shippedDate;
     private String comments;    
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    
+    public void setBOClassRow(HashMap hashMap) {
+        this.setReceiveTxnId((Integer)hashMap.get("receivetxnid"));
+        this.setOrgCode((String) hashMap.get("orgcode"));
+        this.setDocType((String) hashMap.get("doctype"));
+        this.setDocRef((String) hashMap.get("docref"));
+        this.setVendor((String) hashMap.get("vendor"));
+        this.setCustomer((String) hashMap.get("customer"));
+        this.setCarrier((String) hashMap.get("carrier"));
+        this.setPackingSlip((String) hashMap.get("packingslip"));
+        this.setBol((String) hashMap.get("bol"));
+        this.setWayAirBill((String) hashMap.get("wayAirBill"));
+        this.setShipmentNum((String)hashMap.get("shipmentNum"));
+        this.setShippedDate((String)hashMap.get("shippedDate"));
+        this.setComments((String)hashMap.get("comments"));
+    }
+
+    public HashMap getBOClassRow(ShipmentBO shipment) {
+        HashMap map = new HashMap();
+        map.put("receivetxnid", shipment.getReceiveTxnId());
+        map.put("orgcode", shipment.getOrgCode());
+        map.put("doctype", shipment.getDocType());
+        map.put("docref", shipment.getDocRef());
+        map.put("vendor", shipment.getVendor());
+        map.put("customer", shipment.getCustomer());
+        map.put("carrier", shipment.getCarrier());
+        map.put("packingslip", shipment.getPackingSlip());
+        map.put("bol", shipment.getBol());
+        map.put("wayAirBill", shipment.getWayAirBill());
+        map.put("shipmentNum", shipment.getShipmentNum());
+        map.put("shippedDate", shipment.getShippedDate());
+        map.put("comments", shipment.getComments());
+        return map;
+    }
 
     public void setReceiveTxnId(Integer receiveTxnId) {
         Integer oldReceiveTxnId = this.receiveTxnId;
