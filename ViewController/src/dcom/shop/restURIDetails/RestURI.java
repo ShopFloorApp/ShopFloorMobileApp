@@ -150,6 +150,18 @@ public class RestURI {
         return GET_SALES_ORDER;
     }
 
+    private static final String LOT_NUMBERS_URI = "/webservices/rest/DCOMLOV/getlots/";
+
+    public static String LotNumbers() {
+        return LOT_NUMBERS_URI;
+    }
+    
+    private static final String SERIAL_NUMBERS_URI = "/webservices/rest/DCOMLOV/getserials/";
+
+    public static String SerialNumbers() {
+        return SERIAL_NUMBERS_URI;
+    }
+
     private static final String GET_REQUISITION = "/webservices/rest/DCOMLOV/getreq/";
 
     public static String PostGetRequisition() {

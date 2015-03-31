@@ -3,13 +3,23 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
+      <amx:outputText value="Dock Door" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
+      <amx:commandButton id="cb1" styleClass="fa fa-angle-left fa-lg" action="Back"/>
     </amx:facet>
     <amx:facet name="secondary">
       <amx:commandButton id="cb2"/>
     </amx:facet>
+    <amx:listView var="row" value="#{bindings.dockDoors.collectionModel}" fetchSize="#{bindings.dockDoors.rangeSize}"
+                  selectedRowKeys="#{bindings.dockDoors.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.dockDoors.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:outputText value="#{row.DOCKDOOR}" id="ot2"/>
+        <amx:setPropertyListener id="spl1" from="#{row.DOCKDOOR}" type="action" to="#{pageFlowScope.dockDoor}"/>
+      </amx:listItem>
+    </amx:listView>
+    
   </amx:panelPage>
 </amx:view>

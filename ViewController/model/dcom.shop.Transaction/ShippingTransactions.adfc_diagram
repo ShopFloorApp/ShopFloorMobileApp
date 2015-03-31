@@ -151,7 +151,7 @@
       <property
          name="fromsrcid">__8</property>
       <property
-         name="sdm:polyPoints">R46,124.83984,355.59766,270.9747,304.94824,L46</property>
+         name="sdm:polyPoints">R38,124.83984,348.59766,271.12924,304.94824,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -179,7 +179,7 @@
       <property
          name="fromsrcid">__12</property>
       <property
-         name="sdm:polyPoints">L54,272.14453,311.94824,126.0141,362.59766,R54</property>
+         name="sdm:polyPoints">L54,272.14453,311.94824,125.85852,355.59766,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -323,7 +323,7 @@
       <property
          name="fromOutcome">delvLov</property>
       <property
-         name="sdm:polyPoints">R50,371.5,470.64355,550.3496,460.0459,L50</property>
+         name="sdm:polyPoints">R46,371.5,467.14355,550.1423,456.5459,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -334,5 +334,42 @@
          name="fromOutcome">backToPage</property>
       <property
          name="sdm:polyPoints">L54,550.3496,463.5459,371.7072,474.14355,R54</property>
+   </ControlFlowCase>
+   <TaskFlowCall
+      id="TaskFlowCall38">
+      <property
+         name="taskFlowId">PackAndDirectShipTF</property>
+      <property
+         name="activityId">PackAndDirectShipTF</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/page/PackAndDirectShipTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>PackAndDirectShipTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">577.1494</property>
+      <property
+         name="x">137.02148</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase39"
+      from="View5"
+      to="TaskFlowCall38">
+      <property
+         name="fromOutcome">PackAndDirectShip</property>
+      <property
+         name="sdm:polyPoints">B50,83.83984,413.09766,137.02148,522.7988,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase40"
+      from="TaskFlowCall38"
+      to="View5">
+      <property
+         name="fromOutcome">backToShipT</property>
+      <property
+         name="sdm:polyPoints">T56,140.52148,521.1808,87.33984,413.09766,B56</property>
    </ControlFlowCase>
 </SDM>

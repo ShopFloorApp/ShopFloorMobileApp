@@ -3,11 +3,10 @@
              SeparateXMLFiles="false" Package="dcom.shop.mobile" ClientType="Generic">
     <pageMap>
         <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
+        <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Inquiry/page/itemUDA.amx" usageId="dcom_shop_mobile_itemUDAPageDef"/>
         <page path="/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx"
               usageId="dcom_shop_mobile_lineDetailsPageDef"/>
-        <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
-        <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/page/syncPrefPG.amx" usageId="dcom_shop_mobile_syncPrefPGPageDef"/>
         <page path="/page/LovPage/WarehouseLov.amx" usageId="dcom_shop_mobile_WarehouseLovPageDef"/>
         <page path="/page/LovPage/SubinventoryLov.amx" usageId="dcom_shop_mobile_SubinventoryLovPageDef"/>
@@ -90,26 +89,29 @@
         <page path="/dcom.shop.DispatchList/page/returnFromScrap.amx"
               usageId="dcom_shop_mobile_returnFromScrapPageDef"/>
         <page path="/dcom.shop.DispatchList/page/reportTime.amx" usageId="dcom_shop_mobile_reportTimePageDef"/>
-    <page path="/dcom.shop.Transaction/LpnTxnDetails.amx" usageId="dcom_shop_mobile_LpnTxnDetailsPageDef"/>
+        <page path="/dcom.shop.Transaction/LpnTxnDetails.amx" usageId="dcom_shop_mobile_LpnTxnDetailsPageDef"/>
         <page path="/dcom.shop.Transaction/LpnTxnDetails.amx" usageId="dcom_shop_mobile_LpnTxnDetailsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/itemCateg.amx" usageId="dcom_shop_mobile_itemCategPageDef"/>
         <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@executeShipmentLines"
               usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
         <page path="/dcom.shop.Request/page/requestSelect.amx" usageId="dcom_shop_mobile_requestSelectPageDef"/>
-
         <page path="/dcom.shop.DispatchList/page/moveAssembly.amx" usageId="dcom_shop_mobile_moveAssemblyPageDef"/>
         <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
         <page path="/dcom.shop.Transaction/page/ShippingTxn/PackAndDirectShip.amx"
               usageId="dcom_shop_mobile_PackAndDirectShipPageDef"/>
-	      <page path="/page/LovPage/deliveryLOVPG.amx" usageId="dcom_shop_mobile_deliveryLOVPGPageDef"/>
+        <page path="/page/LovPage/deliveryLOVPG.amx" usageId="dcom_shop_mobile_deliveryLOVPGPageDef"/>
         <page path="/dcom.shop.Transaction/MtrlTrxnReview.amx" usageId="dcom_shop_mobile_MtrlTrxnReviewPageDef"/>
         <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@getPendingReceiveTxn"
               usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxnPageDef"/>
         <page path="/dcom.shop.Transaction/page/ReceivingTxn/PendingReceiveTxn.amx"
               usageId="dcom_shop_mobile_PendingReceiveTxnPageDef"/>
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/dockLOV.amx" usageId="dcom_shop_mobile_dockLOVPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/LotLOV.amx" usageId="dcom_shop_mobile_LotLOVPageDef"/>
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/SerialLOVPG.amx"
+              usageId="dcom_shop_mobile_SerialLOVPGPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
-        <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
               path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -177,28 +179,29 @@
         <page id="dcom_shop_mobile_scrapAssemblyPageDef" path="dcom.shop.DispatchList.page.scrapAssemblyPageDef"/>
         <page id="dcom_shop_mobile_returnFromScrapPageDef" path="dcom.shop.DispatchList.page.returnFromScrapPageDef"/>
         <page id="dcom_shop_mobile_reportTimePageDef" path="dcom.shop.DispatchList.page.reportTimePageDef"/>
-    <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
-
+        <page id="dcom_shop_mobile_itemCategPageDef" path="dcom.shop.Inquiry.page.itemCategPageDef"/>
         <page id="dcom_shop_mobile_LpnTxnDetailsPageDef" path="dcom.shop.Transaction.LpnTxnDetailsPageDef"/>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_executeShipmentLinesPageDef"/>
         <page id="dcom_shop_mobile_requestSelectPageDef" path="dcom.shop.Request.page.requestSelectPageDef"/>
-
         <page id="dcom_shop_mobile_PackAndDirectShipPageDef"
               path="dcom.shop.Transaction.page.ShippingTxn.PackAndDirectShipPageDef"/>
-	      <page id="dcom_shop_mobile_deliveryLOVPGPageDef" path="page.LovPage.deliveryLOVPGPageDef"/>
+        <page id="dcom_shop_mobile_deliveryLOVPGPageDef" path="page.LovPage.deliveryLOVPGPageDef"/>
         <page id="dcom_shop_mobile_MtrlTrxnReviewPageDef" path="dcom.shop.Transaction.MtrlTrxnReviewPageDef"/>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxnPageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxnPageDef"/>
         <page id="dcom_shop_mobile_PendingReceiveTxnPageDef"
               path="dcom.shop.Transaction.page.ReceivingTxn.PendingReceiveTxnPageDef"/>
+        <page id="dcom_shop_mobile_dockLOVPageDef" path="dcom.shop.Transaction.page.ShippingTxn.dockLOVPageDef"/>
+        <page id="dcom_shop_mobile_itemUDAPageDef" path="dcom.shop.Inquiry.page.itemUDAPageDef"/>
+        <page id="dcom_shop_mobile_LotLOVPageDef" path="dcom.shop.Transaction.page.ShippingTxn.LotLOVPageDef"/>
+        <page id="dcom_shop_mobile_SerialLOVPGPageDef"
+              path="dcom.shop.Transaction.page.ShippingTxn.SerialLOVPGPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
-        <dc id="LpnTxnDC" path="dcom.shop.mobile.LpnTxnDC"/>
-        <dc id="MiscTxnDC" path="dcom.shop.mobile.MiscTxnDC"/>
         <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>
-	<dc id="DeliveryDC" path="dcom.shop.mobile.DeliveryDC"/>
-
+        <dc id="DeliveryDC" path="dcom.shop.mobile.DeliveryDC"/>
+        <dc id="LpnTxnDC" path="dcom.shop.mobile.LpnTxnDC"/><dc id="DockDoorDC" path="dcom.shop.mobile.DockDoorDC"/><dc id="MiscTxnDC" path="dcom.shop.mobile.MiscTxnDC"/>
         <dc id="ProductUdaDC" path="dcom.shop.mobile.ProductUdaDC"/>
         <dc id="ProductCategDC" path="dcom.shop.mobile.ProductCategDC"/>
         <dc id="LotDC" path="dcom.shop.mobile.LotDC"/>
