@@ -60,6 +60,7 @@
         </amx:tableLayout>
     <amx:panelFormLayout id="pfl1" labelPosition="topStart">
       <amx:selectOneChoice value="#{pageFlowScope.carrier}" label="Carrier" id="soc1">
+        <amx:selectItem label=" " id="si5"/>
         <amx:selectItems value="#{bindings.carrierName.items}" id="si4"/>
       </amx:selectOneChoice>
       <amx:inputText label="Pack Slip" id="it2" value="#{pageFlowScope.packSlip}"/>

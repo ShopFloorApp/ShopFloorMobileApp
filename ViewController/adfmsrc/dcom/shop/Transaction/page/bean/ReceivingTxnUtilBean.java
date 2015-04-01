@@ -57,7 +57,7 @@ public class ReceivingTxnUtilBean {
     }
     public void updateRecord(ActionEvent ae){
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowIdxAdd}");
-        ArrayList coll=new ArrayList();
+        ArrayList coll = (ArrayList) receiveDc.s_lines;
                 for(int i=0;i<receiveDc.s_lines.size();i++){
                     LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
                     if(lines.getRowLineIdx()==currentItem){
@@ -79,7 +79,7 @@ public class ReceivingTxnUtilBean {
     }
     public void deleteCurrectRecord(ActionEvent ae){
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentItem}");
-        ArrayList coll=new ArrayList();
+        ArrayList coll=(ArrayList) receiveDc.s_lines;
                 for(int i=0;i<receiveDc.s_lines.size();i++){
                     LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
                     if(lines.getRowLineIdx()==currentItem){
@@ -117,5 +117,9 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", null);
         receiveDc.s_lines.clear();
         receiveDc.s_shipmentLines.clear();
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
 }
