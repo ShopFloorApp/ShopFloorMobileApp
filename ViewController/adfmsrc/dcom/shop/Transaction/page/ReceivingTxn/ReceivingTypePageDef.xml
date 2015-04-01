@@ -54,7 +54,8 @@
           <Item Value="lpn"/>
           <Item Value="quantity"/>
           <Item Value="uom"/>
-          <Item Value="rowIdx"/>
+          <Item Value="receiveTxnId"/>
+          <Item Value="rowLineIdx"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

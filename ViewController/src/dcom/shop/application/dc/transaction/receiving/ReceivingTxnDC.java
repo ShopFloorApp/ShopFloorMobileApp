@@ -45,7 +45,7 @@ public class ReceivingTxnDC extends SyncUtils{
     protected static List s_purchaseOrder = new ArrayList();
     protected static List s_requisition = new ArrayList();
     protected static List s_carriers = new ArrayList();
-    protected static List s_shipmentLines = new ArrayList();
+    public static List s_shipmentLines = new ArrayList();
     protected static List s_subInv = new ArrayList();
     protected static List s_locator = new ArrayList();
     public static List s_lines = new ArrayList();
@@ -651,9 +651,9 @@ public class ReceivingTxnDC extends SyncUtils{
         String linesJson="";
         if(linesList.size() > 0) {
             linesJson = "{\"LINES_ITEM\":[";
+            String lotJson=":{\"XXDCOM_LOT_TAB\":[";
+            String seriesJson=":{\"XXDCOM_SERIAL_TAB\":[";
             for (int i = 0; i < linesList.size(); i++) {
-                String lotJson="";
-                String seriesJson="";
                 ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
                 ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
 //                s_lotLines = (ArrayList<LotBO>) super.getCollectionFromDB(LotBO.class);
@@ -663,10 +663,13 @@ public class ReceivingTxnDC extends SyncUtils{
                     Iterator j = s_lotLines.iterator();
                     while (j.hasNext()) {
                         lot = (LotBO) j.next();
-                        lotJson = "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
+                        lotJson = lotJson+"{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
 
                     }
                     lotJson = lotJson.substring(0, lotJson.length() - 1);  
+                    lotJson=lotJson+"]}";
+                }else{
+                    lotJson="\"\"";
                 }
                 
                 if(s_serialLines.size()>0){
@@ -674,23 +677,26 @@ public class ReceivingTxnDC extends SyncUtils{
                     Iterator k = s_serialLines.iterator();
                     while (k.hasNext()) {
                         serial = (SerialBO) k.next();
-                        seriesJson ="{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" + serial.getToSerial() +
+                        seriesJson =seriesJson+"{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" + serial.getToSerial() +
                             "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
 
                     }
-                    seriesJson = seriesJson.substring(0, seriesJson.length() - 1); 
+                    seriesJson = seriesJson.substring(0, seriesJson.length() - 1);
+                    seriesJson=seriesJson+"]}";
+                }else{
+                    seriesJson="\"\"";
                 }
                 
                 
-                linesJson =
-                    "{\"ITEM\":" + linesList.get(i).getLines() + ",\"UOM\":" + linesList.get(i).getUom() +
-                    ",\"LPN\":" + linesList.get(i).getLpn() + ",\"SUBINV\":" + linesList.get(i).getSubInv() +
-                    ",\"LOCATOR\":" + linesList.get(i).getLocator() + ",\"QTY\":" + linesList.get(i).getQuantity() +",\"LOTS\":{\"XXDCOM_LOT_TAB\":["+lotJson+"]},\"SERIALS\":{\"XXDCOM_SERIAL_TAB\":["+seriesJson+"]}},";
+                linesJson =linesJson+
+                    "{\"ITEM\":\"" + linesList.get(i).getLines() + "\",\"UOM\":\"" + linesList.get(i).getUom() +
+                    "\",\"LPN\":\"" + linesList.get(i).getLpn() + "\",\"SUBINV\":\"" + linesList.get(i).getSubInv() +
+                    "\",\"LOCATOR\":\"" + linesList.get(i).getLocator() + "\",\"QTY\":\"" + linesList.get(i).getQuantity() +"\",\"LOTS\""+lotJson+",\"SERIALS\""+seriesJson+"},";
             }
             linesJson=linesJson.substring(0,linesJson.length()-1);
             linesJson=linesJson+"]}";
         } else {
-            linesJson="";
+            linesJson="\"\"";
         }
         
         
@@ -713,11 +719,26 @@ public class ReceivingTxnDC extends SyncUtils{
             "                   \"SHIPMENTNUM\": \""+shipmentList.get(0).getShipmentNum()+"\",\n" +
             "                   \"SHIPPEDDATE\": \""+shipmentList.get(0).getShippedDate()+"\",\n" +
             "                   \"COMMENTS\": \""+shipmentList.get(0).getComments()+"\",\n" +
-            "                    \"LINES\": \""+linesJson+"\"\n }\n" + "}\n" + "}\n";
+            "                    \"LINES\": "+linesJson+"\n }\n" + "}}" ;
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
         DeleteTransaction(shipmentList.get(0).getReceiveTxnId());
+            try {
+        JSONParser parser = new JSONParser();
+        Object object;
+
+        
+            object = parser.parse(jsonArrayAsString);
+        
+
+        JSONObject jsonObject = (JSONObject) object;
+        JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+        String msg = (String) jsObject.get("XMSG");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", msg);
+        } catch (ParseException e) {
+            e.getMessage();
+        }
     }
 
 }

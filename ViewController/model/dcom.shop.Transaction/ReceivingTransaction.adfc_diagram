@@ -140,7 +140,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L50,700.70605,388.79883,460.0,346.34473,R54</property>
+         name="sdm:polyPoints">L50,700.70605,388.79883,461.62402,342.84473,R50</property>
    </ControlFlowCase>
    <View
       id="View13">
@@ -283,7 +283,7 @@
       <property
          name="fromOutcome">createTxn</property>
       <property
-         name="sdm:polyPoints">T50,239.0,466.14355,378.0,349.84473,L58</property>
+         name="sdm:polyPoints">T50,239.0,466.14355,378.0,353.34473,L62</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -303,7 +303,7 @@
       <property
          name="fromOutcome">pendingTxn</property>
       <property
-         name="sdm:polyPoints">L50,375.77264,342.84473,64.03906,528.2471,R46</property>
+         name="sdm:polyPoints">L54,375.81787,346.34473,64.03906,528.2471,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -314,5 +314,50 @@
          name="fromOutcome">back</property>
       <property
          name="sdm:polyPoints">B67,55.0,117.39922,375.80612,339.34473,L46</property>
+   </ControlFlowCase>
+   <View
+      id="View28">
+      <property
+         name="activityId">successPage</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/successPage.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>successPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">526.59766</property>
+      <property
+         name="x">699.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase29"
+      from="View5"
+      to="View28">
+      <property
+         name="fromOutcome">success</property>
+      <property
+         name="sdm:polyPoints">R58,460.0,349.84473,658.0,519.2471,L42</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase30"
+      from="View20"
+      to="View28">
+      <property
+         name="fromOutcome">success</property>
+      <property
+         name="sdm:polyPoints">R46,588.0,596.7471,655.04205,526.2471,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase31"
+      from="View28"
+      to="View20">
+      <property
+         name="fromOutcome">que</property>
+      <property
+         name="sdm:polyPoints">L58,658.0,533.2471,590.9141,603.7471,R54</property>
    </ControlFlowCase>
 </SDM>

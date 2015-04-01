@@ -33,9 +33,9 @@ public class ShipmentBO {
         this.setCarrier((String) hashMap.get("carrier"));
         this.setPackingSlip((String) hashMap.get("packingslip"));
         this.setBol((String) hashMap.get("bol"));
-        this.setWayAirBill((String) hashMap.get("wayAirBill"));
-        this.setShipmentNum((String)hashMap.get("shipmentNum"));
-        this.setShippedDate((String)hashMap.get("shippedDate"));
+        this.setWayAirBill((String) hashMap.get("wayairbill"));
+        this.setShipmentNum((String)hashMap.get("shipmentnum"));
+        this.setShippedDate((String)hashMap.get("shippeddate"));
         this.setComments((String)hashMap.get("comments"));
     }
 
@@ -50,9 +50,9 @@ public class ShipmentBO {
         map.put("carrier", shipment.getCarrier());
         map.put("packingslip", shipment.getPackingSlip());
         map.put("bol", shipment.getBol());
-        map.put("wayAirBill", shipment.getWayAirBill());
-        map.put("shipmentNum", shipment.getShipmentNum());
-        map.put("shippedDate", shipment.getShippedDate());
+        map.put("wayairbill", shipment.getWayAirBill());
+        map.put("shipmentnum", shipment.getShipmentNum());
+        map.put("shippeddate", shipment.getShippedDate());
         map.put("comments", shipment.getComments());
         return map;
     }
