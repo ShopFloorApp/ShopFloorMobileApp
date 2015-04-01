@@ -106,6 +106,8 @@
                 <amx:setPropertyListener from="#{row.LPN}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
                                          id="spl2"/>
                 <amx:setPropertyListener from="#{row.LPNSTATUS}" type="action" to="#{pageFlowScope.lpnID}" id="spl4"/>
+                <amx:setPropertyListener id="spl8" from="#{row.SUBINV}" to="#{pageFlowScope.subInv}" type="action"/>
+                <amx:setPropertyListener id="spl9" to="#{pageFlowScope.locator}" type="action" from="#{row.LOCATOR}"/>
             </amx:listItem>
         </amx:listView>
         <amx:listView var="row" value="#{bindings.fromLpns.collectionModel}" fetchSize="#{bindings.fromLpns.rangeSize}"

@@ -20,6 +20,14 @@
     <view id="SerialLOVPG">
       <page>/dcom.shop.Transaction/page/ShippingTxn/SerialLOVPG.amx</page>
     </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <view id="DocumentNo">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PackAndDirectShip</from-activity-id>
       <control-flow-case id="__2">
@@ -41,6 +49,10 @@
       <control-flow-case id="__14">
         <from-outcome>SerialLOV</from-outcome>
         <to-activity-id>SerialLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__19">
+        <from-outcome>OrderLOV</from-outcome>
+        <to-activity-id>DocumentNo</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
@@ -74,6 +86,20 @@
     <control-flow-rule id="__15">
       <from-activity-id>SerialLOVPG</from-activity-id>
       <control-flow-case id="__16">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>backToShipT</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id>DocumentNo</from-activity-id>
+      <control-flow-case id="__21">
         <from-outcome>Back</from-outcome>
         <to-activity-id>PackAndDirectShip</to-activity-id>
       </control-flow-case>

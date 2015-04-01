@@ -17,6 +17,8 @@
         <AttrNames>
           <Item Value="LPN"/>
           <Item Value="LPNSTATUS"/>
+          <Item Value="SUBINV"/>
+          <Item Value="LOCATOR"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
