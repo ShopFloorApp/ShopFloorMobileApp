@@ -16,6 +16,14 @@ public class JobOperationBO extends AEntity {
     private String assembly;
     private String assemblyDesc;
     private String schStartDate;
+    private String nextOpSeq;
+    private String compSubInv;
+    private String compLocator;
+    private String assemblyUom;
+    private String lastDept;
+    private String lastOpSeq;
+    private String nextDept;
+
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public JobOperationBO() {
@@ -47,8 +55,86 @@ public class JobOperationBO extends AEntity {
         return map;
     }
 
+
+    public void setNextOpSeq(String nextOpSeq) {
+        nextOpSeq = getAttributeValue(nextOpSeq);
+        String oldNextOpSeq = this.nextOpSeq;
+        this.nextOpSeq = nextOpSeq;
+        propertyChangeSupport.firePropertyChange("nextOpSeq", oldNextOpSeq, nextOpSeq);
+    }
+
+    public String getNextOpSeq() {
+        return nextOpSeq;
+    }
+
+    public void setCompSubInv(String compSubInv) {
+        compSubInv = getAttributeValue(compSubInv);
+        String oldCompSubInv = this.compSubInv;
+        this.compSubInv = compSubInv;
+        propertyChangeSupport.firePropertyChange("compSubInv", oldCompSubInv, compSubInv);
+    }
+
+    public String getCompSubInv() {
+        return compSubInv;
+    }
+
+    public void setCompLocator(String compLocator) {
+        compLocator = getAttributeValue(compLocator);
+        String oldCompLocator = this.compLocator;
+        this.compLocator = compLocator;
+        propertyChangeSupport.firePropertyChange("compLocator", oldCompLocator, compLocator);
+    }
+
+    public String getCompLocator() {
+        return compLocator;
+    }
+
+    public void setAssemblyUom(String assemblyUom) {
+        assemblyUom = getAttributeValue(assemblyUom);
+        String oldAssemblyUom = this.assemblyUom;
+        this.assemblyUom = assemblyUom;
+        propertyChangeSupport.firePropertyChange("assemblyUom", oldAssemblyUom, assemblyUom);
+    }
+
+    public String getAssemblyUom() {
+        return assemblyUom;
+    }
+
+    public void setLastDept(String lastDept) {
+        lastDept = getAttributeValue(lastDept);
+        String oldLastDept = this.lastDept;
+        this.lastDept = lastDept;
+        propertyChangeSupport.firePropertyChange("lastDept", oldLastDept, lastDept);
+    }
+
+    public String getLastDept() {
+        return lastDept;
+    }
+
+    public void setLastOpSeq(String lastOpSeq) {
+        lastOpSeq = getAttributeValue(lastOpSeq);
+        String oldLastOpSeq = this.lastOpSeq;
+        this.lastOpSeq = lastOpSeq;
+        propertyChangeSupport.firePropertyChange("lastOpSeq", oldLastOpSeq, lastOpSeq);
+    }
+
+    public String getLastOpSeq() {
+        return lastOpSeq;
+    }
+
+    public void setNextDept(String nextDept) {
+        nextDept = getAttributeValue(nextDept);
+        String oldNextDept = this.nextDept;
+        this.nextDept = nextDept;
+        propertyChangeSupport.firePropertyChange("nextDept", oldNextDept, nextDept);
+    }
+
+    public String getNextDept() {
+        return nextDept;
+    }
+
     public void setJobNumber(String jobNumber) {
-        jobNumber=getAttributeValue(jobNumber);
+        jobNumber = getAttributeValue(jobNumber);
         String oldJobNumber = this.jobNumber;
         this.jobNumber = jobNumber;
         propertyChangeSupport.firePropertyChange("jobNumber", oldJobNumber, jobNumber);
@@ -93,7 +179,7 @@ public class JobOperationBO extends AEntity {
     }
 
     public void setReadyStatus(String readyStatus) {
-        readyStatus=getAttributeValue(readyStatus);
+        readyStatus = getAttributeValue(readyStatus);
         String oldReadyStatus = this.readyStatus;
         this.readyStatus = readyStatus;
         propertyChangeSupport.firePropertyChange("readyStatus", oldReadyStatus, readyStatus);
@@ -104,7 +190,7 @@ public class JobOperationBO extends AEntity {
     }
 
     public void setAssembly(String assembly) {
-        assembly= getAttributeValue(assembly);
+        assembly = getAttributeValue(assembly);
         String oldAssembly = this.assembly;
         this.assembly = assembly;
         propertyChangeSupport.firePropertyChange("assembly", oldAssembly, assembly);
@@ -127,7 +213,7 @@ public class JobOperationBO extends AEntity {
     }
 
     public void setSchStartDate(String schStartDate) {
-        schStartDate=getAttributeValue(schStartDate);
+        schStartDate = getAttributeValue(schStartDate);
         String oldSchStartDate = this.schStartDate;
         this.schStartDate = schStartDate;
         propertyChangeSupport.firePropertyChange("schStartDate", oldSchStartDate, schStartDate);

@@ -6,12 +6,13 @@
             <amx:outputText value="Transact Components" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="backToWorkContent">
+            <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;">
+            <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;"
+                             action="backToWorkContent">
                 <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
             </amx:commandLink>
         </amx:facet>
@@ -20,7 +21,8 @@
                                  valueChangeListener="#{pageFlowScope.DispatchBean.transactComponentsTrxType}">
                 <amx:selectItems id="si2" value="#{bindings.trxType.items}"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice value="#{bindings.fromOpSeq}" label="Op Seq" id="soc2">
+            <amx:selectOneChoice value="#{bindings.fromOpSeq}" label="Sequence" id="soc2">
+                <amx:selectItem label="Choose" id="si3" value="0"/>
                 <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Component" id="plm1">

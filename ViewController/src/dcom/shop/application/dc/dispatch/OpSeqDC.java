@@ -119,18 +119,20 @@ public class OpSeqDC extends AViewObject {
         }
     }
 
-    public String getOpCode(String opSeq) {
+    public static String getOpCode(String opSeq) {
         for (OpSeqBO opseqObj : opSeqList) {
-            if (opseqObj.getOpSeq().equals(opSeq)) {
+            String localOpSeq = opseqObj.getOpSeq().toString();
+            if (localOpSeq.equals(opSeq)) {
                 return opseqObj.getOPcode();
             }
         }
         return null;
     }
 
-    public String getDept(String opSeq) {
+    public static String getDept(String opSeq) {
         for (OpSeqBO opseqObj : opSeqList) {
-            if (opseqObj.getOpSeq().equals(opSeq)) {
+            String localOpSeq = opseqObj.getOpSeq().toString();
+            if (localOpSeq.equals(opSeq)) {
                 return opseqObj.getDeptCode();
             }
         }

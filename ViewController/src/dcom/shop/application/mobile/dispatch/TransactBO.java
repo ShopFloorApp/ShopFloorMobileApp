@@ -1,5 +1,7 @@
 package dcom.shop.application.mobile.dispatch;
 
+import dcom.shop.application.dc.dispatch.OpSeqDC;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
@@ -7,7 +9,7 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 
 public class TransactBO {
-    
+
     private String action;
     private BigDecimal trxRef;
     private String sourceType;
@@ -184,7 +186,6 @@ public class TransactBO {
         return action;
     }
 
-    
 
     public void setSourceType(String sourceType) {
         String oldSourceType = this.sourceType;
@@ -276,7 +277,6 @@ public class TransactBO {
         return sourceCode;
     }
 
-    
 
     public void setTxnUom(String txnUom) {
         String oldTxnUom = this.txnUom;
@@ -360,6 +360,9 @@ public class TransactBO {
 
 
     public void setFromOpSeq(BigDecimal fromOpSeq) {
+        //Need to update FromOpCode and fromDept
+        this.setFromDept(OpSeqDC.getDept(fromOpSeq.toString()));
+        this.setFromOpCode(OpSeqDC.getOpCode(fromOpSeq.toString()));
         BigDecimal oldFromOpSeq = this.fromOpSeq;
         this.fromOpSeq = fromOpSeq;
         propertyChangeSupport.firePropertyChange("fromOpSeq", oldFromOpSeq, fromOpSeq);
@@ -371,6 +374,9 @@ public class TransactBO {
 
 
     public void setToOpSeq(BigDecimal toOpSeq) {
+        //Need to update ToOpCode and ToDept
+        this.setToDept(OpSeqDC.getDept(toOpSeq.toString()));
+        this.setToOpCode(OpSeqDC.getOpCode(toOpSeq.toString()));
         BigDecimal oldToOpSeq = this.toOpSeq;
         this.toOpSeq = toOpSeq;
         propertyChangeSupport.firePropertyChange("toOpSeq", oldToOpSeq, toOpSeq);

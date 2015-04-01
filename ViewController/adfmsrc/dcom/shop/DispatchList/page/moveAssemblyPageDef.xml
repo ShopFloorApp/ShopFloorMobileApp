@@ -109,5 +109,7 @@
         <Item Value="opSeq"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
+                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"/>
   </bindings>
 </pageDefinition>
