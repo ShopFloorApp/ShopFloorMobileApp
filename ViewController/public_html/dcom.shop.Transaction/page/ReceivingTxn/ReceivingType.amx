@@ -104,7 +104,7 @@
                 <amx:commandLink id="cl2" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.deleteCurrectRecord}"
                                  inlineStyle="width:inherit;">
                   <amx:outputHtml id="oh3" styleClass="fa fa-trash fa-lg"/>
-                  <amx:setPropertyListener id="spl8" from="#{row.rowLineIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
+                  <amx:setPropertyListener id="spl8" from="#{row.rowLineIdx}" to="#{pageFlowScope.currentItem}"/>
                 </amx:commandLink>
               </amx:panelGroupLayout>
             </amx:cellFormat>
