@@ -7,7 +7,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 public class LinesBO {
-    private Integer rowIdx;
+    private Integer rowLineIdx;
     private String Lines;
     private String subInv;
     private String locator;
@@ -19,8 +19,18 @@ public class LinesBO {
     private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
+    public void setRowLineIdx(Integer rowLineIdx) {
+        Integer oldRowLineIdx = this.rowLineIdx;
+        this.rowLineIdx = rowLineIdx;
+        propertyChangeSupport.firePropertyChange("rowLineIdx", oldRowLineIdx, rowLineIdx);
+    }
+
+    public Integer getRowLineIdx() {
+        return rowLineIdx;
+    }
+
     public void setBOClassRow(HashMap hashMap) {
-        this.setRowIdx((Integer)hashMap.get("rowidx"));
+        this.setRowLineIdx((Integer)hashMap.get("rowlineidx"));
         this.setLines((String) hashMap.get("lines"));
         this.setSubInv((String) hashMap.get("subinv"));
         this.setLocator((String) hashMap.get("locator"));
@@ -33,7 +43,7 @@ public class LinesBO {
 
     public HashMap getBOClassRow(LinesBO lines) {
         HashMap map = new HashMap();
-        map.put("rowidx", lines.getRowIdx());
+        map.put("rowlineidx", lines.getRowLineIdx());
         map.put("lines", lines.getLines());
         map.put("subinv", lines.getSubInv());
         map.put("locator", lines.getLocator());
@@ -45,11 +55,7 @@ public class LinesBO {
         return map;
     }
 
-    public void setRowIdx(Integer rowIdx) {
-        Integer oldRowIdx = this.rowIdx;
-        this.rowIdx = rowIdx;
-        propertyChangeSupport.firePropertyChange("rowIdx", oldRowIdx, rowIdx);
-    }
+
 
     public void setReceiveTxnId(Integer receiveTxnId) {
         Integer oldReceiveTxnId = this.receiveTxnId;
@@ -60,12 +66,6 @@ public class LinesBO {
     public Integer getReceiveTxnId() {
        receiveTxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}");
         return receiveTxnId;
-    }
-
-    public Integer getRowIdx() {
-//        idx=new Integer(idx.intValue()+1);
-//        rowIdx=idx;
-        return rowIdx;
     }
 
     public void setLines(String Lines) {
@@ -143,7 +143,7 @@ public class LinesBO {
     }
     public LinesBO(Integer rowIdx,String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String isNewEntity) {
         super();
-        this.rowIdx=rowIdx;
+        this.rowLineIdx=rowIdx;
         this.Lines=line;
         this.subInv=subInv;
         this.locator=locator;

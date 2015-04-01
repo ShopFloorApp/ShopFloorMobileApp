@@ -60,7 +60,7 @@ public class ReceivingTxnUtilBean {
         ArrayList coll=new ArrayList();
                 for(int i=0;i<receiveDc.s_lines.size();i++){
                     LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
-                    if(lines.getRowIdx()==currentItem){
+                    if(lines.getRowLineIdx()==currentItem){
                         coll.remove(i);
                     }
                 }
@@ -82,7 +82,7 @@ public class ReceivingTxnUtilBean {
         ArrayList coll=new ArrayList();
                 for(int i=0;i<receiveDc.s_lines.size();i++){
                     LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
-                    if(lines.getRowIdx()==currentItem){
+                    if(lines.getRowLineIdx()==currentItem){
                         coll.remove(i);
                     }
                 }

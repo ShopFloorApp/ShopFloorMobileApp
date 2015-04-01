@@ -654,27 +654,33 @@ public class ReceivingTxnDC extends SyncUtils{
             for (int i = 0; i < linesList.size(); i++) {
                 String lotJson="";
                 String seriesJson="";
-                ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE=ReceiveTxn AND TRXID="+linesList.get(i).getRowIdx());
-                ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE=ReceiveTxn AND TRXID="+linesList.get(i).getRowIdx());
+                ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
+                ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
+//                s_lotLines = (ArrayList<LotBO>) super.getCollectionFromDB(LotBO.class);
                 
-                LotBO lot = new LotBO();
-                Iterator j = s_lotLines.iterator();
-                while (j.hasNext()) {
-                    lot = (LotBO) j.next();
-                    lotJson = "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
+                if(s_lotLines.size()>0){
+                    LotBO lot = new LotBO();
+                    Iterator j = s_lotLines.iterator();
+                    while (j.hasNext()) {
+                        lot = (LotBO) j.next();
+                        lotJson = "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
 
+                    }
+                    lotJson = lotJson.substring(0, lotJson.length() - 1);  
                 }
-                lotJson = lotJson.substring(0, lotJson.length() - 1);
                 
-                SerialBO serial = new SerialBO();
-                Iterator k = s_serialLines.iterator();
-                while (k.hasNext()) {
-                    serial = (SerialBO) k.next();
-                    seriesJson ="{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" + serial.getToSerial() +
-                        "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
+                if(s_serialLines.size()>0){
+                    SerialBO serial = new SerialBO();
+                    Iterator k = s_serialLines.iterator();
+                    while (k.hasNext()) {
+                        serial = (SerialBO) k.next();
+                        seriesJson ="{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" + serial.getToSerial() +
+                            "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
 
+                    }
+                    seriesJson = seriesJson.substring(0, seriesJson.length() - 1); 
                 }
-                seriesJson = seriesJson.substring(0, seriesJson.length() - 1);
+                
                 
                 linesJson =
                     "{\"ITEM\":" + linesList.get(i).getLines() + ",\"UOM\":" + linesList.get(i).getUom() +
