@@ -6,12 +6,16 @@
             <amx:outputText value="Report Time" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="backToWorkContent">
+            <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2"/>
+            <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;"
+                             action="backToWorkContent">
+                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="RETURN_ASSEMBLY"/>
+            </amx:commandLink>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
             <amx:inputText value="#{bindings.trxType.inputValue}" label="#{bindings.trxType.hints.label}" id="it1"/>

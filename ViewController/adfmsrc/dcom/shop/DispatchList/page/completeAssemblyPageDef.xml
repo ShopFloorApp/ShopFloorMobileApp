@@ -7,6 +7,17 @@
     <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
     <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
                       BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TransactionReasonDC" id="TransactionReasonDCIterator"/>
+    <accessorIterator MasterBinding="TransactionReasonDCIterator" Binds="transactionReason" RangeSize="-1"
+                      DataControl="TransactionReasonDC" BeanClass="dcom.shop.application.mobile.TransactionReasonBO"
+                      id="transactionReasonIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
+    <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="-1"
+                      DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subinventoriesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="transactIterator" id="trxType">
@@ -29,16 +40,6 @@
         <Item Value="kanban"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="subinv">
-      <AttrNames>
-        <Item Value="subinv"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="locator">
-      <AttrNames>
-        <Item Value="locator"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="transactIterator" id="salesOrder">
       <AttrNames>
         <Item Value="salesOrder"/>
@@ -59,5 +60,48 @@
         <Item Value="notes"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
+                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"/>
+    <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
+                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"
+                  ReturnName="data.TransactDC.methodResults.saveTransaction_TransactDC_dataProvider_saveTransaction_result">
+      <NamedData NDName="transactBo" NDValue="#{bindings.transactIterator.currentRow.dataProvider}"
+                 NDType="dcom.shop.application.mobile.dispatch.TransactBO"/>
+    </methodAction>
+    <list StaticList="false" IterBinding="transactIterator" ListIter="transactionReasonIterator" id="reasonName">
+      <AttrNames>
+        <Item Value="reason"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="reasonName"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="reasonName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="transactIterator" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="subinventoriesIterator">
+      <AttrNames>
+        <Item Value="subinv"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="subinv"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="subinv"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="transactIterator" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="locatorsIterator">
+      <AttrNames>
+        <Item Value="locator"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locator"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locator"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

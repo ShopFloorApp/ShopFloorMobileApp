@@ -14,10 +14,28 @@
             <amx:commandLink id="cl11" inlineStyle="width:20px;">
                 <amx:outputHtml id="oh18" styleClass="fa fa-ellipsis-v fa-lg"
                                 inlineStyle="width:20px; margin-left:10px;"/>
+                <amx:setPropertyListener id="spl9" to="#{pageFlowScope.jobOps}" from="#{bindings.jobOps.inputValue}"
+                                         type="action"/>
+                <amx:setPropertyListener id="spl10" from="#{bindings.jobNumber.inputValue}"
+                                         to="#{pageFlowScope.jobNumber}" type="action"/>
+                <amx:setPropertyListener id="spl29" from="#{bindings.nextOpSeq.inputValue}"
+                                         to="#{pageFlowScope.nextOpSeq}" type="action"/>
+                <amx:setPropertyListener id="spl30" from="#{bindings.compSubInv.inputValue}"
+                                         to="#{pageFlowScope.compSubInv}" type="action"/>
+                <amx:setPropertyListener id="spl31" from="#{bindings.compLocator.inputValue}"
+                                         to="#{pageFlowScope.compLocator}" type="action"/>
+                <amx:setPropertyListener id="spl32" from="#{bindings.assemblyUom.inputValue}"
+                                         to="#{pageFlowScope.assemblyUom}" type="action"/>
+                <amx:setPropertyListener id="spl33" from="#{bindings.lastDept.inputValue}"
+                                         to="#{pageFlowScope.lastDept}" type="action"/>
+                <amx:setPropertyListener id="spl34" from="#{bindings.lastOpSeq.inputValue}"
+                                         to="#{pageFlowScope.lastOpSeq}" type="action"/>
+                <amx:setPropertyListener id="spl35" from="#{bindings.nextDept.inputValue}"
+                                         to="#{pageFlowScope.nextDept}" type="action"/>
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
-            <amx:commandLink id="cl7" inlineStyle="width:20px;">
-                <amx:outputHtml id="oh13" styleClass="fa fa-edit fa-lg style4" inlineStyle="width:20px;"/>
+            <amx:commandLink id="cl7">
+                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
             </amx:commandLink>
         </amx:facet>
         <amx:tableLayout id="tl1" width="100%" borderWidth="0">
@@ -44,6 +62,9 @@
             <amx:panelLabelAndMessage label="Status" id="plam1">
                 <amx:outputText value="#{bindings.jobStatus.inputValue}" id="ot13"/>
             </amx:panelLabelAndMessage>
+            <amx:selectOneChoice label="Actions" id="soc1">
+                <amx:selectItems id="si2"/>
+            </amx:selectOneChoice>
         </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
@@ -54,7 +75,7 @@
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl2">
                                     <amx:cellFormat id="cf2" halign="center">
-                                        <amx:outputHtml id="oh2" styleClass="fa fa-wrench fa-lg"
+                                        <amx:outputHtml id="oh13" styleClass="fa fa-wrench fa-lg"
                                                         inlineStyle="color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
@@ -208,10 +229,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl9" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl10" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -229,10 +246,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl11" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl12" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -250,10 +263,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl13" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl14" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -271,10 +280,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl15" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl16" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -292,10 +297,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl17" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl18" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -313,10 +314,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl19" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl20" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -334,10 +331,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl21" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl22" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -355,10 +348,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl23" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl24" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -376,10 +365,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl25" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl26" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>
@@ -397,10 +382,6 @@
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
-                        <amx:setPropertyListener id="spl27" to="#{pageFlowScope.jobOps}"
-                                                 from="#{bindings.jobOps.inputValue}" type="action"/>
-                        <amx:setPropertyListener id="spl28" from="#{bindings.jobNumber.inputValue}"
-                                                 to="#{pageFlowScope.jobNumber}" type="action"/>
                     </amx:commandLink>
                 </amx:cellFormat>
             </amx:rowLayout>

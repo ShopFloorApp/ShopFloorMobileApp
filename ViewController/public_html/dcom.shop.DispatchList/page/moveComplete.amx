@@ -1,31 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Move and Complete" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="backToWorkContent">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Move and Complete" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:panelFormLayout id="pfl1">
-      <amx:inputText value="#{bindings.trxType.inputValue}" label="#{bindings.trxType.hints.label}" id="it11"/>
-      <amx:inputText value="#{bindings.fromOpSeq.inputValue}" label="#{bindings.fromOpSeq.hints.label}" id="it12"/>
-      <amx:inputText value="#{bindings.toOpSeq.inputValue}" label="#{bindings.toOpSeq.hints.label}" id="it4"/>
-      <amx:inputText value="#{bindings.txnUom.inputValue}" label="#{bindings.txnUom.hints.label}" id="it8"/>
-      <amx:inputText value="#{bindings.trxQty.inputValue}" label="#{bindings.trxQty.hints.label}" id="it9"/>
-      <amx:inputText value="#{bindings.kanban.inputValue}" label="#{bindings.kanban.hints.label}" id="it10"/>
-      <amx:inputText value="#{bindings.subinv.inputValue}" label="#{bindings.subinv.hints.label}" id="it5"/>
-      <amx:inputText value="#{bindings.locator.inputValue}" label="#{bindings.locator.hints.label}" id="it3"/>
-      <amx:inputText value="#{bindings.salesOrder.inputValue}" label="#{bindings.salesOrder.hints.label}" id="it1"/>
-      <amx:inputText value="#{bindings.reason.inputValue}" label="#{bindings.reason.hints.label}" id="it6"/>
-      <amx:inputText value="#{bindings.reference.inputValue}" label="#{bindings.reference.hints.label}" id="it2"/>
-      <amx:inputText value="#{bindings.notes.inputValue}" label="#{bindings.notes.hints.label}" id="it7"/>
-    </amx:panelFormLayout>
-  </amx:panelPage>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;"
+                             action="backToWorkContent">
+                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="MOVE_COMP_ASSEMBLY"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:tableLayout id="tl1" styleClass="tableHeader1">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1">
+                    <amx:outputText value="From Operation" id="ot2"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:panelFormLayout id="pfl2" labelPosition="topStart">
+            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc1">
+                <amx:selectItem label="Choose" id="si5" value="0"/>
+                <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
+            </amx:selectOneChoice>
+            <amx:panelLabelAndMessage label="Code" id="plam1">
+                <amx:outputText id="ot5" value="#{bindings.fromOpCode.inputValue}"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Department" id="plam2">
+                <amx:outputText value="#{bindings.fromDept.inputValue}" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}">
+                <amx:selectItems id="si2" value="#{bindings.fromStep.items}"/>
+            </amx:selectOneChoice>
+        </amx:panelFormLayout>
+        <amx:tableLayout id="tl2" styleClass="tableHeader1">
+            <amx:rowLayout id="rl2">
+                <amx:cellFormat id="cf2">
+                    <amx:outputText value="To Operation" id="ot3"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:selectOneChoice label="Sequence" id="soc3" value="#{bindings.toOpSeq.inputValue}">
+                <amx:selectItem label="Choose" id="si6" value="0"/>
+                <amx:selectItems id="si4" value="#{bindings.toOpSeq.items}"/>
+            </amx:selectOneChoice>
+            <amx:panelLabelAndMessage label="Code" id="plam3">
+                <amx:outputText id="ot7" value="#{bindings.toOpCode.inputValue}"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Department" id="plam4">
+                <amx:outputText value="#{bindings.toDept.inputValue}" id="ot8"/>
+            </amx:panelLabelAndMessage>
+            <amx:selectOneChoice label="Step" id="soc4" value="#{bindings.toStep.inputValue}">
+                <amx:selectItems id="si3" value="#{bindings.toStep.items}"/>
+            </amx:selectOneChoice>
+        </amx:panelFormLayout>
+        <amx:tableLayout id="tl3" styleClass="tableHeader1">
+            <amx:rowLayout id="rl3">
+                <amx:cellFormat id="cf3">
+                    <amx:outputText value="Transaction" id="ot4"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:panelFormLayout id="pfl3" labelPosition="topStart">
+            <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it3"/>
+            <amx:panelLabelAndMessage label="Available" id="plam5">
+                <amx:outputText value="#{pageFlowScope.availableQty}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Move Quantity" id="it1"/>
+            <amx:inputText value="#{bindings.scrapQty.inputValue}" label="Scrap Quantity" id="it7"/>
+            <amx:inputText value="#{bindings.kanban.inputValue}" label="Kanban Num" id="it6"/>
+            <amx:selectOneChoice label="Subinventory" value="#{bindings.subinv.inputValue}" id="soc6"
+                                 valueChangeListener="#{pageFlowScope.DispatchBean.subInvChangeListner}">
+                <?audit suppress oracle.maf.warning-missing-label?>
+                <amx:selectItem label="Choose Subinventory" value="0" id="si8"/>
+                <amx:selectItems value="#{bindings.subinv.items}" id="si9"/>
+            </amx:selectOneChoice>
+            <amx:selectOneChoice label="Locator" value="#{bindings.locator.inputValue}"
+                                 valueChangeListener="#{pageFlowScope.DispatchBean.locatorChangeListner}" id="soc5">
+                <amx:selectItem label="Choose Locator" value="0" id="si10"/>
+                <amx:selectItems value="#{bindings.locator.items}" id="si7"/>
+            </amx:selectOneChoice>
+            <amx:selectBooleanCheckbox id="sbc1" value="#{bindings.overComplFlag.inputValue}"
+                                       text="Over complete assembly" simple="true"/>
+            <amx:panelLabelAndMessage label="Sales Order" id="plam6">
+                <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
+                    <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"/>
+                    <amx:commandLink id="cbw3" action="pickRLov">
+                        <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
+                        <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'RET'}"/>
+                    </amx:commandLink>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:selectOneChoice value="#{bindings.reasonName.inputValue}" label="Reason" id="soc7">
+                <amx:selectItems value="#{bindings.reasonName.items}" id="si11"/>
+            </amx:selectOneChoice>
+            <amx:inputText value="#{bindings.reference.inputValue}" label="Reference" id="it4"/>
+            <amx:inputText value="#{bindings.notes.inputValue}" label="Note" id="it2" rows="3"/>
+        </amx:panelFormLayout>
+       
+    </amx:panelPage>
 </amx:view>

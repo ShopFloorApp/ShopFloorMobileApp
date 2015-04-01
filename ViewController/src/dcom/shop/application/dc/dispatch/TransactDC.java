@@ -4,6 +4,8 @@ import dcom.shop.application.mobile.dispatch.TransactBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
+import java.math.BigDecimal;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 import org.json.simple.JSONObject;
@@ -18,6 +20,23 @@ public class TransactDC {
 
     public TransactBO[] getTransact() {
         transactBO = new TransactBO();
+        //Defaulting values in the new object
+        String nextOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextOpSeq}").toString();
+        String compSubInv =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compSubInv}").toString();
+        String compLocator =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compLocator}").toString();
+        
+        String assemblyUom =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.assemblyUom}").toString();
+        String lastDept =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
+        String lastOpSeq =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
+        String nextDept =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
+        
+        transactBO.setIsNewEntity(true);
+        transactBO.setToDept(nextDept);
+        transactBO.setToOpSeq(new BigDecimal(nextOpSeq));
+        transactBO.setTxnUom(assemblyUom);
+        transactBO.setFromDept(lastDept);
+        transactBO.setFromOpSeq(new BigDecimal(lastOpSeq));
+        
         TransactBO[] transactArray = new TransactBO[1];
         transactArray[0] = transactBO;
         return transactArray;

@@ -20,10 +20,13 @@ public class ResourceDC extends SyncUtils {
         super();
 
     }
+    
     protected static List s_resources = new ArrayList();
+    
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    
     //SyncUtils syncUtils = new SyncUtils();
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_resources.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -76,7 +79,7 @@ public class ResourceDC extends SyncUtils {
                             ResourceItems.setUOM((jsObject2.get("UOM").toString()));
                             ResourceItems.setChargeType((jsObject2.get("CHARGETYPE").toString()));
                             ResourceItems.setBasis((jsObject2.get("BASIS").toString()));
-                           // ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
+                            // ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
                             s_resources.add(ResourceItems);
 
 
@@ -92,7 +95,7 @@ public class ResourceDC extends SyncUtils {
     }
 
     public ResourceBO[] getResource() {
-        
+
         ResourceBO[] ResourceArray = (ResourceBO[]) s_resources.toArray(new ResourceBO[s_resources.size()]);
         return ResourceArray;
     }

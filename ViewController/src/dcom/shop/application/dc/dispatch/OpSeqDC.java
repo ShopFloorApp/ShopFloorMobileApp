@@ -77,7 +77,6 @@ public class OpSeqDC extends AViewObject {
                             //Populating the base object
                             opSeqObj.setOPcode(opSeqJson.get("OPCODE").toString());
                             opSeqObj.setRunQty(getAttributeValue(opSeqJson.get("RUNQTY")));
-
                             opSeqObj.setToMoveQty(getAttributeValue(opSeqJson.get("TOMOVEQTY")));
                             opSeqObj.setCompQty(getAttributeValue(opSeqJson.get("COMPQTY")));
                             opSeqObj.setOpSeq(getAttributeValue(opSeqJson.get("OPSEQ")));
@@ -85,10 +84,8 @@ public class OpSeqDC extends AViewObject {
                             opSeqObj.setDeptCode(opSeqJson.get("DEPTCODE").toString());
                             opSeqObj.setOrgCode(opSeqJson.get("ORGCODE").toString());
                             opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("SCRAPQTY")));
-
                             opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("CSCRAPQTY")));
                             opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("QUEUEQTY")));
-
                             opSeqList.add(opSeqObj);
                         }
                     }

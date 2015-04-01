@@ -97,5 +97,7 @@
       <NamedData NDName="transactBo" NDValue="#{bindings.transactIterator.currentRow.dataProvider}"
                  NDType="dcom.shop.application.mobile.dispatch.TransactBO"/>
     </methodAction>
+    <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
+                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"/>
   </bindings>
 </pageDefinition>

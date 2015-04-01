@@ -7,11 +7,15 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToWorkContent">
-                <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2"/>
+            <amx:commandLink id="cl2" inlineStyle="width:30px;"
+                             action="backToWorkContent">
+                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="COMP_ASSEMBLY"/>
+            </amx:commandLink>
         </amx:facet>
     </amx:panelPage>
 </amx:view>

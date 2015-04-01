@@ -3,7 +3,9 @@
                 Package="dcom.shop.DispatchList.page">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Name="job_action" Type="java.lang.String"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="JobOperationDC" id="JobOperationDCIterator"/>
     <accessorIterator MasterBinding="JobOperationDCIterator" Binds="jobOperationBO" RangeSize="25"
                       DataControl="JobOperationDC" BeanClass="dcom.shop.application.mobile.dispatch.JobOperationBO"
@@ -40,5 +42,50 @@
         <Item Value="jobOps"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="nextOpSeq">
+      <AttrNames>
+        <Item Value="nextOpSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="compSubInv">
+      <AttrNames>
+        <Item Value="compSubInv"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="compLocator">
+      <AttrNames>
+        <Item Value="compLocator"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="assemblyUom">
+      <AttrNames>
+        <Item Value="assemblyUom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="lastDept">
+      <AttrNames>
+        <Item Value="lastDept"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="lastOpSeq">
+      <AttrNames>
+        <Item Value="lastOpSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="nextDept">
+      <AttrNames>
+        <Item Value="nextDept"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="variables" StaticList="true" id="jobAction">
+      <AttrNames>
+        <Item Value="job_action"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Unrelease Job"/>
+        <Item Value="Release Job"/>
+        <Item Value="Put Job On Hold"/>
+      </ValueList>
+    </list>
   </bindings>
 </pageDefinition>

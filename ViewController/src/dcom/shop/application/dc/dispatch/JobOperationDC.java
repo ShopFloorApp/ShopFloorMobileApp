@@ -85,6 +85,13 @@ public class JobOperationDC extends AViewObject{
                         jobOperationBO.setJobStatus(jsObject2.get("JOBSTATUS").toString());
                         jobOperationBO.setReadyStatus(jsObject2.get("READYSTATUS").toString());
                         jobOperationBO.setSchStartDate(jsObject2.get("SCHSTARTDATE").toString());
+                        jobOperationBO.setNextOpSeq(jsObject2.get("NEXTOPSEQ").toString());
+                        jobOperationBO.setNextDept(jsObject2.get("NEXTDEPT").toString());
+                        jobOperationBO.setLastOpSeq(jsObject2.get("LASTOPSEQ").toString());
+                        jobOperationBO.setLastDept(jsObject2.get("LASTDEPT").toString());
+                        jobOperationBO.setCompSubInv(jsObject2.get("COMPSUBINV").toString());
+                        jobOperationBO.setCompLocator(jsObject2.get("COMPLOCATOR").toString());
+                        jobOperationBO.setAssemblyUom(jsObject2.get("ASSEMBLYUOM").toString());
                         jobOpList.add(jobOperationBO);
                     }
                     super.updateSqlLiteTable(JobOperationBO.class, jobOpList);
