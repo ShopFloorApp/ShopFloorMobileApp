@@ -19,7 +19,7 @@
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
             <amx:commandLink id="cl12" rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
-                             actionListener="#{bindings.refresh.execute}">
+                             actionListener="#{bindings.refreshLpnDC.execute}">
                 <amx:tableLayout id="tl2" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:rowLayout id="rl2">
@@ -37,7 +37,7 @@
                 <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}"/>
             </amx:commandLink>
             <amx:commandLink id="cl1" rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
-                             actionListener="#{bindings.refreshLpnDC.execute}">
+                             actionListener="#{bindings.refresh.execute}">
                 <amx:tableLayout id="tl4" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:rowLayout id="rl3">
@@ -134,9 +134,9 @@
                 <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
                                          id="spl1"/>
                 <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.lpn}" id="spl7"/>
-                <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.Subinventory}"
+                <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.FromSubinventory}"
                                          id="spl3"/>
-                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.Locator}" id="spl5"/>
+                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.FromLocator}" id="spl5"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl6"/>
             </amx:listItem>
         </amx:listView>

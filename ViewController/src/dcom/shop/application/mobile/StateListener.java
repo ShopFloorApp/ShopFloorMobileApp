@@ -217,9 +217,9 @@ public class StateListener {
     public String BackToLpnTrxn() {
         // Add event code here...
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.Subinventory}", String.class);
+        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.Locator}", String.class);
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         String loc = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.RenderSubInvChoice}", String.class);
         if ("{\"@xsi:nil\":\"true\"}".equals(subinv))

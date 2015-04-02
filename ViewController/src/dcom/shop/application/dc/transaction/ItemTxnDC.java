@@ -38,7 +38,7 @@ public class ItemTxnDC extends SyncUtils{
         super();
                s_dbItems.clear();
                s_dbItems = super.getCollectionFromDB(ItemTxnBO.class);
-               AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId", s_dbItems.size());
+               AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", s_dbItems.size());
            }
     protected static List s_items = new ArrayList();
     protected static List s_insertItems = new ArrayList();
