@@ -11,6 +11,9 @@
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="-1"
                       DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
                       id="subinventoriesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ItemTxnDC" id="ItemTxnDCIterator"/>
+    <accessorIterator MasterBinding="ItemTxnDCIterator" Binds="items" RangeSize="25" DataControl="ItemTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.ItemTxnBO" id="itemsIterator"/>
   </executables>
   <bindings>
     <list IterBinding="LocatorDCIterator" id="fromLoc" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -45,5 +48,16 @@
                   IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider">
       <NamedData NDName="trxType" NDValue="#{pageFlowScope.LpnPage}" NDType="java.lang.String"/>
     </methodAction>
+    <methodAction id="InsertItems" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertItems"
+                  IsViewObjectMethod="false" DataControl="ItemTxnDC" InstanceName="data.ItemTxnDC.dataProvider"/>
+    <tree IterBinding="itemsIterator" id="items">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.ItemTxnBO" Name="items0">
+        <AttrNames>
+          <Item Value="itemNumber"/>
+          <Item Value="itemName"/>
+          <Item Value="quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

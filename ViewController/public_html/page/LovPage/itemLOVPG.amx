@@ -6,8 +6,11 @@
             <amx:outputText value="Item LOV Page" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cb3" action="bT">
+            <amx:commandLink id="cb3" rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? true : false}" action="Back">
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
+                <amx:commandLink id="cl2" rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? false : true}" action="BackToPage">
+                <amx:outputHtml id="oh2" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -22,7 +25,7 @@
             <!--amx:inputText value="#{bindings.desc.inputValue}" label="Item Desc" id="it1"/-->
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-            <amx:commandLink id="cl12" actionListener="#{bindings.refresh.execute}">
+            <amx:commandLink id="cl12" rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? true : false}"  actionListener="#{bindings.refresh.execute}">
                 <amx:tableLayout id="tl2" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:rowLayout id="rl2">
@@ -34,6 +37,22 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf9">
                             <amx:outputText value="Search" id="ot7"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
+            <amx:commandLink id="cl1" rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? false : true}"  actionListener="#{bindings.refreshLpnItems.execute}">
+                <amx:tableLayout id="tl4" width="100%">
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                    <amx:rowLayout id="rl4">
+                        <amx:cellFormat id="cf10" width="40%">
+                            <amx:spacer width="50" id="s2"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf11" width="10%">
+                            <amx:outputHtml id="oh1" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf13">
+                            <amx:outputText value="Search" id="ot8"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

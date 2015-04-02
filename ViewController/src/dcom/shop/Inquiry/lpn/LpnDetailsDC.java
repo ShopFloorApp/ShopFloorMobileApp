@@ -11,6 +11,8 @@ import java.util.logging.Level;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -23,6 +25,7 @@ public class LpnDetailsDC {
         super();
     }
     List s_LpnDetailList = new ArrayList();
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     
     public LpnDetailsEntity[] getAllLpnDetails(){
         ValueExpression ve = null;
@@ -101,5 +104,17 @@ public class LpnDetailsDC {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnDetailsEntity", e.getLocalizedMessage());
         }
         return lpnDetailsArray;
+    }
+    
+    public void refreshLpnItems() {
+        providerChangeSupport.fireProviderRefresh("allLpnDetails");
+    }
+    
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
 }

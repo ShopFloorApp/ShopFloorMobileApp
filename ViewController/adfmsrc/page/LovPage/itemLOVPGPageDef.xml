@@ -55,5 +55,7 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="refreshLpnItems" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLpnItems"
+                  IsViewObjectMethod="false" DataControl="LpnDetailsDC" InstanceName="data.LpnDetailsDC.dataProvider"/>
   </bindings>
 </pageDefinition>

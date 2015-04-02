@@ -199,6 +199,7 @@
               path="dcom.shop.Transaction.page.ShippingTxn.SerialLOVPGPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="ItemTxnDC" path="dcom.shop.mobile.ItemTxnDC"/>
         <dc id="SerialNumberDC" path="dcom.shop.mobile.SerialNumberDC"/>
         <dc id="LotNumberDC" path="dcom.shop.mobile.LotNumberDC"/>
         <dc id="OpSeqDC" path="dcom.shop.mobile.OpSeqDC"/>

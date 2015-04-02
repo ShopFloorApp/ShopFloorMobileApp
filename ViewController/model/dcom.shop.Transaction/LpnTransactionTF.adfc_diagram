@@ -117,7 +117,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">B50,636.0,278.5459,635.00977,348.74707,T50</property>
+         name="sdm:polyPoints">B44,632.5,278.83008,631.50977,348.98187,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

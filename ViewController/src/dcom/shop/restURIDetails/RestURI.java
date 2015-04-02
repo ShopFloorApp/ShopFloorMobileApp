@@ -16,6 +16,12 @@ public class RestURI {
         return PROCESS_INV_TRXN_URI;
     }
     
+    private static final String PROCESS_LPN_TRXN_URI = "/webservices/rest/DCOMLPN/processTxn/";
+
+    public static String PostLpnTrxnURI() {
+        return PROCESS_LPN_TRXN_URI;
+    }
+    
     private static final String ONHAND_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getonhand/";
 
     public static String PostOnHandInquiryURI() {
