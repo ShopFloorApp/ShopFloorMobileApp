@@ -86,7 +86,8 @@
         <amx:cellFormat id="cf8"/>
       </amx:rowLayout>
         </amx:tableLayout>
-        <amx:commandLink  id="cl4" action="addLine"
+    <amx:spacer id="s2" height="10"/>
+    <amx:commandLink  id="cl4" action="addLine"
                          actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"
                          rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
             <amx:outputHtml id="oh2" styleClass="fa fa-plus fa-lg"/>
