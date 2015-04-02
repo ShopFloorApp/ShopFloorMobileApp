@@ -34,7 +34,7 @@ public class LpnTxnDC extends SyncUtils {
     public LpnTxnDC() {
         try {
             filtered_LpnTxn = super.getOfflineCollection(LpnTxnBO.class);
-            if (s_lpnTrxns == null) {
+            if (s_lpnTrxns.size() == 0) {
                 s_lpnTrxns = new ArrayList<LpnTxnBO>();
                 s_lpnTrxns.clear();
                 this.getLpnTrxns();

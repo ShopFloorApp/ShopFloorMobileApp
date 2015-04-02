@@ -29,7 +29,7 @@ public class LpnDetailsDC {
     
     public LpnDetailsEntity[] getAllLpnDetails(){
         ValueExpression ve = null;
-
+        s_LpnDetailList.clear();
         System.out.println("Inside lpn details");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String keyword = null;

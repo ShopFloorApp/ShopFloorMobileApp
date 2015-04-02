@@ -38,6 +38,7 @@ public class ItemTxnDC extends SyncUtils{
         super();
                s_dbItems.clear();
                s_dbItems = super.getCollectionFromDB(ItemTxnBO.class);
+               LpnTxnDC lpn = new LpnTxnDC();
                AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", s_dbItems.size());
            }
     protected static List s_items = new ArrayList();
@@ -149,12 +150,12 @@ public class ItemTxnDC extends SyncUtils{
         ItemTxnBO item = new ItemTxnBO();
 
         int itemId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
-        Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
-        String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
-        String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
-        String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
-        Integer quantity = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.toLpn}");
-        String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
+        int trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
+        String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+        String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
+        String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
+        Integer quantity = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
+        String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
         String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
         String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
         

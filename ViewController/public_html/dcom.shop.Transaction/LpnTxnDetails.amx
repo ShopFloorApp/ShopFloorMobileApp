@@ -77,10 +77,10 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="pla2m3">
+            <amx:panelLabelAndMessage label="Subinventory" rendered='#{pageFlowScope.RenderSubInvChoice == "No"}' inlineStyle="text-align:center;" id="pla2m3">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.FromSubinventory}"
-                                rendered='#{pageFlowScope.RenderSubInvChoice == "No"}'
+                                
                                 styleClass="adfmf-listItem-captionText" id="it3"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
@@ -90,9 +90,9 @@
                 <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
             </amx:selectOneChoice>
-            <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam2">
+            <amx:panelLabelAndMessage label="Locator" rendered='#{pageFlowScope.RenderLocChoice == "No"}' inlineStyle="text-align:center;" id="plam2">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:outputText value="#{pageFlowScope.FromLocator}" rendered='#{pageFlowScope.RenderLocChoice == "No"}'
+                <amx:outputText value="#{pageFlowScope.FromLocator}" 
                                 styleClass="adfmf-listItem-captionText" id="ot2"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
@@ -140,7 +140,8 @@
                 <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText" id="it4"/>
             </amx:panelLabelAndMessage>
             <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:left;"
-                           value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText" id="it2">
+                           value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText" id="it2"
+                           inputType="number">
                 <?audit suppress oracle.maf.warning-missing-hintText?>
             </amx:inputText>
         </amx:panelFormLayout>
