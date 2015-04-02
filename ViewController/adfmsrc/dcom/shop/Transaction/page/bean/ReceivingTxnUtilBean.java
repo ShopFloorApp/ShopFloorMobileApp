@@ -106,7 +106,6 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.receivingType}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.carrier}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.packSlip}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.bol}", null);
