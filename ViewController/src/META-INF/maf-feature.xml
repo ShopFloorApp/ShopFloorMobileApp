@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
-    <adfmf:feature id="dcom.shop.syncPref" name="Sync" securityEnabled="false">
+    <adfmf:feature id="dcom.shop.syncPref" name="Sync" securityEnabled="true">
         <adfmf:content id="dcom.shop.syncPref.1">
             <adfmf:constraints/>
             <adfmf:amx file="dcom.shop.syncPref/syncPrefTF.xml#syncPrefTF">
@@ -21,7 +21,7 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.subInventryTrsf" name="subInventryTrsf" securityEnabled="false">
+    <adfmf:feature id="dcom.shop.subInventryTrsf" name="subInventryTrsf" securityEnabled="true">
         <adfmf:content id="dcom.shop.subInventryTrsf.1">
             <adfmf:amx file="page/SubInventoryTrsf.amx"/>
         </adfmf:content>
@@ -36,7 +36,7 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Transaction" name="Transaction" securityEnabled="false">
+    <adfmf:feature id="dcom.shop.Transaction" name="Transaction" securityEnabled="true">
         <adfmf:content id="dcom.shop.Transaction.1">
             <adfmf:constraints>
                 <adfmf:constraint property="device.os" operator="equal" value="Android" id="c2"/>
@@ -67,29 +67,29 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Inquiry" name="Inquiry" securityEnabled="false">
+    <adfmf:feature id="dcom.shop.Inquiry" name="Inquiry" securityEnabled="true">
         <adfmf:content id="dcom.shop.Inquiry.1">
             <adfmf:amx file="dcom.shop.Inquiry/inquiryTf.xml#inquiryTf">
                 <adfmf:includes/>
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Settings" name="Settings">
+    <adfmf:feature id="dcom.shop.Settings" name="Settings" securityEnabled="true">
         <adfmf:content id="dcom.shop.Settings.1">
             <adfmf:amx file="dcom.shop.Settings/settingsTf.xml#settingsTf"/>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Preferences" name="Preferences">
+    <adfmf:feature id="dcom.shop.Preferences" name="Preferences" securityEnabled="true">
         <adfmf:content id="dcom.shop.Preferences.1">
             <adfmf:amx file="dcom.shop.Preferences/preferencesTf.xml#preferencesTf"/>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Springboard" name="Springboard">
+    <adfmf:feature id="dcom.shop.Springboard" name="Springboard" securityEnabled="true">
         <adfmf:content id="dcom.shop.Springboard.1">
             <adfmf:amx file="dcom.shop.Springboard/springboard.amx"/>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.Request" name="Request" securityEnabled="false">
+    <adfmf:feature id="dcom.shop.Request" name="Request" securityEnabled="true">
         <adfmf:content id="dcom.shop.Request.1">
             <adfmf:amx file="dcom.shop.Request/requestTf.xml#requestTf">
                 <adfmf:includes>
@@ -98,7 +98,7 @@
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.SecuredFeature" name="SecuredFeature" securityEnabled="true">
+    <adfmf:feature id="dcom.shop.SecuredFeature" name="Sign Out" securityEnabled="true">
         <adfmf:content id="dcom.shop.SecuredFeature.1">
             <adfmf:amx file="dcom.shop.SecuredFeature/SecuredFeature-task-flow.xml#SecuredFeature-task-flow"/>
         </adfmf:content>

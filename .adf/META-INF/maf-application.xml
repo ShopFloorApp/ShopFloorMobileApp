@@ -3,21 +3,21 @@
                    version="1.0" name="ShopFloorMobileApp" id="com.company.ShopFloorMobileApp"
                    appControllerFolder="ApplicationController"
                    listener-class="dcom.shop.application.LifeCycleListenerImpl">
-    <adfmf:featureReference refId="dcom.shop.SecuredFeature" id="fr11" showOnSpringboard="false"
-                            showOnNavigationBar="false"/>
     <adfmf:featureReference id="fr2" refId="dcom.shop.DispatchList" loginConnRefId="ShopFloorSecurity"/>
-    <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction"/>
-    <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry"/>
-    <adfmf:featureReference id="fr5" refId="dcom.shop.Request"/>
-    <adfmf:featureReference id="fr6" refId="dcom.shop.Settings"/>
+    <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction" loginConnRefId="ShopFloorSecurity"/>
+    <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry" loginConnRefId="ShopFloorSecurity"/>
+    <adfmf:featureReference id="fr5" refId="dcom.shop.Request" loginConnRefId="ShopFloorSecurity"/>
+    <adfmf:featureReference id="fr6" refId="dcom.shop.Settings" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr1" refId="dcom.shop.syncPref" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr7" refId="dcom.shop.Preferences" showOnNavigationBar="false"
-                            showOnSpringboard="false"/>
+                            showOnSpringboard="false" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr8" refId="dcom.shop.LoadLov" showOnNavigationBar="false" showOnSpringboard="false"/>
     <adfmf:featureReference id="fr9" showOnNavigationBar="false" showOnSpringboard="false"
-                            refId="dcom.shop.subInventryTrsf"/>
+                            refId="dcom.shop.subInventryTrsf" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr10" showOnNavigationBar="false" showOnSpringboard="false"
-                            refId="dcom.shop.Springboard"/>
+                            refId="dcom.shop.Springboard" loginConnRefId="ShopFloorSecurity"/>
+    <adfmf:featureReference refId="dcom.shop.SecuredFeature" id="fr11" showOnSpringboard="true"
+                            showOnNavigationBar="true" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:navigation>
         <adfmf:navigationBar displayHideShowNavigationBarControl="false" enabled="false"/>
         <adfmf:springboard enabled="true" animation="slideright" width="200" displayGotoSpringboardControl="false"

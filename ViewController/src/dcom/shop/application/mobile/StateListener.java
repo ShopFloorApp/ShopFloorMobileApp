@@ -231,7 +231,7 @@ public class StateListener {
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Yes");
         else
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "No");
-        return "Back";
+        return "__back";
     }
 
     public void SwipeLeftSerial(ActionEvent actionEvent) {

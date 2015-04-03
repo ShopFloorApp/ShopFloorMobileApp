@@ -6,16 +6,10 @@
             <amx:outputText value="Item LOV Page" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cb3" rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? true : false}" action="Back">
-                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
-            </amx:commandLink>
-                <amx:commandLink id="cl2" rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? false : true}" action="BackToPage">
+                <amx:commandLink id="cl2"
+                                 action="__back">
                 <amx:outputHtml id="oh2" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
-        </amx:facet>
-        <amx:facet name="secondary">
-            <!--amx:commandButton actionListener="#{bindings.ProcessItemOnHand.execute}" text="Select"
-                               disabled="#{!bindings.ProcessItemOnHand.enabled}" id="cb4" action="sendItem"/-->
         </amx:facet>
         <amx:facet name="footer">
             <amx:outputText value="Select an Item" id="ot2"/>
@@ -82,7 +76,7 @@
                       rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? true : false}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv2" layout="cards">
             <!--20-Mar amx:listItem showLinkIcon="false" actionListener="#{bindings.ProcessItemOnHand.execute}" action="sendItem"-->
-            <amx:listItem showLinkIcon="false" action="BackToPage"
+            <amx:listItem showLinkIcon="false" action="__back"
                           rendered="#{pageFlowScope.ItemLovPage == 'MiscTrxn' ? true : false}" id="li2">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl1">
@@ -156,7 +150,7 @@
                       selectionListener="#{bindings.allLpnDetails.collectionModel.makeCurrent}"
                       rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? false : true}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" showLinkIcon="false" action="Back">
+            <amx:listItem id="li1" showLinkIcon="false" action="__back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl3">

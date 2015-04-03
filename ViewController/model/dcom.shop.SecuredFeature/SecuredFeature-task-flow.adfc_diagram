@@ -2,23 +2,19 @@
 <SDM>
    <OverallProperties
       id="OverallProperties1"/>
-   <TaskFlowCall
-      id="TaskFlowCall2">
+   <MethodCall
+      id="MethodCall3">
       <property
-         name="taskFlowId">dispatch</property>
-      <property
-         name="activityId">dispatch</property>
-      <property
-         name="documentReference">/dcom.shop.DispatchList/dispatch.xml</property>
+         name="activityId">logout</property>
       <property
          name="start">true</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>dispatch&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>logout&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">193.5</property>
+         name="y">113.60156</property>
       <property
-         name="x">483.5</property>
-   </TaskFlowCall>
+         name="x">112.0</property>
+   </MethodCall>
 </SDM>

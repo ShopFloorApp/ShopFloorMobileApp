@@ -285,6 +285,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                         concProgramParamsItems.setDisplayed((jsObject2.get("DISPLAYED").toString()));
                         concProgramParamsItems.setIsLov((jsObject2.get("ISLOV").toString()));
                         concProgramParamsItems.setDefaultType((jsObject2.get("DEFAULTTYPE").toString()));
+                       // concProgramParamsItems.setParamDispValue(jsObject2.get("DEFAULTVALUE").toString());
                         concProgramParamsItems.setDefaultValue((jsObject2.get("DEFAULTVALUE").toString()));
                         concProgramParamsItems.setParamType((jsObject2.get("PARAMTYPE").toString()));
                         concProgramParamsItems.setValueSetName((jsObject2.get("VALUESETNAME").toString()));
@@ -322,6 +323,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                     concProgramParamsItem.setIsLov((jsObject2.get("ISLOV").toString()));
                     concProgramParamsItem.setDefaultType((jsObject2.get("DEFAULTTYPE").toString()));
                     concProgramParamsItem.setDefaultValue((jsObject2.get("DEFAULTVALUE").toString()));
+                   // concProgramParamsItem.setParamDispValue(jsObject2.get("DEFAULTVALUE").toString());
                     concProgramParamsItem.setParamType((jsObject2.get("PARAMTYPE").toString()));
                     concProgramParamsItem.setValueSetName((jsObject2.get("VALUESETNAME").toString()));
                     concProgramParamsItem.setRefParam1((jsObject2.get("REFPARAM1").toString()));

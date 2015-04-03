@@ -6,11 +6,10 @@
             <amx:outputText value="LPN LOV Page" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cb3" action="bT">
+            <amx:commandLink id="cb3" action="__back">
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:facet name="secondary"></amx:facet>
         <amx:facet name="footer">
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
@@ -79,7 +78,7 @@
         <amx:listView var="row" value="#{bindings.allLpns.collectionModel}"
                       rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?true:false}'
                       fetchSize="#{bindings.allLpns.rangeSize}" id="lv1" layout="cards">
-            <amx:listItem showLinkIcon="false" action="Back" id="li1">
+            <amx:listItem showLinkIcon="false" action="__back" id="li1">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl31">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>

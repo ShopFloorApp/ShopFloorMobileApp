@@ -34,6 +34,8 @@
               <amx:setPropertyListener id="spl1" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
               <amx:setPropertyListener id="spl2" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
               <amx:setPropertyListener id="spl3" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/>
+              <amx:setPropertyListener id="spl9" to="#{pageFlowScope.selectedDispParamsLovVal}" from="#{''}"/>
+              <amx:setPropertyListener id="spl10" to="#{pageFlowScope.selectedParamsLovVal}" from="#{''}"/>
             </amx:commandLink>
           </amx:cellFormat>
         </amx:rowLayout>
@@ -44,12 +46,15 @@
         <amx:iterator id="i2" value="#{bindings.concProgramParams.collectionModel}" var="row">
           <amx:panelLabelAndMessage label="#{row.paramName}" inlineStyle="text-align:center;" id="plam1">
             <amx:panelGroupLayout id="pgl2" layout="horizontal">
-              <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType=='LOV' || row.itemType!='TEXT'}"
-                             required="#{row.required=='Y'}" showRequired="#{row.required=='Y'}"/>
+              <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType=='LOV' || row.itemType=='TEXT'}"
+                             required="#{row.required=='Y'}" showRequired="#{row.required=='Y'}" simple="true"
+                             label="#{row.paramName}"/>
               <amx:inputDate id="id2" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"
-                             showRequired="#{row.required=='Y'}" inputType="datetime" required="#{row.required=='Y'}"/>
+                             showRequired="#{row.required=='Y'}" inputType="datetime" required="#{row.required=='Y'}"
+                             label="#{row.paramName}" simple="true"/>
             <amx:selectOneChoice id="id3" value="#{row.paramDispValue}" rendered="#{row.itemType=='YESNO'}"
-                             showRequired="#{row.required=='Y'}" required="#{row.required=='Y'}">
+                             showRequired="#{row.required=='Y'}" required="#{row.required=='Y'}" simple="true"
+                                 label="#{row.paramName}">
                 <amx:selectItem label=" " id="si1"/>
                 <amx:selectItem label="Yes" id="si2" value="YES"/>
                 <amx:selectItem label="No" id="si3" value="NO"/>
@@ -101,7 +106,7 @@
                 </amx:rowLayout>
                 <amx:rowLayout id="rl13">
                   <amx:cellFormat id="cf23" halign="center">
-                    <amx:outputHtml id="oh6" value="Search" inlineStyle="font-size:small;color:Gray;"/>
+                    <amx:outputHtml id="oh6" value="Submit" inlineStyle="font-size:small;color:Gray;"/>
                   </amx:cellFormat>
                 </amx:rowLayout>
               </amx:tableLayout>

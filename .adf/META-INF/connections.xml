@@ -1,120 +1,4 @@
 <References xmlns="http://xmlns.oracle.com/adf/jndi">
-  
-  <!--Reference name="SubinventoryLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
-             xmlns="">
-    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="WebServiceConnection">
-        <Contents>
-          <wsconnection description="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep?WSDL"
-                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}dcomgetsubinvbpel_client_ep">
-            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}dcomgetsubinvbpel_client_ep"
-                   xmlns="http://oracle.com/ws/model">
-              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}dcomgetsubinvbpel_client_ep">
-                <port name="DCOMGetSubinvBPEL_pt"
-                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetSubinv/DCOMGetSubinvBPEL}DCOMGetSubinvBPELBinding">
-                  <soap addressUrl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetSubinv/dcomgetsubinvbpel_client_ep"
-                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                  <operation name="process">
-                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                    <input name=""/>
-                    <output name=""/>
-                  </operation>
-                </port>
-              </service>
-            </model>
-          </wsconnection>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference>
-  
-  
-  <Reference name="SubInventoryTrf_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
-             xmlns="">
-    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="WebServiceConnection">
-        <Contents>
-          <wsconnection description="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMSubInventoryTransfer!1.0*soa_464a94e4-5af5-4e99-8190-71f6be7a7f9f/dcomsubinventorytransfer_client_ep?WSDL"
-                        service="{http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer}dcomsubinventorytransfer_client_ep">
-            <model name="{http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer}dcomsubinventorytransfer_client_ep"
-                   xmlns="http://oracle.com/ws/model">
-              <service name="{http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer}dcomsubinventorytransfer_client_ep">
-                <port name="DCOMSubInventoryTransfer_pt"
-                      binding="{http://www.deloitte.com/DCOM/DCOMSubInventoryTransfer/SubInventoryTransfer}DCOMSubInventoryTransferBinding">
-                  <soap addressUrl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMSubInventoryTransfer!1.0*soa_464a94e4-5af5-4e99-8190-71f6be7a7f9f/dcomsubinventorytransfer_client_ep"
-                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                  <operation name="process">
-                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                    <input name=""/>
-                    <output name=""/>
-                  </operation>
-                </port>
-              </service>
-            </model>
-          </wsconnection>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference>
-  
-  <Reference name="ItemLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
-             xmlns="">
-    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="WebServiceConnection">
-        <Contents>
-          <wsconnection description="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetItem/dcomgetitembpel_client_ep?WSDL"
-                        service="{http://www.deloitte.com/DCOM/Common/DCOMGetItem/DCOMGetItemBPEL}dcomgetitembpel_client_ep">
-            <model name="{http://www.deloitte.com/DCOM/Common/DCOMGetItem/DCOMGetItemBPEL}dcomgetitembpel_client_ep"
-                   xmlns="http://oracle.com/ws/model">
-              <service name="{http://www.deloitte.com/DCOM/Common/DCOMGetItem/DCOMGetItemBPEL}dcomgetitembpel_client_ep">
-                <port name="DCOMGetItemBPEL_pt"
-                      binding="{http://www.deloitte.com/DCOM/Common/DCOMGetItem/DCOMGetItemBPEL}DCOMGetItemBPELBinding">
-                  <soap addressUrl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetItem/dcomgetitembpel_client_ep"
-                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                  <operation name="process">
-                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                    <input name=""/>
-                    <output name=""/>
-                  </operation>
-                </port>
-              </service>
-            </model>
-          </wsconnection>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference>
-  <Reference name="ItemOnHand_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl"
-             xmlns="">
-    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="WebServiceConnection">
-        <Contents>
-          <wsconnection description="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand?WSDL"
-                        service="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}DCOMGetOnhand">
-            <model name="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}DCOMGetOnhand"
-                   xmlns="http://oracle.com/ws/model">
-              <service name="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}DCOMGetOnhand">
-                <port name="execute_pt"
-                      binding="{http://oracle.com/sca/soapservice/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand}execute_pttBinding">
-                  <soap addressUrl="http://10.118.20.255:8001/soa-infra/services/DCOMFY14/DCOMGetOnhand/DCOMGetOnhand"
-                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                  <operation name="execute">
-                    <soap soapAction="execute" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                    <input name=""/>
-                    <output name=""/>
-                  </operation>
-                </port>
-              </service>
-            </model>
-          </wsconnection>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference-->
   <Reference name="Rest" className="oracle.adf.model.connection.rest.RestConnection" credentialStoreKey="Rest" xmlns="">
     <Factory className="oracle.adf.model.connection.rest.RestConnectionFactory"/>
     <RefAddresses>
@@ -131,33 +15,6 @@
       <SecureRefAddr addrType="password"/>
     </RefAddresses>
   </Reference>
-   <!--Reference name="LPNLOV_WS" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
-    <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
-    <RefAddresses>
-      <XmlRefAddr addrType="WebServiceConnection">
-        <Contents>
-          <wsconnection description="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetLPN/dcomgetlpnbpel_client_ep?WSDL"
-                        service="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}dcomgetlpnbpel_client_ep">
-            <model name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}dcomgetlpnbpel_client_ep"
-                   xmlns="http://oracle.com/ws/model">
-              <service name="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}dcomgetlpnbpel_client_ep">
-                <port name="DCOMGetLPNBPEL_pt"
-                      binding="{http://www.deloitte.com/DCOM/MasterData/DCOMGetLPN/DCOMGetLPNBPEL}DCOMGetLPNBPELBinding">
-                  <soap addressUrl="http://USSLTCSNL3303.solutions.glbsnet.com:8001/soa-infra/services/DCOMFY14/DCOMGetLPN/dcomgetlpnbpel_client_ep"
-                        xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                  <operation name="process">
-                    <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
-                    <input name=""/>
-                    <output name=""/>
-                  </operation>
-                </port>
-              </service>
-            </model>
-          </wsconnection>
-        </Contents>
-      </XmlRefAddr>
-    </RefAddresses>
-  </Reference-->
   <Reference name="ShopFloorSecurity" className="oracle.adf.model.connection.adfmf.LoginConnection"
              adfCredentialStoreKey="ShopFloorSecurity" partial="false" manageInOracleEnterpriseManager="true"
              deployable="true" xmlns="">
@@ -174,7 +31,8 @@
           <rememberCredentials>
             <enableRememberUserName value="true"/>
             <rememberUserNameDefault value="true"/>
-            <enableRememberPassword value="false"/>
+            <enableRememberPassword value="true"/>
+            <rememberPasswordDefault value="true"/>
             <enableStayLoggedIn value="false"/>
           </rememberCredentials>
           <injectCookiesToRestHttpHeader value="true"/>

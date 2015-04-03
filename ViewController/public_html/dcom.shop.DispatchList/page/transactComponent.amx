@@ -13,7 +13,7 @@
                // Note that you could also use adf.mf.api.invokeMethod() to invoke Java methods directly if 
                 // you do not want to use EL expressions.
                 adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
-                                       "value": "Result = " + result.text + ", Format = " + result.format + ", Cancelled = " + result.cancelled}, 
+                                       "value": result.text}, 
                                        function() {}, 
                                        function() {});
               },

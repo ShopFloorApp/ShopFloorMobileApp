@@ -6,36 +6,16 @@
             <amx:outputText value="Serial Entry" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cb3" rendered="#{pageFlowScope.ParentPage == 'MiscTrxn' ? true : false}"
-                             action="BackToPage">
+            <amx:commandLink id="cb3"
+                             action="__back">
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
-            </amx:commandLink>
-            <amx:commandLink id="cl3" rendered="#{pageFlowScope.ParentPage == 'SubinvTxfr' ? true : false}"
-                             action="Back">
-                <amx:outputHtml id="oh4" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
-            </amx:commandLink>
-                        <amx:commandLink id="cl5" rendered="#{pageFlowScope.ParentPage == 'ReceiveTxn' ? true : false}"
-                             action="Back">
-                <amx:outputHtml id="oh6" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl1" rendered="#{pageFlowScope.ParentPage == 'MiscTrxn' ? true : false}"
-                             action="BackToPage">
+            <amx:commandLink id="cl1"
+                             action="__back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh1" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;">
-                </amx:outputHtml>
-            </amx:commandLink>
-            <amx:commandLink id="cl2" rendered="#{pageFlowScope.ParentPage == 'SubinvTxfr' ? true : false}"
-                             action="Back">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh2" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;">
-                </amx:outputHtml>
-            </amx:commandLink>
-            <amx:commandLink id="cl6" rendered="#{pageFlowScope.ParentPage == 'ReceiveTxn' ? true : false}"
-                             action="Back">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh7" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;">
                 </amx:outputHtml>
             </amx:commandLink>
         </amx:facet>

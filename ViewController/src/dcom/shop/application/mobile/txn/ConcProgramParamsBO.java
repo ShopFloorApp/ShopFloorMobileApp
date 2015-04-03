@@ -100,9 +100,7 @@ public class ConcProgramParamsBO extends AEntity {
                 callJS("cb3");
             }
         }
-        if(paramDispValue.equalsIgnoreCase("")||paramDispValue==null){
-        paramDispValue=this.getDefaultValue();
-        }
+
         this.paramDispValue = paramDispValue;
         valueDispMap.put(this.getSeqNum(), paramDispValue);
         propertyChangeSupport.firePropertyChange("paramDispValue", oldParamDispValue, paramDispValue);
@@ -110,6 +108,9 @@ public class ConcProgramParamsBO extends AEntity {
 
     public String getParamDispValue() {
             paramDispValue = (String) valueDispMap.get(this.getSeqNum());
+        if(paramDispValue.equalsIgnoreCase("")||paramDispValue==null){
+        paramDispValue=this.getDefaultValue();
+        }
         return paramDispValue;
     }
 

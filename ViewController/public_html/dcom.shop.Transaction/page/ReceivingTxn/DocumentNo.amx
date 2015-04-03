@@ -3,11 +3,11 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header"/>
-        <amx:facet name="primary">
-            <amx:commandButton id="cb1"/>
-        </amx:facet>
-        <amx:facet name="secondary">
-            <amx:commandButton id="cb2"/>
+         <amx:facet name="primary">
+                <amx:commandLink id="cl2"
+                                 action="__back">
+                <amx:outputHtml id="oh2" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            </amx:commandLink>
         </amx:facet>
         <amx:listView var="row" value="#{bindings.purchaseOrder.collectionModel}"
                       fetchSize="#{bindings.purchaseOrder.rangeSize}"
@@ -15,7 +15,7 @@
                       selectionListener="#{bindings.purchaseOrder.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
                       rendered="#{pageFlowScope.receivingType=='S'}">
-            <amx:listItem id="li1" action="back" showLinkIcon="false">
+            <amx:listItem id="li1" action="__back" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf1"/>

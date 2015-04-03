@@ -1,6 +1,7 @@
 package dcom.shop.application.base;
 
 import oracle.adfmf.amx.event.ActionEvent;
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.api.AdfmfSlidingWindowOptions;
 import oracle.adfmf.framework.api.AdfmfSlidingWindowUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
@@ -79,5 +80,9 @@ public class WindowBean {
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
+    public void logout() {
+        AdfmfJavaUtilities.logout();
     }
 }

@@ -133,7 +133,11 @@ public class RequestUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestIdS}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.applicationName}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestorName}",AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}"));
+        
+        
+        String userName = (String) AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}");
+        
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestorName}",userName.toUpperCase());
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.phase}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.status}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
