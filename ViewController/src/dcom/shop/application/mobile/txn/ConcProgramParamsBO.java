@@ -1,6 +1,7 @@
 package dcom.shop.application.mobile.txn;
 
 import dcom.shop.Request.bean.RequestUtilBean;
+import dcom.shop.application.base.AEntity;
 import dcom.shop.application.dc.txn.ConcurrentProgramDC;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.javax.faces.model.SelectItem;
 
-public class ConcProgramParamsBO {
+public class ConcProgramParamsBO extends AEntity {
     private String seqNum;
     private String paramName;
     private String required;
@@ -47,7 +48,13 @@ public class ConcProgramParamsBO {
            ||this.valueSetName.equalsIgnoreCase("FND_STANDARD_DATETIME")||this.valueSetName.equalsIgnoreCase("FND_STANDARD_DATE_TIME")||this.valueSetName.equalsIgnoreCase("WIP_SRS_DATES_OPT_STANDARD")){
                itemType="DATE";
         }else if(this.isLov.equalsIgnoreCase("Y")){
-            itemType="LOV";
+            if(this.valueSetName.equalsIgnoreCase("Yes/No") ||this.valueSetName.equalsIgnoreCase("Yes_No")||this.valueSetName.equalsIgnoreCase("Yes_No_Refresh")
+            ||this.valueSetName.equalsIgnoreCase("YesNullVS")){
+                itemType="YESNO";   
+            }else{
+                itemType="LOV";  
+            }
+            
         }else{
             itemType="TEXT";
         }
@@ -93,7 +100,9 @@ public class ConcProgramParamsBO {
                 callJS("cb3");
             }
         }
-
+        if(paramDispValue.equalsIgnoreCase("")||paramDispValue==null){
+        paramDispValue=this.getDefaultValue();
+        }
         this.paramDispValue = paramDispValue;
         valueDispMap.put(this.getSeqNum(), paramDispValue);
         propertyChangeSupport.firePropertyChange("paramDispValue", oldParamDispValue, paramDispValue);
@@ -110,8 +119,7 @@ public class ConcProgramParamsBO {
         propertyChangeSupport.firePropertyChange("paramValue", oldParamValue, paramValue);
     }
 
-    public String getParamValue() {
-        
+    public String getParamValue() {        
             paramValue = (String) valueMap.get(this.getSeqNum());
         return paramValue;
     }
@@ -207,7 +215,7 @@ public class ConcProgramParamsBO {
     }
 
     public String getDefaultValue() {
-        return defaultValue;
+        return super.getAttributeValue(defaultValue);
     }
 
     public void setParamType(String paramType) {

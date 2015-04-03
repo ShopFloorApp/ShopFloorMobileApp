@@ -38,28 +38,77 @@
         </amx:rowLayout>
       </amx:iterator>
     </amx:tableLayout>
-    <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-    <amx:iterator id="i2" value="#{bindings.concProgramParams.collectionModel}" var="row">
-    <amx:panelLabelAndMessage label="#{row.paramName}" inlineStyle="text-align:center;" id="plam1">
-          <amx:panelGroupLayout id="pgl2" layout="horizontal">
-            <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType!='DATE'}"/>
-            <amx:inputDate id="id2" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"/>
-            <amx:commandLink id="cl3" action="getLov" rendered="#{row.itemType=='LOV'}">
-              <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-              <amx:setPropertyListener id="spl6" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
-              <amx:setPropertyListener id="spl7" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
-              <amx:setPropertyListener id="spl8" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/>
-            </amx:commandLink>
-          </amx:panelGroupLayout>
-        </amx:panelLabelAndMessage>
-    </amx:iterator>
-    </amx:panelFormLayout>
+    <amx:validationGroup id="vg1">
+      <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+        <amx:iterator id="i2" value="#{bindings.concProgramParams.collectionModel}" var="row">
+          <amx:panelLabelAndMessage label="#{row.paramName}" inlineStyle="text-align:center;" id="plam1">
+            <amx:panelGroupLayout id="pgl2" layout="horizontal">
+              <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType!='DATE' || row.itemType!='YESNO'}"
+                             required="#{row.required=='Y'}" showRequired="#{row.required=='Y'}"/>
+              <amx:inputDate id="id2" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"
+                             showRequired="#{row.required=='Y'}" inputType="datetime" required="#{row.required=='Y'}"/>
+            <amx:selectOneChoice id="id3" value="#{row.paramDispValue}" rendered="#{row.itemType=='YESNO'}"
+                             showRequired="#{row.required=='Y'}" required="#{row.required=='Y'}">
+                <amx:selectItem label=" " id="si1"/>
+                <amx:selectItem label="Yes" id="si2" value="YES"/>
+                <amx:selectItem label="No" id="si3" value="NO"/>
+              </amx:selectOneChoice>
+              <amx:commandLink id="cl3" action="getLov" rendered="#{row.itemType=='LOV'}">
+                <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:setPropertyListener id="spl6" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
+                <amx:setPropertyListener id="spl7" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
+                <amx:setPropertyListener id="spl8" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/>
+              </amx:commandLink>
+            </amx:panelGroupLayout>
+          </amx:panelLabelAndMessage>
+        </amx:iterator>
+      </amx:panelFormLayout>
+    </amx:validationGroup>
     <amx:panelGroupLayout id="pgl1" halign="center" valign="middle" inlineStyle='display:none;'>
       <amx:commandButton text="Submit Request" id="cb3" styleClass="srch-btn" action="getLov"/>
       <amx:commandButton text="commandButton1" id="cb1">
         <amx:showPopupBehavior id="spb2" popupId="p2" align="before" alignId="pgl1"/>
       </amx:commandButton>
     </amx:panelGroupLayout>
+    <amx:facet name="footer">
+      <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
+        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+        <amx:rowLayout id="rl8">
+          <amx:cellFormat id="cf10">
+            <amx:commandLink id="cl223" actionListener="#{RequestUtilBean.listAction}" action="self">
+              <amx:tableLayout id="tl4" halign="center">
+                <amx:rowLayout id="rl10">
+                  <amx:cellFormat id="cf11" halign="center">
+                    <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl4">
+                  <amx:cellFormat id="cf12" halign="center">
+                    <amx:outputHtml id="oh19" value="Clear" inlineStyle="font-size:small;color:Gray;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:commandLink>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf13">
+            <amx:commandLink id="cl4" action="result" actionListener="#{RequestUtilBean.submitProgram}">
+              <amx:tableLayout id="tl5" halign="center">
+                <amx:rowLayout id="rl12">
+                  <amx:cellFormat id="cf22" halign="center">
+                    <amx:outputHtml id="oh9" styleClass="fa fa-check-square fa-lg"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl13">
+                  <amx:cellFormat id="cf23" halign="center">
+                    <amx:outputHtml id="oh6" value="Search" inlineStyle="font-size:small;color:Gray;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:commandLink>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+    </amx:facet>
   </amx:panelPage>
   <amx:popup id="p1">
     <amx:listView var="row" value="#{bindings.concProgramParamLov.collectionModel}"

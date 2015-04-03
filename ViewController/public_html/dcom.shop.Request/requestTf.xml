@@ -77,6 +77,10 @@
         <from-outcome>result</from-outcome>
         <to-activity-id>ProgramSubmitted</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>self</from-outcome>
+        <to-activity-id>Programparams</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__15">
       <from-activity-id>ProgramSubmitted</from-activity-id>

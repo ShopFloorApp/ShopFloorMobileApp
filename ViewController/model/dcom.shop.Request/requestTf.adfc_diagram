@@ -186,7 +186,7 @@
       <property
          name="fromOutcome">result</property>
       <property
-         name="sdm:polyPoints">B50,963.0,160.24707,1108.0,240.89648,L50</property>
+         name="sdm:polyPoints">B50,963.0,160.24707,1108.0,237.39648,L46</property>
    </ControlFlowCase>
    <View
       id="View18">
@@ -224,5 +224,15 @@
          name="fromOutcome">getRequest</property>
       <property
          name="sdm:polyPoints">L54,1108.0,244.39648,697.0,433.74707,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase21"
+      from="View11"
+      to="View11">
+      <property
+         name="fromOutcome">self</property>
+      <property
+         name="sdm:polyPoints">T44,959.5,52.24707,966.5,52.24707,T56</property>
    </ControlFlowCase>
 </SDM>
