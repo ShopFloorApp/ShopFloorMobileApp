@@ -35,6 +35,9 @@ public class BarcodeBean {
         } else if ("LPN".equals(barCodeField)) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", barcodeResult);
 
+        }else if ("TOLPN".equals(barCodeField)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", barcodeResult);
+
         }
         propertyChangeSupport.firePropertyChange("barcodeResult", oldBarcodeResult, barcodeResult);
     }

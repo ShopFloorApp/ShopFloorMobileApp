@@ -69,6 +69,26 @@ public class LpnDetailsEntity extends AEntity  {
         propertyChangeSupport.firePropertyChange("ONHANDQTY", oldONHANDQTY, ONHANDQTY);
     }
 
+    public void setSERIALCONTROL(String SERIALCONTROL) {
+        String oldSERIALCONTROL = this.SERIALCONTROL;
+        this.SERIALCONTROL = SERIALCONTROL;
+        propertyChangeSupport.firePropertyChange("SERIALCONTROL", oldSERIALCONTROL, SERIALCONTROL);
+    }
+
+    public String getSERIALCONTROL() {
+        return SERIALCONTROL;
+    }
+
+    public void setLOTCONTROL(String LOTCONTROL) {
+        String oldLOTCONTROL = this.LOTCONTROL;
+        this.LOTCONTROL = LOTCONTROL;
+        propertyChangeSupport.firePropertyChange("LOTCONTROL", oldLOTCONTROL, LOTCONTROL);
+    }
+
+    public String getLOTCONTROL() {
+        return LOTCONTROL;
+    }
+
     public int getONHANDQTY() {
         return ONHANDQTY;
     }
@@ -83,6 +103,8 @@ public class LpnDetailsEntity extends AEntity  {
         return AVAILABLEQTY;
     }
     private int AVAILABLEQTY;
+    private String SERIALCONTROL;
+    private String LOTCONTROL;
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);

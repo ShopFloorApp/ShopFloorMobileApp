@@ -38,6 +38,10 @@ public class LPNDC {
         keyword = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnPage}", String.class);
         String lpnPage = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        String field = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.barCodeField}");
+        if("TOLPN".equals(field)){
+            keyword = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
+        }
         String restURI = RestURI.PostLpnInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =

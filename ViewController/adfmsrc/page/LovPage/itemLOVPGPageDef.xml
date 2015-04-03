@@ -52,6 +52,8 @@
           <Item Value="ONHANDQTY"/>
           <Item Value="AVAILABLEQTY"/>
           <Item Value="UOM"/>
+          <Item Value="LOTCONTROL"/>
+          <Item Value="SERIALCONTROL"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

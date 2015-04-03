@@ -36,14 +36,19 @@ public class ItemTxnDC extends SyncUtils{
     
     public ItemTxnDC() {
         super();
-               s_dbItems.clear();
-               s_dbItems = super.getCollectionFromDB(ItemTxnBO.class);
-               LpnTxnDC lpn = new LpnTxnDC();
-               AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", s_dbItems.size());
+               
+               refreshTrxnId();
            }
     protected static List s_items = new ArrayList();
     protected static List s_insertItems = new ArrayList();
     protected static List<ItemTxnBO> s_dbItems = new ArrayList();
+    
+    public void refreshTrxnId(){
+        s_dbItems.clear();
+        s_dbItems = super.getCollectionFromDB(ItemTxnBO.class);
+        LpnTxnDC lpn = new LpnTxnDC();
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", s_dbItems.size());
+    }
     
    public ItemTxnBO[] getItems() {
 
@@ -51,7 +56,7 @@ public class ItemTxnDC extends SyncUtils{
             s_items.clear();
             ItemTxnBO[] items = null;
             Integer trxnId = (Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
-            String trxnType = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
+            String trxnType = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
             
             String whereClause = " WHERE TRXNID = "+trxnId+" AND TRXTYPE = \""+trxnType+"\"";
             s_items = super.getFilteredCollectionFromDB(ItemTxnBO.class,whereClause);
@@ -154,8 +159,8 @@ public class ItemTxnDC extends SyncUtils{
         String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
         String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
-        Integer quantity = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
-        String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
+        Integer quantity = (Integer) Integer.parseInt((String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}"));
+        String trxType = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
         String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
         String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
         
@@ -170,10 +175,11 @@ public class ItemTxnDC extends SyncUtils{
         item.setLotControl(lotControl);
         
         s_insertItems.add(item);
-        boolean insertStatus = super.insertSqlLiteTable(LpnTxnBO.class, s_insertItems);
+        boolean insertStatus = super.insertSqlLiteTable(ItemTxnBO.class, s_insertItems);
         if(insertStatus){
-            s_dbItems.add(item);
             clearItems();
+            refreshTrxnId();
+            
         }
         providerChangeSupport.fireProviderRefresh("items");
 

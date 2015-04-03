@@ -39,7 +39,7 @@
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderSubInvChoice}" id="sp22"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderLocChoice}" id="sp23"/>
                 <amx:setPropertyListener from="LPN" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
-                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}"
+                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}"
                                          id="spl6"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.itemNumber}" id="sp14"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="sp15"/>

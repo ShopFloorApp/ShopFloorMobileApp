@@ -84,6 +84,7 @@
             <!--20-Mar amx:listItem showLinkIcon="false" actionListener="#{bindings.ProcessItemOnHand.execute}" action="sendItem"-->
             <amx:listItem showLinkIcon="false" action="BackToPage"
                           rendered="#{pageFlowScope.ItemLovPage == 'MiscTrxn' ? true : false}" id="li2">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
@@ -121,6 +122,7 @@
             </amx:listItem>
             <amx:listItem showLinkIcon="false" action="__back"
                           rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? true : false}" id="li22">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl21">
                     <amx:rowLayout id="rl21">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf25"/>
@@ -179,6 +181,10 @@
                 <amx:setPropertyListener from="#{row.UOM}" type="action" to="#{pageFlowScope.uom}" id="spl5"/>
                 <amx:setPropertyListener from="#{row.AVAILABLEQTY}" type="action" to="#{pageFlowScope.availQty}"
                                          id="spl6"/>
+                <amx:setPropertyListener from="#{row.SERIALCONTROL}" type="action" to="#{pageFlowScope.serialControl}"
+                                         id="spl10"/>
+                <amx:setPropertyListener from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"
+                                         id="spl11"/>                         
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
