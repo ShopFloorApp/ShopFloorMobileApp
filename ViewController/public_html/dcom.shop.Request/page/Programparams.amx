@@ -44,7 +44,7 @@
         <amx:iterator id="i2" value="#{bindings.concProgramParams.collectionModel}" var="row">
           <amx:panelLabelAndMessage label="#{row.paramName}" inlineStyle="text-align:center;" id="plam1">
             <amx:panelGroupLayout id="pgl2" layout="horizontal">
-              <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType!='DATE' || row.itemType!='YESNO'}"
+              <amx:inputText id="it1" value="#{row.paramDispValue}" rendered="#{row.itemType=='LOV' || row.itemType!='TEXT'}"
                              required="#{row.required=='Y'}" showRequired="#{row.required=='Y'}"/>
               <amx:inputDate id="id2" value="#{row.paramDispValue}" rendered="#{row.itemType=='DATE'}"
                              showRequired="#{row.required=='Y'}" inputType="datetime" required="#{row.required=='Y'}"/>
