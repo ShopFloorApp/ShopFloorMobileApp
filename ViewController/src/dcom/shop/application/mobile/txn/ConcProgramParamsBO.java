@@ -83,7 +83,7 @@ public class ConcProgramParamsBO extends AEntity {
     }
     public void setParamDispValue(String paramDispValue) {
         String oldParamDispValue = this.paramDispValue;
-        if(this.getIsLov().equalsIgnoreCase("Y") && paramDispValue!=null){
+        if(this.getItemType().equalsIgnoreCase("LOV") && paramDispValue!=null){
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", this.getSeqNum());
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.valueSet}", this.getValueSetName());  
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", this.getParamDispValue());

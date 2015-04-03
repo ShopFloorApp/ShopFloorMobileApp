@@ -13,6 +13,7 @@
     <amx:facet name="secondary">
       <amx:commandLink id="cl2" action="result" actionListener="#{RequestUtilBean.submitProgram}">
         <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-lg"/>
+        <amx:validationBehavior id="vb2" group="vg1"/>
       </amx:commandLink>
     </amx:facet>
     <amx:tableLayout id="tl1" width="90%" rendered="false">
@@ -104,6 +105,7 @@
                   </amx:cellFormat>
                 </amx:rowLayout>
               </amx:tableLayout>
+              <amx:validationBehavior id="vb1" group="vg1"/>
             </amx:commandLink>
           </amx:cellFormat>
         </amx:rowLayout>
