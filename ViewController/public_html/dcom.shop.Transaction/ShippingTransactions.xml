@@ -12,6 +12,11 @@
       <managed-bean-class>dcom.shop.Transaction.page.ShippingTxn.QuickShipUtilBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__28">
+      <managed-bean-name>BarcodeBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
     <view id="PickRelease">
       <page>/dcom.shop.Transaction/page/ShippingTxn/PickRelease.amx</page>
     </view>

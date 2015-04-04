@@ -153,9 +153,9 @@ public class StateListener {
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "N");
 
-    } 
+    }
 
-    
+
 
     public void ToLocValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...

@@ -27,27 +27,15 @@ public class DispatchBean {
     }
 
     public void subInvChangeListner(ValueChangeEvent valueChangeEvent) {
-        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.subinv.inputValue}", String.class);
-        String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        pageFlow.put("FromSubinventory", subinv);
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                      });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
-    
-    public void locatorChangeListner(ValueChangeEvent valueChangeEvent) {
-        // Add event code here...
-        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{bindings.locator.inputValue}", String.class);
-        String locator = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        pageFlow.put("FromLocator", locator);
-    }
 
     public void transactComponentsTrxType(ValueChangeEvent valueChangeEvent) {
-        if (valueChangeEvent.getNewValue().equals("WIP Return")){
+        if (valueChangeEvent.getNewValue().equals("WIP Return")) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.trxType}", "WIP_RETURN");
-        }else{
+        } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.trxType}", "WIP_ISSUE");
         }
     }

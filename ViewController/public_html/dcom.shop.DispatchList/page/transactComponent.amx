@@ -80,15 +80,16 @@
                 <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
-                                 valueChangeListener="#{pageFlowScope.DispatchBean.locatorChangeListner}" id="soc5">
+            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                 <amx:selectItem label="Choose Locator" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.locator.items}" id="si7"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Quantity Required" id="plam1">
                 <amx:outputText id="ot2"/>
             </amx:panelLabelAndMessage>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity Transaction" id="it1"/>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity Transaction" id="it1">
+                <amx:convertNumber id="cn1" type="number"/>
+            </amx:inputText>
             <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:left;" id="plam233">
                 <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
             </amx:panelLabelAndMessage>

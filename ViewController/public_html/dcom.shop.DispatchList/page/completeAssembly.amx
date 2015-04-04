@@ -30,8 +30,7 @@
                 <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
-                                 valueChangeListener="#{pageFlowScope.DispatchBean.locatorChangeListner}" id="soc5">
+            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                 <amx:selectItem label="Choose Locator" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.locator.items}" id="si7"/>
             </amx:selectOneChoice>

@@ -97,7 +97,7 @@
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
                                  rendered='#{pageFlowScope.RenderLocChoice == "Yes"}'
-                                 valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc5">
+                                 id="soc5">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose Locator" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>

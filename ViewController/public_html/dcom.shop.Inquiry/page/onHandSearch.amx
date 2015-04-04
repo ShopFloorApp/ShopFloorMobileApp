@@ -51,12 +51,7 @@
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886">
                 <amx:panelGroupLayout id="pgl2">
-                    <!--amx:selectOneChoice value="#{bindings.locators.inputValue}"  valueChangeListener="#{StateListenerBean.FromLocValueChange}"
-                                         id="soc2">
-                        <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
-                    </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"
-                                         valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc2">
+                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}" id="soc2">
                         <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si1"/>
                     </amx:selectOneChoice>

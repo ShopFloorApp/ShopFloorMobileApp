@@ -131,22 +131,17 @@
                     <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                 </amx:selectOneChoice-->
-                  <amx:selectOneChoice label="From Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
+                <amx:selectOneChoice label="From Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
                                      valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                 </amx:selectOneChoice>
-                  <amx:selectOneChoice label="From Locator" value="#{pageFlowScope.FromLocator}"
-                                     valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc5">
+                <amx:selectOneChoice label="From Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si6"/>
                     <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
                 </amx:selectOneChoice>
-                <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc1"
-                        valueChangeListener="#{StateListenerBean.FromLocValueChange}">
-                            <amx:selectItems value="#{bindings.locators.items}" id="si1"/>
-                        </amx:selectOneChoice-->
                 <amx:selectOneChoice label="To Subinventory" value="#{pageFlowScope.ToSubinventory}"
                                      valueChangeListener="#{StateListenerBean.ToSubinvValueChange}" id="soc2">
                     <?audit suppress oracle.maf.warning-missing-label?>
@@ -157,20 +152,16 @@
                                              valueChangeListener="#{StateListenerBean.ToSubinvValueChange}">
                             <amx:selectItems value="#{bindings.toSubinventories.items}" id="si2"/>
                         </amx:selectOneChoice-->
-                <amx:selectOneChoice label="To Locator" value="#{pageFlowScope.ToLocator}"
-                                     valueChangeListener="#{StateListenerBean.ToLocValueChange}" id="soc3">
+                <amx:selectOneChoice label="To Locator" value="#{pageFlowScope.ToLocator}" id="soc3">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si8"/>
                     <amx:selectItems value="#{bindings.toLoc.items}" id="si3"/>
                 </amx:selectOneChoice>
-                <!--amx:selectOneChoice value="#{bindings.toLocators.inputValue}" id="soc3"
-                                             valueChangeListener="#{StateListenerBean.ToLocValueChange}">
-                            <amx:selectItems value="#{bindings.toLocators.items}" id="si3"/>
-                        </amx:selectOneChoice-->
             </amx:panelFormLayout>
             <amx:panelGroupLayout layout="horizontal">
                 <amx:spacer width="30" id="s7"/>
-                <amx:commandLink id="cl4" rendered="#{pageFlowScope.serialControl == 1}" inlineStyle="float:left;margin:0px;padding:0px;" action="SerialEntry">
+                <amx:commandLink id="cl4" rendered="#{pageFlowScope.serialControl == 1}"
+                                 inlineStyle="float:left;margin:0px;padding:0px;" action="SerialEntry">
                     <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.SerialQty}"
                                              id="spl1"/>
                     <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
