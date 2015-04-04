@@ -42,8 +42,9 @@
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.subFromInv.inputValue}"
+                    <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                        <amx:selectItem label="Choose" id="si4" value="0"/>
                         <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
@@ -53,8 +54,9 @@
                     <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"
-                                         valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc2">
+                    <amx:selectOneChoice value="#{pageFlowScope.FromLocator}"
+                                         id="soc2">
+                        <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si2"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
@@ -84,6 +86,7 @@
             <amx:panelLabelAndMessage label="Transaction Type" inlineStyle="text-align:center;" id="plamrr886">
                 <amx:panelGroupLayout id="pgl5">
                     <amx:selectOneChoice value="#{pageFlowScope.txnType}" id="soc3">
+                        <amx:selectItem label="Choose" id="si6" value="0"/>
                         <amx:selectItems value="#{bindings.transactionType.items}" id="si3"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>

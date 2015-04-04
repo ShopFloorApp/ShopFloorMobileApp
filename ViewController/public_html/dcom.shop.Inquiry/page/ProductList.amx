@@ -25,14 +25,14 @@
                             <amx:cellFormat id="cf5" inlineStyle="margin-left:10px;" width="100%">
                                 <amx:tableLayout id="tl3" width="100%">
                                     <amx:rowLayout id="rl4">
-                                        <amx:cellFormat id="cf4" columnSpan="1">
+                                        <amx:cellFormat id="cf4" columnSpan="1" width="90px">
                                             <amx:outputText value='#{row.ITEM}' id="ot4"
                                                             inlineStyle="font-weight:bold;/>                                         "/>
                                         </amx:cellFormat>
-                                        <amx:cellFormat id="cf9" columnSpan="1">
+                                        <amx:cellFormat id="cf9" columnSpan="1" width="40px">
                                             <amx:outputText id="ot7" value="#{row.PRIMARYUOM}"/>
                                         </amx:cellFormat>
-                                        <amx:cellFormat id="cf6" columnSpan="1">
+                                        <amx:cellFormat id="cf6" columnSpan="3">
                                             <amx:outputText id="ot5" value="#{row.ITEMTYPE}"/>
                                         </amx:cellFormat>
                                     </amx:rowLayout>
@@ -47,7 +47,7 @@
                                             <amx:outputText value='#{row.ITEMSTATUS}' id="ot6"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
-                                        <amx:cellFormat id="cf3" columnSpan="1" halign="end">
+                                        <amx:cellFormat id="cf3" columnSpan="4" halign="end">
                                             <amx:outputText id="ot3" value="#{row.ITEMCATALOG}"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>

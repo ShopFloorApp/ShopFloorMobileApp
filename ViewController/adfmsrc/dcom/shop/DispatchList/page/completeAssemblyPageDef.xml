@@ -79,10 +79,10 @@
         <Item Value="reasonName"/>
       </ListDisplayAttrNames>
     </list>
-    <list IterBinding="transactIterator" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+    <list IterBinding="SubinventoryDCIterator" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="subinventoriesIterator">
       <AttrNames>
-        <Item Value="subinv"/>
+        <Item Value="subInv"/>
       </AttrNames>
       <ListAttrNames>
         <Item Value="subinv"/>
@@ -91,10 +91,10 @@
         <Item Value="subinv"/>
       </ListDisplayAttrNames>
     </list>
-    <list IterBinding="transactIterator" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+    <list IterBinding="LocatorDCIterator" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="locatorsIterator">
       <AttrNames>
-        <Item Value="locator"/>
+        <Item Value="fromLoc"/>
       </AttrNames>
       <ListAttrNames>
         <Item Value="locator"/>

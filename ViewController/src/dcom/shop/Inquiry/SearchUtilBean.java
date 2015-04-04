@@ -21,9 +21,9 @@ public class SearchUtilBean {
     public void clearOHPage(ActionEvent ae) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", null);
-        AdfmfJavaUtilities.setELValue("#{bindings.subInv.inputValue}", null);
-        AdfmfJavaUtilities.setELValue("#{bindings.fromLoc.inputValue}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", null);       
+        AdfmfJavaUtilities.setELValue("#{bindings.subInv.inputValue}", 0);
+        AdfmfJavaUtilities.setELValue("#{bindings.fromLoc.inputValue}", 0);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", 0);       
     } 
     public void clearTrxPage(ActionEvent ae) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);

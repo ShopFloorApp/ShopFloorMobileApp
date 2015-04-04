@@ -82,7 +82,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="subinv"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
   </bindings>

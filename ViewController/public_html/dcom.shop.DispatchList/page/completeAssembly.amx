@@ -24,13 +24,13 @@
             </amx:panelLabelAndMessage>
             <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it10"/>
             <amx:inputText value="#{bindings.kanban.inputValue}" label="Kanban Num" id="it6"/>
-            <amx:selectOneChoice label="Subinventory" value="#{bindings.subinv.inputValue}" id="soc4"
+            <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
                                  valueChangeListener="#{pageFlowScope.DispatchBean.subInvChangeListner}">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice label="Locator" value="#{bindings.locator.inputValue}"
+            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
                                  valueChangeListener="#{pageFlowScope.DispatchBean.locatorChangeListner}" id="soc5">
                 <amx:selectItem label="Choose Locator" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.locator.items}" id="si7"/>

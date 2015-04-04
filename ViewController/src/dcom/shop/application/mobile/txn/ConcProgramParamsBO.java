@@ -108,9 +108,9 @@ public class ConcProgramParamsBO extends AEntity {
 
     public String getParamDispValue() {
             paramDispValue = (String) valueDispMap.get(this.getSeqNum());
-        if(paramDispValue.equalsIgnoreCase("")||paramDispValue==null){
-        paramDispValue=this.getDefaultValue();
-        }
+      //  if(paramDispValue.equalsIgnoreCase("")||paramDispValue==null){
+       // paramDispValue=this.getDefaultValue();
+      //  }
         return paramDispValue;
     }
 

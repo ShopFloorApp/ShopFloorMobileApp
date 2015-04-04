@@ -44,7 +44,7 @@
             <amx:panelLabelAndMessage label="Supply Type" id="plam5">
                 <amx:outputText value="#{bindings.supplyType.inputValue}" id="ot6"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Supply Subinv" id="plam10">
+            <amx:panelLabelAndMessage label="Supply Subinventory" id="plam10">
                 <amx:outputText value="#{bindings.subInv.inputValue}" id="ot11"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Supply Locator" id="plam6">

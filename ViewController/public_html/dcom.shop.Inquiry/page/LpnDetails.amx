@@ -50,10 +50,10 @@
                                         <amx:outputText value='#{row.ITEM}' id="ot4"
                                                         inlineStyle="font-weight:bold;/>                                         "/>
                                     </amx:cellFormat>
-                                    <amx:cellFormat id="cf9" columnSpan="1">
+                                    <amx:cellFormat id="cf9" columnSpan="1" width="30px">
                                         <amx:outputText id="ot7" value="#{row.ONHANDQTY}"/>
                                     </amx:cellFormat>
-                                    <amx:cellFormat id="cf6" columnSpan="1">
+                                    <amx:cellFormat id="cf6" columnSpan="1" width="40px">
                                         <amx:outputText id="ot5" value="#{row.UOM}"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>

@@ -42,7 +42,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="subinv"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="SubinventoryDCIterator" id="subToInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -55,7 +54,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="subinv"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="LocatorDCIterator" id="fromLoc" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -68,7 +66,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="locator"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="LocatorDCIterator" id="toLoc" DTSupportsMRU="true" SelectItemValueMode="ListObject"

@@ -43,7 +43,11 @@ public class TransactDC {
     }
 
     public String saveTransaction(TransactBO transactBo) {
-        //Reset #{pageFlowScope.serviceResponse} variable
+        String subInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}").toString();
+        String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
+        transactBO.setSubinv(subInv);
+        transactBO.setLocator(locator);
+        
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();

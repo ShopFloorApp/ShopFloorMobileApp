@@ -44,6 +44,7 @@
                                 </amx:selectOneChoice-->
                     <amx:selectOneChoice value="#{bindings.subInv.inputValue}"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                        <amx:selectItem label="Choose" id="si4" value="0"/>
                         <amx:selectItems value="#{bindings.subInv.items}" id="si2"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
@@ -56,6 +57,7 @@
                     </amx:selectOneChoice-->
                     <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}"
                                          valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc2">
+                        <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
@@ -63,6 +65,7 @@
             <amx:panelLabelAndMessage label="Cost Group" inlineStyle="text-align:center;" id="plam8846">
                 <amx:panelGroupLayout id="pgl4">
                     <amx:selectOneChoice value="#{pageFlowScope.costGrp}" id="soc3">
+                        <amx:selectItem label="Choose" id="si6" value="0"/>
                         <amx:selectItems value="#{bindings.costGroup1.items}" id="si3"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>

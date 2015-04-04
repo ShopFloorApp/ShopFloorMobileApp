@@ -25,7 +25,13 @@ public class LocatorDC extends SyncUtils {
     protected List filtered_To_Locators = new ArrayList();
     protected String locatorFilter = "";
     private String fromLoc = "100.RAW.00.00";
-    private String toLoc="100.RAW.00.00";
+    private String toLoc = "100.RAW.00.00";
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    protected String aliasFilter = "";
+    protected List s_locator = new ArrayList();
+    protected static List s_to_locator = new ArrayList();
+    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    private ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public void setFromLoc(String fromLoc) {
         String oldFromLoc = this.fromLoc;
@@ -46,8 +52,7 @@ public class LocatorDC extends SyncUtils {
     public String getToLoc() {
         return toLoc;
     }
-    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-
+    
     public void setFiltered_Locators(List filtered_Locators) {
         this.filtered_Locators = filtered_Locators;
     }
@@ -55,66 +60,32 @@ public class LocatorDC extends SyncUtils {
     public List getFiltered_Locators() {
         return filtered_Locators;
     }
-    protected String aliasFilter = "";
-    protected List s_locator = new ArrayList();
-    protected static List s_to_locator = new ArrayList();
-    private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
-
-
+    
     public LocatorDC() {
         super();
-        // ProcessWS("");
-        /*  try{
-        GenericVirtualType payload = new GenericVirtualType(null, "payload");
-        payload.defineAttribute(null, "Whse", String.class, "100");
-        String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fromSubInv}");
-        if(subInv == null)
-        payload.defineAttribute(null, "Subinv", String.class, "RAW");
-        HashMap paramsMap=new HashMap();
-        paramsMap.put("resAttriName","LocatorDetails");
-        paramsMap.put("lovDCName", "LocatorLOV_WS");
-        paramsMap.put("opeartionName", "process");
-        paramsMap.put("payload",payload);
-        s_locator = super.getCollection(LocatorBO.class, paramsMap);
-            filterLocators();
-        }catch(Exception e){
-            throw new RuntimeException(e);
-        }*/
     }
 
-    //  public void ProcessWS(String subInv) {
     public void syncLocalDB() {
         String subInv = "";
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
-       List collections;
         if (networkStatus.equals(NOT_REACHABLE)) {
             s_locator = super.getCollectionFromDB(LocatorBO.class);
         } else {
-            System.out.println("Inside orgItem");
+
             Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
             String restURI = "/webservices/rest/DCOMLOV/getLocator/";
             RestCallerUtil rcu = new RestCallerUtil();
             String payload =
- "{\n" +
-                "  \"Input_Parameters\": {\n" +
-                "    \"RESTHeader\": {\n" +
-                "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
-                "      \"RespApplication\": \"ONT\",\n" +
-                "      \"SecurityGroup\": \"STANDARD\",\n" +
-                "      \"NLSLanguage\": \"AMERICAN\",\n" +
-                "      \"Org_Id\": \"82\"\n" +
-                "    },\n" +
-                "    \"InputParameters\": {\n" +
-                "      \"PWAREHOUSE\": \"\",\n" +
-                "      \"PSUBINV\": \""+subInv+"\"\n" +
-                "    }\n" +
-                "  }\n" +
-                "}";
+                "{\n" + "  \"Input_Parameters\": {\n" + "    \"RESTHeader\": {\n" +
+                "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + "      \"RespApplication\": \"ONT\",\n" +
+                "      \"SecurityGroup\": \"STANDARD\",\n" + "      \"NLSLanguage\": \"AMERICAN\",\n" +
+                "      \"Org_Id\": \"82\"\n" + "    },\n" + "    \"InputParameters\": {\n" +
+                "      \"PWAREHOUSE\": \"\",\n" + "      \"PSUBINV\": \"" + subInv + "\"\n" + "    }\n" + "  }\n" + "}";
 
-             System.out.println("Calling create method");String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
-            System.out.println("Received response");
+
+            String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
+
             if (jsonArrayAsString != null) {
                 try {
                     JSONParser parser = new JSONParser();
@@ -128,10 +99,7 @@ public class LocatorDC extends SyncUtils {
                     JSONArray array = (JSONArray) jsObject1.get("XLOCATOR_ITEM");
                     if (array != null) {
                         int size = array.size();
-                        //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
                         for (int i = 0; i < size; i++) {
-
-
                             LocatorBO locatorItems = new LocatorBO();
                             JSONObject jsObject2 = (JSONObject) array.get(i);
                             locatorItems.setLocator((jsObject2.get("LOCATOR").toString()));
@@ -140,10 +108,7 @@ public class LocatorDC extends SyncUtils {
                             locatorItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             locatorItems.setLocatorType((jsObject2.get("LOCATORTYPE").toString()));
                             s_locator.add(locatorItems);
-
-
                         }
-
                         super.updateSqlLiteTable(LocatorBO.class, s_locator);
                     }
                 } catch (ParseException e) {
@@ -151,24 +116,11 @@ public class LocatorDC extends SyncUtils {
                 }
             }
         }
-
-        /* GenericVirtualType payload = new GenericVirtualType(null, "payload");
-        payload.defineAttribute(null, "Whse", String.class, "100");
-         subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
-        if(subInv == null)
-        payload.defineAttribute(null, "Subinv", String.class, "RAW");
-        HashMap paramsMap=new HashMap();
-        paramsMap.put("resAttriName","LocatorDetails");
-        paramsMap.put("lovDCName", "LocatorLOV_WS");
-        paramsMap.put("opeartionName", "process");
-        paramsMap.put("payload",payload);
-        s_locator = super.getCollection(LocatorBO.class, paramsMap);
-        providerChangeSupport.fireProviderRefresh("locators");*/
     }
 
     public void setLocator(List s_locator) {
         List oldLocator = s_locator;
-        s_locator = s_locator;
+        this.s_locator = s_locator;
         propertyChangeSupport.firePropertyChange("locator", oldLocator, s_locator);
     }
 
@@ -199,23 +151,10 @@ public class LocatorDC extends SyncUtils {
     }
 
     public LocatorBO[] getLocators() {
-
         try {
             LocatorBO[] locators = null;
-            /*GenericVirtualType payload = new GenericVirtualType(null, "payload");
-            payload.defineAttribute(null, "Whse", String.class, "100");
-            String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
-            payload.defineAttribute(null, "Subinv", String.class, subInv == null ? "RAW" : subInv);
-            HashMap paramsMap = new HashMap();
-            paramsMap.put("resAttriName", "LocatorDetails");
-            paramsMap.put("lovDCName", "LocatorLOV_WS");
-            paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload", payload);*/
-            //String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshFromLocator}");
-           // if ("Y".equals(refresh)) {
             s_locator = super.getOfflineCollection(LocatorBO.class);
             filterLocators();
-            //}
             locators = (LocatorBO[]) filtered_Locators.toArray(new LocatorBO[filtered_Locators.size()]);
             return locators;
         } catch (Exception e) {
@@ -227,20 +166,8 @@ public class LocatorDC extends SyncUtils {
 
         try {
             LocatorBO[] locators = null;
-            /* GenericVirtualType payload = new GenericVirtualType(null, "payload");
-            payload.defineAttribute(null, "Whse", String.class, "100");
-            String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
-            payload.defineAttribute(null, "Subinv", String.class, subInv == null ? "RAW" : subInv);
-            HashMap paramsMap = new HashMap();
-            paramsMap.put("resAttriName", "LocatorDetails");
-            paramsMap.put("lovDCName", "LocatorLOV_WS");
-            paramsMap.put("opeartionName", "process");
-            paramsMap.put("payload", payload);*/
-            //String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshToLocator}");
-           // if ("Y".equals(refresh)) {
-                s_to_locator = super.getOfflineCollection(LocatorBO.class);
-                filterToLocators();
-            //}
+            s_to_locator = super.getOfflineCollection(LocatorBO.class);
+            filterToLocators();
             locators = (LocatorBO[]) filtered_To_Locators.toArray(new LocatorBO[filtered_To_Locators.size()]);
             return locators;
         } catch (Exception e) {
@@ -258,7 +185,6 @@ public class LocatorDC extends SyncUtils {
 
     public void filterLocators() {
         try {
-            System.out.println("inside filter code");
             filtered_Locators.clear();
 
             HashMap filterFileds = new HashMap();
@@ -267,17 +193,12 @@ public class LocatorDC extends SyncUtils {
                 subInv = "RAW";
             filterFileds.put("subinv", subInv);
             filterFileds.put("locatortype", "3");
-            //   filterFileds.put("alias", getAliasFilter());
-
-
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_locator);
             paramMap.put("filterFieldsValues", filterFileds);
-            System.out.println("called super filtered class");
 
             filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
-            System.out.println("collection size is " + filtered_Locators.size());
-          //  providerChangeSupport.fireProviderRefresh("locators");
+
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
         }
@@ -285,25 +206,17 @@ public class LocatorDC extends SyncUtils {
 
     public void filterToLocators() {
         try {
-            System.out.println("inside filter code");
             filtered_To_Locators.clear();
-
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
             if (subInv == null)
                 subInv = "DEFAULT";
             filterFileds.put("subinv", subInv);
-            //   filterFileds.put("alias", getAliasFilter());
-
-
-           HashMap paramMap = new HashMap();
+            HashMap paramMap = new HashMap();
             paramMap.put("collection", s_to_locator);
             paramMap.put("filterFieldsValues", filterFileds);
-            System.out.println("called super filtered class");
-
             filtered_To_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
-            System.out.println("collection size is " + filtered_To_Locators.size());
-           // providerChangeSupport.fireProviderRefresh("toLocators");
+
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
         }

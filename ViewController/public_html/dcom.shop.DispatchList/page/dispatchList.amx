@@ -49,8 +49,8 @@
                               fetchSize="#{bindings.departments.rangeSize}"
                               selectedRowKeys="#{bindings.departments.collectionModel.selectedRow}"
                               selectionListener="#{bindings.departments.collectionModel.makeCurrent}"
-                              showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards" dividerMode="firstLetter"
-                              dividerAttribute="deptName">
+                              showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards"
+                              dividerMode="firstLetter" dividerAttribute="deptName">
                     <amx:listItem id="li1" showLinkIcon="false" action="toJobOpr" inlineStyle="width:280px;">
                         <amx:tableLayout id="tl2" width="100%">
                             <amx:rowLayout id="rl2">
@@ -70,8 +70,7 @@
                                     </amx:tableLayout>
                                 </amx:cellFormat>
                                 <amx:cellFormat id="cf4" valign="middle" width="20px">
-                                    <messageCount:badge id="badge" class="notification-icon"
-                                                        unread="#{row.openJob}"/>
+                                    <messageCount:badge id="badge" class="notification-icon" unread="#{row.openJob}"/>
                                 </amx:cellFormat>
                             </amx:rowLayout>
                         </amx:tableLayout>
