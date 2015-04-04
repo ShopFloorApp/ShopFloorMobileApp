@@ -62,8 +62,8 @@
             <amx:panelLabelAndMessage label="Status" id="plam1">
                 <amx:outputText value="#{bindings.jobStatus.inputValue}" id="ot13"/>
             </amx:panelLabelAndMessage>
-            <amx:selectOneChoice label="Actions" id="soc1">
-                <amx:selectItems id="si2"/>
+            <amx:selectOneChoice label="Actions" id="soc1" value="#{pageFlowScope.JobAction}">
+                <amx:selectItems id="si2" value="#{bindings.jobAction.items}"/>
             </amx:selectOneChoice>
         </amx:panelFormLayout>
         <amx:facet name="footer">
