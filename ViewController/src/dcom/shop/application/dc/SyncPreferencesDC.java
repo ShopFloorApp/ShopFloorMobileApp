@@ -101,36 +101,32 @@ public class SyncPreferencesDC extends SyncUtils {
             throw new RuntimeException("My Code Error " + e);
         }
     }
-    
-    public void syncAll(){
-        for(int i=0;i<filtered_syncLovs.size();i++){
+
+    public void syncAll() {
+        for (int i = 0; i < filtered_syncLovs.size(); i++) {
             SyncPreferencesBO syncPreferencesBO = (SyncPreferencesBO) filtered_syncLovs.get(i);
-            syncCard(syncPreferencesBO.getLovId(),syncPreferencesBO.getLovClassName(),syncPreferencesBO.getLovCollectVar(),syncPreferencesBO.getRowIdx());
+            syncCard(syncPreferencesBO.getLovId(), syncPreferencesBO.getLovClassName(),
+                     syncPreferencesBO.getLovCollectVar(), syncPreferencesBO.getRowIdx());
         }
     }
 
-    public void syncCard(String lovId, String lovDCClass, String lovCollectionVar,String rowIdx) {
+    public void syncCard(String lovId, String lovDCClass, String lovCollectionVar, String rowIdx) {
         try {
             String featureID = AdfmfJavaUtilities.getFeatureId();
-            Integer i=new Integer(Integer.parseInt(rowIdx)-1);
-            
-            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "deactivateCardLayout", new Object[] {i});
-            
+            Integer i = new Integer(Integer.parseInt(rowIdx) - 1);
+
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "deactivateCardLayout", new Object[] {
+                                                                      i });
+
             Class lovClass = Class.forName("dcom.shop.application.dc." + lovDCClass);
-//            Constructor cons = lovClass.getConstructor(new Class[] { });
-//            Object obj = cons.newInstance(null);
-            //Calling Sync Method
             Object obj = lovClass.newInstance();
-            Method method = lovClass.getMethod("syncLocalDB", new Class[] {});
-            method.invoke(obj, new Object[] {});       
-            //End of Sync Card Method Call
+            Method method = lovClass.getMethod("syncLocalDB", new Class[] { });
+            method.invoke(obj, new Object[] { });
+
             Field collectionField = lovClass.getDeclaredField(lovCollectionVar);
             List cardCollection = (List) collectionField.get(obj);
             int collectionSize = cardCollection.size();
             String strCollectionSize = "" + collectionSize;
-//            String lovDCClassBOName = lovDCClass.substring(0, lovDCClass.length() - 2) + "BO";
-//            Class lovDCClassBOClass = Class.forName("dcom.shop.application.mobile." + lovDCClassBOName);
-//            super.updateSqlLiteTable(lovDCClassBOClass, cardCollection);
             Connection conn = null;
             conn = ConnectionFactory.getConnection();
             Statement stmt = conn.createStatement();
@@ -142,19 +138,18 @@ public class SyncPreferencesDC extends SyncUtils {
                 "' WHERE LOVID='" + lovId + "';";
             System.out.println("update query is " + updateQuery);
             stmt.execute(updateQuery);
-            
-//            SyncPreferencesBO sync=new SyncPreferencesBO();
-//            if(sync.getLovId().equals(lovId)){
-//                sync.setSyncCount(strCollectionSize);
-//            }
-        SimpleDateFormat uiFormat = new SimpleDateFormat("dd-MMM-yyyy");
-        String uiCurrentDate=uiFormat.format(currentDate);
-        
-        System.out.println("code is reaching before javascript "+rowIdx);
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "changeCardLytValues", new Object[] {i,strCollectionSize,uiCurrentDate});
-            
-            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "activateCardLayout", new Object[] {i});
-            
+
+            SimpleDateFormat uiFormat = new SimpleDateFormat("dd-MMM-yyyy");
+            String uiCurrentDate = uiFormat.format(currentDate);
+
+            System.out.println("code is reaching before javascript " + rowIdx);
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "changeCardLytValues", new Object[] {
+                                                                      i, strCollectionSize, uiCurrentDate
+            });
+
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "activateCardLayout", new Object[] {
+                                                                      i });
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

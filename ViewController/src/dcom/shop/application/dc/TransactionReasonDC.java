@@ -23,7 +23,7 @@ public class TransactionReasonDC extends SyncUtils {
     protected static List s_transactionReason = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_transactionReason.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -49,34 +49,39 @@ public class TransactionReasonDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsonObject = null;
+                JSONObject jsObject = null;
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
-
                     object = parser.parse(jsonArrayAsString);
-
-                    JSONObject jsonObject = (JSONObject) object;
-                    JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XREASON");
+                    jsonObject = (JSONObject) object;
+                    jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                    jsObject1 = (JSONObject) jsObject.get("XREASON");
                     JSONArray array = (JSONArray) jsObject1.get("XREASON_ITEM");
                     if (array != null) {
                         int size = array.size();
-                        //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
                         for (int i = 0; i < size; i++) {
-
-
                             TransactionReasonBO TransactionReasonItems = new TransactionReasonBO();
                             JSONObject jsObject2 = (JSONObject) array.get(i);
-
                             TransactionReasonItems.setReasonName((jsObject2.get("REASONNAME").toString()));
                             TransactionReasonItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             s_transactionReason.add(TransactionReasonItems);
-
-
                         }
-
                         super.updateSqlLiteTable(TransactionReasonBO.class, s_transactionReason);
                     }
+                } catch (ClassCastException cex) {
+                    //Fetched only 1 or zero records from web service
+                    JSONObject xReasonObj = (JSONObject) jsObject1.get("XREASON_ITEM");
+                    if (xReasonObj != null) {
+                        TransactionReasonBO TransactionReasonItems = new TransactionReasonBO();
+                        TransactionReasonItems.setReasonName((xReasonObj.get("REASONNAME").toString()));
+                        TransactionReasonItems.setDescription((xReasonObj.get("DESCRIPTION").toString()));
+                        s_transactionReason.add(TransactionReasonItems);
+                        super.updateSqlLiteTable(TransactionReasonBO.class, s_transactionReason);
+                    }
+
                 } catch (ParseException e) {
                     e.getMessage();
                 }
@@ -85,7 +90,7 @@ public class TransactionReasonDC extends SyncUtils {
     }
 
     public TransactionReasonBO[] getTransactionReason() {
-        
+
         TransactionReasonBO[] TransactionReasonArray =
             (TransactionReasonBO[]) s_transactionReason.toArray(new TransactionReasonBO[s_transactionReason.size()]);
         return TransactionReasonArray;

@@ -48,8 +48,8 @@
                                  valueChangeListener="#{pageFlowScope.DispatchBean.transactComponentsTrxType}">
                 <amx:selectItems id="si2" value="#{bindings.trxType.items}"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice value="#{bindings.fromOpSeq}" label="Sequence" id="soc2">
-                <amx:selectItem label="Choose" id="si3" value="0"/>
+            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc2">
+                <amx:selectItem label="Choose" id="si5" value="0"/>
                 <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Component" id="plm1">

@@ -25,7 +25,7 @@ public class TransactDC {
         String compSubInv =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compSubInv}").toString();
         String compLocator =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compLocator}").toString();
         
-        String assemblyUom =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.assemblyUom}").toString();
+        String assemblyUom =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}").toString();
         String lastDept =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
         String lastOpSeq =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
         String nextDept =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
