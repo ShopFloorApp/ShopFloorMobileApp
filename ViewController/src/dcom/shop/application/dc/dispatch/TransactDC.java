@@ -32,10 +32,10 @@ public class TransactDC {
         
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
-        transactBO.setToOpSeq(new BigDecimal(nextOpSeq));
+        transactBO.setToOpSeq(nextOpSeq);
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
-        transactBO.setFromOpSeq(new BigDecimal(lastOpSeq));
+        transactBO.setFromOpSeq(lastOpSeq);
         
         TransactBO[] transactArray = new TransactBO[1];
         transactArray[0] = transactBO;

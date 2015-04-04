@@ -11,7 +11,7 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 public class TransactBO {
 
     private String action;
-    private BigDecimal trxRef;
+    private String trxRef;
     private String sourceType;
     private String trxType;
     private String trxDate;
@@ -21,8 +21,8 @@ public class TransactBO {
     private String locator;
     private String lpn;
     private String sourceCode;
-    private BigDecimal trxQty;
-    private BigDecimal scrapQty;
+    private String trxQty;
+    private String scrapQty;
     private String txnUom;
     private String glAccount;
     private String accountAlias;
@@ -34,8 +34,8 @@ public class TransactBO {
     private String fromStep;
     private String toStep;
     private String overComplFlag;
-    private BigDecimal fromOpSeq;
-    private BigDecimal toOpSeq;
+    private String fromOpSeq;
+    private String toOpSeq;
     private String createdBy;
     private String salesOrder;
     private String notes;
@@ -105,13 +105,13 @@ public class TransactBO {
         return isNewEntity;
     }
 
-    public void setScrapQty(BigDecimal scrapQty) {
-        BigDecimal oldScrapQty = this.scrapQty;
+    public void setScrapQty(String scrapQty) {
+        String oldScrapQty = this.scrapQty;
         this.scrapQty = scrapQty;
         propertyChangeSupport.firePropertyChange("scrapQty", oldScrapQty, scrapQty);
     }
 
-    public BigDecimal getScrapQty() {
+    public String getScrapQty() {
         return scrapQty;
     }
 
@@ -156,23 +156,23 @@ public class TransactBO {
         return propertyChangeSupport;
     }
 
-    public void setTrxRef(BigDecimal trxRef) {
-        BigDecimal oldTrxRef = this.trxRef;
+    public void setTrxRef(String trxRef) {
+        String oldTrxRef = this.trxRef;
         this.trxRef = trxRef;
         propertyChangeSupport.firePropertyChange("trxRef", oldTrxRef, trxRef);
     }
 
-    public BigDecimal getTrxRef() {
+    public String getTrxRef() {
         return trxRef;
     }
 
-    public void setTrxQty(BigDecimal trxQty) {
-        BigDecimal oldTrxQty = this.trxQty;
+    public void setTrxQty(String trxQty) {
+        String oldTrxQty = this.trxQty;
         this.trxQty = trxQty;
         propertyChangeSupport.firePropertyChange("trxQty", oldTrxQty, trxQty);
     }
 
-    public BigDecimal getTrxQty() {
+    public String getTrxQty() {
         return trxQty;
     }
 
@@ -359,30 +359,30 @@ public class TransactBO {
     }
 
 
-    public void setFromOpSeq(BigDecimal fromOpSeq) {
+    public void setFromOpSeq(String fromOpSeq) {
         //Need to update FromOpCode and fromDept
         this.setFromDept(OpSeqDC.getDept(fromOpSeq.toString()));
         this.setFromOpCode(OpSeqDC.getOpCode(fromOpSeq.toString()));
-        BigDecimal oldFromOpSeq = this.fromOpSeq;
+        String oldFromOpSeq = this.fromOpSeq;
         this.fromOpSeq = fromOpSeq;
         propertyChangeSupport.firePropertyChange("fromOpSeq", oldFromOpSeq, fromOpSeq);
     }
 
-    public BigDecimal getFromOpSeq() {
+    public String getFromOpSeq() {
         return fromOpSeq;
     }
 
 
-    public void setToOpSeq(BigDecimal toOpSeq) {
+    public void setToOpSeq(String toOpSeq) {
         //Need to update ToOpCode and ToDept
         this.setToDept(OpSeqDC.getDept(toOpSeq.toString()));
         this.setToOpCode(OpSeqDC.getOpCode(toOpSeq.toString()));
-        BigDecimal oldToOpSeq = this.toOpSeq;
+        String oldToOpSeq = this.toOpSeq;
         this.toOpSeq = toOpSeq;
         propertyChangeSupport.firePropertyChange("toOpSeq", oldToOpSeq, toOpSeq);
     }
 
-    public BigDecimal getToOpSeq() {
+    public String getToOpSeq() {
         return toOpSeq;
     }
 

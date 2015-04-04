@@ -21,7 +21,7 @@ import org.json.simple.parser.JSONParser;
 public class JobOperationDC extends AViewObject{
     
     protected static List<JobOperationBO> jobOpList = new ArrayList<JobOperationBO>();
-    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
+    private ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private static boolean isSortOperation = false;
 
     public JobOperationDC() {

@@ -87,9 +87,7 @@
             <amx:panelLabelAndMessage label="Quantity Required" id="plam1">
                 <amx:outputText id="ot2"/>
             </amx:panelLabelAndMessage>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity Transaction" id="it1">
-                <amx:convertNumber id="cn1" type="number"/>
-            </amx:inputText>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity Transaction" id="it1"></amx:inputText>
             <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:left;" id="plam233">
                 <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
             </amx:panelLabelAndMessage>
