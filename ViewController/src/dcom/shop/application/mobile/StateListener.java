@@ -276,12 +276,12 @@ public class StateListener {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
     }
-    
+
     public void ClearLpnTrxnPage(ActionEvent actionEvent) {
         // Add event code here...
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", null);
-          
+
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.serialControl}", "0");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lotControl}", "0");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
@@ -295,5 +295,16 @@ public class StateListener {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
+    }
+
+    public void LpnValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        if ("".equals(valueChangeEvent.getNewValue())) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+        } else {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
+        }
     }
 }

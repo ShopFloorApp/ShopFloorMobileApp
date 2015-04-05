@@ -36,11 +36,11 @@ public class LPNDC {
         String keyword = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchLpnKeyword}", String.class);
         keyword = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnPage}", String.class);
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnLovField}", String.class);
         String lpnPage = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        String field = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.barCodeField}");
-        if("TOLPN".equals(field)){
-            keyword = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
+        String field = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.barCodeField}");
+        if ("TOLPN".equals(field)) {
+            keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
         }
         String restURI = RestURI.PostLpnInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
@@ -132,8 +132,7 @@ public class LPNDC {
 
             if (s_LpnList.size() > 0) {
                 ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Search results");
-            }else
-            {
+            } else {
                 ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "No Search results");
 
             }

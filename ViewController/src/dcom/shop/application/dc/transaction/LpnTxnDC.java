@@ -43,10 +43,10 @@ public class LpnTxnDC extends SyncUtils {
             throw new RuntimeException(e);
         }
     }
-    protected static List s_lpnTrxns = new ArrayList();
+    protected static List<LpnTxnBO> s_lpnTrxns = new ArrayList<LpnTxnBO>();
     private List filtered_LpnTxn = new ArrayList();
     protected static List s_itemTrxns = new ArrayList();
-    private List s_filteredItemTxn = new ArrayList();
+    private List<LpnTxnBO> s_filteredItemTxn = new ArrayList<LpnTxnBO>();
     protected static List s_serialTrxns = new ArrayList();
     protected static List s_lotTrxns = new ArrayList();
     protected static List s_filteredSerialTrxns = new ArrayList();
@@ -322,7 +322,7 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
 
-            s_filteredItemTxn = (List) super.getFileteredCollection(ItemTxnBO.class, paramMap);
+            s_filteredItemTxn = super.getFileteredCollection(ItemTxnBO.class, paramMap);
             System.out.println("collection size is " + s_filteredItemTxn.size());
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
