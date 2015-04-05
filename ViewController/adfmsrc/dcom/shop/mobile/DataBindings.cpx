@@ -14,7 +14,6 @@
         <page path="/page/LovPage/CategorySetNameLov.amx" usageId="dcom_shop_mobile_CategorySetNameLovPageDef"/>
         <page path="/page/LovPage/ResourcesLov.amx" usageId="dcom_shop_mobile_ResourcesLovPageDef"/>
         <page path="/page/LovPage/CostGroupsLov.amx" usageId="dcom_shop_mobile_CostGroupsLovPageDef"/>
-        <page path="/page/SubInventoryTrsf.amx" usageId="dcom_shop_mobile_SubInventoryTrsfPageDef"/>
         <page path="/dcom.shop.Springboard/springboard.amx" usageId="dcom_shop_mobile_springboardPageDef"/>
         <page path="/dcom.shop.DispatchList/page/dispatch.amx" usageId="dcom_shop_mobile_DispatchListPageDef"/>
         <page path="/dcom.shop.Request/page/searchRequest.amx" usageId="dcom_shop_mobile_searchRequestPageDef"/>
@@ -224,13 +223,11 @@
         <dc id="ProductSearchDC" path="dcom.shop.mobile.ProductSearchDC"/>
         <dc id="JobOperationDC" path="dcom.shop.mobile.JobOperationDC"/>
         <dc id="LPNDC" path="dcom.shop.mobile.LPNDC"/>
-        <dc id="LPNLOV_WS" path="dcom.shop.mobile.LPNLOV_WS"/>
         <dc id="ItemDC" path="dcom.shop.mobile.ItemDC"/>
         <dc id="InvTrnDC" path="dcom.shop.mobile.InvTrnDC"/>
         <dc id="LpnDetailsDC" path="dcom.shop.mobile.LpnDetailsDC"/>
         <dc id="LpnSearchDC" path="dcom.shop.mobile.LpnSearchDC"/>
         <dc id="ProductDetailsDC" path="dcom.shop.mobile.ProductDetailsDC"/>
-        <dc id="ItemLOV_WS" path="dcom.shop.mobile.ItemLOV_WS"/>
         <dc id="RequestsDC" path="dcom.shop.mobile.RequestsDC"/>
         <dc id="ConcurrentProgramDC" path="dcom.shop.mobile.ConcurrentProgramDC"/>
         <dc id="ApplicationFeatures" path="dcom.shop.application.ApplicationFeatures"/>

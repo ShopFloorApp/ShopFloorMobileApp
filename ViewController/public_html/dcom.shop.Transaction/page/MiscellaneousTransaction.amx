@@ -97,24 +97,24 @@
                 </amx:panelLabelAndMessage>
                 <amx:selectOneChoice label="Transaction Type" value="#{pageFlowScope.TrxType}" id="soc1">
                     <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose Transaction Type" value="0" id="si4"/>
+                    <amx:selectItem label="Choose" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.TrxTypeList.items}" id="si1"/>
                 </amx:selectOneChoice>
                 <amx:selectOneChoice label="Account Alias" value="#{pageFlowScope.accountAlias}" id="soc3">
                     <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose Account Alias" value="0" id="si2"/>
+                    <amx:selectItem label="Choose" value="0" id="si2"/>
                     <amx:selectItems value="#{bindings.accountAlias.items}" id="si3"/>
                 </amx:selectOneChoice>
                 <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
                                      valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                     <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose Subinventory" value="0" id="si7"/>
+                    <amx:selectItem label="Choose" value="0" id="si7"/>
                     <amx:selectItems value="#{bindings.subFromInv.items}" id="si8"/>
                 </amx:selectOneChoice>
                 <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
                                      id="soc5">
                     <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose Locator" value="0" id="si6"/>
+                    <amx:selectItem label="Choose" value="0" id="si6"/>
                     <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
                 </amx:selectOneChoice>
                 <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:left;"

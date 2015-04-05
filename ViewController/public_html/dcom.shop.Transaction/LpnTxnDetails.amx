@@ -87,7 +87,7 @@
                                  rendered='#{pageFlowScope.RenderSubInvChoice == "Yes"}'
                                  valueChangeListener="#{StateListenerBean.SubinvValueChange}">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
+                <amx:selectItem label="Choose" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Locator" rendered='#{pageFlowScope.RenderLocChoice == "No"}' inlineStyle="text-align:center;" id="plam2">
@@ -99,7 +99,7 @@
                                  rendered='#{pageFlowScope.RenderLocChoice == "Yes"}'
                                  id="soc5">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:selectItem label="Choose Locator" value="0" id="si6"/>
+                <amx:selectItem label="Choose" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="LPN" rendered="#{pageFlowScope.LpnPage ne 'PACK_FROM'}" inlineStyle="text-align:left;" id="plam1">
