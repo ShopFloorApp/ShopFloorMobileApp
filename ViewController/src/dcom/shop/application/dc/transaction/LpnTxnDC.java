@@ -130,7 +130,7 @@ public class LpnTxnDC extends SyncUtils {
         String subinv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
         String fromLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
-        String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.toLpn}");
+        String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
         String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
         lpnTxn.setTrxnId(trxnId);
         lpnTxn.setLpnFrom(fromLpn);

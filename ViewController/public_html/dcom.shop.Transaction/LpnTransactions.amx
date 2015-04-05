@@ -6,7 +6,7 @@
             <amx:outputText value="LPN Transactions" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-        <amx:commandLink id="cb3" action="Back">
+            <amx:commandLink id="cb3" action="Back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
@@ -20,12 +20,12 @@
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Pack LPN" id="ot8"/>
                 <amx:setPropertyListener from="PACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp20"/>
-                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp21"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchLpnKeyword}" id="sp21"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchToLpnKeyword}" id="spl15"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderSubInvChoice}" id="spl1"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderLocChoice}" id="spl2"/>
                 <amx:setPropertyListener from="LPN" type="action" to="#{pageFlowScope.CallingPage}" id="spl8"/>
-                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}"
-                                         id="spl11"/>
+                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl11"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.itemNumber}" id="sp24"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="sp25"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp26"/>
@@ -33,14 +33,15 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp28"/>
             </amx:listItem>
             <amx:listItem id="li3" action="unpack" showLinkIcon="false">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Unpack LPN" id="ot4"/>
                 <amx:setPropertyListener from="UNPACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp10"/>
-                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp11"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchLpnKeyword}" id="spl20"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchToLpnKeyword}" id="spl21"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderSubInvChoice}" id="sp22"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderLocChoice}" id="sp23"/>
                 <amx:setPropertyListener from="LPN" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
-                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}"
-                                         id="spl6"/>
+                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl6"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.itemNumber}" id="sp14"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="sp15"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp16"/>
@@ -48,14 +49,15 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp18"/>
             </amx:listItem>
             <amx:listItem id="li5" action="unpack" showLinkIcon="false">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Split Transactions" id="ot65"/>
                 <amx:setPropertyListener from="SPLIT_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp6"/>
-                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp31"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchLpnKeyword}" id="spl16"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchToLpnKeyword}" id="spl17"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderSubInvChoice}" id="spl3"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderLocChoice}" id="spl4"/>
                 <amx:setPropertyListener from="LPN" type="action" to="#{pageFlowScope.CallingPage}" id="spl9"/>
-                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}"
-                                         id="spl12"/>
+                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl12"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.itemNumber}" id="sp34"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="sp35"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp36"/>
@@ -63,14 +65,15 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp38"/>
             </amx:listItem>
             <amx:listItem id="li6" action="unpack" showLinkIcon="false">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Merge Transactions" id="ot6"/>
                 <amx:setPropertyListener from="MERGE_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp7"/>
-                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.lpnText}" id="sp41"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchLpnKeyword}" id="spl18"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchToLpnKeyword}" id="spl19"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderSubInvChoice}" id="spl5"/>
                 <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderLocChoice}" id="spl13"/>
                 <amx:setPropertyListener from="LPN" type="action" to="#{pageFlowScope.CallingPage}" id="spl10"/>
-                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}"
-                                         id="spl14"/>
+                <amx:setPropertyListener from="No" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl14"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.itemNumber}" id="sp44"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="sp45"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp46"/>

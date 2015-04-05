@@ -77,11 +77,11 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Subinventory" rendered='#{pageFlowScope.RenderSubInvChoice == "No"}' inlineStyle="text-align:center;" id="pla2m3">
+            <amx:panelLabelAndMessage label="Subinventory" rendered='#{pageFlowScope.RenderSubInvChoice == "No"}'
+                                      inlineStyle="text-align:center;" id="pla2m3">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:outputText value="#{pageFlowScope.FromSubinventory}"
-                                
-                                styleClass="adfmf-listItem-captionText" id="it3"/>
+                <amx:outputText value="#{pageFlowScope.FromSubinventory}" styleClass="adfmf-listItem-captionText"
+                                id="it3"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
                                  rendered='#{pageFlowScope.RenderSubInvChoice == "Yes"}'
@@ -90,19 +90,19 @@
                 <amx:selectItem label="Choose" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
             </amx:selectOneChoice>
-            <amx:panelLabelAndMessage label="Locator" rendered='#{pageFlowScope.RenderLocChoice == "No"}' inlineStyle="text-align:center;" id="plam2">
+            <amx:panelLabelAndMessage label="Locator" rendered='#{pageFlowScope.RenderLocChoice == "No"}'
+                                      inlineStyle="text-align:center;" id="plam2">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:outputText value="#{pageFlowScope.FromLocator}" 
-                                styleClass="adfmf-listItem-captionText" id="ot2"/>
+                <amx:outputText value="#{pageFlowScope.FromLocator}" styleClass="adfmf-listItem-captionText" id="ot2"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
-                                 rendered='#{pageFlowScope.RenderLocChoice == "Yes"}'
-                                 id="soc5">
+                                 rendered='#{pageFlowScope.RenderLocChoice == "Yes"}' id="soc5">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
             </amx:selectOneChoice>
-            <amx:panelLabelAndMessage label="LPN" rendered="#{pageFlowScope.LpnPage ne 'PACK_FROM'}" inlineStyle="text-align:left;" id="plam1">
+            <amx:panelLabelAndMessage label="LPN" rendered="#{pageFlowScope.LpnPage ne 'PACK_FROM'}"
+                                      inlineStyle="text-align:left;" id="plam1">
                 <amx:spacer width="10" id="s2"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl3">
                     <amx:spacer width="10" id="s4"/>
@@ -248,17 +248,32 @@
         </amx:listView>
         <amx:facet name="footer">
             <amx:spacer id="s1" width="50"/>
-            <amx:commandLink id="cl3" rendered="#{pageFlowScope.LpnPage == 'PACK_FROM'}"
+            <amx:commandLink id="cl3" actionListener="#{StateListenerBean.ClearLpnTrxnPage}">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:tableLayout id="tl5">
+                    <amx:rowLayout id="rl7">
+                        <amx:cellFormat id="cf7">
+                            <amx:outputHtml id="oh2" styleClass="fa fa-times fa-lg"/>
+                            <amx:spacer id="s17" width="2"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf8">
+                            <amx:outputText id="ot13" value="Clear"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
+            <amx:spacer id="s18" width="20"/>
+            <amx:commandLink id="cl8" rendered="#{pageFlowScope.LpnPage == 'PACK_FROM'}"
                              actionListener="#{bindings.InsertItems.execute}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl6">
                     <amx:rowLayout id="rl14">
                         <amx:cellFormat id="cf24">
-                            <amx:outputHtml id="oh2" styleClass="fa fa-plus-square fa-lg"/>
+                            <amx:outputHtml id="oh9" styleClass="fa fa-plus-square fa-lg"/>
                             <amx:spacer id="s15" width="2"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf25">
-                            <amx:outputHtml id="oh7" value="More" inlineStyle="font-size:small;color:Gray;"/>
+                            <amx:outputText id="oh7" value="More"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
