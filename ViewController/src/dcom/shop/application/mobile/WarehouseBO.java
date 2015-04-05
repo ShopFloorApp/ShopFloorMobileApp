@@ -1,12 +1,14 @@
 package dcom.shop.application.mobile;
 
+import dcom.shop.application.base.AEntity;
+
 import java.util.HashMap;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
 
-public class WarehouseBO {
+public class WarehouseBO extends AEntity {
     public WarehouseBO() {
         super();
     }
@@ -33,7 +35,8 @@ public class WarehouseBO {
     }
 
     public String getDirectShip() {
-        return directShip;
+        return super.getAttributeValue(directShip);
+        //return directShip;
     }
 
     public void setLine3(String line3) {
@@ -43,7 +46,9 @@ public class WarehouseBO {
     }
 
     public String getLine3() {
-        return line3;
+        return super.getAttributeValue(line3);
+        
+       // return line3;
     }
 
     public void setLine4(String line4) {
@@ -53,7 +58,9 @@ public class WarehouseBO {
     }
 
     public String getLine4() {
-        return line4;
+        return super.getAttributeValue(line4);
+        
+        //return line4;
     }
 
     public void setProvince(String province) {
@@ -63,7 +70,9 @@ public class WarehouseBO {
     }
 
     public String getProvince() {
-        return province;
+        return super.getAttributeValue(province);
+        
+        //return province;
     }
     
 
@@ -74,7 +83,8 @@ public class WarehouseBO {
         }
 
         public String getWhse() {
-            return whse;
+            return super.getAttributeValue(whse);
+            //return whse;
         }
 
         public void setName(String name) {
@@ -84,7 +94,8 @@ public class WarehouseBO {
         }
 
         public String getName() {
-            return name;
+            return super.getAttributeValue(name);
+           // return name;
         }
 
         public void setLine1(String line1) {
@@ -94,7 +105,8 @@ public class WarehouseBO {
         }
 
         public String getLine1() {
-            return line1;
+            return super.getAttributeValue(line1);
+         //   return line1;
         }
 
         public void setLine2(String line2) {
@@ -104,7 +116,8 @@ public class WarehouseBO {
         }
 
         public String getLine2() {
-            return line2;
+            return super.getAttributeValue(line2);
+          //  return line2;
         }
 
         public void setCity(String city) {
@@ -114,7 +127,8 @@ public class WarehouseBO {
         }
 
         public String getCity() {
-            return city;
+            return super.getAttributeValue(city);
+         //   return city;
         }
 
         public void setState(String state) {
@@ -124,7 +138,8 @@ public class WarehouseBO {
         }
 
         public String getState() {
-            return state;
+            return super.getAttributeValue(state);
+         //   return state;
         }
 
         public void setZip(String zip) {
@@ -134,7 +149,8 @@ public class WarehouseBO {
         }
 
         public String getZip() {
-            return zip;
+            return super.getAttributeValue(zip);
+           // return zip;
         }
 
         public void setCountry(String country) {
@@ -144,7 +160,8 @@ public class WarehouseBO {
         }
 
         public String getCountry() {
-            return country;
+            return super.getAttributeValue(country);
+            //return country;
         }
 
 
@@ -155,7 +172,8 @@ public class WarehouseBO {
         }
 
         public String getLocatorControl() {
-            return locatorControl;
+            return super.getAttributeValue(locatorControl);
+            //return locatorControl;
         }
 
         public void setIsWMS(String isWMS) {
@@ -165,7 +183,8 @@ public class WarehouseBO {
         }
 
         public String getIsWMS() {
-            return isWMS;
+            return super.getAttributeValue(isWMS);
+         //   return isWMS;
         }
 
         

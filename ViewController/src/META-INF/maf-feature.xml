@@ -103,4 +103,14 @@
             <adfmf:amx file="dcom.shop.SecuredFeature/SecuredFeature-task-flow.xml#SecuredFeature-task-flow"/>
         </adfmf:content>
     </adfmf:feature>
+    <adfmf:feature id="dcom.shop.MyWarehouse" name="Warehouse" securityEnabled="true">
+        <adfmf:content id="dcom.shop.MyWarehouse.1">
+            <adfmf:amx file="dcom.shop.MyWarehouse/MyWarehouse.amx"/>
+        </adfmf:content>
+        <adfmf:preferences>
+            <adfmf:preferenceGroup id="OrgCodePG" label="Org Code PG">
+                <adfmf:preferenceText id="OrgCode" label="Org Code"/>
+            </adfmf:preferenceGroup>
+        </adfmf:preferences>
+    </adfmf:feature>
 </adfmf:features>

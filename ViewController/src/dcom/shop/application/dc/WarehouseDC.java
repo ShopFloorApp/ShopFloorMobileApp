@@ -19,6 +19,7 @@ import org.json.simple.parser.ParseException;
 public class WarehouseDC extends SyncUtils{
     public WarehouseDC() {
         super();
+        syncLocalDB();
         
     }
     protected static List s_warehouse = new ArrayList();
@@ -100,7 +101,7 @@ public class WarehouseDC extends SyncUtils{
     }
     
     public WarehouseBO[] getWarehouse() {
-        
+        s_warehouse = super.getOfflineCollection(WarehouseBO.class);
         WarehouseBO[] warehouseArray = (WarehouseBO[]) s_warehouse.toArray(new WarehouseBO[s_warehouse.size()]);
         return warehouseArray;
     }

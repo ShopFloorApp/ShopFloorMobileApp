@@ -110,6 +110,7 @@
         <page path="/dcom.shop.Transaction/page/ShippingTxn/LotLOV.amx" usageId="dcom_shop_mobile_LotLOVPageDef"/>
         <page path="/dcom.shop.Transaction/page/ShippingTxn/SerialLOVPG.amx"
               usageId="dcom_shop_mobile_SerialLOVPGPageDef"/>
+        <page path="/dcom.shop.MyWarehouse/MyWarehouse.amx" usageId="dcom_shop_mobile_MyWarehousePageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
@@ -197,6 +198,7 @@
         <page id="dcom_shop_mobile_LotLOVPageDef" path="dcom.shop.Transaction.page.ShippingTxn.LotLOVPageDef"/>
         <page id="dcom_shop_mobile_SerialLOVPGPageDef"
               path="dcom.shop.Transaction.page.ShippingTxn.SerialLOVPGPageDef"/>
+        <page id="dcom_shop_mobile_MyWarehousePageDef" path="dcom.shop.MyWarehouse.MyWarehousePageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="ItemTxnDC" path="dcom.shop.mobile.ItemTxnDC"/>
