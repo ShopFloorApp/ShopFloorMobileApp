@@ -350,6 +350,7 @@
                </list>
             </hash>
             <hash n="iosDeploymentOptions">
+               <value n="debugFlag" v="false"/>
                <value n="simulatorTarget" v="iPhone 5s (iOS 8.2 - iPhone 5s)"/>
                <value n="targetFamilyVersion" v="iPhone"/>
             </hash>

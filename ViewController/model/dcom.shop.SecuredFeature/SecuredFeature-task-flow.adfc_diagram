@@ -7,14 +7,81 @@
       <property
          name="activityId">logout</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>logout&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>logout&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">113.60156</property>
+         name="y">146.53516</property>
       <property
-         name="x">112.0</property>
+         name="x">692.0</property>
    </MethodCall>
+   <Router
+      id="Router3">
+      <property
+         name="activityId">CheckWarehouse</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CheckWarehouse&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">191.60156</property>
+      <property
+         name="x">273.0</property>
+   </Router>
+   <View
+      id="View4">
+      <property
+         name="activityId">Warehouse</property>
+      <property
+         name="page">/dcom.shop.MyWarehouse/MyWarehouse.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Warehouse&lt;/b>&lt;/p>&lt;p>Activity ID:  Warehouse&lt;/p>&lt;p>Activity Type:  View&lt;/p>&lt;p/>&lt;p>&lt;em>Warehouse&lt;br/>&lt;/em>&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">112.234375</property>
+      <property
+         name="x">554.7783</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router3"
+      to="View4">
+      <property
+         name="fromOutcome">warehouse</property>
+      <property
+         name="sdm:polyPoints">R46,314.0,188.03516,513.7783,112.16797,L50</property>
+   </ControlFlowCase>
+   <TaskFlowCall
+      id="TaskFlowCall6">
+      <property
+         name="taskFlowId">dispatch</property>
+      <property
+         name="activityId">dispatch</property>
+      <property
+         name="documentReference">/dcom.shop.DispatchList/dispatch.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>dispatch&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">297.4336</property>
+      <property
+         name="x">548.5</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="Router3"
+      to="TaskFlowCall6">
+      <property
+         name="fromOutcome">dispatch</property>
+      <property
+         name="sdm:polyPoints">R54,314.0,195.03516,507.5,297.3672,L50</property>
+   </ControlFlowCase>
 </SDM>

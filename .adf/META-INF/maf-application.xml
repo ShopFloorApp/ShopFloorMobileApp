@@ -3,6 +3,8 @@
                    version="1.0" name="ShopFloorMobileApp" id="com.company.ShopFloorMobileApp"
                    appControllerFolder="ApplicationController"
                    listener-class="dcom.shop.application.LifeCycleListenerImpl">
+    <adfmf:featureReference refId="dcom.shop.SecuredFeature" id="fr11" showOnSpringboard="true"
+                            showOnNavigationBar="true" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr2" refId="dcom.shop.DispatchList" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry" loginConnRefId="ShopFloorSecurity"/>
@@ -17,8 +19,6 @@
                             refId="dcom.shop.subInventryTrsf" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr10" showOnNavigationBar="false" showOnSpringboard="false"
                             refId="dcom.shop.Springboard" loginConnRefId="ShopFloorSecurity"/>
-    <adfmf:featureReference refId="dcom.shop.SecuredFeature" id="fr11" showOnSpringboard="true"
-                            showOnNavigationBar="true" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:navigation>
         <adfmf:navigationBar displayHideShowNavigationBarControl="false" enabled="false"/>
         <adfmf:springboard enabled="true" animation="slideright" width="200" displayGotoSpringboardControl="false"

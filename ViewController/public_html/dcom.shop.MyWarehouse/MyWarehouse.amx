@@ -31,7 +31,7 @@
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot3"/>
                         </amx:cellFormat-->
-                        <amx:cellFormat shortDesc="Name" width="100%" id="cf31">
+                        <amx:cellFormat shortDesc="Name" height="40px" width="100%" id="cf31">
                             <amx:outputText value="#{row.name}"
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot41"/>
