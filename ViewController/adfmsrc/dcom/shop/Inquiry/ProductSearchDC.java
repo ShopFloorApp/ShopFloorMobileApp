@@ -68,11 +68,11 @@ public class ProductSearchDC {
          */
         String payload = null;
         String callingPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
-        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode");
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         if ("LPN".equals(callingPage)) {
             payload =
                 "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%" +
+                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\":\""+orgCode +"\",\"ITEM\": \"%" +
                 keyword + "%\",\"ITEMSTATUS\": \"ONHAND\"}}\n" + "}\n" + "}";
         } else {
             payload =
@@ -119,8 +119,8 @@ public class ProductSearchDC {
                         prodItems.setPRIMARYUOM((jsObjectArrayData.get("PRIMARYUOM").toString()));
                         prodItems.setITEMTYPE((jsObjectArrayData.get("ITEMTYPE").toString()));
                         prodItems.setITEMCATALOG((jsObjectArrayData.get("ITEMCATALOG").toString()));
-                        prodItems.setITEMID(Integer.parseInt((jsObjectArrayData.get("ITEMID").toString())));
-                        prodItems.setORGID(Integer.parseInt((jsObjectArrayData.get("ORGID").toString())));
+                        prodItems.setITEMID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("ITEMID").toString()))?"0":jsObjectArrayData.get("ITEMID").toString()));
+                        prodItems.setORGID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("ORGID").toString()))?"0":jsObjectArrayData.get("ORGID").toString()));
                         prodItems.setSERIALCONTROL((jsObjectArrayData.get("SERIALCONTROL").toString()));
                         prodItems.setLOTCONTROL((jsObjectArrayData.get("LOTCONTROL").toString()));
                         s_ProdList.add(prodItems);
@@ -137,8 +137,8 @@ public class ProductSearchDC {
                     prodItems.setPRIMARYUOM((jsObject2.get("PRIMARYUOM").toString()));
                     prodItems.setITEMTYPE((jsObject2.get("ITEMTYPE").toString()));
                     prodItems.setITEMCATALOG((jsObject2.get("ITEMCATALOG").toString()));
-                    prodItems.setITEMID(Integer.parseInt((jsObject2.get("ITEMID").toString())));
-                    prodItems.setORGID(Integer.parseInt((jsObject2.get("ORGID").toString())));
+                    prodItems.setITEMID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("ITEMID").toString()))?"0":jsObject2.get("ITEMID").toString()));
+                    prodItems.setORGID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("ORGID").toString()))?"0":jsObject2.get("ORGID").toString()));
                     prodItems.setSERIALCONTROL((jsObject2.get("SERIALCONTROL").toString()));
                     prodItems.setLOTCONTROL((jsObject2.get("LOTCONTROL").toString()));
                     s_ProdList.add(prodItems);

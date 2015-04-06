@@ -23,9 +23,9 @@
       <XmlRefAddr addrType="adfmfLogin">
         <Contents>
           <login url="http://10.118.32.41:8000/OA_HTML/RF.jsp?function_id=mLogin"/>
-          <logout url="http://10.118.32.41:8000/OA_HTML/RF.jsp?function_id=mLogin"/>
+          <logout url="http://10.118.32.41:8000/OA_HTML/RF.jsp?function_id=mLogout"/>
           <authenticationMode value="hybrid"/>
-          <idleTimeout value="300"/>
+          <idleTimeout value="28800"/>
           <sessionTimeout value="28800"/>
           <maxFailuresBeforeCredentialCleared value="3"/>
           <rememberCredentials>
