@@ -5,11 +5,11 @@
     <router id="CheckWarehouse">
       <case id="__4">
         <expression>#{WindowBean.warehouse eq false}</expression>
-        <outcome>Warehouse</outcome>
+        <outcome>Dispatch</outcome>
       </case>
       <case id="__5">
         <expression>#{WindowBean.warehouse eq true}</expression>
-        <outcome>Dispatch</outcome>
+        <outcome>Warehouse</outcome>
       </case>
       <default-outcome>Warehouse</default-outcome>
     </router>

@@ -193,6 +193,7 @@ public class LocatorDC extends SyncUtils {
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
             //if (subInv == null)
                // subInv = "RAW";
+               if (subInv != null)
             filterFileds.put("subinv", subInv);
             filterFileds.put("locatortype", "3");
             HashMap paramMap = new HashMap();
@@ -213,6 +214,7 @@ public class LocatorDC extends SyncUtils {
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
             //if (subInv == null)
             //    subInv = "DEFAULT";
+            if (subInv != null)
             filterFileds.put("subinv", subInv);
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_to_locator);
