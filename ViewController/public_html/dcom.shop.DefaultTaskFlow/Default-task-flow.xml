@@ -4,11 +4,11 @@
     <default-activity>CheckWarehouse</default-activity>
     <router id="CheckWarehouse">
       <case id="__4">
-        <expression>#{WindowBean.isWarehouse = false}</expression>
+        <expression>#{WindowBean.warehouse eq false}</expression>
         <outcome>Warehouse</outcome>
       </case>
       <case id="__5">
-        <expression>#{WindowBean.isWarehouse = true}</expression>
+        <expression>#{WindowBean.warehouse eq true}</expression>
         <outcome>Dispatch</outcome>
       </case>
       <default-outcome>Warehouse</default-outcome>
