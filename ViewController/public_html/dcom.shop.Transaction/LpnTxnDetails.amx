@@ -118,10 +118,10 @@
                     <amx:panelGroupLayout layout="horizontal"
                                           inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
                                           id="pgl5">
-                        <amx:inputText disabled="#{pageFlowScope.LpnEnable}" hintText="LPN" id="it1"
+                        <amx:inputText disabled="#{!pageFlowScope.LpnEnable}" hintText="LPN" id="it1"
                                        valueChangeListener="#{StateListenerBean.LpnValueChange}"
                                        value="#{pageFlowScope.searchToLpnKeyword}" inlineStyle="text-align:left;"/>
-                        <amx:commandLink id="cl5" disabled="#{pageFlowScope.LpnEnable}" action="lpnLOV">
+                        <amx:commandLink id="cl5" disabled="#{!pageFlowScope.LpnEnable}" action="lpnLOV">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl8" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
