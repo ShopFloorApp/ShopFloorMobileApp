@@ -51,7 +51,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:panelFormLayout labelPosition="topStart" id="pf1">
-            <amx:panelLabelAndMessage label="#{pageFlowScope.LpnPage eq 'PACK_FROM'?'To LPN':(pageFlowScope.LpnPage eq 'MERGE_FROM'?'Parent LPN':'From LPN'))}"
+            <amx:panelLabelAndMessage label="#{pageFlowScope.LpnPage eq 'PACK_FROM'?'To LPN':(pageFlowScope.LpnPage eq 'MERGE_FROM'?'Parent LPN':'From LPN')}"
                                       inlineStyle="text-align:left;" id="plam3">
                 <amx:spacer width="10" id="s3"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl4">
@@ -68,6 +68,8 @@
                                                      type="action"/>
                             <amx:setPropertyListener id="spl15" from="#{pageFlowScope.LpnPage}"
                                                      to="#{pageFlowScope.LpnLovField}" type="action"/>
+                            <amx:setPropertyListener id="spl14" from="LPN" to="#{pageFlowScope.barCodeField}"
+                                                     type="action"/>
                         </amx:commandLink>
                         <amx:spacer width="10" id="s9"/>
                     </amx:panelGroupLayout>
@@ -81,27 +83,27 @@
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Subinventory"
-                                      rendered='#{pageFlowScope.LpnPage eq "PACK_FROM ||UNPACK_FROM"?(pageFlowScope.RenderSubInvChoice == "No"):"RENDERFALSE"}'
+                                      rendered='#{pageFlowScope.LpnPage eq "PACK_FROM" ||"UNPACK_FROM"?(pageFlowScope.RenderSubInvChoice == "No"):"RENDERFALSE"}'
                                       inlineStyle="text-align:center;" id="pla2m3">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.FromSubinventory}" styleClass="adfmf-listItem-captionText"
                                 id="it3"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
-                                 rendered='#{pageFlowScope.LpnPage eq "PACK_FROM ||UNPACK_FROM"?(pageFlowScope.RenderSubInvChoice == "Yes"):"RENDERFALSE"}'
+                                 rendered='#{pageFlowScope.LpnPage eq "PACK_FROM" ||"UNPACK_FROM"?(pageFlowScope.RenderSubInvChoice == "Yes"):"RENDERFALSE"}'
                                  valueChangeListener="#{StateListenerBean.SubinvValueChange}">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Locator"
-                                      rendered='#{pageFlowScope.LpnPage eq "PACK_FROM ||UNPACK_FROM"?(pageFlowScope.RenderLocChoice == "No"):"RENDERFALSE"}'
+                                      rendered='#{pageFlowScope.LpnPage eq "PACK_FROM" ||"UNPACK_FROM"?(pageFlowScope.RenderLocChoice == "No"):"RENDERFALSE"}'
                                       inlineStyle="text-align:center;" id="plam2">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.FromLocator}" styleClass="adfmf-listItem-captionText" id="ot2"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
-                                 rendered='#{pageFlowScope.LpnPage eq "PACK_FROM ||UNPACK_FROM"?(pageFlowScope.RenderLocChoice == "Yes"):"RENDERFALSE"}'
+                                 rendered='#{pageFlowScope.LpnPage eq "PACK_FROM" ||"UNPACK_FROM"?(pageFlowScope.RenderLocChoice == "Yes"):"RENDERFALSE"}'
                                  id="soc5">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose" value="0" id="si6"/>
@@ -119,7 +121,7 @@
                         <amx:inputText disabled="#{pageFlowScope.LpnEnable}" hintText="LPN" id="it1"
                                        valueChangeListener="#{StateListenerBean.LpnValueChange}"
                                        value="#{pageFlowScope.searchToLpnKeyword}" inlineStyle="text-align:left;"/>
-                        <amx:commandLink id="cl5" rendered="#{pageFlowScope.LpnEnable}" action="lpnLOV">
+                        <amx:commandLink id="cl5" rendered="#{!pageFlowScope.LpnEnable}" action="lpnLOV">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl8" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
@@ -127,15 +129,17 @@
                             <amx:setPropertyListener id="spl13"
                                                      from="#{pageFlowScope.LpnPage eq 'UNPACK_FROM'?'UNPACK_TO':(pageFlowScope.LpnPage eq 'SPLIT_FROM'?'SPLIT_TO':(pageFlowScope.LpnPage eq 'MERGE_FROM'?'MERGE_TO':''))}"
                                                      to="#{pageFlowScope.LpnLovField}" type="action"/>
+                            <amx:setPropertyListener id="spl16" from="TOLPN" to="#{pageFlowScope.barCodeField}"
+                                                     type="action"/>
                         </amx:commandLink>
                         <amx:spacer width="10" id="s5"/>
                     </amx:panelGroupLayout>
                     <amx:spacer width="10" id="s6"/>
-                    <amx:commandLink id="cl6" rendered="#{pageFlowScope.LpnEnable}"
+                    <amx:commandLink id="cl6" rendered="#{!pageFlowScope.LpnEnable}"
                                      actionListener="#{viewScope.BarcodeBean.scanBarcode}">
                         <?audit suppress oracle.maf.warning-missing-shortDesc?>
                         <amx:outputHtml id="oh6" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC; "/>
-                        <amx:setPropertyListener id="spl14" from="TOLPN" to="#{pageFlowScope.barCodeField}"
+                        <amx:setPropertyListener id="spl17" from="TOLPN" to="#{pageFlowScope.barCodeField}"
                                                  type="action"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>

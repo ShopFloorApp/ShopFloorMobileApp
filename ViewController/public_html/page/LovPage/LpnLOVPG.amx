@@ -7,6 +7,7 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cb3" action="__back">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
         </amx:facet>
@@ -14,11 +15,15 @@
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" label="LPN" id="it2"/>
+            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" label="LPN" id="it2">
+                <?audit suppress oracle.maf.warning-missing-hintText?>
+            </amx:inputText>
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
+            <?audit suppress oracle.maf.warning-missing-label?>
             <amx:commandLink id="cl12" rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
                              actionListener="#{bindings.refreshLpnDC.execute}">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl2" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:rowLayout id="rl2">
@@ -37,10 +42,11 @@
             </amx:commandLink>
             <amx:commandLink id="cl1" rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
                              actionListener="#{bindings.refresh.execute}">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl4" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:rowLayout id="rl3">
-                    <amx:cellFormat id="cf13" width="40%">
+                        <amx:cellFormat id="cf13" width="40%">
                             <amx:spacer width="50" id="s2"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf10" width="10%">
@@ -79,6 +85,7 @@
                       rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?true:false}'
                       fetchSize="#{bindings.allLpns.rangeSize}" id="lv1" layout="cards">
             <amx:listItem showLinkIcon="false" action="__back" id="li1">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl31">
                         <amx:cellFormat width="20px" rowSpan="2" id="cf5"/>
@@ -114,7 +121,8 @@
                       selectionListener="#{bindings.fromLpns.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                       rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?false:true}' bufferStrategy="viewport" id="lv2"
                       layout="cards">
-            <amx:listItem id="li2" showLinkIcon="false" action="#{StateListenerBean.BackToLpnTrxn}">
+            <amx:listItem id="li2" showLinkIcon="false" rendered="#{pageFlowScope.barCodeField eq 'TOLPN'}"
+                          action="#{StateListenerBean.BackToLpnTrxn}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl1">
@@ -130,13 +138,40 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
-                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.searchToLpnKeyword}"
                                          id="spl1"/>
-                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.lpn}" id="spl7"/>
-                <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.FromSubinventory}"
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.toLpn}" id="spl7"/>
+                <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.ToLpnSubinventory}"
                                          id="spl3"/>
-                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.FromLocator}" id="spl5"/>
-                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl6"/>
+                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.ToLpnLocator}"
+                                         id="spl5"/>
+                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingToLpn}" id="spl6"/>
+            </amx:listItem>
+            <amx:listItem id="li3" showLinkIcon="false" rendered="#{pageFlowScope.barCodeField ne 'TOLPN'}"
+                          action="#{StateListenerBean.BackToLpnTrxn}">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:tableLayout width="100%" id="tl5">
+                    <amx:rowLayout id="rl4">
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf14"/>
+                        <amx:cellFormat width="40%" height="50px" id="cf15">
+                            <amx:outputText value="#{row.lpn}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot9"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="20px" rowSpan="2" id="cf16"/>
+                        <amx:cellFormat width="60%" height="50px" halign="start" id="cf17">
+                            <amx:outputText value="#{row.lpnContext}" inlineStyle="white-space:pre-wrap;"
+                                            styleClass="adfmf-listItem-captionText" id="ot10"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.searchLpnKeyword}"
+                                         id="spl10"/>
+                <amx:setPropertyListener from="#{row.lpn}" type="action" to="#{pageFlowScope.lpn}" id="spl11"/>
+                <amx:setPropertyListener from="#{row.subinv}" type="action" to="#{pageFlowScope.FromSubinventory}"
+                                         id="spl12"/>
+                <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.FromLocator}"
+                                         id="spl13"/>
+                <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.ExistingLpn}" id="spl14"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
