@@ -78,7 +78,7 @@
                                  valueChangeListener="#{pageFlowScope.DispatchBean.subInvChangeListner}">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
-                <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
+                <amx:selectItems value="#{bindings.subinv.items}" id="si3"/>
             </amx:selectOneChoice>
             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                 <amx:selectItem label="Choose Locator" value="0" id="si6"/>
