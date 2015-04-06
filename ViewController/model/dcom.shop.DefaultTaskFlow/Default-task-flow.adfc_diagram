@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <Router
+      id="Router2">
+      <property
+         name="activityId">CheckWarehouse</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CheckWarehouse&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">206.80078</property>
+      <property
+         name="x">195.0</property>
+   </Router>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="taskFlowId">dispatch</property>
+      <property
+         name="activityId">dispatch</property>
+      <property
+         name="documentReference">/dcom.shop.DispatchList/dispatch.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>dispatch&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">166.30078</property>
+      <property
+         name="x">419.5</property>
+   </TaskFlowCall>
+   <View
+      id="View4">
+      <property
+         name="activityId">MyWarehouse</property>
+      <property
+         name="page">/dcom.shop.MyWarehouse/MyWarehouse.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MyWarehouse&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">317.23438</property>
+      <property
+         name="x">435.08105</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="Router2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">Dispatch</property>
+      <property
+         name="sdm:polyPoints">R46,236.0,203.23438,378.5,166.23438,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="Router2"
+      to="View4">
+      <property
+         name="fromOutcome">Warehouse</property>
+      <property
+         name="sdm:polyPoints">R54,236.0,210.23438,394.08105,317.16797,L50</property>
+   </ControlFlowCase>
+</SDM>

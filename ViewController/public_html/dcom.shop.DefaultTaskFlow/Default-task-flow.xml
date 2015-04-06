@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="Default-task-flow">
+    <default-activity>CheckWarehouse</default-activity>
+    <router id="CheckWarehouse">
+      <case id="__4">
+        <expression>#{WindowBean.isWarehouse = false}</expression>
+        <outcome>Warehouse</outcome>
+      </case>
+      <case id="__5">
+        <expression>#{WindowBean.isWarehouse = true}</expression>
+        <outcome>Dispatch</outcome>
+      </case>
+      <default-outcome>Warehouse</default-outcome>
+    </router>
+    <task-flow-call id="dispatch">
+      <task-flow-reference>
+        <document>/dcom.shop.DispatchList/dispatch.xml</document>
+        <id>dispatch</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <view id="MyWarehouse">
+      <page>/dcom.shop.MyWarehouse/MyWarehouse.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>CheckWarehouse</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Dispatch</from-outcome>
+        <to-activity-id>dispatch</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>Warehouse</from-outcome>
+        <to-activity-id>MyWarehouse</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>

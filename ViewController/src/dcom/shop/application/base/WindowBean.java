@@ -10,6 +10,27 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 public class WindowBean {
     private String springboardWindow;
     private boolean springboardToggleFlag;
+    
+    private boolean warehouse;
+
+       public void setWarehouse(boolean warehouse) {
+           boolean oldWarehouse = this.warehouse;
+           this.warehouse = warehouse;
+           propertyChangeSupport.firePropertyChange("warehouse", oldWarehouse, warehouse);
+       }
+       
+    public boolean isWarehouse() {
+           System.out.println("isWarehouse");
+           System.out.println("setwarehouse");
+           String orgId =
+               (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+           System.out.println("orgId " + orgId.length());
+           if(orgId.length() == 0)
+               setWarehouse(true);
+           else
+               setWarehouse(false);
+           return warehouse;
+       }
 
     public void setSpringboardToggleFlag(boolean springboardToggleFlag) {
         boolean oldSpringboardToggleFlag = this.springboardToggleFlag;

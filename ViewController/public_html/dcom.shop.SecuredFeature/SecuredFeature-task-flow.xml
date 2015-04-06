@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="SecuredFeature-task-flow">
-    <default-activity>CheckWarehouse</default-activity>
+    <default-activity>logout</default-activity>
     <managed-bean id="__1">
       <managed-bean-name>WindowBean</managed-bean-name>
       <managed-bean-class>dcom.shop.application.base.WindowBean</managed-bean-class>
@@ -13,35 +13,6 @@
         <to-string/>
       </outcome>
     </method-call>
-    <router id="CheckWarehouse">
-      <case id="__5">
-        <expression>#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode ne null}</expression>
-        <outcome>warehouse</outcome>
-      </case>
-      <default-outcome>dispatch</default-outcome>
-    </router>
-    <view id="Warehouse">
-      <description>Warehouse</description>
-      <display-name>Warehouse</display-name>
-      <page>/dcom.shop.MyWarehouse/MyWarehouse.amx</page>
-    </view>
-    <task-flow-call id="dispatch">
-      <task-flow-reference>
-        <document>/dcom.shop.DispatchList/dispatch.xml</document>
-        <id>dispatch</id>
-      </task-flow-reference>
-    </task-flow-call>
-    <control-flow-rule id="__2">
-      <from-activity-id>CheckWarehouse</from-activity-id>
-      <control-flow-case id="__3">
-        <from-outcome>warehouse</from-outcome>
-        <to-activity-id>Warehouse</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__4">
-        <from-outcome>dispatch</from-outcome>
-        <to-activity-id>dispatch</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
     <page-flow-scope-behavior>
       <push-new/>
     </page-flow-scope-behavior>
