@@ -113,7 +113,7 @@
             </adfmf:preferenceGroup>
         </adfmf:preferences>
     </adfmf:feature>
-    <adfmf:feature id="dcom.shop.DefaultTaskFlow" name="DefaultTaskFlow">
+    <adfmf:feature id="dcom.shop.DefaultTaskFlow" name="DefaultTaskFlow" securityEnabled="true">
         <adfmf:content id="dcom.shop.DefaultTaskFlow.1">
             <adfmf:amx file="dcom.shop.DefaultTaskFlow/Default-task-flow.xml#Default-task-flow"/>
         </adfmf:content>
