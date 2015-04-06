@@ -15,7 +15,9 @@
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" label="LPN" id="it2">
+            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" rendered="#{pageFlowScope.barCodeField ne 'TOLPN'}" label="LPN" id="it2">
+            </amx:inputText>
+            <amx:inputText value="#{pageFlowScope.searchToLpnKeyword}" rendered="#{pageFlowScope.barCodeField eq 'TOLPN'}" label="LPN" id="it1">
                 <?audit suppress oracle.maf.warning-missing-hintText?>
             </amx:inputText>
         </amx:panelFormLayout>
@@ -122,7 +124,8 @@
                       rendered='#{pageFlowScope.LpnLovPage ne "LPNTrxn"?false:true}' bufferStrategy="viewport" id="lv2"
                       layout="cards">
             <amx:listItem id="li2" showLinkIcon="false" rendered="#{pageFlowScope.barCodeField eq 'TOLPN'}"
-                          action="#{StateListenerBean.BackToLpnTrxn}">
+                          action="#{StateListenerBean.BackToLpnTrxn}"
+                          actionListener="#{StateListenerBean.ToLpnValueChange}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl1">

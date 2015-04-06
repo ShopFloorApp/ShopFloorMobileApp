@@ -35,6 +35,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp28"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl30"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl31"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl38"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl39"/>
             </amx:listItem>
             <amx:listItem id="li3" action="unpack" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -55,6 +57,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp18"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl32"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl33"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl40"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl41"/>
             </amx:listItem>
             <amx:listItem id="li5" action="unpack" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -75,6 +79,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp38"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl34"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl35"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl42"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl43"/>
             </amx:listItem>
             <amx:listItem id="li6" action="unpack" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -95,6 +101,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp48"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl36"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl37"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl44"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl45"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>

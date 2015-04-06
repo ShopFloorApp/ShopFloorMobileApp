@@ -299,8 +299,47 @@ public class StateListener {
 
     public void LpnValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
+        System.out.println("here");
+            
         if ("".equals(valueChangeEvent.getNewValue())) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+        } else {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
+        }
+    }
+    
+    public void ItemValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        System.out.println("here");
+            
+        if ("".equals(valueChangeEvent.getNewValue())) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+        } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+        }
+    }
+    
+    public void ItemValueChange(ActionEvent actionEvent) {
+        // Add event code here...
+        String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+        if ("".equals(item)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+        } else {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+        }
+    }
+
+    public void ToLpnValueChange(ActionEvent actionEvent) {
+        // Add event code here...
+        String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
+        if ("".equals(toLpn)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");

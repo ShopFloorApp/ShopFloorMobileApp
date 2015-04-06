@@ -70,8 +70,8 @@ public class LpnDetailsDC {
                         lpnDetails.setITEM((jsObjectArrayData.get("ITEM").toString()));
                         lpnDetails.setITEMDESC((jsObjectArrayData.get("ITEMDESC").toString()));
                         lpnDetails.setUOM((jsObjectArrayData.get("UOM").toString()));                    
-                        lpnDetails.setONHANDQTY(Integer.parseInt((jsObjectArrayData.get("ONHANDQTY").toString()))); 
-                        lpnDetails.setAVAILABLEQTY(Integer.parseInt((jsObjectArrayData.get("AVAILABLEQTY").toString())));
+                        lpnDetails.setONHANDQTY(Float.parseFloat((jsObjectArrayData.get("ONHANDQTY").toString()))); 
+                        lpnDetails.setAVAILABLEQTY(Float.parseFloat((jsObjectArrayData.get("AVAILABLEQTY").toString())));
                         lpnDetails.setSERIALCONTROL(jsObjectArrayData.get("SERIALCONTROL").toString());
                         lpnDetails.setLOTCONTROL(jsObjectArrayData.get("LOTCONTROL").toString());
                          
@@ -91,8 +91,8 @@ public class LpnDetailsDC {
                     lpnDetails.setITEM((jsObject4.get("ITEM").toString()));
                     lpnDetails.setITEMDESC((jsObject4.get("ITEMDESC").toString()));
                     lpnDetails.setUOM((jsObject4.get("UOM").toString()));
-                    lpnDetails.setONHANDQTY(Integer.parseInt((jsObject4.get("ONHANDQTY").toString())));
-                    lpnDetails.setAVAILABLEQTY(Integer.parseInt((jsObject4.get("AVAILABLEQTY").toString())));
+                    lpnDetails.setONHANDQTY(Float.parseFloat((jsObject4.get("ONHANDQTY").toString())));
+                    lpnDetails.setAVAILABLEQTY(Float.parseFloat((jsObject4.get("AVAILABLEQTY").toString())));
                     lpnDetails.setSERIALCONTROL(jsObject4.get("SERIALCONTROL").toString());
                     lpnDetails.setLOTCONTROL(jsObject4.get("LOTCONTROL").toString());
                     

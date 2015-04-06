@@ -50,7 +50,7 @@ public class LpnDetailsEntity extends AEntity  {
 
     private String ITEMDESC;
     private String UOM;
-    private int ONHANDQTY;
+    private float ONHANDQTY;
 
     public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
         PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
@@ -63,8 +63,8 @@ public class LpnDetailsEntity extends AEntity  {
         return propertyChangeSupport;
     }
 
-    public void setONHANDQTY(int ONHANDQTY) {
-        int oldONHANDQTY = this.ONHANDQTY;
+    public void setONHANDQTY(float ONHANDQTY) {
+        float oldONHANDQTY = this.ONHANDQTY;
         this.ONHANDQTY = ONHANDQTY;
         propertyChangeSupport.firePropertyChange("ONHANDQTY", oldONHANDQTY, ONHANDQTY);
     }
@@ -89,20 +89,20 @@ public class LpnDetailsEntity extends AEntity  {
         return LOTCONTROL;
     }
 
-    public int getONHANDQTY() {
+    public float getONHANDQTY() {
         return ONHANDQTY;
     }
 
-    public void setAVAILABLEQTY(int AVAILABLEQTY) {
-        int oldAVAILABLEQTY = this.AVAILABLEQTY;
+    public void setAVAILABLEQTY(float AVAILABLEQTY) {
+        float oldAVAILABLEQTY = this.AVAILABLEQTY;
         this.AVAILABLEQTY = AVAILABLEQTY;
         propertyChangeSupport.firePropertyChange("AVAILABLEQTY", oldAVAILABLEQTY, AVAILABLEQTY);
     }
 
-    public int getAVAILABLEQTY() {
+    public float getAVAILABLEQTY() {
         return AVAILABLEQTY;
     }
-    private int AVAILABLEQTY;
+    private float AVAILABLEQTY;
     private String SERIALCONTROL;
     private String LOTCONTROL;
 
