@@ -49,7 +49,7 @@
       <property
          name="fromOutcome">toJobOpr</property>
       <property
-         name="sdm:polyPoints">B44,-188.6875,-58.8985,-195.6875,20.04985,T33</property>
+         name="sdm:polyPoints">B44,-188.6875,-58.8985,-195.6875,20.04982,T33</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -59,7 +59,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">T44,-188.6875,20.32248,-181.6875,-58.62628,B56</property>
+         name="sdm:polyPoints">T44,-188.6875,20.322449,-181.6875,-58.62628,B56</property>
    </ControlFlowCase>
    <View
       id="View7">
@@ -84,7 +84,7 @@
       <property
          name="fromOutcome">toWorkContent</property>
       <property
-         name="sdm:polyPoints">T67,-174.6875,30.967438,231.02173,31.300781,T33</property>
+         name="sdm:polyPoints">T67,-174.6875,30.967407,231.02173,31.300781,T33</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -94,7 +94,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">T44,238.02173,24.364323,-181.6875,23.96178,T56</property>
+         name="sdm:polyPoints">T44,238.02173,24.364323,-181.6875,23.96175,T56</property>
    </ControlFlowCase>
    <View
       id="View10">

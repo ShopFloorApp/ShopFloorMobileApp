@@ -42,7 +42,7 @@
                                id="soc1">
                                 <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
                                 </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{bindings.subInv.inputValue}"
+                    <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItem label="Choose" id="si4" value="0"/>
                         <amx:selectItems value="#{bindings.subInv.items}" id="si2"/>
@@ -51,7 +51,7 @@
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886">
                 <amx:panelGroupLayout id="pgl2">
-                    <amx:selectOneChoice value="#{bindings.fromLoc.inputValue}" id="soc2">
+                    <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" id="soc2">
                         <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si1"/>
                     </amx:selectOneChoice>

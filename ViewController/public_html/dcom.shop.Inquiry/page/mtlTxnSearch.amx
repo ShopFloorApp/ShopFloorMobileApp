@@ -54,8 +54,7 @@
                     <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{pageFlowScope.FromLocator}"
-                                         id="soc2">
+                    <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" id="soc2">
                         <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.fromLoc.items}" id="si2"/>
                     </amx:selectOneChoice>

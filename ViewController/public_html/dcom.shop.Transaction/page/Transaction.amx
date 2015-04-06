@@ -6,19 +6,17 @@
             <amx:outputText value="Transactions" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-        <!--amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
                              styleClass="custom-springboard-link">
-                <amx:image inlineStyle="width:32px;height:32px;top:-4px;position:relative"
-                           source="/images/springboard.png" id="i1"/>
-            </amx:commandLink-->
-            <amx:commandLink id="cb3" actionListener="#{bindings.gotoSpringboard.execute}">
-                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:outputHtml id="oh1" styleClass="fa fa-bars fa-2x"
+                                inlineStyle="margin-top:-4px; position:relative;"/>
             </amx:commandLink>
         </amx:facet>
-        <amx:listView var="row" id="lv1"  rendered="true" inlineStyle="vertical-align:middle;">
+        <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
             <!--actionListener="#{bindings.ProcessWS.execute}"-->
-            <amx:listItem id="li3"  showLinkIcon="false" action="matMov">
+            <amx:listItem id="li3" showLinkIcon="false" action="matMov">
                 <amx:outputText value="Material Movements" id="ot4"/>
             </amx:listItem>
             <amx:listItem id="li4" showLinkIcon="false" action="receiveTxn">

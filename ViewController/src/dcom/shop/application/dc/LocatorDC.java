@@ -24,8 +24,10 @@ public class LocatorDC extends SyncUtils {
     protected List filtered_Locators = new ArrayList();
     protected List filtered_To_Locators = new ArrayList();
     protected String locatorFilter = "";
-    private String fromLoc = "100.RAW.00.00";
-    private String toLoc = "100.RAW.00.00";
+    //private String fromLoc = "100.RAW.00.00";
+    private String fromLoc = null;
+    //private String toLoc = "100.RAW.00.00";
+    private String toLoc = null;
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     protected String aliasFilter = "";
     protected List s_locator = new ArrayList();
@@ -52,7 +54,7 @@ public class LocatorDC extends SyncUtils {
     public String getToLoc() {
         return toLoc;
     }
-    
+
     public void setFiltered_Locators(List filtered_Locators) {
         this.filtered_Locators = filtered_Locators;
     }
@@ -60,7 +62,7 @@ public class LocatorDC extends SyncUtils {
     public List getFiltered_Locators() {
         return filtered_Locators;
     }
-    
+
     public LocatorDC() {
         super();
     }
@@ -189,8 +191,8 @@ public class LocatorDC extends SyncUtils {
 
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
-            if (subInv == null)
-                subInv = "RAW";
+            //if (subInv == null)
+               // subInv = "RAW";
             filterFileds.put("subinv", subInv);
             filterFileds.put("locatortype", "3");
             HashMap paramMap = new HashMap();
@@ -209,8 +211,8 @@ public class LocatorDC extends SyncUtils {
             filtered_To_Locators.clear();
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
-            if (subInv == null)
-                subInv = "DEFAULT";
+            //if (subInv == null)
+            //    subInv = "DEFAULT";
             filterFileds.put("subinv", subInv);
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_to_locator);
