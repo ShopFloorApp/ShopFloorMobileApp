@@ -333,6 +333,11 @@ public class StateListener {
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
         }
     }
     
@@ -346,6 +351,7 @@ public class StateListener {
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
         }
     }
     
@@ -358,6 +364,7 @@ public class StateListener {
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
         }
     }
 
@@ -370,6 +377,11 @@ public class StateListener {
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
         }
     }
 }
