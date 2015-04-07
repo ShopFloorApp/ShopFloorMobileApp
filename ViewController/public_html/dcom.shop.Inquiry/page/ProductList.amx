@@ -13,6 +13,7 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
+        <amx:outputText id="ot3" value="#{pageFlowScope.ItemServiceResults}"/>
         <amx:panelGroupLayout id="pgl">
             <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}"
                           fetchSize="#{bindings.allProdItems.rangeSize}"
@@ -48,7 +49,7 @@
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
                                         <amx:cellFormat id="cf3" columnSpan="4" halign="end">
-                                            <amx:outputText id="ot3" value="#{row.ITEMCATALOG}"
+                                            <amx:outputText id="ot8" value="#{row.ITEMCATALOG}"
                                                             inlineStyle="font-size:small; color:GrayText;"/>
                                         </amx:cellFormat>
                                     </amx:rowLayout>

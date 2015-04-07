@@ -155,7 +155,7 @@
       islink="true"
       id="ControlFlowCase14"
       from="View7"
-      to="View4">
+      to="View9">
       <property
          name="fromOutcome">detailsBack</property>
       <property
@@ -163,7 +163,7 @@
       <property
          name="fromsrcid">__17</property>
       <property
-         name="sdm:polyPoints">T50,784.35254,90.12305,314.68652,82.52539,T50</property>
+         name="sdm:polyPoints">L46,739.07526,140.62305,590.4918,162.27832,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

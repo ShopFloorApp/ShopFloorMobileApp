@@ -38,7 +38,7 @@ public class ProductSearchDC {
         ValueExpression ve = null;
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         pageFlow.put("keywrdLenErr", "");
-
+        
         System.out.println("Inside productItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         /* OrgItemEntity orgObj = new OrgItemEntity();
@@ -89,10 +89,11 @@ public class ProductSearchDC {
                 "}\n" + 
                 "}";
         }
+        ProductSearchEntity[] prodArray = null;
+        
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");
-        ProductSearchEntity[] prodArray = null;
         //ashish
         try {
 
@@ -147,14 +148,15 @@ public class ProductSearchDC {
 
 
             prodArray = (ProductSearchEntity[]) s_ProdList.toArray(new ProductSearchEntity[s_ProdList.size()]);
-            if(s_ProdList.size()!=0){
-                AdfmfJavaUtilities.setELValue("{pageFlowScope.ItemServiceResults}", "");
-            }else{
-                AdfmfJavaUtilities.setELValue("{pageFlowScope.ItemServiceResults}", "No Search Results");
-            }
+            
 
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "ProductSearchEntity", e.getLocalizedMessage());
+        }
+        if(s_ProdList.size()!=0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemServiceResults}", "");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemServiceResults}", "No Search Results");
         }
         return prodArray;
     }

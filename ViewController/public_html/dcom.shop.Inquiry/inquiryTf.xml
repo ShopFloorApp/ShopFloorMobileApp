@@ -134,7 +134,7 @@
             <from-activity-id>productDetails</from-activity-id>
             <control-flow-case id="__18">
                 <from-outcome>detailsBack</from-outcome>
-                <to-activity-id>searchProduct</to-activity-id>
+                <to-activity-id>ProductList</to-activity-id>
             </control-flow-case>
             <control-flow-case id="__47">
                 <from-outcome>itemCategDetails</from-outcome>

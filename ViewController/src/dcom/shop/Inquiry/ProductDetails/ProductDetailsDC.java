@@ -31,7 +31,7 @@ public class ProductDetailsDC {
     public ProductDetailsEntity[] getAllProdDetails() {
         ValueExpression ve = null;
         
-
+        s_ProdDetailsList.clear();
         System.out.println("Inside productItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         /* OrgItemEntity orgObj = new OrgItemEntity();
@@ -78,20 +78,20 @@ public class ProductDetailsDC {
                            prodItemsDetails.setPRIMARYUOM((jsObject2.get("PRIMARYUOM").toString()));     
                            prodItemsDetails.setREVISION((jsObject2.get("REVISION").toString()));
                            prodItemsDetails.setITEMTYPE((jsObject2.get("ITEMTYPE").toString())); 
-                      /*     prodItemsDetails.setITEMCATALOG((jsObject2.get("ITEMCATALOG").toString())); 
+                           prodItemsDetails.setITEMCATALOG((jsObject2.get("ITEMCATALOG").toString())); 
                            prodItemsDetails.setDATECREATED((jsObject2.get("DATECREATED").toString()));
                            prodItemsDetails.setLOGDESC((jsObject2.get("LOGDESC").toString()));
                            prodItemsDetails.setWEIGHTUOM((jsObject2.get("WEIGHTUOM").toString()));
-                           prodItemsDetails.setWEIGHT(Integer.parseInt((jsObject2.get("WEIGHT").toString())));;
+                           prodItemsDetails.setWEIGHT(Float.parseFloat((jsObject2.get("WEIGHT").toString())));;
                            prodItemsDetails.setVOLUMEUOM((jsObject2.get("VOLUMEUOM").toString()));
-                           prodItemsDetails.setVOLUME(Integer.parseInt((jsObject2.get("VOLUME").toString())));
+                           prodItemsDetails.setVOLUME(Float.parseFloat((jsObject2.get("VOLUME").toString())));
                            prodItemsDetails.setDIMUOM((jsObject2.get("DIMUOM").toString()));
                            prodItemsDetails.setWIDTH(Integer.parseInt((jsObject2.get("WIDTH").toString())));  
                            prodItemsDetails.setLENGTH(Integer.parseInt((jsObject2.get("LENGTH").toString())));  
                            prodItemsDetails.setHEIGHT(Integer.parseInt((jsObject2.get("HEIGHT").toString()))); 
                            prodItemsDetails.setISCONTAINER((jsObject2.get("ISCONTAINER").toString()));
                            prodItemsDetails.setCONTAINERTYPE((jsObject2.get("CONTAINERTYPE").toString()));
-                           prodItemsDetails.setMAXLOAD((jsObject2.get("MAXLOAD").toString()));*/
+                           prodItemsDetails.setMAXLOAD((jsObject2.get("MAXLOAD").toString()));
                            s_ProdDetailsList.add(prodItemsDetails);
 
             }

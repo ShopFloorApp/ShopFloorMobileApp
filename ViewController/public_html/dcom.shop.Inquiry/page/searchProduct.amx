@@ -65,7 +65,7 @@
         </amx:panelFormLayout>
         <amx:selectBooleanSwitch label="Advanced Search" id="sbs1" value="#{pageFlowScope.advSearch}"/>
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
-            <amx:inputText label="Catelog Category" id="it2" rendered="#{pageFlowScope.advSearch}"
+            <amx:inputText label="Catalog Category" id="it2" rendered="#{pageFlowScope.advSearch}"
                            value="#{pageFlowScope.itemCat}"/>
             <amx:inputText label="Item Status" id="it3" rendered="#{pageFlowScope.advSearch}"
                            value="#{pageFlowScope.itemStatus}"/>

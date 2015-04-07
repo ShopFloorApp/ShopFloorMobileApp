@@ -116,14 +116,14 @@ public class ProductDetailsEntity  extends AEntity  {
         return WEIGHTUOM;
     }
 
-    public void setWEIGHT(int WEIGHT) {
+    public void setWEIGHT(float WEIGHT) {
         ITEMCATALOG=getAttributeValue(ITEMCATALOG);
-        int oldWEIGHT = this.WEIGHT;
+        float oldWEIGHT = this.WEIGHT;
         this.WEIGHT = WEIGHT;
         propertyChangeSupport.firePropertyChange("WEIGHT", oldWEIGHT, WEIGHT);
     }
 
-    public int getWEIGHT() {
+    public float getWEIGHT() {
         return WEIGHT;
     }
 
@@ -221,9 +221,9 @@ public class ProductDetailsEntity  extends AEntity  {
     private String DATECREATED;
     private String LOGDESC;
     private String WEIGHTUOM;
-    private int WEIGHT;
+    private float WEIGHT;
     private String VOLUMEUOM;
-    private int VOLUME;
+    private float VOLUME;
 
     public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
         PropertyChangeSupport oldPropertyChangeSupport = this.propertyChangeSupport;
@@ -236,13 +236,13 @@ public class ProductDetailsEntity  extends AEntity  {
         return propertyChangeSupport;
     }
 
-    public void setVOLUME(int VOLUME) {
-        int oldVOLUME = this.VOLUME;
+    public void setVOLUME(float VOLUME) {
+        float oldVOLUME = this.VOLUME;
         this.VOLUME = VOLUME;
         propertyChangeSupport.firePropertyChange("VOLUME", oldVOLUME, VOLUME);
     }
 
-    public int getVOLUME() {
+    public float getVOLUME() {
         return VOLUME;
     }
     private String DIMUOM;
