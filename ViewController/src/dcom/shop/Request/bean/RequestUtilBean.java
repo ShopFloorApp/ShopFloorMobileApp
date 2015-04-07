@@ -47,6 +47,20 @@ public class RequestUtilBean {
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
     
+    public void clearAction(ActionEvent actionEvent) {
+        // Add event code here...
+        
+        param.valueMap.clear();
+        param.valueDispMap.clear();
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedDispParamsLovVal}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedParamsLovVal}", null);
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshConcProgParams.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
     public void getLov(ActionEvent actionEvent) {
         // Add event code here...
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedDispParamsLovVal}", null);

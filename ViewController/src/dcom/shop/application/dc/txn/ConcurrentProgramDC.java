@@ -389,7 +389,7 @@ public class ConcurrentProgramDC extends SyncUtils {
     }
     
     public void refreshConcProgParams(){
-        providerChangeSupport.fireProviderRefresh("concProgramParam");
+        providerChangeSupport.fireProviderRefresh("concProgramParams");
     }
     
     public ConcProgramParamLovBO[] getConcProgramParamLov() {

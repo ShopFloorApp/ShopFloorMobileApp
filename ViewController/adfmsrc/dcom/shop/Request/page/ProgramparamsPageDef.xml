@@ -54,5 +54,8 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="refreshConcProgParams" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="refreshConcProgParams" IsViewObjectMethod="false" DataControl="ConcurrentProgramDC"
+                  InstanceName="data.ConcurrentProgramDC.dataProvider"/>
   </bindings>
 </pageDefinition>
