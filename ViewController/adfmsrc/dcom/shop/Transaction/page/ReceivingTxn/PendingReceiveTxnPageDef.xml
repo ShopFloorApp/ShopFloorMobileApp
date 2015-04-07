@@ -32,5 +32,8 @@
     <methodAction id="completeTxn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="completeTxn"
                   IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
                   InstanceName="data.ReceivingTxnDC.dataProvider"/>
+    <methodAction id="getPendingReceiveTxn" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getPendingReceiveTxn" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

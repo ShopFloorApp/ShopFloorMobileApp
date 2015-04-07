@@ -54,11 +54,11 @@
     </view>
     <router id="router1">
       <case id="__23">
-        <expression>#{pageFlowScope.SubinvTrxnId==0}</expression>
+        <expression>#{pageFlowScope.ReceiveTxnId==0}</expression>
         <outcome>createTxn</outcome>
       </case>
       <case id="__27">
-        <expression>#{pageFlowScope.SubinvTrxnId!=0}</expression>
+        <expression>#{pageFlowScope.ReceiveTxnId!=0}</expression>
         <outcome>pendingList</outcome>
       </case>
       <default-outcome>createTxn</default-outcome>

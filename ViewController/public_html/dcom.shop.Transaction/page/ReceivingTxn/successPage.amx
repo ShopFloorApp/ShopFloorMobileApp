@@ -19,7 +19,7 @@
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:rowLayout id="rl8">
           <amx:cellFormat id="cf13">
-            <amx:commandLink id="cl3" action="pendingTxn" >
+            <amx:commandLink id="cl3" action="que" >
               <amx:tableLayout id="tl5" halign="center">
                 <amx:rowLayout id="rl12">
                   <amx:cellFormat id="cf22" halign="center">

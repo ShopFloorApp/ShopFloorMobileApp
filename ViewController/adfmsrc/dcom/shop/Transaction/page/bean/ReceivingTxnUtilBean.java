@@ -85,7 +85,10 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.uom.inputValue}"));
     }
     
-    public void addRecord(ActionEvent ae){       
+    public void addRecord(ActionEvent ae){
+        if(idx==0){
+           idx = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextLinesCount}");            
+        }
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", idx+1);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", null);
@@ -159,5 +162,9 @@ public class ReceivingTxnUtilBean {
             AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
                                                    });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        MethodExpression me1 =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.getPendingReceiveTxn.execute}", Object.class, new Class[] {
+                                                   });
+        me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
 }

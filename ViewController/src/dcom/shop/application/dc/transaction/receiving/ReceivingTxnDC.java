@@ -542,6 +542,13 @@ public class ReceivingTxnDC extends SyncUtils{
 
                     }
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLinesCount}", s_shipmentLines.size());
+                    ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE='ReceiveTxn'");
+                    ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE='ReceiveTxn'");
+                    if(s_lotLines.size()>s_serialLines.size()){
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.nextLinesCount}", s_lotLines.size());
+                    }else{
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.nextLinesCount}", s_serialLines.size());
+                    }
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -581,7 +588,13 @@ public class ReceivingTxnDC extends SyncUtils{
                     
                             s_shipmentLines.add(shipmentLinesItems);
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLinesCount}", s_shipmentLines.size());
-                        
+                    ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE='ReceiveTxn'");
+                    ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE='ReceiveTxn'");
+                    if(s_lotLines.size()>s_serialLines.size()){
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.nextLinesCount}", s_lotLines.size());
+                    }else{
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.nextLinesCount}", s_serialLines.size());
+                    }
                         
                 } catch (ParseException e) {
                     e.getMessage();
@@ -614,6 +627,7 @@ public class ReceivingTxnDC extends SyncUtils{
     public void getPendingReceiveTxn(){
         s_quedReceiveTxn=super.getOfflineCollection(ShipmentBO.class);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ReceiveTxnId}",s_quedReceiveTxn.size());
+        s_lines.clear();
     }
     public ShipmentBO[] getShipments(){
         ShipmentBO[] shipmentArray =
