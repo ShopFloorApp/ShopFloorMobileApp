@@ -35,6 +35,10 @@ public class LpnDetailsDC {
         String keyword = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.lpn}", String.class);
         keyword = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        String page = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemLovPage}"); 
+        if("LpnTrxn".equals(page)){
+            keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}"); 
+        }
         String restURI = RestURI.PostLpnDetailsURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =

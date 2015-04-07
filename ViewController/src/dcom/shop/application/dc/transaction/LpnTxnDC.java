@@ -123,21 +123,26 @@ public class LpnTxnDC extends SyncUtils {
     public void InsertTransaction() {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
+        String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
+        if (!("MERGE_FROM".equals(lpnPage))) {
+            ItemTxnDC item = new ItemTxnDC();
+            item.InsertItems(); //Inserting current item on the page
+        }
         LpnTxnBO lpnTxn = new LpnTxnBO();
 
 
         Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
+        String fromLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
         String subinv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
-        String fromLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
         String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
-        String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
+
         lpnTxn.setTrxnId(trxnId);
-        lpnTxn.setLpnFrom(fromLpn);
-        lpnTxn.setSubinventory(subinv);
-        lpnTxn.setLocator(locator);
-        lpnTxn.setLpnTo(toLpn);
-        lpnTxn.setTrxType(lpnPage);
+        lpnTxn.setLpnFrom(fromLpn=="null"?"":fromLpn);
+        lpnTxn.setSubinventory(subinv=="null"?"":subinv);
+        lpnTxn.setLocator(locator=="null"?"":locator);
+        lpnTxn.setLpnTo(toLpn=="null"?"":toLpn);
+        lpnTxn.setTrxType(lpnPage=="null"?"":lpnPage);
         s_lpnTrxns.add(lpnTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(LpnTxnBO.class, s_lpnTrxns);
@@ -158,7 +163,7 @@ public class LpnTxnDC extends SyncUtils {
             lpnTxn = lpnTxnArray[0];
         }
         s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
-        
+
         s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
         s_itemTrxns = sync.getCollectionFromDB(ItemTxnBO.class);
         filterItems();

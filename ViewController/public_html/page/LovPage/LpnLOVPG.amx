@@ -23,7 +23,7 @@
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
             <?audit suppress oracle.maf.warning-missing-label?>
-            <amx:commandLink id="cl12" rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
+            <amx:commandLink id="cl12" rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
                              actionListener="#{bindings.refreshLpnDC.execute}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl2" width="100%">
@@ -42,7 +42,7 @@
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl" from="N" type="action" to="#{pageFlowScope.refreshLov}"/>
             </amx:commandLink>
-            <amx:commandLink id="cl1" rendered="#{pageFlowScope.LpnLovPage == 'LPNTrxn'}"
+            <amx:commandLink id="cl1" rendered="#{pageFlowScope.LpnLovPage ne 'LPNTrxn'}"
                              actionListener="#{bindings.refresh.execute}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl4" width="100%">

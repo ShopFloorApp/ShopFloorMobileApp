@@ -38,7 +38,7 @@
             <amx:outputText value="Merge LPN" rendered="#{pageFlowScope.LpnPage == 'MERGE_FROM'}" id="ot6"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cb3" action="Back">
+            <amx:commandLink id="cb3" actionListener="#{StateListenerBean.ClearLpnTrxnPage}" action="Back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
             </amx:commandLink>
