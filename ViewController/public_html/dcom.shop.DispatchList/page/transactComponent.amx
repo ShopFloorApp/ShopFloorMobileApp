@@ -46,6 +46,7 @@
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:selectOneChoice label="Type" id="soc1" value="#{bindings.trxType.inputValue}"
                                  valueChangeListener="#{pageFlowScope.DispatchBean.transactComponentsTrxType}">
+                <amx:selectItem label="Choose" id="si8" value="0"/>
                 <amx:selectItems id="si2" value="#{bindings.trxType.items}"/>
             </amx:selectOneChoice>
             <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc2">
@@ -92,6 +93,48 @@
                 <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
+        <amx:tableLayout id="tl4" width="100%" inlineStyle="margin-left:40px;margin-right:40px;">
+            <amx:rowLayout id="rl4">
+                <amx:cellFormat id="cf2" rendered='#{pageFlowScope.serialControl eq "1" ? true : false}'>
+                    <amx:commandLink id="cl4" inlineStyle="float:left;margin:0px;padding:0px;" action="SerialEntry">
+                        <amx:setPropertyListener from="#{bindings.trxQty.inputValue}" to="#{pageFlowScope.SerialQty}"
+                                                 id="spl1"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
+                                                 id="spl2"/>
+                        <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
+                        <amx:setPropertyListener from="TransactComponents" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                        <amx:tableLayout id="tl2">
+                            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                            <amx:rowLayout id="rl2">
+                                <amx:cellFormat id="cf3">
+                                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                                    <amx:outputText id="ot5" inlineStyle="font-weight:bold;color:#34AADC;"
+                                                    value="Serial Entry"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                    </amx:commandLink>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf4" halign="end" rendered='#{pageFlowScope.lotControl eq "1" ? true : false}'>
+                    <amx:commandLink id="cl3" action="LotEntry">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.LotQty}"
+                                                 id="spl5"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"
+                                                 id="spl6"/>
+                        <amx:setPropertyListener from="TransactComponents" to="#{pageFlowScope.ParentPage}" id="spl10"/>
+                        <amx:tableLayout id="tl3">
+                            <amx:rowLayout id="rl3">
+                                <amx:cellFormat id="cf5">
+                                    <amx:outputText id="ot6" inlineStyle="font-weight:bold;color:#34AADC;"
+                                                    value="Lot Entry"/>
+                                </amx:cellFormat>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
     </amx:panelPage>
     <amx:popup id="p1">
         <amx:tableLayout id="tl1">

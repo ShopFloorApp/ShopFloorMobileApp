@@ -3,19 +3,52 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
-            <amx:outputText value="Clock In/Clock Out" id="ot1"/>
+            <amx:outputText value="Clock In/Out" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="backToWorkContent">
+            <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}"
+                             disabled="#{!bindings.rollback.enabled}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl2" inlineStyle="width:30px;"
-                             action="backToWorkContent">
+            <amx:commandLink id="cl2" inlineStyle="width:30px;" action="backToWorkContent"
+                             actionListener="#{bindings.saveTransaction.execute}"
+                             disabled="#{!bindings.saveTransaction.enabled}">
                 <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
-                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="COMP_ASSEMBLY"/>
+                <amx:setPropertyListener id="spl1" from="#{bindings.dept.inputValue}"
+                                         to="#{bindings.PDeptCode.inputValue}"/>
+                <amx:setPropertyListener id="spl2" from="#{bindings.jobOps.inputValue}"
+                                         to="#{bindings.PJobOp.inputValue}"/>
             </amx:commandLink>
         </amx:facet>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:panelLabelAndMessage label="Sequence" id="plam4">
+                <amx:outputText value="#{bindings.opSeq.inputValue}" id="ot5"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Description" id="plam12">
+                <amx:outputText value="#{bindings.opDesc.inputValue}" id="ot13"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Department" id="plam2">
+                <amx:outputText value="#{bindings.dept.inputValue}" id="ot3"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Started On" id="plam8">
+                <amx:outputText value="#{bindings.opStartDate.inputValue}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Completion By" id="plam9">
+                <amx:outputText value="#{bindings.opComplDate.inputValue}" id="ot10"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam1">
+                <amx:panelGroupLayout id="pgl2" layout="vertical">
+                    <amx:panelGroupLayout id="pgl1" layout="horizontal"
+                                          inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; margin:10px;">
+                        <amx:inputText id="it1" hintText="Crew Size"/>
+                        <amx:commandLink id="cl3">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-close fa-lg"/>
+                        </amx:commandLink>
+                    </amx:panelGroupLayout>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
     </amx:panelPage>
 </amx:view>

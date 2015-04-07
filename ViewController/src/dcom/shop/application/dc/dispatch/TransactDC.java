@@ -4,15 +4,13 @@ import dcom.shop.application.mobile.dispatch.TransactBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
-import java.math.BigDecimal;
-
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class TransactDC {
-    static TransactBO transactBO;
+    TransactBO transactBO;
 
     public TransactDC() {
         super();
@@ -22,21 +20,21 @@ public class TransactDC {
         transactBO = new TransactBO();
         //Defaulting values in the new object
         String nextOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextOpSeq}").toString();
-        String compSubInv =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compSubInv}").toString();
-        String compLocator =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compLocator}").toString();
-        
-        String assemblyUom =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}").toString();
-        String lastDept =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
-        String lastOpSeq =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
-        String nextDept =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
-        
+        String compSubInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compSubInv}").toString();
+        String compLocator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compLocator}").toString();
+
+        String assemblyUom = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}").toString();
+        String lastDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
+        String lastOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
+        String nextDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
+
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
         transactBO.setToOpSeq(nextOpSeq);
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
         transactBO.setFromOpSeq(lastOpSeq);
-        
+
         TransactBO[] transactArray = new TransactBO[1];
         transactArray[0] = transactBO;
         return transactArray;
@@ -47,7 +45,7 @@ public class TransactDC {
         String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
         transactBO.setSubinv(subInv);
         transactBO.setLocator(locator);
-        
+
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();

@@ -8,6 +8,7 @@ import dcom.shop.restURIDetails.RestURI;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 
@@ -43,9 +44,14 @@ public class DepartmentDC extends AViewObject {
 
     public void getFromWS() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
-
+        String orgCode =
+            AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String strPayload =
-            "{\"x\":{\"RESTHeader\":{\"Responsibility\":\"ORDER_MGMT_SUPER_USER\",\"RespApplication\":\"ONT\",\"SecurityGroup\":\"STANDARD\",\"NLSLanguage\":\"AMERICAN\",\"Org_Id\":\"82\"},\"InputParameters\":{\"PORGCODE\":{}}}}";
+            "{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
+            "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + "      \"RespApplication\": \"ONT\",\n" +
+            "      \"SecurityGroup\": \"STANDARD\",\n" + "      \"NLSLanguage\": \"AMERICAN\",\n" +
+            "      \"Org_Id\": \"82\"\n" + "    },\n" + "    \"InputParameters\": {\n" + "      \"PORGCODE\":" +
+            orgCode + "    }\n" + "  }\n" + "}";
 
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetDeptURI(), strPayload);
         if (jsonArrayAsString != null) {
