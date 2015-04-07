@@ -197,7 +197,7 @@
       islink="true"
       id="ControlFlowCase17"
       from="View6"
-      to="View5">
+      to="View10">
       <property
          name="fromOutcome">lpnDetailsBack</property>
       <property
@@ -205,7 +205,7 @@
       <property
          name="fromsrcid">__16</property>
       <property
-         name="sdm:polyPoints">B50,844.5,24.123047,291.5,24.226562,B61</property>
+         name="sdm:polyPoints">L54,803.18665,-26.376953,618.5,-42.97461,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -233,7 +233,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">R50,590.0,158.77832,738.969,137.12305,L42</property>
+         name="sdm:polyPoints">R46,590.0,155.27832,738.5827,133.62305,L38</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -275,7 +275,7 @@
       <property
          name="fromsrcid">__10</property>
       <property
-         name="sdm:polyPoints">R50,618.5,-46.47461,803.5,-29.876953,L50</property>
+         name="sdm:polyPoints">R46,618.81366,-49.97461,803.5,-33.376953,L46</property>
    </ControlFlowCase>
    <View
       id="View24">
@@ -655,7 +655,7 @@
       <property
          name="fromOutcome">prodOnHandList</property>
       <property
-         name="sdm:polyPoints">L58,743.35254,151.12305,640.5,246.77832,T56</property>
+         name="sdm:polyPoints">L62,743.35254,154.62305,640.5,246.77832,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -665,7 +665,7 @@
       <property
          name="fromOutcome">prodOnhandListBack</property>
       <property
-         name="sdm:polyPoints">T44,633.5,243.76036,740.59576,144.12305,L50</property>
+         name="sdm:polyPoints">T44,633.5,243.68492,740.6679,147.62305,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -675,6 +675,6 @@
       <property
          name="fromOutcome">prodOnhandDetailsBack</property>
       <property
-         name="sdm:polyPoints">L42,974.0,342.79297,784.35254,197.83887,B50</property>
+         name="sdm:polyPoints">L42,974.0,343.07715,784.35254,198.12305,B50</property>
    </ControlFlowCase>
 </SDM>

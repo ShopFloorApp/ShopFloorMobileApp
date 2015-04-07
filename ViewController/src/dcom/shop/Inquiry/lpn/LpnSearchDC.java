@@ -5,6 +5,7 @@ import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 import javax.el.ValueExpression;
@@ -32,7 +33,9 @@ public class LpnSearchDC {
     public LpnSearchEntity[] getAllLpns() {
         ValueExpression ve = null;
         s_LpnList.clear();
-
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        pageFlow.put("keywrdLpnLenErr", "");
+        
         System.out.println("Inside lpn search");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String keyword = null;
@@ -102,14 +105,15 @@ public class LpnSearchDC {
             }
 
             lpnArray = (LpnSearchEntity[]) s_LpnList.toArray(new LpnSearchEntity[s_LpnList.size()]);
-            if(s_LpnList.size()!=0){
-                AdfmfJavaUtilities.setELValue("{pageFlowScope.LpnResults}", "");
-            }else{
-                AdfmfJavaUtilities.setELValue("{pageFlowScope.LpnResults}", "No Search Results");
-            }
+            
         
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnSearchEntity", e.getLocalizedMessage());
+        }
+        if(s_LpnList.size()!=0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnResults}", "");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnResults}", "No Search Results");
         }
         return lpnArray;
     }

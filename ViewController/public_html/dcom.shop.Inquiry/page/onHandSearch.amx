@@ -103,6 +103,7 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
+                            <amx:setPropertyListener id="spl" from="onHandSearch" type="action" to="#{pageFlowScope.callingPg}"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>

@@ -40,6 +40,8 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
+        <amx:outputHtml id="ot144" value="Enter atleast 3 characters to search!!!"
+                        rendered="#{pageFlowScope.keywrdLpnLenErr eq 'Yes'?true:false}" inlineStyle="color:Red"/>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:panelLabelAndMessage label="Keyword" id="plm1">
                 <amx:spacer width="10" id="s11"/>
@@ -83,7 +85,7 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13">
-                        <amx:commandLink id="cl3" action="lpnlist">
+                        <amx:commandLink id="cl3" action="#{SearchProductBean.validateLpnKeyword}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">

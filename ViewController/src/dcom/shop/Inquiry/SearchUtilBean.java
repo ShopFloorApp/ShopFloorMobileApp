@@ -21,15 +21,15 @@ public class SearchUtilBean {
     public void clearOHPage(ActionEvent ae) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", 0);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", 0);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", 0);       
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", "0");       
     } 
     public void clearTrxPage(ActionEvent ae) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", 0);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", 0);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnLovPage}", null);       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnType}", null);       

@@ -13,6 +13,7 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
+        <amx:outputText id="ot3" value="#{pageFlowScope.MtlTxnSearchResults}"/>
         <amx:listView var="row" value="#{bindings.allmtlTxn.collectionModel}"
                       fetchSize="#{bindings.allmtlTxn.rangeSize}"
                       selectedRowKeys="#{bindings.allmtlTxn.collectionModel.selectedRow}"

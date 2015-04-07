@@ -42,7 +42,9 @@ public class OnHandSearchDC {
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
         subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
+        if("0".equals(subinv)){
+            subinv = "";
+        }
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         locator = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
@@ -129,6 +131,11 @@ public class OnHandSearchDC {
 
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "OnHandSearchEntity", e.getLocalizedMessage());
+        }
+        if(s_onHandList.size()!=0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.OnHandResults}", "");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.OnHandResults}", "No Results Found");
         }
         return onHandArray;
     }

@@ -6,7 +6,7 @@
             <amx:outputText value="On Hand Search Results" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="#{pageFlowScope.NavigationVarUtilBean.getOnhandNavigations}">
+            <amx:commandLink id="cl1" action="#{pageFlowScope.NavigationVarUtilBean.getOnhandDetailsNavigations}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>

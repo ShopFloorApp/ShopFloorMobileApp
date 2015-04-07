@@ -170,6 +170,11 @@ public class MtlTxnSearchDC {
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "MtlTxnSearchEntity", e.getLocalizedMessage());
         }
+        if(s_mtlTxnList.size()!=0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTxnSearchResults}", "");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTxnSearchResults}", "No Results Found");
+        }
         return mtlTxnArray;
     }
 }

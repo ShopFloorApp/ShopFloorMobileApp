@@ -13,7 +13,7 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-        <!--AJamx:outputText id = "oh111"  value = "#{pageFlowScope.callingPg"/-->
+          <amx:outputText id="ot3" value="#{pageFlowScope.OnHandResults}"/>
         <amx:listView var="row" value="#{bindings.allOnhands.collectionModel}"
                       fetchSize="#{bindings.allOnhands.rangeSize}"
                       selectedRowKeys="#{bindings.allOnhands.collectionModel.selectedRow}"
@@ -32,10 +32,7 @@
                                     <amx:cellFormat id="cf9" columnSpan="1" width="30px" halign="end">
                                         <amx:outputText id="ot7" value="#{row.ONHANDQTY}"/>
                                     </amx:cellFormat>
-                                    <amx:cellFormat id="cf6" columnSpan="1" width="40px" halign="end">
-                                        <amx:outputText id="ot5" value="#{row.UOM}"/>
-                                    </amx:cellFormat>
-                                </amx:rowLayout>
+                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl1">
                                     <amx:cellFormat id="cf1" columnSpan="3">
                                         <amx:outputText id="ot2" value="#{row.ITEMDESC}"
@@ -47,8 +44,8 @@
                                         <amx:outputText value='#{row.SUBINV}' id="ot6"
                                                         inlineStyle="font-size:small; color:GrayText;"/>
                                     </amx:cellFormat>
-                                    <amx:cellFormat id="cf3" columnSpan="2">
-                                        <amx:outputText id="ot3" value="#{row.LOCATOR}"
+                                    <amx:cellFormat id="cf3" columnSpan="3">
+                                        <amx:outputText id="ot9" value="#{row.LOCATOR}"
                                                         inlineStyle="font-size:small; color:GrayText;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
