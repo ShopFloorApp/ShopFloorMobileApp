@@ -67,6 +67,7 @@
                         <amx:cellFormat width="10px" rowSpan="2" id="cf9"/>
                         <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf8">
                             <amx:outputText value="#{row.orderNumber}" id="ot7"/>
+                            
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl5">
@@ -76,6 +77,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl3" to="#{pageFlowScope.documnetNumber}" from="#{row.orderNumber}"/>
+                <!--<amx:setPropertyListener id="spl4" from="#{row.orderLines}" to="#{pageFlowScope.orderLines}"/>-->
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>

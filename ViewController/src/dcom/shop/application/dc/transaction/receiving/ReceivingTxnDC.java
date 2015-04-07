@@ -13,6 +13,7 @@ import dcom.shop.application.mobile.transaction.receiving.LinesBO;
 import dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO;
 import dcom.shop.application.mobile.transaction.receiving.RequisitionBO;
 import dcom.shop.application.mobile.transaction.receiving.SalesOrderBO;
+import dcom.shop.application.mobile.transaction.receiving.SalesOrderLineBO;
 import dcom.shop.application.mobile.transaction.receiving.ShipmentBO;
 import dcom.shop.application.mobile.transaction.receiving.ShipmentLinesBO;
 import dcom.shop.application.mobile.txn.ConcProgramParamsBO;
@@ -42,6 +43,7 @@ import org.json.simple.parser.ParseException;
 public class ReceivingTxnDC extends SyncUtils{
     private static final String NOT_REACHABLE = "NotReachable";
     protected static List s_salesOrder = new ArrayList();
+    protected static List s_salesOrderLines = new ArrayList();
     protected static List s_purchaseOrder = new ArrayList();
     protected static List s_requisition = new ArrayList();
     protected static List s_carriers = new ArrayList();
@@ -94,7 +96,34 @@ public class ReceivingTxnDC extends SyncUtils{
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
-
+        SalesOrderBO salesOrderItems=new SalesOrderBO();
+        salesOrderItems.setOrderType("Test");
+        salesOrderItems.setOrderNumber("100002");
+        
+        SalesOrderLineBO lineItem=new SalesOrderLineBO();
+        lineItem.setLINENUM("1");
+        s_salesOrderLines.add(lineItem);
+        lineItem=new SalesOrderLineBO();
+        lineItem.setLINENUM("2");
+        s_salesOrderLines.add(lineItem);
+        lineItem=new SalesOrderLineBO();
+        lineItem.setLINENUM("3");
+        s_salesOrderLines.add(lineItem);
+        
+        SalesOrderLineBO[] orderLinesArray=
+            (SalesOrderLineBO[])s_salesOrderLines.toArray(new SalesOrderLineBO[s_salesOrderLines.size()]);
+        
+        salesOrderItems.setLines(orderLinesArray);
+        salesOrderItems.setOrderLines(new String[]{"11","22","33"});
+        
+        s_salesOrder.add(salesOrderItems);
+        
+        SalesOrderBO[] salesOrderArray =
+            (SalesOrderBO[]) s_salesOrder.toArray(new SalesOrderBO[s_salesOrder.size()]);
+        return salesOrderArray;
+        
+        /*
+        
         if (jsonArrayAsString != null) {
             try {
                 JSONParser parser = new JSONParser();
@@ -111,17 +140,39 @@ public class ReceivingTxnDC extends SyncUtils{
                     int size = array.size();
                     for (int i = 0; i < size; i++) {
 
-                        SalesOrderBO salesOrderItems = new SalesOrderBO();
+                        salesOrderItems = new SalesOrderBO();
                         JSONObject jsObject2 = (JSONObject) array.get(i);
 
                         salesOrderItems.setOrderType((jsObject2.get("ORDERTYPE").toString()));
                         salesOrderItems.setOrderNumber((jsObject2.get("ORDERNUMBER").toString()));
-//                        salesOrderItems.setLines((jsObject2.get("LINES").toString()));
+                        
+                        //LinesBO[] salesOrderLines
+                        JSONArray lines= (JSONArray)jsObject2.get("LINES");
+                        if (array != null) {
+                            int lineSize = array.size();
+                            for (int j = 0; j < lineSize; j++) {
+                                lineItem=new SalesOrderLineBO();
+                                JSONObject jsLine = (JSONObject)lines.get(j);
+                                lineItem.setLINENUM(jsLine.get("LINENUM")+"");
+                                lineItem.setITEM(jsLine.get("ITEM")+"");
+                                lineItem.setLOTCONTROL(jsLine.get("LOTCONTROL")+"");
+                                lineItem.setSERIALCONTROL(jsLine.get("SERIALCONTROL")+"");
+                                lineItem.setLINEQTY(jsLine.get("LINEQTY")+"");
+                                lineItem.setUOM(jsLine.get("UOM")+"");
+                                
+                                s_salesOrderLines.add(lineItem);
+                            }
+                            
+                            orderLinesArray=
+                                (SalesOrderLineBO[])s_salesOrderLines.toArray(new SalesOrderLineBO[s_salesOrderLines.size()]);
+                        
+                            salesOrderItems.setLines(orderLinesArray);
+                        }
 
                         s_salesOrder.add(salesOrderItems);
 
                     }
-                    SalesOrderBO[] salesOrderArray =
+                    salesOrderArray =
                         (SalesOrderBO[]) s_salesOrder.toArray(new SalesOrderBO[s_salesOrder.size()]);
                     return salesOrderArray;
                 }
@@ -157,8 +208,26 @@ public class ReceivingTxnDC extends SyncUtils{
             return null;
         }
         return null;
+        */
     }
-
+    
+    public SalesOrderLineBO[] getSalesOrderLines() {
+        /*SalesOrderBO[] orderArray=getSalesOrder();
+        
+        for(int i=0;i<orderArray.length;i++){
+            String order = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}");
+            if(orderArray[i].getOrderNumber().equals(order)){
+                    return orderArray[i].getLines();
+                }
+            }
+        return null;
+*/
+        SalesOrderLineBO[] orderLinesArray=
+            (SalesOrderLineBO[])s_salesOrderLines.toArray(new SalesOrderLineBO[s_salesOrderLines.size()]);
+        
+        return orderLinesArray;
+    }
+    
 
     public RequisitionBO[] getRequisition() {
         s_requisition.clear();
@@ -638,10 +707,10 @@ public class ReceivingTxnDC extends SyncUtils{
         ArrayList<ShipmentBO> shipmentBO =
             (ArrayList<ShipmentBO>) super.getFilteredCollectionFromDB(ShipmentBO.class,
                                                                       "WHERE RECEIVETXNID=" + receiveTxnId);
-        ArrayList<LinesBO> linesBO =
+        ArrayList<LinesBO> LinesBO =
             (ArrayList<LinesBO>) super.getFilteredCollectionFromDB(LinesBO.class,
                                                                       "WHERE RECEIVETXNID=" + receiveTxnId);
-        submitReceiveRequest(shipmentBO,linesBO);
+        submitReceiveRequest(shipmentBO,LinesBO);
     }
     
     public void submitReceiveRequest(List<ShipmentBO> shipmentList,List<LinesBO> linesList){   

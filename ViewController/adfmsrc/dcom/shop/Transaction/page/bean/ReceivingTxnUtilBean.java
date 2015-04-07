@@ -5,16 +5,19 @@ import dcom.shop.application.dc.transaction.receiving.ReceivingTxnDC;
 import dcom.shop.application.mobile.transaction.receiving.LinesBO;
 
 import dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO;
+import dcom.shop.application.mobile.transaction.receiving.SalesOrderBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.el.MethodExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.javax.faces.model.SelectItem;
 import oracle.adfmf.util.Utility;
 
 import org.json.simple.JSONArray;
@@ -31,6 +34,42 @@ public class ReceivingTxnUtilBean {
     public void getLinesFromDocumentNo(ActionEvent ae){
         receiveDc.executeShipmentLines();
     }
+    List<SelectItem> orderLineItem;
+
+
+    public void setOrderLineItem(List<SelectItem> orderLineItem) {
+        this.orderLineItem = orderLineItem;
+    }
+
+    public List<SelectItem> getOrderLineItem() {
+        return orderLineItem;
+    }
+
+    public void getSalesOrderLines(ActionEvent ae){
+        SalesOrderBO[] orderArray=receiveDc.getSalesOrder();
+        System.out.println("Order length: "+orderArray.length);
+        
+        List<SelectItem> temp = new ArrayList<SelectItem>();
+        SelectItem si=new SelectItem();
+        si.setValue("123");
+        
+        SelectItem s1=new SelectItem();
+        s1.setValue("456");
+        temp.add(si);
+        temp.add(s1);
+        setOrderLineItem(temp);
+        
+        for(int i=0;i<orderArray.length;i++){
+            String order = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}");
+            System.out.println("Order: "+orderArray[i].getOrderNumber());
+            System.out.println("Order lines: "+orderArray[i].getOrderLines());
+            if(orderArray[i].getOrderNumber().equals(order)){
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.orderLines}", orderLineItem);   
+                    return;
+                }
+            }
+        
+        }
     
     public void subInvChnage(ValueChangeEvent valueChangeEvent) {
         MethodExpression me =

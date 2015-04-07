@@ -39,8 +39,22 @@
     <tree IterBinding="salesOrderIterator" id="salesOrder">
       <nodeDefinition DefName="dcom.shop.application.mobile.transaction.receiving.SalesOrderBO" Name="salesOrder0">
         <AttrNames>
-          <Item Value="orderNumber"/>
           <Item Value="orderType"/>
+          <Item Value="orderNumber"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="lines"/>
+          <Item Value="orderLines"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.receiving.SalesOrderLineBO" Name="salesOrder1">
+        <AttrNames>
+          <Item Value="LINENUM"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="orderLines" Name="salesOrder1">
+        <AttrNames>
+          <Item Value="element"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

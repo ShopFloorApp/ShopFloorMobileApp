@@ -257,6 +257,32 @@ public class StateListener {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
     }
+    
+    public void ClearPackDirectShipPage(ActionEvent actionEvent) {
+        // Add event code here...
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.dockDorr}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
+        
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.orderLineNumber}", null);
+        
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locator}", "0");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInv}", "0");
+        
+        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                     });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+         me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
+    }
 
     public void ClearMiscTrxnPage(ActionEvent actionEvent) {
         // Add event code here...

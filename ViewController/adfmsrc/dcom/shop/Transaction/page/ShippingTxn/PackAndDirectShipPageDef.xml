@@ -11,8 +11,24 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="25" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ReceivingTxnDC" id="ReceivingTxnDCIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="salesOrder" RangeSize="25"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderBO"
+                      id="salesOrderIterator"/>
+    <accessorIterator MasterBinding="salesOrderIterator" Binds="lines" RangeSize="25" DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderLineBO"
+                      id="linesIterator"/>
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="salesOrderLines" RangeSize="25"
+                      DataControl="ReceivingTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderLineBO"
+                      id="salesOrderLinesIterator"/>
   </executables>
   <bindings>
+    <methodAction id="refreshToLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshToLocators"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
     <list IterBinding="subinventoriesIterator" ListOperMode="navigation" ListIter="subinventoriesIterator"
           id="subinventories" DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
@@ -23,6 +39,12 @@
           DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
         <Item Value="description"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="salesOrderLinesIterator" ListOperMode="navigation" ListIter="salesOrderLinesIterator"
+          id="salesOrderLines" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="LINENUM"/>
       </AttrNames>
     </list>
   </bindings>

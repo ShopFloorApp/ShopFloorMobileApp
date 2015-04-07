@@ -32,13 +32,20 @@ public class BarcodeBean {
         String barCodeField = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.barCodeField}");
         if ("Item".equals(barCodeField)) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", barcodeResult);
-        } else if ("LPN".equals(barCodeField)) {
+        } 
+        else if ("LPN".equals(barCodeField)) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", barcodeResult);
-
         }else if ("TOLPN".equals(barCodeField)) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", barcodeResult);
 
         }
+        else if ("Dock".equals(barCodeField)) {
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.dockDoor}", barcodeResult);
+        }
+        else if ("Document".equals(barCodeField)) {
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", barcodeResult);
+        }
+        
         propertyChangeSupport.firePropertyChange("barcodeResult", oldBarcodeResult, barcodeResult);
     }
 

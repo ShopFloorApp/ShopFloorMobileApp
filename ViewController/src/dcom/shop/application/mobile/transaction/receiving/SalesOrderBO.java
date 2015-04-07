@@ -6,11 +6,28 @@ import oracle.adfmf.java.beans.PropertyChangeSupport;
 public class SalesOrderBO {
     private String orderType;
     private String orderNumber;
-    private String lines;
+    private SalesOrderLineBO[] lines;
+    private String[] orderLines;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public SalesOrderBO() {
         super();
+    }
+
+    public void setOrderLines(String[] orderLines) {
+        this.orderLines = orderLines;
+    }
+
+    public String[] getOrderLines() {
+        return orderLines;
+    }
+
+    public void setPropertyChangeSupport(PropertyChangeSupport propertyChangeSupport) {
+        this.propertyChangeSupport = propertyChangeSupport;
+    }
+
+    public PropertyChangeSupport getPropertyChangeSupport() {
+        return propertyChangeSupport;
     }
 
     public void setOrderType(String orderType) {
@@ -33,13 +50,13 @@ public class SalesOrderBO {
         return orderNumber;
     }
 
-    public void setLines(String lines) {
-        String oldLines = this.lines;
+    public void setLines(SalesOrderLineBO[] lines) {
+        SalesOrderLineBO[] oldLines = this.lines;
         this.lines = lines;
         propertyChangeSupport.firePropertyChange("lines", oldLines, lines);
     }
 
-    public String getLines() {
+    public SalesOrderLineBO[] getLines() {
         return lines;
     }
 

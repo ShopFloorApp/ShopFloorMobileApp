@@ -2,10 +2,20 @@
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="PackAndDirectShipTF">
     <default-activity>PackAndDirectShip</default-activity>
-    <managed-bean id="__22">
-      <managed-bean-name>BarcodeBean</managed-bean-name>
+    <managed-bean id="__28">
+      <managed-bean-name>StateListenerBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__32">
+      <managed-bean-name>BarCodeBean</managed-bean-name>
       <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
       <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__33">
+      <managed-bean-name>ReceivingTxnUtilBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
     <view id="PackAndDirectShip">
       <page>/dcom.shop.Transaction/page/ShippingTxn/PackAndDirectShip.amx</page>
@@ -33,6 +43,12 @@
     <view id="DocumentNo">
       <page>/dcom.shop.Transaction/page/ReceivingTxn/DocumentNo.amx</page>
     </view>
+    <view id="LotEntry">
+      <page>/page/LotEntry.amx</page>
+    </view>
+    <view id="SerialEntry">
+      <page>/page/SerialEntry.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PackAndDirectShip</from-activity-id>
       <control-flow-case id="__2">
@@ -58,6 +74,14 @@
       <control-flow-case id="__19">
         <from-outcome>OrderLOV</from-outcome>
         <to-activity-id>DocumentNo</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome>LotEntry</from-outcome>
+        <to-activity-id>LotEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome>SerialEntry</from-outcome>
+        <to-activity-id>SerialEntry</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
@@ -105,6 +129,20 @@
     <control-flow-rule id="__20">
       <from-activity-id>DocumentNo</from-activity-id>
       <control-flow-case id="__21">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id>SerialEntry</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PackAndDirectShip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id>LotEntry</from-activity-id>
+      <control-flow-case id="__27">
         <from-outcome>Back</from-outcome>
         <to-activity-id>PackAndDirectShip</to-activity-id>
       </control-flow-case>
