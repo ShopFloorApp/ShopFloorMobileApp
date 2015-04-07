@@ -17,6 +17,13 @@
         <amx:facet name="footer">
             <amx:outputText value="Select a warehouse" id="ot2"/>
         </amx:facet>
+        <amx:tableLayout id="tl1" styleClass="tableHeader1">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1">
+                    <amx:outputText value="Warehouse List" id="ot6"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.warehouse.collectionModel}"
                       fetchSize="#{bindings.warehouse.rangeSize}"
                       selectedRowKeys="#{bindings.warehouse.collectionModel.selectedRow}"
@@ -24,31 +31,30 @@
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
             <amx:listItem showLinkIcon="false" id="li1">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:tableLayout width="100%" id="tl1">
+                <amx:tableLayout width="100%" id="tl2">
                     <amx:rowLayout id="rl13">
                         <amx:cellFormat shortDesc="Name" height="40px" width="100%" id="cf31">
-                            <amx:outputText  id="ot41" value="#{row.name}"
-                                            inlineStyle="font-weight:bold;"/>
+                            <amx:outputText id="ot41" value="#{row.name}" inlineStyle="font-weight:bold;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
-                    <amx:rowLayout id="rl1">
+                    <amx:rowLayout id="rl4">
                         <amx:cellFormat shortDesc="Address" width="100%" id="cf4">
-                            <amx:outputText value="#{row.line1} #{row.line2}" 
+                            <amx:outputText value="#{row.line1} #{row.line2}"
                                             inlineStyle="font-size:small; color:GrayText;" id="ot4"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl2">
-                        <amx:cellFormat shortDesc="Address" width="100%" id="cf1">
+                        <amx:cellFormat shortDesc="Address" width="100%" id="cf3">
                             <amx:outputText value="#{row.city} #{row.state} #{row.province} #{row.zip} #{row.country}"
                                             inlineStyle="font-size:small; color:GrayText;" id="ot3"/>
                         </amx:cellFormat>
-                    </amx:rowLayout>                    
+                    </amx:rowLayout>
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat shortDesc="Address" width="100%" id="cf2">
                             <amx:outputText value="#{row.zip} #{row.country}"
                                             inlineStyle="font-size:small; color:GrayText;" id="ot5"/>
                         </amx:cellFormat>
-                    </amx:rowLayout>                          
+                    </amx:rowLayout>
                 </amx:tableLayout>
                 <amx:setPropertyListener from="#{row.whse}" type="action"
                                          to="#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}"
