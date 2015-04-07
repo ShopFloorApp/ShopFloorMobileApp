@@ -96,7 +96,9 @@ public class ReceivingTxnDC extends SyncUtils{
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
+        /*
         SalesOrderBO salesOrderItems=new SalesOrderBO();
+        
         salesOrderItems.setOrderType("Test");
         salesOrderItems.setOrderNumber("100002");
         
@@ -121,8 +123,8 @@ public class ReceivingTxnDC extends SyncUtils{
         SalesOrderBO[] salesOrderArray =
             (SalesOrderBO[]) s_salesOrder.toArray(new SalesOrderBO[s_salesOrder.size()]);
         return salesOrderArray;
+        */
         
-        /*
         
         if (jsonArrayAsString != null) {
             try {
@@ -140,7 +142,7 @@ public class ReceivingTxnDC extends SyncUtils{
                     int size = array.size();
                     for (int i = 0; i < size; i++) {
 
-                        salesOrderItems = new SalesOrderBO();
+                        SalesOrderBO salesOrderItems = new SalesOrderBO();
                         JSONObject jsObject2 = (JSONObject) array.get(i);
 
                         salesOrderItems.setOrderType((jsObject2.get("ORDERTYPE").toString()));
@@ -151,7 +153,7 @@ public class ReceivingTxnDC extends SyncUtils{
                         if (array != null) {
                             int lineSize = array.size();
                             for (int j = 0; j < lineSize; j++) {
-                                lineItem=new SalesOrderLineBO();
+                                SalesOrderLineBO lineItem=new SalesOrderLineBO();
                                 JSONObject jsLine = (JSONObject)lines.get(j);
                                 lineItem.setLINENUM(jsLine.get("LINENUM")+"");
                                 lineItem.setITEM(jsLine.get("ITEM")+"");
@@ -163,7 +165,7 @@ public class ReceivingTxnDC extends SyncUtils{
                                 s_salesOrderLines.add(lineItem);
                             }
                             
-                            orderLinesArray=
+                            SalesOrderLineBO[] orderLinesArray=
                                 (SalesOrderLineBO[])s_salesOrderLines.toArray(new SalesOrderLineBO[s_salesOrderLines.size()]);
                         
                             salesOrderItems.setLines(orderLinesArray);
@@ -172,7 +174,7 @@ public class ReceivingTxnDC extends SyncUtils{
                         s_salesOrder.add(salesOrderItems);
 
                     }
-                    salesOrderArray =
+                    SalesOrderBO[] salesOrderArray =
                         (SalesOrderBO[]) s_salesOrder.toArray(new SalesOrderBO[s_salesOrder.size()]);
                     return salesOrderArray;
                 }
@@ -208,7 +210,7 @@ public class ReceivingTxnDC extends SyncUtils{
             return null;
         }
         return null;
-        */
+        
     }
     
     public SalesOrderLineBO[] getSalesOrderLines() {
