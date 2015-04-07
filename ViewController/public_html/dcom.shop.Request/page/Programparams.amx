@@ -39,7 +39,7 @@
                 <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                 <amx:setPropertyListener id="spl6" from="#{row.seqNum}" to="#{pageFlowScope.seq}"/>
                 <amx:setPropertyListener id="spl7" from="#{row.valueSetName}" to="#{pageFlowScope.valueSet}"/>
-                <amx:setPropertyListener id="spl8" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/>
+                <!--amx:setPropertyListener id="spl8" from="#{row.paramDispValue}" to="#{pageFlowScope.param5}"/-->
                 <amx:setPropertyListener id="spl1" from="#{row.refParam1}" to="#{pageFlowScope.param1}"/>
                 <amx:setPropertyListener id="spl2" from="#{row.refParam2}" to="#{pageFlowScope.param2}"/>
                 <amx:setPropertyListener id="spl3" from="#{row.refParam3}" to="#{pageFlowScope.param3}"/>

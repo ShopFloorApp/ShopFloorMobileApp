@@ -170,11 +170,13 @@ public class RequestUtilBean {
     
     public void getRefParamValForLov(ActionEvent ae){
         HashMap paramDispMap=new HashMap();
-        paramDispMap.putAll(param.valueMap);
-        String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")));
-        String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")));
-        String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")));
-        String param4 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")));
+        HashMap paramMap=new HashMap();
+        paramMap.putAll(param.valueMap);
+        paramDispMap.putAll(param.valueDispMap);
+        String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")==null?"":(paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}") == null? paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")): paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")))));
+        String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":(paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}") == null? paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")): paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")))));
+        String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":(paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}") == null? paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")): paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")))));
+        String param4 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")==null?"":(paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}") == null? paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")): paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")))));
 
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.param1}", param1);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.param2}", param2);
