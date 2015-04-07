@@ -110,6 +110,8 @@
         <page path="/dcom.shop.Transaction/page/ShippingTxn/SerialLOVPG.amx"
               usageId="dcom_shop_mobile_SerialLOVPGPageDef"/>
         <page path="/dcom.shop.MyWarehouse/MyWarehouse.amx" usageId="dcom_shop_mobile_MyWarehousePageDef"/>
+        <page path="/dcom.shop.Request/requestTf.xml#requestTf@populateConcPrograms"
+              usageId="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
@@ -198,6 +200,8 @@
         <page id="dcom_shop_mobile_SerialLOVPGPageDef"
               path="dcom.shop.Transaction.page.ShippingTxn.SerialLOVPGPageDef"/>
         <page id="dcom_shop_mobile_MyWarehousePageDef" path="dcom.shop.MyWarehouse.MyWarehousePageDef"/>
+        <page id="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"
+              path="dcom.shop.Request.requestTf_requestTf_populateConcProgramsPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="ItemTxnDC" path="dcom.shop.mobile.ItemTxnDC"/>

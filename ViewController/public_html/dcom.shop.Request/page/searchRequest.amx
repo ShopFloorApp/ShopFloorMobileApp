@@ -24,8 +24,9 @@
         <amx:panelGroupLayout id="pgl1" layout="horizontal">
             <amx:spacer id="s1" width="10"/>
             <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-                <amx:inputText id="it1" label="Request ID" value="#{pageFlowScope.requestIdS}"/>
-                <amx:selectOneChoice label="Application" id="soc2" value="#{pageFlowScope.applicationName}">
+                <amx:inputText id="it1" label="Request ID" value="#{pageFlowScope.requestIdS}" inputType="number"/>
+                <amx:selectOneChoice label="Application" id="soc2" value="#{pageFlowScope.applicationName}"
+                                     valueChangeListener="#{RequestUtilBean.applicationValueChange}">
                     <amx:selectItem id="si13" label=" "/>
                     <amx:selectItem id="si3" label="Advanced Pricing" value="QP"/>
                     <amx:selectItem id="si4" label="Advanced Supply Chain Planning" value="MSC"/>
@@ -37,6 +38,33 @@
                     <amx:selectItem id="si10" label="Bills of Material" value="BOM"/>
                     <amx:selectItem id="si8" label="CRM Foundation" value="JTF"/>
                     <amx:selectItem id="si9" label="Capacity" value="CRP"/>
+                    <amx:selectItem id="si63" label="Cash Management" value="CE"/>
+                    <amx:selectItem id="si62" label="Common Modules-AK" value="AK"/>
+                    <amx:selectItem id="si61" label="Constraint Based Optimization" value="MSO"/>
+                    <amx:selectItem id="si60" label="Contracts Core" value="OKC"/>
+                    <amx:selectItem id="si59" label="Contracts Integration" value="OKX"/>
+                    <amx:selectItem id="si58" label="Development" value="DNA"/>
+                    <amx:selectItem id="si57" label="Document Managment and Collaboration" value="DOM"/>
+                    <amx:selectItem id="si56" label="E-Records" value="EDR"/>
+                    <amx:selectItem id="si55" label="E-Business Tax" value="ZX"/>
+                    <amx:selectItem id="si54" label="Engineering" value="ENG"/>
+                                        <amx:selectItem id="si53" label="Federal Financials" value="FV"/>
+                    <amx:selectItem id="si52" label="General Ledger" value="SQLGL"/>
+                    <amx:selectItem id="si51" label="Global Accounting Engine" value="AX"/>
+                    <amx:selectItem id="si50" label="Internet Procurement Enterprise Connector" value="ITG"/>
+                    <amx:selectItem id="si49" label="Inventory" value="INV"/>
+                    <amx:selectItem id="si48" label="Master Scheduling/MRP" value="MRP"/>
+                    <amx:selectItem id="si47" label="Mobile Application Foundation" value="JTM"/>
+                    <amx:selectItem id="si46" label="Mobile Applications" value="MWA"/>
+                                        <amx:selectItem id="si45" label="Oracle E-Business Suite Diagnostics" value="IZU"/>
+                    <amx:selectItem id="si44" label="Oracle iProcurement" value="ICX"/>
+                    <amx:selectItem id="si43" label="Order Management" value="ONT"/>
+                    <amx:selectItem id="si42" label="Outsourced Manufacturing for Discrete Industries" value="JMF"/>
+                    <amx:selectItem id="si41" label="Payables" value="SQLAP"/>
+                    <amx:selectItem id="si40" label="Payments" value="IBY"/>
+                    <amx:selectItem id="si39" label="Product Hub" value="EGO"/>
+                                        <amx:selectItem id="si38" label="Project Manufacturing" value="PJM"/>
+                    <amx:selectItem id="si35" label="Projects" value="PA"/>
                 </amx:selectOneChoice>
                 <amx:selectOneChoice value="#{pageFlowScope.name}" label="Program Name" id="soc1">
                     <amx:selectItem id="si2" label=" "/>

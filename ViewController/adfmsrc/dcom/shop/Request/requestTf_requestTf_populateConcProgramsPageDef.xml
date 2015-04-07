@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52"
+                id="requestTf_requestTf_populateConcProgramsPageDef" Package="dcom.shop.Request" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="populateConcPrograms" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="populateConcPrograms" IsViewObjectMethod="false" DataControl="ConcurrentProgramDC"
+                  InstanceName="data.ConcurrentProgramDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

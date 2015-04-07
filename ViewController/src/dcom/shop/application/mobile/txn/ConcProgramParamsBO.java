@@ -4,6 +4,8 @@ import dcom.shop.Request.bean.RequestUtilBean;
 import dcom.shop.application.base.AEntity;
 import dcom.shop.application.dc.txn.ConcurrentProgramDC;
 
+import dcom.shop.application.mobile.WarehouseBO;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,8 +35,8 @@ public class ConcProgramParamsBO extends AEntity {
     private String paramDispValue;
     private String itemType;
     public static HashMap valueMap = new HashMap();
-    public static HashMap valueDispMap = new HashMap();
-    
+    public static HashMap valueDispMap = new HashMap();    
+
 
     public void setItemType(String itemType) {
         String oldItemType = this.itemType;
@@ -65,6 +67,15 @@ public class ConcProgramParamsBO extends AEntity {
 
   
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    public void setDefaultValue(String defaultValue) {
+        String oldDefaultValue = this.defaultValue;
+        this.defaultValue = defaultValue;
+        propertyChangeSupport.firePropertyChange("defaultValue", oldDefaultValue, defaultValue);
+    }
+
+    public String getDefaultValue() {
+        return defaultValue;
+    }
 
     public ConcProgramParamsBO() {
         super();
@@ -83,15 +94,21 @@ public class ConcProgramParamsBO extends AEntity {
     }
     public void setParamDispValue(String paramDispValue) {
         String oldParamDispValue = this.paramDispValue;
-        if(this.getItemType().equalsIgnoreCase("LOV") && paramDispValue!=null){
+        if(this.getItemType().equalsIgnoreCase("LOV") && paramDispValue!=null && !paramDispValue.equalsIgnoreCase(this.getDefaultValue())){
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", this.getSeqNum());
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.valueSet}", this.getValueSetName());  
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", this.getParamDispValue());
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedDispParamsLovVal}", null);  
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedParamsLovVal}", null);  
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", paramDispValue);
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param1}", valueDispMap.get(this.getRefParam1()));
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param2}", valueDispMap.get(this.getRefParam2()));
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param3}", valueDispMap.get(this.getRefParam3()));
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.param4}", valueDispMap.get(this.getRefParam4()));
             ConcurrentProgramDC concurrentProgramDC=new ConcurrentProgramDC();
             concurrentProgramDC.getConcProgramParamLov();
             List lovList=concurrentProgramDC.s_concurrentProgramParamLov;
             if(lovList.size()==0){
-                paramDispValue=null;  
+                paramDispValue="";  
                 callJS("cb1");
             }else if(lovList.size()==1){
                 ConcProgramParamLovBO concProgramParamLovBO = (ConcProgramParamLovBO) lovList.get(0);
@@ -101,8 +118,8 @@ public class ConcProgramParamsBO extends AEntity {
             }
         }
 
-        this.paramDispValue = paramDispValue;
-        valueDispMap.put(this.getSeqNum(), paramDispValue);
+        this.paramDispValue = getAttributeValue(paramDispValue);
+        valueDispMap.put(this.getSeqNum(), getAttributeValue(paramDispValue));
         propertyChangeSupport.firePropertyChange("paramDispValue", oldParamDispValue, paramDispValue);
     }
 
@@ -209,15 +226,7 @@ public class ConcProgramParamsBO extends AEntity {
         return defaultType;
     }
 
-    public void setDefaultValue(String defaultValue) {
-        String oldDefaultValue = this.defaultValue;
-        this.defaultValue = defaultValue;
-        propertyChangeSupport.firePropertyChange("defaultValue", oldDefaultValue, defaultValue);
-    }
 
-    public String getDefaultValue() {
-        return super.getAttributeValue(defaultValue);
-    }
 
     public void setParamType(String paramType) {
         String oldParamType = this.paramType;
@@ -246,8 +255,8 @@ public class ConcProgramParamsBO extends AEntity {
     }
 
     public String getRefParam1() {
-        return refParam1;
-    }
+        return getAttributeValue(refParam1);
+    }  
 
     public void setRefParam2(String refParam2) {
         String oldRefParam2 = this.refParam2;
@@ -256,7 +265,7 @@ public class ConcProgramParamsBO extends AEntity {
     }
 
     public String getRefParam2() {
-        return refParam2;
+        return getAttributeValue(refParam2);
     }
 
     public void setRefParam3(String refParam3) {
@@ -266,7 +275,7 @@ public class ConcProgramParamsBO extends AEntity {
     }
 
     public String getRefParam3() {
-        return refParam3;
+        return getAttributeValue(refParam3);
     }
 
     public void setRefParam4(String refParam4) {
@@ -276,7 +285,7 @@ public class ConcProgramParamsBO extends AEntity {
     }
 
     public String getRefParam4() {
-        return refParam4;
+        return getAttributeValue(refParam4);
     }
 
     public void setRefParam5(String refParam5) {

@@ -87,7 +87,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PTYPE\": \""+pType+"\",\n" +
@@ -244,7 +244,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PREQ\": \"\",\n" +
@@ -330,7 +330,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PPO\": \"\",\n" +

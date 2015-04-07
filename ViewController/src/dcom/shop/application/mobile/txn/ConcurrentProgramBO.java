@@ -16,6 +16,24 @@ public class ConcurrentProgramBO  {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
 
+    public void setBOClassRow(HashMap hashMap) {
+        this.setShortName((String) hashMap.get("shortname"));
+        this.setName((String) hashMap.get("name"));
+        this.setApplCode((String) hashMap.get("applcode"));
+        this.setApplName((String) hashMap.get("applname"));
+        this.setHasParam((String) hashMap.get("hasparam"));
+    }
+
+    public HashMap getBOClassRow(ConcurrentProgramBO concurrentProgram) {
+        HashMap map = new HashMap();
+        map.put("shortname", concurrentProgram.getShortName());
+        map.put("name", concurrentProgram.getName());
+        map.put("applcode", concurrentProgram.getApplCode());
+        map.put("applname", concurrentProgram.getApplName());
+        map.put("hasparam", concurrentProgram.getHasParam());
+        return map;
+    }
+
     public void setShortName(String shortName) {
         String oldShortName = this.shortName;
         this.shortName = shortName;

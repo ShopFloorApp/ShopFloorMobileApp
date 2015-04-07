@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="requestTf">
-    <default-activity>requestSelect</default-activity>
+    <default-activity>populateConcPrograms</default-activity>
     <managed-bean id="__8">
       <managed-bean-name>RequestUtilBean</managed-bean-name>
       <managed-bean-class>dcom.shop.Request.bean.RequestUtilBean</managed-bean-class>
@@ -31,6 +31,12 @@
     <view id="requestSelect">
       <page>/dcom.shop.Request/page/requestSelect.amx</page>
     </view>
+    <method-call id="populateConcPrograms">
+      <method>#{bindings.populateConcPrograms.execute}</method>
+      <outcome>
+        <fixed-outcome>populateConcPrograms</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>searchRequest</from-activity-id>
       <control-flow-case id="__2">
@@ -87,6 +93,20 @@
       <control-flow-case id="__16">
         <from-outcome>getRequest</from-outcome>
         <to-activity-id>Requests</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id>ParamsLov</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>params</from-outcome>
+        <to-activity-id>Programparams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id>populateConcPrograms</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome>populateConcPrograms</from-outcome>
+        <to-activity-id>requestSelect</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
   </task-flow-definition>

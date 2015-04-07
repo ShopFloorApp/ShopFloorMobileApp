@@ -21,5 +21,8 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="populateProgramsParams" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="populateProgramsParams" IsViewObjectMethod="false" DataControl="ConcurrentProgramDC"
+                  InstanceName="data.ConcurrentProgramDC.dataProvider"/>
   </bindings>
 </pageDefinition>

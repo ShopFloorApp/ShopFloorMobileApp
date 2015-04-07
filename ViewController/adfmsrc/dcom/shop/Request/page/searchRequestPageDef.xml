@@ -11,13 +11,16 @@
                           DataControl="ConcurrentProgramDC"
                           BeanClass="dcom.shop.application.mobile.txn.ConcurrentProgramBO"
                           id="concurrentProgramsIterator"/>
+        <accessorIterator id="filteredConcurrentProgramsIterator" MasterBinding="ConcurrentProgramDCIterator"
+                          Binds="filteredConcurrentPrograms" RangeSize="-1" DataControl="ConcurrentProgramDC"
+                          BeanClass="dcom.shop.application.mobile.txn.ConcurrentProgramBO"/>
     </executables>
     <bindings>
         <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                       IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                       InstanceName="data.ApplicationFeatures.dataProvider"/>
         <list IterBinding="variables" id="name" DTSupportsMRU="true" SelectItemValueMode="ListObject"
-              StaticList="false" ListIter="concurrentProgramsIterator">
+              StaticList="false" ListIter="filteredConcurrentProgramsIterator">
             <AttrNames>
                 <Item Value="pragramName"/>
             </AttrNames>
@@ -28,5 +31,8 @@
                 <Item Value="name"/>
             </ListDisplayAttrNames>
         </list>
+        <methodAction id="refreshFilteredConcurrentPrograms" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="refreshFilteredConcurrentPrograms" IsViewObjectMethod="false"
+                      DataControl="ConcurrentProgramDC" InstanceName="data.ConcurrentProgramDC.dataProvider"/>
     </bindings>
 </pageDefinition>

@@ -12,6 +12,8 @@ import java.util.List;
 
 import java.util.Map;
 
+import javax.el.MethodExpression;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
@@ -37,6 +39,16 @@ public class RequestUtilBean {
         param.valueMap.clear();
         param.valueDispMap.clear();
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedDispParamsLovVal}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedParamsLovVal}", null);
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.populateProgramsParams.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public void getLov(ActionEvent actionEvent) {
+        // Add event code here...
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedDispParamsLovVal}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedParamsLovVal}", null);
     }
@@ -88,7 +100,7 @@ public class RequestUtilBean {
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                  {\"PPROGCODE\": \""+shortName+"\",\n" + 
             "                  \"PPROGAPPL\": \""+applCcde+"\",\n" +
@@ -154,5 +166,37 @@ public class RequestUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.endDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.dateType}", null);
+    }
+    
+    public void getRefParamValForLov(ActionEvent ae){
+        HashMap paramDispMap=new HashMap();
+        paramDispMap.putAll(param.valueDispMap);
+        String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")));
+        String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")));
+        String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")));
+        String param4 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")));
+
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param1}", param1);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param2}", param2);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param3}", param3);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param4}", param4);
+    }
+
+    public void applicationValueChange(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshFilteredConcurrentPrograms.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public void refreshParamValues(ActionEvent ae){
+        String seqNo = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}"));   
+        String selectedDispValue = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.selectedDispParamsLovVal}"));                                                                                                        
+        String selectedValue = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.selectedParamsLovVal}"));
+        if(seqNo!=null){
+            param.valueMap.put(seqNo, selectedValue);
+            param.valueDispMap.put(seqNo, selectedDispValue);
+        }
     }
 }

@@ -5,6 +5,7 @@ import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.txn.ConcurrentProgramBO;
 import dcom.shop.application.mobile.WarehouseBO;
 
+import dcom.shop.application.mobile.transaction.SubInventoryTxnBO;
 import dcom.shop.application.mobile.txn.ConcProgramParamLovBO;
 import dcom.shop.application.mobile.txn.ConcProgramParamsBO;
 import dcom.shop.application.mobile.txn.RequestsBO;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.GenericVirtualType;
 import oracle.adfmf.util.Utility;
@@ -33,13 +35,22 @@ public class ConcurrentProgramDC extends SyncUtils {
     protected static List s_concurrentProgram = new ArrayList();
     protected static List s_concurrentProgramParams = new ArrayList();
     public static List s_concurrentProgramParamLov = new ArrayList();
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     
 
     public ConcurrentProgramDC() {
         super();
     }
 
-    public ConcurrentProgramBO[] getConcurrentPrograms() {
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
+    }
+    
+    public void populateConcPrograms(){
         s_concurrentProgram.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -52,7 +63,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + "      {\"PUSERNAME\": \"1\",\n" +
             "       \"PROLENAME\": \"1\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
@@ -70,7 +81,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XCPLIST");
                 if(jsObject1==null){
-                    return null;
+                    return ;
                 }
                 JSONArray array = (JSONArray) jsObject1.get("XCPLIST_ITEM");
                 if (array != null) {
@@ -89,17 +100,44 @@ public class ConcurrentProgramDC extends SyncUtils {
                         s_concurrentProgram.add(concProgItems);
 
                     }
-                    ConcurrentProgramBO[] concProgArray =
-                        (ConcurrentProgramBO[]) s_concurrentProgram.toArray(new ConcurrentProgramBO[s_concurrentProgram.size()]);
-                    return concProgArray;
+                    
                 }
             } catch (ParseException e) {
                 e.getMessage();
             }
         } else {
-            return null;
+            return ;
         }
-        return null;
+        return ;
+    }
+
+    public ConcurrentProgramBO[] getConcurrentPrograms() {
+        
+                    ConcurrentProgramBO[] concProgArray =
+                        (ConcurrentProgramBO[]) s_concurrentProgram.toArray(new ConcurrentProgramBO[s_concurrentProgram.size()]);
+                    return concProgArray;
+               
+    }
+    public ConcurrentProgramBO[] getFilteredConcurrentPrograms() {
+        String application = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applicationName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applicationName}"));
+        HashMap filterFileds = new HashMap();
+        
+        filterFileds.put("applcode", application);
+
+        HashMap paramMap = new HashMap();
+        paramMap.put("collection", s_concurrentProgram);
+        paramMap.put("filterFieldsValues", filterFileds); 
+
+        ArrayList s_filteredConcProgram = (ArrayList) getFileteredCollection(ConcurrentProgramBO.class, paramMap);      
+        
+                    ConcurrentProgramBO[] concProgArray =
+                        (ConcurrentProgramBO[]) s_filteredConcProgram.toArray(new ConcurrentProgramBO[s_filteredConcProgram.size()]);
+                    return concProgArray;
+               
+    }
+    
+    public void refreshFilteredConcurrentPrograms() {
+        providerChangeSupport.fireProviderRefresh("filteredConcurrentPrograms");
     }
 
     public RequestsBO[] getRequest() {
@@ -126,7 +164,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-            "                  \"Org_Id\": \"82\"\n" +
+            "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                {\"PREQUESTID\": \""+requestId+"\",\n" + "\n" +
             "                \"PPROGCODE\": \""+program+"\",\n" + "\n" +
@@ -233,7 +271,7 @@ public class ConcurrentProgramDC extends SyncUtils {
         return null;
     }
 
-    public ConcProgramParamsBO[] getConcProgramParams() {
+    public void populateProgramsParams(){
         s_concurrentProgramParams.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -249,7 +287,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-            "                  \"Org_Id\": \"82\"\n" +
+            "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"PPROGCODE\": \""+shortName+"\",\n" +
             "                    \"PPROGAPPL\": \""+applCcde+"\"\n }\n" + "}\n" + "}\n";
@@ -268,7 +306,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XPARAMLIST");
                 if(jsObject1==null){
-                    return null;
+                    return ;
                 }
                 JSONArray array = (JSONArray) jsObject1.get("XPARAMLIST_ITEM");
                 
@@ -285,8 +323,8 @@ public class ConcurrentProgramDC extends SyncUtils {
                         concProgramParamsItems.setDisplayed((jsObject2.get("DISPLAYED").toString()));
                         concProgramParamsItems.setIsLov((jsObject2.get("ISLOV").toString()));
                         concProgramParamsItems.setDefaultType((jsObject2.get("DEFAULTTYPE").toString()));
-                       // concProgramParamsItems.setParamDispValue(jsObject2.get("DEFAULTVALUE").toString());
-                        concProgramParamsItems.setDefaultValue((jsObject2.get("DEFAULTVALUE").toString()));
+                        concProgramParamsItems.setDefaultValue(jsObject2.get("DEFAULTVALUE").toString());
+                        
                         concProgramParamsItems.setParamType((jsObject2.get("PARAMTYPE").toString()));
                         concProgramParamsItems.setValueSetName((jsObject2.get("VALUESETNAME").toString()));
                         concProgramParamsItems.setRefParam1((jsObject2.get("REFPARAM1").toString()));
@@ -294,13 +332,12 @@ public class ConcurrentProgramDC extends SyncUtils {
                         concProgramParamsItems.setRefParam3((jsObject2.get("REFPARAM3").toString()));
                         concProgramParamsItems.setRefParam4((jsObject2.get("REFPARAM4").toString()));
                         concProgramParamsItems.setRefParam5((jsObject2.get("REFPARAM5").toString()));
+                        concProgramParamsItems.setParamDispValue((jsObject2.get("DEFAULTVALUE").toString()));
 
                         s_concurrentProgramParams.add(concProgramParamsItems);
 
                     }
-                    ConcProgramParamsBO[] requestArray =
-                        (ConcProgramParamsBO[]) s_concurrentProgramParams.toArray(new ConcProgramParamsBO[s_concurrentProgramParams.size()]);
-                    return requestArray;
+                   
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -323,7 +360,6 @@ public class ConcurrentProgramDC extends SyncUtils {
                     concProgramParamsItem.setIsLov((jsObject2.get("ISLOV").toString()));
                     concProgramParamsItem.setDefaultType((jsObject2.get("DEFAULTTYPE").toString()));
                     concProgramParamsItem.setDefaultValue((jsObject2.get("DEFAULTVALUE").toString()));
-                   // concProgramParamsItem.setParamDispValue(jsObject2.get("DEFAULTVALUE").toString());
                     concProgramParamsItem.setParamType((jsObject2.get("PARAMTYPE").toString()));
                     concProgramParamsItem.setValueSetName((jsObject2.get("VALUESETNAME").toString()));
                     concProgramParamsItem.setRefParam1((jsObject2.get("REFPARAM1").toString()));
@@ -331,22 +367,31 @@ public class ConcurrentProgramDC extends SyncUtils {
                     concProgramParamsItem.setRefParam3((jsObject2.get("REFPARAM3").toString()));
                     concProgramParamsItem.setRefParam4((jsObject2.get("REFPARAM4").toString()));
                     concProgramParamsItem.setRefParam5((jsObject2.get("REFPARAM5").toString()));
-
+                    concProgramParamsItem.setParamDispValue((jsObject2.get("DEFAULTVALUE").toString()));
+                    
                     s_concurrentProgramParams.add(concProgramParamsItem);
 
-                    
-                    ConcProgramParamsBO[] requestArray =
-                    (ConcProgramParamsBO[]) s_concurrentProgramParams.toArray(new ConcProgramParamsBO[s_concurrentProgramParams.size()]);
-                    return requestArray;
                 }catch(ParseException e) {
                 e.getMessage();
                 }
             } 
         } else {
-            return null;
+            return ;
         }
-        return null;
+        return ;
     }
+
+    public ConcProgramParamsBO[] getConcProgramParams() {
+        
+                    ConcProgramParamsBO[] requestArray =
+                        (ConcProgramParamsBO[]) s_concurrentProgramParams.toArray(new ConcProgramParamsBO[s_concurrentProgramParams.size()]);
+                    return requestArray;                
+    }
+    
+    public void refreshConcProgParams(){
+        providerChangeSupport.fireProviderRefresh("concProgramParam");
+    }
+    
     public ConcProgramParamLovBO[] getConcProgramParamLov() {
         System.out.println("Inside orgItem");
         s_concurrentProgramParamLov.clear();
@@ -356,6 +401,10 @@ public class ConcurrentProgramDC extends SyncUtils {
             String seq = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.seq}"));
             String valueSet = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.valueSet}"));
         String param5 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param5}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param5}"));
+        String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}"));
+        String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}"));
+        String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}"));
+        String param4 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}"));
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
@@ -364,11 +413,15 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                  {\"PPROGCODE\": \""+progCode+"\",\n" + 
             "                  \"PSEQ\": \""+seq+"\",\n" +
-        "                  \"PREFPARAM5\": \""+param5+"\",\n" +
+            "                  \"PREFPARAM5\": \""+param5+"\",\n" +
+            "                  \"PREFPARAM1\": \""+param1+"\",\n" +
+            "                  \"PREFPARAM2\": \""+param2+"\",\n" +
+            "                  \"PREFPARAM3\": \""+param3+"\",\n" +
+            "                  \"PREFPARAM4\": \""+param4+"\",\n" +
             "                    \"PVALUESET\": \""+valueSet+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);

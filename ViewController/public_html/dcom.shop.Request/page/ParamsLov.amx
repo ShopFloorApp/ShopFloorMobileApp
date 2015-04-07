@@ -10,7 +10,8 @@
                   selectedRowKeys="#{bindings.concProgramParamLov.collectionModel.selectedRow}"
                   selectionListener="#{bindings.concProgramParamLov.collectionModel.makeCurrent}"
                   showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1" action="__back" showLinkIcon="false">
+      <amx:listItem id="li1" action="params" showLinkIcon="false"
+                    actionListener="#{RequestUtilBean.refreshParamValues}">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl1">
             <amx:cellFormat width="10px" rowSpan="2" id="cf1"/>
@@ -29,7 +30,7 @@
       </amx:listItem>
     </amx:listView>
     <amx:facet name="secondary">
-          <amx:commandLink id="cl1" action="__back">
+          <amx:commandLink id="cl1" action="params">
         <amx:outputHtml id="oh1" styleClass="fa fa-times fa-lg"/>
       </amx:commandLink>
     </amx:facet>
