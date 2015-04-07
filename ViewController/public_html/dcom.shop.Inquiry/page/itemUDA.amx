@@ -13,6 +13,7 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
+         <amx:outputText id="ot3" value="#{pageFlowScope.ProductUdaResults}"/>
         <amx:listView var="row" value="#{bindings.allItemUda.collectionModel}"
                       fetchSize="#{bindings.allItemUda.rangeSize}"
                       selectedRowKeys="#{bindings.allItemUda.collectionModel.selectedRow}"
@@ -34,7 +35,7 @@
                                         <amx:outputText value='#{row.ATTRIBNAME}' id="ot2"/>
                                     </amx:cellFormat>
                                     <amx:cellFormat id="cf3" columnSpan="2">
-                                        <amx:outputText id="ot3" value="#{row.ATTRIBVALUE}"
+                                        <amx:outputText id="ot5" value="#{row.ATTRIBVALUE}"
                                                         inlineStyle="font-size:small; color:GrayText;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>

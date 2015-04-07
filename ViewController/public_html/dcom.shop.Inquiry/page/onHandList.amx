@@ -13,7 +13,7 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-        <amx:outputText id = "oh111"  value = "#{pageFlowScope.callingPg"/>
+        <!--AJamx:outputText id = "oh111"  value = "#{pageFlowScope.callingPg"/-->
         <amx:listView var="row" value="#{bindings.allOnhands.collectionModel}"
                       fetchSize="#{bindings.allOnhands.rangeSize}"
                       selectedRowKeys="#{bindings.allOnhands.collectionModel.selectedRow}"

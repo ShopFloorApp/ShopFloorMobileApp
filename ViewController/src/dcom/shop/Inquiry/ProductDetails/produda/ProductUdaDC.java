@@ -31,7 +31,7 @@ public class ProductUdaDC {
     public ProductUdaEntity[] getAllItemUda() {
         ValueExpression ve = null;
 
-
+        s_udaList.clear();
         System.out.println("Inside item uda");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String item = null;
@@ -107,6 +107,11 @@ public class ProductUdaDC {
 
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "ProductUdaEntity", e.getLocalizedMessage());
+        }
+        if(s_udaList.size()!=0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ProductUdaResults}", "");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ProductUdaResults}", "No Results Found");
         }
         return itemUdaArray;
     }
