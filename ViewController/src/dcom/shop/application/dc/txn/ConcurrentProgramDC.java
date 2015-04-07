@@ -287,7 +287,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-            "                  \"Org_Id\": \"100\"\n" +
+            "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"PPROGCODE\": \""+shortName+"\",\n" +
             "                    \"PPROGAPPL\": \""+applCcde+"\"\n }\n" + "}\n" + "}\n";
@@ -413,7 +413,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                  {\"PPROGCODE\": \""+progCode+"\",\n" + 
             "                  \"PSEQ\": \""+seq+"\",\n" +

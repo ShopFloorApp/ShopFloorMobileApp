@@ -170,7 +170,7 @@ public class RequestUtilBean {
     
     public void getRefParamValForLov(ActionEvent ae){
         HashMap paramDispMap=new HashMap();
-        paramDispMap.putAll(param.valueDispMap);
+        paramDispMap.putAll(param.valueMap);
         String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")));
         String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")));
         String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":paramDispMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")));
