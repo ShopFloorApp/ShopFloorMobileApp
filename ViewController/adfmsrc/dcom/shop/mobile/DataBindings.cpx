@@ -105,7 +105,9 @@
   <page path="/dcom.shop.DispatchList/page/clockInClockOut.amx"
               usageId="dcom_shop_mobile_clockInClockOutPageDef"/>
         <page path="/dcom.shop.Request/requestTf.xml#requestTf@populateConcPrograms"
-              usageId="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"/></pageMap>
+              usageId="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"/>
+    <page path="/dcom.shop.Inquiry/page/searchProduct.amx" usageId="dcom_shop_mobile_searchProductPageDef"/>
+  </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_lineDetailsPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
     <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -190,8 +192,13 @@
     <page id="dcom_shop_mobile_MyWarehousePageDef" path="dcom.shop.MyWarehouse.MyWarehousePageDef"/>
   <page id="dcom_shop_mobile_clockInClockOutPageDef" path="dcom.shop.DispatchList.page.clockInClockOutPageDef"/>
         <page id="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"
-              path="dcom.shop.Request.requestTf_requestTf_populateConcProgramsPageDef"/></pageDefinitionUsages>
+              path="dcom.shop.Request.requestTf_requestTf_populateConcProgramsPageDef"/>
+    <page id="dcom_shop_mobile_searchProductPageDef" path="dcom.shop.Inquiry.page.searchProductPageDef"/>
+  </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>
+    <dc id="ItemStatusDC" path="dcom.shop.mobile.ItemStatusDC"/>
+    <dc id="CatalogDC" path="dcom.shop.mobile.CatalogDC"/>
     <dc id="ClockInOutDC" path="dcom.shop.mobile.ClockInOutDC"/>
     <dc id="ItemTxnDC" path="dcom.shop.mobile.ItemTxnDC"/>
     <dc id="SerialNumberDC" path="dcom.shop.mobile.SerialNumberDC"/>

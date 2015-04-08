@@ -12,7 +12,7 @@ public class ItemStatusDC extends SyncUtils{
     }
     protected static List s_itemStatus = new ArrayList();
 
-    public ItemStatusBO[] getItemType() {
+    public ItemStatusBO[] getItemStatus() {
         s_itemStatus.clear();
         s_itemStatus = super.getCollectionFromDB(ItemStatusBO.class);
         ItemStatusBO[] itemType = (ItemStatusBO[]) s_itemStatus.toArray(new ItemStatusBO[s_itemStatus.size()]);

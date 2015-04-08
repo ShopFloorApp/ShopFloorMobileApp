@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="searchProductPageDef"
+                Package="dcom.shop.Inquiry.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CatalogDC" id="CatalogDCIterator"/>
+    <accessorIterator MasterBinding="CatalogDCIterator" Binds="catalog" RangeSize="-1" DataControl="CatalogDC"
+                      BeanClass="dcom.shop.application.mobile.CatalogBO" id="catalogIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ItemStatusDC" id="ItemStatusDCIterator"/>
+    <accessorIterator MasterBinding="ItemStatusDCIterator" Binds="itemStatus" RangeSize="-1" DataControl="ItemStatusDC"
+                      BeanClass="dcom.shop.application.mobile.ItemStatusBO" id="itemStatusIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ItemTypeDC" id="ItemTypeDCIterator"/>
+    <accessorIterator MasterBinding="ItemTypeDCIterator" Binds="itemType" RangeSize="-1" DataControl="ItemTypeDC"
+                      BeanClass="dcom.shop.application.mobile.ItemTypeBO" id="itemTypeIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CatalogDCIterator" id="catalog" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="catalogIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="catalog"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="catalog"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="catalog"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="ItemStatusDCIterator" id="status" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="itemStatusIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="itemStatus"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="status"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="status"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="ItemTypeDCIterator" id="typeCode" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="itemTypeIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="itemType"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="typeCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="meaning"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

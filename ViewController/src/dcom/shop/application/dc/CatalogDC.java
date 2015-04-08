@@ -12,7 +12,7 @@ public class CatalogDC extends SyncUtils {
     }
     protected static List s_catalog = new ArrayList();
 
-    public CatalogBO[] getItemType() {
+    public CatalogBO[] getCatalog() {
         s_catalog.clear();
         s_catalog = super.getCollectionFromDB(CatalogBO.class);
         CatalogBO[] itemType = (CatalogBO[]) s_catalog.toArray(new CatalogBO[s_catalog.size()]);

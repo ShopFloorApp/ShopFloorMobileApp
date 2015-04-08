@@ -50,9 +50,8 @@
                     <amx:panelGroupLayout layout="horizontal"
                                           inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
                                           id="pgl7">
-                        <amx:inputText inlineStyle="text-align:left;" id="it6"
-                                       value="#{pageFlowScope.searchKeyword}"/>
-                    <amx:spacer width="10" id="s13"/>
+                        <amx:inputText inlineStyle="text-align:left;" id="it6" value="#{pageFlowScope.searchKeyword}"/>
+                        <amx:spacer width="10" id="s13"/>
                     </amx:panelGroupLayout>
                     <amx:spacer width="10" id="s14"/>
                     <amx:commandLink id="cl13" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
@@ -65,12 +64,18 @@
         </amx:panelFormLayout>
         <amx:selectBooleanSwitch label="Advanced Search" id="sbs1" value="#{pageFlowScope.advSearch}"/>
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
-            <amx:inputText label="Catalog Category" id="it2" rendered="#{pageFlowScope.advSearch}"
-                           value="#{pageFlowScope.itemCat}"/>
-            <amx:inputText label="Item Status" id="it3" rendered="#{pageFlowScope.advSearch}"
-                           value="#{pageFlowScope.itemStatus}"/>
-            <amx:inputText label="Item Type" id="it4" rendered="#{pageFlowScope.advSearch}"
-                           value="#{pageFlowScope.itemType}"/>
+            <amx:selectOneChoice value="#{pageFlowScope.itemCat}" rendered="#{pageFlowScope.advSearch}"
+                                 label="Catalog Category" id="soc1">
+                <amx:selectItems value="#{bindings.catalog.items}" id="si1"/>
+            </amx:selectOneChoice>
+            <amx:selectOneChoice value="#{pageFlowScope.itemStatus}" rendered="#{pageFlowScope.advSearch}"
+                                 label="Item Status" id="soc2">
+                <amx:selectItems value="#{bindings.status.items}" id="si2"/>
+            </amx:selectOneChoice>
+            <amx:selectOneChoice value="#{pageFlowScope.itemType}" rendered="#{pageFlowScope.advSearch}"
+                                 label="Item Type" id="soc3">
+                <amx:selectItems value="#{bindings.typeCode.items}" id="si3"/>
+            </amx:selectOneChoice>
         </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
