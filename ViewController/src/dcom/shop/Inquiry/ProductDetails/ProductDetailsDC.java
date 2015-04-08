@@ -82,13 +82,13 @@ public class ProductDetailsDC {
                            prodItemsDetails.setDATECREATED((jsObject2.get("DATECREATED").toString()));
                            prodItemsDetails.setLOGDESC((jsObject2.get("LOGDESC").toString()));
                            prodItemsDetails.setWEIGHTUOM((jsObject2.get("WEIGHTUOM").toString()));
-                           prodItemsDetails.setWEIGHT(Float.parseFloat((jsObject2.get("WEIGHT").toString())));;
+                           prodItemsDetails.setWEIGHT(Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("WEIGHT").toString())?"0":jsObject2.get("WEIGHT").toString())));
                            prodItemsDetails.setVOLUMEUOM((jsObject2.get("VOLUMEUOM").toString()));
-                           prodItemsDetails.setVOLUME(Float.parseFloat((jsObject2.get("VOLUME").toString())));
+                           prodItemsDetails.setVOLUME(Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("VOLUME").toString())?"0":jsObject2.get("VOLUME").toString())));
                            prodItemsDetails.setDIMUOM((jsObject2.get("DIMUOM").toString()));
-                           prodItemsDetails.setWIDTH(Float.parseFloat((jsObject2.get("WIDTH").toString())));  
-                           prodItemsDetails.setLENGTH(Float.parseFloat((jsObject2.get("LENGTH").toString())));  
-                           prodItemsDetails.setHEIGHT(Float.parseFloat((jsObject2.get("HEIGHT").toString()))); 
+                           prodItemsDetails.setWIDTH(Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("WIDTH").toString())?"0":jsObject2.get("WIDTH").toString())));
+                           prodItemsDetails.setLENGTH(Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("LENGTH").toString())?"0":jsObject2.get("LENGTH").toString())));
+                           prodItemsDetails.setHEIGHT(Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("HEIGHT").toString())?"0":jsObject2.get("HEIGHT").toString())));
                            prodItemsDetails.setISCONTAINER((jsObject2.get("ISCONTAINER").toString()));
                            prodItemsDetails.setCONTAINERTYPE((jsObject2.get("CONTAINERTYPE").toString()));
                            prodItemsDetails.setMAXLOAD((jsObject2.get("MAXLOAD").toString()));
