@@ -66,6 +66,12 @@
     <view id="successPage">
       <page>/dcom.shop.Transaction/page/ReceivingTxn/successPage.amx</page>
     </view>
+    <method-call id="getPendingReceiveTxn1">
+      <method>#{bindings.getPendingReceiveTxn.execute}</method>
+      <outcome>
+        <fixed-outcome>getPendingReceiveTxn</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">
@@ -168,6 +174,13 @@
       <from-activity-id>successPage</from-activity-id>
       <control-flow-case id="__34">
         <from-outcome>que</from-outcome>
+        <to-activity-id>getPendingReceiveTxn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id>getPendingReceiveTxn1</from-activity-id>
+      <control-flow-case id="__36">
+        <from-outcome>getPendingReceiveTxn</from-outcome>
         <to-activity-id>PendingReceiveTxn</to-activity-id>
       </control-flow-case>
     </control-flow-rule>

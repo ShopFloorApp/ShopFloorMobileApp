@@ -35,5 +35,8 @@
     <methodAction id="getPendingReceiveTxn" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="getPendingReceiveTxn" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
                   InstanceName="data.ReceivingTxnDC.dataProvider"/>
+    <methodAction id="refreshLines" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLines"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

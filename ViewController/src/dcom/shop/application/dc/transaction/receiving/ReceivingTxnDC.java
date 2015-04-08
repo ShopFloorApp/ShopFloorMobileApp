@@ -641,20 +641,26 @@ public class ReceivingTxnDC extends SyncUtils{
         providerChangeSupport.fireProviderRefresh("shipments");
     }
     
-    public void DeleteTransaction(Integer trxnId) {
+    public void DeleteTransaction(Integer trxnId,List<LinesBO> lines) {
      
         HashMap whereClause = new HashMap();
         whereClause.put("receiveTxnId", trxnId);
         // whereClause.put("trxtype", trxnType);
 
         boolean resultShipment = super.deleteSqlLiteTable(ShipmentBO.class, whereClause);
-        boolean resultShipmentLines = super.deleteSqlLiteTable(ShipmentLinesBO.class, whereClause);
+        boolean resultShipmentLines = super.deleteSqlLiteTable(LinesBO.class, whereClause);
         
-        whereClause.clear();
-        whereClause.put("trxnid", trxnId);
-        whereClause.put("trxtype", "ReceiveTxn");
-        boolean resultLot = super.deleteSqlLiteTable(LotBO.class, whereClause);
-        boolean resultSerial = super.deleteSqlLiteTable(SerialBO.class, whereClause);
+        if(lines.size()>0){
+            for(int i=0;i<lines.size();i++){
+                whereClause.clear();
+                whereClause.put("trxnid", lines.get(i).getRowLineIdx());
+                whereClause.put("trxtype", "'ReceiveTxn'");
+                boolean resultLot = super.deleteSqlLiteTable(LotBO.class, whereClause);  
+                boolean resultSerial = super.deleteSqlLiteTable(SerialBO.class, whereClause);
+            }
+        }
+
+        
         
         
         
@@ -813,7 +819,7 @@ public class ReceivingTxnDC extends SyncUtils{
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
-        DeleteTransaction(shipmentList.get(0).getReceiveTxnId());
+        DeleteTransaction(shipmentList.get(0).getReceiveTxnId(),linesList);
             try {
         JSONParser parser = new JSONParser();
         Object object;

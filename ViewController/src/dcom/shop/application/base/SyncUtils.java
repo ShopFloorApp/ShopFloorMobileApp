@@ -386,10 +386,10 @@ public class SyncUtils {
                 } else {
                     filtervalue = (String) entry.getValue();
                 }
-                where.append(key.toUpperCase() + " = " + filtervalue.toUpperCase() + " AND ");
+                where.append(key.toUpperCase() + " = " + filtervalue + " AND ");
             }
             String queryStmt = where.substring(0, where.length() - 4);
-            String finalQuery = query.toString() + queryStmt + ");";
+            String finalQuery = query.toString() + queryStmt + ";";
             int updateCount = stmt.executeUpdate(finalQuery);
             if (updateCount > 0) {
                 update = true;

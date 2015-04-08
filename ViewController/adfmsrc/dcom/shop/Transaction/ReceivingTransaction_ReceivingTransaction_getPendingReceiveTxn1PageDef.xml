@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52"
+                id="ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
+                Package="dcom.shop.Transaction" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="getPendingReceiveTxn" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getPendingReceiveTxn" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
+  </bindings>
+</pageDefinition>
