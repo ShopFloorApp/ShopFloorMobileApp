@@ -90,6 +90,8 @@
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
+            <amx:inputDate id="id1" label="Start Date" value="#{pageFlowScope.MtlTrxnStartDate}" inputType="datetime"/>
+            <amx:inputDate id="id2" label="End Date" value="#{pageFlowScope.MtlTrxnEndDate}" inputType="datetime"/>
         </amx:panelFormLayout>
         <!--<amx:commandButton text="Search" id="cb1" inlineStyle="vertical-align:middle;" action="mtlTxnList"/> -->
         <amx:facet name="footer">

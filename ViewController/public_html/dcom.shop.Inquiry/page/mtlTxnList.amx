@@ -48,7 +48,7 @@
                                                         inlineStyle="font-size:small; color:GrayText;"/>
                                     </amx:cellFormat>
                                     <amx:cellFormat id="cf3" columnSpan="1">
-                                        <amx:outputText id="ot3" value="#{row.LOCATOR}"
+                                        <amx:outputText id="ot8" value="#{row.LOCATOR}"
                                                         inlineStyle="font-size:small; color:GrayText;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
