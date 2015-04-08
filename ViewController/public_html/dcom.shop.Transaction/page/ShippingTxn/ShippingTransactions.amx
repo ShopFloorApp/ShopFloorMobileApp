@@ -24,7 +24,7 @@
             <amx:listItem id="li3" showLinkIcon="false">
                 <amx:outputText value="Paper Based Pick" id="ot4"/>
             </amx:listItem>
-            <amx:listItem action="quickShip" id="li4">
+            <amx:listItem action="quickShip" id="li4" showLinkIcon="false">
                 <amx:outputText value="Quick Ship" id="ot5"/>
             </amx:listItem>
             <amx:listItem id="li5" action="lpnShip" showLinkIcon="false">

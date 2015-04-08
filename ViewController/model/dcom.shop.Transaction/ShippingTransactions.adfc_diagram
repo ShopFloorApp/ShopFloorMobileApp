@@ -360,7 +360,7 @@
       <property
          name="fromOutcome">PackAndDirectShip</property>
       <property
-         name="sdm:polyPoints">B50,83.83984,413.09766,137.02148,522.7988,T50</property>
+         name="sdm:polyPoints">B44,80.33984,414.70496,133.52148,522.7988,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
