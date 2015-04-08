@@ -123,8 +123,12 @@ public class InvTrnDC extends RestCallerUtil {
             invTxn.getToInventory(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String toLocator =
             invTxn.getToLoc(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToLocator}");
-        String destOrg = "100";
-        String sourceOrg = "100";
+        String destOrg =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        ;
+        String sourceOrg =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        ;
         String payload =
             "{\n" + "\"PROCESSINVTXN_Input\":\n" + "{\n" +
             "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +

@@ -44,12 +44,14 @@ public class LPNDC {
         }
         String restURI = RestURI.PostLpnInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        
         String payload =
             "{\n" + "  \"Input_Parameters\": {\n" + "    \"RESTHeader\": {\n" +
             "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + "      \"RespApplication\": \"ONT\",\n" +
             "      \"SecurityGroup\": \"STANDARD\",\n" + "      \"NLSLanguage\": \"AMERICAN\",\n" +
             "      \"Org_Id\": \"82\"\n" + "    },\n" + "    \"InputParameters\": {\n" +
-            "        \"PORGCODE\": \"100\",\n" + "        \"PLPNTYPE\": \"" + lpnPage + "\",\n" +
+            "        \"PORGCODE\": \""+orgCode+"\",\n" + "        \"PLPNTYPE\": \"" + lpnPage + "\",\n" +
             "        \"PLPNFROM\": \"" + keyword + "\"\n" + "}\n" + "    }\n" + "  }\n" + "}";
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();

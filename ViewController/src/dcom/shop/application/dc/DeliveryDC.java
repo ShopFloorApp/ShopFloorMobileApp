@@ -40,12 +40,12 @@ public class DeliveryDC {
         System.out.println("Inside delivery DC");
         oracle.adfmf.util.Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String dlvName = null;
-        String orgCode = null;
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.delvName}", String.class);
         dlvName = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
-  
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        
         String restURI = RestURI.PostDeliveryInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload = "{\"x\":\n" + 
@@ -57,7 +57,7 @@ public class DeliveryDC {
         "                  \"Org_Id\": \"82\"\n" + 
         "                 },\n" + 
         "   \"InputParameters\": \n" + 
-        "     {\"PDLVTYPE\": \"QUICK_SHIP\",\"PORGCODE\": \"100\",\"PDELIVERYNAME\": \"%"+dlvName+"\"}\n" + 
+        "     {\"PDLVTYPE\": \"QUICK_SHIP\",\"PORGCODE\": \""+orgCode+"\",\"PDELIVERYNAME\": \"%"+dlvName+"\"}\n" + 
         "}\n" + 
         "}";
         System.out.println("Calling create method");

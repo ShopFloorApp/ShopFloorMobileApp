@@ -47,6 +47,8 @@ public class OnHandDetailsDC {
         
         String restURI = RestURI.PostOnHandInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        
         String payload = "{\"x\":\n" + 
         "{\n" + 
         "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
@@ -56,7 +58,7 @@ public class OnHandDetailsDC {
         "                  \"Org_Id\": \"82\"\n" + 
         "                 },\n" + 
         "   \"InputParameters\": \n" + 
-        "     {\"PONHANDREQ\": {\"ORGCODE\": \"100\",\"ITEM\": \""+item+"\",\"SUBINV\": \""+subInv+"\",\"LOCATOR\": \""+locator+"\",\"COSTGROUP\": \"\"}}\n" + 
+        "     {\"PONHANDREQ\": {\"ORGCODE\": \""+orgCode+"\",\"ITEM\": \""+item+"\",\"SUBINV\": \""+subInv+"\",\"LOCATOR\": \""+locator+"\",\"COSTGROUP\": \"\"}}\n" + 
         "}\n" + 
         "}";
            

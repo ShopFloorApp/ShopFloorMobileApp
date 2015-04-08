@@ -42,9 +42,11 @@ public class DockDoorDC {
         String restURI = RestURI.PostDockDoorDetailsURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String dockType="SHIP_DOCK";
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        
         String payload =
             "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMShip/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PDOCKTYPE\": \""+dockType+"\",\"PORGCODE\": \"100\",\"PDOCKNAME\": \"%"+keyword+"%\"}\n" + "}\n" + "}";
+            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PDOCKTYPE\": \""+dockType+"\",\"PORGCODE\": \""+orgCode+"\",\"PDOCKNAME\": \"%"+keyword+"%\"}\n" + "}\n" + "}";
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");

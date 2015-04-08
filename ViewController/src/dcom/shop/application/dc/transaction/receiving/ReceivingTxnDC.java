@@ -479,6 +479,8 @@ public class ReceivingTxnDC extends SyncUtils{
         }
         String restURI = RestURI.PostGetShipment();
         RestCallerUtil rcu = new RestCallerUtil();
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+       
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
             "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
@@ -488,7 +490,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
-            "                   {\"PORGCODE\": \"100\",\n" +
+            "                   {\"PORGCODE\": \""+orgCode+"\",\n" +
             "                   \"PDOCTYPE\": \""+receivingType+"\",\n" +
             "                    \"PDOCREF\": \""+documentNo+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
@@ -690,7 +692,9 @@ public class ReceivingTxnDC extends SyncUtils{
         shipmentBO.setCustomer(customer);
         shipmentBO.setDocRef(documentNo);
         shipmentBO.setDocType(receivingType);
-        shipmentBO.setOrgCode("100");
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        
+        shipmentBO.setOrgCode(orgCode);
         shipmentBO.setPackingSlip(packSlip);
         shipmentBO.setReceiveTxnId((Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}"));
         shipmentBO.setShipmentNum(shipment);
@@ -784,6 +788,7 @@ public class ReceivingTxnDC extends SyncUtils{
             linesJson="\"\"";
         }
         
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
@@ -794,7 +799,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
-            "                   {\"PORGCODE\": \"100\",\n" +
+            "                   {\"PORGCODE\": \""+orgCode+"\",\n" +
             "                   \"PDOCTYPE\": \""+shipmentList.get(0).getDocType()+"\",\n" +
             "                   \"PDOCREF\": \""+shipmentList.get(0).getDocRef()+"\",\n" +
             "                   \"CARRIER\": \""+shipmentList.get(0).getCarrier()+"\",\n" +

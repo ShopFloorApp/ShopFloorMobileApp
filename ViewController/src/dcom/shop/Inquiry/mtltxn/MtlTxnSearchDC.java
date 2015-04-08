@@ -67,6 +67,7 @@ public class MtlTxnSearchDC {
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.MtlTrxnEndDate}", Date.class);
         endDate = ((Date) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         
         String restURI = RestURI.PostMtlTxnInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
@@ -76,7 +77,7 @@ public class MtlTxnSearchDC {
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + "     {\"PMTLTXNREQ\": {\"TRXTYPE\": \"" +
-            txnType + "\",\"DATEFROM\": \"" + startDate +"\",\"DATETO\": \"" + endDate +"\",\"ORGCODE\": \"100\",\"ITEM\": \"" + item + "\",\"SUBINV\": \"" + subinv +
+            txnType + "\",\"DATEFROM\": \"" + startDate +"\",\"DATETO\": \"" + endDate +"\",\"ORGCODE\": \""+orgCode+"\",\"ITEM\": \"" + item + "\",\"SUBINV\": \"" + subinv +
             "\",\"LOCATOR\": \"" + locator + "\",\"LPN\": \"" + lpn + "\"}}\n" + "}\n" + "}";
 
         System.out.println("Calling create method");

@@ -39,11 +39,13 @@ public class LpnDetailsDC {
         if("LpnTrxn".equals(page)){
             keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}"); 
         }
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        
         String restURI = RestURI.PostLpnDetailsURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PLPNREQ\": {\"ORGCODE\": \"100\",\"LPN\": \"%" +
+            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PLPNREQ\": {\"ORGCODE\": \""+orgCode+"\",\"LPN\": \"%" +
             keyword + "%\"}}\n" + "}\n" + "}";
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();

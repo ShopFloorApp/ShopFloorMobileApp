@@ -179,7 +179,8 @@ public class LpnTxnDC extends SyncUtils {
         String trxType =
             lpnTxn.getTrxType(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String destOrg = "100";
-        String sourceOrg = "100";
+        String sourceOrg = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+       ;
         String onHandQty = "0";
         String availQty = "0";
         String payload =
