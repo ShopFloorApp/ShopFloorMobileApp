@@ -24,13 +24,16 @@
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>CheckWarehouse</from-activity-id>
-      <control-flow-case id="__2">
-        <from-outcome>Dispatch</from-outcome>
-        <to-activity-id>dispatch</to-activity-id>
-      </control-flow-case>
       <control-flow-case id="__3">
         <from-outcome>Warehouse</from-outcome>
         <to-activity-id>MyWarehouse</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>Dispatch</from-outcome>
+        <to-activity-id>dispatch</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

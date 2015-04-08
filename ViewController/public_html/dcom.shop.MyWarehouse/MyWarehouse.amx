@@ -29,7 +29,7 @@
                       selectedRowKeys="#{bindings.warehouse.collectionModel.selectedRow}"
                       selectionListener="#{bindings.warehouse.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem showLinkIcon="false" id="li1">
+            <amx:listItem showLinkIcon="false" action="Dispatch" id="li1">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl2">
                     <amx:rowLayout id="rl13">

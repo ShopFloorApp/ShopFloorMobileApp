@@ -52,12 +52,12 @@
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase5"
-      from="Router2"
+      from="WildcardControlFlowRule7"
       to="TaskFlowCall3">
       <property
          name="fromOutcome">Dispatch</property>
       <property
-         name="sdm:polyPoints">R46,236.0,203.23438,378.5,166.23438,L50</property>
+         name="sdm:polyPoints">L50,537.0,93.30078,460.5,166.23438,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -69,4 +69,13 @@
       <property
          name="sdm:polyPoints">R54,236.0,210.23438,394.08105,317.16797,L50</property>
    </ControlFlowCase>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule7">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">92.86719</property>
+      <property
+         name="x">573.0</property>
+   </WildcardControlFlowRule>
 </SDM>
