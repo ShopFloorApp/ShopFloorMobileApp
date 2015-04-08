@@ -42,7 +42,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L50,383.0,226.83008,228.0,229.18066,R50</property>
+         name="sdm:polyPoints">L50,383.0,226.83008,228.0,229.11426,R50</property>
    </ControlFlowCase>
    <View
       id="View5">

@@ -234,7 +234,7 @@
                 </amx:tableLayout>
             </amx:commandLink>
         </amx:panelGroupLayout>
-        <amx:tableLayout width="100%" id="tl4">
+        <amx:tableLayout width="100%" rendered="#{pageFlowScope.LpnPage == 'PACK_FROM'}" id="tl4">
             <?audit suppress oracle.maf.warning-missing-shortDesc?>
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1" halign="center" valign="middle" inlineStyle="background-color:#C7C7CC;">
