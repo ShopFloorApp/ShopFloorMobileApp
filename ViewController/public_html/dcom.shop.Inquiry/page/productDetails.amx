@@ -24,7 +24,7 @@
         <amx:outputText value="#{bindings.ITEMDESC.inputValue}" id="ot4" inlineStyle="text-align:center;" />
       </amx:panelLabelAndMessage>
         <amx:panelLabelAndMessage label="Organization Code" id="plam4" inlineStyle="text-align:center;">
-        <amx:outputText value="999" id="ot8" inlineStyle="text-align:center;" />
+        <amx:outputText value="#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}" id="ot8" inlineStyle="text-align:center;" />
         </amx:panelLabelAndMessage>
         <amx:panelLabelAndMessage label="Item Status" id="plam5" inlineStyle="text-align:center;">
         <amx:outputText value="#{bindings.ITEMSTATUS.inputValue}" id="ot5" inlineStyle="text-align:center;" />

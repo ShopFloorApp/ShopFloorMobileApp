@@ -85,7 +85,7 @@ public class ProductSearchDC {
                 "                  \"Org_Id\": \"82\"\n" + 
                 "                 },\n" + 
                 "   \"InputParameters\": \n" + 
-                "      {\"PITEMREQ\": {\"ORGCODE\": \"999\",\"ITEM\": \"%"+keyword.trim()+"%\",\"ITEMSTATUS\": \""+itemStatus+"\",\"ITEMTYPE\": \""+itemType+"\",\"ITEMCATALOG\": \""+itemCat+"\"}}\n" + 
+                "      {\"PITEMREQ\": {\"ORGCODE\": \""+orgCode+"\",\"ITEM\": \"%"+keyword.trim()+"%\",\"ITEMSTATUS\": \""+itemStatus+"\",\"ITEMTYPE\": \""+itemType+"\",\"ITEMCATALOG\": \""+itemCat+"\"}}\n" + 
                 "}\n" + 
                 "}";
         }

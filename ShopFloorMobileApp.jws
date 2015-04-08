@@ -394,7 +394,7 @@
                      <value n="portraitSplashScreenPath" v=""/>
                   </hash>
                </list>
-               <value n="imageResourceBaseDir" v="/Users/dcom/jdeveloper/mywork/ShopFloor/resources/ios/"/>
+               <value n="imageResourceBaseDir" v="/Users/ajaysharma/jdeveloper/mywork/dev/ApplicationController/public_html/resources/images/"/>
                <value n="IPAD_NON_RETINA_7_APP_IMAGE" v="resources/ios/appicon-76.png"/>
                <value n="IPAD_NON_RETINA_7_HORIZ_SPLASH" v="resources/ios/Default-LandscapeRetina.png"/>
                <value n="IPAD_NON_RETINA_7_PORT_SPLASH" v="resources/ios/Default-PortraitRetina.png"/>
@@ -405,14 +405,14 @@
                <value n="IPAD_RETINA_7_PORT_SPLASH" v="resources/ios/Default-PortraitRetina@2x.png"/>
                <value n="IPAD_RETINA_7_SETTINGS" v="resources/ios/Icon-29@2x.png"/>
                <value n="IPAD_RETINA_7_SPOTLIGHT" v="resources/ios/Icon-40@2x.png"/>
-               <value n="IPHONE_6_PLUS_APP_IMAGE" v="resources/ios/appicon.png"/>
+               <value n="IPHONE_6_PLUS_APP_IMAGE" v="ApplicationController/public_html/resources/images/dcom_image.jpg"/>
                <value n="IPHONE_6_PLUS_HORIZ_SPLASH" v="resources/ios/Default-Landscape-621@2x.png"/>
                <value n="IPHONE_6_PLUS_PORT_SPLASH" v="resources/ios/Default-1104h@2x.png"/>
-               <value n="IPHONE_6_PLUS_SETTINGS" v="resources/ios/Icon-29@3x.png"/>
-               <value n="IPHONE_6_PLUS_SPOTLIGHT" v="resources/ios/Icon-40@3x.png"/>
+               <value n="IPHONE_6_PLUS_SETTINGS" v="ApplicationController/public_html/resources/images/dcom_image.jpg"/>
+               <value n="IPHONE_6_PLUS_SPOTLIGHT" v="ApplicationController/public_html/resources/images/dcom_image.jpg"/>
                <value n="IPHONE_6_SPLASH" v="resources/ios/Default-667h@2x.png"/>
                <value n="IPHONE_RETINA_6_SPLASH" v="resources/ios/Default@2x.png"/>
-               <value n="IPHONE_RETINA_7_APP_IMAGE" v="resources/ios/appicon-Small@2x.png"/>
+               <value n="IPHONE_RETINA_7_APP_IMAGE" v="ApplicationController/public_html/resources/images/dcom_image.jpg"/>
                <value n="IPHONE_RETINA_7_SPLASH" v="resources/ios/Default-568h@2x.png"/>
                <value n="itunesArtwork" v="resources/ios/iTunesArtwork.png"/>
             </hash>

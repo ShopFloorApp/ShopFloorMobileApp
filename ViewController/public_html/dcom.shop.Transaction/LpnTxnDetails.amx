@@ -50,6 +50,8 @@
                 <!--amx:outputText id="ot6" value="Save &amp; Submit"/-->
             </amx:commandLink>
         </amx:facet>
+        <amx:outputHtml id="ot144" value="Enter atleast 3 characters to search!!!"
+                        rendered="#{pageFlowScope.keywrdLpnLenErr eq 'Yes'?true:false}" inlineStyle="color:Red"/>
         <amx:panelFormLayout labelPosition="topStart" id="pf1">
             <amx:panelLabelAndMessage label="#{pageFlowScope.LpnPage eq 'PACK_FROM'?'To LPN':(pageFlowScope.LpnPage eq 'MERGE_FROM'?'Parent LPN':'From LPN')}"
                                       inlineStyle="text-align:left;" id="plam3">
@@ -61,7 +63,7 @@
                                           id="pgl1">
                         <amx:inputText hintText="LPN" id="it11" value="#{pageFlowScope.searchLpnKeyword}"
                                        inlineStyle="text-align:left;"/>
-                        <amx:commandLink id="cl1" action="lpnLOV">
+                        <amx:commandLink id="cl1" action="#{StateListenerBean.validateLpnKeyword}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh1" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
