@@ -149,34 +149,34 @@ public class ProductDetailsEntity  extends AEntity  {
         return DIMUOM;
     }
 
-    public void setWIDTH(int WIDTH) {
-        int oldWIDTH = this.WIDTH;
+    public void setWIDTH(float WIDTH) {
+        float oldWIDTH = this.WIDTH;
         this.WIDTH = WIDTH;
         propertyChangeSupport.firePropertyChange("WIDTH", oldWIDTH, WIDTH);
     }
 
-    public int getWIDTH() {
+    public float getWIDTH() {
         return WIDTH;
     }
 
-    public void setLENGTH(int LENGTH) {
+    public void setLENGTH(float LENGTH) {
         ITEMCATALOG=getAttributeValue(ITEMCATALOG);
-        int oldLENGTH = this.LENGTH;
+        float oldLENGTH = this.LENGTH;
         this.LENGTH = LENGTH;
         propertyChangeSupport.firePropertyChange("LENGTH", oldLENGTH, LENGTH);
     }
 
-    public int getLENGTH() {
+    public float getLENGTH() {
         return LENGTH;
     }
 
-    public void setHEIGHT(int HEIGHT) {
-        int oldHEIGHT = this.HEIGHT;
+    public void setHEIGHT(float HEIGHT) {
+        float oldHEIGHT = this.HEIGHT;
         this.HEIGHT = HEIGHT;
         propertyChangeSupport.firePropertyChange("HEIGHT", oldHEIGHT, HEIGHT);
     }
 
-    public int getHEIGHT() {
+    public float getHEIGHT() {
         return HEIGHT;
     }
 
@@ -246,9 +246,9 @@ public class ProductDetailsEntity  extends AEntity  {
         return VOLUME;
     }
     private String DIMUOM;
-    private int WIDTH;
-    private int LENGTH;
-    private int HEIGHT;
+    private float WIDTH;
+    private float LENGTH;
+    private float HEIGHT;
     private String ISCONTAINER;
     private String CONTAINERTYPE;
     private String MAXLOAD;

@@ -86,9 +86,9 @@ public class ProductDetailsDC {
                            prodItemsDetails.setVOLUMEUOM((jsObject2.get("VOLUMEUOM").toString()));
                            prodItemsDetails.setVOLUME(Float.parseFloat((jsObject2.get("VOLUME").toString())));
                            prodItemsDetails.setDIMUOM((jsObject2.get("DIMUOM").toString()));
-                           prodItemsDetails.setWIDTH(Integer.parseInt((jsObject2.get("WIDTH").toString())));  
-                           prodItemsDetails.setLENGTH(Integer.parseInt((jsObject2.get("LENGTH").toString())));  
-                           prodItemsDetails.setHEIGHT(Integer.parseInt((jsObject2.get("HEIGHT").toString()))); 
+                           prodItemsDetails.setWIDTH(Float.parseFloat((jsObject2.get("WIDTH").toString())));  
+                           prodItemsDetails.setLENGTH(Float.parseFloat((jsObject2.get("LENGTH").toString())));  
+                           prodItemsDetails.setHEIGHT(Float.parseFloat((jsObject2.get("HEIGHT").toString()))); 
                            prodItemsDetails.setISCONTAINER((jsObject2.get("ISCONTAINER").toString()));
                            prodItemsDetails.setCONTAINERTYPE((jsObject2.get("CONTAINERTYPE").toString()));
                            prodItemsDetails.setMAXLOAD((jsObject2.get("MAXLOAD").toString()));
