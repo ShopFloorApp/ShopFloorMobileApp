@@ -3,7 +3,7 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Select Request Type" id="ot1"/>
+      <amx:outputText value="Request" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
                   <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
