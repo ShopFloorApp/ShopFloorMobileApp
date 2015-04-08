@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Request Summary" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Request Summary" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
             <amx:commandLink id="cl1" action="__back" rendered="false">
-        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
-      </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
             <amx:commandLink id="cl2" action="home" actionListener="#{RequestUtilBean.clearPage}">
-        <amx:outputHtml id="oh2" styleClass="fa fa-home fa-lg"/>
-      </amx:commandLink>
-    </amx:facet>
-    <amx:panelFormLayout id="pfl11">
-    <amx:panelLabelAndMessage label="Request Id" inlineStyle="text-align:center;" id="plam3">
-        <amx:commandLink id="cl63" action="getRequest" actionListener="#{RequestUtilBean.getRequestByRequestId}">
-          <amx:outputText value="#{pageFlowScope.requestId}" id="ot2"/>
-        </amx:commandLink>
-      </amx:panelLabelAndMessage>
-    </amx:panelFormLayout>
-  </amx:panelPage>
-  
+                <amx:outputHtml id="oh2" styleClass="fa fa-home fa-lg"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl1">
+            <amx:panelLabelAndMessage label="Request Id" inlineStyle="text-align:center;" id="plam3">
+                <amx:commandLink id="cl63" action="getRequest" actionListener="#{RequestUtilBean.getRequestByRequestId}"
+                                 text="#{pageFlowScope.requestId}"/>
+            </amx:panelLabelAndMessage>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
 </amx:view>

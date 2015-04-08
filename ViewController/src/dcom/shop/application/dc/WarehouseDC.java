@@ -52,6 +52,7 @@ public class WarehouseDC extends SyncUtils{
             System.out.println("Received response");
             //            WarehouseBO[] warehouse = null;
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1=null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -60,7 +61,7 @@ public class WarehouseDC extends SyncUtils{
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XWAREHOUSE");
+                    jsObject1 = (JSONObject) jsObject.get("XWAREHOUSE");
                     JSONArray array = (JSONArray) jsObject1.get("XWAREHOUSE_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -93,7 +94,30 @@ public class WarehouseDC extends SyncUtils{
 
                         super.updateSqlLiteTable(WarehouseBO.class, s_warehouse);
                     }
-                } catch (ParseException e) {
+                } 
+                catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XWAREHOUSE_ITEM");
+                    if (jsObject2 != null) {
+                        WarehouseBO whseItems = new WarehouseBO();
+                        whseItems.setWhse((jsObject2.get("WHSE").toString()));
+                        whseItems.setName((jsObject2.get("NAME").toString()));
+                        whseItems.setLine1((jsObject2.get("LINE1").toString()));
+                        whseItems.setLine2((jsObject2.get("LINE2").toString()));
+                        whseItems.setLine3((jsObject2.get("LINE3").toString()));
+                        whseItems.setLine4((jsObject2.get("LINE4").toString()));
+                        whseItems.setCity((jsObject2.get("CITY").toString()));
+                        whseItems.setProvince((jsObject2.get("PROVINCE").toString()));
+                        whseItems.setState((jsObject2.get("STATE").toString()));
+                        whseItems.setZip((jsObject2.get("ZIP").toString()));
+                        whseItems.setCountry((jsObject2.get("COUNTRY").toString()));
+                        whseItems.setLocatorControl((jsObject2.get("LOCATORCONTROL").toString()));
+                        whseItems.setIsWMS((jsObject2.get("ISWMS").toString()));
+                        whseItems.setDirectShip((jsObject2.get("DIRECTSHIP").toString()));
+                        s_warehouse.add(whseItems);
+                        super.updateSqlLiteTable(WarehouseBO.class, s_warehouse);
+                    }
+                    }                
+                catch (ParseException e) {
                     e.getMessage();
                 }
             }

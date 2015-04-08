@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.ResourceBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -20,11 +21,11 @@ public class ResourceDC extends SyncUtils {
         super();
 
     }
-    
+
     protected static List s_resources = new ArrayList();
-    
+
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
-    
+
     //SyncUtils syncUtils = new SyncUtils();
     public void syncLocalDB() {
         s_resources.clear();
@@ -52,6 +53,7 @@ public class ResourceDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -60,7 +62,7 @@ public class ResourceDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XRESOURCE");
+                    jsObject1 = (JSONObject) jsObject.get("XRESOURCE");
                     JSONArray array = (JSONArray) jsObject1.get("XRESOURCE_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -79,12 +81,28 @@ public class ResourceDC extends SyncUtils {
                             ResourceItems.setUOM((jsObject2.get("UOM").toString()));
                             ResourceItems.setChargeType((jsObject2.get("CHARGETYPE").toString()));
                             ResourceItems.setBasis((jsObject2.get("BASIS").toString()));
-                            // ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
+                            ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
                             s_resources.add(ResourceItems);
 
 
                         }
 
+                        super.updateSqlLiteTable(ResourceBO.class, s_resources);
+                    }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XRESOURCE_ITEM");
+                    if (jsObject2 != null) {
+                        ResourceBO ResourceItems = new ResourceBO();
+                        ResourceItems.setWhse((jsObject2.get("WHSE").toString()));
+                        ResourceItems.setResourceCode((jsObject2.get("RESOURCECODE").toString()));
+                        ResourceItems.setDeptCode((jsObject2.get("DEPTCODE").toString()));
+                        ResourceItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        ResourceItems.setResourceType((jsObject2.get("RESOURCETYPE").toString()));
+                        ResourceItems.setUOM((jsObject2.get("UOM").toString()));
+                        ResourceItems.setChargeType((jsObject2.get("CHARGETYPE").toString()));
+                        ResourceItems.setBasis((jsObject2.get("BASIS").toString()));
+                        ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
+                        s_resources.add(ResourceItems);
                         super.updateSqlLiteTable(ResourceBO.class, s_resources);
                     }
                 } catch (ParseException e) {

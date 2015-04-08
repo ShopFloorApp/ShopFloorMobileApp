@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -89,6 +90,7 @@ public class LocatorDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
 
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -97,7 +99,7 @@ public class LocatorDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XLOCATOR");
+                    jsObject1 = (JSONObject) jsObject.get("XLOCATOR");
                     JSONArray array = (JSONArray) jsObject1.get("XLOCATOR_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -111,6 +113,18 @@ public class LocatorDC extends SyncUtils {
                             locatorItems.setLocatorType((jsObject2.get("LOCATORTYPE").toString()));
                             s_locator.add(locatorItems);
                         }
+                        super.updateSqlLiteTable(LocatorBO.class, s_locator);
+                    }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XLOCATOR_ITEM");
+                    if (jsObject2 != null) {
+                        LocatorBO locatorItems = new LocatorBO();
+                        locatorItems.setLocator((jsObject2.get("LOCATOR").toString()));
+                        locatorItems.setWhse((jsObject2.get("WHSE").toString()));
+                        locatorItems.setSubinv((jsObject2.get("SUBINV").toString()));
+                        locatorItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        locatorItems.setLocatorType((jsObject2.get("LOCATORTYPE").toString()));
+                        s_locator.add(locatorItems);
                         super.updateSqlLiteTable(LocatorBO.class, s_locator);
                     }
                 } catch (ParseException e) {
@@ -192,9 +206,9 @@ public class LocatorDC extends SyncUtils {
             HashMap filterFileds = new HashMap();
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
             //if (subInv == null)
-               // subInv = "RAW";
-               if (subInv != null)
-            filterFileds.put("subinv", subInv);
+            // subInv = "RAW";
+            if (subInv != null)
+                filterFileds.put("subinv", subInv);
             filterFileds.put("locatortype", "3");
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_locator);
@@ -215,7 +229,7 @@ public class LocatorDC extends SyncUtils {
             //if (subInv == null)
             //    subInv = "DEFAULT";
             if (subInv != null)
-            filterFileds.put("subinv", subInv);
+                filterFileds.put("subinv", subInv);
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_to_locator);
             paramMap.put("filterFieldsValues", filterFileds);

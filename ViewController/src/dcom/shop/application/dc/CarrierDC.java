@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.CarrierBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -28,7 +29,7 @@ public class CarrierDC extends SyncUtils {
     protected static List s_carrier = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
 
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_carrier.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -54,6 +55,7 @@ public class CarrierDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -62,7 +64,7 @@ public class CarrierDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XCARRIER");
+                    jsObject1 = (JSONObject) jsObject.get("XCARRIER");
                     JSONArray array = (JSONArray) jsObject1.get("XCARRIER_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -83,6 +85,19 @@ public class CarrierDC extends SyncUtils {
 
                         super.updateSqlLiteTable(CarrierBO.class, s_carrier);
                     }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XCARRIER_ITEM");
+                    if (jsObject2 != null) {
+                        CarrierBO carrierItems = new CarrierBO();
+                        carrierItems.setWhse((jsObject2.get("WHSE").toString()));
+                        carrierItems.setCarrierName((jsObject2.get("CARRIERNAME").toString()));
+                        carrierItems.setFreightCode((jsObject2.get("FREIGHTCODE").toString()));
+                        carrierItems.setSCAC((jsObject2.get("SCAC").toString()));
+                        carrierItems.setShipMethod((jsObject2.get("SHIPMETHOD").toString()));
+                        carrierItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        s_carrier.add(carrierItems);
+                        super.updateSqlLiteTable(CarrierBO.class, s_carrier);
+                    }
                 } catch (ParseException e) {
                     e.getMessage();
                 }
@@ -91,7 +106,7 @@ public class CarrierDC extends SyncUtils {
     }
 
     public CarrierBO[] getCarrier() {
-        
+
         CarrierBO[] carrierArray = (CarrierBO[]) s_carrier.toArray(new CarrierBO[s_carrier.size()]);
         return carrierArray;
     }

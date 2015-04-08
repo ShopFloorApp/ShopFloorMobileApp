@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.KanbanCardBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -50,6 +51,7 @@ public class KanbanCardDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1=null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -58,7 +60,7 @@ public class KanbanCardDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XKCARD");
+                    jsObject1 = (JSONObject) jsObject.get("XKCARD");
                     JSONArray array = (JSONArray) jsObject1.get("XKCARD_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -73,13 +75,23 @@ public class KanbanCardDC extends SyncUtils {
                             KanbanCardItems.setKanbanCardNum((jsObject2.get("KANBANCARDNUM").toString()));
                             KanbanCardItems.setCardStatus((jsObject2.get("CARDSTATUS").toString()));
                             s_KanbanCard.add(KanbanCardItems);
-
-
                         }
 
                         super.updateSqlLiteTable(KanbanCardBO.class, s_KanbanCard);
                     }
-                } catch (ParseException e) {
+                }
+                catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XKCARD_ITEM");
+                    if (jsObject2 != null) {
+                        KanbanCardBO KanbanCardItems = new KanbanCardBO();
+                        KanbanCardItems.setWhse((jsObject2.get("WHSE").toString()));
+                        KanbanCardItems.setKanbanCardNum((jsObject2.get("KANBANCARDNUM").toString()));
+                        KanbanCardItems.setCardStatus((jsObject2.get("CARDSTATUS").toString()));
+                        s_KanbanCard.add(KanbanCardItems);
+                        super.updateSqlLiteTable(KanbanCardBO.class, s_KanbanCard);
+                    }
+                    }                
+                catch (ParseException e) {
                     e.getMessage();
                 }
             }

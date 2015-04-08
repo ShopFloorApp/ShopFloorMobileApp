@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.SubinventoryBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -81,6 +82,7 @@ public class SubinventoryDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -89,7 +91,7 @@ public class SubinventoryDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XSUBINV");
+                    jsObject1 = (JSONObject) jsObject.get("XSUBINV");
                     JSONArray array = (JSONArray) jsObject1.get("XSUBINV_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -108,10 +110,21 @@ public class SubinventoryDC extends SyncUtils {
                             SubinventoryItems.setDefLocator((jsObject2.get("DEFLOCATOR").toString()));
                             SubinventoryItems.setDefCostGrp((jsObject2.get("DEFCOSTGRP").toString()));
                             s_subInventories.add(SubinventoryItems);
-
-
                         }
-
+                        super.updateSqlLiteTable(SubinventoryBO.class, s_subInventories);
+                    }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XALIAS_ITEM");
+                    if (jsObject2 != null) {
+                        SubinventoryBO SubinventoryItems = new SubinventoryBO();
+                        SubinventoryItems.setWhse((jsObject2.get("WHSE").toString()));
+                        SubinventoryItems.setSubinv((jsObject2.get("SUBINV").toString()));
+                        SubinventoryItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        SubinventoryItems.setLocatorControl((jsObject2.get("LOCATORCONTROL").toString()));
+                        SubinventoryItems.setLPNControl((jsObject2.get("LPNCONTROL").toString()));
+                        SubinventoryItems.setDefLocator((jsObject2.get("DEFLOCATOR").toString()));
+                        SubinventoryItems.setDefCostGrp((jsObject2.get("DEFCOSTGRP").toString()));
+                        s_subInventories.add(SubinventoryItems);
                         super.updateSqlLiteTable(SubinventoryBO.class, s_subInventories);
                     }
                 } catch (ParseException e) {
@@ -141,16 +154,16 @@ public class SubinventoryDC extends SyncUtils {
                 paramsMap.put("opeartionName", "process");
                 paramsMap.put("payload", payload);
                 s_subInventories = super.getCollection(SubinventoryBO.class, paramsMap);*/
-          //  String refresh =
-           //     (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshFromSubinventory}");
+            //  String refresh =
+            //     (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshFromSubinventory}");
             //if ("Y".equals(refresh))
-                filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+            filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
             subInventories =
                 (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
 
-         //   ValueExpression ve =
-           //     AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
-           // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
+            //   ValueExpression ve =
+            //     AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
+            // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
             return subInventories;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -168,13 +181,13 @@ public class SubinventoryDC extends SyncUtils {
             paramsMap.put("lovDCName", "SubinventoryLOV_WS");
             paramsMap.put("opeartionName", "process");
             paramsMap.put("payload", payload);*/
-          //  String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshToSubinventory}");
-           // if ("Y".equals(refresh))
-                s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
+            //  String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshToSubinventory}");
+            // if ("Y".equals(refresh))
+            s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
             subInventories =
                 (SubinventoryBO[]) s_to_subInventories.toArray(new SubinventoryBO[s_to_subInventories.size()]);
-          //  ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", int.class);
-           // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
+            //  ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", int.class);
+            // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), subInventories[0].getSubinv());
 
             return subInventories;
         } catch (Exception e) {

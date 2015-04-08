@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.CostGroupBO;
 import dcom.shop.application.mobile.TransactionTypeBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -24,7 +25,7 @@ public class TransactionTypeDC extends SyncUtils {
     protected static List s_transactionType = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_transactionType.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -50,6 +51,7 @@ public class TransactionTypeDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -58,24 +60,28 @@ public class TransactionTypeDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XTXNTYPE");
+                    jsObject1 = (JSONObject) jsObject.get("XTXNTYPE");
                     JSONArray array = (JSONArray) jsObject1.get("XTXNTYPE_ITEM");
                     if (array != null) {
                         int size = array.size();
                         //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
                         for (int i = 0; i < size; i++) {
-
-
                             TransactionTypeBO TransactionTypeItems = new TransactionTypeBO();
                             JSONObject jsObject2 = (JSONObject) array.get(i);
-
                             TransactionTypeItems.setTransactionType((jsObject2.get("TRANSACTIONTYPE").toString()));
                             TransactionTypeItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             s_transactionType.add(TransactionTypeItems);
-
-
                         }
 
+                        super.updateSqlLiteTable(TransactionTypeBO.class, s_transactionType);
+                    }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XTXNTYPE_ITEM");
+                    if (jsObject2 != null) {
+                        TransactionTypeBO TransactionTypeItems = new TransactionTypeBO();
+                        TransactionTypeItems.setTransactionType((jsObject2.get("TRANSACTIONTYPE").toString()));
+                        TransactionTypeItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        s_transactionType.add(TransactionTypeItems);
                         super.updateSqlLiteTable(TransactionTypeBO.class, s_transactionType);
                     }
                 } catch (ParseException e) {

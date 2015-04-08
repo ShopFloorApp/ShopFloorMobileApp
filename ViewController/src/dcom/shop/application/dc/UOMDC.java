@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.UOMBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -50,6 +51,7 @@ public class UOMDC extends SyncUtils {
             System.out.println("Received response");
             //            UOMBO[] warehouse = null;
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1=null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -58,7 +60,7 @@ public class UOMDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XUOM");
+                    jsObject1 = (JSONObject) jsObject.get("XUOM");
                     JSONArray array = (JSONArray) jsObject1.get("XUOM_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -78,7 +80,19 @@ public class UOMDC extends SyncUtils {
 
                         super.updateSqlLiteTable(UOMBO.class, s_uom);
                     }
-                } catch (ParseException e) {
+                }
+                catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XUOM_ITEM");
+                    if (jsObject2 != null) {
+                        UOMBO uomItems = new UOMBO();
+                        uomItems.setUOMCode((jsObject2.get("UOMCODE").toString()));
+                        uomItems.setUOM((jsObject2.get("UOM").toString()));
+                        s_uom.add(uomItems);
+                        super.updateSqlLiteTable(UOMBO.class, s_uom);
+
+                    }
+                    }                
+                catch (ParseException e) {
                     e.getMessage();
                 }
             }

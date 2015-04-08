@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.CategorySetBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -24,7 +25,7 @@ public class CategorySetDC extends SyncUtils {
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
 
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_categorySets.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -50,6 +51,7 @@ public class CategorySetDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -58,7 +60,7 @@ public class CategorySetDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XCATEG");
+                    jsObject1 = (JSONObject) jsObject.get("XCATEG");
                     JSONArray array = (JSONArray) jsObject1.get("XCATEG_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -82,6 +84,19 @@ public class CategorySetDC extends SyncUtils {
 
                         super.updateSqlLiteTable(CategorySetBO.class, s_categorySets);
                     }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XCATEG_ITEM");
+                    if (jsObject2 != null) {
+                        CategorySetBO categsetItems = new CategorySetBO();
+                        categsetItems.setCatgSetName((jsObject2.get("CATGSETNAME").toString()));
+                        categsetItems.setStructureId((jsObject2.get("STRUCTUREID").toString()));
+                        categsetItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        categsetItems.setDefCatgCode((jsObject2.get("DEFCATGCODE").toString()));
+                        categsetItems.setControlLevel((jsObject2.get("CONTROLLEVEL").toString()));
+                        categsetItems.setMultiCatgAssign((jsObject2.get("MULTICATGASSIGN").toString()));
+                        s_categorySets.add(categsetItems);
+                        super.updateSqlLiteTable(CategorySetBO.class, s_categorySets);
+                    }
                 } catch (ParseException e) {
                     e.getMessage();
                 }
@@ -90,8 +105,9 @@ public class CategorySetDC extends SyncUtils {
     }
 
     public CategorySetBO[] getCategorySet() {
-        
-        CategorySetBO[] categsetArray = (CategorySetBO[]) s_categorySets.toArray(new CategorySetBO[s_categorySets.size()]);
+
+        CategorySetBO[] categsetArray =
+            (CategorySetBO[]) s_categorySets.toArray(new CategorySetBO[s_categorySets.size()]);
         return categsetArray;
     }
 }

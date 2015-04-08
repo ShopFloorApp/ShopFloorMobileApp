@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.CostGroupBO;
 import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -50,6 +51,7 @@ public class CostGroupDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1=null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -58,7 +60,7 @@ public class CostGroupDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XCG");
+                    jsObject1 = (JSONObject) jsObject.get("XCG");
                     JSONArray array = (JSONArray) jsObject1.get("XCG_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -79,7 +81,18 @@ public class CostGroupDC extends SyncUtils {
 
                         super.updateSqlLiteTable(CostGroupBO.class, s_costGroups);
                     }
-                } catch (ParseException e) {
+                } 
+                catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XCG_ITEM");
+                    if (jsObject2 != null) {
+                        CostGroupBO costgroupItems = new CostGroupBO();
+                        costgroupItems.setWhse((jsObject2.get("WHSE").toString()));
+                        costgroupItems.setCostGroup((jsObject2.get("COSTGROUP").toString()));
+                        costgroupItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        s_costGroups.add(costgroupItems);   
+                        super.updateSqlLiteTable(CostGroupBO.class, s_costGroups);}
+                    }                
+                catch (ParseException e) {
                     e.getMessage();
                 }
             }

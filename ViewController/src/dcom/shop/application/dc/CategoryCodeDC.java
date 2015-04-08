@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.CategoryCodeBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -18,13 +19,13 @@ import org.json.simple.parser.ParseException;
 public class CategoryCodeDC extends SyncUtils {
     public CategoryCodeDC() {
         super();
-        
+
     }
     protected static List s_categorycode = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     //SyncUtils syncUtils = new SyncUtils();
 
-    public void syncLocalDB(){
+    public void syncLocalDB() {
         s_categorycode.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -50,6 +51,7 @@ public class CategoryCodeDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -58,7 +60,7 @@ public class CategoryCodeDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XCATEG");
+                    jsObject1 = (JSONObject) jsObject.get("XCATEG");
                     JSONArray array = (JSONArray) jsObject1.get("XCATEG_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -73,10 +75,18 @@ public class CategoryCodeDC extends SyncUtils {
                             categcodeItems.setStructureId((jsObject2.get("STRUCTUREID").toString()));
                             categcodeItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             s_categorycode.add(categcodeItems);
-
-
                         }
 
+                        super.updateSqlLiteTable(CategoryCodeBO.class, s_categorycode);
+                    }
+                } catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XCATEG_ITEM");
+                    if (jsObject2 != null) {
+                        CategoryCodeBO categcodeItems = new CategoryCodeBO();
+                        categcodeItems.setCatgCode((jsObject2.get("CATGCODE").toString()));
+                        categcodeItems.setStructureId((jsObject2.get("STRUCTUREID").toString()));
+                        categcodeItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                        s_categorycode.add(categcodeItems);
                         super.updateSqlLiteTable(CategoryCodeBO.class, s_categorycode);
                     }
                 } catch (ParseException e) {
@@ -85,10 +95,11 @@ public class CategoryCodeDC extends SyncUtils {
             }
         }
     }
-    
+
     public CategoryCodeBO[] getCategoryCode() {
-        
-        CategoryCodeBO[] categcodeArray = (CategoryCodeBO[]) s_categorycode.toArray(new CategoryCodeBO[s_categorycode.size()]);
+
+        CategoryCodeBO[] categcodeArray =
+            (CategoryCodeBO[]) s_categorycode.toArray(new CategoryCodeBO[s_categorycode.size()]);
         return categcodeArray;
     }
 }

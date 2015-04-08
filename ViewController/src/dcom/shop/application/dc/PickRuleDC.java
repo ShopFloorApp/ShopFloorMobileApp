@@ -1,6 +1,7 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.PickRuleBO;
 import dcom.shop.application.mobile.SubinventoryBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -51,6 +52,7 @@ public class PickRuleDC extends SyncUtils {
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
             if (jsonArrayAsString != null) {
+                JSONObject jsObject1 =null;
                 try {
                     JSONParser parser = new JSONParser();
                     Object object;
@@ -59,7 +61,7 @@ public class PickRuleDC extends SyncUtils {
 
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                    JSONObject jsObject1 = (JSONObject) jsObject.get("XPICKRULE");
+                    jsObject1 = (JSONObject) jsObject.get("XPICKRULE");
                     JSONArray array = (JSONArray) jsObject1.get("XPICKRULE_ITEM");
                     if (array != null) {
                         int size = array.size();
@@ -81,7 +83,20 @@ public class PickRuleDC extends SyncUtils {
 
                         super.updateSqlLiteTable(PickRuleBO.class, s_pickrule);
                     }
-                } catch (ParseException e) {
+                }
+                catch (ClassCastException e2) {
+                    JSONObject jsObject2 = (JSONObject) jsObject1.get("XPICKRULE_ITEM");
+                    if (jsObject2 != null) {
+                        PickRuleBO PickRuleItems = new PickRuleBO();
+                        PickRuleItems.setWhse((jsObject2.get("WHSE").toString()));
+                        PickRuleItems.setRuleName((jsObject2.get("RULENAME").toString()));
+                        PickRuleItems.setDocSetName((jsObject2.get("DOCSETNAME").toString()));
+                        PickRuleItems.setReleaseSeqName((jsObject2.get("RELEASESEQNAME").toString()));
+                        s_pickrule.add(PickRuleItems); 
+                        super.updateSqlLiteTable(PickRuleBO.class, s_pickrule);
+                        }
+                    }                
+                catch (ParseException e) {
                     e.getMessage();
                 }
             }
