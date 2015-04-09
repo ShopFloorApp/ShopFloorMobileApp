@@ -22,6 +22,7 @@ public class TransactDC {
         String nextOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextOpSeq}").toString();
         String compSubInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compSubInv}").toString();
         String compLocator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.compLocator}").toString();
+        String opSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.opSeq}").toString();
 
         String assemblyUom = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}").toString();
         String lastDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
@@ -31,6 +32,11 @@ public class TransactDC {
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
         transactBO.setToOpSeq(nextOpSeq);
+        if (opSeq.equals(lastOpSeq)) {
+            transactBO.setToStep("To Move");
+        } else {
+            transactBO.setToStep("Queue");
+        }
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
         transactBO.setFromOpSeq(lastOpSeq);

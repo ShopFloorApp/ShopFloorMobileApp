@@ -1,5 +1,10 @@
 package dcom.shop.application.base;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+
 
 public class AEntity {
     public AEntity() {
@@ -7,9 +12,35 @@ public class AEntity {
     }
 
     protected String getAttributeValue(String value) {
-        if(value.contains("@xsi")){
+        if (value.contains("@xsi")) {
             return "";
         }
         return value;
+    }
+
+    protected String toUnixDate(String value) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss.SSS");
+        SimpleDateFormat intialFormat = new SimpleDateFormat("dd, MMM yyyy HH:mm:ss");
+        String newDate = null;
+        try {
+            Date date = intialFormat.parse(value);
+            newDate = formatter.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return newDate;
+    }
+    
+    protected String toDate(String value){
+        SimpleDateFormat intialFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss.SSS");
+        SimpleDateFormat newFormat = new SimpleDateFormat("dd, MMM yyyy HH:mm:ss");
+        String newDate = null;
+        try {
+            Date date = intialFormat.parse(value);
+            newDate = newFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return newDate;
     }
 }

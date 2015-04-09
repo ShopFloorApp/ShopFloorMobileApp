@@ -23,6 +23,7 @@ public class JobOperationBO extends AEntity {
     private String lastDept;
     private String lastOpSeq;
     private String nextDept;
+    private String opSeq;
 
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -146,6 +147,12 @@ public class JobOperationBO extends AEntity {
 
     public void setJobOps(String jobOps) {
         jobOps = getAttributeValue(jobOps);
+        try {
+            String opSeqValue = jobOps.split(":")[1];
+            setOpSeq(opSeqValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String oldJobOps = this.jobOps;
         this.jobOps = jobOps;
         propertyChangeSupport.firePropertyChange("jobOps", oldJobOps, jobOps);
@@ -214,13 +221,14 @@ public class JobOperationBO extends AEntity {
 
     public void setSchStartDate(String schStartDate) {
         schStartDate = getAttributeValue(schStartDate);
+        schStartDate = super.toUnixDate(schStartDate);
         String oldSchStartDate = this.schStartDate;
         this.schStartDate = schStartDate;
         propertyChangeSupport.firePropertyChange("schStartDate", oldSchStartDate, schStartDate);
     }
 
     public String getSchStartDate() {
-        return schStartDate;
+        return super.toDate(schStartDate);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
@@ -229,5 +237,16 @@ public class JobOperationBO extends AEntity {
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
+
+    public void setOpSeq(String opSeq) {
+        String oldOpSeq = this.opSeq;
+        this.opSeq = opSeq;
+        propertyChangeSupport.firePropertyChange("opSeq", oldOpSeq, opSeq);
+    }
+
+    public String getOpSeq() {
+        return opSeq;
     }
 }

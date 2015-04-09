@@ -17,10 +17,11 @@
         <amx:facet name="footer">
             <amx:outputText value="Select a warehouse" id="ot2"/>
         </amx:facet>
-        <amx:tableLayout id="tl1" styleClass="tableHeader1">
+        <amx:tableLayout id="tl1" width="100%" borderWidth="0">
             <amx:rowLayout id="rl1">
-                <amx:cellFormat id="cf1">
-                    <amx:outputText value="Warehouse List" id="ot6"/>
+                <amx:cellFormat id="cf1" valign="middle" inlineStyle="background-color:#C7C7CC;" columnSpan="2"
+                                width="50%" halign="center">
+                    <amx:outputText value="Warehouse List" id="ot6" inlineStyle="font-weight:bold;"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

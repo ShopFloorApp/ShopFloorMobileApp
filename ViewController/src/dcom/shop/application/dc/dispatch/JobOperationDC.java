@@ -18,8 +18,8 @@ import org.json.simple.parser.JSONParser;
 /*
  * Fetches the Job Operations based on the department selected on dispatch list page
  */
-public class JobOperationDC extends AViewObject{
-    
+public class JobOperationDC extends AViewObject {
+
     protected static List<JobOperationBO> jobOpList = new ArrayList<JobOperationBO>();
     private ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private static boolean isSortOperation = false;
@@ -101,20 +101,73 @@ public class JobOperationDC extends AViewObject{
             }
         }
     }
-    
-    public void sortJobOperation(String sortByCol){
+
+    public void sortJobOperation(String sortByCol) {
         jobOpList.clear();
         isSortOperation = true;
-        String orderByClause = "ORDER BY "+sortByCol+ " ASC";
+        String orderByClause;
+        if (sortByCol.equals("SCHSTARTDATE")) {
+            orderByClause = "ORDER BY datetime(" + sortByCol + ") ASC";
+        } else {
+            orderByClause = "ORDER BY " + sortByCol + " ASC";
+        }
         jobOpList = super.getFilteredCollectionFromDB(JobOperationBO.class, orderByClause);
         providerChangeSupport.fireProviderRefresh("jobOperationBO");
-        
+
     }
+
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
     }
 
     public void removeProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.removeProviderChangeListener(l);
+    }
+
+    public void saveJobAction(JobOperationBO jobOperation) {
+        RestCallerUtil restCallerUtil = new RestCallerUtil();
+        JobOperationBO[] jobOprArray = null;
+        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
+        String pJobOp = jobOperation.getJobOps();
+        try {
+            String pAction = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.JobAction}").toString();
+
+            if (!pAction.equals("0")) {
+                StringBuffer inputPayload = new StringBuffer();
+                inputPayload.append("{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
+                                    "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                                    "      \"RespApplication\": \"ONT\",\n" +
+                                    "      \"SecurityGroup\": \"STANDARD\",\n" +
+                                    "      \"NLSLanguage\": \"AMERICAN\",\n" + "      \"Org_Id\": \"82\"\n" +
+                                    "    },\n" + "    \"InputParameters\": {\n" + "      \"PORGCODE\": \"" + orgCode +
+                                    "\",\n" + "      \"PDEPTCODE\": \"" + deptCode + "\",\n" + "      \"PJOBOP\": \"" +
+                                    pJobOp + "\",\n" + "      \"PACTION\": \"" + pAction + "\"\n" + "    }\n" +
+                                    "  }\n" + "}");
+
+                String jsonArrayAsString =
+                    restCallerUtil.invokeUPDATE(RestURI.PostJobAction(), inputPayload.toString());
+                if (jsonArrayAsString != null) {
+                    try {
+                        JSONParser parser = new JSONParser();
+                        Object object;
+                        object = parser.parse(jsonArrayAsString);
+                        JSONObject jsonObject = (JSONObject) object;
+                        JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                        String status = jsObject.get("XSTATUS").toString();
+                        String message = jsObject.get("XMSG").toString();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+                String status = "F";
+                String message = "Please select a Job action!";
+            }
+        } catch (Exception ae) {
+            String status = "F";
+            String message = "Please select a Job action!";
+        }
+
     }
 }

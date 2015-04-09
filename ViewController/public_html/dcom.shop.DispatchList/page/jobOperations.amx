@@ -21,7 +21,7 @@
                 <amx:cellFormat id="cf3">
                     <amx:selectOneButton label="label1" id="sob1" simple="true" inlineStyle="font-size:small;"
                                          valueChangeListener="#{pageFlowScope.DispatchBean.jobOperationsSorting}">
-                        <amx:selectItem id="si1" label="Started" value="SCHSTARTDATE"/>
+                        <amx:selectItem id="si1" label="Date" value="SCHSTARTDATE"/>
                         <amx:selectItem label="Job" id="si2" value="JOBNUMBER"/>
                         <amx:selectItem label="Assembly" id="si3" value="ASSEMBLY"/>
                         <amx:selectItem label="Ready" id="si4" value="READYSTATUS"/>

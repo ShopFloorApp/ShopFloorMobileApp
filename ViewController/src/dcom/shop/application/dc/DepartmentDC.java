@@ -55,13 +55,14 @@ public class DepartmentDC extends AViewObject {
 
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetDeptURI(), strPayload);
         if (jsonArrayAsString != null) {
+            JSONObject jsObject1 = null;
             try {
                 JSONParser parser = new JSONParser();
                 Object object;
                 object = parser.parse(jsonArrayAsString);
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                JSONObject jsObject1 = (JSONObject) jsObject.get("XDETPS");
+                jsObject1 = (JSONObject) jsObject.get("XDETPS");
                 JSONArray deptArray = (JSONArray) jsObject1.get("XDETPS_ITEM");
                 if (deptArray != null) {
                     int size = deptArray.size();
@@ -78,8 +79,20 @@ public class DepartmentDC extends AViewObject {
                     }
                     super.updateSqlLiteTable(DepartmentBO.class, s_dept);
                 }
-            } catch (Exception e) {
-                e.getMessage();
+            } catch (ClassCastException e) {
+                JSONObject deptObj = (JSONObject) jsObject1.get("XDETPS_ITEM");
+                if (deptObj != null) {
+                    DepartmentBO dept = new DepartmentBO();
+                    dept.setDeptId((deptObj.get("DEPTID").toString()));
+                    dept.setDeptName((deptObj.get("DEPTNAME").toString()));
+                    dept.setOpenJob((deptObj.get("OPENJOB").toString()));
+                    dept.setOrgCode((deptObj.get("ORGCODE").toString()));
+                    dept.setDeptDesc((deptObj.get("DEPTDESC").toString()));
+                    s_dept.add(dept);
+                }
+                super.updateSqlLiteTable(DepartmentBO.class, s_dept);
+            } catch (Exception ex) {
+                ex.getMessage();
             }
         }
     }

@@ -14,6 +14,7 @@
             <amx:commandLink id="cl11" inlineStyle="width:20px;">
                 <amx:outputHtml id="oh18" styleClass="fa fa-ellipsis-v fa-lg"
                                 inlineStyle="width:20px; margin-left:10px;"/>
+                <amx:setPropertyListener id="spl11" from="#{bindings.opSeq.inputValue}" to="#{pageFlowScope.opSeq}"/>
                 <amx:setPropertyListener id="spl9" to="#{pageFlowScope.jobOps}" from="#{bindings.jobOps.inputValue}"
                                          type="action"/>
                 <amx:setPropertyListener id="spl10" from="#{bindings.jobNumber.inputValue}"
@@ -24,8 +25,8 @@
                                          to="#{pageFlowScope.compSubInv}" type="action"/>
                 <amx:setPropertyListener id="spl31" from="#{bindings.compLocator.inputValue}"
                                          to="#{pageFlowScope.compLocator}" type="action"/>
-                <amx:setPropertyListener id="spl32" from="#{bindings.assemblyUom.inputValue}"
-                                         to="#{pageFlowScope.uom}" type="action"/>
+                <amx:setPropertyListener id="spl32" from="#{bindings.assemblyUom.inputValue}" to="#{pageFlowScope.uom}"
+                                         type="action"/>
                 <amx:setPropertyListener id="spl33" from="#{bindings.lastDept.inputValue}"
                                          to="#{pageFlowScope.lastDept}" type="action"/>
                 <amx:setPropertyListener id="spl34" from="#{bindings.lastOpSeq.inputValue}"
@@ -34,7 +35,7 @@
                                          to="#{pageFlowScope.nextDept}" type="action"/>
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
-            <amx:commandLink id="cl7">
+            <amx:commandLink id="cl7" actionListener="#{bindings.saveJobAction.execute}">
                 <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
             </amx:commandLink>
         </amx:facet>
@@ -63,6 +64,7 @@
                 <amx:outputText value="#{bindings.jobStatus.inputValue}" id="ot13"/>
             </amx:panelLabelAndMessage>
             <amx:selectOneChoice label="Actions" id="soc1" value="#{pageFlowScope.JobAction}">
+                <amx:selectItem label="Choose" id="si1" value="0"/>
                 <amx:selectItems id="si2" value="#{bindings.jobAction.items}"/>
             </amx:selectOneChoice>
         </amx:panelFormLayout>

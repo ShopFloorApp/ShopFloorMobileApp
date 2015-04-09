@@ -35,7 +35,7 @@
             <amx:panelLabelAndMessage label="Department" id="plam2">
                 <amx:outputText value="#{bindings.fromDept.inputValue}" id="ot6"/>
             </amx:panelLabelAndMessage>
-            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}" disabled="true">
+            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}">
                 <amx:selectItems id="si2" value="#{bindings.fromStep.items}"/>
             </amx:selectOneChoice>
         </amx:panelFormLayout>

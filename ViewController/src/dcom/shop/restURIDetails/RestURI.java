@@ -146,6 +146,12 @@ public class RestURI {
     public static String PostGetOpSeq() {
         return GET_OPSEQ;
     }
+    
+    private static final String POST_JOB_ACTION = "/webservices/rest/DCOMDispatchTxn/jobaction/";
+
+    public static String PostJobAction() {
+        return POST_JOB_ACTION;
+    }
     /*
      * Dispatch Lists end
      */

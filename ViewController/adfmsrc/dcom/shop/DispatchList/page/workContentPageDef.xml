@@ -87,5 +87,16 @@
         <Item Value="Put Job On Hold"/>
       </ValueList>
     </list>
+    <attributeValues IterBinding="jobOperationBOIterator" id="opSeq">
+      <AttrNames>
+        <Item Value="opSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="saveJobAction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveJobAction"
+                  IsViewObjectMethod="false" DataControl="JobOperationDC"
+                  InstanceName="data.JobOperationDC.dataProvider">
+      <NamedData NDName="jobOperation" NDValue="#{bindings.jobOperationBOIterator.currentRow.dataProvider}"
+                 NDType="dcom.shop.application.mobile.dispatch.JobOperationBO"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

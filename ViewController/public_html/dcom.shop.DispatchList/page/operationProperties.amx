@@ -23,10 +23,10 @@
             <amx:panelLabelAndMessage label="Department" id="plam2">
                 <amx:outputText value="#{bindings.dept.inputValue}" id="ot3"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Started On" id="plam8">
+            <amx:panelLabelAndMessage label="Start Date" id="plam8">
                 <amx:outputText value="#{bindings.opStartDate.inputValue}" id="ot9"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Completion By" id="plam9">
+            <amx:panelLabelAndMessage label="Completion Date" id="plam9">
                 <amx:outputText value="#{bindings.opComplDate.inputValue}" id="ot10"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Quantity Queue" id="plam3">

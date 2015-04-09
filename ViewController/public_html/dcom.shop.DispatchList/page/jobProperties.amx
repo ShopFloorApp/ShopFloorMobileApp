@@ -34,10 +34,10 @@
             <amx:panelLabelAndMessage label="Status" id="plam1">
                 <amx:outputText value="#{bindings.jobStatus.inputValue}" id="ot2"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Schedule Started" id="plam11">
+            <amx:panelLabelAndMessage label="Scheduled Start Date" id="plam11">
                 <amx:outputText value="#{bindings.schStartDate.inputValue}" id="ot12"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Schedule Completed" id="plam12">
+            <amx:panelLabelAndMessage label="Scheduled Completion Date" id="plam12">
                 <amx:outputText value="#{bindings.schComplDate.inputValue}" id="ot13"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Due On" id="plam2">

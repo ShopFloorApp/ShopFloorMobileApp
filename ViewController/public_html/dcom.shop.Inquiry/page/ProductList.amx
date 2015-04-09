@@ -33,7 +33,7 @@
                                         <amx:cellFormat id="cf9" columnSpan="1" width="40px">
                                             <amx:outputText id="ot7" value="#{row.PRIMARYUOM}"/>
                                         </amx:cellFormat>
-                                        <amx:cellFormat id="cf6" columnSpan="3">
+                                        <amx:cellFormat id="cf6" columnSpan="3" halign="end">
                                             <amx:outputText id="ot5" value="#{row.ITEMTYPE}"/>
                                         </amx:cellFormat>
                                     </amx:rowLayout>
