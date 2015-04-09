@@ -101,5 +101,8 @@
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <methodAction id="syncAll" RequiresUpdateModel="true" Action="invokeMethod" MethodName="syncAll"
+                  IsViewObjectMethod="false" DataControl="SyncPreferencesDC"
+                  InstanceName="data.SyncPreferencesDC.dataProvider"/>
   </bindings>
 </pageDefinition>

@@ -19,7 +19,7 @@
             </amx:commandLink>-->
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2" text="Sync All"/>
+            <amx:commandButton id="cb2" text="Sync All" actionListener="#{bindings.syncAll.execute}" action="refresh"/>
         </amx:facet>
         <amx:panelGroupLayout id="pgl1" layout="horizontal" rendered="false">
             <amx:tableLayout id="tl1" borderWidth="0" width="30%" layout="weighted"

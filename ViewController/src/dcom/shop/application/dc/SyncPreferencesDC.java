@@ -34,12 +34,7 @@ public class SyncPreferencesDC extends SyncUtils {
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public SyncPreferencesDC() {
-        try {
-            s_syncLovs = super.getOfflineCollection(SyncPreferencesBO.class);
-            filterSyncLovs();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        super();
     }
 
     public void setLovnameFilter(String lovnameFilter) {
@@ -72,6 +67,8 @@ public class SyncPreferencesDC extends SyncUtils {
 
         try {
             System.out.println("called collection warehouse");
+            s_syncLovs = super.getOfflineCollection(SyncPreferencesBO.class);
+            filterSyncLovs();
             SyncPreferencesBO[] synclovs = null;
             synclovs = (SyncPreferencesBO[]) filtered_syncLovs.toArray(new SyncPreferencesBO[filtered_syncLovs.size()]);
             return synclovs;
@@ -108,6 +105,7 @@ public class SyncPreferencesDC extends SyncUtils {
             syncCard(syncPreferencesBO.getLovId(), syncPreferencesBO.getLovClassName(),
                      syncPreferencesBO.getLovCollectVar(), syncPreferencesBO.getRowIdx());
         }
+        providerChangeSupport.fireProviderRefresh("syncLovs");
     }
 
     public void syncCard(String lovId, String lovDCClass, String lovCollectionVar, String rowIdx) {
