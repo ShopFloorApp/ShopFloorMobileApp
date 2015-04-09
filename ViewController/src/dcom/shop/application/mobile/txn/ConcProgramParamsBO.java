@@ -94,6 +94,7 @@ public class ConcProgramParamsBO extends AEntity {
     }
     public void setParamDispValue(String paramDispValue) {
         String oldParamDispValue = this.paramDispValue;
+        String valueRef="";
         if(this.getItemType().equalsIgnoreCase("LOV") && paramDispValue!=null && !paramDispValue.equalsIgnoreCase(this.getDefaultValue())){
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", this.getSeqNum());
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.valueSet}", this.getValueSetName());  
@@ -113,13 +114,15 @@ public class ConcProgramParamsBO extends AEntity {
             }else if(lovList.size()==1){
                 ConcProgramParamLovBO concProgramParamLovBO = (ConcProgramParamLovBO) lovList.get(0);
                 paramDispValue=concProgramParamLovBO.getValue();
+                valueRef=concProgramParamLovBO.getRef();
             }else{
                 callJS("cb3");
             }
         }
-
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", null);
         this.paramDispValue = getAttributeValue(paramDispValue);
         valueDispMap.put(this.getSeqNum(), getAttributeValue(paramDispValue));
+        valueMap.put(this.getSeqNum(), getAttributeValue(valueRef));
         propertyChangeSupport.firePropertyChange("paramDispValue", oldParamDispValue, paramDispValue);
     }
 
