@@ -41,6 +41,11 @@ public class RequestUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.seq}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedDispParamsLovVal}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.selectedParamsLovVal}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param1}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param2}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param3}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.param4}", null);
         MethodExpression me =
             AdfmfJavaUtilities.getMethodExpression("#{bindings.populateProgramsParams.execute}", Object.class, new Class[] {
                                                    });
@@ -187,7 +192,7 @@ public class RequestUtilBean {
         HashMap paramMap=new HashMap();
         paramMap.putAll(param.valueMap);
         paramDispMap.putAll(param.valueDispMap);
-        String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")));
+        String param1 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")==null?"":paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param1}")));
         String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")));
         String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")));
         String param4 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")==null?"":paramMap.get(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")));
