@@ -55,7 +55,7 @@
     <amx:panelGroupLayout id="pgl1" halign="center" valign="middle" inlineStyle='display:none;'>
       <amx:commandButton text="Submit Request" id="cb3" styleClass="srch-btn" action="getLov"/>
       <amx:commandButton text="commandButton1" id="cb1">
-        <amx:showPopupBehavior id="spb2" popupId="p2" align="before" alignId="pgl1"/>
+        <amx:showPopupBehavior id="spb2" popupId="p2" align="overlapMiddleCenter" alignId="pp1"/>
       </amx:commandButton>
     </amx:panelGroupLayout>
     <amx:facet name="footer">
