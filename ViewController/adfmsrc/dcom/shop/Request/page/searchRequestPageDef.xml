@@ -34,5 +34,8 @@
         <methodAction id="refreshFilteredConcurrentPrograms" RequiresUpdateModel="true" Action="invokeMethod"
                       MethodName="refreshFilteredConcurrentPrograms" IsViewObjectMethod="false"
                       DataControl="ConcurrentProgramDC" InstanceName="data.ConcurrentProgramDC.dataProvider"/>
+        <methodAction id="searchRequests" RequiresUpdateModel="true" Action="invokeMethod" MethodName="searchRequests"
+                      IsViewObjectMethod="false" DataControl="ConcurrentProgramDC"
+                      InstanceName="data.ConcurrentProgramDC.dataProvider"/>
     </bindings>
 </pageDefinition>

@@ -26,7 +26,7 @@
             <amx:panelFormLayout id="pfl1" labelPosition="topStart">
                 <amx:inputText id="it1" label="Request ID" value="#{pageFlowScope.requestIdS}" inputType="number"/>
                 <amx:selectOneChoice label="Application" id="soc2" value="#{pageFlowScope.applicationName}"
-                                     valueChangeListener="#{RequestUtilBean.applicationValueChange}">
+                                     valueChangeListener="#{RequestUtilBean.applicationValueChange}" rendered="false">
                     <amx:selectItem id="si13" label=" "/>
                     <amx:selectItem id="si3" label="Advanced Pricing" value="QP"/>
                     <amx:selectItem id="si4" label="Advanced Supply Chain Planning" value="MSC"/>
@@ -105,6 +105,12 @@
                 <amx:inputDate id="id2" label="End Date" value="#{pageFlowScope.endDate}" inputType="datetime"/>
             </amx:panelFormLayout>
             <amx:spacer id="s2" height="20"/>
+            <amx:panelGroupLayout id="pgl2" inlineStyle="display:none;">
+                <amx:commandButton text="commandButton1" id="cb3" action="getRequests"/>
+                <amx:commandButton text="commandButton2" id="cb4">
+                    <amx:showPopupBehavior id="spb1" popupId="p1" align="overlapMiddleCenter" alignId="pp1"/>
+                </amx:commandButton>
+            </amx:panelGroupLayout>
         </amx:panelGroupLayout>
         <amx:panelGroupLayout id="pgl3" halign="center" rendered="false">
             <amx:commandButton text="Search" id="cb1" action="getRequests" styleClass="srch-btn"/>
@@ -131,7 +137,7 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13">
-                        <amx:commandLink id="cl3" action="getRequests">
+                        <amx:commandLink id="cl3" actionListener="#{RequestUtilBean.searchRequest}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
@@ -169,4 +175,7 @@
             </amx:tableLayout>
         </amx:facet>
     </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="true">
+        <amx:outputText value="No Request Found." id="ot2"/>
+    </amx:popup>
 </amx:view>
