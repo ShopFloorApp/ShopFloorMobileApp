@@ -1,9 +1,11 @@
 package dcom.shop.application.dc;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class DeliveryLovEntity {
+public class DeliveryLovEntity  extends AEntity{
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public DeliveryLovEntity() {
@@ -12,6 +14,7 @@ public class DeliveryLovEntity {
     private String DLVNAME;
 
     public void setDLVNAME(String DLVNAME) {
+        DLVNAME=getAttributeValue(DLVNAME);
         String oldDLVNAME = this.DLVNAME;
         this.DLVNAME = DLVNAME;
         propertyChangeSupport.firePropertyChange("DLVNAME", oldDLVNAME, DLVNAME);
@@ -21,7 +24,7 @@ public class DeliveryLovEntity {
         return DLVNAME;
     }
 
-    public void setDLVID(int DLVID) {
+    public void setDLVID(int DLVID) {        
         int oldDLVID = this.DLVID;
         this.DLVID = DLVID;
         propertyChangeSupport.firePropertyChange("DLVID", oldDLVID, DLVID);
@@ -42,6 +45,7 @@ public class DeliveryLovEntity {
     }
 
     public void setWEIGHTUOM(String WEIGHTUOM) {
+        WEIGHTUOM=getAttributeValue(WEIGHTUOM);
         String oldWEIGHTUOM = this.WEIGHTUOM;
         this.WEIGHTUOM = WEIGHTUOM;
         propertyChangeSupport.firePropertyChange("WEIGHTUOM", oldWEIGHTUOM, WEIGHTUOM);
@@ -52,6 +56,7 @@ public class DeliveryLovEntity {
     }
 
     public void setWAYBILL(String WAYBILL) {
+        WAYBILL=getAttributeValue(WAYBILL);
         String oldWAYBILL = this.WAYBILL;
         this.WAYBILL = WAYBILL;
         propertyChangeSupport.firePropertyChange("WAYBILL", oldWAYBILL, WAYBILL);
@@ -62,6 +67,7 @@ public class DeliveryLovEntity {
     }
 
     public void setSHIPMETHODCODE(String SHIPMETHODCODE) {
+        SHIPMETHODCODE=getAttributeValue(SHIPMETHODCODE);
         String oldSHIPMETHODCODE = this.SHIPMETHODCODE;
         this.SHIPMETHODCODE = SHIPMETHODCODE;
         propertyChangeSupport.firePropertyChange("SHIPMETHODCODE", oldSHIPMETHODCODE, SHIPMETHODCODE);

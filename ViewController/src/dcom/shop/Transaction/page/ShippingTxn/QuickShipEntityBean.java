@@ -1,9 +1,11 @@
 package dcom.shop.Transaction.page.ShippingTxn;
 
+import dcom.shop.application.base.AEntity;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class QuickShipEntityBean {
+public class QuickShipEntityBean extends AEntity {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public QuickShipEntityBean() {
@@ -12,6 +14,7 @@ public class QuickShipEntityBean {
     private String XSTATUS;
 
     public void setXSTATUS(String XSTATUS) {
+        XSTATUS=getAttributeValue(XSTATUS);
         String oldXSTATUS = this.XSTATUS;
         this.XSTATUS = XSTATUS;
         propertyChangeSupport.firePropertyChange("XSTATUS", oldXSTATUS, XSTATUS);
@@ -22,6 +25,7 @@ public class QuickShipEntityBean {
     }
 
     public void setXMSG(String XMSG) {
+        XMSG=getAttributeValue(XMSG);
         String oldXMSG = this.XMSG;
         this.XMSG = XMSG;
         propertyChangeSupport.firePropertyChange("XMSG", oldXMSG, XMSG);
