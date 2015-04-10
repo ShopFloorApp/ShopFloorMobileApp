@@ -2,19 +2,43 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1" styleClass="adfmf-panelPage-springboard">
-        <amx:facet name="header">
-            <amx:outputText value="#{bindings.name.inputValue}" id="ot3"/>
-        </amx:facet>
-        <amx:listView styleClass="amx-springboard" var="row" value="#{bindings.features.collectionModel}"
-                      fetchSize="#{bindings.features.rangeSize}"
-                      selectedRowKeys="#{bindings.features.collectionModel.selectedRow}"
-                      selectionListener="#{bindings.features.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                      bufferStrategy="viewport" id="lv1">
-            <amx:listItem actionListener="#{bindings.gotoFeature.execute}" showLinkIcon="false" id="li1">
-                <amx:outputText value="#{row.name}" id="ot2"/>
-                <amx:setPropertyListener from="#{row.id}" to="#{pageFlowScope.currentFeature}" id="spl1"/>
-                <amx:actionListener id="al1" binding="#{WindowBean.hideSpringboard}"/>
-            </amx:listItem>
-        </amx:listView>
+        <amx:panelStretchLayout id="psl1">
+            <amx:facet name="top">
+                <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="center">
+                    <!--amx:image id="i2" source="/images/ShopFloor.png" inlineStyle="width:32px;height:32px"
+                               shortDesc="Shop Floor Image"/-->
+                    <amx:outputText value="Mobile Shop Floor Application" id="ot1"
+                                    inlineStyle="color:white; font-weight:normal; font-size:small;"/>
+                </amx:panelGroupLayout>
+                <amx:spacer id="s1" height="20"/>
+            </amx:facet>
+            <amx:facet name="center">
+                <amx:listView var="row" value="#{bindings.features.collectionModel}" showMoreStrategy="autoScroll"
+                              bufferStrategy="viewport" id="lv1" styleClass="listViewNoSelect">
+                    <amx:listItem id="li1" actionListener="#{bindings.gotoFeature.execute}" showLinkIcon="false"
+                                  shortDesc="List Item">
+                        <amx:tableLayout width="100%" id="tl1" shortDesc="Table">
+                            <amx:rowLayout id="rl1">
+                                <amx:cellFormat shortDesc="Cell" width="40px" halign="center" id="cf3">
+                                    <amx:image source="#{row.image}" id="i1" inlineStyle="width:16px;height:16px"
+                                               shortDesc="Feature Image"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat shortDesc="Cell" width="100%" height="43px" id="cf4">
+                                    <amx:outputText value="#{row.name}" id="ot3"/>
+                                </amx:cellFormat>
+                                <amx:cellFormat shortDesc="Cell" width="10px" id="cf1"/>
+                            </amx:rowLayout>
+                        </amx:tableLayout>
+                        <amx:setPropertyListener id="spl2" from="#{row.id}" to="#{viewScope.featureId}"/>
+                    </amx:listItem>
+                </amx:listView>
+            </amx:facet>
+            <amx:facet name="bottom">
+                <amx:panelGroupLayout id="pgl2" inlineStyle="width:100%" halign="center">
+                    <amx:image id="i3" source="/images/deloitteLogo.png"
+                               inlineStyle="width:176px;height:30px;margin-bottom:10px" shortDesc="Deloitte Logo"/>
+                </amx:panelGroupLayout>
+            </amx:facet>
+        </amx:panelStretchLayout>
     </amx:panelPage>
 </amx:view>

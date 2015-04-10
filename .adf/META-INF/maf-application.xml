@@ -24,7 +24,9 @@
     <adfmf:navigation>
         <adfmf:navigationBar displayHideShowNavigationBarControl="false" enabled="false"/>
         <adfmf:springboard enabled="true" animation="slideright" width="200" displayGotoSpringboardControl="false"
-                           showSpringboardAtStartup="false"/>
+                           showSpringboardAtStartup="false">
+            <adfmf:springboardFeatureReference refId="dcom.shop.Springboard" id="sfr1"/>
+        </adfmf:springboard>
     </adfmf:navigation>
     <adfmf:login defaultConnRefId="ShopFloorSecurity">
         <adfmf:localHTML url="CustomLoginPage.html"/>

@@ -41,7 +41,7 @@
     <methodAction id="gotoFeature" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoFeature"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider">
-      <NamedData NDName="featureId" NDValue="#{pageFlowScope.currentFeature}" NDType="java.lang.String"/>
+      <NamedData NDName="featureId" NDValue="#{viewScope.featureId}" NDType="java.lang.String"/>
     </methodAction>
   </bindings>
 </pageDefinition>
