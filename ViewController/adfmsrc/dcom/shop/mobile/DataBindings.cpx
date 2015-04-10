@@ -109,6 +109,7 @@
     <page path="/dcom.shop.Inquiry/page/searchProduct.amx" usageId="dcom_shop_mobile_searchProductPageDef"/>
     <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@getPendingReceiveTxn1"
           usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
+    <page path="/dcom.shop.DispatchList/page/jobSearch.amx" usageId="dcom_shop_mobile_jobSearchPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_lineDetailsPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
@@ -198,6 +199,7 @@
     <page id="dcom_shop_mobile_searchProductPageDef" path="dcom.shop.Inquiry.page.searchProductPageDef"/>
     <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
           path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
+    <page id="dcom_shop_mobile_jobSearchPageDef" path="dcom.shop.DispatchList.page.jobSearchPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>

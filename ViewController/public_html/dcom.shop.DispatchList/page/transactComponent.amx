@@ -10,8 +10,6 @@
             cordova.plugins.barcodeScanner.scan(
               function(result)
               {
-               // Note that you could also use adf.mf.api.invokeMethod() to invoke Java methods directly if 
-                // you do not want to use EL expressions.
                 adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
                                        "value": result.text}, 
                                        function() {}, 
@@ -38,10 +36,8 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;"
-                             action="backToWorkContent">
-                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
-            </amx:commandLink>
+            <amx:commandButton text="Save" id="cb1" action="backToWorkContent"
+                               actionListener="#{bindings.saveTransaction.execute}"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:selectOneChoice label="Type" id="soc1" value="#{bindings.trxType.inputValue}"

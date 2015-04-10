@@ -16,9 +16,9 @@
       <property
          name="page">/dcom.shop.DispatchList/page/dispatchList.amx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>dispatchList&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>dispatchList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -49,7 +49,7 @@
       <property
          name="fromOutcome">toJobOpr</property>
       <property
-         name="sdm:polyPoints">R44,-428.18658,-116.20435,-228.32799,79.326965,L44</property>
+         name="sdm:polyPoints">R46,-431.7852,-114.23051,-226.35417,81.30078,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -59,7 +59,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L56,-232.89185,90.60797,-432.7137,-104.92335,R56</property>
+         name="sdm:polyPoints">L54,-229.27136,88.634125,-434.6875,-106.89717,R54</property>
    </ControlFlowCase>
    <View
       id="View7">
@@ -84,7 +84,7 @@
       <property
          name="fromOutcome">toWorkContent</property>
       <property
-         name="sdm:polyPoints">T41,-190.82799,17.536905,235.88123,18.035454,T41</property>
+         name="sdm:polyPoints">T44,-188.85417,23.461615,237.85506,23.869081,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -94,7 +94,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">T22,224.6002,29.16026,-179.54698,28.826973,T59</property>
+         name="sdm:polyPoints">T32,230.52173,31.134113,-181.52083,30.800781,T56</property>
    </ControlFlowCase>
    <View
       id="View10">
@@ -179,7 +179,7 @@
       <property
          name="fromOutcome">toDetails</property>
       <property
-         name="sdm:polyPoints">L44,-56.228058,-243.47253,-220.57939,-244.47253,R44</property>
+         name="sdm:polyPoints">L46,-54.254234,-241.49869,-222.56578,-242.49869,R46</property>
    </ControlFlowCase>
    <View
       id="View21">
@@ -204,7 +204,7 @@
       <property
          name="fromOutcome">toDetails</property>
       <property
-         name="sdm:polyPoints">L44,-2.8532565,-558.936,-185.8457,-557.00366,R44</property>
+         name="sdm:polyPoints">L46,-0.85779375,-556.96216,-187.81953,-555.02985,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -214,7 +214,7 @@
       <property
          name="fromOutcome">backToParent</property>
       <property
-         name="sdm:polyPoints">R56,-185.78615,-545.72266,-2.7937164,-547.65497,L56</property>
+         name="sdm:polyPoints">R54,-187.78165,-547.6965,-0.81990623,-549.6288,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -224,7 +224,7 @@
       <property
          name="fromOutcome">backToParent</property>
       <property
-         name="sdm:polyPoints">R56,-220.61371,-233.19153,-56.26237,-232.19153,L56</property>
+         name="sdm:polyPoints">R54,-222.58757,-235.16536,-54.276016,-234.16536,L54</property>
    </ControlFlowCase>
    <View
       id="View33">
@@ -399,7 +399,7 @@
       <property
          name="fromsrcid">__30</property>
       <property
-         name="sdm:polyPoints">L59,203.68292,-156.25795,38.502472,-94.09766,R50</property>
+         name="sdm:polyPoints">L56,205.65674,-158.23177,36.52865,-94.09766,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -413,7 +413,7 @@
       <property
          name="fromsrcid">__30</property>
       <property
-         name="sdm:polyPoints">L41,203.68292,-167.53896,30.052952,-237.83203,R50</property>
+         name="sdm:polyPoints">L44,205.65674,-165.56511,28.079102,-237.83203,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -423,7 +423,7 @@
       <property
          name="fromOutcome">toOperProp</property>
       <property
-         name="sdm:polyPoints">R41,279.96393,-167.53896,441.743,-326.3633,L50</property>
+         name="sdm:polyPoints">R44,277.99008,-165.56511,443.7169,-326.36328,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -433,7 +433,7 @@
       <property
          name="fromOutcome">toComponents</property>
       <property
-         name="sdm:polyPoints">T39,236.18292,-212.13733,40.34679,-497.15497,B50</property>
+         name="sdm:polyPoints">T43,238.15675,-208.20691,40.346764,-499.1288,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -443,7 +443,7 @@
       <property
          name="fromOutcome">toMoveAssembly</property>
       <property
-         name="sdm:polyPoints">T78,258.44324,29.16026,546.5165,-155.1916,B50</property>
+         name="sdm:polyPoints">T68,252.52173,31.134113,546.51654,-157.16544,B50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -453,7 +453,7 @@
       <property
          name="fromOutcome">toReportTime</property>
       <property
-         name="sdm:polyPoints">R37,284.66223,74.01975,502.0902,-50.79824,L50</property>
+         name="sdm:polyPoints">R42,282.6884,77.96745,504.06406,-50.798256,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -463,7 +463,7 @@
       <property
          name="fromOutcome">toTransactComponents</property>
       <property
-         name="sdm:polyPoints">R50,286.46503,85.30076,504.5202,96.20178,L50</property>
+         name="sdm:polyPoints">R50,283.86737,85.30078,506.49405,96.20178,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -473,7 +473,7 @@
       <property
          name="fromOutcome">toMoveComplete</property>
       <property
-         name="sdm:polyPoints">R63,284.66223,96.581764,507.30286,240.36847,L50</property>
+         name="sdm:polyPoints">R58,282.6884,92.634125,509.27664,240.36847,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -483,7 +483,7 @@
       <property
          name="fromOutcome">toReturnAssembly</property>
       <property
-         name="sdm:polyPoints">B87,264.08374,141.44127,517.2081,386.168,L50</property>
+         name="sdm:polyPoints">B74,256.1884,139.46745,519.1819,386.16797,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -493,7 +493,7 @@
       <property
          name="fromOutcome">toCompleteAssembly</property>
       <property
-         name="sdm:polyPoints">B68,252.80273,145.69347,460.78708,422.5275,T50</property>
+         name="sdm:polyPoints">B62,248.85506,142.2691,460.78702,424.5013,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -503,7 +503,7 @@
       <property
          name="fromOutcome">toReturnFromScrap</property>
       <property
-         name="sdm:polyPoints">B50,241.52173,148.07971,294.8808,424.8608,T50</property>
+         name="sdm:polyPoints">B50,241.52173,143.8204,294.88086,426.83466,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -513,7 +513,7 @@
       <property
          name="fromOutcome">toReturnMove</property>
       <property
-         name="sdm:polyPoints">B32,230.24072,144.64128,127.0486,424.02744,T50</property>
+         name="sdm:polyPoints">B38,234.1884,141.579,127.048584,426.00122,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -523,7 +523,7 @@
       <property
          name="fromOutcome">toClockIn</property>
       <property
-         name="sdm:polyPoints">B13,218.9597,141.44127,-43.006523,425.76172,T50</property>
+         name="sdm:polyPoints">B26,226.85506,139.46745,-43.006508,427.73553,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -533,7 +533,7 @@
       <property
          name="fromOutcome">toScrapAssembly</property>
       <property
-         name="sdm:polyPoints">L50,198.38121,85.300766,-204.88763,426.89462,T50</property>
+         name="sdm:polyPoints">L50,200.35506,85.30078,-204.88762,428.8685,T50</property>
    </ControlFlowCase>
    <View
       id="View47">
@@ -558,7 +558,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">R59,283.4282,-156.25795,612.8595,-298.9987,L50</property>
+         name="sdm:polyPoints">R56,280.21188,-158.23177,614.8333,-298.9987,L50</property>
    </ControlFlowCase>
    <View
       id="View146">
@@ -587,7 +587,7 @@
       <property
          name="fromsrcid">__30</property>
       <property
-         name="sdm:polyPoints">B50,241.82343,-117.25795,247.16223,12.443703,T59</property>
+         name="sdm:polyPoints">B50,241.82343,-119.23177,245.18839,20.226727,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -601,7 +601,7 @@
       <property
          name="fromsrcid">__30</property>
       <property
-         name="sdm:polyPoints">T17,224.90192,-206.53896,-202.85266,-370.89847,R50</property>
+         name="sdm:polyPoints">T28,230.82343,-204.56511,-204.82649,-370.89844,R50</property>
    </ControlFlowCase>
    <View
       id="View51">
@@ -626,7 +626,7 @@
       <property
          name="fromOutcome">SerialEntry</property>
       <property
-         name="sdm:polyPoints">T83,258.74493,-206.53896,454.62112,-420.95715,B50</property>
+         name="sdm:polyPoints">T72,252.82343,-204.56511,454.6211,-422.931,B50</property>
    </ControlFlowCase>
    <View
       id="View53">
@@ -651,6 +651,33 @@
       <property
          name="fromOutcome">LotEntry</property>
       <property
-         name="sdm:polyPoints">T61,247.46393,-209.10095,279.83334,-449.89203,B50</property>
+         name="sdm:polyPoints">T57,245.49008,-206.2533,279.8333,-451.86588,B50</property>
+   </ControlFlowCase>
+   <View
+      id="View55">
+      <property
+         name="activityId">jobSearch</property>
+      <property
+         name="page">/dcom.shop.DispatchList/page/jobSearch.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>jobSearch&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">88.50131</property>
+      <property
+         name="x">-474.83328</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase56"
+      from="View55"
+      to="View3">
+      <property
+         name="fromOutcome">toDept</property>
+      <property
+         name="sdm:polyPoints">T50,-474.83328,34.268227,-475.85416,-56.397175,B50</property>
    </ControlFlowCase>
 </SDM>

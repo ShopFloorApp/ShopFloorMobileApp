@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+    <amx:panelPage id="pp1">
+        <amx:verbatim id="v1">
+         <![CDATA[
+        <script type="text/javascript">
+        function scanBarcodeFromJavaBean(options)
+        {
+            cordova.plugins.barcodeScanner.scan(
+              function(result)
+              {
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                       "value": result.text}, 
+                                       function() {}, 
+                                       function() {});
+              },
+              function(error)
+              {
+                alert("Scanning failed: " + error);
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                        "value": "Error = " + error.text }, 
+                                        function() {}, 
+                                        function() {});
+              }
+            );
+        }
+        </script>
+    ]]></amx:verbatim>
+        <amx:facet name="header">
+            <amx:outputText value="Job Search" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
+                             disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
+                             styleClass="custom-springboard-link">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:outputHtml id="oh1" styleClass="fa fa-bars fa-2x"
+                                inlineStyle="margin-top:-4px; position:relative;"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:facet name="footer">
+            <amx:panelGroupLayout id="pgl1">
+                <amx:commandButton text="Departments" id="cb1" action="toDept"/>
+            </amx:panelGroupLayout>
+        </amx:facet>
+        <amx:panelGroupLayout layout="horizontal" id="pgl6" halign="center" inlineStyle="margin:10px; margin-top:20px;">
+            <amx:panelGroupLayout layout="horizontal"
+                                  inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid;"
+                                  id="pgl7">
+                <amx:inputText hintText="Job" inlineStyle="text-align:left;" id="it6"
+                               value="#{pageFlowScope.searchJobKeyword}"/>
+                <amx:commandLink id="cl12">
+                    <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                </amx:commandLink>
+            </amx:panelGroupLayout>
+            <amx:commandLink id="cl13" actionListener="#{viewScope.BarcodeBean.scanBarcode}"
+                             inlineStyle="margin-left:20px;">
+                <amx:outputHtml id="oh11" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC; "/>
+                <amx:setPropertyListener id="spl11" from="Job" to="#{pageFlowScope.barCodeField}" type="action"/>
+            </amx:commandLink>
+        </amx:panelGroupLayout>
+    </amx:panelPage>
+</amx:view>

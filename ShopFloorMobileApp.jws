@@ -350,7 +350,12 @@
                </list>
             </hash>
             <hash n="iosDeploymentOptions">
-               <value n="simulatorTarget" v="iPhone 6 (iOS 8.2 - iPhone 6)"/>
+               <value n="debugFlag" v="false"/>
+               <value n="iPadOrientationLandscapeLeft" v="false"/>
+               <value n="iPadOrientationLandscapeRight" v="false"/>
+               <value n="iPadOrientationPortrait" v="false"/>
+               <value n="iPadOrientationPortraitUpsideDown" v="false"/>
+               <value n="simulatorTarget" v="iPhone 5s (iOS 8.2 - iPhone 5s)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <hash n="mnfImageOptions">
@@ -392,7 +397,7 @@
                      <value n="portraitSplashScreenPath" v=""/>
                   </hash>
                </list>
-               <value n="imageResourceBaseDir" v="/Users/ajaysharma/jdeveloper/mywork/dev/resources/ios/"/>
+               <value n="imageResourceBaseDir" v="/Users/loaner/jdeveloper/mywork/ShopFloor/resources/ios/"/>
                <value n="IPAD_NON_RETINA_7_APP_IMAGE" v="resources/ios/Icon-76.png"/>
                <value n="IPAD_NON_RETINA_7_HORIZ_SPLASH" v="resources/ios/Default-LandscapeRetina.png"/>
                <value n="IPAD_NON_RETINA_7_PORT_SPLASH" v="resources/ios/Default-PortraitRetina.png"/>

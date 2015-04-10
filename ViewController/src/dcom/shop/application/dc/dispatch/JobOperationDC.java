@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 
@@ -23,6 +24,7 @@ public class JobOperationDC extends AViewObject {
     protected static List<JobOperationBO> jobOpList = new ArrayList<JobOperationBO>();
     private ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private static boolean isSortOperation = false;
+    private static boolean isJobSearch =false;
 
     public JobOperationDC() {
         super();
@@ -30,17 +32,21 @@ public class JobOperationDC extends AViewObject {
 
     public JobOperationBO[] getJobOperationBO() {
         JobOperationBO[] sJobOperation = null;
-        if (!isSortOperation) {
-            jobOpList.clear();
-            if (isOffline()) {
-                jobOpList = getCollectionFromDB(JobOperationDC.class);
-                sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+        if (!isJobSearch) {
+            if (!isSortOperation) {
+                jobOpList.clear();
+                if (isOffline()) {
+                    jobOpList = getCollectionFromDB(JobOperationDC.class);
+                    sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+                } else {
+                    getFromWS();
+                    sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+                }
             } else {
-                getFromWS();
-                sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+                isSortOperation = false;
+                return sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
             }
-        } else {
-            isSortOperation = false;
+        }else{
             return sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
         }
         return sJobOperation;
@@ -50,7 +56,18 @@ public class JobOperationDC extends AViewObject {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobOperationBO[] jobOprArray = null;
         String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
-        String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
+        String deptCode = null;
+        try {
+            deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
+        } catch (AdfException ae) {
+            deptCode = "";
+        }
+        String jobOp = null;
+        try {
+            jobOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchJobKeyword}").toString();
+        } catch (AdfException ae) {
+            jobOp = "";
+        }
 
         StringBuffer inputPayload = new StringBuffer();
         inputPayload.append("{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
@@ -58,7 +75,8 @@ public class JobOperationDC extends AViewObject {
                             "      \"RespApplication\": \"ONT\",\n" + "      \"SecurityGroup\": \"STANDARD\",\n" +
                             "      \"NLSLanguage\": \"AMERICAN\",\n" + "      \"Org_Id\": \"82\"\n" + "    },\n" +
                             "    \"InputParameters\": {\n" + "      \"PORGCODE\": \"" + orgCode + "\",\n" +
-                            "      \"PDEPTCODE\": \"" + deptCode + "\"\n" + "    }\n" + "  }\n" + "}");
+                            "      \"PDEPTCODE\": \"" + deptCode + "\",\n" + "      \"PJOB\":\"" + jobOp + "\"\n" +
+                            "    }\n" + "  }\n" + "}");
 
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetJobOp(), inputPayload.toString());
         if (jsonArrayAsString != null) {
@@ -169,5 +187,25 @@ public class JobOperationDC extends AViewObject {
             String message = "Please select a Job action!";
         }
 
+    }
+
+    public void searchJobNumber() {
+        String searchKeyword = null;
+        String whereClause = null;
+        
+        isJobSearch=true;
+        try {
+            searchKeyword = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchJobKeyword}").toString();
+            whereClause = "WHERE JOBNUMBER LIKE '" + searchKeyword + "%'";
+        } catch (AdfException ae) {
+            whereClause = "WHERE 1=1";
+        }
+        if (isOffline()) {
+            jobOpList = super.getFilteredCollectionFromDB(JobOperationBO.class, whereClause);
+        } else {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.deptName}", "");
+            getFromWS();
+        }
+        providerChangeSupport.fireProviderRefresh("jobOperationBO");
     }
 }
