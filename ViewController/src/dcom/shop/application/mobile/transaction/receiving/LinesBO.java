@@ -16,6 +16,8 @@ public class LinesBO {
     private String Lpn;
     private String isNewEntity;
     private Integer receiveTxnId;
+    private String docRefLine;
+    private String shipmentLine;
     private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -27,6 +29,26 @@ public class LinesBO {
 
     public Integer getRowLineIdx() {
         return rowLineIdx;
+    }
+
+    public void setDocRefLine(String docRefLine) {
+        String oldDocRefLine = this.docRefLine;
+        this.docRefLine = docRefLine;
+        propertyChangeSupport.firePropertyChange("docRefLine", oldDocRefLine, docRefLine);
+    }
+
+    public String getDocRefLine() {
+        return docRefLine;
+    }
+
+    public void setShipmentLine(String shipmentLine) {
+        String oldShipmentLine = this.shipmentLine;
+        this.shipmentLine = shipmentLine;
+        propertyChangeSupport.firePropertyChange("shipmentLine", oldShipmentLine, shipmentLine);
+    }
+
+    public String getShipmentLine() {
+        return shipmentLine;
     }
 
     public void setBOClassRow(HashMap hashMap) {
@@ -141,7 +163,7 @@ public class LinesBO {
     public LinesBO() {
         super();
     }
-    public LinesBO(Integer rowIdx,String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String isNewEntity) {
+    public LinesBO(Integer rowIdx,String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String docRefLine,String shipmentLine,String isNewEntity) {
         super();
         this.rowLineIdx=rowIdx;
         this.Lines=line;
@@ -151,6 +173,8 @@ public class LinesBO {
         this.isNewEntity=isNewEntity;
         this.Uom=Uom;
         this.Lpn=Lpn;
+        this.docRefLine=docRefLine;
+        this.shipmentLine=shipmentLine;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

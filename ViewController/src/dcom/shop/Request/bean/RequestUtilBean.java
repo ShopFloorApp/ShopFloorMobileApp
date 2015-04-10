@@ -1,5 +1,6 @@
 package dcom.shop.Request.bean;
 
+import dcom.shop.application.dc.txn.ConcurrentProgramDC;
 import dcom.shop.application.mobile.txn.ConcProgramParamLovBO;
 import dcom.shop.application.mobile.txn.ConcProgramParamsBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -16,6 +17,7 @@ import javax.el.MethodExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
 
@@ -174,6 +176,10 @@ public class RequestUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.endDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.dateType}", null);
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.searchRequests.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
     public void getRequestByRequestId(ActionEvent ae){
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.requestIdS}", AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.requestId}"));
@@ -185,6 +191,15 @@ public class RequestUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.startDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.endDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.dateType}", null);
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.searchRequests.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public void callJS(String btn){
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] {btn});
     }
     
     public void getRefParamValForLov(ActionEvent ae){
@@ -232,6 +247,17 @@ public class RequestUtilBean {
         if(seqNo!=null){
             param.valueMap.put(seqNo, selectedValue);
             param.valueDispMap.put(seqNo, selectedDispValue);
+        }
+    }
+    
+    public void searchRequest(ActionEvent ae){
+        ConcurrentProgramDC cp=new ConcurrentProgramDC();
+        cp.searchRequests();
+        Integer requestCount=cp.s_requests.size();
+        if(requestCount==0){
+            callJS("cb4");
+        }else{
+            callJS("cb3");
         }
     }
 }

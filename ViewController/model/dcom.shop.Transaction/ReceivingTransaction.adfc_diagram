@@ -140,7 +140,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L50,700.70605,388.79883,461.62402,342.84473,R50</property>
+         name="sdm:polyPoints">L50,700.70605,388.79883,461.6442,342.84473,R50</property>
    </ControlFlowCase>
    <View
       id="View13">
@@ -338,7 +338,7 @@
       <property
          name="fromOutcome">success</property>
       <property
-         name="sdm:polyPoints">R58,460.0,349.84473,658.0,519.2471,L42</property>
+         name="sdm:polyPoints">R58,460.0,349.84473,658.0,522.7471,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -348,7 +348,7 @@
       <property
          name="fromOutcome">success</property>
       <property
-         name="sdm:polyPoints">R46,588.0,596.7471,655.04205,526.2471,L50</property>
+         name="sdm:polyPoints">R46,588.0,596.7471,658.0,529.7471,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

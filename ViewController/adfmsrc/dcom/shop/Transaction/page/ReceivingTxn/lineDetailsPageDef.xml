@@ -163,5 +163,15 @@
         <Item Value="locator"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="docRefLine">
+      <AttrNames>
+        <Item Value="docRefLine"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="shipmentLinesIterator" id="shipmentLine">
+      <AttrNames>
+        <Item Value="shipmentLine"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

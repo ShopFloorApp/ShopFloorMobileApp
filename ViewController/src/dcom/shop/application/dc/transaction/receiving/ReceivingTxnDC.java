@@ -805,9 +805,9 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
-            "                   {\"PORGCODE\": \""+orgCode+"\",\n" +
-            "                   \"PDOCTYPE\": \""+shipmentList.get(0).getDocType()+"\",\n" +
-            "                   \"PDOCREF\": \""+shipmentList.get(0).getDocRef()+"\",\n" +
+            "                   {\"ORGCODE\": \""+orgCode+"\",\n" +
+            "                   \"DOCTYPE\": \""+shipmentList.get(0).getDocType()+"\",\n" +
+            "                   \"DOCREF\": \""+shipmentList.get(0).getDocRef()+"\",\n" +
             "                   \"CARRIER\": \""+shipmentList.get(0).getCarrier()+"\",\n" +
             "                   \"PACKINGSLIP\": \""+shipmentList.get(0).getPackingSlip()+"\",\n" +
             "                   \"BOL\": \""+shipmentList.get(0).getBol()+"\",\n" +

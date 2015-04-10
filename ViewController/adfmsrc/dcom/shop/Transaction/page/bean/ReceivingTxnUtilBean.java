@@ -6,6 +6,7 @@ import dcom.shop.application.mobile.transaction.receiving.LinesBO;
 
 import dcom.shop.application.mobile.transaction.receiving.PurchaseOrderBO;
 import dcom.shop.application.mobile.transaction.receiving.SalesOrderBO;
+import dcom.shop.application.mobile.transaction.receiving.ShipmentLinesBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
@@ -17,6 +18,7 @@ import javax.el.MethodExpression;
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.javax.faces.model.SelectItem;
 import oracle.adfmf.util.Utility;
 
@@ -83,6 +85,8 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.locator2.inputValue}"));
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}"));
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.uom.inputValue}"));
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.docRefLineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.docRefLine.inputValue}"));
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.shipmentLine.inputValue}"));
     }
     
     public void addRecord(ActionEvent ae){
@@ -96,8 +100,11 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.docRefLineAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", null);
     }
     public void updateRecord(ActionEvent ae){
+        quantityValidation(ae);
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowIdxAdd}");
         ArrayList coll = (ArrayList) receiveDc.s_lines;
                 for(int i=0;i<receiveDc.s_lines.size();i++){
@@ -114,7 +121,24 @@ public class ReceivingTxnUtilBean {
         String quantity = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uomAdd}");
         String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnAdd}");
-        ReceivingTxnDC.s_lines.add(new LinesBO(currentItem,line,subInv,locator,quantity,uom,lpn,"Y"));
+        String docRefLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.docRefLineAdd}");
+        String shipmentLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipmentLineAdd}");
+        ReceivingTxnDC.s_lines.add(new LinesBO(currentItem,line,subInv,locator,quantity,uom,lpn,docRefLine,shipmentLine,"Y"));
+    
+    ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
+        for(int j=0;j<receiveDc.s_lines.size();j++){
+            ShipmentLinesBO lines = (ShipmentLinesBO) receiveDc.s_lines.get(j);
+            if(lines.getDocRefLine().equalsIgnoreCase(docRefLine) && lines.getShipmentLine().equalsIgnoreCase(shipmentLine)){
+                String lineQty=lines.getQty();
+                Integer availableQty=Integer.parseInt(lineQty)-Integer.parseInt(quantity);
+                if(availableQty==0){
+                    linColl.remove(j); 
+                }else{
+                    ((ShipmentLinesBO)linColl.remove(j)).setQty(availableQty.toString());
+                }
+            }
+        }
+        receiveDc.s_shipmentLines=linColl;
     }
     public void removeRecords(ActionEvent ae){
         receiveDc.s_lines.clear();
@@ -139,6 +163,19 @@ public class ReceivingTxnUtilBean {
         addRecord(ae);
     }
     
+    public void quantityValidation(ActionEvent ae){
+        String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
+        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}");
+        if (quantityEntered==null){
+            quantityEntered="0";
+        }
+        if (quantityReceivable==null){
+            quantityReceivable="0";
+        }
+        if(Integer.parseInt(quantityEntered)>Integer.parseInt(quantityReceivable)){
+            throw new AdfException("Entered quantity exceeds receivable Qty", AdfException.ERROR);
+        }
+    }
     public void clearReceiveTypePage(ActionEvent ae){
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);

@@ -56,6 +56,8 @@
           <Item Value="uom"/>
           <Item Value="receiveTxnId"/>
           <Item Value="rowLineIdx"/>
+          <Item Value="docRefLine"/>
+          <Item Value="shipmentLine"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

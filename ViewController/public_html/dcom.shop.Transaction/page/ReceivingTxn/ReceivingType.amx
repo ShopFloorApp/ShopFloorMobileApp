@@ -129,6 +129,8 @@
         <amx:setPropertyListener id="spl4" from="#{row.quantity}" to="#{pageFlowScope.quantityAdd}"/>
         <amx:setPropertyListener id="spl5" from="#{row.uom}" to="#{pageFlowScope.uomAdd}"/>
         <amx:setPropertyListener id="spl6" from="#{row.lpn}" to="#{pageFlowScope.lpnAdd}"/>
+        <amx:setPropertyListener id="spl11" from="#{row.docRefLine}" to="#{pageFlowScope.docRefLineAdd}"/>
+        <amx:setPropertyListener id="spl12" from="#{row.shipmentLine}" to="#{pageFlowScope.shipmentLineAdd}"/>
       </amx:listItem>
     </amx:listView>
     <amx:facet name="footer">
