@@ -136,6 +136,7 @@ public class ConcProgramParamsBO extends AEntity {
 
     public void setParamValue(String paramValue) {
         String oldParamValue = this.paramValue;
+        valueMap.put(this.getSeqNum(), getAttributeValue(paramValue));
         this.paramValue = paramValue;
         propertyChangeSupport.firePropertyChange("paramValue", oldParamValue, paramValue);
     }

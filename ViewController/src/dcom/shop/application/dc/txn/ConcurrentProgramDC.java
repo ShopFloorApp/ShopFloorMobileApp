@@ -31,7 +31,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ConcurrentProgramDC extends SyncUtils {
-    protected static List s_requests = new ArrayList();
+    public static List s_requests = new ArrayList();
     protected static List s_concurrentProgram = new ArrayList();
     protected static List s_concurrentProgramParams = new ArrayList();
     public static List s_concurrentProgramParamLov = new ArrayList();
@@ -139,8 +139,8 @@ public class ConcurrentProgramDC extends SyncUtils {
     public void refreshFilteredConcurrentPrograms() {
         providerChangeSupport.fireProviderRefresh("filteredConcurrentPrograms");
     }
-
-    public RequestsBO[] getRequest() {
+    
+    public void searchRequests(){
         s_requests.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -155,7 +155,12 @@ public class ConcurrentProgramDC extends SyncUtils {
         String status = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.status}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.status}"));
         String startdate = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.startDate}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.startDate}"));
         String enddate = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.endDate}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.endDate}"));
-        String dateType=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.dateType}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.dateType}"));
+        String dateType=String.valueOf((AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.dateType}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.dateType}")));
+        if(dateType.equalsIgnoreCase("true")){
+            dateType="START";
+        }else{
+            dateType="COMPL";
+        }
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
             "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
@@ -191,14 +196,14 @@ public class ConcurrentProgramDC extends SyncUtils {
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XREQUEST");
                 if(jsObject1==null){
-                    return null;
+                    return ;
                 }
                 JSONArray array = (JSONArray) jsObject1.get("XREQUEST_ITEM");
                 
                 if (array != null) {
                     int size = array.size();
-//                    RequestsBO requestItem = new RequestsBO();
-//                    s_requests.add(requestItem);
+        //                    RequestsBO requestItem = new RequestsBO();
+        //                    s_requests.add(requestItem);
                     for (int i = 0; i < size; i++) {
 
                         RequestsBO requestItems = new RequestsBO();
@@ -224,9 +229,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                         s_requests.add(requestItems);
 
                     }
-                    RequestsBO[] requestArray =
-                        (RequestsBO[]) s_requests.toArray(new RequestsBO[s_requests.size()]);
-                    return requestArray;
+                  
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -258,17 +261,21 @@ public class ConcurrentProgramDC extends SyncUtils {
                 requestItems.setOutPutSize((jsObject2.get("OUTPUTSIZE").toString()));
 
                 s_requests.add(requestItems);
-                RequestsBO[] requestArray =
-                    (RequestsBO[]) s_requests.toArray(new RequestsBO[s_requests.size()]);
-                return requestArray;
+
                 }catch(ParseException e) {
                 e.getMessage();
                 }
             }
         } else {
-            return null;
+            return ;
         }
-        return null;
+        return ;
+    }
+
+    public RequestsBO[] getRequest() {
+        RequestsBO[] requestArray =
+            (RequestsBO[]) s_requests.toArray(new RequestsBO[s_requests.size()]);
+        return requestArray;
     }
 
     public void populateProgramsParams(){
@@ -333,6 +340,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                         concProgramParamsItems.setRefParam4((jsObject2.get("REFPARAM4").toString()));
                         concProgramParamsItems.setRefParam5((jsObject2.get("REFPARAM5").toString()));
                         concProgramParamsItems.setParamDispValue((jsObject2.get("DEFAULTVALUE").toString()));
+                        concProgramParamsItems.setParamValue((jsObject2.get("DEFAULTREF").toString()));
 
                         s_concurrentProgramParams.add(concProgramParamsItems);
 
@@ -368,6 +376,7 @@ public class ConcurrentProgramDC extends SyncUtils {
                     concProgramParamsItem.setRefParam4((jsObject2.get("REFPARAM4").toString()));
                     concProgramParamsItem.setRefParam5((jsObject2.get("REFPARAM5").toString()));
                     concProgramParamsItem.setParamDispValue((jsObject2.get("DEFAULTVALUE").toString()));
+                    concProgramParamsItem.setParamValue((jsObject2.get("DEFAULTREF").toString()));
                     
                     s_concurrentProgramParams.add(concProgramParamsItem);
 
