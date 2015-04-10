@@ -20,6 +20,8 @@
             <amx:listItem id="li2" action="pickRel" showLinkIcon="false">
                 <amx:outputText value="Perform Pick Release" id="ot3"/>
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.Event}" from="true" type="action"/>
+                <amx:setPropertyListener id="spl2" to="#{pageFlowScope.documnetNumber}" type="action"/>
+                <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pickRule}" from="10" type="action"/>
             </amx:listItem>
             <amx:listItem id="li3" showLinkIcon="false">
                 <amx:outputText value="Paper Based Pick" id="ot4"/>

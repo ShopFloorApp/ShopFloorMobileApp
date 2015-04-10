@@ -150,8 +150,8 @@ public class ReceivingTxnDC extends SyncUtils{
                         
                         //LinesBO[] salesOrderLines
                         JSONArray lines= (JSONArray)jsObject2.get("LINES");
-                        if (array != null) {
-                            int lineSize = array.size();
+                        if (lines != null) {
+                            int lineSize = lines.size(); // array.size();
                             for (int j = 0; j < lineSize; j++) {
                                 SalesOrderLineBO lineItem=new SalesOrderLineBO();
                                 JSONObject jsLine = (JSONObject)lines.get(j);

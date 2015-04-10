@@ -63,7 +63,12 @@ public class transactionUtil {
                     
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRelStatus}", status);
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRelMsg}", message);
-
+                   
+                    if(status.equalsIgnoreCase("S")){
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.pickRule}", "10");
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.Event}", Boolean.TRUE);
+                    }
 
                     
                 } catch (ParseException e) {

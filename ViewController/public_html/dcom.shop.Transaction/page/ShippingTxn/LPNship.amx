@@ -44,25 +44,71 @@
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
     <amx:facet name="footer">
-      <amx:tableLayout id="tl1">
-        <amx:rowLayout id="rl1">
-          <amx:cellFormat id="cf1"/>
-          <amx:cellFormat id="cf2"/>
-          <amx:cellFormat id="cf3"/>
-          <amx:cellFormat id="cf4"/>
-        </amx:rowLayout>
+      <amx:tableLayout id="tl1" width="100%">
         <amx:rowLayout id="rl2">
-          <amx:cellFormat id="cf5">
-            <amx:outputHtml id="oh5"/>
+          <amx:cellFormat id="cf5" halign="center" width="33%">
+            <amx:commandLink id="cl5">
+              <amx:tableLayout id="tl2">
+                <amx:rowLayout id="rl1">
+                  <amx:cellFormat id="cf1" halign="center">
+                    <amx:outputHtml id="oh5" styleClass="fa fa-ship fa-lg" inlineStyle="color:Gray;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl3">
+                  <amx:cellFormat id="cf2" halign="center">
+                    <amx:outputHtml id="oh9" value="Ship" inlineStyle="font-size:small;color:Gray;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:commandLink>
           </amx:cellFormat>
-          <amx:cellFormat id="cf6">
-            <amx:outputHtml id="oh8"/>
+          <amx:cellFormat id="cf6" width="33%">
+            <amx:commandLink id="cl6">
+              <amx:tableLayout id="tl3">
+                <amx:rowLayout id="rl4">
+                  <amx:cellFormat id="cf3" halign="center">
+                    <amx:outputHtml id="oh6" inlineStyle="color:Gray;" styleClass="fa fa-mail-forward fa-lg"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl5">
+                  <amx:cellFormat id="cf4" halign="center">
+                    <amx:outputHtml id="oh7" value="Load" inlineStyle="font-size:small;color:Gray;"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:commandLink>
           </amx:cellFormat>
-          <amx:cellFormat id="cf7">
-            <amx:outputHtml id="oh7"/>
+          <amx:cellFormat id="cf7" width="1%">
+            <amx:commandLink id="cl7">
+              <amx:tableLayout id="tl4">
+                <amx:rowLayout id="rl6">
+                  <amx:cellFormat id="cf9">
+                    <amx:outputHtml id="oh8"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl7">
+                  <amx:cellFormat id="cf10">
+                    <amx:outputHtml id="oh10"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:commandLink>
           </amx:cellFormat>
-          <amx:cellFormat id="cf8">
-            <amx:outputHtml id="oh6"/>
+          <amx:cellFormat id="cf8" width="33%">
+            <amx:commandLink id="cl8">
+              <amx:tableLayout id="tl5">
+                <amx:rowLayout id="rl8">
+                  <amx:cellFormat id="cf11" halign="center">
+                    <amx:outputHtml id="oh11" inlineStyle="color:Gray;" styleClass="fa fa-download fa-lg"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+                <amx:rowLayout id="rl9">
+                  <amx:cellFormat id="cf12" halign="center">
+                    <amx:outputHtml id="oh12" inlineStyle="font-size:small;color:Gray;" value="Unload"/>
+                  </amx:cellFormat>
+                </amx:rowLayout>
+              </amx:tableLayout>
+            </amx:commandLink>
           </amx:cellFormat>
         </amx:rowLayout>
       </amx:tableLayout>
