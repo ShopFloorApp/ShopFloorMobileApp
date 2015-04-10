@@ -13,15 +13,15 @@ public class MtlTxnSearchEntity extends AEntity  {
     public MtlTxnSearchEntity() {
         super();
     }
-    private int TRXREF;
+    private Integer TRXREF;
 
-    public void setTRXREF(int TRXREF) {
-        int oldTRXREF = this.TRXREF;
+    public void setTRXREF(Integer TRXREF) {
+        Integer oldTRXREF = this.TRXREF;
         this.TRXREF = TRXREF;
         propertyChangeSupport.firePropertyChange("TRXREF", oldTRXREF, TRXREF);
     }
 
-    public int getTRXREF() {
+    public Integer getTRXREF() {
         return TRXREF;
     }
 
@@ -165,13 +165,13 @@ public class MtlTxnSearchEntity extends AEntity  {
         return COSTED;
     }
 
-    public void setTRXQTY(int TRXQTY) {
-        int oldTRXQTY = this.TRXQTY;
+    public void setTRXQTY(Integer TRXQTY) {
+        Integer oldTRXQTY = this.TRXQTY;
         this.TRXQTY = TRXQTY;
         propertyChangeSupport.firePropertyChange("TRXQTY", oldTRXQTY, TRXQTY);
     }
 
-    public int getTRXQTY() {
+    public Integer getTRXQTY() {
         return TRXQTY;
     }
 
@@ -274,7 +274,7 @@ public class MtlTxnSearchEntity extends AEntity  {
     private String DESTLOCATOR;
     private String SOURCECODE;
     private String COSTED;
-    private int TRXQTY;
+    private Integer TRXQTY;
     private String TXNUOM;
     private String GLACCOUNT;
     private String ACCOUNTALIAS;

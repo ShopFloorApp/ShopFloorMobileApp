@@ -75,63 +75,63 @@ public class OnHandDetailsEntity  extends AEntity  {
         return COSTGROUP;
     }
 
-    public void setONHANDQTY(int ONHANDQTY) {
-        int oldONHANDQTY = this.ONHANDQTY;
+    public void setONHANDQTY(Integer ONHANDQTY) {
+        Integer oldONHANDQTY = this.ONHANDQTY;
         this.ONHANDQTY = ONHANDQTY;
         propertyChangeSupport.firePropertyChange("ONHANDQTY", oldONHANDQTY, ONHANDQTY);
     }
 
-    public int getONHANDQTY() {
+    public Integer getONHANDQTY() {
         return ONHANDQTY;
     }
 
-    public void setAVAILABLEQTY(int AVAILABLEQTY) {
-        int oldAVAILABLEQTY = this.AVAILABLEQTY;
+    public void setAVAILABLEQTY(Integer AVAILABLEQTY) {
+        Integer oldAVAILABLEQTY = this.AVAILABLEQTY;
         this.AVAILABLEQTY = AVAILABLEQTY;
         propertyChangeSupport.firePropertyChange("AVAILABLEQTY", oldAVAILABLEQTY, AVAILABLEQTY);
     }
 
-    public int getAVAILABLEQTY() {
+    public Integer getAVAILABLEQTY() {
         return AVAILABLEQTY;
     }
 
-    public void setPACKEDQTY(int PACKEDQTY) {
-        int oldPACKEDQTY = this.PACKEDQTY;
+    public void setPACKEDQTY(Integer PACKEDQTY) {
+        Integer oldPACKEDQTY = this.PACKEDQTY;
         this.PACKEDQTY = PACKEDQTY;
         propertyChangeSupport.firePropertyChange("PACKEDQTY", oldPACKEDQTY, PACKEDQTY);
     }
 
-    public int getPACKEDQTY() {
+    public Integer getPACKEDQTY() {
         return PACKEDQTY;
     }
 
-    public void setLOOSEQTY(int LOOSEQTY) {
-        int oldLOOSEQTY = this.LOOSEQTY;
+    public void setLOOSEQTY(Integer LOOSEQTY) {
+        Integer oldLOOSEQTY = this.LOOSEQTY;
         this.LOOSEQTY = LOOSEQTY;
         propertyChangeSupport.firePropertyChange("LOOSEQTY", oldLOOSEQTY, LOOSEQTY);
     }
 
-    public int getLOOSEQTY() {
+    public Integer getLOOSEQTY() {
         return LOOSEQTY;
     }
 
-    public void setRECEIVINGQTY(int RECEIVINGQTY) {
-        int oldRECEIVINGQTY = this.RECEIVINGQTY;
+    public void setRECEIVINGQTY(Integer RECEIVINGQTY) {
+        Integer oldRECEIVINGQTY = this.RECEIVINGQTY;
         this.RECEIVINGQTY = RECEIVINGQTY;
         propertyChangeSupport.firePropertyChange("RECEIVINGQTY", oldRECEIVINGQTY, RECEIVINGQTY);
     }
 
-    public int getRECEIVINGQTY() {
+    public Integer getRECEIVINGQTY() {
         return RECEIVINGQTY;
     }
 
-    public void setINBOUNDQTY(int INBOUNDQTY) {
-        int oldINBOUNDQTY = this.INBOUNDQTY;
+    public void setINBOUNDQTY(Integer INBOUNDQTY) {
+        Integer oldINBOUNDQTY = this.INBOUNDQTY;
         this.INBOUNDQTY = INBOUNDQTY;
         propertyChangeSupport.firePropertyChange("INBOUNDQTY", oldINBOUNDQTY, INBOUNDQTY);
     }
 
-    public int getINBOUNDQTY() {
+    public Integer getINBOUNDQTY() {
         return INBOUNDQTY;
     }
     private String ITEMDESC;
@@ -139,12 +139,12 @@ public class OnHandDetailsEntity  extends AEntity  {
     private String SUBINV;
     private String LOCATOR;
     private String COSTGROUP;
-    private int ONHANDQTY;
-    private int AVAILABLEQTY;
-    private int PACKEDQTY;
-    private int LOOSEQTY;
-    private int RECEIVINGQTY;
-    private int INBOUNDQTY;
+    private Integer ONHANDQTY;
+    private Integer AVAILABLEQTY;
+    private Integer PACKEDQTY;
+    private Integer LOOSEQTY;
+    private Integer RECEIVINGQTY;
+    private Integer INBOUNDQTY;
 
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

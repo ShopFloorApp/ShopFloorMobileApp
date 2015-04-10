@@ -65,31 +65,31 @@ public class OnHandSearchEntity  extends AEntity  {
         return COSTGROUP;
     }
 
-    public void setONHANDQTY(int ONHANDQTY) {
-        int oldONHANDQTY = this.ONHANDQTY;
+    public void setONHANDQTY(Integer ONHANDQTY) {
+        Integer oldONHANDQTY = this.ONHANDQTY;
         this.ONHANDQTY = ONHANDQTY;
         propertyChangeSupport.firePropertyChange("ONHANDQTY", oldONHANDQTY, ONHANDQTY);
     }
 
-    public int getONHANDQTY() {
+    public Integer getONHANDQTY() {
         return ONHANDQTY;
     }
 
-    public void setAVAILABLEQTY(int AVAILABLEQTY) {
-        int oldAVAILABLEQTY = this.AVAILABLEQTY;
+    public void setAVAILABLEQTY(Integer AVAILABLEQTY) {
+        Integer oldAVAILABLEQTY = this.AVAILABLEQTY;
         this.AVAILABLEQTY = AVAILABLEQTY;
         propertyChangeSupport.firePropertyChange("AVAILABLEQTY", oldAVAILABLEQTY, AVAILABLEQTY);
     }
 
-    public int getAVAILABLEQTY() {
+    public Integer getAVAILABLEQTY() {
         return AVAILABLEQTY;
     }
     private String ITEMDESC;    
     private String SUBINV;    
     private String LOCATOR;    
     private String COSTGROUP;    
-    private int ONHANDQTY;  
-    private int AVAILABLEQTY;
+    private Integer ONHANDQTY;  
+    private Integer AVAILABLEQTY;
 
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
