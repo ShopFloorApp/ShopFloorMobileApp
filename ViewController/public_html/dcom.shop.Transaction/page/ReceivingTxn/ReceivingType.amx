@@ -70,7 +70,7 @@
         <amx:inputText label="Waybill/Airbill" id="it4" value="#{pageFlowScope.wayAirBill}"/>
         <amx:inputText label="Shipment" id="it5" value="#{pageFlowScope.shipment}" required="true" showRequired="true"/>
         <amx:inputDate label="Shipped Date" id="id1" value="#{pageFlowScope.shippedDate}" required="true"
-                       showRequired="true" inputType="datetime"/>
+                       showRequired="true"/>
         <amx:inputText label="Comments" id="it6" rows="4" value="#{pageFlowScope.comments}"/>
       </amx:panelFormLayout>
     </amx:validationGroup>

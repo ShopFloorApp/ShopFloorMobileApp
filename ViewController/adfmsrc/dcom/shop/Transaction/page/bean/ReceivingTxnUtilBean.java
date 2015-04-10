@@ -104,7 +104,7 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", null);
     }
     public void updateRecord(ActionEvent ae){
-        quantityValidation(ae);
+//        quantityValidation(ae);
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowIdxAdd}");
         ArrayList coll = (ArrayList) receiveDc.s_lines;
                 for(int i=0;i<receiveDc.s_lines.size();i++){
@@ -125,20 +125,20 @@ public class ReceivingTxnUtilBean {
         String shipmentLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipmentLineAdd}");
         ReceivingTxnDC.s_lines.add(new LinesBO(currentItem,line,subInv,locator,quantity,uom,lpn,docRefLine,shipmentLine,"Y"));
     
-    ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
-        for(int j=0;j<receiveDc.s_lines.size();j++){
-            ShipmentLinesBO lines = (ShipmentLinesBO) receiveDc.s_lines.get(j);
-            if(lines.getDocRefLine().equalsIgnoreCase(docRefLine) && lines.getShipmentLine().equalsIgnoreCase(shipmentLine)){
-                String lineQty=lines.getQty();
-                Integer availableQty=Integer.parseInt(lineQty)-Integer.parseInt(quantity);
-                if(availableQty==0){
-                    linColl.remove(j); 
-                }else{
-                    ((ShipmentLinesBO)linColl.remove(j)).setQty(availableQty.toString());
-                }
-            }
-        }
-        receiveDc.s_shipmentLines=linColl;
+//    ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
+//        for(int j=0;j<receiveDc.s_lines.size();j++){
+//            ShipmentLinesBO lines = (ShipmentLinesBO) receiveDc.s_lines.get(j);
+//            if(lines.getDocRefLine().equalsIgnoreCase(docRefLine) && lines.getShipmentLine().equalsIgnoreCase(shipmentLine)){
+//                String lineQty=lines.getQty();
+//                Integer availableQty=Integer.parseInt(lineQty)-Integer.parseInt(quantity);
+//                if(availableQty==0){
+//                    linColl.remove(j); 
+//                }else{
+//                    ((ShipmentLinesBO)linColl.remove(j)).setQty(availableQty.toString());
+//                }
+//            }
+//        }
+//        receiveDc.s_shipmentLines=linColl;
     }
     public void removeRecords(ActionEvent ae){
         receiveDc.s_lines.clear();

@@ -704,7 +704,7 @@ public class ReceivingTxnDC extends SyncUtils{
         shipmentBO.setPackingSlip(packSlip);
         shipmentBO.setReceiveTxnId((Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}"));
         shipmentBO.setShipmentNum(shipment);
-        shipmentBO.setShippedDate(shippedDate);
+        shipmentBO.setShippedDate(shippedDate.substring(0,10));
         shipmentBO.setVendor(customer);
         shipmentBO.setWayAirBill(wayAirBill);
         
@@ -746,8 +746,8 @@ public class ReceivingTxnDC extends SyncUtils{
         String linesJson="";
         if(linesList.size() > 0) {
             linesJson = "{\"LINES_ITEM\":[";
-            String lotJson=":{\"XXDCOM_LOT_TAB\":[";
-            String seriesJson=":{\"XXDCOM_SERIAL_TAB\":[";
+            String lotJson="{\"XXDCOM_LOT_TAB\":[";
+            String seriesJson="{\"XXDCOM_SERIAL_TAB\":[";
             for (int i = 0; i < linesList.size(); i++) {
                 ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
                 ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
@@ -786,7 +786,7 @@ public class ReceivingTxnDC extends SyncUtils{
                 linesJson =linesJson+
                     "{\"ITEM\":\"" + linesList.get(i).getLines() + "\",\"UOM\":\"" + linesList.get(i).getUom() +
                     "\",\"LPN\":\"" + linesList.get(i).getLpn() + "\",\"SUBINV\":\"" + linesList.get(i).getSubInv() +
-                    "\",\"LOCATOR\":\"" + linesList.get(i).getLocator() + "\",\"QTY\":\"" + linesList.get(i).getQuantity() +"\",\"LOTS\""+lotJson+",\"SERIALS\""+seriesJson+"},";
+                    "\",\"LOCATOR\":\"" + linesList.get(i).getLocator() + "\",\"QTY\":\"" + linesList.get(i).getQuantity() +"\",\"LOTS\":"+lotJson+",\"SERIALS\":"+seriesJson+"},";
             }
             linesJson=linesJson.substring(0,linesJson.length()-1);
             linesJson=linesJson+"]}";
@@ -804,8 +804,9 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + 
-            "                   {\"ORGCODE\": \""+orgCode+"\",\n" +
+            "                 },\n" + "   \"InputParameters\": \n" +
+            "                   {\"PRCVTXN\": {"+
+            "                   \"ORGCODE\": \""+orgCode+"\",\n" +
             "                   \"DOCTYPE\": \""+shipmentList.get(0).getDocType()+"\",\n" +
             "                   \"DOCREF\": \""+shipmentList.get(0).getDocRef()+"\",\n" +
             "                   \"CARRIER\": \""+shipmentList.get(0).getCarrier()+"\",\n" +
@@ -815,7 +816,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                   \"SHIPMENTNUM\": \""+shipmentList.get(0).getShipmentNum()+"\",\n" +
             "                   \"SHIPPEDDATE\": \""+shipmentList.get(0).getShippedDate()+"\",\n" +
             "                   \"COMMENTS\": \""+shipmentList.get(0).getComments()+"\",\n" +
-            "                    \"LINES\": "+linesJson+"\n }\n" + "}}" ;
+            "                    \"LINES\": "+linesJson+"\n }\n" + "}}}" ;
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
