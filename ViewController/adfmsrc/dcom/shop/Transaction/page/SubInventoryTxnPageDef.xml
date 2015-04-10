@@ -30,6 +30,7 @@
           <Item Value="txnuom"/>
           <Item Value="serialControl"/>
           <Item Value="lotControl"/>
+          <Item Value="completeFlag"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

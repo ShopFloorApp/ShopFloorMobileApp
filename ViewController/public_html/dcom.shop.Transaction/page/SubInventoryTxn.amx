@@ -96,7 +96,9 @@
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:commandLink id="cl2">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                                <amx:outputHtml id="oh2" styleClass="fa  fa-database fa-lg"
+                                <amx:outputHtml id="oh2" rendered="#{row.completeFlag eq 'N'}" styleClass="fa  fa-database fa-lg"
+                                                inlineStyle="color:#34AADC;"/>
+                                <amx:outputHtml id="oh4" rendered="#{row.completeFlag eq 'Y'}" styleClass="fa  fa-check fa-lg"
                                                 inlineStyle="color:#34AADC;"/>
                             </amx:commandLink>
                         </amx:cellFormat>

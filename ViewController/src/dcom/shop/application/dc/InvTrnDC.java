@@ -16,6 +16,8 @@ import java.util.List;
 import javax.el.MethodExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 
 public class InvTrnDC extends RestCallerUtil {
     public InvTrnDC() {
@@ -30,6 +32,7 @@ public class InvTrnDC extends RestCallerUtil {
     protected static List s_filteredLotTrxns = new ArrayList();
     protected static List s_filteredInvTrxns = new ArrayList();
     protected static List s_filteredMiscTrxns = new ArrayList();
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public void DeleteTransaction(Integer trxnId) {
         SyncUtils syncUtils = new SyncUtils();
@@ -96,6 +99,7 @@ public class InvTrnDC extends RestCallerUtil {
     public void ProcessWS(Integer trxnId) {
         String restURI = RestURI.PostInvTrxnURI();
         s_invTrxns.clear();
+        String jsonArrayAsString = null;
         SyncUtils sync = new SyncUtils();
         SubInventoryTxnBO invTxn = null;
         s_invTrxns = sync.getCollectionFromDB(SubInventoryTxnBO.class);
@@ -106,9 +110,9 @@ public class InvTrnDC extends RestCallerUtil {
             invTxn = invTxnArray[0];
         }
         s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
-        filterSerials();
+        filterSerials(invTxn.getTrxnId());
         s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
-        filterLots();
+        filterLots(invTxn.getTrxnId());
         String lpn = invTxn.getLPN(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnText}");
         String item =
             invTxn.getItemNumber(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
@@ -163,12 +167,18 @@ public class InvTrnDC extends RestCallerUtil {
         payload = payload.substring(0, payload.length() - 1);
         payload = payload + "]}\n" + "}}}}";
         try {
-            String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
+             jsonArrayAsString = super.invokeUPDATE(restURI, payload);
             System.out.println("Received response" + jsonArrayAsString);
         } catch (Exception e) {
             System.out.println("error " + e.toString());
         }
-
+        if(!("".equals(jsonArrayAsString))){
+            invTxn.setCompleteFlag("Y");
+            s_filteredInvTrxns.clear();
+            s_filteredInvTrxns.add(invTxn);
+            sync.updateSqlLiteTable(SubInventoryTxnBO.class, s_filteredInvTrxns);
+            providerChangeSupport.fireProviderRefresh("subinventories");
+        }
         //    throw new AdfException("Transaction completed", AdfException.INFO);
 
     }
@@ -181,7 +191,7 @@ public class InvTrnDC extends RestCallerUtil {
             HashMap filterFileds = new HashMap();
             String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
-            filterFileds.put("trxtype", trxnType);
+            //filterFileds.put("trxtype", trxnType);
 
 
             HashMap paramMap = new HashMap();
@@ -197,13 +207,13 @@ public class InvTrnDC extends RestCallerUtil {
         }
     }
 
-    public void filterSerials() {
+    public void filterSerials(Integer trxnId) {
         try {
             System.out.println("inside filter code");
             s_filteredSerialTrxns.clear();
 
             HashMap filterFileds = new HashMap();
-            Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+            //Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
             String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
             filterFileds.put("trxtype", trxnType);
@@ -222,13 +232,13 @@ public class InvTrnDC extends RestCallerUtil {
         }
     }
 
-    public void filterLots() {
+    public void filterLots(Integer trxnId) {
         try {
             System.out.println("inside filter code");
             s_filteredLotTrxns.clear();
 
             HashMap filterFileds = new HashMap();
-            Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+           // Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
             String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
             filterFileds.put("trxtype", trxnType);
@@ -348,9 +358,9 @@ public class InvTrnDC extends RestCallerUtil {
             invTxn = invTxnArray[0];
         }
         s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
-        filterSerials();
+        filterSerials(invTxn.getTrxnId());
         s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
-        filterLots();
+        filterLots(invTxn.getTrxnId());
         String item =
             invTxn.getItemNumber(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
@@ -406,5 +416,13 @@ public class InvTrnDC extends RestCallerUtil {
             System.out.println("error " + e.toString());
         }
 
+    }
+    
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
     }
 }
