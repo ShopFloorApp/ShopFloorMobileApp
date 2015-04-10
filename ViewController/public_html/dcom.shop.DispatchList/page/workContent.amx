@@ -35,9 +35,7 @@
                                          to="#{pageFlowScope.nextDept}" type="action"/>
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
-            <amx:commandLink id="cl7" actionListener="#{bindings.saveJobAction.execute}">
-                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
-            </amx:commandLink>
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveJobAction.execute}"/>
         </amx:facet>
         <amx:tableLayout id="tl1" width="100%" borderWidth="0">
             <amx:rowLayout id="rl1">

@@ -12,15 +12,13 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl2" inlineStyle="width:30px;" action="backToWorkContent"
-                             actionListener="#{bindings.saveTransaction.execute}"
-                             disabled="#{!bindings.saveTransaction.enabled}">
-                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
+            <amx:commandButton text="Save" id="cb1" action="backToWorkContent"
+                               actionListener="#{bindings.saveTransaction.execute}">
                 <amx:setPropertyListener id="spl1" from="#{bindings.dept.inputValue}"
                                          to="#{bindings.PDeptCode.inputValue}"/>
                 <amx:setPropertyListener id="spl2" from="#{bindings.jobOps.inputValue}"
                                          to="#{bindings.PJobOp.inputValue}"/>
-            </amx:commandLink>
+            </amx:commandButton>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:panelLabelAndMessage label="Sequence" id="plam4">

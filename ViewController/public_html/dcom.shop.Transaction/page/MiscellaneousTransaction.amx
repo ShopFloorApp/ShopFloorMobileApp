@@ -39,12 +39,10 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl7" action="bMM" actionListener="#{bindings.InsertMiscTransaction.execute}">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh5" styleClass="fa  fa-save fa-lg" inlineStyle="color:#34AADC;"/>
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.InsertMiscTransaction.execute}"
+                               action="bMM">
                 <amx:setPropertyListener id="spl8" from="SUBMIT" to="#{pageFlowScope.TrxnType}" type="action"/>
-                <!--amx:outputText id="ot6" value="Save &amp; Submit"/-->
-            </amx:commandLink>
+            </amx:commandButton>
         </amx:facet>
         <amx:panelGroupLayout id="pgl2">
             <amx:panelGroupLayout id="pgl5" layout="horizontal">

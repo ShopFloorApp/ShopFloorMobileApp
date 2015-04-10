@@ -11,11 +11,10 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;"
-                             action="backToWorkContent">
-                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveTransaction.execute}"
+                               action="backToWorkContent">
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="RET_MOVE_ASSEMBLY"/>
-            </amx:commandLink>
+            </amx:commandButton>
         </amx:facet>
         <amx:tableLayout id="tl1" styleClass="tableHeader1">
             <amx:rowLayout id="rl1">

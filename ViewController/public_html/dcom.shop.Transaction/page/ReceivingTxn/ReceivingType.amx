@@ -11,11 +11,10 @@
             </amx:commandLink>      
     </amx:facet>
     <amx:facet name="secondary">
-              <amx:commandLink id="cl7" action="success" actionListener="#{bindings.processReceive.execute}" rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
-                <amx:outputHtml id="oh5" styleClass="fa  fa-save fa-lg" inlineStyle="color:#34AADC;"/>
+      <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.processReceive.execute}" action="success">
         <amx:setPropertyListener id="spl9" from="#{'PROCESS'}" to="#{pageFlowScope.actionType}"/>
         <amx:validationBehavior id="vb2" group="vg1"/>
-      </amx:commandLink>
+      </amx:commandButton>
     </amx:facet>
     <amx:selectOneButton id="sob1" layout="horizontal" value="#{pageFlowScope.receivingType}">
       <amx:selectItem id="si1" label="Supplier" value="S"/>

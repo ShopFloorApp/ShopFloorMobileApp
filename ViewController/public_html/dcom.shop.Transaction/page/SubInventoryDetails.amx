@@ -41,11 +41,10 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl7" action="cancel" actionListener="#{bindings.InsertTransaction.execute}">
-                <amx:outputHtml id="oh5" styleClass="fa  fa-save fa-lg" inlineStyle="color:#34AADC;"/>
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.InsertTransaction.execute}"
+                               action="cancel">
                 <amx:setPropertyListener id="spl8" from="SUBMIT" to="#{pageFlowScope.TrxnType}" type="action"/>
-                <!--amx:outputText id="ot6" value="Save &amp; Submit"/-->
-            </amx:commandLink>
+            </amx:commandButton>
         </amx:facet>
         <!--amx:panelGroupLayout id="pgl1" layout="horizontal">
             <amx:commandButton text="&lt;" id="cb1" action="__back"/>
