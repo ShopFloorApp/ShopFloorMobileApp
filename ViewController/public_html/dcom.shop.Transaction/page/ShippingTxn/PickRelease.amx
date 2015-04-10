@@ -43,7 +43,6 @@
         </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
-    <amx:outputText value="#{pageFlowScope.pickRelStatus}" id="ot2"/>
     <amx:facet name="footer">
     <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
                 <amx:commandLink id="cl3" actionListener="#{pageFlowScope.TransactionUtil.clearPickRel}">
