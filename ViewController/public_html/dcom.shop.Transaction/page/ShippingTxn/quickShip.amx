@@ -93,7 +93,7 @@
                                 </amx:rowLayout>
                             </amx:tableLayout>
                             <amx:showPopupBehavior id="spb2" popupId="p1" type ="action" decoration="anchor"
-                                     alignId="cl3"   />
+                                     alignId="pp1"   align="overlapMiddleCenter"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
