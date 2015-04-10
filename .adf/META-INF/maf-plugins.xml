@@ -12,5 +12,9 @@
       <platform id="p1" name="android" enabled="true"/>
       <platform id="p2" name="ios" enabled="true"/>
     </cordova-plugin>
+    <cordova-plugin id="c9" pluginId="com.acme.plugin.alert" path="../../src/Alert-Plugin/">
+      <platform id="p3" name="android" enabled="true"/>
+      <platform id="p4" name="ios" enabled="true"/>
+    </cordova-plugin>
   </cordova-plugins>
 </maf-plugins>

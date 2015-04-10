@@ -2,15 +2,23 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
-    <amx:verbatim id="v1">
+        <amx:verbatim id="v1">
          <![CDATA[
         <script type="text/javascript">
-        function showAlert(options)
-        {
-          alert("Your warehouse has been set.");
-        }
+           showAlert = function(title,message,buttonLabel){
+           Alert.alert(title,
+                       message,
+                       buttonLabel,
+                       function(button){
+                        console.log("User Tapped "+button);
+        });
+        };
         </script>
     ]]></amx:verbatim>
+    <!-- function showAlert(options)
+        {
+          alert("Your warehouse has been set.");
+        }-->
         <amx:facet name="header">
             <amx:outputText value="Warehouse" id="ot1"/>
         </amx:facet>

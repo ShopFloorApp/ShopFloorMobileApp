@@ -81,7 +81,7 @@ public class ResourceDC extends SyncUtils {
                             ResourceItems.setUOM((jsObject2.get("UOM").toString()));
                             ResourceItems.setChargeType((jsObject2.get("CHARGETYPE").toString()));
                             ResourceItems.setBasis((jsObject2.get("BASIS").toString()));
-                            ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
+                            //ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
                             s_resources.add(ResourceItems);
 
 
@@ -101,7 +101,7 @@ public class ResourceDC extends SyncUtils {
                         ResourceItems.setUOM((jsObject2.get("UOM").toString()));
                         ResourceItems.setChargeType((jsObject2.get("CHARGETYPE").toString()));
                         ResourceItems.setBasis((jsObject2.get("BASIS").toString()));
-                        ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
+                      //  ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
                         s_resources.add(ResourceItems);
                         super.updateSqlLiteTable(ResourceBO.class, s_resources);
                     }

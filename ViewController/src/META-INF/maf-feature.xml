@@ -105,7 +105,7 @@
     </adfmf:feature>
     <adfmf:feature id="dcom.shop.MyWarehouse" name="Warehouse" securityEnabled="true">
         <adfmf:content id="dcom.shop.MyWarehouse.1">
-            <adfmf:amx file="dcom.shop.MyWarehouse/MyWarehouse.amx"/>
+            <adfmf:amx file="dcom.shop.MyWarehouse/Warehouse-task-flow.xml#Warehouse-task-flow"/>
         </adfmf:content>
         <adfmf:preferences>
             <adfmf:preferenceGroup id="OrgCodePG" label="Org Code PG">

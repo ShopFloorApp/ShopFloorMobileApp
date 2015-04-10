@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">MyWarehouse</property>
+      <property
+         name="page">/dcom.shop.MyWarehouse/MyWarehouse.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MyWarehouse&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">225.36719</property>
+      <property
+         name="x">315.08105</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="taskFlowId">dispatch</property>
+      <property
+         name="activityId">dispatch</property>
+      <property
+         name="documentReference">/dcom.shop.DispatchList/dispatch.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>dispatch&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">230.4336</property>
+      <property
+         name="x">607.5</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">Dispatch</property>
+      <property
+         name="sdm:polyPoints">R50,356.08105,225.30078,566.5,230.36719,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -111,8 +111,10 @@ public class WindowBean {
 
     public String goToDispatch() {
         // Add event code here...
+        System.out.println("here");
+            
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                  "showAlert", new Object[] { });
+                                                                  "showAlert", new Object[] {"Warehouse","Your warehouse has been set.","Ok" });
         //AdfmfContainerUtilities.invokeContainerJavaScriptFunction("dcom.shop.MyWarehouse",
         //"function(){navigator.notification.alert('Your warehouse has been set.',  function(){}, 'Information', 'OK');}", new Object[] { });
         return "Dispatch";
