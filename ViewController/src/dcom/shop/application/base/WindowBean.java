@@ -1,9 +1,11 @@
 package dcom.shop.application.base;
 
 import oracle.adfmf.amx.event.ActionEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.api.AdfmfSlidingWindowOptions;
 import oracle.adfmf.framework.api.AdfmfSlidingWindowUtilities;
+import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -105,5 +107,14 @@ public class WindowBean {
 
     public void logout() {
         AdfmfJavaUtilities.logout();
+    }
+
+    public String goToDispatch() {
+        // Add event code here...
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                  "showAlert", new Object[] { });
+        //AdfmfContainerUtilities.invokeContainerJavaScriptFunction("dcom.shop.MyWarehouse",
+        //"function(){navigator.notification.alert('Your warehouse has been set.',  function(){}, 'Information', 'OK');}", new Object[] { });
+        return "Dispatch";
     }
 }

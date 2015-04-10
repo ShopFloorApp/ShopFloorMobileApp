@@ -350,7 +350,7 @@
                </list>
             </hash>
             <hash n="iosDeploymentOptions">
-               <value n="simulatorTarget" v="iPhone 6 Plus (iOS 8.2 - iPhone 6 Plus)"/>
+               <value n="simulatorTarget" v="iPhone 6 (iOS 8.2 - iPhone 6)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
             <hash n="mnfImageOptions">
@@ -502,9 +502,9 @@
          <string v="Android2"/>
          <string v="Android3"/>
          <string v="Android4"/>
+         <string v="iOS1"/>
          <string v="MAF_DEPLOY"/>
          <string v="ShopFloorMobileApp_archive"/>
-         <string v="iOS1"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
@@ -561,7 +561,7 @@
             <hash n="iOS Simulator">
                <value n="custom" v="false"/>
                <hash n="iOS_options">
-                  <value n="iosSimulatorName" v="iPhone 6 Plus (iOS 8.2 - iPhone 6 Plus)"/>
+                  <value n="iosSimulatorName" v="iPhone 6 (iOS 8.2 - iPhone 6)"/>
                </hash>
                <value n="mobilePlatform" v="iOS"/>
                <value n="name" v="iOS Simulator"/>

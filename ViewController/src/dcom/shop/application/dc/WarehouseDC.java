@@ -19,8 +19,12 @@ import org.json.simple.parser.ParseException;
 public class WarehouseDC extends SyncUtils{
     public WarehouseDC() {
         super();
+      //  if(s_warehouse.size()==0){
         syncLocalDB();
-        
+       // SyncPreferencesDC sync = new SyncPreferencesDC();
+        //sync.getSyncLovs();
+       // sync.syncAll();
+      //  }
     }
     protected static List s_warehouse = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity

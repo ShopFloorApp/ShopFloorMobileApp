@@ -2,6 +2,15 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
+    <amx:verbatim id="v1">
+         <![CDATA[
+        <script type="text/javascript">
+        function showAlert(options)
+        {
+          alert("Your warehouse has been set.");
+        }
+        </script>
+    ]]></amx:verbatim>
         <amx:facet name="header">
             <amx:outputText value="Warehouse" id="ot1"/>
         </amx:facet>
@@ -30,7 +39,7 @@
                       selectedRowKeys="#{bindings.warehouse.collectionModel.selectedRow}"
                       selectionListener="#{bindings.warehouse.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem showLinkIcon="false" action="Dispatch" id="li1">
+            <amx:listItem showLinkIcon="false" id="li1" action="#{WindowBean.goToDispatch}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl2">
                     <amx:rowLayout id="rl13">
@@ -60,7 +69,28 @@
                 <amx:setPropertyListener from="#{row.whse}" type="action"
                                          to="#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}"
                                          id="spl2"/>
+                <!--amx:showPopupBehavior id="spb2" popupId="p1" alignId="li1" decoration="simple" type="action"/-->
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="false">
+        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+        <amx:tableLayout id="tl3">
+            <amx:rowLayout id="rl5">
+                <amx:cellFormat id="cf5">
+                    <amx:outputText value="Your warehouse has been set." id="ot7"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl6">
+                <amx:cellFormat id="cf6">
+                    <amx:spacer width="10" id="cb1"/>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf7">
+                    <amx:commandButton text="Ok" action="Dispatch" id="cb2">
+                        <amx:closePopupBehavior id="clpb1" popupId="p1" type="action"/>
+                    </amx:commandButton>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
 </amx:view>

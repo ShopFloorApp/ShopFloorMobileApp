@@ -7,6 +7,10 @@
     <iterator Binds="root" RangeSize="25" DataControl="WarehouseDC" id="WarehouseDCIterator"/>
     <accessorIterator MasterBinding="WarehouseDCIterator" Binds="warehouse" RangeSize="25" DataControl="WarehouseDC"
                       BeanClass="dcom.shop.application.mobile.WarehouseBO" id="warehouseIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SyncPreferencesDC" id="SyncPreferencesDCIterator"/>
+    <accessorIterator MasterBinding="SyncPreferencesDCIterator" Binds="syncLovs" RangeSize="25"
+                      DataControl="SyncPreferencesDC" BeanClass="dcom.shop.application.mobile.SyncPreferencesBO"
+                      id="syncLovsIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="warehouseIterator" id="warehouse">
