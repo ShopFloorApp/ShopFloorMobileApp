@@ -107,7 +107,7 @@
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
                            <amx:rowLayout id="rl17">
                         <amx:cellFormat id="cf26" halign="center">
-                            <amx:outputHtml id="oh955" value="#{pageFlowScope.txnMsg}" inlineStyle="font-size:medium;color:red"/>
+                            <amx:outputText id="oh955" value="#{pageFlowScope.txnMsg}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
