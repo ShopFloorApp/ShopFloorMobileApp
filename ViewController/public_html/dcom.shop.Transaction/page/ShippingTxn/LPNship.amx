@@ -43,5 +43,29 @@
         </amx:panelGroupLayout>
       </amx:panelLabelAndMessage>
     </amx:panelFormLayout>
+    <amx:facet name="footer">
+      <amx:tableLayout id="tl1">
+        <amx:rowLayout id="rl1">
+          <amx:cellFormat id="cf1"/>
+          <amx:cellFormat id="cf2"/>
+          <amx:cellFormat id="cf3"/>
+          <amx:cellFormat id="cf4"/>
+        </amx:rowLayout>
+        <amx:rowLayout id="rl2">
+          <amx:cellFormat id="cf5">
+            <amx:outputHtml id="oh5"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf6">
+            <amx:outputHtml id="oh8"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf7">
+            <amx:outputHtml id="oh7"/>
+          </amx:cellFormat>
+          <amx:cellFormat id="cf8">
+            <amx:outputHtml id="oh6"/>
+          </amx:cellFormat>
+        </amx:rowLayout>
+      </amx:tableLayout>
+    </amx:facet>
   </amx:panelPage>
 </amx:view>

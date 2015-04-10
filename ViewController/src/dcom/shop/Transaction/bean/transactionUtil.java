@@ -19,7 +19,7 @@ public class transactionUtil {
     public void executePickRelease(ActionEvent actionEvent) {
             System.out.println("Inside execute Pick Release");
             Utility.ApplicationLogger.info("Inside execute Pick Release");
-            String restURI = RestURI.PostSubmitProgramURI();
+            String restURI =  "/webservices/rest/DCOMShip/pickrelease/";
             String pickRule = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pickRule}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pickRule}"));
             String orderNum = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
             
@@ -38,11 +38,11 @@ public class transactionUtil {
                 "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
                 "                  \"Org_Id\": \"82\"\n" + 
                 "                 },\n" + 
-                "   \"InputParameters\": \n" + 
+                "   \"InputParameters\": \n" + "{\"PPICKREC\":    "+
                 "        {\"PICKRULE\": \""+pickRule+"\",\n" + 
                 "         \"ORDERNUM\": \""+orderNum+"\",\n" +
                 "       \"EVENT\": \""+event+"\" \n" + 
-                "       }\n" + 
+                "       }}\n" + 
                 "}\n" + 
                 "}";
             System.out.println("Calling pickrelease execute method");

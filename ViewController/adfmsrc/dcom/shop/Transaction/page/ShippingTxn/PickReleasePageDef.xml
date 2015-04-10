@@ -3,17 +3,24 @@
                 Package="dcom.shop.Transaction.page.ShippingTxn">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Name="pickRule" Type="String"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="PickRuleDC" id="PickRuleDCIterator"/>
-    <accessorIterator MasterBinding="PickRuleDCIterator" Binds="pickRule" RangeSize="25" DataControl="PickRuleDC"
+    <accessorIterator MasterBinding="PickRuleDCIterator" Binds="pickRule" RangeSize="-1" DataControl="PickRuleDC"
                       BeanClass="dcom.shop.application.mobile.PickRuleBO" id="pickRuleIterator"/>
   </executables>
   <bindings>
-    <list ListOperMode="navigation" IterBinding="pickRuleIterator" ListIter="pickRuleIterator" id="ruleName"
-          DTSupportsMRU="true" SelectItemValueMode="ListObject">
+    <list StaticList="false" IterBinding="variables" ListIter="pickRuleIterator" id="ruleName">
       <AttrNames>
-        <Item Value="ruleName"/>
+        <Item Value="pickRule"/>
       </AttrNames>
+      <ListAttrNames>
+        <Item Value="ruleName"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="ruleName"/>
+      </ListDisplayAttrNames>
     </list>
   </bindings>
 </pageDefinition>
