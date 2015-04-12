@@ -121,7 +121,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R38,145.5,179.07715,272.4673,133.02539,L46</property>
+         name="sdm:polyPoints">R38,145.5,178.79297,272.4673,132.74121,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -135,7 +135,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">R46,356.196,133.02539,508.0,155.27832,L46</property>
+         name="sdm:polyPoints">R46,356.196,132.74121,508.0,154.99414,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -310,7 +310,7 @@
       <property
          name="fromOutcome">onHandSearchBack</property>
       <property
-         name="sdm:polyPoints">L54,338.53955,355.89844,145.5,200.07715,R62</property>
+         name="sdm:polyPoints">L54,338.53955,355.61426,145.5,199.79297,R62</property>
    </ControlFlowCase>
    <View
       id="View27">
@@ -335,7 +335,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">B44,378.5,410.7664,479.4522,458.42773,L46</property>
+         name="sdm:polyPoints">B44,378.5,410.4822,479.4522,458.14355,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -390,7 +390,7 @@
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">R38,378.0,510.6289,479.5415,465.42773,L54</property>
+         name="sdm:polyPoints">R38,378.0,510.34473,479.5415,465.14355,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

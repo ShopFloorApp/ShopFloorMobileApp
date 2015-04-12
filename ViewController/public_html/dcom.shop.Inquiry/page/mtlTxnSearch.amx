@@ -14,6 +14,14 @@
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:panelLabelAndMessage label="Transaction Type" inlineStyle="text-align:center;" id="plamrr886">
+                <amx:panelGroupLayout id="pgl5">
+                    <amx:selectOneChoice value="#{pageFlowScope.txnType}" id="soc3">
+                        <amx:selectItem label="Choose" id="si6" value="0"/>
+                        <amx:selectItems value="#{bindings.transactionType.items}" id="si3"/>
+                    </amx:selectOneChoice>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>            
             <amx:panelLabelAndMessage label="Item Number" id="plm1">
                 <amx:spacer width="10" id="s11"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl6">
@@ -82,16 +90,8 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Transaction Type" inlineStyle="text-align:center;" id="plamrr886">
-                <amx:panelGroupLayout id="pgl5">
-                    <amx:selectOneChoice value="#{pageFlowScope.txnType}" id="soc3">
-                        <amx:selectItem label="Choose" id="si6" value="0"/>
-                        <amx:selectItems value="#{bindings.transactionType.items}" id="si3"/>
-                    </amx:selectOneChoice>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-            <amx:inputDate id="id1" label="Start Date" value="#{pageFlowScope.MtlTrxnStartDate}" inputType="datetime"/>
-            <amx:inputDate id="id2" label="End Date" value="#{pageFlowScope.MtlTrxnEndDate}" inputType="datetime"/>
+            <amx:inputDate id="id1" label="Date From" value="#{pageFlowScope.MtlTrxnStartDate}" inputType="datetime"/>
+            <amx:inputDate id="id2" label="Date To" value="#{pageFlowScope.MtlTrxnEndDate}" inputType="datetime"/>
         </amx:panelFormLayout>
         <!--<amx:commandButton text="Search" id="cb1" inlineStyle="vertical-align:middle;" action="mtlTxnList"/> -->
         <amx:facet name="footer">
