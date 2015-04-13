@@ -354,6 +354,107 @@ public class SyncUtils {
             throw new RuntimeException(ex);
         }
     }
+    
+    public void updateSqlLiteTableWithWhere(Class collectionClass, List collections, HashMap whereClause) {
+        Connection conn = null;
+        
+        StringBuffer where = new StringBuffer();
+        Iterator filterWhereClause = whereClause.entrySet().iterator();
+
+        while (filterWhereClause.hasNext()) {
+            Map.Entry entry = (Map.Entry) filterWhereClause.next();
+
+            String key = (String) entry.getKey();
+            System.out.println(" column name is " + key);
+            // String filtervalue = (String) entry.getValue();
+            String filtervalue = null;
+            if (entry.getValue().getClass().toString().contains("Integer")) {
+                filtervalue = Integer.toString((Integer) entry.getValue());
+            } else {
+                filtervalue = (String) entry.getValue();
+            }
+            where.append(key.toUpperCase() + " = " + filtervalue + " AND ");
+        }
+        String queryStmt = where.substring(0, where.length() - 4)+ " ;";
+        
+        String tableName = collectionClass.getName();
+        String tabName = tableName.substring(tableName.lastIndexOf(".") + 1, tableName.length() - 2);
+
+        try {
+            conn = ConnectionFactory.getConnection();
+
+            Statement stmt = conn.createStatement();
+
+            stmt.executeQuery("DELETE FROM " + tabName.toUpperCase()  + " WHERE " +queryStmt);
+
+            Field[] fields = collectionClass.getDeclaredFields();
+
+            StringBuffer query = new StringBuffer();
+            query.append("INSERT INTO " + tabName.toUpperCase() + " (");
+
+            StringBuffer fieldNames = new StringBuffer();
+            for (int i = 0; i < fields.length; i++) {
+
+                if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
+                    continue;
+                }
+                fieldNames.append(fields[i].getName().toUpperCase() + ",");
+            }
+            String fieldNamesStr = fieldNames.substring(0, fieldNames.length() - 1);
+
+            query.append(fieldNamesStr + " ) VALUES ( ");
+
+            System.out.println("after resultset logic query is " + query);
+            Object obj = collectionClass.newInstance();
+            for (int i = 0; i < collections.size(); i++) {
+                stmt = conn.createStatement();
+                StringBuffer insertQueryValues = new StringBuffer();
+                System.out.println("row is " + collections.get(i));
+                System.out.println("row class is " + collections.get(i).getClass());
+                Method method = collectionClass.getMethod("getBOClassRow", new Class[] { collectionClass });
+                System.out.println("invoking the method and getting the output");
+                HashMap pojoRowMap = (HashMap) method.invoke(obj, new Object[] { collections.get(i) });
+                String columnValue = null;
+
+                for (int j = 0; j < fields.length; j++) {
+                    if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
+                        (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
+                        continue;
+                    }
+                    System.out.println("getting row from hashmap");
+                    if (pojoRowMap.get(fields[j].getName().toLowerCase()) != null) {
+                    if (pojoRowMap.get(fields[j].getName().toLowerCase()).getClass().toString().contains("Integer")) {
+                        columnValue = Integer.toString((Integer) pojoRowMap.get(fields[j].getName().toLowerCase()));
+                    } else {
+                        columnValue = (String) pojoRowMap.get(fields[j].getName().toLowerCase());
+                    }
+                    }else{
+                        columnValue = "";
+                    }
+                   // String columnValue = (String) pojoRowMap.get(fields[j].getName().toLowerCase()); //
+                    System.out.println("field name is " + fields[j].getName().toLowerCase());
+
+                    insertQueryValues.append("'" + columnValue + "'" + ",");
+                }
+                System.out.println("insert value is " + insertQueryValues);
+                String valuesStr = insertQueryValues.substring(0, insertQueryValues.length() - 1);
+                String finalQuery = query.toString() + valuesStr + ");";
+                System.out.println("insert query is " + finalQuery);
+                stmt.execute(finalQuery);
+
+            }
+
+        } catch (Exception ex) {
+            Utility.ApplicationLogger.severe(ex.getMessage());
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+    }
 
     public boolean deleteSqlLiteTable(Class collectionClass, HashMap whereClause) {
 
@@ -390,12 +491,7 @@ public class SyncUtils {
             }
             String queryStmt = where.substring(0, where.length() - 4);
             String finalQuery = query.toString() + queryStmt + ";";
-            int updateCount = stmt.executeUpdate(finalQuery);
-            if (updateCount > 0) {
-                update = true;
-            }
-
-
+            stmt.executeQuery(finalQuery);
             return update;
 
 

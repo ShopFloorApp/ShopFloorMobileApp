@@ -2,6 +2,7 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.database.ConnectionFactory;
+import dcom.shop.application.mobile.LotBO;
 import dcom.shop.application.mobile.SerialBO;
 
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -90,10 +92,22 @@ public class SerialDC extends SyncUtils {
 
         try {
             s_serials.clear();
+            Map map = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
             SerialBO[] serials = null;
             s_serials = super.getOfflineCollection(SerialBO.class);
             filterSerials();
             serials = (SerialBO[]) filtered_serials.toArray(new SerialBO[filtered_serials.size()]);
+            ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyEntered}", String.class);
+            Iterator j = filtered_serials.iterator();
+            SerialBO serial = new SerialBO();
+            int qtyEntered = 0;
+            while (j.hasNext()) {
+                serial = (SerialBO) j.next();
+                qtyEntered = qtyEntered + serial.getSerialQty();
+
+            }
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
+
             return serials;
         } catch (Exception e) {
             throw new RuntimeException(e);

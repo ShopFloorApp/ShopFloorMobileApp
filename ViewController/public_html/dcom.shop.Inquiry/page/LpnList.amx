@@ -6,7 +6,7 @@
             <amx:outputText value="LPN Search Results" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="__back">
+            <amx:commandLink id="cl1" action="lpnlistBack">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
             </amx:commandLink>
         </amx:facet>

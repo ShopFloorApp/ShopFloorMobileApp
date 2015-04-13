@@ -21,6 +21,9 @@
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="toSubinventories" RangeSize="-1"
                       DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
                       id="toSubinventoriesIterator" RefreshCondition="#{pageFlowScope.refreshToSubinventory ne 'N'}"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOM" RangeSize="-1" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
   </executables>
   <bindings>
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
@@ -78,7 +81,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="locator"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod"
@@ -87,5 +89,17 @@
                   ReturnName="data.InvTrnDC.methodResults.InsertTransaction_InvTrnDC_dataProvider_InsertTransaction_result">
       <NamedData NDName="status" NDValue="#{pageFlowScope.TrxnType}" NDType="java.lang.String"/>
     </methodAction>
+    <list IterBinding="UOMDCIterator" id="UOMCode" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="UOMIterator">
+      <AttrNames>
+        <Item Value="UOM"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="UOMCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

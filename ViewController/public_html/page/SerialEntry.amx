@@ -12,12 +12,14 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl1"
+        <amx:commandButton text="Save" id="cb1"
+                               action="__back"/>
+            <!--amx:commandLink id="cl1"
                              action="__back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputHtml id="oh1" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;">
                 </amx:outputHtml>
-            </amx:commandLink>
+            </amx:commandLink-->
         </amx:facet>
         <!--amx:panelStretchLayout id="psl1">
         <amx:facet name="top">

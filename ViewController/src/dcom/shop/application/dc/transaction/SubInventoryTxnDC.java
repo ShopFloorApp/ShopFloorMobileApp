@@ -46,6 +46,7 @@ public class SubInventoryTxnDC extends SyncUtils {
     public synchronized List<SubInventoryTxnBO> getSubinventories() {
         SubInventoryTxnBO s[] = null;
         SubInventoryTxnBO subinventory = null;
+        s_subinvs.clear();
         s_subinvs = selectSubinventories(s_subinvs);
         int trxnId = s_subinvs.size();
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SubinvTrxnId}", int.class);

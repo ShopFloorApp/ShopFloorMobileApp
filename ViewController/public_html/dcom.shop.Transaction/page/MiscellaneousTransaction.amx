@@ -50,6 +50,11 @@
                 <amx:outputText value="Transaction Details" id="ot3"/>
             </amx:panelGroupLayout>
             <amx:panelFormLayout labelPosition="topStart" id="pf1">
+                <amx:selectOneChoice label="Transaction Type" value="#{pageFlowScope.TrxType}" id="soc1">
+                    <?audit suppress oracle.maf.warning-missing-label?>
+                    <amx:selectItem label="Choose" value="0" id="si4"/>
+                    <amx:selectItems value="#{bindings.TrxTypeList.items}" id="si1"/>
+                </amx:selectOneChoice>
                 <amx:panelLabelAndMessage label="Item Number" id="plm1">
                     <amx:spacer width="10" id="s11"/>
                     <amx:panelGroupLayout layout="horizontal" id="pgl6">
@@ -80,9 +85,12 @@
                     <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
                                     id="ot2"/>
                 </amx:panelLabelAndMessage>
-                <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:left;" id="plam233">
+                <amx:panelLabelAndMessage label="UOM" rendered="#{pageFlowScope.renderUomChoiceList}" inlineStyle="text-align:left;" id="plam233">
                     <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
                 </amx:panelLabelAndMessage>
+                <amx:selectOneChoice value="#{pageFlowScope.uom}" rendered="#{pageFlowScope.renderUomChoiceList}" label="UOM" id="soc2">
+                    <amx:selectItems value="#{bindings.UOMCode.items}" id="si9"/>
+                </amx:selectOneChoice>
                 <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam10">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"
@@ -93,11 +101,6 @@
                     <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
                                     id="it5"/>
                 </amx:panelLabelAndMessage>
-                <amx:selectOneChoice label="Transaction Type" value="#{pageFlowScope.TrxType}" id="soc1">
-                    <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose" value="0" id="si4"/>
-                    <amx:selectItems value="#{bindings.TrxTypeList.items}" id="si1"/>
-                </amx:selectOneChoice>
                 <amx:selectOneChoice label="Account Alias" value="#{pageFlowScope.accountAlias}" id="soc3">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si2"/>
@@ -109,8 +112,7 @@
                     <amx:selectItem label="Choose" value="0" id="si7"/>
                     <amx:selectItems value="#{bindings.subFromInv.items}" id="si8"/>
                 </amx:selectOneChoice>
-                <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
-                                     id="soc5">
+                <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si6"/>
                     <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>

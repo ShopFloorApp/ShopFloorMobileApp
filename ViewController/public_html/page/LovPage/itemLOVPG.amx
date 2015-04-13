@@ -111,6 +111,8 @@
                 <amx:setPropertyListener from="#{row.PRIMARYUOM}" type="action" to="#{pageFlowScope.uom}" id="sp10"/>
                 <amx:setPropertyListener from="#{row.SERIALCONTROL}" type="action" to="#{pageFlowScope.serialControl}"
                                          id="spl7"/>
+                 <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
+                                         id="spl12"/>
                 <amx:setPropertyListener from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"
                                          id="sp11"/>
             </amx:listItem>
@@ -138,6 +140,8 @@
                 <amx:setPropertyListener from="#{row.ITEMDESC}" type="action" to="#{pageFlowScope.description}"
                                          id="sp223"/>
                 <amx:setPropertyListener from="#{row.PRIMARYUOM}" type="action" to="#{pageFlowScope.uom}" id="sp22"/>
+                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
+                                         id="spl13"/>
                 <amx:setPropertyListener from="#{row.SERIALCONTROL}" type="action" to="#{pageFlowScope.serialControl}"
                                          id="spl8"/>
                 <amx:setPropertyListener from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"

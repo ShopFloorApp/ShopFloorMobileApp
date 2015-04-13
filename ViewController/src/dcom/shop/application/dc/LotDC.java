@@ -4,6 +4,8 @@ import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.database.ConnectionFactory;
 import dcom.shop.application.mobile.LotBO;
 
+import dcom.shop.application.mobile.SerialBO;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +13,7 @@ import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -82,6 +85,16 @@ public class LotDC extends SyncUtils{
             s_lots = super.getOfflineCollection(LotBO.class);
             filterLots();
             lots = (LotBO[]) filtered_lots.toArray(new LotBO[filtered_lots.size()]);
+            ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyEntered}", String.class);
+            Iterator j = filtered_lots.iterator();
+            LotBO lot = new LotBO();
+            int qtyEntered = 0;
+            while (j.hasNext()) {
+                lot = (LotBO) j.next();
+                qtyEntered = qtyEntered + lot.getLotQty();
+
+            }
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
             return lots;
         } catch (Exception e) {
             throw new RuntimeException(e);

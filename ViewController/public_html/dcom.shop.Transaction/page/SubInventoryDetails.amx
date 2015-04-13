@@ -107,9 +107,12 @@
                     <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
                                     id="ot2"/>
                 </amx:panelLabelAndMessage>
-                <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:left;" id="plam233">
+                <amx:panelLabelAndMessage label="UOM" rendered="#{pageFlowScope.renderUomChoiceList}" inlineStyle="text-align:left;" id="plam233">
                     <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
                 </amx:panelLabelAndMessage>
+                <amx:selectOneChoice value="#{pageFlowScope.uom}" rendered="#{pageFlowScope.renderUomChoiceList}" label="UOM" id="soc1">
+                    <amx:selectItems value="#{bindings.UOMCode.items}" id="si9"/>
+                </amx:selectOneChoice>
                 <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam10">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"

@@ -1,12 +1,14 @@
 package dcom.shop.application.mobile;
 
+import dcom.shop.application.base.AEntity;
+
 import java.util.HashMap;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.util.GenericVirtualType;
 
-public class LocatorBO implements Comparable {
+public class LocatorBO extends AEntity implements Comparable {
         private String Whse;
         private String Subinv;
         private String Locator;

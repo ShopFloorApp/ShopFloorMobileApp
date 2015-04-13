@@ -19,6 +19,9 @@ import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 public class InvTrnDC extends RestCallerUtil {
     public InvTrnDC() {
         super();
@@ -41,7 +44,7 @@ public class InvTrnDC extends RestCallerUtil {
         // whereClause.put("trxtype", trxnType);
 
         boolean result = syncUtils.deleteSqlLiteTable(SubInventoryTxnBO.class, whereClause);
-        if (result) {
+        if (!result) {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
@@ -70,6 +73,8 @@ public class InvTrnDC extends RestCallerUtil {
         String fromLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
         String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToLocator}");
+        String tranStatus = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TransactionStatus}");
+
         subInvTxn.setTrxnId(trxnId);
         subInvTxn.setLPN(lpn);
         subInvTxn.setItemNumber(item);
@@ -81,9 +86,26 @@ public class InvTrnDC extends RestCallerUtil {
         subInvTxn.setToInventory(toSubInv);
         subInvTxn.setItemNumber(item);
         subInvTxn.setTxnuom(uom);
-        s_invTrxns.add(subInvTxn);
+        SyncUtils sync = new SyncUtils();
+        s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
+        filterSerials(trxnId);
+        if (s_filteredSerialTrxns.size() > 0)
+            subInvTxn.setSerialControl("1");
+        s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
+        filterLots(trxnId);
+        if (s_filteredLotTrxns.size() > 0)
+            subInvTxn.setLotControl("1");
         SyncUtils syncUtils = new SyncUtils();
-        syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
+        if ("New".equals(tranStatus)) {
+            s_invTrxns.add(subInvTxn);
+            syncUtils.insertSqlLiteTable(SubInventoryTxnBO.class, s_invTrxns);
+        } else if ("Edit".equals(tranStatus)) {
+            s_invTrxns.clear();
+            s_invTrxns.add(subInvTxn);
+            HashMap whereClause = new HashMap();
+            whereClause.put("trxnid", trxnId);
+            syncUtils.updateSqlLiteTableWithWhere(SubInventoryTxnBO.class, s_invTrxns, whereClause);
+        }
         if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))))
             ProcessWS(trxnId);
         return "cancel";
@@ -127,6 +149,7 @@ public class InvTrnDC extends RestCallerUtil {
             invTxn.getToInventory(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String toLocator =
             invTxn.getToLoc(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToLocator}");
+        String completeFlag = invTxn.getCompleteFlag();
         String destOrg =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         ;
@@ -167,17 +190,36 @@ public class InvTrnDC extends RestCallerUtil {
         payload = payload.substring(0, payload.length() - 1);
         payload = payload + "]}\n" + "}}}}";
         try {
-             jsonArrayAsString = super.invokeUPDATE(restURI, payload);
+            jsonArrayAsString = super.invokeUPDATE(restURI, payload);
             System.out.println("Received response" + jsonArrayAsString);
+
+            if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
+                JSONParser parser = new JSONParser();
+                Object object;
+
+                object = parser.parse(jsonArrayAsString);
+
+                JSONObject jsonObject = (JSONObject) object;
+                JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                String result = jsObject.get("XSTATUS").toString();
+                if ("S".equals(result)) {
+
+                    if (!("Y".equals(completeFlag))) {
+                        invTxn.setCompleteFlag("Y");
+                        s_filteredInvTrxns.clear();
+                        s_filteredInvTrxns.add(invTxn);
+                        // sync.updateSqlLiteTable(SubInventoryTxnBO.class, s_filteredInvTrxns);
+                        HashMap whereClause = new HashMap();
+                        whereClause.put("trxnid", trxnId);
+                        sync.updateSqlLiteTableWithWhere(SubInventoryTxnBO.class, s_filteredInvTrxns, whereClause);
+                    }
+                }
+                providerChangeSupport.fireProviderRefresh("subinventories");
+            }
+
         } catch (Exception e) {
             System.out.println("error " + e.toString());
-        }
-        if(!("".equals(jsonArrayAsString))){
-            invTxn.setCompleteFlag("Y");
-            s_filteredInvTrxns.clear();
-            s_filteredInvTrxns.add(invTxn);
-            sync.updateSqlLiteTable(SubInventoryTxnBO.class, s_filteredInvTrxns);
-            providerChangeSupport.fireProviderRefresh("subinventories");
         }
         //    throw new AdfException("Transaction completed", AdfException.INFO);
 
@@ -238,7 +280,7 @@ public class InvTrnDC extends RestCallerUtil {
             s_filteredLotTrxns.clear();
 
             HashMap filterFileds = new HashMap();
-           // Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+            // Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
             String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
             filterFileds.put("trxtype", trxnType);
@@ -284,9 +326,9 @@ public class InvTrnDC extends RestCallerUtil {
             s_filteredMiscTrxns.clear();
 
             HashMap filterFileds = new HashMap();
-            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
+            // String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
             filterFileds.put("trxnid", trxnId);
-            filterFileds.put("trxtype", trxnType);
+            //filterFileds.put("trxtype", trxnType);
 
 
             HashMap paramMap = new HashMap();
@@ -412,12 +454,31 @@ public class InvTrnDC extends RestCallerUtil {
             String jsonArrayAsString = super.invokeUPDATE(restURI, payload);
 
             System.out.println("Received response" + jsonArrayAsString);
+
+            if (jsonArrayAsString != null) {
+                JSONObject jsObject1 = null;
+                JSONParser parser = new JSONParser();
+                Object object;
+
+                object = parser.parse(jsonArrayAsString);
+
+                JSONObject jsonObject = (JSONObject) object;
+                JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                String result = jsObject.get("XSTATUS").toString();
+                if ("S".equals(result)) {
+                    invTxn.setCompleteFlag("Y");
+                    s_filteredMiscTrxns.clear();
+                    s_filteredMiscTrxns.add(invTxn);
+                    sync.updateSqlLiteTable(MiscTxnBO.class, s_filteredMiscTrxns);
+                    providerChangeSupport.fireProviderRefresh("miscTrxns");
+                }
+            }
         } catch (Exception e) {
             System.out.println("error " + e.toString());
         }
 
     }
-    
+
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
     }

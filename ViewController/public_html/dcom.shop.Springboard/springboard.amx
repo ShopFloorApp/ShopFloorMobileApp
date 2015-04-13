@@ -36,7 +36,7 @@
             <amx:facet name="bottom">
                 <amx:panelGroupLayout id="pgl2" inlineStyle="width:100%" halign="center">
                     <amx:image id="i3" source="/images/deloitteLogo.png"
-                               inlineStyle="width:176px;height:30px;margin-bottom:10px" shortDesc="Deloitte Logo"/>
+                               inlineStyle="width:176px;height:50px;margin-bottom:10px" shortDesc="Deloitte Logo"/>
                 </amx:panelGroupLayout>
             </amx:facet>
         </amx:panelStretchLayout>

@@ -18,6 +18,9 @@
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="-1"
                       DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
                       id="subinventoriesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOM" RangeSize="-1" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
   </executables>
   <bindings>
     <list IterBinding="variables" id="accountAlias" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -52,7 +55,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="subinv"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="LocatorDCIterator" id="fromLoc" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -65,7 +67,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="locator"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
@@ -79,5 +80,17 @@
                   ReturnName="data.InvTrnDC.methodResults.InsertMiscTransaction_InvTrnDC_dataProvider_InsertMiscTransaction_result">
       <NamedData NDName="trxType" NDValue="#{pageFlowScope.TrxnType}" NDType="java.lang.String"/>
     </methodAction>
+    <list IterBinding="UOMDCIterator" id="UOMCode" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="UOMIterator">
+      <AttrNames>
+        <Item Value="UOM"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="UOMCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

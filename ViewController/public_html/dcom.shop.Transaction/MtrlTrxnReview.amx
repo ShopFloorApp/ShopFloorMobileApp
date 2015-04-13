@@ -25,9 +25,9 @@
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.TrxType}" id="spl2"/>
-                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.accountAlias}"
-                                         id="spl9"/>
-                
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.accountAlias}" id="spl9"/>
+                <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
+                                         id="spl20"/>
             </amx:commandLink>
         </amx:facet>
         <amx:outputText value="#{pageFlowScope.MiscTrxnResults}" id="ot8"/>
@@ -105,13 +105,17 @@
                 <amx:setPropertyListener from="#{row.txnUom}" type="action" to="#{pageFlowScope.uom}" id="spl18"/>
                 <amx:setPropertyListener from="#{row.itemName}" type="action" to="#{pageFlowScope.description}"
                                          id="spl19"/>
-                <amx:setPropertyListener from="#{row.serialControl" type="action" to="#{pageFlowScope.serialControl}" id="spl21"/>
-                <amx:setPropertyListener from="#{row.lotControl}" type="action" to="#{pageFlowScope.lotControl}" id="spl22"/>
+                <amx:setPropertyListener from="#{row.serialControl" type="action" to="#{pageFlowScope.serialControl}"
+                                         id="spl21"/>
+                <amx:setPropertyListener from="#{row.lotControl}" type="action" to="#{pageFlowScope.lotControl}"
+                                         id="spl22"/>
                 <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.FromLocator}"
                                          id="spl23"/>
                 <amx:setPropertyListener from="#{row.trxType}" type="action" to="#{pageFlowScope.TrxType}" id="spl13"/>
                 <amx:setPropertyListener from="#{row.accountAlias}" type="action" to="#{pageFlowScope.accountAlias}"
                                          id="spl14"/>
+                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
+                                         id="spl24"/>
                 <amx:showPopupBehavior id="spb1" popupId="popup1" type="swipeLeft" decoration="anchor" alignId="li1"/>
             </amx:listItem>
         </amx:listView>
