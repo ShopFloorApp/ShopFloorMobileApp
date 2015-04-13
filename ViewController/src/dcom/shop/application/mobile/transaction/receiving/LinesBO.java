@@ -18,6 +18,8 @@ public class LinesBO {
     private Integer receiveTxnId;
     private String docRefLine;
     private String shipmentLine;
+    private String lotControl;
+    private String serialControl;
     private static Integer idx=new Integer(0);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -35,6 +37,26 @@ public class LinesBO {
         String oldDocRefLine = this.docRefLine;
         this.docRefLine = docRefLine;
         propertyChangeSupport.firePropertyChange("docRefLine", oldDocRefLine, docRefLine);
+    }
+
+    public void setLotControl(String lotControl) {
+        String oldLotControl = this.lotControl;
+        this.lotControl = lotControl;
+        propertyChangeSupport.firePropertyChange("lotControl", oldLotControl, lotControl);
+    }
+
+    public String getLotControl() {
+        return lotControl;
+    }
+
+    public void setSerialControl(String serialControl) {
+        String oldSerialControl = this.serialControl;
+        this.serialControl = serialControl;
+        propertyChangeSupport.firePropertyChange("serialControl", oldSerialControl, serialControl);
+    }
+
+    public String getSerialControl() {
+        return serialControl;
     }
 
     public String getDocRefLine() {
@@ -163,7 +185,7 @@ public class LinesBO {
     public LinesBO() {
         super();
     }
-    public LinesBO(Integer rowIdx,String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String docRefLine,String shipmentLine,String isNewEntity) {
+    public LinesBO(Integer rowIdx,String line,String subInv,String locator,String Quantity,String Uom,String Lpn,String docRefLine,String shipmentLine,String lotCtrl,String serialCtrl,String isNewEntity) {
         super();
         this.rowLineIdx=rowIdx;
         this.Lines=line;
@@ -175,6 +197,8 @@ public class LinesBO {
         this.Lpn=Lpn;
         this.docRefLine=docRefLine;
         this.shipmentLine=shipmentLine;
+        this.lotControl=lotCtrl;
+        this.serialControl=serialCtrl;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

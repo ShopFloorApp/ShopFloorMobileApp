@@ -104,7 +104,7 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", null);
     }
     public void updateRecord(ActionEvent ae){
-//        quantityValidation(ae);
+        quantityValidation(ae);
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowIdxAdd}");
         ArrayList coll = (ArrayList) receiveDc.s_lines;
                 for(int i=0;i<receiveDc.s_lines.size();i++){
@@ -123,35 +123,72 @@ public class ReceivingTxnUtilBean {
         String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnAdd}");
         String docRefLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.docRefLineAdd}");
         String shipmentLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipmentLineAdd}");
-        ReceivingTxnDC.s_lines.add(new LinesBO(currentItem,line,subInv,locator,quantity,uom,lpn,docRefLine,shipmentLine,"Y"));
+        String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.lotControl.inputValue}");
+        String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.serialControl.inputValue}");
+        ReceivingTxnDC.s_lines.add(new LinesBO(currentItem,line,subInv,locator,quantity,uom,lpn,docRefLine,shipmentLine,lotControl,serialControl,"Y"));
     
-//    ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
-//        for(int j=0;j<receiveDc.s_lines.size();j++){
-//            ShipmentLinesBO lines = (ShipmentLinesBO) receiveDc.s_lines.get(j);
-//            if(lines.getDocRefLine().equalsIgnoreCase(docRefLine) && lines.getShipmentLine().equalsIgnoreCase(shipmentLine)){
-//                String lineQty=lines.getQty();
-//                Integer availableQty=Integer.parseInt(lineQty)-Integer.parseInt(quantity);
-//                if(availableQty==0){
-//                    linColl.remove(j); 
-//                }else{
-//                    ((ShipmentLinesBO)linColl.remove(j)).setQty(availableQty.toString());
-//                }
-//            }
-//        }
-//        receiveDc.s_shipmentLines=linColl;
+    ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
+        for(int j=0;j<receiveDc.s_shipmentLines.size();j++){
+            ShipmentLinesBO lines = (ShipmentLinesBO) receiveDc.s_shipmentLines.get(j);
+            if(lines.getDocRefLine().equalsIgnoreCase(docRefLine) && lines.getShipmentLine().equalsIgnoreCase(shipmentLine)){
+                String lineQty=lines.getQty();
+                Integer availableQty=Integer.parseInt(lineQty)-Integer.parseInt(quantity);
+                if(availableQty==0){
+                    linColl.remove(j); 
+                }else{
+                    ((ShipmentLinesBO)linColl.get(j)).setQty(availableQty.toString());
+                }
+            }
+        }
+        receiveDc.s_shipmentLines=linColl;
     }
     public void removeRecords(ActionEvent ae){
         receiveDc.s_lines.clear();
     }
     public void deleteCurrectRecord(ActionEvent ae){
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentItem}");
+        String currentDocRefItem=(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentDocRefItem}");
+        int count=0;
+        ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
+
+ 
+        
         ArrayList coll=(ArrayList) receiveDc.s_lines;
                 for(int i=0;i<receiveDc.s_lines.size();i++){
                     LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
                     if(lines.getRowLineIdx()==currentItem){
+                        //
+                        for(int j=0;j<receiveDc.s_shipmentLines.size();j++){
+                            ShipmentLinesBO slines = (ShipmentLinesBO) receiveDc.s_shipmentLines.get(j);
+                            if(slines.getDocRefLine().equalsIgnoreCase(lines.getDocRefLine()) && slines.getShipmentLine().equalsIgnoreCase(lines.getShipmentLine())){
+                                count++;
+                                String lineQty=slines.getQty();
+                                Integer availableQty=Integer.parseInt(lineQty)+Integer.parseInt(lines.getQuantity());                    
+                                ((ShipmentLinesBO)linColl.get(j)).setQty(availableQty.toString());                 
+                            }
+                        }
+                        //
+                        if(count==0){
+                            ShipmentLinesBO shipLine=new ShipmentLinesBO();
+                            shipLine.setDocRefLine(lines.getDocRefLine());
+                            shipLine.setItem(lines.getLines());
+                            shipLine.setItemDecs("");
+                            shipLine.setLocator(lines.getLocator());
+                            shipLine.setLotControl(lines.getLotControl());
+                            shipLine.setLpn(lines.getLpn());
+                            shipLine.setQty(lines.getQuantity());
+                            shipLine.setReceiveTxnId(lines.getReceiveTxnId());
+                            shipLine.setSerialControl(lines.getSerialControl());
+                            shipLine.setShipmentLine(lines.getShipmentLine());
+                            shipLine.setSubInv(lines.getSubInv());
+                            shipLine.setUom(lines.getUom());
+                            linColl.add(shipLine);
+                        }
                         coll.remove(i);
                     }
                 }
+                
+        receiveDc.s_shipmentLines=linColl;
         MethodExpression me =
             AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
                                                    });
@@ -164,6 +201,20 @@ public class ReceivingTxnUtilBean {
     }
     
     public void quantityValidation(ActionEvent ae){
+        String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
+        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}");
+        if (quantityEntered==null){
+            quantityEntered="0";
+        }
+        if (quantityReceivable==null){
+            quantityReceivable="0";
+        }
+        if(Integer.parseInt(quantityEntered)>Integer.parseInt(quantityReceivable)){
+            throw new AdfException("Entered quantity exceeds receivable Qty", AdfException.ERROR);
+        }
+    }
+    
+    public void quantityValueChange(ValueChangeEvent vce){
         String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
         String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}");
         if (quantityEntered==null){

@@ -63,7 +63,8 @@
             <amx:selectItems value="#{bindings.LPNNum.items}" id="si7"/>
           </amx:selectOneChoice>
           <amx:inputText label="Quantity" id="it1" value="#{pageFlowScope.quantityAdd}" showRequired="true"
-                       required="true" inputType="number"/>
+                       required="true" inputType="number"
+                         valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.quantityValueChange}"/>
           <amx:inputNumberSlider label="Quantity" id="ins1" minimum="1" value="#{pageFlowScope.quantityAdd}"
                                  maximum="#{bindings.qty.inputValue}" required="true" stepSize="1" rendered="false"/>
           <amx:inputText value="#{bindings.isNewEntity.inputValue}" simple="true" id="it6" rendered="false"/>
