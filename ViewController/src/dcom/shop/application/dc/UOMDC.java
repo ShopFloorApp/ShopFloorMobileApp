@@ -2,6 +2,7 @@ package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.AccountAliasBO;
+import dcom.shop.application.mobile.CostGroupBO;
 import dcom.shop.application.mobile.UOMBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -100,6 +101,7 @@ public class UOMDC extends SyncUtils {
     }
 
     public UOMBO[] getUOM() {
+        s_uom = super.getOfflineCollection(UOMBO.class);
         UOMBO[] uomArray = (UOMBO[]) s_uom.toArray(new UOMBO[s_uom.size()]);
         return uomArray;
     }

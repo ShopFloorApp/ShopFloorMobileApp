@@ -89,6 +89,7 @@
                     <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
                 </amx:panelLabelAndMessage>
                 <amx:selectOneChoice value="#{pageFlowScope.uom}" rendered="#{pageFlowScope.renderUomChoiceList}" label="UOM" id="soc2">
+                    <amx:selectItem label="Choose" value="0" id="si10"/>
                     <amx:selectItems value="#{bindings.UOMCode.items}" id="si9"/>
                 </amx:selectOneChoice>
                 <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam10">
