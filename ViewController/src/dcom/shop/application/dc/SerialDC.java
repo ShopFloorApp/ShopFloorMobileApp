@@ -95,6 +95,8 @@ public class SerialDC extends SyncUtils {
             Map map = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
             SerialBO[] serials = null;
             s_serials = super.getOfflineCollection(SerialBO.class);
+            s_dbSerials = super.getOfflineCollection(SerialBO.class);
+            
             filterSerials();
             serials = (SerialBO[]) filtered_serials.toArray(new SerialBO[filtered_serials.size()]);
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyEntered}", String.class);

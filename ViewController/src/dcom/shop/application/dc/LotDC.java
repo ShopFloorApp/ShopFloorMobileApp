@@ -83,6 +83,7 @@ public class LotDC extends SyncUtils{
             s_lots.clear();
             LotBO[] lots = null;
             s_lots = super.getOfflineCollection(LotBO.class);
+            s_dbLots = super.getOfflineCollection(LotBO.class);
             filterLots();
             lots = (LotBO[]) filtered_lots.toArray(new LotBO[filtered_lots.size()]);
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qtyEntered}", String.class);
