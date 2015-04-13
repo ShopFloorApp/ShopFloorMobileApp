@@ -24,6 +24,7 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="spl10"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl11"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
+                <amx:setPropertyListener from="New" type="action" to="#{pageFlowScope.TransactionStatus}" id="spl25"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.TrxType}" id="spl2"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.accountAlias}" id="spl9"/>
                 <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
@@ -116,7 +117,7 @@
                                          id="spl14"/>
                 <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
                                          id="spl24"/>
-                <amx:showPopupBehavior id="spb1" popupId="popup1" type="swipeLeft" decoration="anchor" alignId="li1"/>
+                <amx:showPopupBehavior id="spb1" popupId="popup1" type="action" decoration="anchor" alignId="li1"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
@@ -136,6 +137,7 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:closePopupBehavior id="cpb2" popupId="popup1" type="action"/>
             </amx:commandLink>
             <amx:commandLink id="cl6" action="miscTransaction">
                 <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
@@ -150,6 +152,8 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:setPropertyListener from="Edit" type="action" to="#{pageFlowScope.TransactionStatus}" id="spl26"/>
+                <amx:closePopupBehavior id="cpb2" popupId="popup1" type="action"/>
             </amx:commandLink>
             <amx:commandLink id="cl8" actionListener="#{bindings.CompleteMiscTrxn.execute}">
                 <amx:tableLayout id="tl10" halign="center" inlineStyle="margin-right: 20px;margin-left: 8px;">
@@ -164,6 +168,7 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:closePopupBehavior id="cpb2" popupId="popup1" type="action"/>
             </amx:commandLink>
         </amx:panelGroupLayout>
     </amx:popup>

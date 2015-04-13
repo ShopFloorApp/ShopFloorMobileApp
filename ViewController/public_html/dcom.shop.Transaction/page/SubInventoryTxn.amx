@@ -177,9 +177,9 @@
                                          id="spl23"/>
                 <amx:setPropertyListener from="#{row.completeFlag}" type="action" to="#{pageFlowScope.rowCompleteFlag}"
                                          id="spl30"/>
-                <amx:setPropertyListener from="#{row.toLoc}" type="action" to="#{pageFlowScope.ToLocator}" id="spl24"/>
+                <amx:setPropertyListener from="#{row.toLoc}" type="action" to="#{pageFlowScope.ToLocator}" id="spl31"/>
                  <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
-                                         id="spl24"/>
+                                         id="spl32"/>
                 <amx:showPopupBehavior id="spb1" popupId="popup1" type="action" decoration="anchor" alignId="li1"/>
                 <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" type="action" id="spl27"/>
                 <!--amx:outputText value="#{row.fromInventory}" id="ot2"/>

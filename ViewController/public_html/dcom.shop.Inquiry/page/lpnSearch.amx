@@ -85,7 +85,8 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13">
-                        <amx:commandLink id="cl3" action="#{SearchProductBean.validateLpnKeyword}">
+                        <!--amx:commandLink id="cl3" action="#{SearchProductBean.validateLpnKeyword}"-->
+                        <amx:commandLink id="cl3" action="#{StateListenerBean.validateAndNavigateLpnLov}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">

@@ -305,8 +305,8 @@ public class InvTrnDC extends RestCallerUtil {
         whereClause.put("trxnid", trxnId);
         // whereClause.put("trxtype", trxnType);
 
-        boolean result = syncUtils.deleteSqlLiteTable(SubInventoryTxnBO.class, whereClause);
-        if (result) {
+        boolean result = syncUtils.deleteSqlLiteTable(MiscTxnBO.class, whereClause);
+        if (!result) {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
@@ -366,6 +366,7 @@ public class InvTrnDC extends RestCallerUtil {
         String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.serialControl}");
         String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lotControl}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
+        String tranStatus = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TransactionStatus}");
         miscTxn.setTrxnId(trxnId);
         miscTxn.setItemNumber(item);
         miscTxn.setItemName(itemName);
@@ -377,10 +378,27 @@ public class InvTrnDC extends RestCallerUtil {
         miscTxn.setSerialControl(serialControl);
         miscTxn.setLotControl(lotControl);
         miscTxn.setTxnUom(uom);
-        s_miscTrxns.add(miscTxn);
+
         SyncUtils syncUtils = new SyncUtils();
-        syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
-        if ("SUBMIT".equals(trxType))
+        s_serialTrxns = syncUtils.getCollectionFromDB(SerialBO.class);
+        filterSerials(trxnId);
+        if (s_filteredSerialTrxns.size() > 0)
+            miscTxn.setSerialControl("1");
+        s_lotTrxns = syncUtils.getCollectionFromDB(LotBO.class);
+        filterLots(trxnId);
+        if (s_filteredLotTrxns.size() > 0)
+            miscTxn.setLotControl("1");
+        if ("New".equals(tranStatus)) {
+            s_miscTrxns.add(miscTxn);
+            syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);
+        } else if ("Edit".equals(tranStatus)) {
+            s_miscTrxns.clear();
+            s_miscTrxns.add(miscTxn);
+            HashMap whereClause = new HashMap();
+            whereClause.put("trxnid", trxnId);
+            syncUtils.updateSqlLiteTableWithWhere(MiscTxnBO.class, s_miscTrxns, whereClause);
+        }
+        if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))))
             ProcessMiscTrxnWS(trxnId);
         return "Back";
     }

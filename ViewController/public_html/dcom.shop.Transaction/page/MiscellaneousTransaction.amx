@@ -64,7 +64,7 @@
                                               id="pgl7">
                             <amx:inputText hintText="Item Number" inlineStyle="text-align:left;" id="it6"
                                            value="#{pageFlowScope.searchKeyword}"/>
-                            <amx:commandLink id="cl12" action="ItemLOV">
+                            <amx:commandLink id="cl12" action="#{StateListenerBean.validateAndNavigateItemLov}">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                                 <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                                 <amx:setPropertyListener id="spl3" from="MiscTrxn" to="#{pageFlowScope.ItemLovPage}"

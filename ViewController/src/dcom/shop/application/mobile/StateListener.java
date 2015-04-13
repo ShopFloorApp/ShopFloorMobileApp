@@ -11,6 +11,7 @@ import javax.el.ValueExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.amx.event.ValueChangeEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
@@ -400,5 +401,31 @@ public class StateListener {
         else{
         return "lpnLOV";
         }
+    }
+
+    public String validateAndNavigateItemLov() {
+        // Add event code here...
+        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}").toString();
+        if(item.length() < 3){
+            
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                  "showAlert", new Object[] {"Error","Please enter atleast 3 characters for Item.","Ok" });
+            return "";
+        }
+        else
+        return "ItemLOV";
+    }
+    
+    public String validateAndNavigateLpnLov() {
+        // Add event code here...
+        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
+        if(item.length() < 3){
+            
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                  "showAlert", new Object[] {"Error","Please enter atleast 3 characters for LPN.","Ok" });
+            return "";
+        }
+        else
+        return "lpnLOV";
     }
 }

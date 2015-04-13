@@ -52,6 +52,7 @@
                     <adfmf:include type="StyleSheet" file="resources/css/WorkBetter.css" id="i9"/>
                     <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/Android/js/barcodescanner.js"
                                    id="i10"/>
+                    <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i17"/>
                 </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
@@ -65,14 +66,17 @@
                     <adfmf:include type="JavaScript" file="resources/js/customSearch.js" id="i11"/>
                     <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/iOS/js/barcodescanner.js" id="i12"/>
                     <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i13"/>
-                </adfmf:includes>
+                      <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i18"/>
+              </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
     <adfmf:feature id="dcom.shop.Inquiry" image="images/Survey-64.png" name="Inquiry" securityEnabled="true">
         <adfmf:content id="dcom.shop.Inquiry.1">
             <adfmf:amx file="dcom.shop.Inquiry/inquiryTf.xml#inquiryTf">
-                <adfmf:includes/>
+                <adfmf:includes>
+                    <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i19"/>
+                </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
