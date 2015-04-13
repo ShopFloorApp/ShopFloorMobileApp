@@ -99,6 +99,8 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
                 <amx:setPropertyListener from="#{row.trxnId}" type="action" to="#{pageFlowScope.TrxnId}" id="spl1"/>
+                <amx:setPropertyListener from="#{row.trxnId}" type="action" to="#{pageFlowScope.SubinvTrxnId}"
+                                         id="spl29"/>
                 <amx:setPropertyListener from="#{row.fromInventory}" type="action"
                                          to="#{pageFlowScope.FromSubinventory}" id="spl15"/>
                 <amx:setPropertyListener from="#{row.quantity}" type="action" to="#{pageFlowScope.quantity}"
