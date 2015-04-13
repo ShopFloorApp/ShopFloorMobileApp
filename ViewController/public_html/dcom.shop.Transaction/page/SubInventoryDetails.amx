@@ -107,7 +107,7 @@
                     <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
                                     id="ot2"/>
                 </amx:panelLabelAndMessage>
-                <amx:panelLabelAndMessage label="UOM" rendered="#{pageFlowScope.renderUomChoiceList}" inlineStyle="text-align:left;" id="plam233">
+                <amx:panelLabelAndMessage label="UOM" rendered="#{!pageFlowScope.renderUomChoiceList}" inlineStyle="text-align:left;" id="plam233">
                     <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
                 </amx:panelLabelAndMessage>
                 <amx:selectOneChoice value="#{pageFlowScope.uom}" rendered="#{pageFlowScope.renderUomChoiceList}" label="UOM" id="soc1">
