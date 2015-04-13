@@ -147,7 +147,7 @@ public class ReceivingTxnUtilBean {
     }
     public void deleteCurrectRecord(ActionEvent ae){
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentItem}");
-        String currentDocRefItem=(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentDocRefItem}");
+        
         int count=0;
         ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
 
