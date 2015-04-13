@@ -47,6 +47,7 @@ public class MiscTxnDC extends SyncUtils {
     public synchronized List<MiscTxnBO> getMiscTrxns() {
         MiscTxnBO SubInventoryTxnBO[] = null;
         MiscTxnBO subinventory = null;
+        s_misctxns.clear();
         s_misctxns = selectMiscTrxns(s_misctxns);
         int trxnId = s_misctxns.size();
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SubinvTrxnId}", int.class);
@@ -109,8 +110,9 @@ public class MiscTxnDC extends SyncUtils {
                     miscTxn.setLotControl(lotControl);
                 } else {
                     MiscTxnBO subinv =
-                        new MiscTxnBO(trxnid, fromSubinv, fromLoc, itemNumber, itemName, qty, trxntime, completeFlag,
-                                      trxType, accountAlias, status, txnuom, serialControl, lotControl);
+                        new MiscTxnBO(trxnid, fromSubinv, itemNumber, itemName, qty, trxntime, completeFlag,
+                                      fromLoc ,status , trxType, accountAlias, txnuom, serialControl, lotControl);
+                      
                     misctxns.add(subinv);
                 }
             }

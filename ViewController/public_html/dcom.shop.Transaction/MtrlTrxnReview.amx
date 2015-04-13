@@ -114,6 +114,8 @@
                                          id="spl22"/>
                 <amx:setPropertyListener from="#{row.locator}" type="action" to="#{pageFlowScope.FromLocator}"
                                          id="spl23"/>
+                <amx:setPropertyListener from="#{row.completeFlag}" type="action" to="#{pageFlowScope.rowCompleteFlag}"
+                                         id="spl30"/>
                 <amx:setPropertyListener from="#{row.trxType}" type="action" to="#{pageFlowScope.TrxType}" id="spl13"/>
                 <amx:setPropertyListener from="#{row.accountAlias}" type="action" to="#{pageFlowScope.accountAlias}"
                                          id="spl14"/>
@@ -123,7 +125,7 @@
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
-    <amx:popup id="popup1" autoDismiss="true">
+    <amx:popup id="popup1" rendered="#{pageFlowScope.rowCompleteFlag == 'N'}" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
             <amx:commandLink id="cl5" actionListener="#{bindings.DeleteMiscTransaction.execute}">
