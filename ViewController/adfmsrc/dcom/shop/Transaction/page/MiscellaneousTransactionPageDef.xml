@@ -32,7 +32,6 @@
         <Item Value="accountAlias"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
-        <Item Value="accountAlias"/>
         <Item Value="accountSegment"/>
       </ListDisplayAttrNames>
     </list>
