@@ -119,7 +119,9 @@
               usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
     <page path="/dcom.shop.Request/page/ProgramSubmitted.amx" usageId="dcom_shop_mobile_ProgramSubmittedPageDef"/>
     <page path="/dcom.shop.DispatchList/page/jobSearch.amx" usageId="dcom_shop_mobile_jobSearchPageDef"/>
-</pageMap>
+        <page path="/dcom.shop.DispatchList/dispatch.xml#dispatch@fetchData"
+              usageId="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"/>
+    </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
               path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
@@ -215,7 +217,9 @@
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
     <page id="dcom_shop_mobile_ProgramSubmittedPageDef" path="dcom.shop.Request.page.ProgramSubmittedPageDef"/>
     <page id="dcom_shop_mobile_jobSearchPageDef" path="dcom.shop.DispatchList.page.jobSearchPageDef"/>
-</pageDefinitionUsages>
+        <page id="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"
+              path="dcom.shop.DispatchList.dispatch_dispatch_fetchDataPageDef"/>
+    </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>
         <dc id="ItemStatusDC" path="dcom.shop.mobile.ItemStatusDC"/>

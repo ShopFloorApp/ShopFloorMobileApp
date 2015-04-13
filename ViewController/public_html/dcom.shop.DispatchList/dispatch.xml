@@ -89,11 +89,21 @@
         <view id="jobSearch">
             <page>/dcom.shop.DispatchList/page/jobSearch.amx</page>
         </view>
+        <method-call id="fetchData">
+            <method>#{bindings.fetchData.execute}</method>
+            <outcome>
+                <fixed-outcome>fetchData</fixed-outcome>
+            </outcome>
+        </method-call>
         <control-flow-rule id="__1">
             <from-activity-id>dispatchList</from-activity-id>
             <control-flow-case id="__2">
                 <from-outcome>toJobOpr</from-outcome>
-                <to-activity-id>jobOperations</to-activity-id>
+                <to-activity-id>fetchData</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__44">
+                <from-outcome>toJobSearch</from-outcome>
+                <to-activity-id>jobSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__3">
@@ -226,6 +236,17 @@
             <control-flow-case id="__40">
                 <from-outcome>toDept</from-outcome>
                 <to-activity-id>dispatchList</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__41">
+                <from-outcome>toWorkContent</from-outcome>
+                <to-activity-id>workContent</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__42">
+            <from-activity-id>fetchData</from-activity-id>
+            <control-flow-case id="__43">
+                <from-outcome>fetchData</from-outcome>
+                <to-activity-id>jobOperations</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>

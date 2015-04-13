@@ -9,63 +9,60 @@ import java.util.ArrayList;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
-import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-/*
- * Fetches the Job Operations based on the department selected on dispatch list page
- */
+
 public class JobOperationDC extends AViewObject {
 
     protected static List<JobOperationBO> jobOpList = new ArrayList<JobOperationBO>();
     private ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private static boolean isSortOperation = false;
-    private static boolean isJobSearch =false;
+    private static boolean isJobSearch = false;
+    private JobOperationBO[] sJobOperation = null;
 
     public JobOperationDC() {
         super();
     }
 
     public JobOperationBO[] getJobOperationBO() {
-        JobOperationBO[] sJobOperation = null;
-        if (!isJobSearch) {
-            if (!isSortOperation) {
-                jobOpList.clear();
-                if (isOffline()) {
-                    jobOpList = getCollectionFromDB(JobOperationDC.class);
-                    sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
-                } else {
-                    getFromWS();
-                    sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
-                }
-            } else {
-                isSortOperation = false;
-                return sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
-            }
-        }else{
-            return sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
-        }
         return sJobOperation;
+    }
+
+    public void fetchData() {
+        if (!isSortOperation) {
+            jobOpList.clear();
+            if (isOffline()) {
+                jobOpList = getCollectionFromDB(JobOperationDC.class);
+            } else {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchJobKeyword}", "");
+                getFromWS();
+            }
+        } else {
+            isSortOperation = false;
+        }
+        sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
+        providerChangeSupport.fireProviderRefresh("jobOperationBO");
     }
 
     public void getFromWS() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobOperationBO[] jobOprArray = null;
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String orgCode =
+            AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = null;
         try {
             deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
-        } catch (AdfException ae) {
+        } catch (NullPointerException ae) {
             deptCode = "";
         }
         String jobOp = null;
         try {
             jobOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchJobKeyword}").toString();
-        } catch (AdfException ae) {
+        } catch (NullPointerException ae) {
             jobOp = "";
         }
 
@@ -130,8 +127,7 @@ public class JobOperationDC extends AViewObject {
             orderByClause = "ORDER BY " + sortByCol + " ASC";
         }
         jobOpList = super.getFilteredCollectionFromDB(JobOperationBO.class, orderByClause);
-        providerChangeSupport.fireProviderRefresh("jobOperationBO");
-
+        fetchData();
     }
 
     public void addProviderChangeListener(ProviderChangeListener l) {
@@ -192,12 +188,13 @@ public class JobOperationDC extends AViewObject {
     public void searchJobNumber() {
         String searchKeyword = null;
         String whereClause = null;
-        
-        isJobSearch=true;
+        isJobSearch = true;
+        jobOpList.clear();
+        sJobOperation = null;
         try {
             searchKeyword = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchJobKeyword}").toString();
             whereClause = "WHERE JOBNUMBER LIKE '" + searchKeyword + "%'";
-        } catch (AdfException ae) {
+        } catch (Exception ae) {
             whereClause = "WHERE 1=1";
         }
         if (isOffline()) {
@@ -206,6 +203,7 @@ public class JobOperationDC extends AViewObject {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.deptName}", "");
             getFromWS();
         }
+        sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
         providerChangeSupport.fireProviderRefresh("jobOperationBO");
     }
 }
