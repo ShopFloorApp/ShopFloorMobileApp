@@ -53,7 +53,7 @@ public class InvTrnDC extends RestCallerUtil {
 
     public String InsertTransaction(String trxType) {
         s_invTrxns.clear();
-        
+
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         SubInventoryTxnBO subInvTxn = new SubInventoryTxnBO();
@@ -163,28 +163,29 @@ public class InvTrnDC extends RestCallerUtil {
             "                  \"RespApplication\": \"ONT\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PINVTXN\": { \"LPN\": \"" + lpn +
-            "\",\"ITEM\": \"" + item + "\", \"SOURCSUBINV\": \"" + fromSubInv + "\", \"SOURCELOCATOR\": \"" +
-            fromLocator + "\",\"TXNUOM\": \"" + uom + "\", \"TRXQTY\": \"" + qty + "\", \"DESTORG\": \"" + destOrg +
-            "\", \"SOURCEORGCODE\": \"" + sourceOrg + "\", \"DESTSUBINV\": \"" + toSubInv + "\", \"DESTLOCATOR\": \"" +
-            toLocator + "\"" + ", \"TRXTYPE\": \"SUBINV\" \n" ;
+            "                 },\n" + "   \"InputParameters\": \n" +
+            "      {\"PINVTXN\": {  \"TRXTYPE\": \"SUBINV\" , \"SOURCEORGCODE\": \"" + sourceOrg + "\",\"ITEM\": \"" +
+            item + "\", \"SOURCESUBINV\": \"" + fromSubInv + "\", \"SOURCELOCATOR\": \"" + fromLocator +
+            "\", \"LPN\": \"" + lpn + "\", \"DESTORG\": \"" + destOrg + "\", \"DESTSUBINV\": \"" + toSubInv +
+            "\", \"DESTLOCATOR\": \"" + toLocator + "\" , \"TRXQTY\": \"" + qty + "\" ,\"TXNUOM\": \"" + uom + "\"   " +
+            " \n";
         System.out.println("Calling create method");
-        
+
         LotBO lot = new LotBO();
         Iterator j = s_filteredLotTrxns.iterator();
-      //  if(s_filteredLotTrxns.size()>0){
-            payload = payload +  ", \"LOTS\": { \"XXDCOM_LOT_TAB\": [  ";    
-       // }
+        //  if(s_filteredLotTrxns.size()>0){
+        payload = payload + ", \"LOTS\": { \"XXDCOM_LOT_TAB\": [  ";
+        // }
         while (j.hasNext()) {
             lot = (LotBO) j.next();
             payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
 
         }
         payload = payload.substring(0, payload.length() - 1);
-        
+
         SerialBO serial = new SerialBO();
-        if(s_filteredSerialTrxns.size()>0){
-            payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";    
+        if (s_filteredSerialTrxns.size() > 0) {
+            payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
         }
         Iterator i = s_filteredSerialTrxns.iterator();
         while (i.hasNext()) {
@@ -449,16 +450,15 @@ public class InvTrnDC extends RestCallerUtil {
             "                  \"RespApplication\": \"ONT\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PINVTXN\": { \"ITEM\": \"" + item +
-            "\", \"SOURCSUBINV\": \"" + fromSubInv + "\", \"SOURCELOCATOR\": \"" + fromLocator + "\",\"TXNUOM\": \"" +
-            uom + "\", \"TRXQTY\": \"" + qty + "\", \"ACCOUNTALIAS\": \"" + acctAlias + "\", \"SOURCEORGCODE\": \"" +
-            sourceOrg + "\", \"TRXTYPE\": \"" + trxType + "\", \"DESTORG\": \"" + destOrg +
-            "\"";
+            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PINVTXN\": { \"TRXTYPE\": \"" + trxType +
+            "\" , \"SOURCEORGCODE\": \"" + sourceOrg + "\"  , \"ITEM\": \"" + item + "\", \"SOURCESUBINV\": \"" +
+            fromSubInv + "\", \"SOURCELOCATOR\": \"" + fromLocator + "\" , \"DESTORG\": \"" + destOrg +
+            "\" , \"TRXQTY\": \"" + qty + "\" ,\"TXNUOM\": \"" + uom + "\", \"ACCOUNTALIAS\": \"" + acctAlias + "\"";
         System.out.println("Calling create method");
         LotBO lot = new LotBO();
-      //  if(s_filteredLotTrxns.size()>0){
-            payload = payload + ", \"LOTS\": {\n" + "  \"XXDCOM_LOT_TAB\": [   ";
-      //  }
+        //  if(s_filteredLotTrxns.size()>0){
+        payload = payload + ", \"LOTS\": {\n" + "  \"XXDCOM_LOT_TAB\": [   ";
+        //  }
         Iterator j = s_filteredLotTrxns.iterator();
         while (j.hasNext()) {
             lot = (LotBO) j.next();
@@ -466,8 +466,8 @@ public class InvTrnDC extends RestCallerUtil {
 
         }
         payload = payload.substring(0, payload.length() - 1);
-        if(s_filteredSerialTrxns.size()>0)
-        payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
+        if (s_filteredSerialTrxns.size() > 0)
+            payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
         SerialBO serial = new SerialBO();
         Iterator i = s_filteredSerialTrxns.iterator();
         while (i.hasNext()) {

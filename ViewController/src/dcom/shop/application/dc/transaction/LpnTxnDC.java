@@ -177,8 +177,14 @@ public class LpnTxnDC extends SyncUtils {
             lpnTxn.getLpnTo(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
         String subInv =
             lpnTxn.getSubinventory(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
+        if (subInv.equals("{@xsi:nil: \"true\"}")) {
+            subInv = "";
+        }
         String locator =
             lpnTxn.getLocator(); // (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
+        if (locator.equals("{@xsi:nil: \"true\"}")) {
+            locator = "";
+        }
         String trxType =
             lpnTxn.getTrxType(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String destOrg = "100";
@@ -195,29 +201,29 @@ public class LpnTxnDC extends SyncUtils {
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + "      {\"PLPNTXN\": { \"ORGCODE\": \"" +
             sourceOrg + "\",\"TXNTYPE\": \"" + trxType + "\", \"LPNFROM\": \"" + lpnFrom + "\", \"LPNTO\": \"" + lpnTo +
-            "\",\"SUBINV\": \"" + subInv + "\", \"LOCATOR\": \"" + locator + "\" \n"  ;
+            "\",\"SUBINV\": \"" + subInv + "\", \"LOCATOR\": \"" + locator + "\" \n";
         System.out.println("Calling create method");
         ItemTxnBO item = new ItemTxnBO();
         Iterator k = s_filteredItemTxn.iterator();
-      //  if(s_filteredItemTxn.size()>0){
-            payload = payload + ", \"CONTENTS\": { \"CONTENTS_ITEM\": [   ";
+        //  if(s_filteredItemTxn.size()>0){
+        payload = payload + ", \"CONTENTS\": { \"CONTENTS_ITEM\": [   ";
         //}
         while (k.hasNext()) {
             item = (ItemTxnBO) k.next();
             payload =
                 payload + "{\"ITEM\":\"" + item.getItemNumber() + "\",\"ITEMDESC\": \"" + item.getItemName() +
                 "\",\"UOM\": \"" + item.getUom() + "\",\"ONHANDQTY\": \"" + onHandQty + "\",\"AVAILABLEQTY\": \"" +
-                availQty + "\"";
+                availQty + "\"   ";
 
             filterLots(item.getItemId());
             filterSerials(item.getItemId());
 
             LotBO lot = new LotBO();
             Iterator j = s_filteredLotTrxns.iterator();
-            if (s_filteredLotTrxns.size() > 0) {
-                payload = payload + ",\"LOTS\": { \"LOTS_ITEM\": [";
+            //if (s_filteredLotTrxns.size() > 0) {
+            payload = payload + ",\"LOTS\": { \"LOTS_ITEM\": [   ";
 
-            }
+            //}
             while (j.hasNext()) {
                 lot = (LotBO) j.next();
                 payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
