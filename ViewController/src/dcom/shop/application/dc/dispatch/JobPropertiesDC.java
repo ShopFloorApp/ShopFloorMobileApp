@@ -24,7 +24,7 @@ public class JobPropertiesDC extends AViewObject {
     public JobPropertiesBO[] getJobPropertiesBO() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobPropertiesBO[] jobPropsArray = null;
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
         String jobNumber = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}").toString();
         StringBuffer strPayload = new StringBuffer();

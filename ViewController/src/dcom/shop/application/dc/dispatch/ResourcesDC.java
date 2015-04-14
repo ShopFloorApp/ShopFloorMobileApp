@@ -25,7 +25,7 @@ public class ResourcesDC extends AViewObject  {
         resourceList.clear();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         ResourcesBO[] resourcesArray = null;
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
         String jobOpsVal = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobOps}").toString();
         StringBuffer strPayload = new StringBuffer();

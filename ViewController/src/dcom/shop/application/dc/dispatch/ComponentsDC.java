@@ -24,7 +24,7 @@ public class ComponentsDC extends AViewObject {
         componentList.clear();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         ComponentsBO[] componentsArray = null;
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
         String jobOpsVal = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobOps}").toString();
         StringBuffer strPayload = new StringBuffer();

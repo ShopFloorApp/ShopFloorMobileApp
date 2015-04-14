@@ -104,8 +104,8 @@ public class TransactDC {
                 object = parser.parse(jsonArrayAsString);
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                JSONObject jsObject1 = (JSONObject) jsObject.get("XSTATUS");
-                return jsObject1.toString();
+                String status  =  jsObject.get("XSTATUS").toString();
+                return status.toString();
             } catch (Exception e) {
                 e.getMessage();
             }
