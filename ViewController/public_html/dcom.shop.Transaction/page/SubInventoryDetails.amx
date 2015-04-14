@@ -183,7 +183,7 @@
                     </amx:tableLayout>
                 </amx:commandLink>
                 <amx:spacer width="40" id="s16"/>
-                <amx:commandLink id="cl2" rendered="#{pageFlowScope.lotControl == 1}" action="LotEntry">
+                <amx:commandLink id="cl2" rendered="#{!pageFlowScope.lotControl == 1}" action="LotEntry">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.LotQty}" id="spl5"/>
                     <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"

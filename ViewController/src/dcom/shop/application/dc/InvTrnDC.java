@@ -57,12 +57,12 @@ public class InvTrnDC extends RestCallerUtil {
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         SubInventoryTxnBO subInvTxn = new SubInventoryTxnBO();
-
-        if (networkStatus.equals(NOT_REACHABLE) || "QUEUE".equals(trxType)) {
+        subInvTxn.setCompleteFlag("N");
+        /*if (networkStatus.equals(NOT_REACHABLE) || "QUEUE".equals(trxType)) {
             subInvTxn.setCompleteFlag("N");
         } else {
             subInvTxn.setCompleteFlag("Y");
-        }
+        }*/
         subInvTxn.setIsNewEntity("Y");
 
         Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
@@ -173,7 +173,7 @@ public class InvTrnDC extends RestCallerUtil {
         LotBO lot = new LotBO();
         Iterator j = s_filteredLotTrxns.iterator();
       //  if(s_filteredLotTrxns.size()>0){
-            payload = payload +  ", \"LOTS\": { \"XXDCOM_LOT_TAB\": [";    
+            payload = payload +  ", \"LOTS\": { \"XXDCOM_LOT_TAB\": [  ";    
        // }
         while (j.hasNext()) {
             lot = (LotBO) j.next();
@@ -356,12 +356,12 @@ public class InvTrnDC extends RestCallerUtil {
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         MiscTxnBO miscTxn = new MiscTxnBO();
 
-        if (networkStatus.equals(NOT_REACHABLE) || "QUEUE".equals(trxType)) {
+        /*if (networkStatus.equals(NOT_REACHABLE) || "QUEUE".equals(trxType)) {
             miscTxn.setCompleteFlag("N");
         } else {
             miscTxn.setCompleteFlag("Y");
-        }
-
+        }*/
+        miscTxn.setCompleteFlag("N");
         Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
         String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
         String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
@@ -457,7 +457,7 @@ public class InvTrnDC extends RestCallerUtil {
         System.out.println("Calling create method");
         LotBO lot = new LotBO();
       //  if(s_filteredLotTrxns.size()>0){
-            payload = payload + ", \"LOTS\": {\n" + "  \"XXDCOM_LOT_TAB\": [";
+            payload = payload + ", \"LOTS\": {\n" + "  \"XXDCOM_LOT_TAB\": [   ";
       //  }
         Iterator j = s_filteredLotTrxns.iterator();
         while (j.hasNext()) {
