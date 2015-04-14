@@ -66,14 +66,17 @@
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
             <amx:selectOneChoice value="#{pageFlowScope.itemCat}" rendered="#{pageFlowScope.advSearch}"
                                  label="Catalog Category" id="soc1">
+<amx:selectItem label="Choose" id="si4" value="0"/>                                 
                 <amx:selectItems value="#{bindings.catalog.items}" id="si1"/>
             </amx:selectOneChoice>
             <amx:selectOneChoice value="#{pageFlowScope.itemStatus}" rendered="#{pageFlowScope.advSearch}"
                                  label="Item Status" id="soc2">
+                <amx:selectItem label="Choose" id="si6" value="0"/>
                 <amx:selectItems value="#{bindings.status.items}" id="si2"/>
             </amx:selectOneChoice>
             <amx:selectOneChoice value="#{pageFlowScope.itemType}" rendered="#{pageFlowScope.advSearch}"
                                  label="Item Type" id="soc3">
+                <amx:selectItem label="Choose" id="si5" value="0"/>
                 <amx:selectItems value="#{bindings.typeCode.items}" id="si3"/>
             </amx:selectOneChoice>
         </amx:panelFormLayout>
