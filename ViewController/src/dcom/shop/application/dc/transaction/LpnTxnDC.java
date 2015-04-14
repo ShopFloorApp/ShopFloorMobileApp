@@ -199,9 +199,9 @@ public class LpnTxnDC extends SyncUtils {
         System.out.println("Calling create method");
         ItemTxnBO item = new ItemTxnBO();
         Iterator k = s_filteredItemTxn.iterator();
-        if(s_filteredItemTxn.size()>0){
+      //  if(s_filteredItemTxn.size()>0){
             payload = payload + ", \"CONTENTS\": { \"CONTENTS_ITEM\": [";
-        }
+        //}
         while (k.hasNext()) {
             item = (ItemTxnBO) k.next();
             payload =
