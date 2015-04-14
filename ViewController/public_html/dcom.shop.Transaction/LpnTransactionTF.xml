@@ -29,6 +29,12 @@
     <view id="itemLOVPG">
       <page>/page/LovPage/itemLOVPG.amx</page>
     </view>
+    <view id="SerialEntry">
+      <page>/page/SerialEntry.amx</page>
+    </view>
+    <view id="LotEntry">
+      <page>/page/LotEntry.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>LpnTransactions</from-activity-id>
       <control-flow-case id="__2">
@@ -53,6 +59,14 @@
       <control-flow-case id="__9">
         <from-outcome>Back</from-outcome>
         <to-activity-id>LpnTransactions</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>LotEntry</from-outcome>
+        <to-activity-id>LotEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>SerialEntry</from-outcome>
+        <to-activity-id>SerialEntry</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__7">

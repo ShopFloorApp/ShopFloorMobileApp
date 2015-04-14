@@ -7,6 +7,8 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <accessorIterator MasterBinding="LpnTxnDCIterator" Binds="lpnTrxns" RangeSize="25" DataControl="LpnTxnDC"
+                      BeanClass="dcom.shop.application.mobile.transaction.LpnTxnBO" id="lpnTrxnsIterator"/>
     <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="-1"
                       DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
@@ -14,6 +16,10 @@
     <iterator Binds="root" RangeSize="25" DataControl="ItemTxnDC" id="ItemTxnDCIterator"/>
     <accessorIterator MasterBinding="ItemTxnDCIterator" Binds="items" RangeSize="25" DataControl="ItemTxnDC"
                       BeanClass="dcom.shop.application.mobile.transaction.ItemTxnBO" id="itemsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOM" RangeSize="-1" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LpnTxnDC" id="LpnTxnDCIterator"/>
   </executables>
   <bindings>
     <list IterBinding="LocatorDCIterator" id="fromLoc" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -42,6 +48,13 @@
         <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
+    <tree IterBinding="lpnTrxnsIterator" id="lpnTrxns">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.LpnTxnBO" Name="lpnTrxns0">
+        <AttrNames>
+          <Item Value="trxnId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
     <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
@@ -57,5 +70,17 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <list IterBinding="UOMDCIterator" id="UOMCode" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="UOMIterator">
+      <AttrNames>
+        <Item Value="UOM"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="UOMCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

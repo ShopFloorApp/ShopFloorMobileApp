@@ -96,6 +96,7 @@ public class LotDC extends SyncUtils{
 
             }
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
+            this.qtyEntered = qtyEntered;
             return lots;
         } catch (Exception e) {
             throw new RuntimeException(e);

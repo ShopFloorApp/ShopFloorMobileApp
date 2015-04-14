@@ -76,7 +76,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">B44,27.850586,110.643555,-118.65234,110.643555,B61</property>
+         name="sdm:polyPoints">B44,27.850586,110.927734,-118.65234,110.927734,B61</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -345,7 +345,7 @@
       <property
          name="fromOutcome">LotEntry</property>
       <property
-         name="sdm:polyPoints">R50,531.3513,59.317383,681.0,65.981445,L50</property>
+         name="sdm:polyPoints">R50,531.3513,59.601562,681.0,66.265625,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

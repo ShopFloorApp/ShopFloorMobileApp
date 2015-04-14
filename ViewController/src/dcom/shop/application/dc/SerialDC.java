@@ -109,7 +109,7 @@ public class SerialDC extends SyncUtils {
 
             }
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), qtyEntered);
-
+            this.qtyEntered = qtyEntered;
             return serials;
         } catch (Exception e) {
             throw new RuntimeException(e);

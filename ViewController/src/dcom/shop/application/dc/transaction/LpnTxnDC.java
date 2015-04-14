@@ -320,7 +320,7 @@ public class LpnTxnDC extends SyncUtils {
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
 
             filterFileds.put("trxnid", (Integer) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
-            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ParentPage}", String.class);
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.CallingPage}", String.class);
             filterFileds.put("trxtype", (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
 
             HashMap paramMap = new HashMap();

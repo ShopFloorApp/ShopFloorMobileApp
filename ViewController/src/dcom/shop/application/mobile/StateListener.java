@@ -258,28 +258,27 @@ public class StateListener {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
     }
-    
+
     public void ClearPackDirectShipPage(ActionEvent actionEvent) {
         // Add event code here...
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.dockDorr}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
-        
+
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.orderLineNumber}", null);
-        
+
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.locator}", "0");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInv}", "0");
-        
+
         MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                      });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
-         me =
-            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
-                                                   });
+        me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshToLocators.execute}", Object.class, new Class[] {
+                                                    });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
-        
+
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
@@ -327,7 +326,7 @@ public class StateListener {
     public void LpnValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         System.out.println("here");
-            
+
         if ("".equals(valueChangeEvent.getNewValue())) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
@@ -341,11 +340,11 @@ public class StateListener {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
         }
     }
-    
+
     public void ItemValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         System.out.println("here");
-            
+
         if ("".equals(valueChangeEvent.getNewValue())) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
@@ -355,7 +354,7 @@ public class StateListener {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
         }
     }
-    
+
     public void ItemValueChange(ActionEvent actionEvent) {
         // Add event code here...
         String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
@@ -390,42 +389,60 @@ public class StateListener {
         // Add event code here...
         ValueExpression ve = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchLpnKeyword}", String.class);
-        String keyword =((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        if(keyword.length()<3){
+        String keyword = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        if (keyword.length() < 3) {
             Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
             pageFlow.put("keywrdLpnLenErr", "Yes");
             return null;
-        //      throw new AdfException("Enter atleast 3 characters.",AdfException.ERROR);
-            
-        }
-        else{
-        return "lpnLOV";
+            //      throw new AdfException("Enter atleast 3 characters.",AdfException.ERROR);
+
+        } else {
+            return "lpnLOV";
         }
     }
 
     public String validateAndNavigateItemLov() {
         // Add event code here...
-        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}").toString();
-        if(item.length() < 3){
-            
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                  "showAlert", new Object[] {"Error","Please enter atleast 3 characters for Item.","Ok" });
+        String item =
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}") == null ? "" :
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}").toString();
+        if (item.length() < 3) {
+
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error",
+                                                                      "Please enter atleast 3 characters for Item.",
+                                                                      "Ok"
+            });
             return "";
-        }
-        else
-        return "ItemLOV";
+        } else
+            return "ItemLOV";
     }
-    
+
     public String validateAndNavigateLpnLov() {
         // Add event code here...
         String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
-        if(item.length() < 3){
-            
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                  "showAlert", new Object[] {"Error","Please enter atleast 3 characters for LPN.","Ok" });
+        if (item.length() < 3) {
+
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error",
+                                                                      "Please enter atleast 3 characters for LPN.", "Ok"
+            });
             return "";
-        }
-        else
-        return "lpnLOV";
+        } else
+            return "lpnLOV";
+    }
+
+    public String validateAndNavigateToLpnLov() {
+        // Add event code here...
+        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
+        if (item.length() < 3) {
+
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error",
+                                                                      "Please enter atleast 3 characters for LPN.", "Ok"
+            });
+            return "";
+        } else
+            return "lpnLOV";
     }
 }

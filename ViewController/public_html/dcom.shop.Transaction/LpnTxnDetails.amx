@@ -60,7 +60,7 @@
                                           id="pgl1">
                         <amx:inputText hintText="LPN" id="it11" value="#{pageFlowScope.searchLpnKeyword}"
                                        inlineStyle="text-align:left;"/>
-                        <amx:commandLink id="cl1" action="#{StateListenerBean.validateLpnKeyword}">
+                        <amx:commandLink id="cl1" action="#{StateListenerBean.validateAndNavigateLpnLov}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh1" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
@@ -120,7 +120,8 @@
                         <amx:inputText disabled="#{!pageFlowScope.LpnEnable}" hintText="LPN" id="it1"
                                        valueChangeListener="#{StateListenerBean.LpnValueChange}"
                                        value="#{pageFlowScope.searchToLpnKeyword}" inlineStyle="text-align:left;"/>
-                        <amx:commandLink id="cl5" disabled="#{!pageFlowScope.LpnEnable}" action="lpnLOV">
+                        <amx:commandLink id="cl5" disabled="#{!pageFlowScope.LpnEnable}"
+                                         action="#{StateListenerBean.validateAndNavigateToLpnLov}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl8" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
@@ -153,7 +154,8 @@
                         <amx:inputText hintText="Item" disabled="#{!pageFlowScope.ItemEnable}"
                                        valueChangeListener="#{StateListenerBean.ItemValueChange}"
                                        inlineStyle="text-align:left;" id="it6" value="#{pageFlowScope.searchKeyword}"/>
-                        <amx:commandLink id="cl12" rendered="#{pageFlowScope.ItemEnable}" action="ItemLOV">
+                        <amx:commandLink id="cl12" rendered="#{pageFlowScope.ItemEnable}"
+                                         action="#{StateListenerBean.validateAndNavigateItemLov}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl1"
@@ -176,7 +178,13 @@
                                       inlineStyle="text-align:left;" id="plam133">
                 <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText" id="ot3"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="UOM" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}"
+            <amx:selectOneChoice value="#{pageFlowScope.uom}"
+                                 rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM' &amp;&amp; pageFlowScope.renderUomChoiceList}"
+                                 label="UOM" id="soc1">
+                <amx:selectItem label="Choose" value="0" id="si3"/>
+                <amx:selectItems value="#{bindings.UOMCode.items}" id="si2"/>
+            </amx:selectOneChoice>
+            <amx:panelLabelAndMessage label="UOM" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM' &amp;&amp; !pageFlowScope.renderUomChoiceList}"
                                       inlineStyle="text-align:left;" id="plam233">
                 <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
             </amx:panelLabelAndMessage>
@@ -185,16 +193,21 @@
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.availQty}" styleClass="adfmf-listItem-captionText" id="it4"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Quantity" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}"
-                                      inlineStyle="text-align:center;" id="plam4">
+             <amx:inputText hintText="Quantity" label="Quantity" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}" disabled="#{!pageFlowScope.ItemEnable}" showRequired="true"
+                                   inlineStyle="text-align:right;" value="#{pageFlowScope.quantity}" id="it2"
+                                   inputType="number">
+                        <?audit suppress oracle.maf.warning-missing-hintText?>
+                    </amx:inputText>
+            <!--amx:panelLabelAndMessage label="Quantity" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}"
+                                      inlineStyle="text-align:right;" id="plam4">
                 <amx:panelGroupLayout layout="horizontal" id="pgl8">
                     <amx:inputText hintText="Quantity" disabled="#{!pageFlowScope.ItemEnable}" showRequired="true"
-                                   inlineStyle="text-align:left;" value="#{pageFlowScope.quantity}" id="it2"
+                                   inlineStyle="text-align:right;" value="#{pageFlowScope.quantity}" id="it2"
                                    inputType="number">
                         <?audit suppress oracle.maf.warning-missing-hintText?>
                     </amx:inputText>
                 </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
+            </amx:panelLabelAndMessage-->
         </amx:panelFormLayout>
         <amx:panelGroupLayout layout="horizontal" id="pgl2">
             <amx:spacer width="30" id="s7"/>
@@ -244,7 +257,7 @@
         <amx:listView var="row" value="#{bindings.items.collectionModel}" fetchSize="#{bindings.items.rangeSize}"
                       selectedRowKeys="#{bindings.items.collectionModel.selectedRow}"
                       selectionListener="#{bindings.items.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                      bufferStrategy="viewport" id="lv1">
+                      bufferStrategy="viewport" id="lv1" styleClass="adfmf-listView-insetList" layout="cards">
             <amx:listItem id="li2" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl1" width="95%">
