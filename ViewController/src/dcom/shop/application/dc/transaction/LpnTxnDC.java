@@ -57,8 +57,8 @@ public class LpnTxnDC extends SyncUtils {
         MiscTxnBO subinventory = null;
         s_lpnTrxns = selectLpnTrxns(s_lpnTrxns);
         int trxnId = s_lpnTrxns.size();
-        ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
-        ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
+       // ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
+       // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
 
         return s_lpnTrxns;
     }
@@ -200,7 +200,7 @@ public class LpnTxnDC extends SyncUtils {
             item = (ItemTxnBO) k.next();
             payload =
                 payload + "{\"ITEM\":\"" + item.getItemNumber() + "\",\"ITEMDESC\": \"" + item.getItemName() +
-                "\"},\"UOM\": \"" + item.getUom() + "\"},\"ONHANDQTY\": \"" + onHandQty + "\"},\"AVAILABLEQTY\": \"" +
+                "\",\"UOM\": \"" + item.getUom() + "\",\"ONHANDQTY\": \"" + onHandQty + "\",\"AVAILABLEQTY\": \"" +
                 availQty + "\"";
 
             filterLots(item.getItemId());

@@ -41,6 +41,7 @@ public class ItemTxnDC extends SyncUtils{
            }
     protected static List s_items = new ArrayList();
     protected static List s_insertItems = new ArrayList();
+    protected static List<LpnTxnBO> s_lpnTrxns = new ArrayList<LpnTxnBO>();
     protected static List<ItemTxnBO> s_dbItems = new ArrayList();
     
     public void refreshTrxnId(){
@@ -55,6 +56,11 @@ public class ItemTxnDC extends SyncUtils{
         try {
             s_items.clear();
             ItemTxnBO[] items = null;
+            s_lpnTrxns = super.getCollectionFromDB(LpnTxnBO.class);
+            ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
+            ve.setValue(AdfmfJavaUtilities.getAdfELContext(), s_lpnTrxns.size());
+            
+            
             Integer trxnId = (Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
             String trxnType = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
             

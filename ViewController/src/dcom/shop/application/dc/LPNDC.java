@@ -29,7 +29,7 @@ public class LPNDC {
 
     public LPNBO[] getFromLpns() {
         ValueExpression ve = null;
-
+        s_LpnList.clear();
 
         System.out.println("Inside lpn search");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");

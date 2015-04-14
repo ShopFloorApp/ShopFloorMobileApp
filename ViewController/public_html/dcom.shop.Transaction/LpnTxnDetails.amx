@@ -257,7 +257,7 @@
         <amx:listView var="row" value="#{bindings.items.collectionModel}" fetchSize="#{bindings.items.rangeSize}"
                       selectedRowKeys="#{bindings.items.collectionModel.selectedRow}"
                       selectionListener="#{bindings.items.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                      bufferStrategy="viewport" id="lv1" styleClass="adfmf-listView-insetList" layout="cards">
+                      bufferStrategy="viewport" id="lv1" layout="cards">
             <amx:listItem id="li2" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl1" width="95%">
