@@ -22,8 +22,8 @@
       <amx:listItem id="li1" showLinkIcon="false" actionListener="#{bindings.completeTxn.execute}" action="success">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl1">
-            <amx:cellFormat width="10px" rowSpan="2" id="cf2"/>
-                                    <amx:cellFormat width="20%" height="10px" id="cf4">
+            <amx:cellFormat width="10px" rowSpan="3" id="cf2"/>
+                                    <amx:cellFormat width="10%" height="10px" id="cf4" rowSpan="3">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:commandLink id="cl2">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -31,14 +31,27 @@
                                                 inlineStyle="color:#34AADC;"/>
                             </amx:commandLink>
                         </amx:cellFormat>
-            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf1">
+                                    <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3"
+                            columnSpan="1" halign="start">
+              <amx:outputText value="#{row.docType}" id="ot3"/>
+            </amx:cellFormat>
+            <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf1">
               <amx:outputText value="#{row.docRef}" id="ot2"/>
             </amx:cellFormat>
           </amx:rowLayout>
           <amx:rowLayout id="rl2">
-            <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf3"
-                            columnSpan="2">
-              <amx:outputText value="#{row.docType}" styleClass="adfmf-listItem-captionText" id="ot3"/>
+            <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf8" 
+                            halign="start">
+              <amx:outputText value="#{row.customer}" id="ot4"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl3">
+            <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf11"
+                            halign="start" columnSpan="1">
+              <amx:outputText value="#{row.carrier}" id="ot6"/>
+            </amx:cellFormat>
+            <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf7">
+              <amx:outputText value="#{row.shippedDate}" id="ot5"/>
             </amx:cellFormat>
           </amx:rowLayout>
         </amx:tableLayout>

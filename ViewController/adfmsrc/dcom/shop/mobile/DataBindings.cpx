@@ -121,6 +121,8 @@
     <page path="/dcom.shop.DispatchList/page/jobSearch.amx" usageId="dcom_shop_mobile_jobSearchPageDef"/>
         <page path="/dcom.shop.DispatchList/dispatch.xml#dispatch@fetchData"
               usageId="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"/>
+        <page path="/dcom.shop.Transaction/page/ReceivingTxn/LinesListPG.amx"
+              usageId="dcom_shop_mobile_LinesListPGPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
@@ -219,6 +221,8 @@
     <page id="dcom_shop_mobile_jobSearchPageDef" path="dcom.shop.DispatchList.page.jobSearchPageDef"/>
         <page id="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"
               path="dcom.shop.DispatchList.dispatch_dispatch_fetchDataPageDef"/>
+        <page id="dcom_shop_mobile_LinesListPGPageDef"
+              path="dcom.shop.Transaction.page.ReceivingTxn.LinesListPGPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="ReportTimeDC" path="dcom.shop.mobile.ReportTimeDC"/>

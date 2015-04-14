@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Receiving Lines" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+                      <amx:commandLink id="cl1" action="back" >
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+            </amx:commandLink>  
+    </amx:facet>
+    <amx:facet name="secondary">
+<amx:commandLink  id="cl4" action="createLine" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}">
+            <amx:outputHtml id="oh2" styleClass="fa fa-plus fa-lg"/>
+
+    </amx:commandLink>
+    </amx:facet>
+    <amx:tableLayout id="tl4" styleClass="tableHeader1" rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
+            <amx:rowLayout id="rl5">
+                <amx:cellFormat id="cf7">
+                    <amx:outputText value="Line Items" id="ot6"/>
+                   
+          
+        </amx:cellFormat>
+        <amx:cellFormat id="cf8"/>
+      </amx:rowLayout>
+        </amx:tableLayout>
+    <amx:spacer id="s2" height="10"/>
+    <amx:commandLink  id="cl3" action="addLine"
+                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}"
+                         rendered="false">
+            <amx:outputHtml id="oh4" styleClass="fa fa-plus fa-lg"/>
+      <amx:validationBehavior id="vb1" group="dnog"/>
+    </amx:commandLink>
+    <amx:listView var="row" value="#{bindings.lines.collectionModel}" fetchSize="#{bindings.lines.rangeSize}"
+                  selectedRowKeys="#{bindings.lines.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1" rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
+      <amx:listItem id="li1" showLinkIcon="false" action="createLine">
+        <amx:tableLayout width="100%" id="tl2">
+          <amx:rowLayout id="rl4">
+            <amx:cellFormat id="cf2" width="10px"/>
+            <amx:cellFormat width="70%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6">
+              <amx:outputText value="#{row.lines}" id="ot3"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf4" width="30%" halign="center" rowSpan="2">
+              <amx:panelGroupLayout id="pgl2" halign="end" layout="horizontal">
+                
+                <amx:commandLink id="cl2" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.deleteCurrectRecord}"
+                                 inlineStyle="width:inherit;">
+                  <amx:outputHtml id="oh3" styleClass="fa fa-trash fa-lg"/>
+                  <amx:setPropertyListener id="spl8" from="#{row.rowLineIdx}" to="#{pageFlowScope.currentItem}"/>
+                </amx:commandLink>
+              </amx:panelGroupLayout>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl2">
+          <amx:cellFormat id="cf9" width="10px"/>
+            <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf3">
+              <amx:outputText value="#{row.subInv}" styleClass="adfmf-listItem-captionText" id="ot4"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf14" width="30%">
+            <amx:outputText value="#{row.quantity}" styleClass="adfmf-listItem-captionText" id="ot8"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl1" from="#{row.rowLineIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
+        <amx:setPropertyListener id="spl7" from="#{row.lines}" to="#{pageFlowScope.lineAdd}"/>
+        <amx:setPropertyListener id="spl2" from="#{row.subInv}" to="#{pageFlowScope.subInvAdd}"/>
+        <amx:setPropertyListener id="spl3" from="#{row.locator}" to="#{pageFlowScope.locatorAdd}"/>
+        <amx:setPropertyListener id="spl4" from="#{row.quantity}" to="#{pageFlowScope.quantityAdd}"/>
+        <amx:setPropertyListener id="spl5" from="#{row.uom}" to="#{pageFlowScope.uomAdd}"/>
+        <amx:setPropertyListener id="spl6" from="#{row.lpn}" to="#{pageFlowScope.lpnAdd}"/>
+        <amx:setPropertyListener id="spl11" from="#{row.docRefLine}" to="#{pageFlowScope.docRefLineAdd}"/>
+        <amx:setPropertyListener id="spl12" from="#{row.shipmentLine}" to="#{pageFlowScope.shipmentLineAdd}"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

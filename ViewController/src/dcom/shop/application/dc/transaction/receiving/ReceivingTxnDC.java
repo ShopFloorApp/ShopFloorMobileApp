@@ -28,6 +28,7 @@ import java.util.List;
 import javax.el.MethodExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -517,6 +518,8 @@ public class ReceivingTxnDC extends SyncUtils{
                 
                 JSONObject jsObject2 = (JSONObject) jsObject1.get("LINES");
                 if(jsObject2==null){
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {"Receiving Lines","No Line items available for selected Document #","Ok" });
                     return;
                 }
                 JSONArray array = (JSONArray) jsObject2.get("LINES_ITEM");

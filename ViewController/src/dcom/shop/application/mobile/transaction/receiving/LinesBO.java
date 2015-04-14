@@ -189,16 +189,16 @@ public class LinesBO {
         super();
         this.rowLineIdx=rowIdx;
         this.Lines=line;
-        this.subInv=subInv;
-        this.locator=locator;
-        this.quantity=Quantity;
+        this.subInv=subInv==null?"":subInv;
+        this.locator=locator==null?"":locator;
+        this.quantity=Quantity==null?"":Quantity;
         this.isNewEntity=isNewEntity;
-        this.Uom=Uom;
-        this.Lpn=Lpn;
-        this.docRefLine=docRefLine;
-        this.shipmentLine=shipmentLine;
-        this.lotControl=lotCtrl;
-        this.serialControl=serialCtrl;
+        this.Uom=Uom==null?"":Uom;
+        this.Lpn=Lpn==null?"":Lpn;
+        this.docRefLine=docRefLine==null?"":docRefLine;
+        this.shipmentLine=shipmentLine==null?"":shipmentLine;
+        this.lotControl=lotCtrl==null?"":lotCtrl;
+        this.serialControl=serialCtrl==null?"":serialCtrl;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
