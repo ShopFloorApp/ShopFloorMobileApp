@@ -1,19 +1,17 @@
 package dcom.shop.Inquiry.onhand;
 
+import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
-import dcom.shop.restURIDetails.RestCallerUtil;
+import java.math.BigDecimal;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.logging.Level;
 
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
-import oracle.adfmf.framework.api.JSONBeanSerializationHelper;
-
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
@@ -26,12 +24,10 @@ public class OnHandSearchDC {
         super();
     }
     List s_onHandList = new ArrayList();
+
     public OnHandSearchEntity[] getAllOnhands() {
         s_onHandList.clear();
         ValueExpression ve = null;
-
-
-        System.out.println("Inside onhand search");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String item = null;
         String subinv = null;
@@ -39,40 +35,33 @@ public class OnHandSearchDC {
         String costGroup = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
         item = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
         subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        if("0".equals(subinv)){
+        if ("0".equals(subinv)) {
             subinv = "";
         }
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         locator = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.costGrp}", String.class);
         costGroup = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
+
         String restURI = RestURI.PostOnHandInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
-        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
-        
-        String payload = "{\"x\":\n" + 
-        "{\n" + 
-        "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-        "                  \"RespApplication\": \"ONT\",\n" + 
-        "                  \"SecurityGroup\": \"STANDARD\",\n" + 
-        "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-        "                  \"Org_Id\": \"82\"\n" + 
-        "                 },\n" + 
-        "   \"InputParameters\": \n" + 
-        "     {\"PONHANDREQ\": {\"ORGCODE\": \""+orgCode+"\",\"ITEM\": \""+item+"\",\"SUBINV\": \""+subinv+"\",\"LOCATOR\": \""+locator+"\",\"COSTGROUP\": \"\"}}\n" + 
-        "}\n" + 
-        "}";
-           
-        System.out.println("Calling create method");
+        String orgCode =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+
+        String payload =
+            "{\"x\":\n" + "{\n" + "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+            "                  \"RespApplication\": \"ONT\",\n" +
+            "                  \"SecurityGroup\": \"STANDARD\",\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + "     {\"PONHANDREQ\": {\"ORGCODE\": \"" +
+            orgCode + "\",\"ITEM\": \"" + item + "\",\"SUBINV\": \"" + subinv + "\",\"LOCATOR\": \"" + locator +
+            "\",\"COSTGROUP\": \"\"}}\n" + "}\n" + "}";
+
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
-        System.out.println("Received response");
         OnHandSearchEntity[] onHandArray = null;
-        //ashish
         try {
             JSONParser parser = new JSONParser();
             Object object = parser.parse(jsonArrayAsString);
@@ -81,62 +70,51 @@ public class OnHandSearchDC {
             JSONObject jsObject1 = (JSONObject) jsObject.get("XONHANDRES");
             try {
                 JSONArray array = (JSONArray) jsObject1.get("XONHANDRES_ITEM");
-
                 if (array != null) {
                     int size = array.size();
-                    //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
+                    OnHandSearchEntity onhandItems = null;
+
                     for (int i = 0; i < size; i++) {
-
-
-                        OnHandSearchEntity onhandItems = new OnHandSearchEntity();
-                      //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
-                      JSONObject jsObjectArrayData = (JSONObject) array.get(i); 
-
-                        onhandItems.setITEM((jsObjectArrayData.get("ITEM").toString()));
-                        onhandItems.setITEMDESC((jsObjectArrayData.get("ITEMDESC").toString()));
-                        onhandItems.setSUBINV((jsObjectArrayData.get("SUBINV").toString()));
-                        onhandItems.setLOCATOR((jsObjectArrayData.get("LOCATOR").toString()));
-                        onhandItems.setONHANDQTY(Integer.parseInt((jsObjectArrayData.get("ONHANDQTY").toString()))); 
-                        onhandItems.setAVAILABLEQTY(Integer.parseInt((jsObjectArrayData.get("AVAILABLEQTY").toString()))); 
-                     //   JSONObject onHandOptObj = (JSONObject) jsObject1.get("XONHANDRES_ITEM");
-                    //    JSONObject costGrpObj = (JSONObject) onHandOptObj.get("XONHANDRES_ITEM");
-                     //   onhandItems.setCOSTGROUP((costGrpObj.get("COSTGROUP").toString()));
-
-                      
+                        try {
+                            onhandItems = new OnHandSearchEntity();
+                            JSONObject jsObjectArrayData = (JSONObject) array.get(i);
+                            onhandItems.setITEM((jsObjectArrayData.get("ITEM").toString()));
+                            onhandItems.setITEMDESC((jsObjectArrayData.get("ITEMDESC").toString()));
+                            onhandItems.setSUBINV((jsObjectArrayData.get("SUBINV").toString()));
+                            onhandItems.setLOCATOR((jsObjectArrayData.get("LOCATOR").toString()));
+                            onhandItems.setONHANDQTY(new BigDecimal(jsObjectArrayData.get("ONHANDQTY").toString()));
+                            onhandItems.setAVAILABLEQTY(new BigDecimal((jsObjectArrayData.get("AVAILABLEQTY").toString())));
+                        } catch (Exception e) {
+                            e.getMessage();
+                        }
                         s_onHandList.add(onhandItems);
                     }
-
-
                 }
             } catch (ClassCastException e2) {
                 JSONObject jsObject2 = (JSONObject) jsObject1.get("XONHANDRES_ITEM");
                 if (jsObject2 != null) {
-
-
-                    OnHandSearchEntity onhandItems = new OnHandSearchEntity();
-                    // JSONObject jsObject2 = (JSONObject)
-                    
-                    onhandItems.setITEM((jsObject2.get("ITEM").toString()));
-                    onhandItems.setITEMDESC((jsObject2.get("ITEMDESC").toString()));
-                    onhandItems.setSUBINV((jsObject2.get("SUBINV").toString()));
-                    onhandItems.setLOCATOR((jsObject2.get("LOCATOR").toString()));
-                    onhandItems.setONHANDQTY(Integer.parseInt((jsObject2.get("ONHANDQTY").toString()))); 
-                    onhandItems.setAVAILABLEQTY(Integer.parseInt((jsObject2.get("AVAILABLEQTY").toString())));                    
-
+                    OnHandSearchEntity onhandItems = null;
+                    try {
+                        onhandItems = new OnHandSearchEntity();
+                        onhandItems.setITEM((jsObject2.get("ITEM").toString()));
+                        onhandItems.setITEMDESC((jsObject2.get("ITEMDESC").toString()));
+                        onhandItems.setSUBINV((jsObject2.get("SUBINV").toString()));
+                        onhandItems.setLOCATOR((jsObject2.get("LOCATOR").toString()));
+                        onhandItems.setONHANDQTY(new BigDecimal(jsObject2.get("ONHANDQTY").toString()));
+                        onhandItems.setAVAILABLEQTY(new BigDecimal((jsObject2.get("AVAILABLEQTY").toString())));
+                    } catch (Exception e) {
+                        e.getMessage();
+                    }
                     s_onHandList.add(onhandItems);
-
-
                 }
             }
-
             onHandArray = (OnHandSearchEntity[]) s_onHandList.toArray(new OnHandSearchEntity[s_onHandList.size()]);
-
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "OnHandSearchEntity", e.getLocalizedMessage());
         }
-        if(s_onHandList.size()!=0){
+        if (s_onHandList.size() != 0) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.OnHandResults}", "");
-        }else{
+        } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.OnHandResults}", "No Results Found");
         }
         return onHandArray;

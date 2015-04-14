@@ -2,6 +2,8 @@ package dcom.shop.Inquiry.onhand;
 
 import dcom.shop.application.base.AEntity;
 
+import java.math.BigDecimal;
+
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -65,31 +67,32 @@ public class OnHandSearchEntity  extends AEntity  {
         return COSTGROUP;
     }
 
-    public void setONHANDQTY(Integer ONHANDQTY) {
-        Integer oldONHANDQTY = this.ONHANDQTY;
+    public void setONHANDQTY(BigDecimal ONHANDQTY) {
+        BigDecimal oldONHANDQTY = this.ONHANDQTY;
         this.ONHANDQTY = ONHANDQTY;
         propertyChangeSupport.firePropertyChange("ONHANDQTY", oldONHANDQTY, ONHANDQTY);
     }
 
-    public Integer getONHANDQTY() {
+    public BigDecimal getONHANDQTY() {
         return ONHANDQTY;
     }
 
-    public void setAVAILABLEQTY(Integer AVAILABLEQTY) {
-        Integer oldAVAILABLEQTY = this.AVAILABLEQTY;
+    public void setAVAILABLEQTY(BigDecimal AVAILABLEQTY) {
+        BigDecimal oldAVAILABLEQTY = this.AVAILABLEQTY;
         this.AVAILABLEQTY = AVAILABLEQTY;
         propertyChangeSupport.firePropertyChange("AVAILABLEQTY", oldAVAILABLEQTY, AVAILABLEQTY);
     }
 
-    public Integer getAVAILABLEQTY() {
+    public BigDecimal getAVAILABLEQTY() {
         return AVAILABLEQTY;
     }
+
     private String ITEMDESC;    
     private String SUBINV;    
     private String LOCATOR;    
     private String COSTGROUP;    
-    private Integer ONHANDQTY;  
-    private Integer AVAILABLEQTY;
+    private BigDecimal ONHANDQTY;  
+    private BigDecimal AVAILABLEQTY;
 
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
