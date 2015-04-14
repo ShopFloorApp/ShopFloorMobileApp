@@ -221,6 +221,7 @@
               path="dcom.shop.DispatchList.dispatch_dispatch_fetchDataPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="ReportTimeDC" path="dcom.shop.mobile.ReportTimeDC"/>
         <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>
         <dc id="ItemStatusDC" path="dcom.shop.mobile.ItemStatusDC"/>
         <dc id="CatalogDC" path="dcom.shop.mobile.CatalogDC"/>

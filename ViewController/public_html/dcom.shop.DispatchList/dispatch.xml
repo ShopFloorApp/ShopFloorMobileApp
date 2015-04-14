@@ -95,6 +95,17 @@
                 <fixed-outcome>fetchData</fixed-outcome>
             </outcome>
         </method-call>
+        <router id="router1">
+            <case id="__46">
+                <expression>#{pageFlowScope.backToWhere eq 'toJobSearch' ? true : false }</expression>
+                <outcome>toJobSearch</outcome>
+            </case>
+            <case id="__49">
+                <expression>#{pageFlowScope.backToWhere ne 'toJobSearch' ? true : false }</expression>
+                <outcome>toDispatchList</outcome>
+            </case>
+            <default-outcome>toJobSearch</default-outcome>
+        </router>
         <control-flow-rule id="__1">
             <from-activity-id>dispatchList</from-activity-id>
             <control-flow-case id="__2">
@@ -119,10 +130,6 @@
         </control-flow-rule>
         <control-flow-rule id="__6">
             <from-activity-id>workContent</from-activity-id>
-            <control-flow-case id="__7">
-                <from-outcome>back</from-outcome>
-                <to-activity-id>jobOperations</to-activity-id>
-            </control-flow-case>
             <control-flow-case id="__13">
                 <from-outcome>toMoveAssembly</from-outcome>
                 <to-activity-id>moveAssembly</to-activity-id>
@@ -162,6 +169,10 @@
             <control-flow-case id="__34">
                 <from-outcome>toScrapAssembly</from-outcome>
                 <to-activity-id>scrapAssembly</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__51">
+                <from-outcome>backtoRouter</from-outcome>
+                <to-activity-id>router1</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__14">
@@ -247,6 +258,17 @@
             <control-flow-case id="__43">
                 <from-outcome>fetchData</from-outcome>
                 <to-activity-id>jobOperations</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__47">
+            <from-activity-id>router1</from-activity-id>
+            <control-flow-case id="__48">
+                <from-outcome>toDispatchList</from-outcome>
+                <to-activity-id>jobOperations</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__50">
+                <from-outcome>toJobSearch</from-outcome>
+                <to-activity-id>jobSearch</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
     </task-flow-definition>

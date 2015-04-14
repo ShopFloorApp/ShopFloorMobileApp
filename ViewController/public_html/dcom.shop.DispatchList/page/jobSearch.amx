@@ -127,6 +127,7 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
+                <amx:setPropertyListener id="spl1" from="toJobSearch" to="#{pageFlowScope.backToWhere}"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>

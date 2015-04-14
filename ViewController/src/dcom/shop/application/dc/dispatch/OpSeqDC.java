@@ -42,7 +42,7 @@ public class OpSeqDC extends AViewObject {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
 
 
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.orgCode}").toString();
+        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String jobNumber = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}").toString();
 
         StringBuffer strPayload = new StringBuffer();

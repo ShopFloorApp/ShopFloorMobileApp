@@ -25,7 +25,6 @@ public class OpSeqBO extends AEntity{
         super();
     }
 
-
     public void setOrgCode(String orgCode) {
         String oldOrgCode = this.orgCode;
         this.orgCode = orgCode;

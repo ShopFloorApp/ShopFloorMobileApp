@@ -16,10 +16,20 @@
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="RETURN_ASSEMBLY"/>
             </amx:commandButton>
         </amx:facet>
-        <amx:panelFormLayout id="pfl1">
-            <amx:inputText value="#{bindings.trxType.inputValue}" label="#{bindings.trxType.hints.label}" id="it1"/>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="#{bindings.trxQty.hints.label}" id="it3"/>
-            <amx:inputText value="#{bindings.txnUom.inputValue}" label="#{bindings.txnUom.hints.label}" id="it2"/>
+        <amx:panelFormLayout id="pfl2" labelPosition="topStart">
+            <amx:selectOneChoice value="#{bindings.resourceCode1.inputValue}" label="Resource"
+                                 id="soc1">
+                <amx:selectItem label="Choose" id="si2" value="0"/>
+                <amx:selectItems value="#{bindings.resourceCode1.items}" id="si1"/>
+            </amx:selectOneChoice>
+            <amx:inputDate label="Start Time" id="id1" value="#{bindings.startTime.inputValue}" inputType="datetime"/>
+            <amx:inputDate label="End Time" id="id2" value="#{bindings.endTime.inputValue}" inputType="datetime"/>
+            <amx:inputText value="#{bindings.qty.inputValue}" label="Total Quantity" id="it8" inputType="number"/>
+            <amx:selectOneChoice value="#{bindings.UOM.inputValue}" label="#{bindings.UOM.label}" id="soc2">
+                <amx:selectItem label="Choose" id="si4" value="0"/>
+                <amx:selectItems value="#{bindings.UOM.items}" id="si3"/>
+            </amx:selectOneChoice>
+            <amx:inputText value="#{bindings.uom.inputValue}" label="#{bindings.uom.hints.label}" id="it4"/>
         </amx:panelFormLayout>
     </amx:panelPage>
 </amx:view>

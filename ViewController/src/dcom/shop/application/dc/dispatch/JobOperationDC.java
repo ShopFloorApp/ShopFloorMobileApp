@@ -164,9 +164,9 @@ public class JobOperationDC extends AViewObject {
                 if (jsonArrayAsString != null) {
                     try {
                         JSONParser parser = new JSONParser();
-                        Object object;
-                        object = parser.parse(jsonArrayAsString);
-                        JSONObject jsonObject = (JSONObject) object;
+                        //Object object;
+                        JSONObject jsonObject = (JSONObject) parser.parse(jsonArrayAsString);
+                        //JSONObject jsonObject = (JSONObject) object;
                         JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                         String status = jsObject.get("XSTATUS").toString();
                         String message = jsObject.get("XMSG").toString();

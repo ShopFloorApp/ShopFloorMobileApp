@@ -4,26 +4,17 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
-    <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
-                      BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ReportTimeDC" id="ReportTimeDCIterator"/>
+    <accessorIterator MasterBinding="ReportTimeDCIterator" Binds="reportTime" RangeSize="25" DataControl="ReportTimeDC"
+                      BeanClass="dcom.shop.application.mobile.dispatch.ReportTimeBO" id="reportTimeIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ResourceDC" id="ResourceDCIterator"/>
+    <accessorIterator MasterBinding="ResourceDCIterator" Binds="resource" RangeSize="-1" DataControl="ResourceDC"
+                      BeanClass="dcom.shop.application.mobile.ResourceBO" id="resourceIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="UOMDC" id="UOMDCIterator"/>
+    <accessorIterator MasterBinding="UOMDCIterator" Binds="UOM" RangeSize="-1" DataControl="UOMDC"
+                      BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="transactIterator" id="trxType">
-      <AttrNames>
-        <Item Value="trxType"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="trxQty">
-      <AttrNames>
-        <Item Value="trxQty"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="transactIterator" id="txnUom">
-      <AttrNames>
-        <Item Value="txnUom"/>
-      </AttrNames>
-    </attributeValues>
     <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
                   IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"
                   ReturnName="data.TransactDC.methodResults.saveTransaction_TransactDC_dataProvider_saveTransaction_result">
@@ -32,5 +23,49 @@
     </methodAction>
     <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
                   IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"/>
+    <attributeValues IterBinding="reportTimeIterator" id="startTime">
+      <AttrNames>
+        <Item Value="startTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="reportTimeIterator" id="endTime">
+      <AttrNames>
+        <Item Value="endTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="reportTimeIterator" id="qty">
+      <AttrNames>
+        <Item Value="qty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="reportTimeIterator" id="uom">
+      <AttrNames>
+        <Item Value="uom"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="reportTimeIterator" id="resourceCode1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="resourceIterator">
+      <AttrNames>
+        <Item Value="resourceCode"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="resourceCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="resourceCode"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="reportTimeIterator" id="UOM" DTSupportsMRU="true" SelectItemValueMode="ListObject" StaticList="false"
+          ListIter="UOMIterator">
+      <AttrNames>
+        <Item Value="uom"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="UOMCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

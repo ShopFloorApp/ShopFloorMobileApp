@@ -82,6 +82,7 @@
                                                  type="action"/>
                         <amx:setPropertyListener id="spl3" from="#{row.orgCode}" to="#{pageFlowScope.orgCode}"
                                                  type="action"/>
+                        <amx:setPropertyListener id="spl4" to="#{pageFlowScope.backToWhere}" from="toDispatchList"/>
                     </amx:listItem>
                 </amx:listView>
             </amx:facet>

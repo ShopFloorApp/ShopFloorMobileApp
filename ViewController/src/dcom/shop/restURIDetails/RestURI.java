@@ -15,13 +15,13 @@ public class RestURI {
     public static String PostInvTrxnURI() {
         return PROCESS_INV_TRXN_URI;
     }
-    
+
     private static final String PROCESS_LPN_TRXN_URI = "/webservices/rest/DCOMLPN/processTxn/";
 
     public static String PostLpnTrxnURI() {
         return PROCESS_LPN_TRXN_URI;
     }
-    
+
     private static final String ONHAND_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getonhand/";
 
     public static String PostOnHandInquiryURI() {
@@ -33,13 +33,13 @@ public class RestURI {
     public static String PostDeliveryInquiryURI() {
         return DELIVERY_INQUIRY_URI;
     }
-    
+
     private static final String QUICK_SHIP_URI = "/webservices/rest/DCOMShip/quickship/";
 
     public static String PostQuickShipURI() {
         return QUICK_SHIP_URI;
     }
-    
+
     private static final String MTLTXN_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getmtltxn/";
 
     public static String PostMtlTxnInquiryURI() {
@@ -50,7 +50,7 @@ public class RestURI {
     public static String PostItemCategInquiryURI() {
         return ITEM_CATEG_INQUIRY_URI;
     }
-    
+
     private static final String ITEM_UDA_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getitemuda/";
 
     public static String PostItemUdaInquiryURI() {
@@ -146,16 +146,22 @@ public class RestURI {
     public static String PostGetOpSeq() {
         return GET_OPSEQ;
     }
-    
+
     private static final String POST_JOB_ACTION = "/webservices/rest/DCOMDispatchTxn/jobaction/";
 
     public static String PostJobAction() {
         return POST_JOB_ACTION;
     }
+
+    private static final String POST_REPORT_TIME = "/webservices/rest/DCOMDispatchTxn/report_time/";
+
+    public static String PostReportTime() {
+        return POST_REPORT_TIME;
+    }
     /*
      * Dispatch Lists end
      */
-    
+
     private static final String GET_SALES_ORDER = "/webservices/rest/DCOMLOV/getsalesorder/";
 
     public static String PostGetSalesOrder() {
@@ -167,7 +173,7 @@ public class RestURI {
     public static String LotNumbers() {
         return LOT_NUMBERS_URI;
     }
-    
+
     private static final String SERIAL_NUMBERS_URI = "/webservices/rest/DCOMLOV/getserials/";
 
     public static String SerialNumbers() {
@@ -185,15 +191,15 @@ public class RestURI {
     public static String PostGetPurchaseOrder() {
         return GET_PURCHASE_ORDER;
     }
-	private static final String GET_SHIPMENT = "/webservices/rest/DCOMRCV/getshipment/";
+    private static final String GET_SHIPMENT = "/webservices/rest/DCOMRCV/getshipment/";
 
     public static String PostGetShipment() {
         return GET_SHIPMENT;
     }
-    
+
     private static final String POST_RECEIVE = "/webservices/rest/DCOMRCV/receive/";
 
     public static String PostReceiveTxn() {
-    return POST_RECEIVE;
+        return POST_RECEIVE;
     }
 }
