@@ -96,24 +96,24 @@
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl2">
-                        <amx:cellFormat width="50%" height="10px" id="cf2">
+                        <amx:cellFormat width="50%" id="cf2">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:commandLink id="cl2">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                                 <amx:outputHtml id="oh2" rendered="#{row.completeFlag eq 'N'}"
-                                                styleClass="fa  fa-database fa-lg" inlineStyle="color:#34AADC;"/>
+                                                styleClass="fa  fa-database fa-sm" inlineStyle="color:#34AADC;"/>
                                 <amx:outputHtml id="oh4" rendered="#{row.completeFlag eq 'Y'}"
-                                                styleClass="fa  fa-check fa-lg" inlineStyle="color:#34AADC;"/>
+                                                styleClass="fa  fa-check fa-sm" inlineStyle="color:#34AADC;"/>
                             </amx:commandLink>
                         </amx:cellFormat>
-                        <amx:cellFormat shortDesc="Item Desc" width="50%" height="50px" id="cf12">
+                        <amx:cellFormat shortDesc="Item Desc" width="50%" id="cf12">
                             <amx:outputText value="#{row.itemName}"
                                             inlineStyle="white-space:pre-wrap; vertical-align:middle;"
                                             styleClass="adfmf-listItem-captionText" id="ot413"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl13">
-                        <amx:cellFormat shortDesc="Item Number" width="50%" height="50px" id="cf3">
+                        <amx:cellFormat shortDesc="Item Number" width="50%"  id="cf3">
                             <!--amx:panelLabelAndMessage label="Subinv" inlineStyle="text-align:left;"
                                                       id="plam212222">
                                 <amx:spacer height="8"/-->
@@ -122,7 +122,7 @@
                                             styleClass="adfmf-listItem-captionText" id="ot2"/>
                             <!--/amx:panelLabelAndMessage-->
                         </amx:cellFormat>
-                        <amx:cellFormat shortDesc="Quantity" width="50%" height="50px" id="cf31">
+                        <amx:cellFormat shortDesc="Quantity" width="50%" id="cf31">
                             <!--amx:panelLabelAndMessage label="Subinv" inlineStyle="text-align:left;"
                                                       id="plam22221">
                                 <amx:spacer height="8"/-->
@@ -134,7 +134,7 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl1">
-                        <amx:cellFormat shortDesc="From Subinv" width="50%" height="50px" id="cf4">
+                        <amx:cellFormat shortDesc="From Subinv" width="50%" id="cf4">
                             <!--amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:left;" id="plam222">
                                 <amx:spacer height="8"/-->
                             <amx:outputText value="#{row.fromInventory}"
@@ -143,7 +143,7 @@
                             <!--/amx:panelLabelAndMessage-->
                             <!--amx:outputText value="Item: #{row.segment1} ItemDesc: #{row.description}" id="ot5"/-->
                         </amx:cellFormat>
-                        <amx:cellFormat shortDesc="To Subinv" width="50%" height="50px" id="cf3e3">
+                        <amx:cellFormat shortDesc="To Subinv" width="50%"  id="cf3e3">
                             <!--amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:left;" id="plam22">
                                 <amx:spacer height="8"/-->
                             <amx:outputText value="#{row.toInventory}"
