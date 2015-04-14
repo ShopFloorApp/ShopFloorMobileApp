@@ -33,8 +33,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp26"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp27"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp28"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl30"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl31"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl30"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl31"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl38"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl39"/>
                  <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
@@ -57,8 +57,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp16"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp17"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp18"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl32"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl33"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl32"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl33"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl40"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl41"/>
                  <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
@@ -81,8 +81,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp36"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp37"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp38"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl34"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl35"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl34"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl35"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl42"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl43"/>
                  <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
@@ -105,8 +105,8 @@
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="sp46"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="sp47"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="sp48"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.serialControl}" id="spl36"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.lotControl}" id="spl37"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.serialControl}" id="spl36"/>
+                <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl37"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl44"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl45"/>
                  <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"

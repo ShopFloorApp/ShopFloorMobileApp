@@ -113,6 +113,7 @@ public class RequestUtilBean {
         String restURI = RestURI.PostSubmitProgramURI();
         String shortName = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}"));
         String applCcde = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applCode}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applCode}"));
+        String user = (String)AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}");
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
@@ -125,6 +126,7 @@ public class RequestUtilBean {
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                  {\"PPROGCODE\": \""+shortName+"\",\n" + 
             "                  \"PPROGAPPL\": \""+applCcde+"\",\n" +
+            "                  \"PUSER\": \""+user+"\",\n" +
             "                    \"PPARAMLIST\": {\n" + 
             "                   \"PPARAMLIST_ITEM\" :["+paramJsonList+"]\n" + 
             "}\n }\n" + "}\n" + "}\n";

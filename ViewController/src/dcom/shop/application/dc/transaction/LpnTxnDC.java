@@ -195,11 +195,13 @@ public class LpnTxnDC extends SyncUtils {
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + "      {\"PLPNTXN\": { \"ORGCODE\": \"" +
             sourceOrg + "\",\"TXNTYPE\": \"" + trxType + "\", \"LPNFROM\": \"" + lpnFrom + "\", \"LPNTO\": \"" + lpnTo +
-            "\",\"SUBINV\": \"" + subInv + "\", \"LOCATOR\": \"" + locator + "\", \n" + "          \"CONTENTS\": {\n" +
-            "            \"CONTENTS_ITEM\": [";
+            "\",\"SUBINV\": \"" + subInv + "\", \"LOCATOR\": \"" + locator + "\" \n"  ;
         System.out.println("Calling create method");
         ItemTxnBO item = new ItemTxnBO();
         Iterator k = s_filteredItemTxn.iterator();
+        if(s_filteredItemTxn.size()>0){
+            payload = payload + ", \"CONTENTS\": { \"CONTENTS_ITEM\": [";
+        }
         while (k.hasNext()) {
             item = (ItemTxnBO) k.next();
             payload =
@@ -260,7 +262,7 @@ public class LpnTxnDC extends SyncUtils {
                                                                               "showAlert", new Object[] {
                                                                               "Success",
                                                                               "Transaction has been submitted successfully.",
-                                                                              "Ok"
+                                                                              "ok"
                     });
                     returnResult = "Back";
 
@@ -268,7 +270,7 @@ public class LpnTxnDC extends SyncUtils {
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
                                                                               "Error", "Transaction submission failed.",
-                                                                              "Ok"
+                                                                              "ok"
                     });
                     returnResult = "";
                 }

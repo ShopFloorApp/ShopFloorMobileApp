@@ -30,27 +30,27 @@ import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
 
-public class ItemTxnDC extends SyncUtils{
+public class ItemTxnDC extends SyncUtils {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
-    
+
     public ItemTxnDC() {
         super();
-               
-               refreshTrxnId();
-           }
+
+        refreshTrxnId();
+    }
     protected static List s_items = new ArrayList();
     protected static List s_insertItems = new ArrayList();
     protected static List<LpnTxnBO> s_lpnTrxns = new ArrayList<LpnTxnBO>();
     protected static List<ItemTxnBO> s_dbItems = new ArrayList();
-    
-    public void refreshTrxnId(){
+
+    public void refreshTrxnId() {
         s_dbItems.clear();
         s_dbItems = super.getCollectionFromDB(ItemTxnBO.class);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", s_dbItems.size());
     }
-    
-   public ItemTxnBO[] getItems() {
+
+    public ItemTxnBO[] getItems() {
 
         try {
             s_items.clear();
@@ -58,20 +58,20 @@ public class ItemTxnDC extends SyncUtils{
             s_lpnTrxns = super.getCollectionFromDB(LpnTxnBO.class);
             ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), s_lpnTrxns.size());
-            
-            
-            Integer trxnId = (Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
-            String trxnType = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
-            
-            String whereClause = " WHERE TRXNID = "+trxnId+" AND TRXTYPE = \""+trxnType+"\"";
-            s_items = super.getFilteredCollectionFromDB(ItemTxnBO.class,whereClause);
+
+
+            Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
+
+            String whereClause = " WHERE TRXNID = " + trxnId + " AND TRXTYPE = \"" + trxnType + "\"";
+            s_items = super.getFilteredCollectionFromDB(ItemTxnBO.class, whereClause);
             items = (ItemTxnBO[]) s_items.toArray(new ItemTxnBO[s_items.size()]);
             return items;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
+
     /*public static List<ItemTxnBO> selectItems(List<ItemTxnBO> items) {
 
         //   ArrayList serials = new ArrayList();
@@ -128,7 +128,7 @@ public class ItemTxnDC extends SyncUtils{
         return items;
     }
 
-    
+
     public void filterItems() {
         try {
             System.out.println("inside filter code");
@@ -140,7 +140,7 @@ public class ItemTxnDC extends SyncUtils{
             filterFileds.put("trxnid", (Integer) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
             ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ParentPage}", String.class);
             filterFileds.put("trxtype", (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
-            
+
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_items);
             paramMap.put("filterFieldsValues", filterFileds);
@@ -152,52 +152,57 @@ public class ItemTxnDC extends SyncUtils{
             throw new RuntimeException("My Code Error " + e);
         }
     }*/
-    
+
     public void InsertItems() {
         s_insertItems.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         ItemTxnBO item = new ItemTxnBO();
+        String itemEnable = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemEnable}");
+        boolean result = Boolean.valueOf(itemEnable);
+        if (result) {
+            int itemId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+            int trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
+            String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+            String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
+            String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
+            Integer quantity =
+                (Integer) Integer.parseInt((String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}"));
+            String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
+            String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
+            String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
 
-        int itemId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
-        int trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
-        String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
-        String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
-        String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
-        Integer quantity = (Integer) Integer.parseInt((String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}"));
-        String trxType = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
-        String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
-        String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
-        
-        item.setItemId(itemId);
-        item.setTrxnId(trxnId);
-        item.setItemNumber(itemNumber);
-        item.setItemName(itemName);
-        item.setUom(uom);
-        item.setQuantity(quantity);
-        item.setTrxType(trxType);
-        item.setSerialControl(serialControl);
-        item.setLotControl(lotControl);
-        
-        s_insertItems.add(item);
-        boolean insertStatus = super.insertSqlLiteTable(ItemTxnBO.class, s_insertItems);
-        if(insertStatus){
-            clearItems();
-            refreshTrxnId();
-            
+            item.setItemId(itemId);
+            item.setTrxnId(trxnId);
+            item.setItemNumber(itemNumber);
+            item.setItemName(itemName);
+            item.setUom(uom);
+            item.setQuantity(quantity);
+            item.setTrxType(trxType);
+            item.setSerialControl(serialControl);
+            item.setLotControl(lotControl);
+
+            s_insertItems.add(item);
+            boolean insertStatus = super.insertSqlLiteTable(ItemTxnBO.class, s_insertItems);
+            if (insertStatus) {
+                clearItems();
+                refreshTrxnId();
+
+            }
+
+            providerChangeSupport.fireProviderRefresh("items");
         }
-        providerChangeSupport.fireProviderRefresh("items");
 
     }
-    
-    public void clearItems(){
+
+    public void clearItems() {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
     }
-    
+
     public void refresh() {
         providerChangeSupport.fireProviderRefresh("items");
     }
@@ -217,5 +222,5 @@ public class ItemTxnDC extends SyncUtils{
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
     }
-    
+
 }
