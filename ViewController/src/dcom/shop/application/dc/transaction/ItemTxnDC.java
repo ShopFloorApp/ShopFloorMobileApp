@@ -47,7 +47,6 @@ public class ItemTxnDC extends SyncUtils{
     public void refreshTrxnId(){
         s_dbItems.clear();
         s_dbItems = super.getCollectionFromDB(ItemTxnBO.class);
-        LpnTxnDC lpn = new LpnTxnDC();
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", s_dbItems.size());
     }
     

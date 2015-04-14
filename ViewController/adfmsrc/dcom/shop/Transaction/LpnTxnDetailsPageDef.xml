@@ -57,8 +57,6 @@
     </tree>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
-    <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
-                  IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider"/>
     <methodAction id="InsertItems" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertItems"
                   IsViewObjectMethod="false" DataControl="ItemTxnDC" InstanceName="data.ItemTxnDC.dataProvider"/>
     <tree IterBinding="itemsIterator" id="items">
@@ -82,5 +80,8 @@
         <Item Value="UOM"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
+                  IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider"
+                  ReturnName="data.LpnTxnDC.methodResults.InsertTransaction_LpnTxnDC_dataProvider_InsertTransaction_result"/>
   </bindings>
 </pageDefinition>

@@ -7,8 +7,6 @@ import dcom.shop.application.mobile.SerialBO;
 import dcom.shop.application.mobile.transaction.ItemTxnBO;
 import dcom.shop.application.mobile.transaction.LpnTxnBO;
 import dcom.shop.application.mobile.transaction.MiscTxnBO;
-import dcom.shop.application.mobile.transaction.SubInventoryTxnBO;
-
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
@@ -21,14 +19,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import java.util.logging.Level;
 
 import javax.el.ValueExpression;
 
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class LpnTxnDC extends SyncUtils {
     public LpnTxnDC() {
@@ -57,8 +58,8 @@ public class LpnTxnDC extends SyncUtils {
         MiscTxnBO subinventory = null;
         s_lpnTrxns = selectLpnTrxns(s_lpnTrxns);
         int trxnId = s_lpnTrxns.size();
-       // ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
-       // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
+        // ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
+        // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
 
         return s_lpnTrxns;
     }
@@ -120,7 +121,8 @@ public class LpnTxnDC extends SyncUtils {
         return lpntxns;
     }
 
-    public void InsertTransaction() {
+    public String InsertTransaction() {
+        s_lpnTrxns.clear();
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
@@ -138,21 +140,22 @@ public class LpnTxnDC extends SyncUtils {
         String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
 
         lpnTxn.setTrxnId(trxnId);
-        lpnTxn.setLpnFrom(fromLpn=="null"?"":fromLpn);
-        lpnTxn.setSubinventory(subinv=="null"?"":subinv);
-        lpnTxn.setLocator(locator=="null"?"":locator);
-        lpnTxn.setLpnTo(toLpn=="null"?"":toLpn);
-        lpnTxn.setTrxType(lpnPage=="null"?"":lpnPage);
+        lpnTxn.setLpnFrom(fromLpn == "null" ? "" : fromLpn);
+        lpnTxn.setSubinventory(subinv == "null" ? "" : subinv);
+        lpnTxn.setLocator(locator == "null" ? "" : locator);
+        lpnTxn.setLpnTo(toLpn == "null" ? "" : toLpn);
+        lpnTxn.setTrxType(lpnPage == "null" ? "" : lpnPage);
         s_lpnTrxns.add(lpnTxn);
         SyncUtils syncUtils = new SyncUtils();
         syncUtils.insertSqlLiteTable(LpnTxnBO.class, s_lpnTrxns);
-        ProcessWS(trxnId);
+        return ProcessWS(trxnId);
 
     }
 
 
-    public void ProcessWS(Integer trxnId) {
+    public String ProcessWS(Integer trxnId) {
         String restURI = RestURI.PostLpnTrxnURI();
+        String returnResult = null;
         s_lpnTrxns.clear();
         SyncUtils sync = new SyncUtils();
         LpnTxnBO lpnTxn = null;
@@ -179,8 +182,9 @@ public class LpnTxnDC extends SyncUtils {
         String trxType =
             lpnTxn.getTrxType(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String destOrg = "100";
-        String sourceOrg = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
-       ;
+        String sourceOrg =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        ;
         String onHandQty = "0";
         String availQty = "0";
         String payload =
@@ -206,18 +210,25 @@ public class LpnTxnDC extends SyncUtils {
             filterLots(item.getItemId());
             filterSerials(item.getItemId());
 
-            payload = payload + ",\"LOTS\": { \"LOTS_ITEM\": [";
             LotBO lot = new LotBO();
             Iterator j = s_filteredLotTrxns.iterator();
+            if (s_filteredLotTrxns.size() > 0) {
+                payload = payload + ",\"LOTS\": { \"LOTS_ITEM\": [";
+
+            }
             while (j.hasNext()) {
                 lot = (LotBO) j.next();
                 payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
 
             }
             payload = payload.substring(0, payload.length() - 1);
-            payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
             SerialBO serial = new SerialBO();
             Iterator i = s_filteredSerialTrxns.iterator();
+            if (s_filteredSerialTrxns.size() > 0) {
+                payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
+
+
+            }
             while (i.hasNext()) {
                 serial = (SerialBO) i.next();
                 payload =
@@ -234,12 +245,41 @@ public class LpnTxnDC extends SyncUtils {
             RestCallerUtil rest = new RestCallerUtil();
             String jsonArrayAsString = rest.invokeUPDATE(restURI, payload);
             System.out.println("Received response" + jsonArrayAsString);
+            if (jsonArrayAsString != null && !("".equals(jsonArrayAsString))) {
+                JSONObject jsObject1 = null;
+                JSONParser parser = new JSONParser();
+                Object object;
+
+                object = parser.parse(jsonArrayAsString);
+
+                JSONObject jsonObject = (JSONObject) object;
+                JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                String result = jsObject.get("XSTATUS").toString();
+                if ("S".equals(result)) {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Success",
+                                                                              "Transaction has been submitted successfully.",
+                                                                              "Ok"
+                    });
+                    returnResult = "Back";
+
+                } else {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error", "Transaction submission failed.",
+                                                                              "Ok"
+                    });
+                    returnResult = "";
+                }
+            }
         } catch (Exception e) {
             System.out.println("error " + e.toString());
         }
 
         //    throw new AdfException("Transaction completed", AdfException.INFO);
 
+        return returnResult;
     }
 
     public void filterLpnTrxns(Integer trxnId) {

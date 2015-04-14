@@ -44,8 +44,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.InsertTransaction.execute}"
-                               action="Back"/>
+            <amx:commandButton text="Save" id="cb1" action="#{bindings.InsertTransaction.execute}"/>
         </amx:facet>
         <amx:outputHtml id="ot144" value="Enter atleast 3 characters to search!!!"
                         rendered="#{pageFlowScope.keywrdLpnLenErr eq 'Yes'?true:false}" inlineStyle="color:Red"/>
@@ -184,7 +183,8 @@
                 <amx:selectItem label="Choose" value="0" id="si3"/>
                 <amx:selectItems value="#{bindings.UOMCode.items}" id="si2"/>
             </amx:selectOneChoice>
-            <amx:panelLabelAndMessage label="UOM" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM' &amp;&amp; !pageFlowScope.renderUomChoiceList}"
+            <amx:panelLabelAndMessage label="UOM"
+                                      rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM' &amp;&amp; !pageFlowScope.renderUomChoiceList}"
                                       inlineStyle="text-align:left;" id="plam233">
                 <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
             </amx:panelLabelAndMessage>
@@ -193,11 +193,11 @@
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.availQty}" styleClass="adfmf-listItem-captionText" id="it4"/>
             </amx:panelLabelAndMessage>
-             <amx:inputText hintText="Quantity" label="Quantity" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}" disabled="#{!pageFlowScope.ItemEnable}" showRequired="true"
-                                   inlineStyle="text-align:right;" value="#{pageFlowScope.quantity}" id="it2"
-                                   inputType="number">
-                        <?audit suppress oracle.maf.warning-missing-hintText?>
-                    </amx:inputText>
+            <amx:inputText hintText="Quantity" label="Quantity" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}"
+                           disabled="#{!pageFlowScope.ItemEnable}" showRequired="true" inlineStyle="text-align:right;"
+                           value="#{pageFlowScope.quantity}" id="it2" inputType="number">
+                <?audit suppress oracle.maf.warning-missing-hintText?>
+            </amx:inputText>
             <!--amx:panelLabelAndMessage label="Quantity" rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}"
                                       inlineStyle="text-align:right;" id="plam4">
                 <amx:panelGroupLayout layout="horizontal" id="pgl8">
