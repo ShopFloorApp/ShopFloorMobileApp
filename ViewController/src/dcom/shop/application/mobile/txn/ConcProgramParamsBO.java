@@ -1,10 +1,7 @@
 package dcom.shop.application.mobile.txn;
 
-import dcom.shop.Request.bean.RequestUtilBean;
 import dcom.shop.application.base.AEntity;
 import dcom.shop.application.dc.txn.ConcurrentProgramDC;
-
-import dcom.shop.application.mobile.WarehouseBO;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,6 +115,9 @@ public class ConcProgramParamsBO extends AEntity {
             }else{
                 callJS("cb3");
             }
+        }
+        if(this.getItemType().equalsIgnoreCase("DATE") && paramDispValue!=null && !paramDispValue.equalsIgnoreCase(this.getDefaultValue())){
+            paramDispValue=toDateTime(paramDispValue);
         }
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.param5}", null);
         this.paramDispValue = getAttributeValue(paramDispValue);

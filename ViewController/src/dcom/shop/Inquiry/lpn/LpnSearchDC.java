@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
-import oracle.adfmf.framework.exception.NullPointerException;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
@@ -34,7 +33,7 @@ public class LpnSearchDC {
         String backFrom = null;
         try {
             backFrom = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnDetailsBack}").toString();
-        } catch (NullPointerException ae) {
+        } catch (Exception ae) {
             backFrom = "";
         }
         LpnSearchEntity[] lpnArray = null;

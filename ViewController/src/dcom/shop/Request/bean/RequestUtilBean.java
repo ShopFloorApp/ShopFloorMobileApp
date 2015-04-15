@@ -1,16 +1,12 @@
 package dcom.shop.Request.bean;
 
 import dcom.shop.application.dc.txn.ConcurrentProgramDC;
-import dcom.shop.application.mobile.txn.ConcProgramParamLovBO;
 import dcom.shop.application.mobile.txn.ConcProgramParamsBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-
 import java.util.Map;
 
 import javax.el.MethodExpression;
@@ -21,7 +17,6 @@ import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -75,7 +70,6 @@ public class RequestUtilBean {
     }
 
     public void submitProgram(ActionEvent actionEvent) {
-        // Add event code here...
         HashMap paramValueMap=new HashMap();
         HashMap paramDispValueMap=new HashMap();
         paramValueMap.putAll(param.valueMap);

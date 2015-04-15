@@ -19,7 +19,7 @@ public class AEntity {
     }
 
     protected String toUnixDate(String value) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss.SSS");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         SimpleDateFormat intialFormat = new SimpleDateFormat("dd, MMM yyyy HH:mm:ss");
         String newDate = null;
         try {
@@ -32,8 +32,20 @@ public class AEntity {
     }
     
     protected String toDate(String value){
-        SimpleDateFormat intialFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm:ss.SSS");
+        SimpleDateFormat intialFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         SimpleDateFormat newFormat = new SimpleDateFormat("dd, MMM yyyy HH:mm:ss");
+        String newDate = null;
+        try {
+            Date date = intialFormat.parse(value);
+            newDate = newFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return newDate;
+    }
+    protected String toDateTime(String value){
+        SimpleDateFormat intialFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String newDate = null;
         try {
             Date date = intialFormat.parse(value);
