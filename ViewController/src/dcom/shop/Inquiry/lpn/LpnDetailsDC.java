@@ -4,6 +4,7 @@ import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import java.util.logging.Level;
@@ -25,28 +26,31 @@ public class LpnDetailsDC {
         super();
     }
     List s_LpnDetailList = new ArrayList();
+    List s_LpnContentsList = new ArrayList();
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
-    
-    public LpnDetailsEntity[] getAllLpnDetails(){
+
+    public LpnDetailsEntity[] getAllLpnDetails() {
         ValueExpression ve = null;
         s_LpnDetailList.clear();
+        s_LpnContentsList.clear();
         System.out.println("Inside lpn details");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String keyword = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.lpn}", String.class);
         keyword = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        String page = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemLovPage}"); 
-        if("LpnTrxn".equals(page)){
-            keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}"); 
+        String page = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemLovPage}");
+        if ("LpnTrxn".equals(page)) {
+            keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
         }
-        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
-        
+        String orgCode =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+
         String restURI = RestURI.PostLpnDetailsURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PLPNREQ\": {\"ORGCODE\": \""+orgCode+"\",\"LPN\": \"%" +
-            keyword + "%\"}}\n" + "}\n" + "}";
+            "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PLPNREQ\": {\"ORGCODE\": \"" +
+            orgCode + "\",\"LPN\": \"%" + keyword + "%\"}}\n" + "}\n" + "}";
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");
@@ -70,17 +74,17 @@ public class LpnDetailsDC {
 
 
                         LpnDetailsEntity lpnDetails = new LpnDetailsEntity();
-                      //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
-                      JSONObject jsObjectArrayData = (JSONObject) array.get(i); 
-                        
+                        //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
+                        JSONObject jsObjectArrayData = (JSONObject) array.get(i);
+
                         lpnDetails.setITEM((jsObjectArrayData.get("ITEM").toString()));
                         lpnDetails.setITEMDESC((jsObjectArrayData.get("ITEMDESC").toString()));
-                        lpnDetails.setUOM((jsObjectArrayData.get("UOM").toString()));                    
-                        lpnDetails.setONHANDQTY(Float.parseFloat((jsObjectArrayData.get("ONHANDQTY").toString()))); 
+                        lpnDetails.setUOM((jsObjectArrayData.get("UOM").toString()));
+                        lpnDetails.setONHANDQTY(Float.parseFloat((jsObjectArrayData.get("ONHANDQTY").toString())));
                         lpnDetails.setAVAILABLEQTY(Float.parseFloat((jsObjectArrayData.get("AVAILABLEQTY").toString())));
                         lpnDetails.setSERIALCONTROL(jsObjectArrayData.get("SERIALCONTROL").toString());
                         lpnDetails.setLOTCONTROL(jsObjectArrayData.get("LOTCONTROL").toString());
-                         
+
                         s_LpnDetailList.add(lpnDetails);
                     }
 
@@ -101,24 +105,42 @@ public class LpnDetailsDC {
                     lpnDetails.setAVAILABLEQTY(Float.parseFloat((jsObject4.get("AVAILABLEQTY").toString())));
                     lpnDetails.setSERIALCONTROL(jsObject4.get("SERIALCONTROL").toString());
                     lpnDetails.setLOTCONTROL(jsObject4.get("LOTCONTROL").toString());
-                    
+
                     s_LpnDetailList.add(lpnDetails);
 
                 }
             }
 
-            lpnDetailsArray = (LpnDetailsEntity[]) s_LpnDetailList.toArray(new LpnDetailsEntity[s_LpnDetailList.size()]);
-
+            lpnDetailsArray =
+                (LpnDetailsEntity[]) s_LpnDetailList.toArray(new LpnDetailsEntity[s_LpnDetailList.size()]);
+            if ("LpnTrxn".equals(page)) {
+                String itemKeyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+                lpnDetailsArray = null;
+                String item = null;
+                String desc = null;
+                Iterator i = s_LpnDetailList.iterator();
+                while (i.hasNext()) {
+                    LpnDetailsEntity details = (LpnDetailsEntity) i.next();
+                    item = details.getITEM();
+                    desc = details.getITEMDESC();
+                    if(item.contains(itemKeyword) || desc.contains(itemKeyword)){
+                        s_LpnContentsList.add(details) ; 
+                    }
+                }
+                lpnDetailsArray =
+                    (LpnDetailsEntity[]) s_LpnContentsList.toArray(new LpnDetailsEntity[s_LpnContentsList.size()]);
+                
+            }
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnDetailsEntity", e.getLocalizedMessage());
         }
         return lpnDetailsArray;
     }
-    
+
     public void refreshLpnItems() {
         providerChangeSupport.fireProviderRefresh("allLpnDetails");
     }
-    
+
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
     }
