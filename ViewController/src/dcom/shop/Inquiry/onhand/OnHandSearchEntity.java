@@ -88,7 +88,18 @@ public class OnHandSearchEntity  extends AEntity  {
     }
 
     private String ITEMDESC;    
-    private String SUBINV;    
+    private String SUBINV;
+
+    public void setUOM(String UOM) {
+        String oldUOM = this.UOM;
+        this.UOM = UOM;
+        propertyChangeSupport.firePropertyChange("UOM", oldUOM, UOM);
+    }
+
+    public String getUOM() {
+        return UOM;
+    }
+    private String UOM;  
     private String LOCATOR;    
     private String COSTGROUP;    
     private BigDecimal ONHANDQTY;  

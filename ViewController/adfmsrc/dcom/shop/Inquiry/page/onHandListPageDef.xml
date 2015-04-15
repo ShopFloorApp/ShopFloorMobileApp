@@ -20,6 +20,7 @@
           <Item Value="LOCATOR"/>
           <Item Value="ONHANDQTY"/>
           <Item Value="SUBINV"/>
+          <Item Value="UOM"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

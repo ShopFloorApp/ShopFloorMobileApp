@@ -102,10 +102,14 @@ public class InvTrnDC extends RestCallerUtil {
         filterSerials(trxnId);
         if (s_filteredSerialTrxns.size() > 0)
             subInvTxn.setSerialControl("0");
+        else
+            subInvTxn.setSerialControl("1");
         s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
         filterLots(trxnId);
         if (s_filteredLotTrxns.size() > 0)
             subInvTxn.setLotControl("0");
+        else 
+           subInvTxn.setLotControl("1");
         SyncUtils syncUtils = new SyncUtils();
         if ("New".equals(tranStatus)) {
             s_invTrxns.add(subInvTxn);
@@ -454,10 +458,14 @@ public class InvTrnDC extends RestCallerUtil {
         filterSerials(trxnId);
         if (s_filteredSerialTrxns.size() > 0)
             miscTxn.setSerialControl("0");
+        else 
+            miscTxn.setSerialControl("1");
         s_lotTrxns = syncUtils.getCollectionFromDB(LotBO.class);
         filterLots(trxnId);
         if (s_filteredLotTrxns.size() > 0)
             miscTxn.setLotControl("0");
+        else
+            miscTxn.setLotControl("1");
         if ("New".equals(tranStatus)) {
             s_miscTrxns.add(miscTxn);
             syncUtils.insertSqlLiteTable(MiscTxnBO.class, s_miscTrxns);

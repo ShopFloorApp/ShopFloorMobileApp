@@ -82,6 +82,7 @@ public class OnHandSearchDC {
                             onhandItems.setITEMDESC((jsObjectArrayData.get("ITEMDESC").toString()));
                             onhandItems.setSUBINV((jsObjectArrayData.get("SUBINV").toString()));
                             onhandItems.setLOCATOR((jsObjectArrayData.get("LOCATOR").toString()));
+                            onhandItems.setUOM((jsObjectArrayData.get("UOM").toString()));
                             onhandItems.setONHANDQTY(new BigDecimal(jsObjectArrayData.get("ONHANDQTY").toString()));
                             onhandItems.setAVAILABLEQTY(new BigDecimal((jsObjectArrayData.get("AVAILABLEQTY").toString())));
                         } catch (Exception e) {
@@ -99,6 +100,7 @@ public class OnHandSearchDC {
                         onhandItems.setITEM((jsObject2.get("ITEM").toString()));
                         onhandItems.setITEMDESC((jsObject2.get("ITEMDESC").toString()));
                         onhandItems.setSUBINV((jsObject2.get("SUBINV").toString()));
+                        onhandItems.setUOM((jsObject2.get("UOM").toString()));
                         onhandItems.setLOCATOR((jsObject2.get("LOCATOR").toString()));
                         onhandItems.setONHANDQTY(new BigDecimal(jsObject2.get("ONHANDQTY").toString()));
                         onhandItems.setAVAILABLEQTY(new BigDecimal((jsObject2.get("AVAILABLEQTY").toString())));

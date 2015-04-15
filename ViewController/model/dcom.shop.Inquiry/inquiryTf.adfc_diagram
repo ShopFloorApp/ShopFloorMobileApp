@@ -135,7 +135,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">R46,356.196,133.02539,508.0,155.27832,L46</property>
+         name="sdm:polyPoints">R50,356.1977,136.52539,507.49136,158.77832,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -177,7 +177,7 @@
       <property
          name="fromsrcid">__12</property>
       <property
-         name="sdm:polyPoints">R46,325.5,-33.273438,536.2232,-49.97461,L46</property>
+         name="sdm:polyPoints">R50,325.7766,-29.773438,536.22284,-46.47461,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -191,7 +191,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">L54,507.49136,162.27832,355.68652,140.02539,R54</property>
+         name="sdm:polyPoints">L58,506.9827,165.77832,355.68652,143.52539,R58</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -575,7 +575,7 @@
       <property
          name="fromOutcome">mtlTxnDetailsBack</property>
       <property
-         name="sdm:polyPoints">B50,865.0,573.1953,344.0,574.8447,B61</property>
+         name="sdm:polyPoints">B50,865.0,573.4795,344.0,575.1289,B61</property>
    </ControlFlowCase>
    <View
       id="View55">
