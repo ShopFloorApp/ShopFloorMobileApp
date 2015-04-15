@@ -105,9 +105,9 @@
                 <amx:selectOneChoice label="Account Alias" value="#{pageFlowScope.accountAlias}" id="soc3">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si2"/>
-                    <amx:selectItems value="#{bindings.accountAlias.items}" id="si3"/>
+                    <amx:selectItems value="#{bindings.accountSegment.items}" id="si3"/>
                 </amx:selectOneChoice>
-                <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
+               <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
                                      valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:selectItem label="Choose" value="0" id="si7"/>

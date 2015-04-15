@@ -23,16 +23,16 @@
                       BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
   </executables>
   <bindings>
-    <list IterBinding="variables" id="accountAlias" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+    <list IterBinding="AccountAliasDCIterator" id="accountAlias" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="accountAliasIterator">
       <AttrNames>
-        <Item Value="p_AccountAlias"/>
+        <Item Value="accountAlias"/>
       </AttrNames>
       <ListAttrNames>
         <Item Value="accountAlias"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
-        <Item Value="accountSegment"/>
+        <Item Value="accountAlias"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="variables" StaticList="true" id="TrxTypeList">
@@ -89,6 +89,18 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="UOM"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="AccountAliasDCIterator" id="accountSegment" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="accountAliasIterator">
+      <AttrNames>
+        <Item Value="accountAlias"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="accountSegment"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="accountSegment"/>
       </ListDisplayAttrNames>
     </list>
   </bindings>
