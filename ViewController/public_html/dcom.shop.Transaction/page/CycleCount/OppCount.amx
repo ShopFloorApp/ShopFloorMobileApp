@@ -42,7 +42,8 @@
                     <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" required="true" id="soc2">
                         <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
-                    </amx:selectOneChoice>  
+                    </amx:selectOneChoice>
+
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
                <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:left;" id="plam3">
@@ -56,8 +57,8 @@
                                        inlineStyle="text-align:left;"/>
                         <amx:commandLink id="cb3" action="lpnLOV">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                            <amx:setPropertyListener id="spl3" from="SubInvTrxn" to="#{pageFlowScope.LpnLovPage}"
-                                                     type="action"/>
+                            <!--amx:setPropertyListener id="spl3" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
+                                                     type="action"/-->
 
                         </amx:commandLink>
                         <amx:spacer width="10" id="s9"/>
