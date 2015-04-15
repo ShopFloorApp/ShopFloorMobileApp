@@ -6,11 +6,10 @@
               usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
         <page path="/dcom.shop.Transaction/page/ReceivingTxn/LinesListPG.amx"
               usageId="dcom_shop_mobile_LinesListPGPageDef"/>
-<page path="/dcom.shop.Request/page/ProgramSubmitted.amx" usageId="dcom_shop_mobile_ProgramSubmittedPageDef"/>
+        <page path="/dcom.shop.Request/page/ProgramSubmitted.amx" usageId="dcom_shop_mobile_ProgramSubmittedPageDef"/>
         <page path="/dcom.shop.DispatchList/page/jobSearch.amx" usageId="dcom_shop_mobile_jobSearchPageDef"/>
         <page path="/dcom.shop.DispatchList/dispatch.xml#dispatch@fetchData"
               usageId="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"/>
-        <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Inquiry/page/itemUDA.amx" usageId="dcom_shop_mobile_itemUDAPageDef"/>
         <page path="/dcom.shop.Transaction/page/ReceivingTxn/lineDetails.amx"
@@ -23,7 +22,6 @@
         <page path="/page/LovPage/ResourcesLov.amx" usageId="dcom_shop_mobile_ResourcesLovPageDef"/>
         <page path="/page/LovPage/CostGroupsLov.amx" usageId="dcom_shop_mobile_CostGroupsLovPageDef"/>
         <page path="/dcom.shop.Springboard/springboard.amx" usageId="dcom_shop_mobile_springboardPageDef"/>
-        <page path="/dcom.shop.DispatchList/page/dispatch.amx" usageId="dcom_shop_mobile_DispatchListPageDef"/>
         <page path="/dcom.shop.Request/page/searchRequest.amx" usageId="dcom_shop_mobile_searchRequestPageDef"/>
         <page path="/dcom.shop.Request/page/Requests.amx" usageId="dcom_shop_mobile_RequestsPageDef"/>
         <page path="/dcom.shop.Request/page/RequestForm.amx" usageId="dcom_shop_mobile_RequestFormPageDef"/>
@@ -50,8 +48,6 @@
         <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
         <page path="/dcom.shop.DispatchList/page/jobOperations.amx" usageId="dcom_shop_mobile_jobOperationsPageDef"/>
         <page path="/dcom.shop.DispatchList/page/workContent.amx" usageId="dcom_shop_mobile_workContentPageDef"/>
-        <page path="/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef"/>
-        <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Inquiry/page/ProductList.amx" usageId="dcom_shop_mobile_ProductListPageDef"/>
         <page path="/page/LovPage/LpnLOVPG.amx" usageId="dcom_shop_mobile_LpnLOVPGPageDef"/>
         <page path="/page/LovPage/LocatorLOVPG.amx" usageId="dcom_shop_mobile_LocatorLOVPGPageDef"/>
@@ -84,7 +80,6 @@
         <page path="/dcom.shop.Inquiry/page/mtlTxnSearch.amx" usageId="dcom_shop_mobile_mtlTxnSearchPageDef"/>
         <page path="/dcom.shop.Inquiry/page/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/onHandList.amx" usageId="dcom_shop_mobile_onHandListPageDef"/>
-        <page path="/onHandDetails.amx" usageId="dcom_shop_mobile_onHandDetailsPageDef1"/>
         <page path="/page/LotEntry.amx" usageId="dcom_shop_mobile_LotEntryPageDef"/>
         <page path="/dcom.shop.Inquiry/page/mtlTxnList.amx" usageId="dcom_shop_mobile_mtlTxnListPageDef"/>
         <page path="/dcom.shop.DispatchList/page/returnAssembly.amx" usageId="dcom_shop_mobile_returnAssemblyPageDef"/>
@@ -122,14 +117,14 @@
               usageId="dcom_shop_mobile_clockInClockOutPageDef"/>
         <page path="/dcom.shop.Request/requestTf.xml#requestTf@populateConcPrograms"
               usageId="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"/>
-        <page path="/dcom.shop.Transaction/page/TaskListPG.amx" usageId="dcom_shop_mobile_TaskListPGPageDef1"/>
+        <page path="/dcom.shop.Inquiry/page/searchProduct.amx" usageId="dcom_shop_mobile_searchProductPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
         <page id="dcom_shop_mobile_LinesListPGPageDef"
               path="dcom.shop.Transaction.page.ReceivingTxn.LinesListPGPageDef"/>
-<page id="dcom_shop_mobile_ProgramSubmittedPageDef" path="dcom.shop.Request.page.ProgramSubmittedPageDef"/>
+        <page id="dcom_shop_mobile_ProgramSubmittedPageDef" path="dcom.shop.Request.page.ProgramSubmittedPageDef"/>
         <page id="dcom_shop_mobile_jobSearchPageDef" path="dcom.shop.DispatchList.page.jobSearchPageDef"/>
         <page id="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"
               path="dcom.shop.DispatchList.dispatch_dispatch_fetchDataPageDef"/>
@@ -224,14 +219,13 @@
               path="dcom.shop.Request.requestTf_requestTf_populateConcProgramsPageDef"/>
         <page id="dcom_shop_mobile_TaskListPGPageDef" path="dcom.shop.Transaction.page.TaskListPGPageDef"/>
         <page id="dcom_shop_mobile_searchProductPageDef" path="dcom.shop.Inquiry.page.searchProductPageDef"/>
-        <page id="dcom_shop_mobile_TaskListPGPageDef1" path="dcom.shop.Transaction.page.TaskListPGPageDef1"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="ItemStatusDC" path="dcom.shop.mobile.ItemStatusDC"/>
         <dc id="CatalogDC" path="dcom.shop.mobile.CatalogDC"/>
         <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>
         <dc id="ReportTimeDC" path="dcom.shop.mobile.ReportTimeDC"/>
-<dc id="TaskDC" path="dcom.shop.mobile.TaskDC"/>
+        <dc id="TaskDC" path="dcom.shop.mobile.TaskDC"/>
         <dc id="ClockInOutDC" path="dcom.shop.mobile.ClockInOutDC"/>
         <dc id="ItemTxnDC" path="dcom.shop.mobile.ItemTxnDC"/>
         <dc id="SerialNumberDC" path="dcom.shop.mobile.SerialNumberDC"/>

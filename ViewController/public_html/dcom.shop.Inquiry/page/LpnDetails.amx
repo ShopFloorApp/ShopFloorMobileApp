@@ -8,6 +8,7 @@
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="lpnDetailsBack" actionListener="#{SearchUtilBean.clearLPNPage}">
                 <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+                <amx:setPropertyListener id="spl1" from="FromBack" to="#{pageFlowScope.LpnDetailsBack}"/>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
