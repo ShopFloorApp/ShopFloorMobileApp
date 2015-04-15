@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Stock Count" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+       <amx:commandLink id="cl1" action="cycleCount">
+                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+            </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary" >
+      <amx:commandButton id="cb2" rendered="false"/>
+    </amx:facet>
+     <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
+                  styleClass="adfmf-listView-insetList">
+      <amx:listItem id="li1" inlineStyle="width:97%;" action="phyCount"  showLinkIcon="false">
+        <amx:outputText value="Physical Count" id="ot2"/>
+      </amx:listItem>
+      <amx:listItem id="li2" inlineStyle="width:97%;" action="oppCount"  showLinkIcon="false">
+        <amx:outputText value="Opportunity Count" id="ot3"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="OppCountPageDef"
+                Package="dcom.shop.Transaction.page.CycleCount">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="SubinventoryDC" id="SubinventoryDCIterator"/>
+    <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventories" RangeSize="-1"
+                      DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subinventoriesIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="subinventoriesIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="subInv"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="subinv"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="subinv"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="LocatorDCIterator" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="locatorsIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="fromLoc"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locator"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locator"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

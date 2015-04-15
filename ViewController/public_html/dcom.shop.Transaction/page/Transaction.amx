@@ -25,7 +25,7 @@
             <amx:listItem id="li6" showLinkIcon="false" action="shippingTxn">
                 <amx:outputText value="Shipping Transactions" id="ot7"/>
             </amx:listItem>
-            <amx:listItem id="li5" showLinkIcon="false" action="">
+            <amx:listItem id="li5" showLinkIcon="false" action="cycleCount">
                 <amx:outputText value="Stock Count" id="ot6"/>
             </amx:listItem>
         </amx:listView>

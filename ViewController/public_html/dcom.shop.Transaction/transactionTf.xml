@@ -67,6 +67,12 @@
     <view id="MtrlTrxnReview">
       <page>/dcom.shop.Transaction/MtrlTrxnReview.amx</page>
     </view>
+<task-flow-call id="CycleCountTF">
+      <task-flow-reference>
+        <document>/dcom.shop.Transaction/CycleCountTF.xml</document>
+        <id>CycleCountTF</id>
+      </task-flow-reference>
+    </task-flow-call>
     <task-flow-call id="TasksTF">
       <task-flow-reference>
         <document>/dcom.shop.Transaction/TasksTF.xml</document>
@@ -86,6 +92,10 @@
       <control-flow-case id="__36">
         <from-outcome>shippingTxn</from-outcome>
         <to-activity-id>ShippingTransactions</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__1">
+        <from-outcome>cycleCount</from-outcome>
+        <to-activity-id>CycleCountTF</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__5">

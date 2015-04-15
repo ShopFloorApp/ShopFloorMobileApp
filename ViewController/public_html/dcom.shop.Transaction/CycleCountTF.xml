@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="CycleCountTF">
+    <default-activity>cycleCount</default-activity>
+    <managed-bean id="__6">
+      <managed-bean-name>StateListenerBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>BarcodeBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__11">
+      <managed-bean-name>CountUtilBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.bean.CountUtilBean</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+    <view id="cycleCount">
+      <page>/dcom.shop.Transaction/page/CycleCount/cycleCount.amx</page>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <view id="OppCount">
+      <page>/dcom.shop.Transaction/page/CycleCount/OppCount.amx</page>
+    </view>
+    <view id="LpnLOVPG">
+      <page>/page/LovPage/LpnLOVPG.amx</page>
+    </view>
+    <view id="DetailOppCount">
+      <page>/dcom.shop.Transaction/page/CycleCount/DetailOppCount.amx</page>
+    </view>
+    <view id="itemLOVPG">
+      <page>/page/LovPage/itemLOVPG.amx</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>cycleCount</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>cycleCountBack</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>oppCount</from-outcome>
+        <to-activity-id>OppCount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>OppCount</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>oppCountBack</from-outcome>
+        <to-activity-id>cycleCount</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>lpnLOV</from-outcome>
+        <to-activity-id>LpnLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>detailOppCount</from-outcome>
+        <to-activity-id>DetailOppCount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>LpnLOVPG</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>OppCount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>DetailOppCount</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>detailOppCountBack</from-outcome>
+        <to-activity-id>OppCount</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>ItemLOV</from-outcome>
+        <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <page-flow-scope-behavior>
+      <push-new/>
+    </page-flow-scope-behavior>
+  </task-flow-definition>
+</adfc-mobile-config>
