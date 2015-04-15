@@ -37,7 +37,7 @@ public class LpnDetailsDC {
         keyword = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         String page = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemLovPage}"); 
         if("LpnTrxn".equals(page)){
-            keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}"); 
+            keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}"); 
         }
         String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         
