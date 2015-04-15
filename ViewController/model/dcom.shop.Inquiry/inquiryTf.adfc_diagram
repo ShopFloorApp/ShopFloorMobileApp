@@ -247,7 +247,7 @@
       <property
          name="fromsrcid">__10</property>
       <property
-         name="sdm:polyPoints">L54,536.5,-42.97461,325.7766,-26.273438,R54</property>
+         name="sdm:polyPoints">L58,536.5,-39.47461,326.0532,-22.773438,R58</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -676,5 +676,25 @@
          name="fromOutcome">prodOnhandDetailsBack</property>
       <property
          name="sdm:polyPoints">L42,974.0,343.07715,784.35254,198.12305,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase64"
+      from="View5"
+      to="View10">
+      <property
+         name="fromOutcome">lpnLOV</property>
+      <property
+         name="sdm:polyPoints">R42,325.5,-36.773438,535.94604,-53.47461,L42</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase65"
+      from="View4"
+      to="View9">
+      <property
+         name="fromOutcome">ItemLOV</property>
+      <property
+         name="sdm:polyPoints">R42,356.70718,129.52539,508.0,151.77832,L42</property>
    </ControlFlowCase>
 </SDM>

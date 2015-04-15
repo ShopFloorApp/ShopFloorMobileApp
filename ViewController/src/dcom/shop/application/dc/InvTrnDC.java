@@ -253,7 +253,7 @@ public class InvTrnDC extends RestCallerUtil {
                 } else {
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
-                                                                              "Error", "Transaction submission failed.",
+                                                                              "Error", "Transaction submission failed. "+jsObject.get("XMSG").toString(),
                                                                               "ok"
                     });
                     processResult = "";

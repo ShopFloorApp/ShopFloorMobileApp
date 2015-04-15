@@ -107,6 +107,10 @@
                 <from-outcome>searchBack</from-outcome>
                 <to-activity-id>inquiry</to-activity-id>
             </control-flow-case>
+            <control-flow-case id="__61">
+                <from-outcome>ItemLOV</from-outcome>
+                <to-activity-id>ProductList</to-activity-id>
+            </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__5">
             <from-activity-id>ProductList</from-activity-id>
@@ -127,6 +131,10 @@
             </control-flow-case>
             <control-flow-case id="__9">
                 <from-outcome>lpnlist</from-outcome>
+                <to-activity-id>LpnList</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__60">
+                <from-outcome>lpnLOV</from-outcome>
                 <to-activity-id>LpnList</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
