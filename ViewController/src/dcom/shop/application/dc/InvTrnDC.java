@@ -15,6 +15,7 @@ import java.util.List;
 
 import javax.el.MethodExpression;
 
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
@@ -48,12 +49,20 @@ public class InvTrnDC extends RestCallerUtil {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Success",
+                                                                      "Transaction has been deleted successfully.", "ok"
+            });
+        } else {
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", "Transaction deletion failed!", "ok"
+            });
         }
     }
 
     public String InsertTransaction(String trxType) {
         s_invTrxns.clear();
-
+        String processResult = null;
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         SubInventoryTxnBO subInvTxn = new SubInventoryTxnBO();
@@ -108,18 +117,30 @@ public class InvTrnDC extends RestCallerUtil {
             syncUtils.updateSqlLiteTableWithWhere(SubInventoryTxnBO.class, s_invTrxns, whereClause);
         }
         if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))))
-            ProcessWS(trxnId);
-        return "cancel";
+            processResult = ProcessWS(trxnId);
+        return processResult;
     }
 
     public void CompleteTrxn(Integer trxnId) {
-        ProcessWS(trxnId);
-        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
-                                                                     });
-        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        String processResult = ProcessWS(trxnId);
+        if ("cancel".equals(processResult)) {
+            MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                         });
+            me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Success",
+                                                                      "Transaction has been completed successfully.",
+                                                                      "ok"
+            });
+        } else {
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", "Transaction completion failed!", "ok"
+            });
+        }
     }
 
-    public void ProcessWS(Integer trxnId) {
+    public String ProcessWS(Integer trxnId) {
+        String processResult = null;
         String restURI = RestURI.PostInvTrxnURI();
         s_invTrxns.clear();
         String jsonArrayAsString = null;
@@ -222,15 +243,36 @@ public class InvTrnDC extends RestCallerUtil {
                         whereClause.put("trxnid", trxnId);
                         sync.updateSqlLiteTableWithWhere(SubInventoryTxnBO.class, s_filteredInvTrxns, whereClause);
                     }
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Success",
+                                                                              "Transaction has been submitted successfully.",
+                                                                              "ok"
+                    });
+                    processResult = "cancel";
+                } else {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error", "Transaction submission failed.",
+                                                                              "ok"
+                    });
+                    processResult = "";
                 }
                 providerChangeSupport.fireProviderRefresh("subinventories");
+            } else {
+                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                          "showAlert", new Object[] {
+                                                                          "Error", "Transaction submission failed.",
+                                                                          "ok"
+                });
+                processResult = "";
             }
 
         } catch (Exception e) {
             System.out.println("error " + e.toString());
         }
         //    throw new AdfException("Transaction completed", AdfException.INFO);
-
+        return processResult;
     }
 
     public void filterInvTrxns(Integer trxnId) {
@@ -318,14 +360,33 @@ public class InvTrnDC extends RestCallerUtil {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Success",
+                                                                      "Transaction has been deleted successfully.", "ok"
+            });
+        } else {
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", "Transaction deletion failed!", "ok"
+            });
         }
     }
 
     public void CompleteMiscTrxn(Integer trxnId) {
-        ProcessMiscTrxnWS(trxnId);
-        MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
-                                                                     });
-        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        String processResult = ProcessMiscTrxnWS(trxnId);
+        if ("Back".equals(processResult)) {
+            MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.refresh.execute}", Object.class, new Class[] {
+                                                                         });
+            me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Success",
+                                                                      "Transaction has been completed successfully.",
+                                                                      "ok"
+            });
+        } else {
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", "Transaction completion failed!", "ok"
+            });
+        }
     }
 
     public void filterMiscTrxns(Integer trxnId) {
@@ -353,6 +414,7 @@ public class InvTrnDC extends RestCallerUtil {
     }
 
     public String InsertMiscTransaction(String trxType) {
+        String processResult = null;
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         MiscTxnBO miscTxn = new MiscTxnBO();
@@ -407,11 +469,12 @@ public class InvTrnDC extends RestCallerUtil {
             syncUtils.updateSqlLiteTableWithWhere(MiscTxnBO.class, s_miscTrxns, whereClause);
         }
         if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))))
-            ProcessMiscTrxnWS(trxnId);
-        return "Back";
+            processResult = ProcessMiscTrxnWS(trxnId);
+        return processResult;
     }
 
-    public void ProcessMiscTrxnWS(Integer trxnId) {
+    public String ProcessMiscTrxnWS(Integer trxnId) {
+        String processResult = null;
         String restURI = RestURI.PostInvTrxnURI();
         s_miscTrxns.clear();
         s_serialTrxns.clear();
@@ -499,13 +562,34 @@ public class InvTrnDC extends RestCallerUtil {
                     s_filteredMiscTrxns.clear();
                     s_filteredMiscTrxns.add(invTxn);
                     sync.updateSqlLiteTable(MiscTxnBO.class, s_filteredMiscTrxns);
+                    processResult = "Back";
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Success",
+                                                                              "Transaction has been submitted successfully.",
+                                                                              "ok"
+                    });
                     providerChangeSupport.fireProviderRefresh("miscTrxns");
+                } else {
+                    processResult = "";
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error", "Transaction submission failed.",
+                                                                              "ok"
+                    });
                 }
+            } else {
+                processResult = "";
+                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                          "showAlert", new Object[] {
+                                                                          "Error", "Transaction submission failed.",
+                                                                          "ok"
+                });
             }
         } catch (Exception e) {
             System.out.println("error " + e.toString());
         }
-
+        return processResult;
     }
 
     public void addProviderChangeListener(ProviderChangeListener l) {

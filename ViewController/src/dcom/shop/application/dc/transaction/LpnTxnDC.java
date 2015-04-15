@@ -177,12 +177,12 @@ public class LpnTxnDC extends SyncUtils {
             lpnTxn.getLpnTo(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.itemNumber}");
         String subInv =
             lpnTxn.getSubinventory(); //(String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
-        if (subInv.equals("{@xsi:nil: \"true\"}")) {
+        if (subInv.equals("{\"@xsi:nil\":\"true\"}")) {
             subInv = "";
         }
         String locator =
             lpnTxn.getLocator(); // (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
-        if (locator.equals("{@xsi:nil: \"true\"}")) {
+        if (locator.equals("{\"@xsi:nil\":\"true\"}")) {
             locator = "";
         }
         String trxType =
@@ -303,7 +303,7 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("collection", s_lpnTrxns);
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
-
+            if(s_lpnTrxns.size()>0)
             filtered_LpnTxn = (List) super.getFileteredCollection(LpnTxnBO.class, paramMap);
             System.out.println("collection size is " + filtered_LpnTxn.size());
         } catch (Exception e) {
@@ -327,7 +327,7 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-
+            if(s_serialTrxns.size()>0)
             s_filteredSerialTrxns = (List) sync.getFileteredCollection(SerialBO.class, paramMap);
             System.out.println("collection size is " + s_filteredSerialTrxns.size());
         } catch (Exception e) {
@@ -351,7 +351,7 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-
+            if(s_lotTrxns.size()>0)
             s_filteredLotTrxns = (List) sync.getFileteredCollection(LotBO.class, paramMap);
             System.out.println("collection size is " + s_filteredLotTrxns.size());
         } catch (Exception e) {
@@ -375,7 +375,7 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("collection", s_itemTrxns);
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
-
+            if(s_itemTrxns.size()>0)
             s_filteredItemTxn = super.getFileteredCollection(ItemTxnBO.class, paramMap);
             System.out.println("collection size is " + s_filteredItemTxn.size());
         } catch (Exception e) {
