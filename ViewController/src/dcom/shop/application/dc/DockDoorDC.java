@@ -59,7 +59,7 @@ public class DockDoorDC {
             JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
             JSONObject jsObject1 = (JSONObject) jsObject.get("XDOCK");
             try {
-                JSONArray array = (JSONArray) jsObject1.get("XXDCOM_DOCK_DOOR_TAB");
+                JSONArray array = (JSONArray) jsObject1.get("XDOCK_ITEM");
 
                 if (array != null) {
                     int size = array.size();

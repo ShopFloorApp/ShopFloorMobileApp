@@ -10,6 +10,8 @@ public class RestURI {
     public static String PostItemInquiryURI() {
         return ITEM_INQUIRY_URI;
     }
+    
+    
     private static final String PROCESS_INV_TRXN_URI = "/webservices/rest/DcomTrns/processinvtxn/";
 
     public static String PostInvTrxnURI() {
@@ -93,6 +95,13 @@ public class RestURI {
     public static String PostDockDoorDetailsURI() {
         return DOCKDOOR_DETAILS_URI;
     }
+    
+    private static final String TASK_DETAILS_URI="/webservices/rest/DCOMTask/gettask/";
+    public static String PostTaskDetailsURI(){
+        return TASK_DETAILS_URI;
+        }
+    
+    
     private static final String LPN_INQUIRY_URI = "/webservices/rest/DCOMShip/getlpn/";
 
     public static String PostLpnInquiryURI() {

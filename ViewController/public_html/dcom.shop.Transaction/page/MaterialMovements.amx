@@ -30,7 +30,7 @@
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.miscTxnRenderButton}"
                                              id="sp20"/>
                 </amx:listItem>
-                <amx:listItem id="li6" showLinkIcon="false" action="mvOrdTF">
+                <amx:listItem id="li6" showLinkIcon="false" action="Tasks">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:outputText value="Tasks/Move Orders" id="ot7"/>
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.mvOrderRenderButton}"

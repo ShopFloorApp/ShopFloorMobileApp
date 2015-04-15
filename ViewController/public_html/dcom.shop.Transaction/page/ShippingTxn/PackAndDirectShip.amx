@@ -97,13 +97,13 @@
             <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.subInv}" id="soc2"
                                  valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:selectItem label="Choose Subinventory" value="0" id="si2"/>
-                <amx:selectItems value="#{bindings.subinventories.items}" id="si3"/>
+                <amx:selectItem label="Choose" value="0" id="si2"/>
+                <amx:selectItems value="#{bindings.subinventory.items}" id="si3"/>
             </amx:selectOneChoice>
             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.locator}"
                                  valueChangeListener="#{StateListenerBean.FromLocValueChange}" id="soc5">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:selectItem label="Choose Locator" value="0" id="si6"/>
+                <amx:selectItem label="Choose" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.locators.items}" id="si5"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Item Number" id="plm1">
@@ -254,6 +254,7 @@
                 <amx:selectItem id="si1" label="Choose Line Number"/>
                 <amx:selectItems id="si7" value="#{bindings.salesOrderLines.items}"/>
             </amx:selectOneChoice>
+            
         </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:spacer id="s29" width="50"/>
@@ -284,6 +285,5 @@
                 </amx:tableLayout>
             </amx:commandLink>
         </amx:facet>
-        
     </amx:panelPage>
 </amx:view>

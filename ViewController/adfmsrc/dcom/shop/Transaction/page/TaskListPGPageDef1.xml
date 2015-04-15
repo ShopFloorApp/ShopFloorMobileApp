@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="TaskListPGPageDef1"
+                Package="dcom.shop.Transaction.page">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="TaskDC" id="TaskDCIterator"/>
+    <accessorIterator MasterBinding="TaskDCIterator" Binds="tasks" RangeSize="25" DataControl="TaskDC"
+                      BeanClass="dcom.shop.application.mobile.TaskBO" id="tasksIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="tasksIterator" id="tasks">
+      <nodeDefinition DefName="dcom.shop.application.mobile.TaskBO" Name="tasks0">
+        <AttrNames>
+          <Item Value="ORGCODE"/>
+          <Item Value="CREATIONDATE"/>
+          <Item Value="DESTLOCATOR"/>
+          <Item Value="DESTSUBINV"/>
+          <Item Value="EMPLOYEE"/>
+          <Item Value="ENDDATE"/>
+          <Item Value="ITEM"/>
+          <Item Value="ITEMDESC"/>
+          <Item Value="LOCATOR"/>
+          <Item Value="PRIORITY"/>
+          <Item Value="QTY"/>
+          <Item Value="STARTDATE"/>
+          <Item Value="STATUS"/>
+          <Item Value="SUBINV"/>
+          <Item Value="TASKLINE"/>
+          <Item Value="TASKNUM"/>
+          <Item Value="TASKTYPE"/>
+          <Item Value="UOM"/>
+          <Item Value="USERNAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

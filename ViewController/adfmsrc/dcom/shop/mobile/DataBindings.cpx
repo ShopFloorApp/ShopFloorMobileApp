@@ -2,6 +2,14 @@
 <Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.36" id="DataBindings"
              SeparateXMLFiles="false" Package="dcom.shop.mobile" ClientType="Generic">
     <pageMap>
+        <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@getPendingReceiveTxn1"
+              usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
+        <page path="/dcom.shop.Transaction/page/ReceivingTxn/LinesListPG.amx"
+              usageId="dcom_shop_mobile_LinesListPGPageDef"/>
+<page path="/dcom.shop.Request/page/ProgramSubmitted.amx" usageId="dcom_shop_mobile_ProgramSubmittedPageDef"/>
+        <page path="/dcom.shop.DispatchList/page/jobSearch.amx" usageId="dcom_shop_mobile_jobSearchPageDef"/>
+        <page path="/dcom.shop.DispatchList/dispatch.xml#dispatch@fetchData"
+              usageId="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"/>
         <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Request/page/Programparams.amx" usageId="dcom_shop_mobile_ProgramparamsPageDef1"/>
         <page path="/dcom.shop.Inquiry/page/itemUDA.amx" usageId="dcom_shop_mobile_itemUDAPageDef"/>
@@ -114,17 +122,17 @@
               usageId="dcom_shop_mobile_clockInClockOutPageDef"/>
         <page path="/dcom.shop.Request/requestTf.xml#requestTf@populateConcPrograms"
               usageId="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"/>
-        <page path="/dcom.shop.Inquiry/page/searchProduct.amx" usageId="dcom_shop_mobile_searchProductPageDef"/>
-        <page path="/dcom.shop.Transaction/ReceivingTransaction.xml#ReceivingTransaction@getPendingReceiveTxn1"
-              usageId="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
-    <page path="/dcom.shop.Request/page/ProgramSubmitted.amx" usageId="dcom_shop_mobile_ProgramSubmittedPageDef"/>
-    <page path="/dcom.shop.DispatchList/page/jobSearch.amx" usageId="dcom_shop_mobile_jobSearchPageDef"/>
-        <page path="/dcom.shop.DispatchList/dispatch.xml#dispatch@fetchData"
-              usageId="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"/>
-        <page path="/dcom.shop.Transaction/page/ReceivingTxn/LinesListPG.amx"
-              usageId="dcom_shop_mobile_LinesListPGPageDef"/>
+        <page path="/dcom.shop.Transaction/page/TaskListPG.amx" usageId="dcom_shop_mobile_TaskListPGPageDef1"/>
     </pageMap>
     <pageDefinitionUsages>
+        <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
+              path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
+        <page id="dcom_shop_mobile_LinesListPGPageDef"
+              path="dcom.shop.Transaction.page.ReceivingTxn.LinesListPGPageDef"/>
+<page id="dcom_shop_mobile_ProgramSubmittedPageDef" path="dcom.shop.Request.page.ProgramSubmittedPageDef"/>
+        <page id="dcom_shop_mobile_jobSearchPageDef" path="dcom.shop.DispatchList.page.jobSearchPageDef"/>
+        <page id="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"
+              path="dcom.shop.DispatchList.dispatch_dispatch_fetchDataPageDef"/>
         <page id="dcom_shop_mobile_lineDetailsPageDef"
               path="dcom.shop.Transaction.page.ReceivingTxn.lineDetailsPageDef"/>
         <page id="dcom_shop_mobile_syncPrefPGPageDef" path="page.syncPrefPGPageDef"/>
@@ -214,21 +222,16 @@
         <page id="dcom_shop_mobile_clockInClockOutPageDef" path="dcom.shop.DispatchList.page.clockInClockOutPageDef"/>
         <page id="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"
               path="dcom.shop.Request.requestTf_requestTf_populateConcProgramsPageDef"/>
+        <page id="dcom_shop_mobile_TaskListPGPageDef" path="dcom.shop.Transaction.page.TaskListPGPageDef"/>
         <page id="dcom_shop_mobile_searchProductPageDef" path="dcom.shop.Inquiry.page.searchProductPageDef"/>
-        <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
-              path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
-    <page id="dcom_shop_mobile_ProgramSubmittedPageDef" path="dcom.shop.Request.page.ProgramSubmittedPageDef"/>
-    <page id="dcom_shop_mobile_jobSearchPageDef" path="dcom.shop.DispatchList.page.jobSearchPageDef"/>
-        <page id="dcom_shop_mobile_dispatch_dispatch_fetchDataPageDef"
-              path="dcom.shop.DispatchList.dispatch_dispatch_fetchDataPageDef"/>
-        <page id="dcom_shop_mobile_LinesListPGPageDef"
-              path="dcom.shop.Transaction.page.ReceivingTxn.LinesListPGPageDef"/>
+        <page id="dcom_shop_mobile_TaskListPGPageDef1" path="dcom.shop.Transaction.page.TaskListPGPageDef1"/>
     </pageDefinitionUsages>
     <dataControlUsages>
-        <dc id="ReportTimeDC" path="dcom.shop.mobile.ReportTimeDC"/>
-        <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>
         <dc id="ItemStatusDC" path="dcom.shop.mobile.ItemStatusDC"/>
         <dc id="CatalogDC" path="dcom.shop.mobile.CatalogDC"/>
+        <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>
+        <dc id="ReportTimeDC" path="dcom.shop.mobile.ReportTimeDC"/>
+<dc id="TaskDC" path="dcom.shop.mobile.TaskDC"/>
         <dc id="ClockInOutDC" path="dcom.shop.mobile.ClockInOutDC"/>
         <dc id="ItemTxnDC" path="dcom.shop.mobile.ItemTxnDC"/>
         <dc id="SerialNumberDC" path="dcom.shop.mobile.SerialNumberDC"/>
