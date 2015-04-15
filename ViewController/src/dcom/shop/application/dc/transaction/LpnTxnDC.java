@@ -275,7 +275,7 @@ public class LpnTxnDC extends SyncUtils {
                 } else {
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
-                                                                              "Error", "Transaction submission failed.",
+                                                                              "Error", "Transaction submission failed.\n"+jsObject.get("XMSG").toString(),
                                                                               "ok"
                     });
                     returnResult = "";
