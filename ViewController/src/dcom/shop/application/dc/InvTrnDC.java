@@ -418,6 +418,7 @@ public class InvTrnDC extends RestCallerUtil {
     }
 
     public String InsertMiscTransaction(String trxType) {
+        s_miscTrxns.clear();
         String processResult = null;
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
