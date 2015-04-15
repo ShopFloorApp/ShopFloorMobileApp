@@ -295,7 +295,7 @@ public class InvTrnDC extends RestCallerUtil {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-
+            if(s_invTrxns.size()>0)
             s_filteredInvTrxns = (List) sync.getFileteredCollection(SubInventoryTxnBO.class, paramMap);
             System.out.println("collection size is " + s_filteredInvTrxns.size());
         } catch (Exception e) {
@@ -320,7 +320,7 @@ public class InvTrnDC extends RestCallerUtil {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-
+            if(s_serialTrxns.size()>0)
             s_filteredSerialTrxns = (List) sync.getFileteredCollection(SerialBO.class, paramMap);
             System.out.println("collection size is " + s_filteredSerialTrxns.size());
         } catch (Exception e) {
@@ -345,7 +345,7 @@ public class InvTrnDC extends RestCallerUtil {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-
+            if(s_lotTrxns.size()>0)
             s_filteredLotTrxns = (List) sync.getFileteredCollection(LotBO.class, paramMap);
             System.out.println("collection size is " + s_filteredLotTrxns.size());
         } catch (Exception e) {
