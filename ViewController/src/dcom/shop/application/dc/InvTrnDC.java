@@ -569,7 +569,9 @@ public class InvTrnDC extends RestCallerUtil {
                     invTxn.setCompleteFlag("Y");
                     s_filteredMiscTrxns.clear();
                     s_filteredMiscTrxns.add(invTxn);
-                    sync.updateSqlLiteTable(MiscTxnBO.class, s_filteredMiscTrxns);
+                    HashMap whereClause = new HashMap();
+                    whereClause.put("trxnid", trxnId);
+                    sync.updateSqlLiteTableWithWhere(MiscTxnBO.class, s_filteredMiscTrxns, whereClause);
                     processResult = "Back";
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
