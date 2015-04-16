@@ -20,9 +20,9 @@
     <view id="cycleCount">
       <page>/dcom.shop.Transaction/page/CycleCount/cycleCount.amx</page>
     </view>
-    <task-flow-return id="taskFlowReturn1">
+    <task-flow-return id="returnToTransaction">
       <outcome>
-        <name>taskFlowReturn1</name>
+        <name>returnToTransaction</name>
       </outcome>
     </task-flow-return>
     <view id="OppCount">
@@ -41,7 +41,7 @@
       <from-activity-id>cycleCount</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>cycleCountBack</from-outcome>
-        <to-activity-id>taskFlowReturn1</to-activity-id>
+        <to-activity-id>returnToTransaction</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__3">
         <from-outcome>oppCount</from-outcome>

@@ -59,5 +59,67 @@
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
+         <amx:facet name="footer">
+            <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:rowLayout id="rl8">
+                    
+                    <amx:cellFormat id="cf13">
+                        <amx:commandLink id="cl3" 
+                                         actionListener="#{CountUtilBean.clearDetailPage}">
+                            <amx:tableLayout id="tl5" halign="center">
+                                <amx:rowLayout id="rl12">
+                                    <amx:cellFormat id="cf22" halign="center">
+                                        <amx:outputHtml id="oh112" styleClass="fa fa-unsorted fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl13">
+                                    <amx:cellFormat id="cf23" halign="center">
+                                        <amx:outputHtml id="oh6" value="Save/Next Item"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout> 
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf11">
+                        <amx:commandLink id="cl4" >
+                            <amx:tableLayout id="tl5t" halign="center">
+                                <amx:rowLayout id="rl14">
+                                    <amx:cellFormat id="cf11c" halign="center">
+                                        <amx:outputHtml id="oh113" styleClass="fa fa-check fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl1">
+                                    <amx:cellFormat id="cf13c" halign="center">
+                                        <amx:outputHtml id="oh19" value="Done"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                           
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    
+                    <amx:cellFormat id="cf10">
+                        <amx:commandLink id="cl2" actionListener="#{CountUtilBean.clearDetailPage}">
+                            <amx:tableLayout id="tl1" halign="center">
+                                <amx:rowLayout id="rl10">
+                                    <amx:cellFormat id="cf11r" halign="center">
+                                        <amx:outputHtml id="oh9" styleClass="fa fa-times fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl1r">
+                                    <amx:cellFormat id="cf12" halign="center">
+                                        <amx:outputHtml id="oh19o" value="Clear"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
+        </amx:facet>
   </amx:panelPage>
 </amx:view>

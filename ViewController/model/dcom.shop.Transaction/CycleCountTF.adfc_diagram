@@ -22,11 +22,11 @@
    <TaskFlowReturn
       id="TaskFlowReturn3">
       <property
-         name="activityId">taskFlowReturn1</property>
+         name="activityId">returnToTransaction</property>
       <property
          name="finish">true</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>taskFlowReturn1&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  taskFlowReturn1&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>returnToTransaction&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  returnToTransaction&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property

@@ -14,4 +14,12 @@ public class CountUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);            
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.callingPg}", null);   
     }
+
+    public void clearDetailPage(ActionEvent actionEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", null);  
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.qty}", null);        
+    }
 }

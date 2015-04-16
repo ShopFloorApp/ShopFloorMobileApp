@@ -57,8 +57,8 @@
                                        inlineStyle="text-align:left;"/>
                         <amx:commandLink id="cb3" action="lpnLOV">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                            <!--amx:setPropertyListener id="spl3" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"
-                                                     type="action"/-->
+                            <amx:setPropertyListener id="spl3" from="SubInvTrf" to="#{pageFlowScope.LpnLovPage}"
+                                                     type="action"/>
 
                         </amx:commandLink>
                         <amx:spacer width="10" id="s9"/>
@@ -76,7 +76,8 @@
                 <amx:rowLayout id="rl8">
                     
                     <amx:cellFormat id="cf13">
-                        <amx:commandLink id="cl3" action="detailOppCount">
+                        <amx:commandLink id="cl3" action="detailOppCount"
+                                         actionListener="#{CountUtilBean.clearDetailPage}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
@@ -90,7 +91,7 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                           
+                          <amx:setPropertyListener id="spl" from="DETAIL" type="action" to="#{pageFlowScope.callingPg}"/> 
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11">
@@ -108,7 +109,7 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:setPropertyListener id="spl" from="SUMMARY" type="action" to="#{pageFlowScope.callingPg}"/>
+                            <amx:setPropertyListener id="sp2" from="SUMMARY" type="action" to="#{pageFlowScope.callingPg}"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     
