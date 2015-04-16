@@ -118,8 +118,8 @@
         <page path="/dcom.shop.Request/requestTf.xml#requestTf@populateConcPrograms"
               usageId="dcom_shop_mobile_requestTf_requestTf_populateConcProgramsPageDef"/>
         <page path="/dcom.shop.Inquiry/page/searchProduct.amx" usageId="dcom_shop_mobile_searchProductPageDef"/>
-        <page path="/dcom.shop.Transaction/page/CycleCount/OppCount.amx" usageId="dcom_shop_mobile_OppCountPageDef"/>
-    </pageMap>
+    <page path="/dcom.shop.Transaction/page/TaskListPG.amx" usageId="dcom_shop_mobile_TaskListPGPageDef"/>
+        <page path="/dcom.shop.Transaction/page/CycleCount/OppCount.amx" usageId="dcom_shop_mobile_OppCountPageDef"/></pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
               path="dcom.shop.Transaction.ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"/>
