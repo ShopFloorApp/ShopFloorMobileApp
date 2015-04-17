@@ -34,5 +34,9 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="sortTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="sortTasks"
+                  IsViewObjectMethod="false" DataControl="TaskDC" InstanceName="data.TaskDC.dataProvider">
+      <NamedData NDName="criteria" NDValue="#{pageFlowScope.sortBy}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

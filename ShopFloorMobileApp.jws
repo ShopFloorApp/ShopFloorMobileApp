@@ -355,6 +355,9 @@
                <value n="iPadOrientationLandscapeRight" v="false"/>
                <value n="iPadOrientationPortrait" v="false"/>
                <value n="iPadOrientationPortraitUpsideDown" v="false"/>
+               <value n="iPhoneOrientationLandscapeLeft" v="false"/>
+               <value n="iPhoneOrientationLandscapeRight" v="false"/>
+               <value n="iPhoneOrientationPortraitUpsideDown" v="false"/>
                <value n="simulatorTarget" v="iPhone 5s (iOS 8.2 - iPhone 5s)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS1/iOS1.jar/"/>
