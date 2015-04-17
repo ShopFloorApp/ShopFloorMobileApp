@@ -112,7 +112,9 @@ public class WindowBean {
     public String goToDispatch() {
         // Add event code here...
         System.out.println("here");
-            
+        BackgroundProcess bp=new BackgroundProcess();
+        Thread t=new Thread(bp);
+        t.start();
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                   "showAlert", new Object[] {"Warehouse","Your warehouse has been set.","Ok" });
         //AdfmfContainerUtilities.invokeContainerJavaScriptFunction("dcom.shop.MyWarehouse",
