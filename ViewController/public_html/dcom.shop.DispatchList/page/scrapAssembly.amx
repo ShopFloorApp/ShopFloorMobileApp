@@ -7,7 +7,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+                <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                    <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh2" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -73,8 +76,7 @@
                 <amx:outputText value="#{pageFlowScope.availableQty}" id="ot9"/>
             </amx:panelLabelAndMessage>
             <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it2"/>
-            <amx:selectOneChoice value="#{bindings.accountAlias.inputValue}" label="Scrap Account Alias"
-                                 id="soc5">
+            <amx:selectOneChoice value="#{bindings.accountAlias.inputValue}" label="Scrap Account Alias" id="soc5">
                 <amx:selectItems value="#{bindings.accountAlias.items}" id="si7"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Sales Order" id="plam6">
@@ -93,6 +95,5 @@
             <amx:inputText value="#{bindings.reference.inputValue}" label="Reference" id="it1"/>
             <amx:inputText value="#{bindings.notes.inputValue}" label="Note" id="it6" rows="3"/>
         </amx:panelFormLayout>
-    
     </amx:panelPage>
 </amx:view>

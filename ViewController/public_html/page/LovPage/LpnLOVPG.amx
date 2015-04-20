@@ -7,17 +7,20 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cb3" action="__back">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="footer">
             <amx:outputText value="Select a LPN" id="ot2"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" rendered="#{pageFlowScope.barCodeField ne 'TOLPN'}" label="LPN" id="it2">
-            </amx:inputText>
-            <amx:inputText value="#{pageFlowScope.searchToLpnKeyword}" rendered="#{pageFlowScope.barCodeField eq 'TOLPN'}" label="LPN" id="it1">
+            <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" rendered="#{pageFlowScope.barCodeField ne 'TOLPN'}"
+                           label="LPN" id="it2"></amx:inputText>
+            <amx:inputText value="#{pageFlowScope.searchToLpnKeyword}"
+                           rendered="#{pageFlowScope.barCodeField eq 'TOLPN'}" label="LPN" id="it1">
                 <?audit suppress oracle.maf.warning-missing-hintText?>
             </amx:inputText>
         </amx:panelFormLayout>

@@ -1,100 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Pick Release" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandLink id="cl1" action="backToShipT">
-        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
-      </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandLink id="cl2" actionListener="#{pageFlowScope.TransactionUtil.executePickRelease}">
-        <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-lg"/>
-        <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="overlapMiddleCenter" alignId="pp1"/>
-      </amx:commandLink>
-    </amx:facet>
-    <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
-      <amx:panelLabelAndMessage label="Rule Name" id="plam4" showRequired="true">
-        <amx:panelGroupLayout id="pgl3">
-          <amx:selectOneChoice value="#{pageFlowScope.pickRule}" id="soc2"
-                               >
-            <amx:selectItem label="Choose a Rule" id="si1" value="0"/>
-            <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
-          </amx:selectOneChoice>
-        </amx:panelGroupLayout>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Order Number" id="plam5">
-        <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
-          <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"/>
-          <amx:commandLink id="cbw3" action="pickRLov">
-            <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-            <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
-            <amx:setPropertyListener id="spl1" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'PICK'}"/>
-          </amx:commandLink>
-        </amx:panelGroupLayout>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Event" id="plam6">
-        <amx:panelGroupLayout id="pgl5" layout="horizontal" halign="start" valign="baseline">
-          <amx:selectBooleanSwitch id="sbs1" value="#{pageFlowScope.Event}"/>
-          <amx:outputText value="#{pageFlowScope.Event eq 'true' ? 'Concurrent' : 'Online'}" id="ot4"/>
-        </amx:panelGroupLayout>
-      </amx:panelLabelAndMessage>
-    </amx:panelFormLayout>
-    <amx:facet name="footer">
-      <amx:panelGroupLayout id="pgl2" halign="center">
-        <amx:tableLayout id="tl3">
-          <amx:rowLayout id="rl5">
-            <amx:cellFormat id="cf6" halign="center">
-              <amx:commandLink id="cl4" actionListener="#{pageFlowScope.TransactionUtil.clearPickRel}">
-                <amx:tableLayout id="tl2">
-                  <amx:rowLayout id="rl3">
-                    <amx:cellFormat id="cf4" halign="center">
-                      <amx:outputHtml id="oh3" styleClass="fa fa-times fa-lg" inlineStyle="color:Gray;"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
-                  <amx:rowLayout id="rl4">
-                    <amx:cellFormat id="cf5">
-                      <amx:outputHtml id="oh4" inlineStyle="font-size:small;color:Gray;" value="Clear"/>
-                    </amx:cellFormat>
-                  </amx:rowLayout>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Pick Release" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="backToShipT">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandLink id="cl2" actionListener="#{pageFlowScope.TransactionUtil.executePickRelease}">
+                <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-lg"/>
+                <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="overlapMiddleCenter" alignId="pp1"/>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
+            <amx:panelLabelAndMessage label="Rule Name" id="plam4" showRequired="true">
+                <amx:panelGroupLayout id="pgl3">
+                    <amx:selectOneChoice value="#{pageFlowScope.pickRule}" id="soc2">
+                        <amx:selectItem label="Choose a Rule" id="si1" value="0"/>
+                        <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
+                    </amx:selectOneChoice>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Order Number" id="plam5">
+                <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
+                    <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"/>
+                    <amx:commandLink id="cbw3" action="pickRLov">
+                        <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
+                        <amx:setPropertyListener id="spl1" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'PICK'}"/>
+                    </amx:commandLink>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Event" id="plam6">
+                <amx:panelGroupLayout id="pgl5" layout="horizontal" halign="start" valign="baseline">
+                    <amx:selectBooleanSwitch id="sbs1" value="#{pageFlowScope.Event}"/>
+                    <amx:outputText value="#{pageFlowScope.Event eq 'true' ? 'Concurrent' : 'Online'}" id="ot4"/>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
+        <amx:facet name="footer">
+            <amx:panelGroupLayout id="pgl2" halign="center">
+                <amx:tableLayout id="tl3">
+                    <amx:rowLayout id="rl5">
+                        <amx:cellFormat id="cf6" halign="center">
+                            <amx:commandLink id="cl4" actionListener="#{pageFlowScope.TransactionUtil.clearPickRel}">
+                                <amx:tableLayout id="tl2">
+                                    <amx:rowLayout id="rl3">
+                                        <amx:cellFormat id="cf4" halign="center">
+                                            <amx:outputHtml id="oh3" styleClass="fa fa-times fa-lg"
+                                                            inlineStyle="color:Gray;"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                    <amx:rowLayout id="rl4">
+                                        <amx:cellFormat id="cf5">
+                                            <amx:outputHtml id="oh4" inlineStyle="font-size:small;color:Gray;"
+                                                            value="Clear"/>
+                                        </amx:cellFormat>
+                                    </amx:rowLayout>
+                                </amx:tableLayout>
+                            </amx:commandLink>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
                 </amx:tableLayout>
-              </amx:commandLink>
-            </amx:cellFormat>
-          </amx:rowLayout>
-        </amx:tableLayout>
-      </amx:panelGroupLayout>
-    </amx:facet>
+            </amx:panelGroupLayout>
+        </amx:facet>
     </amx:panelPage>
-  <amx:popup id="p1" autoDismiss="true">
-    <amx:tableLayout id="tl1">
-      <amx:rowLayout id="rl2">
-        <amx:cellFormat id="cf2" rendered="#{pageFlowScope.pickRelStatus eq 'S'}"
-                        inlineStyle="border-bottom-color:WindowText; border-bottom-style:solid; border-bottom-width:thin;">
-          <amx:panelGroupLayout id="pgl6" halign="center">
-            <amx:outputText value="Request is successfully submitted" id="ot3"
-                            rendered="#{pageFlowScope.pickRelStatus eq 'S'}"/>
-            <amx:outputText value="#{pageFlowScope.pickRelMsg}" id="ot2"
-                            rendered="#{pageFlowScope.pickRelStatus eq 'S'}"/>
-          </amx:panelGroupLayout>
-        </amx:cellFormat>
-        <amx:cellFormat id="cf3" rendered="#{pageFlowScope.pickRelStatus ne 'S'}">
-          <amx:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.pickRelStatus ne 'S'}" layout="horizontal">
-            <amx:outputText value="Request ended in error :" id="ot5"/>
-            <amx:outputText value="#{pageFlowScope.pickRelMsg}" id="ot6"/>
-          </amx:panelGroupLayout>
-        </amx:cellFormat>
-      </amx:rowLayout>
-      <amx:rowLayout id="rl1">
-        <amx:cellFormat id="cf1" halign="center">
-          <amx:commandLink id="cl3" inlineStyle="text-decoration:none;">
-            <amx:outputText value="OK" id="ot7"/>
-            <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
-          </amx:commandLink>
-        </amx:cellFormat>
-      </amx:rowLayout>
-    </amx:tableLayout>
-  </amx:popup>
+    <amx:popup id="p1" autoDismiss="true">
+        <amx:tableLayout id="tl1">
+            <amx:rowLayout id="rl2">
+                <amx:cellFormat id="cf2" rendered="#{pageFlowScope.pickRelStatus eq 'S'}"
+                                inlineStyle="border-bottom-color:WindowText; border-bottom-style:solid; border-bottom-width:thin;">
+                    <amx:panelGroupLayout id="pgl6" halign="center">
+                        <amx:outputText value="Request is successfully submitted" id="ot3"
+                                        rendered="#{pageFlowScope.pickRelStatus eq 'S'}"/>
+                        <amx:outputText value="#{pageFlowScope.pickRelMsg}" id="ot2"
+                                        rendered="#{pageFlowScope.pickRelStatus eq 'S'}"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+                <amx:cellFormat id="cf3" rendered="#{pageFlowScope.pickRelStatus ne 'S'}">
+                    <amx:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.pickRelStatus ne 'S'}"
+                                          layout="horizontal">
+                        <amx:outputText value="Request ended in error :" id="ot5"/>
+                        <amx:outputText value="#{pageFlowScope.pickRelMsg}" id="ot6"/>
+                    </amx:panelGroupLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1" halign="center">
+                    <amx:commandLink id="cl3" inlineStyle="text-decoration:none;">
+                        <amx:outputText value="OK" id="ot7"/>
+                        <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
+                    </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
 </amx:view>

@@ -36,8 +36,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="cancel">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -107,10 +109,12 @@
                     <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText"
                                     id="ot2"/>
                 </amx:panelLabelAndMessage>
-                <amx:panelLabelAndMessage label="UOM" rendered="#{!pageFlowScope.renderUomChoiceList}" inlineStyle="text-align:left;" id="plam233">
+                <amx:panelLabelAndMessage label="UOM" rendered="#{!pageFlowScope.renderUomChoiceList}"
+                                          inlineStyle="text-align:left;" id="plam233">
                     <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="it10"/>
                 </amx:panelLabelAndMessage>
-                <amx:selectOneChoice value="#{pageFlowScope.uom}" rendered="#{pageFlowScope.renderUomChoiceList}" label="UOM" id="soc1">
+                <amx:selectOneChoice value="#{pageFlowScope.uom}" rendered="#{pageFlowScope.renderUomChoiceList}"
+                                     label="UOM" id="soc1">
                     <amx:selectItem label="Choose" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.UOMCode.items}" id="si9"/>
                 </amx:selectOneChoice>

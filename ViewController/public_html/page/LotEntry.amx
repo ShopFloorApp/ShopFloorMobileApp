@@ -6,14 +6,15 @@
             <amx:outputText value="Lot Entry" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl5"
-                             action="__back">
-                <amx:outputHtml id="oh6" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+            <amx:commandLink id="cl5" action="__back">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-         <amx:commandButton text="Save" id="cb1"
-                               action="__back"/>
+            <amx:commandButton text="Save" id="cb1" action="__back"/>
             <!--amx:commandLink id="cl1"
                              action="__back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -43,7 +44,7 @@
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>
-         <amx:listView var="row" value="#{bindings.lots.collectionModel}" fetchSize="#{bindings.lots.rangeSize}"
+        <amx:listView var="row" value="#{bindings.lots.collectionModel}" fetchSize="#{bindings.lots.rangeSize}"
                       selectedRowKeys="#{bindings.lots.collectionModel.selectedRow}"
                       selectionListener="#{bindings.lots.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv2" layout="cards">

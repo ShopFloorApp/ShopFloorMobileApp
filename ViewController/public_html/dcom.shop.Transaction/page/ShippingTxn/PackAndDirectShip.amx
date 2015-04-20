@@ -2,7 +2,7 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
-    <amx:verbatim id="v1">
+        <amx:verbatim id="v1">
          <![CDATA[
         <script type="text/javascript">
         function scanBarcodeFromJavaBean(options)
@@ -37,8 +37,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToShipT">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -225,7 +227,6 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            
             <amx:panelLabelAndMessage label="Order Number" id="plam5">
                 <amx:spacer width="10" id="s21"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl12">
@@ -237,8 +238,9 @@
                                        value="#{pageFlowScope.documnetNumber}"/>
                         <amx:commandLink id="cl5" action="OrderLOV">
                             <amx:outputHtml id="oh5" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                                <amx:setPropertyListener id="spl14" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
-                                <amx:setPropertyListener id="spl7" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'DIRECT_SHIP'}"/>
+                            <amx:setPropertyListener id="spl14" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
+                            <amx:setPropertyListener id="spl7" to="#{pageFlowScope.pTypeSalesOrd}"
+                                                     from="#{'DIRECT_SHIP'}"/>
                         </amx:commandLink>
                         <amx:spacer width="10" id="s23"/>
                     </amx:panelGroupLayout>
@@ -254,7 +256,6 @@
                 <amx:selectItem id="si1" label="Choose Line Number"/>
                 <amx:selectItems id="si7" value="#{bindings.salesOrderLines.items}"/>
             </amx:selectOneChoice>
-            
         </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:spacer id="s29" width="50"/>

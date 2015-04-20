@@ -7,7 +7,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+                <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                    <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh2" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -28,8 +31,7 @@
                 <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                 <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}"
-                                 id="soc5">
+            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                 <amx:selectItem label="Choose Locator" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.locator.items}" id="si7"/>
             </amx:selectOneChoice>
@@ -49,6 +51,5 @@
             <amx:inputText value="#{bindings.reference.inputValue}" label="Reference" id="it1"/>
             <amx:inputText value="#{bindings.notes.inputValue}" label="Note" id="it6" rows="3"/>
         </amx:panelFormLayout>
-        
     </amx:panelPage>
 </amx:view>

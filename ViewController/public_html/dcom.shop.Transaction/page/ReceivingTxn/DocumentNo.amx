@@ -3,10 +3,12 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header"/>
-         <amx:facet name="primary">
-                <amx:commandLink id="cl2"
-                                 action="__back">
-                <amx:outputHtml id="oh2" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl2" action="__back">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:listView var="row" value="#{bindings.purchaseOrder.collectionModel}"
@@ -67,7 +69,6 @@
                         <amx:cellFormat width="10px" rowSpan="2" id="cf9"/>
                         <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf8">
                             <amx:outputText value="#{row.orderNumber}" id="ot7"/>
-                            
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl5">

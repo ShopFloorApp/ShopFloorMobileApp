@@ -6,14 +6,14 @@
             <amx:outputText value="Requests" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-                  <amx:commandLink id="cl1" action="__back">
-        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
-      </amx:commandLink>
+            <amx:commandLink id="cl1" action="__back">
+                <amx:panelGroupLayout id="pgl31" layout="horizontal">
+                    <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh21" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+            </amx:commandLink>
         </amx:facet>
-        <amx:facet name="secondary">
-           
-        </amx:facet>
-
+        <amx:facet name="secondary"></amx:facet>
         <amx:listView var="row" value="#{bindings.request.collectionModel}" fetchSize="#{bindings.request.rangeSize}"
                       selectedRowKeys="#{bindings.request.collectionModel.selectedRow}"
                       selectionListener="#{bindings.request.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
@@ -25,8 +25,8 @@
                                         halign="start">
                             <amx:panelGroupLayout id="pgl2" valign="middle">
                                 <amx:outputText value="#{row.requestId}" id="ot2" inlineStyle="font-weight:bold;"/>
-                                <amx:outputText value="Request ID" id="ot7"
-                                                inlineStyle="color:Silver; font-size:small;" rendered="false"/>
+                                <amx:outputText value="Request ID" id="ot7" inlineStyle="color:Silver; font-size:small;"
+                                                rendered="false"/>
                             </amx:panelGroupLayout>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf4" width="100%" halign="end" valign="middle">
@@ -37,16 +37,14 @@
                                 <amx:outputText value="#{row.phase}-#{row.status}" id="ot6"
                                                 inlineStyle="font-size:small;"/>
                             </amx:panelGroupLayout>
-
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl2">
-                        
-                        <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3" valign="middle" columnSpan="3">
+                        <amx:cellFormat width="100%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3"
+                                        valign="middle" columnSpan="3">
                             <amx:outputText value="#{row.progName}" id="ot3" inlineStyle="color:Gray;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
- 
                 </amx:tableLayout>
             </amx:listItem>
         </amx:listView>

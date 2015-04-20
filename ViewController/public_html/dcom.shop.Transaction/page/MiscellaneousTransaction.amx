@@ -34,8 +34,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="bMM">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">

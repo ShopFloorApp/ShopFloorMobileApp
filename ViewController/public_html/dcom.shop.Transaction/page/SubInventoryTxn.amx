@@ -7,8 +7,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cb3" action="bMM">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
             <!--amx:commandLink actionListener="#{bindings.gotoSpringboard.execute}"
                              disabled="#{!bindings.gotoSpringboard.enabled}" id="cl3"
@@ -35,7 +37,7 @@
                 <amx:setPropertyListener from="1" type="action" to="#{pageFlowScope.lotControl}" id="spl8"/>
                 <amx:setPropertyListener from="New" type="action" to="#{pageFlowScope.TransactionStatus}" id="spl25"/>
                 <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" id="spl28"/>
-                 <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
+                <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
                                          id="spl24"/>
             </amx:commandLink>
         </amx:facet>
@@ -113,7 +115,7 @@
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl13">
-                        <amx:cellFormat shortDesc="Item Number" width="50%" height="25px"  id="cf3">
+                        <amx:cellFormat shortDesc="Item Number" width="50%" height="25px" id="cf3">
                             <!--amx:panelLabelAndMessage label="Subinv" inlineStyle="text-align:left;"
                                                       id="plam212222">
                                 <amx:spacer height="8"/-->
@@ -178,7 +180,7 @@
                 <amx:setPropertyListener from="#{row.completeFlag}" type="action" to="#{pageFlowScope.rowCompleteFlag}"
                                          id="spl30"/>
                 <amx:setPropertyListener from="#{row.toLoc}" type="action" to="#{pageFlowScope.ToLocator}" id="spl31"/>
-                 <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
+                <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderUomChoiceList}"
                                          id="spl32"/>
                 <amx:showPopupBehavior id="spb1" popupId="popup1" type="action" decoration="anchor" alignId="li1"/>
                 <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" type="action" id="spl27"/>

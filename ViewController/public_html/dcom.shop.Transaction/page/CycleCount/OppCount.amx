@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Opportunity Counting" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandLink id="cl1" action="oppCountBack" actionListener="#{CountUtilBean.clearCountPage}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
-            </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2" rendered="false"/>
-    </amx:facet>
-    <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-        <amx:panelLabelAndMessage label="Name" inlineStyle="text-align:center;"  id="plamrr1">
-                <amx:panelGroupLayout id="pgl"  >
-                    <amx:inputText hintText="Name" inlineStyle="text-align:left;" id="it6" required="true"
-                                       value="#{pageFlowScope.name}"/>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Opportunity Counting" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="oppCountBack" actionListener="#{CountUtilBean.clearCountPage}">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
                 </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage> 
-             <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6">
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" rendered="false"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:panelLabelAndMessage label="Name" inlineStyle="text-align:center;" id="plamrr1">
+                <amx:panelGroupLayout id="pgl">
+                    <amx:inputText hintText="Name" inlineStyle="text-align:left;" id="it6" required="true"
+                                   value="#{pageFlowScope.name}"/>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6">
                 <amx:panelGroupLayout id="pgl2">
                     <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
@@ -29,8 +32,7 @@
                     <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}" rendered="true"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItem label="Choose" id="si4" value="0"/>
-                        <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>                   
-                        
+                        <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
@@ -43,23 +45,21 @@
                         <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
                     </amx:selectOneChoice>
-
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-               <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:left;" id="plam3">
+            <amx:panelLabelAndMessage label="LPN" inlineStyle="text-align:left;" id="plam3">
                 <amx:spacer width="10" id="s3"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl4">
                     <amx:spacer width="10" id="s8"/>
                     <amx:panelGroupLayout layout="horizontal"
                                           inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
                                           id="pgl1">
-                        <amx:inputText hintText="Parent LPN" id="it11" value="#{pageFlowScope.searchLpnKeyword}" required="true"
-                                       inlineStyle="text-align:left;"/>
+                        <amx:inputText hintText="Parent LPN" id="it11" value="#{pageFlowScope.searchLpnKeyword}"
+                                       required="true" inlineStyle="text-align:left;"/>
                         <amx:commandLink id="cb3" action="lpnLOV">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="SubInvTrf" to="#{pageFlowScope.LpnLovPage}"
                                                      type="action"/>
-
                         </amx:commandLink>
                         <amx:spacer width="10" id="s9"/>
                     </amx:panelGroupLayout>
@@ -69,12 +69,11 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-    </amx:panelFormLayout>
-     <amx:facet name="footer">
+        </amx:panelFormLayout>
+        <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
-                    
                     <amx:cellFormat id="cf13">
                         <amx:commandLink id="cl3" action="detailOppCount"
                                          actionListener="#{CountUtilBean.clearDetailPage}">
@@ -91,11 +90,12 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                          <amx:setPropertyListener id="spl" from="DETAIL" type="action" to="#{pageFlowScope.callingPg}"/> 
+                            <amx:setPropertyListener id="spl" from="DETAIL" type="action"
+                                                     to="#{pageFlowScope.callingPg}"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11">
-                        <amx:commandLink id="cl4" >
+                        <amx:commandLink id="cl4">
                             <amx:tableLayout id="tl5t" halign="center">
                                 <amx:rowLayout id="rl14">
                                     <amx:cellFormat id="cf11c" halign="center">
@@ -109,10 +109,10 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:setPropertyListener id="sp2" from="SUMMARY" type="action" to="#{pageFlowScope.callingPg}"/>
+                            <amx:setPropertyListener id="sp2" from="SUMMARY" type="action"
+                                                     to="#{pageFlowScope.callingPg}"/>
                         </amx:commandLink>
                     </amx:cellFormat>
-                    
                     <amx:cellFormat id="cf10">
                         <amx:commandLink id="cl2" actionListener="#{CountUtilBean.clearCountPage}">
                             <amx:tableLayout id="tl1" halign="center">
@@ -133,5 +133,5 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>
-  </amx:panelPage>
+    </amx:panelPage>
 </amx:view>

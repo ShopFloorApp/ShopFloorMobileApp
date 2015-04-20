@@ -1,88 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Add Lines" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandLink id="cl1" action="back" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.removeRecords}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Add Lines" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="back"
+                             actionListener="#{pageFlowScope.ReceivingTxnUtilBean.removeRecords}">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton text="Save" id="cb1"
-                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}" action="back">
-        <amx:validationBehavior id="vb1" group="vg1"/>
-      </amx:commandButton>
-    </amx:facet>
-    <amx:panelGroupLayout id="pgl2">
-    <amx:validationGroup 
-      id="vg1">
-      <amx:panelFormLayout id="pfl1">
-        <amx:selectOneChoice value="#{pageFlowScope.lineAdd}" label="#{bindings.item.label}" id="soc1"
-                             showRequired="true" required="true"
-                             valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.lineItemChange}">
-          <amx:selectItem label=" " id="si4"/>
-          <amx:selectItems value="#{bindings.item.items}" id="si1"/>
-        </amx:selectOneChoice>
-          <amx:panelLabelAndMessage label="#{bindings.qty.hints.label}" id="plam1" rendered="false">
-            <amx:outputText value="#{bindings.qty.inputValue}" id="ot2"/>
-          </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.subInv1.hints.label}" id="plam2" rendered="false">
-            <amx:outputText value="#{bindings.subInv1.inputValue}" id="ot3"/>
-          </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.uom.hints.label}" id="plam3" rendered="false">
-            <amx:outputText value="#{bindings.uom.inputValue}" id="ot4"/>
-          </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.lotControl.hints.label}" id="plam4" rendered="false">
-            <amx:outputText value="#{bindings.lotControl.inputValue}" id="ot5"/>
-          </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.serialControl.hints.label}" id="plam5" rendered="false">
-            <amx:outputText value="#{bindings.serialControl.inputValue}" id="ot6"/>
-          </amx:panelLabelAndMessage>
-          <amx:panelLabelAndMessage label="#{bindings.locator2.hints.label}" id="plam6" rendered="false">
-            <amx:outputText value="#{bindings.locator2.inputValue}" id="ot7"/>
-          </amx:panelLabelAndMessage>
-          <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="#{bindings.subinv.label}" id="soc2"
-                             valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}" required="true"
-                             showRequired="true">
-          <amx:selectItem label=" " id="si5"/>
-          <amx:selectItems value="#{bindings.subinv.items}" id="si2"/>
-        </amx:selectOneChoice>
-        <amx:selectOneChoice value="#{pageFlowScope.locatorAdd}" label="#{bindings.locator.label}" id="soc3">
-          <amx:selectItem label=" " id="si6"/>
-          <amx:selectItems value="#{bindings.locator.items}" id="si3"/>
-        </amx:selectOneChoice>
-          <amx:selectOneChoice value="#{pageFlowScope.uomAdd}" label="#{bindings.UOM.label}" id="soc5">
-            <amx:selectItem label=" " id="si9"/>
-            <amx:selectItems value="#{bindings.UOM.items}" id="si8"/>
-          </amx:selectOneChoice>
-          <amx:selectOneChoice value="#{pageFlowScope.lpnAdd}" label="#{bindings.LPNNum.label}" id="soc4"
-                               rendered="false">
-            <amx:selectItems value="#{bindings.LPNNum.items}" id="si7"/>
-          </amx:selectOneChoice>
-          <amx:inputText label="Quantity" id="it1" value="#{pageFlowScope.quantityAdd}" showRequired="true"
-                       required="true" inputType="number"
-                         valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.quantityValueChange}"/>
-          <amx:inputNumberSlider label="Quantity" id="ins1" minimum="1" value="#{pageFlowScope.quantityAdd}"
-                                 maximum="#{bindings.qty.inputValue}" required="true" stepSize="1" rendered="false"/>
-          <amx:inputText value="#{bindings.isNewEntity.inputValue}" simple="true" id="it6" rendered="false"/>
-      </amx:panelFormLayout>
-      </amx:validationGroup>
-    </amx:panelGroupLayout>
-    <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="center" valign="middle" rendered="false">
-      <amx:commandButton text="Add" id="cb3" action="__back"
-                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}"/>
-
-    </amx:panelGroupLayout>
-    <amx:panelFormLayout id="pfl2" rendered="false">
-      <amx:inputText value="#{bindings.lines.inputValue}" label="#{bindings.lines.hints.label}" id="it5"/>
-      <amx:inputText value="#{bindings.subInv.inputValue}" label="#{bindings.subInv.hints.label}" id="it3"/>
-      <amx:inputText value="#{bindings.locator1.inputValue}" label="#{bindings.locator1.hints.label}" id="it4"/>
-      <amx:inputText value="#{bindings.quantity.inputValue}" label="#{bindings.quantity.hints.label}" id="it2"/>
-    </amx:panelFormLayout>
-    <amx:facet name="footer">
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton text="Save" id="cb1" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}"
+                               action="back">
+                <amx:validationBehavior id="vb1" group="vg1"/>
+            </amx:commandButton>
+        </amx:facet>
+        <amx:panelGroupLayout id="pgl2">
+            <amx:validationGroup id="vg1">
+                <amx:panelFormLayout id="pfl1">
+                    <amx:selectOneChoice value="#{pageFlowScope.lineAdd}" label="#{bindings.item.label}" id="soc1"
+                                         showRequired="true" required="true"
+                                         valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.lineItemChange}">
+                        <amx:selectItem label=" " id="si4"/>
+                        <amx:selectItems value="#{bindings.item.items}" id="si1"/>
+                    </amx:selectOneChoice>
+                    <amx:panelLabelAndMessage label="#{bindings.qty.hints.label}" id="plam1" rendered="false">
+                        <amx:outputText value="#{bindings.qty.inputValue}" id="ot2"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="#{bindings.subInv1.hints.label}" id="plam2" rendered="false">
+                        <amx:outputText value="#{bindings.subInv1.inputValue}" id="ot3"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="#{bindings.uom.hints.label}" id="plam3" rendered="false">
+                        <amx:outputText value="#{bindings.uom.inputValue}" id="ot4"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="#{bindings.lotControl.hints.label}" id="plam4" rendered="false">
+                        <amx:outputText value="#{bindings.lotControl.inputValue}" id="ot5"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="#{bindings.serialControl.hints.label}" id="plam5" rendered="false">
+                        <amx:outputText value="#{bindings.serialControl.inputValue}" id="ot6"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="#{bindings.locator2.hints.label}" id="plam6" rendered="false">
+                        <amx:outputText value="#{bindings.locator2.inputValue}" id="ot7"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="#{bindings.subinv.label}" id="soc2"
+                                         valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}"
+                                         required="true" showRequired="true">
+                        <amx:selectItem label=" " id="si5"/>
+                        <amx:selectItems value="#{bindings.subinv.items}" id="si2"/>
+                    </amx:selectOneChoice>
+                    <amx:selectOneChoice value="#{pageFlowScope.locatorAdd}" label="#{bindings.locator.label}"
+                                         id="soc3">
+                        <amx:selectItem label=" " id="si6"/>
+                        <amx:selectItems value="#{bindings.locator.items}" id="si3"/>
+                    </amx:selectOneChoice>
+                    <amx:selectOneChoice value="#{pageFlowScope.uomAdd}" label="#{bindings.UOM.label}" id="soc5">
+                        <amx:selectItem label=" " id="si9"/>
+                        <amx:selectItems value="#{bindings.UOM.items}" id="si8"/>
+                    </amx:selectOneChoice>
+                    <amx:selectOneChoice value="#{pageFlowScope.lpnAdd}" label="#{bindings.LPNNum.label}" id="soc4"
+                                         rendered="false">
+                        <amx:selectItems value="#{bindings.LPNNum.items}" id="si7"/>
+                    </amx:selectOneChoice>
+                    <amx:inputText label="Quantity" id="it1" value="#{pageFlowScope.quantityAdd}" showRequired="true"
+                                   required="true" inputType="number"
+                                   valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.quantityValueChange}"/>
+                    <amx:inputNumberSlider label="Quantity" id="ins1" minimum="1" value="#{pageFlowScope.quantityAdd}"
+                                           maximum="#{bindings.qty.inputValue}" required="true" stepSize="1"
+                                           rendered="false"/>
+                    <amx:inputText value="#{bindings.isNewEntity.inputValue}" simple="true" id="it6" rendered="false"/>
+                </amx:panelFormLayout>
+            </amx:validationGroup>
+        </amx:panelGroupLayout>
+        <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="center" valign="middle" rendered="false">
+            <amx:commandButton text="Add" id="cb3" action="__back"
+                               actionListener="#{pageFlowScope.ReceivingTxnUtilBean.updateRecord}"/>
+        </amx:panelGroupLayout>
+        <amx:panelFormLayout id="pfl2" rendered="false">
+            <amx:inputText value="#{bindings.lines.inputValue}" label="#{bindings.lines.hints.label}" id="it5"/>
+            <amx:inputText value="#{bindings.subInv.inputValue}" label="#{bindings.subInv.hints.label}" id="it3"/>
+            <amx:inputText value="#{bindings.locator1.inputValue}" label="#{bindings.locator1.hints.label}" id="it4"/>
+            <amx:inputText value="#{bindings.quantity.inputValue}" label="#{bindings.quantity.hints.label}" id="it2"/>
+        </amx:panelFormLayout>
+        <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
@@ -114,19 +118,19 @@
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl13">
                                     <amx:cellFormat id="cf23" halign="center">
-                                        <amx:outputHtml id="oh6" value="Lot"
-                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                        <amx:outputHtml id="oh6" value="Lot" inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                                                <amx:setPropertyListener from="#{pageFlowScope.quantityAdd}" to="#{pageFlowScope.LotQty}" id="spl5"/>
-                    <amx:setPropertyListener from="#{pageFlowScope.lineAdd}" to="#{pageFlowScope.LotItem}"
-                                             id="spl6"/>
-                    <amx:setPropertyListener from="ReceiveTxn" to="#{pageFlowScope.ParentPage}" id="spl10"/>
-                                        <amx:setPropertyListener from="#{pageFlowScope.rowIdxAdd}" to="#{pageFlowScope.SubinvTrxnId}"
-                                             id="spl3"/>
-              <amx:validationBehavior id="vb2" group="vg1"/>
-            </amx:commandLink>
+                            <amx:setPropertyListener from="#{pageFlowScope.quantityAdd}" to="#{pageFlowScope.LotQty}"
+                                                     id="spl5"/>
+                            <amx:setPropertyListener from="#{pageFlowScope.lineAdd}" to="#{pageFlowScope.LotItem}"
+                                                     id="spl6"/>
+                            <amx:setPropertyListener from="ReceiveTxn" to="#{pageFlowScope.ParentPage}" id="spl10"/>
+                            <amx:setPropertyListener from="#{pageFlowScope.rowIdxAdd}"
+                                                     to="#{pageFlowScope.SubinvTrxnId}" id="spl3"/>
+                            <amx:validationBehavior id="vb2" group="vg1"/>
+                        </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf1"
                                     rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; bindings.serialControl.inputValue==1}">
@@ -144,16 +148,16 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                    <amx:setPropertyListener from="#{pageFlowScope.quantityAdd}" to="#{pageFlowScope.SerialQty}"
-                                             id="spl1"/>
-                    <amx:setPropertyListener from="#{pageFlowScope.lineAdd}" to="#{pageFlowScope.SerialItem}"
-                                             id="spl2"/>
-                    <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
-                    <amx:setPropertyListener from="ReceiveTxn" to="#{pageFlowScope.ParentPage}" id="spl9"/>
-                    <amx:setPropertyListener from="#{pageFlowScope.rowIdxAdd}" to="#{pageFlowScope.SubinvTrxnId}"
-                                             id="spl7"/>
-              <amx:validationBehavior id="vb3" group="vg1"/>
-            </amx:commandLink>
+                            <amx:setPropertyListener from="#{pageFlowScope.quantityAdd}" to="#{pageFlowScope.SerialQty}"
+                                                     id="spl1"/>
+                            <amx:setPropertyListener from="#{pageFlowScope.lineAdd}" to="#{pageFlowScope.SerialItem}"
+                                                     id="spl2"/>
+                            <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
+                            <amx:setPropertyListener from="ReceiveTxn" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                            <amx:setPropertyListener from="#{pageFlowScope.rowIdxAdd}"
+                                                     to="#{pageFlowScope.SubinvTrxnId}" id="spl7"/>
+                            <amx:validationBehavior id="vb3" group="vg1"/>
+                        </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf6" rendered="#{pageFlowScope.shipmentLinesCount>1}">
                         <amx:commandLink id="cl4" actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addMore}">
@@ -170,11 +174,11 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-              <amx:validationBehavior id="vb4" group="vg1"/>
-            </amx:commandLink>
+                            <amx:validationBehavior id="vb4" group="vg1"/>
+                        </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>
-  </amx:panelPage>
+    </amx:panelPage>
 </amx:view>

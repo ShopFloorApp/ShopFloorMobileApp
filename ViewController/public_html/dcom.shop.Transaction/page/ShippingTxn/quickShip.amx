@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Quick Ship" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandLink id="cl1" action="quickShipBack">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Quick Ship" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="quickShipBack">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2" rendered = "false"/>
-    </amx:facet>
-    
-    <amx:panelFormLayout id="pf1" labelPosition="topStart">
-            
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" rendered="false"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pf1" labelPosition="topStart">
             <amx:panelLabelAndMessage label="Delivery Number" inlineStyle="text-align:center;" id="plam33">
                 <amx:panelGroupLayout id="pgl1">
                     <amx:inputText hintText="Delivery Number" id="it1" value="#{pageFlowScope.dlvNumber}"
                                    required="true"/>
-                        
                     <amx:commandLink id="cb3" action="delvLov">
                         <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                     </amx:commandLink>
@@ -28,36 +28,29 @@
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Ship Method" inlineStyle="text-align:center;" id="plam6">
                 <amx:panelGroupLayout id="pgl3">
-                         <amx:inputText hintText="Ship Method" id="it2" value = "#{pageFlowScope.shipMthCode}"/>
+                    <amx:inputText hintText="Ship Method" id="it2" value="#{pageFlowScope.shipMthCode}"/>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-
-         <amx:panelLabelAndMessage label="WayBill" inlineStyle="text-align:center;" id="plam7">
+            <amx:panelLabelAndMessage label="WayBill" inlineStyle="text-align:center;" id="plam7">
                 <amx:panelGroupLayout id="pgl4">
-                          <amx:inputText hintText="WayBill" id="it3" value = "#{pageFlowScope.waybill}"/>
+                    <amx:inputText hintText="WayBill" id="it3" value="#{pageFlowScope.waybill}"/>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-        <amx:panelLabelAndMessage label="Vehicle Number" inlineStyle="text-align:center;" id="plam8">
+            <amx:panelLabelAndMessage label="Vehicle Number" inlineStyle="text-align:center;" id="plam8">
                 <amx:panelGroupLayout id="pgl5">
-                          <amx:inputText hintText="Vehicle Number" id="it4" value = "#{pageFlowScope.vehicleNumber}"/>
+                    <amx:inputText hintText="Vehicle Number" id="it4" value="#{pageFlowScope.vehicleNumber}"/>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-        
-
-         
-
-    </amx:panelFormLayout>
-        
-    <!--amx:commandButton text="Ship" id="cb6" actionListener="#{pageFlowScope.QuickShipUtilBean.callShip}"/>
+        </amx:panelFormLayout>
+        <!--amx:commandButton text="Ship" id="cb6" actionListener="#{pageFlowScope.QuickShipUtilBean.callShip}"/>
       <amx:commandButton text="Back Order" id="cb5" actionListener="#{pageFlowScope.QuickShipUtilBean.callBackOrder}"/>
       <amx:commandButton text="Cancel" id="cb4"/-->
-    <amx:facet name="footer">
+        <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
                     <amx:cellFormat id="cf10">
-                        <amx:commandLink id="cl2"          
-                            actionListener="#{pageFlowScope.QuickShipUtilBean.callShip}">
+                        <amx:commandLink id="cl2" actionListener="#{pageFlowScope.QuickShipUtilBean.callShip}">
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
@@ -69,16 +62,15 @@
                                         <amx:outputHtml id="oh19" value="Ship"
                                                         inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
-                                </amx:rowLayout> 
+                                </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:showPopupBehavior id="spb1" popupId="p1" type ="action" decoration="anchor"
-                                     alignId="cl2"   />
+                            <amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="anchor"
+                                                   alignId="cl2"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13">
-                        <amx:commandLink id="cl3"
-                                actionListener="#{pageFlowScope.QuickShipUtilBean.callBackOrder}"
-                                        action="{pageFlowScope.txnStatus}">
+                        <amx:commandLink id="cl3" actionListener="#{pageFlowScope.QuickShipUtilBean.callBackOrder}"
+                                         action="{pageFlowScope.txnStatus}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
@@ -92,26 +84,26 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:showPopupBehavior id="spb2" popupId="p1" type ="action" decoration="anchor"
-                                     alignId="pp1"   align="overlapMiddleCenter"/>
+                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor"
+                                                   alignId="pp1" align="overlapMiddleCenter"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>
-  </amx:panelPage>
-  <amx:popup id="p1" autoDismiss="true">
+    </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
             <amx:commandLink id="cl5">
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
-                           <amx:rowLayout id="rl17">
+                    <amx:rowLayout id="rl17">
                         <amx:cellFormat id="cf26" halign="center">
                             <amx:outputText id="oh955" value="#{pageFlowScope.txnMsg}"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:commandLink>
-            </amx:panelGroupLayout>
-            </amx:popup>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

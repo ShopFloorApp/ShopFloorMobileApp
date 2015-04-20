@@ -8,7 +8,10 @@
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="backToWorkContent" actionListener="#{bindings.rollback.execute}"
                              disabled="#{!bindings.rollback.enabled}">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+                <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                    <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh2" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">

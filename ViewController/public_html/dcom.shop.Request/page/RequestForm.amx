@@ -1,75 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Requests" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-     <amx:commandLink id="cl1" action="__back">
-        <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
-      </amx:commandLink>
-    </amx:facet>
-    <amx:facet name="secondary">
-     
-    </amx:facet>
-    <amx:tableLayout id="tl2" inlineStyle="background: darkgray;" rendered="false">
-      <amx:rowLayout id="rl9">
-        <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative;">
-          <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
-                             action="submitRequest"/>
-        </amx:cellFormat>
-      </amx:rowLayout>
-    </amx:tableLayout>
-    <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-      <amx:panelLabelAndMessage label="Request ID" id="plam6">
-        <amx:outputText value="#{bindings.requestId.inputValue}" id="ot7"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Program Name" id="plam13">
-        <amx:outputText value="#{bindings.progName.inputValue}" id="ot14"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Application Name" id="plam2">
-        <amx:outputText value="#{bindings.applName.inputValue}" id="ot3"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Phase" id="plam7">
-        <amx:outputText value="#{bindings.phase.inputValue}" id="ot8"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Status" id="plam4">
-        <amx:outputText value="#{bindings.status.inputValue}" id="ot5"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Time Taken" id="plam3">
-        <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="end">
-          <amx:outputText value="#{bindings.hrsTaken.inputValue}" id="ot4"/>
-          <amx:outputText value=":" id="ot222"/>
-          <amx:outputText value="#{bindings.minTaken.inputValue}" id="ot16"/>
-          <amx:outputText value=":" id="ot17"/>
-          <amx:outputText value="#{bindings.ssTaken.inputValue}" id="ot18"/>
-        </amx:panelGroupLayout>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Submitted Date" id="plam14">
-        <amx:outputText value="#{bindings.submitDate.inputValue}" id="ot15"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Actual Start Date" id="plam5">
-        <amx:outputText value="#{bindings.actualStart.inputValue}" id="ot6"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Actual Completion Date" id="plam11">
-        <amx:outputText value="#{bindings.actualCompl.inputValue}" id="ot12"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Submitted By" id="plam9">
-        <amx:outputText value="#{bindings.submittedBy.inputValue}" id="ot10"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Responsibility Name" id="plam8">
-        <amx:outputText value="#{bindings.respName.inputValue}" id="ot9"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="File Type" id="plam12">
-        <amx:outputText value="#{bindings.ofileType.inputValue}" id="ot13"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="Log File Size" id="plam1">
-        <amx:outputText value="#{bindings.logSize.inputValue} Bytes" id="ot2"/>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label=" Output File Size" id="plam10">
-        <amx:outputText value="#{bindings.outPutSize.inputValue} Bytes" id="ot11"/>
-      </amx:panelLabelAndMessage>
-    </amx:panelFormLayout>
-  </amx:panelPage>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Requests" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="__back">
+                <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                    <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh2" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary"></amx:facet>
+        <amx:tableLayout id="tl2" inlineStyle="background: darkgray;" rendered="false">
+            <amx:rowLayout id="rl9">
+                <amx:cellFormat id="cf18" halign="end" styleClass="sbmt-btn" inlineStyle="position: relative;">
+                    <amx:commandButton text="Submit New Request" id="cb3" inlineStyle="border-radius: 9.5em;"
+                                       action="submitRequest"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+            <amx:panelLabelAndMessage label="Request ID" id="plam6">
+                <amx:outputText value="#{bindings.requestId.inputValue}" id="ot7"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Program Name" id="plam13">
+                <amx:outputText value="#{bindings.progName.inputValue}" id="ot14"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Application Name" id="plam2">
+                <amx:outputText value="#{bindings.applName.inputValue}" id="ot3"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Phase" id="plam7">
+                <amx:outputText value="#{bindings.phase.inputValue}" id="ot8"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Status" id="plam4">
+                <amx:outputText value="#{bindings.status.inputValue}" id="ot5"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Time Taken" id="plam3">
+                <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="end">
+                    <amx:outputText value="#{bindings.hrsTaken.inputValue}" id="ot4"/>
+                    <amx:outputText value=":" id="ot222"/>
+                    <amx:outputText value="#{bindings.minTaken.inputValue}" id="ot16"/>
+                    <amx:outputText value=":" id="ot17"/>
+                    <amx:outputText value="#{bindings.ssTaken.inputValue}" id="ot18"/>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Submitted Date" id="plam14">
+                <amx:outputText value="#{bindings.submitDate.inputValue}" id="ot15"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Actual Start Date" id="plam5">
+                <amx:outputText value="#{bindings.actualStart.inputValue}" id="ot6"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Actual Completion Date" id="plam11">
+                <amx:outputText value="#{bindings.actualCompl.inputValue}" id="ot12"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Submitted By" id="plam9">
+                <amx:outputText value="#{bindings.submittedBy.inputValue}" id="ot10"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Responsibility Name" id="plam8">
+                <amx:outputText value="#{bindings.respName.inputValue}" id="ot9"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="File Type" id="plam12">
+                <amx:outputText value="#{bindings.ofileType.inputValue}" id="ot13"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Log File Size" id="plam1">
+                <amx:outputText value="#{bindings.logSize.inputValue} Bytes" id="ot2"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label=" Output File Size" id="plam10">
+                <amx:outputText value="#{bindings.outPutSize.inputValue} Bytes" id="ot11"/>
+            </amx:panelLabelAndMessage>
+        </amx:panelFormLayout>
+    </amx:panelPage>
 </amx:view>

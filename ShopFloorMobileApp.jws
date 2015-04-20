@@ -78,6 +78,10 @@
             <value n="profileName" v="Android_MAIN"/>
          </hash>
          <hash n="Android1">
+            <hash n="android_options">
+               <value n="version_code" v="2"/>
+               <value n="version_name" v="1.1"/>
+            </hash>
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
             </hash>

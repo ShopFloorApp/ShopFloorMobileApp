@@ -7,7 +7,10 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="__back">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+                <amx:panelGroupLayout id="pgl31" layout="horizontal">
+                    <amx:outputHtml id="oh11" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh21" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
@@ -48,7 +51,7 @@
                     <amx:selectItem id="si56" label="E-Records" value="EDR"/>
                     <amx:selectItem id="si55" label="E-Business Tax" value="ZX"/>
                     <amx:selectItem id="si54" label="Engineering" value="ENG"/>
-                                        <amx:selectItem id="si53" label="Federal Financials" value="FV"/>
+                    <amx:selectItem id="si53" label="Federal Financials" value="FV"/>
                     <amx:selectItem id="si52" label="General Ledger" value="SQLGL"/>
                     <amx:selectItem id="si51" label="Global Accounting Engine" value="AX"/>
                     <amx:selectItem id="si50" label="Internet Procurement Enterprise Connector" value="ITG"/>
@@ -56,14 +59,14 @@
                     <amx:selectItem id="si48" label="Master Scheduling/MRP" value="MRP"/>
                     <amx:selectItem id="si47" label="Mobile Application Foundation" value="JTM"/>
                     <amx:selectItem id="si46" label="Mobile Applications" value="MWA"/>
-                                        <amx:selectItem id="si45" label="Oracle E-Business Suite Diagnostics" value="IZU"/>
+                    <amx:selectItem id="si45" label="Oracle E-Business Suite Diagnostics" value="IZU"/>
                     <amx:selectItem id="si44" label="Oracle iProcurement" value="ICX"/>
                     <amx:selectItem id="si43" label="Order Management" value="ONT"/>
                     <amx:selectItem id="si42" label="Outsourced Manufacturing for Discrete Industries" value="JMF"/>
                     <amx:selectItem id="si41" label="Payables" value="SQLAP"/>
                     <amx:selectItem id="si40" label="Payments" value="IBY"/>
                     <amx:selectItem id="si39" label="Product Hub" value="EGO"/>
-                                        <amx:selectItem id="si38" label="Project Manufacturing" value="PJM"/>
+                    <amx:selectItem id="si38" label="Project Manufacturing" value="PJM"/>
                     <amx:selectItem id="si35" label="Projects" value="PA"/>
                 </amx:selectOneChoice>
                 <amx:selectOneChoice value="#{pageFlowScope.name}" label="Program Name" id="soc1">

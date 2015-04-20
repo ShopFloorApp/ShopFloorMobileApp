@@ -8,7 +8,10 @@
         <amx:facet name="primary">
             <amx:commandLink id="cb3" action="Back">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh3" styleClass="fa fa-arrow-left fa-lg" inlineStyle="color:#34AADC;"/>
+                <amx:panelGroupLayout id="pgl31" layout="horizontal">
+                    <amx:outputHtml id="oh11" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh21" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
