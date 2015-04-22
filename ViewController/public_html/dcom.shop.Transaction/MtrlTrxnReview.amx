@@ -15,8 +15,10 @@
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandLink id="cl1" action="miscTransaction">
+                <amx:panelGroupLayout id="pgl1" layout="horizontal">
+                    <amx:outputHtml id="oh1" value="Add"/>
+                </amx:panelGroupLayout>
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh1" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
                 <amx:setPropertyListener from="MISC" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl12"/>
