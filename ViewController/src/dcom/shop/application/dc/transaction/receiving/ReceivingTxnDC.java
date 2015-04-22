@@ -79,6 +79,7 @@ public class ReceivingTxnDC extends SyncUtils{
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String pType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}")==null?"RMA":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}"));
+        String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         String restURI = RestURI.PostGetSalesOrder();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
@@ -92,7 +93,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PTYPE\": \""+pType+"\",\n" +
-               "                   \"PORDER\": \"\",\n" +
+               "                   \"PORDER\": \""+documentNo+"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -137,6 +138,9 @@ public class ReceivingTxnDC extends SyncUtils{
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XORDER");
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XORDER_ITEM");
 
                 if (array != null) {
@@ -235,6 +239,7 @@ public class ReceivingTxnDC extends SyncUtils{
     public RequisitionBO[] getRequisition() {
         s_requisition.clear();
         System.out.println("Inside orgItem");
+        String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String restURI = RestURI.PostGetRequisition();
         RestCallerUtil rcu = new RestCallerUtil();
@@ -248,7 +253,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
-            "                   \"PREQ\": \"\",\n" +
+            "                   \"PREQ\": \""+documentNo+"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -264,6 +269,9 @@ public class ReceivingTxnDC extends SyncUtils{
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XREQ");
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XREQ_ITEM");
 
                 if (array != null) {
@@ -322,6 +330,7 @@ public class ReceivingTxnDC extends SyncUtils{
         s_purchaseOrder.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
+        String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         String restURI = RestURI.PostGetPurchaseOrder();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
@@ -334,7 +343,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
-            "                   \"PPO\": \"\",\n" +
+            "                   \"PPO\": \""+documentNo+"\",\n" +
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
@@ -662,10 +671,6 @@ public class ReceivingTxnDC extends SyncUtils{
                 boolean resultSerial = super.deleteSqlLiteTable(SerialBO.class, whereClause);
             }
         }
-
-        
-        
-        
         
         if (resultShipment) {
             refreshShipments();
@@ -674,9 +679,20 @@ public class ReceivingTxnDC extends SyncUtils{
     
     public void processReceive(String actionType){
         System.out.println("Inside orgItem");
-
+        if(s_lines.size()==0){
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                      "showAlert", new Object[] {"Receiving Transaction","Please add Lines before submitting transaction.","Ok" });
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.isError}", "true");
+            return;
+        }
         String documentNo = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         String receivingType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receivingType}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receivingType}"));
+        HashMap whereClause = new HashMap();
+        whereClause.put("receiveTxnId", AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}"));
+
+        boolean resultShipment = super.deleteSqlLiteTable(ShipmentBO.class, whereClause);
+        boolean resultShipmentLines = super.deleteSqlLiteTable(LinesBO.class, whereClause);
+        
         String carrier = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.carrier}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.carrier}"));
         String packSlip = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.packSlip}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.packSlip}"));
         String bol = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.bol}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.bol}"));
@@ -710,6 +726,7 @@ public class ReceivingTxnDC extends SyncUtils{
         shipmentBO.setShippedDate(shippedDate.substring(0,10));
         shipmentBO.setVendor(customer);
         shipmentBO.setWayAirBill(wayAirBill);
+        shipmentBO.setIsSubmitted("N");
         
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -731,15 +748,22 @@ public class ReceivingTxnDC extends SyncUtils{
  
     }
     
-    public void completeTxn(){
+    public void completeTxn(String actionType){
         Integer receiveTxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receiveTxnIdProc}");
         ArrayList<ShipmentBO> shipmentBO =
             (ArrayList<ShipmentBO>) super.getFilteredCollectionFromDB(ShipmentBO.class,
                                                                       "WHERE RECEIVETXNID=" + receiveTxnId);
         ArrayList<LinesBO> LinesBO =
             (ArrayList<LinesBO>) super.getFilteredCollectionFromDB(LinesBO.class,
-                                                                      "WHERE RECEIVETXNID=" + receiveTxnId);
-        submitReceiveRequest(shipmentBO,LinesBO);
+                                                                     "WHERE RECEIVETXNID=" + receiveTxnId);
+        if(actionType.equals("DELETE")){
+            DeleteTransaction(shipmentBO.get(0).getReceiveTxnId(),LinesBO);
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                      "showAlert", new Object[] {"Receiving Transaction","Record deleted Successfully","Ok" });
+        }else{
+            submitReceiveRequest(shipmentBO,LinesBO); 
+        }
+        refreshShipments();
     }
     
     public void submitReceiveRequest(List<ShipmentBO> shipmentList,List<LinesBO> linesList){   
@@ -749,9 +773,10 @@ public class ReceivingTxnDC extends SyncUtils{
         String linesJson="";
         if(linesList.size() > 0) {
             linesJson = "{\"LINES_ITEM\":[";
-            String lotJson="{\"XXDCOM_LOT_TAB\":[";
-            String seriesJson="{\"XXDCOM_SERIAL_TAB\":[";
+
             for (int i = 0; i < linesList.size(); i++) {
+                String lotJson="{\"XXDCOM_LOT_TAB\":[";
+                String seriesJson="{\"XXDCOM_SERIAL_TAB\":[";
                 ArrayList<LotBO> s_lotLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(LotBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
                 ArrayList<LotBO> s_serialLines = (ArrayList<LotBO>) super.getFilteredCollectionFromDB(SerialBO.class, "WHERE TRXTYPE='ReceiveTxn' AND TRXNID="+linesList.get(i).getRowLineIdx());
 //                s_lotLines = (ArrayList<LotBO>) super.getCollectionFromDB(LotBO.class);
@@ -822,8 +847,8 @@ public class ReceivingTxnDC extends SyncUtils{
             "                    \"LINES\": "+linesJson+"\n }\n" + "}}}" ;
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
-        System.out.println("Received response");
-        DeleteTransaction(shipmentList.get(0).getReceiveTxnId(),linesList);
+        System.out.println("Received response");        
+        
             try {
         JSONParser parser = new JSONParser();
         Object object;
@@ -834,11 +859,62 @@ public class ReceivingTxnDC extends SyncUtils{
 
         JSONObject jsonObject = (JSONObject) object;
         JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-        String msg = (String) jsObject.get("XMSG");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", msg);
+            /*Updating the Transaction Status*/            
+            String status = (String) jsObject.get("XSTATUS");
+                    String msg = (String) jsObject.get("XMSG");
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", msg);
+                if(status.equals("S")){
+                    HashMap whereClause = new HashMap();
+                    whereClause.put("receiveTxnId", shipmentList.get(0).getReceiveTxnId());
+                    
+                    boolean resultShipment = super.deleteSqlLiteTable(ShipmentBO.class, whereClause);
+                    shipmentList.get(0).setIsSubmitted("Y");
+                    super.insertSqlLiteTable(ShipmentBO.class, shipmentList);
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {"Receiving Transaction","Status : Success \n"+msg,"Ok" });
+                    refreshShipments();
+                }else{
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {"Receiving Transaction","Status : Failed","Ok" });
+                }
+
+
         } catch (ParseException e) {
             e.getMessage();
         }
+    }
+    
+    public void editReceivingTxn(){
+        Integer receiveTxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receiveTxnIdProc}");
+        ArrayList<ShipmentBO> shipmentBO =
+            (ArrayList<ShipmentBO>) super.getFilteredCollectionFromDB(ShipmentBO.class,
+                                                                      "WHERE RECEIVETXNID=" + receiveTxnId);
+        ArrayList<LinesBO> LinesBO =
+            (ArrayList<LinesBO>) super.getFilteredCollectionFromDB(LinesBO.class,
+                                                                     "WHERE RECEIVETXNID=" + receiveTxnId);
+        
+        s_lines=LinesBO;
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", shipmentBO.get(0).getDocRef());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.carrier}", shipmentBO.get(0).getCarrier());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.packSlip}", shipmentBO.get(0).getPackingSlip());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.bol}", shipmentBO.get(0).getBol());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.wayAirBill}", shipmentBO.get(0).getWayAirBill());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipment}", shipmentBO.get(0).getShipmentNum());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shippedDate}", shipmentBO.get(0).getShippedDate());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.comments}", shipmentBO.get(0).getComments());
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", shipmentBO.get(0).getCustomer());
+        String receivingType="";
+        if(("IR").equals(shipmentBO.get(0).getDocType())){
+            receivingType="I";
+        }else if(("PO").equals(shipmentBO.get(0).getDocType())){
+            receivingType="S";
+        }else if(("RMA").equals(shipmentBO.get(0).getDocType())){
+            receivingType="C";
+        }else{
+            receivingType="";
+        }
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.receivingType}", receivingType);
+        executeShipmentLines();
     }
 
 }

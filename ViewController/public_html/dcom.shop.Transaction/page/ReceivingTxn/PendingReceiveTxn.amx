@@ -21,17 +21,20 @@
     <amx:listView var="row" value="#{bindings.shipments.collectionModel}" fetchSize="#{bindings.shipments.rangeSize}"
                   selectedRowKeys="#{bindings.shipments.collectionModel.selectedRow}"
                   selectionListener="#{bindings.shipments.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                  bufferStrategy="viewport" id="lv1">
-      <amx:listItem id="li1" showLinkIcon="false" actionListener="#{bindings.completeTxn.execute}" action="success">
+                  bufferStrategy="viewport" id="lv1" layout="cards">
+      <amx:listItem id="li1" showLinkIcon="false">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl1">
             <amx:cellFormat width="10px" rowSpan="3" id="cf2"/>
-                                    <amx:cellFormat width="10%" height="10px" id="cf4" rowSpan="3">
+                                    <amx:cellFormat width="10%"  id="cf4" rowSpan="3">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:commandLink id="cl2">
                                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                                 <amx:outputHtml id="oh3" styleClass="fa  fa-database fa-lg"
-                                                inlineStyle="color:#34AADC;"/>
+                                                inlineStyle="color:#34AADC;" rendered="#{row.isSubmitted != 'Y'}"/>
+                                                                                <amx:outputHtml id="oh4"
+                                                                                                rendered="#{row.isSubmitted eq 'Y'}"
+                                                styleClass="fa  fa-check fa-sm" inlineStyle="color:#34AADC;"/>
                             </amx:commandLink>
                         </amx:cellFormat>
                                     <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3"
@@ -59,7 +62,65 @@
           </amx:rowLayout>
         </amx:tableLayout>
         <amx:setPropertyListener id="spl1" from="#{row.receiveTxnId}" to="#{pageFlowScope.receiveTxnIdProc}"/>
-      </amx:listItem>
-    </amx:listView>
+        <amx:setPropertyListener id="spl5" from="#{row.receiveTxnId}" to="#{pageFlowScope.ReceiveTxnId}"/>
+        <amx:setPropertyListener id="spl2" from="#{row.isSubmitted}" to="#{pageFlowScope.isSubmittedRow}"/>
+        <amx:showPopupBehavior id="spb1" popupId="popup1" decoration="anchor" alignId="li1"/>
+            </amx:listItem>
+    </amx:listView>    
   </amx:panelPage>
+  <amx:popup id="popup1" autoDismiss="true">
+        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+        <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
+            <amx:commandLink id="cl5" actionListener="#{bindings.completeTxn.execute}">
+                <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl16">
+                        <amx:cellFormat id="cf27" halign="center">
+                            <amx:outputHtml id="oh8" styleClass="fa fa-remove fa-2x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl17">
+                        <amx:cellFormat id="cf26" halign="center">
+                            <amx:outputHtml id="oh9" value="Delete" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:closePopupBehavior id="cpb2" popupId="popup1" type="action"/>
+                <amx:setPropertyListener id="spl3" from="#{'DELETE'}" to="#{pageFlowScope.currentAction}"/>
+            </amx:commandLink>
+            <amx:commandLink id="cl6" rendered="#{pageFlowScope.isSubmittedRow=='N'}"
+                             actionListener="#{bindings.editReceivingTxn.execute}" action="new">
+                <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl18">
+                        <amx:cellFormat id="cf28" halign="center">
+                            <amx:outputHtml id="oh10" styleClass="fa fa-edit fa-2x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl19">
+                        <amx:cellFormat id="cf29" halign="center">
+                            <amx:outputHtml id="oh11" value="Edit/View" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener from="Edit" type="action" to="#{pageFlowScope.TransactionStatus}" id="spl26"/>
+                <amx:closePopupBehavior id="cpb1" popupId="popup1" type="action"/>
+            </amx:commandLink>
+            <amx:commandLink id="cl8" rendered="#{pageFlowScope.isSubmittedRow=='N'}"
+                             actionListener="#{bindings.completeTxn.execute}">
+                <amx:tableLayout id="tl10" halign="center" inlineStyle="margin-right: 20px;margin-left: 8px;">
+                    <amx:rowLayout id="rl22">
+                        <amx:cellFormat id="cf32" halign="center">
+                            <amx:outputHtml id="oh14" styleClass="fa fa-save fa-2x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl23">
+                        <amx:cellFormat id="cf33" halign="center">
+                            <amx:outputHtml id="oh15" value="Complete" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:closePopupBehavior id="cpb3" popupId="popup1" type="action"/>
+                <amx:setPropertyListener id="spl4" from="#{'SUBMIT'}'" to="#{pageFlowScope.currentAction}"/>
+            </amx:commandLink>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

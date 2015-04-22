@@ -20,7 +20,8 @@ public class ShipmentBO {
     private String wayAirBill;
     private String shipmentNum;
     private String shippedDate;
-    private String comments;    
+    private String comments;
+    private String isSubmitted;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     
     public void setBOClassRow(HashMap hashMap) {
@@ -37,6 +38,7 @@ public class ShipmentBO {
         this.setShipmentNum((String)hashMap.get("shipmentnum"));
         this.setShippedDate((String)hashMap.get("shippeddate"));
         this.setComments((String)hashMap.get("comments"));
+        this.setIsSubmitted((String)hashMap.get("issubmitted"));
     }
 
     public HashMap getBOClassRow(ShipmentBO shipment) {
@@ -54,7 +56,18 @@ public class ShipmentBO {
         map.put("shipmentnum", shipment.getShipmentNum());
         map.put("shippeddate", shipment.getShippedDate());
         map.put("comments", shipment.getComments());
+        map.put("issubmitted", shipment.getIsSubmitted());
         return map;
+    }
+
+    public void setIsSubmitted(String isSubmitted) {
+        String oldIsSubmitted = this.isSubmitted;
+        this.isSubmitted = isSubmitted;
+        propertyChangeSupport.firePropertyChange("isSubmitted", oldIsSubmitted, isSubmitted);
+    }
+
+    public String getIsSubmitted() {
+        return isSubmitted;
     }
 
     public void setReceiveTxnId(Integer receiveTxnId) {

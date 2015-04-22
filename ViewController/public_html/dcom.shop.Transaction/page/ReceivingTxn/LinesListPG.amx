@@ -40,12 +40,17 @@
                   selectedRowKeys="#{bindings.lines.collectionModel.selectedRow}"
                   selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                   bufferStrategy="viewport" id="lv1" rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
-      <amx:listItem id="li1" showLinkIcon="false" action="createLine">
+      <amx:listItem id="li1" showLinkIcon="false" action="createLine"
+                    actionListener="#{pageFlowScope.ReceivingTxnUtilBean.rePopulateLines}">
         <amx:tableLayout width="100%" id="tl2">
           <amx:rowLayout id="rl4">
             <amx:cellFormat id="cf2" width="10px"/>
-            <amx:cellFormat width="70%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6">
+            <amx:cellFormat width="40%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6">
               <amx:outputText value="#{row.lines}" id="ot3"/>
+            </amx:cellFormat>
+            <amx:cellFormat id="cf14" width="30%" rowSpan="2" halign="center">
+            <amx:outputText value="#{row.quantity}" styleClass="adfmf-listItem-captionText" id="ot8"
+                            inlineStyle="font-weight:bold; font-size:medium;"/>
             </amx:cellFormat>
             <amx:cellFormat id="cf4" width="30%" halign="center" rowSpan="2">
               <amx:panelGroupLayout id="pgl2" halign="end" layout="horizontal">
@@ -63,12 +68,11 @@
             <amx:cellFormat width="30%" height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf3">
               <amx:outputText value="#{row.subInv}" styleClass="adfmf-listItem-captionText" id="ot4"/>
             </amx:cellFormat>
-            <amx:cellFormat id="cf14" width="30%">
-            <amx:outputText value="#{row.quantity}" styleClass="adfmf-listItem-captionText" id="ot8"/>
-            </amx:cellFormat>
+
           </amx:rowLayout>
         </amx:tableLayout>
-        <amx:setPropertyListener id="spl1" from="#{row.rowLineIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
+        <amx:setPropertyListener id="spl1" from="#{'UPDATE'}" to="#{pageFlowScope.rowAction}"/>
+        <amx:setPropertyListener id="spl13" from="#{row.rowLineIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
         <amx:setPropertyListener id="spl7" from="#{row.lines}" to="#{pageFlowScope.lineAdd}"/>
         <amx:setPropertyListener id="spl2" from="#{row.subInv}" to="#{pageFlowScope.subInvAdd}"/>
         <amx:setPropertyListener id="spl3" from="#{row.locator}" to="#{pageFlowScope.locatorAdd}"/>
@@ -77,6 +81,8 @@
         <amx:setPropertyListener id="spl6" from="#{row.lpn}" to="#{pageFlowScope.lpnAdd}"/>
         <amx:setPropertyListener id="spl11" from="#{row.docRefLine}" to="#{pageFlowScope.docRefLineAdd}"/>
         <amx:setPropertyListener id="spl12" from="#{row.shipmentLine}" to="#{pageFlowScope.shipmentLineAdd}"/>
+        <amx:setPropertyListener id="spl9" from="#{row.lotControl}" to="#{pageFlowScope.lotControlAdd}"/>
+        <amx:setPropertyListener id="spl10" from="#{row.serialControl}" to="#{pageFlowScope.serialControlAdd}"/>
       </amx:listItem>
     </amx:listView>
   </amx:panelPage>

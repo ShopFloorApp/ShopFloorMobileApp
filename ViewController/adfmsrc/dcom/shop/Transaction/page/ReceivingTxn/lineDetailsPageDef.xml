@@ -8,6 +8,15 @@
       <variable Name="subInvVar" Type="java.lang.String"/>
       <variable Name="locatorVar" Type="java.lang.String"/>
       <variable Name="quantityVar" Type="java.lang.String"/>
+      <variable Name="lineItemVar" Type="java.lang.String"/>
+      <variable Name="subInventoryVar" Type="java.lang.String"/>
+      <variable Type="java.lang.String" Name="locVar"/>
+      <variable Type="java.lang.String" Name="qtyVar"/>
+      <variable Name="uomVar" Type="java.lang.String"/>
+      <variable Name="docRefLineVar" Type="java.lang.String"/>
+      <variable Type="java.lang.String" Name="shipmentLineVar"/>
+      <variable Type="java.lang.String" Name="lotControlVar"/>
+      <variable Name="serialControlVar" Type="java.lang.String"/>
     </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="ReceivingTxnDC" id="ReceivingTxnDCIterator"/>
     <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="shipmentLines" RangeSize="-1"
@@ -34,13 +43,27 @@
           NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
       <AttrNames>
         <Item Value="itemVar"/>
-        <Item Value="subInvVar"/>
-        <Item Value="locatorVar"/>
+        <Item Value="subInventoryVar"/>
+        <Item Value="locVar"/>
+        <Item Value="serialControlVar"/>
+        <Item Value="lotControlVar"/>
+        <Item Value="lineItemVar"/>
+        <Item Value="uomVar"/>
+        <Item Value="qtyVar"/>
+        <Item Value="docRefLineVar"/>
+        <Item Value="shipmentLineVar"/>
       </AttrNames>
       <ListAttrNames>
-        <Item Value="item"/>
+        <Item Value="docRefLine"/>
         <Item Value="subInv"/>
         <Item Value="locator"/>
+        <Item Value="serialControl"/>
+        <Item Value="lotControl"/>
+        <Item Value="item"/>
+        <Item Value="uom"/>
+        <Item Value="qty"/>
+        <Item Value="docRefLine"/>
+        <Item Value="shipmentLineVar"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="item"/>
@@ -133,44 +156,49 @@
         <Item Value="UOM"/>
       </ListDisplayAttrNames>
     </list>
-    <attributeValues IterBinding="shipmentLinesIterator" id="qty">
+    <attributeValues IterBinding="variables" id="qty">
       <AttrNames>
-        <Item Value="qty"/>
+        <Item Value="qtyVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="subInv1">
+    <attributeValues IterBinding="variables" id="subInv1">
       <AttrNames>
-        <Item Value="subInv"/>
+        <Item Value="subInventoryVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="uom">
+    <attributeValues IterBinding="variables" id="uom">
       <AttrNames>
-        <Item Value="uom"/>
+        <Item Value="uomVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="lotControl">
+    <attributeValues IterBinding="variables" id="lotControl">
       <AttrNames>
-        <Item Value="lotControl"/>
+        <Item Value="lotControlVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="serialControl">
+    <attributeValues IterBinding="variables" id="serialControl">
       <AttrNames>
-        <Item Value="serialControl"/>
+        <Item Value="serialControlVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="locator2">
+    <attributeValues IterBinding="variables" id="locator2">
       <AttrNames>
-        <Item Value="locator"/>
+        <Item Value="locVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="docRefLine">
+    <attributeValues IterBinding="variables" id="docRefLine">
       <AttrNames>
-        <Item Value="docRefLine"/>
+        <Item Value="docRefLineVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="shipmentLinesIterator" id="shipmentLine">
+    <attributeValues IterBinding="variables" id="shipmentLine">
       <AttrNames>
-        <Item Value="shipmentLine"/>
+        <Item Value="shipmentLineVar"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="lineItemVar1">
+      <AttrNames>
+        <Item Value="lineItemVar"/>
       </AttrNames>
     </attributeValues>
   </bindings>

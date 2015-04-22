@@ -16,7 +16,7 @@
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.processReceive.execute}"
-                               action="success">
+                               action="#{pageFlowScope.ReceivingTxnUtilBean.navigateToTxnSummary}">
                 <amx:setPropertyListener id="spl9" from="#{'PROCESS'}" to="#{pageFlowScope.actionType}"/>
                 <amx:validationBehavior id="vb2" group="vg1"/>
             </amx:commandButton>
@@ -121,7 +121,7 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13"
                                     rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
-                        <amx:commandLink id="cl3" action="pendingTxn"
+                        <amx:commandLink id="cl3" action="#{pageFlowScope.ReceivingTxnUtilBean.navigateToTxnSummary}"
                                          actionListener="#{bindings.processReceive.execute}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">

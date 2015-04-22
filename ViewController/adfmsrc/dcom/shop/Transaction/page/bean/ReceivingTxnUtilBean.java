@@ -81,27 +81,50 @@ public class ReceivingTxnUtilBean {
     }
     
     public void lineItemChange(ValueChangeEvent valueChangeEvent) {
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.subInv1.inputValue}"));
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.locator2.inputValue}"));
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}"));
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.uom.inputValue}"));
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.docRefLineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.docRefLine.inputValue}"));
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.shipmentLine.inputValue}"));
+        for(int j=0;j<receiveDc.s_shipmentLines.size();j++){
+            ShipmentLinesBO sl = (ShipmentLinesBO) receiveDc.s_shipmentLines.get(j);
+            if(sl.getDocRefLine().equals(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.docRefLineAdd}"))){
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", sl.getSubInv());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", sl.getLocator());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", sl.getQty());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityDefAdd}", sl.getQty());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", sl.getUom());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.docRefLineAdd}",sl.getDocRefLine());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", sl.getShipmentLine());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", sl.getItem());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lotControlAdd}",sl.getLotControl());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.serialControlAdd}", sl.getSerialControl());  
+            }          
+        }
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.subInv1.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.locator2.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.uom.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.docRefLineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.docRefLine.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.shipmentLine.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.lineItemVar1.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lotControlAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.lotControl.inputValue}"));
+//        AdfmfJavaUtilities.setELValue("#{pageFlowScope.serialControlAdd}", AdfmfJavaUtilities.evaluateELExpression("#{bindings.serialControl.inputValue}"));
     }
     
     public void addRecord(ActionEvent ae){
         if(idx==0){
            idx = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextLinesCount}");            
         }
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", idx+1);
+        idx++;
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", idx);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityDefAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.docRefLineAdd}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipmentLineAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lotControlAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.serialControlAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowAction}", null);
     }
     public void updateRecord(ActionEvent ae){
         quantityValidation(ae);
@@ -123,8 +146,8 @@ public class ReceivingTxnUtilBean {
         String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lpnAdd}");
         String docRefLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.docRefLineAdd}");
         String shipmentLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipmentLineAdd}");
-        String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.lotControl.inputValue}");
-        String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.serialControl.inputValue}");
+        String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lotControlAdd}");
+        String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.serialControlAdd}");
         ReceivingTxnDC.s_lines.add(new LinesBO(currentItem,line,subInv,locator,quantity,uom,lpn,docRefLine,shipmentLine,lotControl,serialControl,"Y"));
     
     ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
@@ -143,7 +166,23 @@ public class ReceivingTxnUtilBean {
         receiveDc.s_shipmentLines=linColl;
     }
     public void removeRecords(ActionEvent ae){
-        receiveDc.s_lines.clear();
+//        receiveDc.s_lines.clear();
+        String rowAction = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowAction}");
+        String docRefLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.docRefLineAdd}");
+        String shipmentLine = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shipmentLineAdd}");
+        if(rowAction!=null){
+            ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
+            for(int j=0;j<receiveDc.s_shipmentLines.size();j++){
+            ShipmentLinesBO lines = (ShipmentLinesBO) receiveDc.s_shipmentLines.get(j);
+            if(lines.getDocRefLine().equalsIgnoreCase(docRefLine) && lines.getShipmentLine().equalsIgnoreCase(shipmentLine)){
+
+                    linColl.remove(j); 
+                
+            }
+            }
+            receiveDc.s_shipmentLines=linColl;
+        }
+
     }
     public void deleteCurrectRecord(ActionEvent ae){
         Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.currentItem}");
@@ -195,6 +234,52 @@ public class ReceivingTxnUtilBean {
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
     }
     
+    public void rePopulateLines(ActionEvent ae){
+        Integer currentItem = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.rowIdxAdd}");
+        
+        int count=0;
+        ArrayList linColl = (ArrayList) receiveDc.s_shipmentLines;
+
+        
+        
+        ArrayList coll=(ArrayList) receiveDc.s_lines;
+                for(int i=0;i<receiveDc.s_lines.size();i++){
+                    LinesBO lines = (LinesBO) receiveDc.s_lines.get(i);
+                    if(lines.getRowLineIdx()==currentItem){
+                        //
+                        for(int j=0;j<receiveDc.s_shipmentLines.size();j++){
+                            ShipmentLinesBO slines = (ShipmentLinesBO) receiveDc.s_shipmentLines.get(j);
+                            if(slines.getDocRefLine().equalsIgnoreCase(lines.getDocRefLine()) && slines.getShipmentLine().equalsIgnoreCase(lines.getShipmentLine())){
+                                count++;
+                                String lineQty=slines.getQty();
+                                Integer availableQty=Integer.parseInt(lineQty)+Integer.parseInt(lines.getQuantity());                    
+                                ((ShipmentLinesBO)linColl.get(j)).setQty(availableQty.toString());                 
+                            }
+                        }
+                        //
+                        if(count==0){
+                            ShipmentLinesBO shipLine=new ShipmentLinesBO();
+                            shipLine.setDocRefLine(lines.getDocRefLine());
+                            shipLine.setItem(lines.getLines());
+                            shipLine.setItemDecs("");
+                            shipLine.setLocator(lines.getLocator());
+                            shipLine.setLotControl(lines.getLotControl());
+                            shipLine.setLpn(lines.getLpn());
+                            shipLine.setQty(lines.getQuantity());
+                            shipLine.setReceiveTxnId(lines.getReceiveTxnId());
+                            shipLine.setSerialControl(lines.getSerialControl());
+                            shipLine.setShipmentLine(lines.getShipmentLine());
+                            shipLine.setSubInv(lines.getSubInv());
+                            shipLine.setUom(lines.getUom());
+                            linColl.add(shipLine);
+                        }
+                       
+                    }
+                }
+                
+        receiveDc.s_shipmentLines=linColl;
+    }
+    
     public void addMore(ActionEvent ae){
         updateRecord(ae);
         addRecord(ae);
@@ -202,7 +287,7 @@ public class ReceivingTxnUtilBean {
     
     public void quantityValidation(ActionEvent ae){
         String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
-        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}");
+        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityDefAdd}");
         if (quantityEntered==null){
             quantityEntered="0";
         }
@@ -216,7 +301,7 @@ public class ReceivingTxnUtilBean {
     
     public void quantityValueChange(ValueChangeEvent vce){
         String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
-        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{bindings.qty.inputValue}");
+        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
         if (quantityEntered==null){
             quantityEntered="0";
         }
@@ -254,5 +339,15 @@ public class ReceivingTxnUtilBean {
             AdfmfJavaUtilities.getMethodExpression("#{bindings.getPendingReceiveTxn.execute}", Object.class, new Class[] {
                                                    });
         me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public String navigateToTxnSummary(){
+        String status = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.successMsg}");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.isError}", null);
+        if(status!=null){
+            return null;
+        }else{
+            return "pendingTxn";
+        }
     }
 }

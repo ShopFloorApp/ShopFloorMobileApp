@@ -23,7 +23,7 @@
         <amx:panelGroupLayout id="pgl2">
             <amx:validationGroup id="vg1">
                 <amx:panelFormLayout id="pfl1">
-                    <amx:selectOneChoice value="#{pageFlowScope.lineAdd}" label="#{bindings.item.label}" id="soc1"
+                    <amx:selectOneChoice value="#{pageFlowScope.docRefLineAdd}" label="#{bindings.item.label}" id="soc1"
                                          showRequired="true" required="true"
                                          valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.lineItemChange}">
                         <amx:selectItem label=" " id="si4"/>
@@ -46,6 +46,9 @@
                     </amx:panelLabelAndMessage>
                     <amx:panelLabelAndMessage label="#{bindings.locator2.hints.label}" id="plam6" rendered="false">
                         <amx:outputText value="#{bindings.locator2.inputValue}" id="ot7"/>
+                    </amx:panelLabelAndMessage>
+                    <amx:panelLabelAndMessage label="#{bindings.docRefLine.hints.label}" id="plam7" rendered="false">
+                        <amx:outputText value="#{bindings.docRefLine.inputValue}" id="ot8"/>
                     </amx:panelLabelAndMessage>
                     <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="#{bindings.subinv.label}" id="soc2"
                                          valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}"
@@ -108,7 +111,7 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13"
-                                    rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; bindings.lotControl.inputValue==1}">
+                                    rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; pageFlowScope.lotControlAdd==1}">
                         <amx:commandLink id="cl3" action="lot">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
@@ -133,7 +136,7 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf1"
-                                    rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; bindings.serialControl.inputValue==1}">
+                                    rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; pageFlowScope.serialControlAdd==1}">
                         <amx:commandLink id="cl5" action="serial">
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl3">
