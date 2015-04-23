@@ -80,6 +80,7 @@ public class ReceivingTxnDC extends SyncUtils{
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String pType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}")==null?"RMA":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}"));
         String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         String restURI = RestURI.PostGetSalesOrder();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
@@ -89,7 +90,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \""+orgCode+"\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PTYPE\": \""+pType+"\",\n" +
@@ -240,6 +241,7 @@ public class ReceivingTxnDC extends SyncUtils{
         s_requisition.clear();
         System.out.println("Inside orgItem");
         String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String restURI = RestURI.PostGetRequisition();
         RestCallerUtil rcu = new RestCallerUtil();
@@ -250,11 +252,11 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \""+orgCode+"\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PREQ\": \""+documentNo+"\",\n" +
-            "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
+            "                    \"PWAREHOUSE\": \""+orgCode+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
@@ -331,6 +333,7 @@ public class ReceivingTxnDC extends SyncUtils{
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         String restURI = RestURI.PostGetPurchaseOrder();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
@@ -340,11 +343,11 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"100\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \""+orgCode+"\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
             "                   \"PPO\": \""+documentNo+"\",\n" +
-            "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
+            "                    \"PWAREHOUSE\": \""+orgCode+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
@@ -518,9 +521,17 @@ public class ReceivingTxnDC extends SyncUtils{
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XSHIPMENT");
                 if(receivingType.equals("PO")){
+                    try{
                     supplierCustomerName=(String)jsObject1.get("VENDOR");
+                    }catch(ClassCastException ce){
+                        supplierCustomerName="";
+                    }
                 }else{
+                    try{
                     supplierCustomerName=(String)jsObject1.get("CUSTOMER");
+                    }catch(ClassCastException ce){
+                        supplierCustomerName="";
+                    }
                 }
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", supplierCustomerName);
                 

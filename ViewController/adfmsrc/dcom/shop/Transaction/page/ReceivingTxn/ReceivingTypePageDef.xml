@@ -83,5 +83,8 @@
         <Item Value="carrierName"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="getPendingReceiveTxn" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getPendingReceiveTxn" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>
