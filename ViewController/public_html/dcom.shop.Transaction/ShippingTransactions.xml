@@ -52,6 +52,9 @@
         <id>PackAndDirectShipTF</id>
       </task-flow-reference>
     </task-flow-call>
+    <view id="UnloadTruck">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/UnloadTruck.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
       <control-flow-case id="__10">
@@ -87,6 +90,10 @@
       <control-flow-case id="__25">
         <from-outcome>PackAndDirectShip</from-outcome>
         <to-activity-id>PackAndDirectShipTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome>toUnloadTruck</from-outcome>
+        <to-activity-id>UnloadTruck</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__12">
@@ -140,6 +147,21 @@
       <from-activity-id>PackAndDirectShipTF</from-activity-id>
       <control-flow-case id="__27">
         <from-outcome>backToShipT</from-outcome>
+        <to-activity-id>__ShippingTransactions2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__30">
+      <from-activity-id>UnloadTruck</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome>unloadDock</from-outcome>
+        <to-activity-id>dockLOV</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome>unloadLPN</from-outcome>
+        <to-activity-id>LpnLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome>backToShipTxn</from-outcome>
         <to-activity-id>__ShippingTransactions2</to-activity-id>
       </control-flow-case>
     </control-flow-rule>

@@ -1204,9 +1204,9 @@
          </list>
       </hash>
       <hash n="jdkReference">
-         <value n="id" v="MAF JDK 1.8 Compact 2 Profile"/>
+         <url n="id" path="../../../system12.1.3.0.41.140521.1008/o.jdeveloper.12.1.3.1.41.150325.1239/MAF JDK 1.8 Compact 2 Profile.jdk"/>
          <value n="isJDK" v="true"/>
-         <value n="jdkVersion" v="1.8.0_25"/>
+         <value n="jdkVersion" v="1.8.0_40"/>
       </hash>
       <list n="libraryReferences">
          <hash>

@@ -35,7 +35,7 @@
             <amx:listItem id="li5" action="lpnShip" showLinkIcon="false">
                 <amx:outputText value="LPN Ship" id="ot7"/>
             </amx:listItem>
-            <amx:listItem id="li6" showLinkIcon="false">
+            <amx:listItem id="li6" showLinkIcon="false" action="toUnloadTruck">
                 <amx:outputText value="Unload Truck" id="ot6"/>
             </amx:listItem>
         </amx:listView>
