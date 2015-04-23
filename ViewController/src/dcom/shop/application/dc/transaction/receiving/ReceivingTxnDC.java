@@ -155,7 +155,21 @@ public class ReceivingTxnDC extends SyncUtils{
                         salesOrderItems.setOrderNumber((jsObject2.get("ORDERNUMBER").toString()));
                         
                         //LinesBO[] salesOrderLines
-                        JSONArray lines= (JSONArray)jsObject2.get("LINES");
+                        JSONArray lines=null;
+                        try{
+                        lines= (JSONArray)jsObject2.get("LINES");
+                        }catch(ClassCastException cce){
+                            SalesOrderLineBO lineItem=new SalesOrderLineBO();
+                            JSONObject jsLine = (JSONObject)jsObject2.get("LINES");
+                            lineItem.setLINENUM(jsLine.get("LINENUM")+"");
+                            lineItem.setITEM(jsLine.get("ITEM")+"");
+                            lineItem.setLOTCONTROL(jsLine.get("LOTCONTROL")+"");
+                            lineItem.setSERIALCONTROL(jsLine.get("SERIALCONTROL")+"");
+                            lineItem.setLINEQTY(jsLine.get("LINEQTY")+"");
+                            lineItem.setUOM(jsLine.get("UOM")+"");
+                            
+                            s_salesOrderLines.add(lineItem);
+                        }
                         if (lines != null) {
                             int lineSize = lines.size(); // array.size();
                             for (int j = 0; j < lineSize; j++) {
@@ -588,11 +602,19 @@ public class ReceivingTxnDC extends SyncUtils{
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                     JSONObject jsObject1 = (JSONObject) jsObject.get("XSHIPMENT");
-                    if(receivingType.equals("PO")){
-                        supplierCustomerName=(String)jsObject1.get("VENDOR");
-                    }else{
-                        supplierCustomerName=(String)jsObject1.get("CUSTOMER");
-                    }
+                        if(receivingType.equals("PO")){
+                            try{
+                            supplierCustomerName=(String)jsObject1.get("VENDOR");
+                            }catch(ClassCastException ce){
+                                supplierCustomerName="";
+                            }
+                        }else{
+                            try{
+                            supplierCustomerName=(String)jsObject1.get("CUSTOMER");
+                            }catch(ClassCastException ce){
+                                supplierCustomerName="";
+                            }
+                        }
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", supplierCustomerName);
                     JSONObject jsObject2 = (JSONObject) jsObject1.get("LINES");
                     JSONObject jsObject3 = (JSONObject) jsObject2.get("LINES_ITEM");
