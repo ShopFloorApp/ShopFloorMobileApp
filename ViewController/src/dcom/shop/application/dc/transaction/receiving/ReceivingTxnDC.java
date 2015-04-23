@@ -764,6 +764,8 @@ public class ReceivingTxnDC extends SyncUtils{
             submitReceiveRequest(shipmentBO,LinesBO); 
         }
         refreshShipments();
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] {"cb1"});
     }
     
     public void submitReceiveRequest(List<ShipmentBO> shipmentList,List<LinesBO> linesList){   
@@ -831,7 +833,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
-            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \""+orgCode+"\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" +
             "                   {\"PRCVTXN\": {"+
             "                   \"ORGCODE\": \""+orgCode+"\",\n" +

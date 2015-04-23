@@ -11,6 +11,7 @@
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
                 </amx:panelGroupLayout>
+                <amx:commandButton text="commandButton1" id="cb1" inlineStyle="display:none" action="self"/>
             </amx:commandLink>  
     </amx:facet>
     <amx:facet name="secondary">

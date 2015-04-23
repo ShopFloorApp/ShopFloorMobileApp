@@ -154,6 +154,10 @@
         <from-outcome>success</from-outcome>
         <to-activity-id>successPage</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome>self</from-outcome>
+        <to-activity-id>PendingReceiveTxn</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__21">
       <from-activity-id>getPendingReceiveTxn</from-activity-id>

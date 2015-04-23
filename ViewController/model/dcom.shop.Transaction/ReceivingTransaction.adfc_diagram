@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">T44,415.5,288.84473,325.5,164.14226,B44</property>
+         name="sdm:polyPoints">T56,422.5,286.62015,332.5,161.5459,B56</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -200,7 +200,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T44,162.0,274.0459,41.0,122.73476,B44</property>
+         name="sdm:polyPoints">T56,169.0,271.7978,55.0,113.74707,B67</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -283,7 +283,7 @@
       <property
          name="fromOutcome">createTxn</property>
       <property
-         name="sdm:polyPoints">T50,239.0,466.14355,378.0,353.34473,L62</property>
+         name="sdm:polyPoints">T50,239.0,466.14355,378.0,346.34473,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -303,7 +303,7 @@
       <property
          name="fromOutcome">pendingTxn</property>
       <property
-         name="sdm:polyPoints">L54,375.81787,346.34473,64.03906,528.2471,R46</property>
+         name="sdm:polyPoints">L46,375.7281,339.34473,64.03906,528.2471,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -313,7 +313,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">R46,86.31496,56.24707,288.0,104.0459,L46</property>
+         name="sdm:polyPoints">R54,85.5,63.24707,287.18344,111.0459,L54</property>
    </ControlFlowCase>
    <View
       id="View28">
@@ -416,6 +416,16 @@
       <property
          name="fromOutcome">createLine</property>
       <property
-         name="sdm:polyPoints">L54,287.18344,111.0459,85.5,63.24707,R54</property>
+         name="sdm:polyPoints">L46,288.0,104.0459,86.31496,56.24707,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase37"
+      from="View20"
+      to="View20">
+      <property
+         name="fromOutcome">self</property>
+      <property
+         name="sdm:polyPoints">T39,540.0,546.2471,547.0,546.2471,T50</property>
    </ControlFlowCase>
 </SDM>
