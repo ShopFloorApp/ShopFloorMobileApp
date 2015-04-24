@@ -31,7 +31,6 @@
                 <amx:selectItem label="Choose" id="si4" value="0"/>
                 <amx:selectItems value="#{bindings.UOM.items}" id="si3"/>
             </amx:selectOneChoice>
-            <amx:inputText value="#{bindings.uom.inputValue}" label="#{bindings.uom.hints.label}" id="it4"/>
         </amx:panelFormLayout>
     </amx:panelPage>
 </amx:view>

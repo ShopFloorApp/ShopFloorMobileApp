@@ -167,6 +167,16 @@ public class RestURI {
     public static String PostReportTime() {
         return POST_REPORT_TIME;
     }
+    private static final String POST_CLOCK_IN = "/webservices/rest/DCOMDispatchTxn/clockin/";
+
+    public static String PostClockIn() {
+        return POST_CLOCK_IN;
+    }
+    private static final String POST_CLOCK_OUT = "/webservices/rest/DCOMDispatchTxn/clockout/";
+
+    public static String PostClockOut() {
+        return POST_CLOCK_OUT;
+    }
     /*
      * Dispatch Lists end
      */

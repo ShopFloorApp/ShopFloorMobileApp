@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.12.39" id="uploadImagePageDef"
+                Package="dcom.shop.DispatchList.page">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+    </executables>
+    <bindings>
+        <methodAction id="getPicture" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getPicture"
+                      IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                      InstanceName="data.DeviceFeatures.dataProvider"
+                      ReturnName="data.DeviceFeatures.methodResults.getPicture_DeviceFeatures_dataProvider_getPicture_result">
+            <NamedData NDName="quality" NDType="int"/>
+            <NamedData NDName="destinationType" NDType="int"/>
+            <NamedData NDName="sourceType" NDType="int"/>
+            <NamedData NDName="allowEdit" NDType="boolean"/>
+            <NamedData NDName="encodingType" NDType="int"/>
+            <NamedData NDName="targetWidth" NDType="int"/>
+            <NamedData NDName="targetHeight" NDType="int"/>
+        </methodAction>
+    </bindings>
+</pageDefinition>

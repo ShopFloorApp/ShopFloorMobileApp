@@ -198,7 +198,7 @@
                 <amx:setPropertyListener id="spl8" from="#{bindings.jobNumber.inputValue}"
                                          to="#{pageFlowScope.jobNumber}" type="action"/>
             </amx:commandLink>
-            <amx:commandLink id="cl8">
+            <amx:commandLink id="cl8" action="toUploadImage">
                 <amx:tableLayout id="tl10" halign="center" inlineStyle="margin-right: 20px;margin-left: 8px;">
                     <amx:rowLayout id="rl22">
                         <amx:cellFormat id="cf32" halign="center">

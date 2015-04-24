@@ -1,86 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="clockInClockOutPageDef"
                 Package="dcom.shop.DispatchList.page">
-  <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-    <iterator Binds="root" RangeSize="25" DataControl="JobOperationsDC" id="JobOperationsDCIterator"/>
-    <accessorIterator MasterBinding="JobOperationsDCIterator" Binds="jobOperations" RangeSize="25"
-                      DataControl="JobOperationsDC" BeanClass="dcom.shop.application.mobile.dispatch.JobOperationsBO"
-                      id="jobOperationsIterator"/>
-    <iterator Binds="root" RangeSize="25" DataControl="ClockInOutDC" id="ClockInOutDCIterator"/>
-    <accessorIterator MasterBinding="ClockInOutDCIterator" Binds="clockInOutBO" RangeSize="25"
-                      DataControl="ClockInOutDC" BeanClass="dcom.shop.application.mobile.dispatch.ClockInOutBO"
-                      id="clockInOutBOIterator"/>
-  </executables>
-  <bindings>
-    <attributeValues IterBinding="jobOperationsIterator" id="opStartDate">
-      <AttrNames>
-        <Item Value="opStartDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="jobOperationsIterator" id="opDesc">
-      <AttrNames>
-        <Item Value="opDesc"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="jobOperationsIterator" id="opSeq">
-      <AttrNames>
-        <Item Value="opSeq"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="jobOperationsIterator" id="opComplDate">
-      <AttrNames>
-        <Item Value="opComplDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="jobOperationsIterator" id="dept">
-      <AttrNames>
-        <Item Value="dept"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="clockInOutBOIterator" id="porgCode">
-      <AttrNames>
-        <Item Value="porgCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="clockInOutBOIterator" id="PDeptCode">
-      <AttrNames>
-        <Item Value="PDeptCode"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="clockInOutBOIterator" id="PJobOp">
-      <AttrNames>
-        <Item Value="PJobOp"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="clockInOutBOIterator" id="PInstance">
-      <AttrNames>
-        <Item Value="PInstance"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="clockInOutBOIterator" id="PEmp">
-      <AttrNames>
-        <Item Value="PEmp"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="clockInOutBOIterator" id="PResource">
-      <AttrNames>
-        <Item Value="PResource"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="jobOperationsIterator" id="jobOps">
-      <AttrNames>
-        <Item Value="jobOps"/>
-      </AttrNames>
-    </attributeValues>
-    <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
-                  IsViewObjectMethod="false" DataControl="ClockInOutDC" InstanceName="data.ClockInOutDC.dataProvider"
-                  ReturnName="data.ClockInOutDC.methodResults.saveTransaction_ClockInOutDC_dataProvider_saveTransaction_result">
-      <NamedData NDName="newObj" NDValue="#{bindings.clockInOutBOIterator.currentRow.dataProvider}"
-                 NDType="dcom.shop.application.mobile.dispatch.ClockInOutBO"/>
-    </methodAction>
-    <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
-                  IsViewObjectMethod="false" DataControl="ClockInOutDC" InstanceName="data.ClockInOutDC.dataProvider"/>
-  </bindings>
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="root" RangeSize="25" DataControl="ClockInOutDC" id="ClockInOutDCIterator"/>
+        <accessorIterator MasterBinding="ClockInOutDCIterator" Binds="clockInOutBO" RangeSize="25"
+                          DataControl="ClockInOutDC" BeanClass="dcom.shop.application.mobile.dispatch.ClockInOutBO"
+                          id="clockInOutBOIterator"/>
+    </executables>
+    <bindings>
+        <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
+                      IsViewObjectMethod="false" DataControl="ClockInOutDC"
+                      InstanceName="data.ClockInOutDC.dataProvider"/>
+        <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
+                      IsViewObjectMethod="false" DataControl="ClockInOutDC"
+                      InstanceName="data.ClockInOutDC.dataProvider"
+                      ReturnName="data.ClockInOutDC.methodResults.saveTransaction_ClockInOutDC_dataProvider_saveTransaction_result">
+            <NamedData NDName="obj" NDValue="" NDType="dcom.shop.application.mobile.dispatch.ClockInOutBO"/>
+        </methodAction>
+        <attributeValues IterBinding="clockInOutBOIterator" id="PDeptCode">
+            <AttrNames>
+                <Item Value="PDeptCode"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="clockInOutBOIterator" id="jobNumber">
+            <AttrNames>
+                <Item Value="jobNumber"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="clockInOutBOIterator" id="opStartDate">
+            <AttrNames>
+                <Item Value="opStartDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="clockInOutBOIterator" id="opCompletionDate">
+            <AttrNames>
+                <Item Value="opCompletionDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="clockInOutBOIterator" id="badgeNumber">
+            <AttrNames>
+                <Item Value="badgeNumber"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="clockInOutBOIterator" id="opSeq">
+            <AttrNames>
+                <Item Value="opSeq"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="clockInOutBOIterator" id="action">
+            <AttrNames>
+                <Item Value="action"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
 </pageDefinition>

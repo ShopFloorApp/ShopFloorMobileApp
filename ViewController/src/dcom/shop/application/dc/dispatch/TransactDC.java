@@ -41,7 +41,6 @@ public class TransactDC {
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
         transactBO.setFromOpSeq("0");
-
         TransactBO[] transactArray = new TransactBO[1];
         transactArray[0] = transactBO;
         return transactArray;

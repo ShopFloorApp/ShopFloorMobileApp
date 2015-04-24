@@ -38,11 +38,6 @@
         <Item Value="qty"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="reportTimeIterator" id="uom">
-      <AttrNames>
-        <Item Value="uom"/>
-      </AttrNames>
-    </attributeValues>
     <list IterBinding="reportTimeIterator" id="resourceCode1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="resourceIterator">
       <AttrNames>

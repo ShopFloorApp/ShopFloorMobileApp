@@ -12,6 +12,13 @@ public class ClockInOutBO extends AEntity{
     private String pInstance;
     private String pEmp;
     private String pResource;
+    private String jobNumber;
+    private String opSeq;
+    private String opStartDate;
+    private String opCompletionDate;
+    private String badgeNumber;
+    private String action;
+    
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public ClockInOutBO() {
@@ -85,5 +92,65 @@ public class ClockInOutBO extends AEntity{
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
+    public void setJobNumber(String jobNumber) {
+        String oldJobNumber = this.jobNumber;
+        this.jobNumber = jobNumber;
+        propertyChangeSupport.firePropertyChange("jobNumber", oldJobNumber, jobNumber);
+    }
+
+    public String getJobNumber() {
+        return jobNumber;
+    }
+
+    public void setOpSeq(String opSeq) {
+        String oldOpSeq = this.opSeq;
+        this.opSeq = opSeq;
+        propertyChangeSupport.firePropertyChange("opSeq", oldOpSeq, opSeq);
+    }
+
+    public String getOpSeq() {
+        return opSeq;
+    }
+
+    public void setOpStartDate(String opStartDate) {
+        String oldOpStartDate = this.opStartDate;
+        this.opStartDate = opStartDate;
+        propertyChangeSupport.firePropertyChange("opStartDate", oldOpStartDate, opStartDate);
+    }
+
+    public String getOpStartDate() {
+        return opStartDate;
+    }
+
+    public void setOpCompletionDate(String opCompletionDate) {
+        String oldOpCompletionDate = this.opCompletionDate;
+        this.opCompletionDate = opCompletionDate;
+        propertyChangeSupport.firePropertyChange("opCompletionDate", oldOpCompletionDate, opCompletionDate);
+    }
+
+    public String getOpCompletionDate() {
+        return opCompletionDate;
+    }
+
+    public void setBadgeNumber(String badgeNumber) {
+        String oldBadgeNumber = this.badgeNumber;
+        this.badgeNumber = badgeNumber;
+        propertyChangeSupport.firePropertyChange("badgeNumber", oldBadgeNumber, badgeNumber);
+    }
+
+    public String getBadgeNumber() {
+        return badgeNumber;
+    }
+
+    public void setAction(String action) {
+        String oldAction = this.action;
+        this.action = action;
+        propertyChangeSupport.firePropertyChange("action", oldAction, action);
+    }
+
+    public String getAction() {
+        return action;
     }
 }

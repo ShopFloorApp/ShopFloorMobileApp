@@ -106,6 +106,9 @@
             </case>
             <default-outcome>toJobSearch</default-outcome>
         </router>
+        <view id="uploadImage">
+            <page>/dcom.shop.DispatchList/page/uploadImage.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>dispatchList</from-activity-id>
             <control-flow-case id="__2">
@@ -240,6 +243,10 @@
             <control-flow-case id="__36">
                 <from-outcome>LotEntry</from-outcome>
                 <to-activity-id>LotEntry</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__7">
+                <from-outcome>toUploadImage</from-outcome>
+                <to-activity-id>uploadImage</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__39">

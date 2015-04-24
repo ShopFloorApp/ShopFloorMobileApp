@@ -1,7 +1,6 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
-import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.ResourceBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
@@ -83,10 +82,7 @@ public class ResourceDC extends SyncUtils {
                             ResourceItems.setBasis((jsObject2.get("BASIS").toString()));
                             //ResourceItems.setInstance((jsObject2.get("INSTANCE").toString()));
                             s_resources.add(ResourceItems);
-
-
                         }
-
                         super.updateSqlLiteTable(ResourceBO.class, s_resources);
                     }
                 } catch (ClassCastException e2) {
