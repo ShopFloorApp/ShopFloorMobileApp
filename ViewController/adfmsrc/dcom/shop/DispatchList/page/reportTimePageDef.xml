@@ -15,14 +15,6 @@
                       BeanClass="dcom.shop.application.mobile.UOMBO" id="UOMIterator"/>
   </executables>
   <bindings>
-    <methodAction id="saveTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveTransaction"
-                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"
-                  ReturnName="data.TransactDC.methodResults.saveTransaction_TransactDC_dataProvider_saveTransaction_result">
-      <NamedData NDName="transactBo" NDValue="#{bindings.transactIterator.currentRow.dataProvider}"
-                 NDType="dcom.shop.application.mobile.dispatch.TransactBO"/>
-    </methodAction>
-    <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
-                  IsViewObjectMethod="false" DataControl="TransactDC" InstanceName="data.TransactDC.dataProvider"/>
     <attributeValues IterBinding="reportTimeIterator" id="startTime">
       <AttrNames>
         <Item Value="startTime"/>
@@ -62,5 +54,13 @@
         <Item Value="UOM"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="saveReportTime" RequiresUpdateModel="true" Action="invokeMethod" MethodName="saveReportTime"
+                  IsViewObjectMethod="false" DataControl="ReportTimeDC" InstanceName="data.ReportTimeDC.dataProvider"
+                  ReturnName="data.ReportTimeDC.methodResults.saveReportTime_ReportTimeDC_dataProvider_saveReportTime_result">
+      <NamedData NDName="obj" NDValue="#{bindings.reportTimeIterator.currentRow.dataProvider}"
+                 NDType="dcom.shop.application.mobile.dispatch.ReportTimeBO"/>
+    </methodAction>
+    <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
+                  IsViewObjectMethod="false" DataControl="ReportTimeDC" InstanceName="data.ReportTimeDC.dataProvider"/>
   </bindings>
 </pageDefinition>

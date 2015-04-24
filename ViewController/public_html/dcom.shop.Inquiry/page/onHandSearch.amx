@@ -40,7 +40,7 @@
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6">
-                <amx:panelGroupLayout id="pgl3">
+                <amx:panelGroupLayout id="pgl1">
                     <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}" valueChangeListener="#{StateListenerBean.FromSubinvValueChange}"
                                id="soc1">
                                 <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
@@ -106,7 +106,8 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:setPropertyListener id="spl" from="onHandSearch" type="action" to="#{pageFlowScope.callingPg}"/>
+                            <amx:setPropertyListener id="spl" from="onHandSearch" type="action"
+                                                     to="#{pageFlowScope.callingPg}"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>

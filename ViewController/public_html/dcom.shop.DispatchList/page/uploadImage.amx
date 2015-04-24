@@ -14,15 +14,21 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton id="cb2"/>
+            <amx:commandButton id="cb2" text="Upload"/>
         </amx:facet>
         <amx:facet name="footer">
             <amx:panelGroupLayout id="pgl1" valign="middle" halign="center" layout="horizontal"
-                                  inlineStyle="margin-top:6px;">
-                <amx:commandLink id="cl2">
+                                  inlineStyle="margin-top:10px;">
+                <amx:commandLink id="cl2" action="#{bindings.getPicture.execute}">
                     <amx:outputHtml id="oh3" styleClass="fa fa-camera fa-2x"/>
                 </amx:commandLink>
             </amx:panelGroupLayout>
         </amx:facet>
+        <amx:panelGroupLayout id="pgl2" halign="center" layout="horizontal" inlineStyle="margin-top:50px;">
+            <amx:image id="i1" source="#{bindings.Return.inputValue}" inlineStyle="width:200px; height:200px;"
+                       rendered="#{(empty bindings.Return.inputValue) eq true ? false : true}"/>
+            <amx:outputHtml id="oh4" rendered="#{empty bindings.Return.inputValue}" styleClass="fa fa-cube fa-5x"
+                            inlineStyle="color:#FFCC00;"/>
+        </amx:panelGroupLayout>
     </amx:panelPage>
 </amx:view>

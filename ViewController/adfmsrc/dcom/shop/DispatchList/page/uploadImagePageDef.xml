@@ -3,20 +3,28 @@
                 Package="dcom.shop.DispatchList.page">
     <parameters/>
     <executables>
-        <variableIterator id="variables"/>
+        <variableIterator id="variables">
+            <variable Type="java.lang.String" Name="getPicture_Return" IsQueriable="false" IsUpdateable="0"
+                      DefaultValue="${bindings.getPicture.result}"/>
+        </variableIterator>
     </executables>
     <bindings>
         <methodAction id="getPicture" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getPicture"
                       IsViewObjectMethod="false" DataControl="DeviceFeatures"
                       InstanceName="data.DeviceFeatures.dataProvider"
                       ReturnName="data.DeviceFeatures.methodResults.getPicture_DeviceFeatures_dataProvider_getPicture_result">
-            <NamedData NDName="quality" NDType="int"/>
-            <NamedData NDName="destinationType" NDType="int"/>
-            <NamedData NDName="sourceType" NDType="int"/>
-            <NamedData NDName="allowEdit" NDType="boolean"/>
-            <NamedData NDName="encodingType" NDType="int"/>
-            <NamedData NDName="targetWidth" NDType="int"/>
-            <NamedData NDName="targetHeight" NDType="int"/>
+            <NamedData NDName="quality" NDValue="50" NDType="int"/>
+            <NamedData NDName="destinationType" NDValue="1" NDType="int"/>
+            <NamedData NDName="sourceType" NDValue="1" NDType="int"/>
+            <NamedData NDName="allowEdit" NDValue="true" NDType="boolean"/>
+            <NamedData NDName="encodingType" NDValue="1" NDType="int"/>
+            <NamedData NDName="targetWidth" NDValue="200" NDType="int"/>
+            <NamedData NDName="targetHeight" NDValue="200" NDType="int"/>
         </methodAction>
+        <attributeValues IterBinding="variables" id="Return">
+            <AttrNames>
+                <Item Value="getPicture_Return"/>
+            </AttrNames>
+        </attributeValues>
     </bindings>
 </pageDefinition>

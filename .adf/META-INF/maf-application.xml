@@ -9,7 +9,8 @@
     <adfmf:featureReference id="fr3" refId="dcom.shop.Transaction" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr4" refId="dcom.shop.Inquiry" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference id="fr5" refId="dcom.shop.Request" loginConnRefId="ShopFloorSecurity"/>
-    <adfmf:featureReference id="fr6" refId="dcom.shop.Settings" loginConnRefId="ShopFloorSecurity"/>
+    <adfmf:featureReference id="fr6" refId="dcom.shop.Settings" loginConnRefId="ShopFloorSecurity"
+                            showOnNavigationBar="false" showOnSpringboard="false"/>
     <adfmf:featureReference id="fr1" refId="dcom.shop.syncPref" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference refId="dcom.shop.MyWarehouse" id="fr12" loginConnRefId="ShopFloorSecurity"/>
     <adfmf:featureReference refId="dcom.shop.SecuredFeature" id="fr11" showOnSpringboard="true"

@@ -226,6 +226,7 @@
         <page id="dcom_shop_mobile_uploadImagePageDef" path="dcom.shop.DispatchList.page.uploadImagePageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="DeviceFeatures" path="dcom.shop.application.DeviceFeatures"/>
         <dc id="ItemStatusDC" path="dcom.shop.mobile.ItemStatusDC"/>
         <dc id="CatalogDC" path="dcom.shop.mobile.CatalogDC"/>
         <dc id="ItemTypeDC" path="dcom.shop.mobile.ItemTypeDC"/>

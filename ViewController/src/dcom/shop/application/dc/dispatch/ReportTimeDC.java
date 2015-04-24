@@ -30,6 +30,12 @@ public class ReportTimeDC {
 
     }
 
+    public void rollback() {
+        if (reportTimeBO != null) {
+            reportTimeBO = null;
+        }
+    }
+
     public String saveReportTime(ReportTimeBO obj) {
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();

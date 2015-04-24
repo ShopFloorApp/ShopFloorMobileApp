@@ -17,7 +17,8 @@
                       IsViewObjectMethod="false" DataControl="ClockInOutDC"
                       InstanceName="data.ClockInOutDC.dataProvider"
                       ReturnName="data.ClockInOutDC.methodResults.saveTransaction_ClockInOutDC_dataProvider_saveTransaction_result">
-            <NamedData NDName="obj" NDValue="" NDType="dcom.shop.application.mobile.dispatch.ClockInOutBO"/>
+            <NamedData NDName="obj" NDValue="#{bindings.clockInOutBOIterator.currentRow.dataProvider}"
+                       NDType="dcom.shop.application.mobile.dispatch.ClockInOutBO"/>
         </methodAction>
         <attributeValues IterBinding="clockInOutBOIterator" id="PDeptCode">
             <AttrNames>

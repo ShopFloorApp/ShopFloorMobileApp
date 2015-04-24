@@ -61,7 +61,7 @@
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886">
-                <amx:panelGroupLayout id="pgl3">
+                <amx:panelGroupLayout id="pgl8">
                     <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice-->
@@ -106,7 +106,7 @@
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
-                                        <amx:outputHtml id="oh2" styleClass="fa fa-times fa-lg"/>
+                                        <amx:outputHtml id="oh4" styleClass="fa fa-times fa-lg"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl1">

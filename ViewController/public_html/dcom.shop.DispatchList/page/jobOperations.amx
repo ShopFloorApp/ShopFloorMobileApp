@@ -77,7 +77,7 @@
                             </amx:tableLayout>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf2" valign="top" width="24px">
-                            <amx:outputHtml id="oh2" styleClass="fa fa-check-square-o fa-lg"
+                            <amx:outputHtml id="oh6" styleClass="fa fa-check-square-o fa-lg"
                                             inlineStyle="color:#5AD427;margin-left: 10px;"
                                             rendered='#{row.readyStatus eq "Y" ? true : false}'/>
                             <amx:outputHtml id="oh3" rendered='#{row.readyStatus eq "N" ? true : false}'
