@@ -59,6 +59,12 @@ public class RestURI {
         return ITEM_UDA_INQUIRY_URI;
     }
 
+    private static final String UNLOAD_TRUCK_URI = "/webservices/rest/XXDCOMShip/unloadtruck/";
+
+    public static String PostUnloadTruckURI() {
+        return UNLOAD_TRUCK_URI;
+    }
+
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
     private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";
     private static final String ProgramParamLovURI = "/webservices/rest/DCOMSRS/getlov/";

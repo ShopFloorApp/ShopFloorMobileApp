@@ -121,6 +121,8 @@
     <page path="/dcom.shop.Transaction/page/TaskListPG.amx" usageId="dcom_shop_mobile_TaskListPGPageDef"/>
         <page path="/dcom.shop.Transaction/page/CycleCount/OppCount.amx" usageId="dcom_shop_mobile_OppCountPageDef"/>
         <page path="/dcom.shop.DispatchList/page/uploadImage.amx" usageId="dcom_shop_mobile_uploadImagePageDef"/>
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/UnloadTruck.amx"
+              usageId="dcom_shop_mobile_UnloadTruckPageDef"/>
     </pageMap>
     <pageDefinitionUsages>
         <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
@@ -224,6 +226,8 @@
         <page id="dcom_shop_mobile_searchProductPageDef" path="dcom.shop.Inquiry.page.searchProductPageDef"/>
         <page id="dcom_shop_mobile_OppCountPageDef" path="dcom.shop.Transaction.page.CycleCount.OppCountPageDef"/>
         <page id="dcom_shop_mobile_uploadImagePageDef" path="dcom.shop.DispatchList.page.uploadImagePageDef"/>
+        <page id="dcom_shop_mobile_UnloadTruckPageDef"
+              path="dcom.shop.Transaction.page.ShippingTxn.UnloadTruckPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="DeviceFeatures" path="dcom.shop.application.DeviceFeatures"/>
