@@ -34,7 +34,11 @@
     </amx:facet>
     <amx:facet name="primary">
            <amx:commandLink id="cl1" action="backToShipTxn">
-                <amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/>
+                <!--amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/-->
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                    </amx:panelGroupLayout>
             </amx:commandLink>
       <amx:commandButton id="cb1" rendered="false"/>
     </amx:facet>
@@ -144,7 +148,7 @@
    <amx:popup id="p1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl24" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl56" actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}">
+            <amx:commandLink id="cl56"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
                     <amx:rowLayout id="rl17">
                         <amx:cellFormat id="cf26" halign="center">

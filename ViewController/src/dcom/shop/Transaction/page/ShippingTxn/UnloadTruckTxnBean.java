@@ -86,7 +86,7 @@ public class UnloadTruckTxnBean {
                 String msg = jsObject.get("XMSG").toString();
                 Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
                 pageFlow.put("unloadTruckTxnMsg", msg);
-
+                clearTxnVal();
             }
 
         }catch(Exception e){
@@ -95,7 +95,7 @@ public class UnloadTruckTxnBean {
         
     }
 
-    public void clearTxnVal(ActionEvent actionEvent) {
+    public void clearTxnVal() {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchDockDoor}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
