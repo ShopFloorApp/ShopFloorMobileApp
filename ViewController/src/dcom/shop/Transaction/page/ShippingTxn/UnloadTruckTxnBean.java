@@ -8,6 +8,11 @@ import java.util.logging.Level;
 
 import javax.el.ValueExpression;
 
+
+import oracle.adf.share.ADFContext;
+
+import oracle.adf.share.security.SecurityContext;
+
 import oracle.adfmf.amx.event.ActionEvent;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
@@ -37,7 +42,9 @@ public class UnloadTruckTxnBean {
         String subinv = null;
         String loc = null;
         String orgCode= null;
-        
+            
+   
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchDockDoor}", String.class);
         dockDoor = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         

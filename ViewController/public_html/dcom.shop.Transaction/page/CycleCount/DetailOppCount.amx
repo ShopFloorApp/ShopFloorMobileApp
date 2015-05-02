@@ -3,7 +3,7 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
   <amx:panelPage id="pp1">
     <amx:facet name="header">
-      <amx:outputText value="Detail Counting" id="ot1"/>
+      <amx:outputText value="Detail Opportunistic Counting" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
       <amx:commandLink id="cl1" action= "detailOppCountBack">
@@ -69,7 +69,7 @@
                     
                     <amx:cellFormat id="cf13">
                         <amx:commandLink id="cl3" 
-                                         actionListener="#{CountUtilBean.clearDetailPage}">
+                                        actionListener="#{CountUtilBean.callCountRestService}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
@@ -83,10 +83,15 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout> 
+                            <amx:setPropertyListener id="spl" from="SAVE" type="action"
+                                                     to="#{pageFlowScope.detTxnType}"/>
+                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
+                                                   alignId="pp1" align="overlapMiddleCenter"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11">
-                        <amx:commandLink id="cl4" >
+                        <amx:commandLink id="cl4"  actionListener="#{CountUtilBean.callCountRestService}"
+                                         action="detailOppCountBack">
                             <amx:tableLayout id="tl5t" halign="center">
                                 <amx:rowLayout id="rl14">
                                     <amx:cellFormat id="cf11c" halign="center">
@@ -100,7 +105,10 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                           
+                           <amx:setPropertyListener id="sp2" from="DONE" type="action"
+                                                     to="#{pageFlowScope.detTxnType}"/>
+                           <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
+                                                   alignId="pp1" align="overlapMiddleCenter"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     
@@ -125,4 +133,18 @@
             </amx:tableLayout>
         </amx:facet>
   </amx:panelPage>
+  <amx:popup id="p1" autoDismiss="true">
+        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+        <amx:panelGroupLayout id="pgl24" layout="horizontal" halign="center" valign="middle">
+            <amx:commandLink id="cl56"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
+                <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl17">
+                        <amx:cellFormat id="cf26" halign="center">
+                            <amx:outputText id="oh955" value="#{pageFlowScope.countTxnMsg}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

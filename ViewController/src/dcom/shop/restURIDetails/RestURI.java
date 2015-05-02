@@ -64,6 +64,12 @@ public class RestURI {
     public static String PostUnloadTruckURI() {
         return UNLOAD_TRUCK_URI;
     }
+    
+    private static final String CYCLE_COUNT_URI = "/webservices/rest/DCOMCycleCntSvc/processcyclecount/";
+
+    public static String PostCycleCountURI() {
+        return CYCLE_COUNT_URI;
+    }
 
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
     private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";

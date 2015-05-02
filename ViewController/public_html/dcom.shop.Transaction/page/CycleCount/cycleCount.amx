@@ -22,7 +22,7 @@
                 <amx:outputText value="Physical Count" id="ot2"/>
             </amx:listItem>
             <amx:listItem id="li2" inlineStyle="width:97%;" action="oppCount" showLinkIcon="false">
-                <amx:outputText value="Opportunity Count" id="ot3"/>
+                <amx:outputText value="Opportunistic Count" id="ot3"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
