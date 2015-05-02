@@ -36,13 +36,13 @@ public class CountUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", null);  
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.qty}", null);   
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.countTxnMsg}", null);  
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.qty}", null);    
     }
 
 
     
     public void callCountRestService(ActionEvent actionEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.countTxnMsg}", null); 
         ValueExpression ve = null;
         System.out.println("Insidecycle count service");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -121,7 +121,7 @@ public class CountUtilBean {
             JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
             if(jsObject != null){
              // QuickShipEntityBean quickShipStatus = new QuickShipEntityBean();
-             AdfmfJavaUtilities.setELValue("#{pageFlowScope.countTxnMsg}", null); 
+             
                 String status =jsObject.get("X_STATUS").toString();
                 String msg = jsObject.get("X_MESSAGE").toString();
                 Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
@@ -133,6 +133,9 @@ public class CountUtilBean {
                 else {
                     clearCountPage(actionEvent);
                 }
+                }
+                else if(action.equals("SUMMARY")) {
+                    clearCountPage(actionEvent);
                 }
             }
 

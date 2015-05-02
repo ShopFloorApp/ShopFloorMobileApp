@@ -107,7 +107,7 @@
                             </amx:tableLayout>
                            <amx:setPropertyListener id="sp2" from="DONE" type="action"
                                                      to="#{pageFlowScope.detTxnType}"/>
-                           <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
+                           <amx:showPopupBehavior id="spb22" popupId="p1" type="action" decoration="anchor" 
                                                    alignId="pp1" align="overlapMiddleCenter"/>
                         </amx:commandLink>
                     </amx:cellFormat>
