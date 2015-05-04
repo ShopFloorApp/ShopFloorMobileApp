@@ -6,6 +6,7 @@ import javax.el.MethodExpression;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.amx.event.ValueChangeEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 public class DispatchBean {
@@ -38,5 +39,11 @@ public class DispatchBean {
         } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.trxType}", "WIP_ISSUE");
         }
+    }
+    
+    public void showTrxResult(){
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                  "showAlert", new Object[] {"Information","Your warehouse has been set.","Ok" });
+        
     }
 }

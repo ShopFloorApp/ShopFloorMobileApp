@@ -189,6 +189,12 @@ public class RestURI {
     public static String PostClockOut() {
         return POST_CLOCK_OUT;
     }
+    
+    private static final String POST_WIP_TRX = "/webservices/rest/DcomTrns/processwiptxn/";
+    
+    public static String PostWipTrx(){
+        return POST_WIP_TRX;
+    }
     /*
      * Dispatch Lists end
      */

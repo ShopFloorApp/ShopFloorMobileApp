@@ -12,6 +12,26 @@ import org.json.simple.parser.JSONParser;
 public class TransactDC {
     TransactBO transactBO;
 
+    TrxResult trxResult = null;
+
+    class TrxResult {
+        String status;
+        String message;
+
+        public TrxResult(String statusStr, String messageStr) {
+            this.status = statusStr;
+            this.message = messageStr;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
+
     public TransactDC() {
         super();
     }
@@ -28,7 +48,8 @@ public class TransactDC {
         String lastDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
         String lastOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
         String nextDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
+        String orgCode =
+            AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         transactBO.setOrgCode(orgCode);
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
@@ -46,7 +67,7 @@ public class TransactDC {
         return transactArray;
     }
 
-    public String saveTransaction(TransactBO transactBo) {
+    public TrxResult saveTransaction(TransactBO transactBo) {
         String subInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}").toString();
         String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
         transactBO.setSubinv(subInv);
@@ -95,7 +116,7 @@ public class TransactDC {
                           "                \"FROMSERIAL\": \"\",\n" + "                \"TOSERIAL\": \"\",\n" +
                           "                \"SERIALQTY\": \"\"\n" + "              }\n" + "            }\n" +
                           "          }\n" + "        }\n" + "      }\n" + "    }\n" + "  }\n" + "}");
-        String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetJobProp(), strPayload.toString());
+        String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostWipTrx(), strPayload.toString());
         if (jsonArrayAsString != null) {
             try {
                 JSONParser parser = new JSONParser();
@@ -103,8 +124,10 @@ public class TransactDC {
                 object = parser.parse(jsonArrayAsString);
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                String status  =  jsObject.get("XSTATUS").toString();
-                return status.toString();
+                String status = jsObject.get("XSTATUS").toString();
+                String msg = jsObject.get("XMSG").toString();
+                trxResult = new TrxResult(status, msg);
+                return trxResult;
             } catch (Exception e) {
                 e.getMessage();
             }
@@ -115,6 +138,7 @@ public class TransactDC {
     public void rollback() {
         if (transactBO != null) {
             transactBO = null;
+            trxResult = null;
         }
     }
 }
