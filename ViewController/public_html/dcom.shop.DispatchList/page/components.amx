@@ -63,8 +63,8 @@
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
-                                        <amx:outputHtml id="oha2344" styleClass="fa fa-wrench fa-lg"
-                                                        inlineStyle="color:Gray;"/>
+                                        <amx:outputHtml styleClass="fa fa-wrench fa-lg" inlineStyle="color:Gray;"
+                                                        id="oha2344"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl9">
