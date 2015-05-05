@@ -3,7 +3,10 @@
                 Package="dcom.shop.DispatchList.page">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="saveReportTime_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.saveReportTime.result}"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="ReportTimeDC" id="ReportTimeDCIterator"/>
     <accessorIterator MasterBinding="ReportTimeDCIterator" Binds="reportTime" RangeSize="25" DataControl="ReportTimeDC"
                       BeanClass="dcom.shop.application.mobile.dispatch.ReportTimeBO" id="reportTimeIterator"/>
@@ -62,5 +65,10 @@
     </methodAction>
     <methodAction id="rollback" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rollback"
                   IsViewObjectMethod="false" DataControl="ReportTimeDC" InstanceName="data.ReportTimeDC.dataProvider"/>
+    <attributeValues IterBinding="variables" id="Return">
+      <AttrNames>
+        <Item Value="saveReportTime_Return"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

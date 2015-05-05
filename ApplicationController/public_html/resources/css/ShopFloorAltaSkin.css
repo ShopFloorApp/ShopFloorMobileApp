@@ -1,4 +1,5 @@
 @charset "windows-1252";
+
 @import url("../font-awesome-4.3.0/css/font-awesome.css");
 
 .right-nav-container {
@@ -140,7 +141,7 @@
     pointer-events: none;
 }
 
-.test-text > .field-value > .wrap,.amx-wrap-active {
+.test-text > .field-value > .wrap, .amx-wrap-active {
     border-image: none;
     border-style: none;
 }
@@ -153,7 +154,7 @@
     border: 2px solid #C1C1C1;
 }
 
-.test-text > .field-value > .amx-inputDate-trigger-dateTime{
+.test-text > .field-value > .amx-inputDate-trigger-dateTime {
     background: white;
     border: 2px solid #C1C1C1;
     border-radius: 9.5em;
@@ -170,71 +171,73 @@
     font-size: larger;
 }
 
-.srch-btn{
+.srch-btn {
     background: red;
     border-radius: 0.5em;
     width: 200px;
 }
 
-.srch-btn > .amx-commandButton-label{
+.srch-btn > .amx-commandButton-label {
     color: #FFFFFF;
 }
 
-.time-btn-completed{
+.time-btn-completed {
     /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid green;
     padding: 2px;
     border-width: thin;*/
-    color:Green;
+
+    color: Green;
 }
 
-.time-btn-warning{
+.time-btn-warning {
     /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid orange;
     padding: 2px;
     border-width: thin;*/
+
     color: Orange;
 }
 
-.time-btn-error{
+.time-btn-error {
     /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid red;
     padding: 2px;
     border-width: thin;*/
-    color:Red;
+
+    color: Red;
 }
 
-.time-btn-normal{
+.time-btn-normal {
     /*width: 39px;
     border-radius: 10.5em;
     background: transparent;
     border: solid red;
     padding: 2px;
     border-width: thin;*/
-    color:Gray;
+
+    color: Gray;
 }
 
 #dispatchSearch__inputElement {
-
 }
 
 #dispatchSearch input[type="text"] {
     background: no-repeat 10px 6px #fcfcfc;
     border: 0 none;
-    font: 12px Arial,Helvetica,Sans-serif;
+    font: 12px Arial, Helvetica, Sans-serif;
     color: #d7d7d7;
-    width:90%;
+    width: 90%;
     padding: 6px 15px 6px 35px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-     
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
@@ -242,21 +245,22 @@
     -moz-transition: all 0.7s ease 0s;
     -o-transition: all 0.7s ease 0s;
     transition: all 0.7s ease 0s;
-    }
+}
 
 #dispatchSearch input[type="text"]:focus {
-    background: url(search-dark.png) no-repeat 10px 6px #fcfcfc;
+    background: url(search-dark.png)no-repeat 10px 6px #fcfcfc;
     color: #6a6f75;
     width: 90%;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
-    
-    }
+}
 
 .amx-listView-cards .amx-listItem {
     display: inline-block;
-    vertical-align: top; /* top for removal of excess inline-block gaps */
+    vertical-align: top;
+    /* top for removal of excess inline-block gaps */
+
     width: 300px;
     height: auto;
     box-sizing: border-box;
@@ -276,76 +280,69 @@
     display: block;
     text-overflow: ellipsis;
 }
-
 /* Same padding for LTR & RTL but for specificity, we are adding html[dir] to the selector */
-html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topStart .field-label,
-html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topCenter .field-label,
-html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topEnd .field-label,
-html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topStart .field-label,
-html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topCenter .field-label,
-html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topEnd .field-label {
+html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topStart .field-label, html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topCenter .field-label, html[dir="ltr"] .amx-panelFormLayout.amx-label-position-topEnd .field-label, html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topStart .field-label, html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topCenter .field-label, html[dir="rtl"] .amx-panelFormLayout.amx-label-position-topEnd .field-label {
     padding: 10px 10px 0 0;
     line-height: 23px;
     width: 100%;
     color: Gray;
     font-weight: bold;
-} 
-
+}
 
 .transactLabel {
-    width:100%;
+    width: 100%;
 }
 
 .transactIcon {
-    width:40px;
+    width: 40px;
 }
 
 .style5 {
-  color: rgba(245,159,26,0.8);
-  text-shadow: 1px 4px 6px #FFF,0 0 0 #000,1px 4px 6px #FFF;
+    color: rgba(245, 159, 26, 0.8);
+    text-shadow: 1px 4px 6px #FFF, 0 0 0 #000, 1px 4px 6px #FFF;
 }
 
 .style4 {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.25);
-  color: #A9014B;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    color: #A9014B;
 }
 
 .style3 {
-  color: #E33100;
-  text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #E33100,0 0 30px #E33100,0 0 40px #E33100,0 0 50px #E33100,0 0 75px #E33100;
+    color: #E33100;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #E33100, 0 0 30px #E33100, 0 0 40px #E33100, 0 0 50px #E33100, 0 0 75px #E33100;
 }
 
 .style2 {
-  color: #2DAEBF;
-  text-shadow: 0px 1px 0px #0092b3,0px 2px 0px #0087a6,0px 3px 0px #008099,0px 4px 0px #00758c,0px 5px 0px #555,0px 6px 0px #006a80,0px 0px 0px #006073,0px 8px 7px #005566;
+    color: #2DAEBF;
+    text-shadow: 0px 1px 0px #0092b3, 0px 2px 0px #0087a6, 0px 3px 0px #008099, 0px 4px 0px #00758c, 0px 5px 0px #555, 0px 6px 0px #006a80, 0px 0px 0px #006073, 0px 8px 7px #005566;
 }
 
 .style1 {
-  color: #B8D30B;
+    color: #B8D30B;
 }
 
 .tableHeader1 {
-width: 80%;
-background-color:Gray;
-margin-top: 10px;
-margin-bottom: -12px;
+    width: 80%;
+    background-color: Gray;
+    margin-top: 10px;
+    margin-bottom: -12px;
 }
 
-.tableHeader1 span{
-color: White;
-font-weight: bold;
-padding-left: 10px;
+.tableHeader1 span {
+    color: White;
+    font-weight: bold;
+    padding-left: 10px;
 }
 
 .tableError1 {
-width: 80%;
-background-color:Red;
-margin-top: 10px;
-margin-bottom: -12px;
+    width: 80%;
+    background-color: Red;
+    margin-top: 10px;
+    margin-bottom: -12px;
 }
 
-.tableError1 span{
-color: White;
-font-weight: bold;
-padding-left: 10px;
+.tableError1 span {
+    color: White;
+    font-weight: bold;
+    padding-left: 10px;
 }

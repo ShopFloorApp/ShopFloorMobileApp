@@ -41,9 +41,9 @@ public class DispatchBean {
         }
     }
     
-    public void showTrxResult(){
+    public void showTrxResult(String status, String message){
         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                  "showAlert", new Object[] {"Information","Your warehouse has been set.","Ok" });
+                                                                  "showAlert", new Object[] {status,message,"Ok" });
         
     }
 }

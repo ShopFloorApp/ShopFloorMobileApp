@@ -107,6 +107,16 @@ public class JobOperationDC extends AViewObject {
                         jobOperationBO.setCompSubInv(jsObject2.get("COMPSUBINV").toString());
                         jobOperationBO.setCompLocator(jsObject2.get("COMPLOCATOR").toString());
                         jobOperationBO.setAssemblyUom(jsObject2.get("ASSEMBLYUOM").toString());
+                        //Added for quantity defaulting in Dispatch Transaction Pages
+                        jobOperationBO.setQtyOp(jsObject2.get("QTYOP").toString());
+                        jobOperationBO.setQtyCompleted(jsObject2.get("QTYCOMPLETED").toString());
+                        jobOperationBO.setQtyQueue(jsObject2.get("QTYQUEUE").toString());
+                        jobOperationBO.setQtyScrapped(jsObject2.get("QTYSCRAPPED").toString());
+                        jobOperationBO.setQtyRun(jsObject2.get("QTYRUN").toString());
+                        jobOperationBO.setQty2Move(jsObject2.get("QTY2MOVE").toString());
+                        jobOperationBO.setQtyCScrapQty(jsObject2.get("QTYCSCRAPQTY").toString());
+                        jobOperationBO.setQtyRejected(jsObject2.get("QTYREJECTED").toString());
+                        //End Changes
                         jobOpList.add(jobOperationBO);
                     }
                     super.updateSqlLiteTable(JobOperationBO.class, jobOpList);

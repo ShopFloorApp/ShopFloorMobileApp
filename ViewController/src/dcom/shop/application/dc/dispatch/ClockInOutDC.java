@@ -1,5 +1,6 @@
 package dcom.shop.application.dc.dispatch;
 
+import dcom.shop.application.dc.dispatch.ReportTimeDC.TrxResult;
 import dcom.shop.application.mobile.dispatch.ClockInOutBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
@@ -14,6 +15,39 @@ public class ClockInOutDC {
 
     public ClockInOutDC() {
         super();
+    }
+    TrxResult trxResult = null;
+
+    class TrxResult {
+        String status;
+        String message;
+
+        public TrxResult(String statusStr, String messageStr) {
+            this.status = statusStr;
+            this.message = messageStr;
+        }
+
+        public String getStatus() {
+            if (this.status.contains("@xsi")) {
+                return "";
+            }
+            return status;
+        }
+
+        public String getMessage() {
+            if (this.message.contains("@xsi")) {
+                return "";
+            }
+            return message;
+        }
+
+        String getResult() {
+            if (getStatus().equals("S")) {
+                return "Transaction Successful !";
+            } else {
+                return "Transaction was Successful! " + getMessage();
+            }
+        }
     }
 
     public ClockInOutBO[] getClockInOutBO() {
@@ -31,6 +65,9 @@ public class ClockInOutDC {
     public void rollback() {
         if (clockInOutBO != null) {
             clockInOutBO = null;
+        }
+        if (trxResult != null) {
+            trxResult = null;
         }
     }
 
@@ -64,7 +101,8 @@ public class ClockInOutDC {
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 String status = jsObject.get("XSTATUS").toString();
                 String message = jsObject.get("XMSG").toString();
-
+                trxResult = new TrxResult(status, message);
+                return trxResult.getResult();
             } catch (Exception e) {
                 e.getMessage();
             }

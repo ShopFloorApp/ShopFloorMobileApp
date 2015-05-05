@@ -98,5 +98,45 @@
       <NamedData NDName="jobOperation" NDValue="#{bindings.jobOperationBOIterator.currentRow.dataProvider}"
                  NDType="dcom.shop.application.mobile.dispatch.JobOperationBO"/>
     </methodAction>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyOp">
+      <AttrNames>
+        <Item Value="qtyOp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyCompleted">
+      <AttrNames>
+        <Item Value="qtyCompleted"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyQueue">
+      <AttrNames>
+        <Item Value="qtyQueue"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyScrapped">
+      <AttrNames>
+        <Item Value="qtyScrapped"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyCScrapQty">
+      <AttrNames>
+        <Item Value="qtyCScrapQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyRejected">
+      <AttrNames>
+        <Item Value="qtyRejected"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qtyRun">
+      <AttrNames>
+        <Item Value="qtyRun"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qty2Move">
+      <AttrNames>
+        <Item Value="qty2Move"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

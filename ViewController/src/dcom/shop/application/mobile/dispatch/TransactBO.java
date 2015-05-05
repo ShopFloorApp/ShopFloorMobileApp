@@ -361,8 +361,9 @@ public class TransactBO {
 
     public void setFromOpSeq(String fromOpSeq) {
         //Need to update FromOpCode and fromDept
-        this.setFromDept(OpSeqDC.getDept(fromOpSeq.toString()));
-        this.setFromOpCode(OpSeqDC.getOpCode(fromOpSeq.toString()));
+        OpSeqDC opSeqDC = new OpSeqDC();
+        this.setFromDept(opSeqDC.getDept(fromOpSeq.toString()));
+        this.setFromOpCode(opSeqDC.getOpCode(fromOpSeq.toString()));
         String oldFromOpSeq = this.fromOpSeq;
         this.fromOpSeq = fromOpSeq;
         propertyChangeSupport.firePropertyChange("fromOpSeq", oldFromOpSeq, fromOpSeq);
@@ -375,8 +376,9 @@ public class TransactBO {
 
     public void setToOpSeq(String toOpSeq) {
         //Need to update ToOpCode and ToDept
-        this.setToDept(OpSeqDC.getDept(toOpSeq.toString()));
-        this.setToOpCode(OpSeqDC.getOpCode(toOpSeq.toString()));
+        OpSeqDC opSeqDC = new OpSeqDC();
+        this.setToDept(opSeqDC.getDept(toOpSeq.toString()));
+        this.setToOpCode(opSeqDC.getOpCode(toOpSeq.toString()));
         String oldToOpSeq = this.toOpSeq;
         this.toOpSeq = toOpSeq;
         propertyChangeSupport.firePropertyChange("toOpSeq", oldToOpSeq, toOpSeq);

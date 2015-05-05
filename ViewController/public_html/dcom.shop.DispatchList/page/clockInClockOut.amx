@@ -15,19 +15,17 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" action="backToWorkContent"
-                               actionListener="#{bindings.saveTransaction.execute}"/>
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveTransaction.execute}">
+                <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
+            </amx:commandButton>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:inputText value="#{bindings.jobNumber.inputValue}" label="Job" id="it1"/>
             <amx:inputText label="Op Sequence" id="it9" value="#{bindings.opSeq.inputValue}"/>
             <amx:inputText value="#{bindings.PDeptCode.inputValue}" label="Department" id="it7"/>
-            <amx:inputText value="#{bindings.opStartDate.inputValue}" label="Operation Start Date"
-                           id="it6"/>
-            <amx:inputText value="#{bindings.opCompletionDate.inputValue}"
-                           label="Operation Completion Date" id="it8"/>
-            <amx:inputText value="#{bindings.badgeNumber.inputValue}" label="Crew Size"
-                           id="it4"/>
+            <amx:inputText value="#{bindings.opStartDate.inputValue}" label="Operation Start Date" id="it6"/>
+            <amx:inputText value="#{bindings.opCompletionDate.inputValue}" label="Operation Completion Date" id="it8"/>
+            <amx:inputText value="#{bindings.badgeNumber.inputValue}" label="Crew Size" id="it4"/>
             <amx:selectOneRadio value="#{bindings.action.inputValue}" label="Actions" id="sor1">
                 <amx:selectItem label="Clock In" id="si2" value="CLOCK IN"/>
                 <amx:selectItem label="Undo Clock In" id="si1" value="UNDO CLOCK IN"/>
@@ -35,4 +33,18 @@
             </amx:selectOneRadio>
         </amx:panelFormLayout>
     </amx:panelPage>
+    <amx:popup id="pdispatch">
+        <amx:tableLayout id="tl1">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1">
+                    <amx:outputText value="#{bindings.Return.inputValue}" id="ot2"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl5">
+                <amx:cellFormat id="cf6">
+                    <amx:commandButton text="Ok" id="cb2" action="backToWorkContent"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
 </amx:view>

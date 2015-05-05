@@ -3,7 +3,10 @@
                 Package="dcom.shop.DispatchList.page">
   <parameters/>
   <executables>
-    <variableIterator id="variables"/>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="saveTransaction_Return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.saveTransaction.result}"/>
+    </variableIterator>
     <iterator Binds="root" RangeSize="25" DataControl="TransactDC" id="TransactDCIterator"/>
     <accessorIterator MasterBinding="TransactDCIterator" Binds="transact" RangeSize="25" DataControl="TransactDC"
                       BeanClass="dcom.shop.application.mobile.dispatch.TransactBO" id="transactIterator"/>
@@ -165,5 +168,10 @@
         <Item Value="locator"/>
       </ListDisplayAttrNames>
     </list>
+    <attributeValues IterBinding="variables" id="Return">
+      <AttrNames>
+        <Item Value="saveTransaction_Return"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

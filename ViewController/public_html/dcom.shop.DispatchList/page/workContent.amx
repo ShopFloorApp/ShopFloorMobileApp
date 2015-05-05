@@ -17,6 +17,7 @@
             <amx:commandLink id="cl11" inlineStyle="width:20px;">
                 <amx:outputHtml id="oh18" styleClass="fa fa-ellipsis-v fa-lg"
                                 inlineStyle="width:20px; margin-left:10px;"/>
+                <amx:setPropertyListener id="spl3" from='NO' to="#{pageFlowScope.preserveTrx}" type="action"/>
                 <amx:setPropertyListener id="spl11" from="#{bindings.opSeq.inputValue}" to="#{pageFlowScope.opSeq}"/>
                 <amx:setPropertyListener id="spl9" to="#{pageFlowScope.jobOps}" from="#{bindings.jobOps.inputValue}"
                                          type="action"/>
@@ -36,6 +37,22 @@
                                          to="#{pageFlowScope.lastOpSeq}" type="action"/>
                 <amx:setPropertyListener id="spl35" from="#{bindings.nextDept.inputValue}"
                                          to="#{pageFlowScope.nextDept}" type="action"/>
+                <amx:setPropertyListener id="spl12" from="#{bindings.qtyOp.inputValue}" to="#{pageFlowScope.qtyOp}"
+                                         type="action"/>
+                <amx:setPropertyListener id="spl13" from="#{bindings.qtyCompleted.inputValue}"
+                                         to="#{pageFlowScope.qtyCompleted}" type="action"/>
+                <amx:setPropertyListener id="spl14" from="#{bindings.qtyQueue.inputValue}"
+                                         to="#{pageFlowScope.qtyQueue}" type="action"/>
+                <amx:setPropertyListener id="spl15" from="#{bindings.qtyScrapped.inputValue}"
+                                         to="#{pageFlowScope.qtyScrapped}" type="action"/>
+                <amx:setPropertyListener id="spl16" from="#{bindings.qtyRun.inputValue}" to="#{pageFlowScope.qtyRun}"
+                                         type="action"/>
+                <amx:setPropertyListener id="spl17" from="#{bindings.qty2Move.inputValue}"
+                                         to="#{pageFlowScope.qty2Move}" type="action"/>
+                <amx:setPropertyListener id="spl18" from="#{bindings.qtyCScrapQty.inputValue}"
+                                         to="#{pageFlowScope.qtyCScrapQty}" type="action"/>
+                <amx:setPropertyListener id="spl19" from="#{bindings.qtyRejected.inputValue}"
+                                         to="#{pageFlowScope.qtyRejected}" type="action"/>
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
             <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveJobAction.execute}"/>
@@ -133,7 +150,7 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:setPropertyListener id="spl3" to="#{pageFlowScope.jobOps}"
+                            <amx:setPropertyListener id="spl20" to="#{pageFlowScope.jobOps}"
                                                      from="#{bindings.jobOps.inputValue}" type="action"/>
                             <amx:setPropertyListener id="spl7" from="#{bindings.jobNumber.inputValue}"
                                                      to="#{pageFlowScope.jobNumber}" type="action"/>

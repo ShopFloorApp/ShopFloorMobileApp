@@ -24,11 +24,25 @@ public class TransactDC {
         }
 
         public String getStatus() {
+            if (this.status.contains("@xsi")) {
+                return "";
+            }
             return status;
         }
 
         public String getMessage() {
+            if (this.message.contains("@xsi")) {
+                return "";
+            }
             return message;
+        }
+        
+        String getResult(){
+            if (getStatus().equals("S")){
+                return "Transaction Successful !";
+            }else{
+                return "Transaction was Successful! "+getMessage();
+            }
         }
     }
 
@@ -37,6 +51,12 @@ public class TransactDC {
     }
 
     public TransactBO[] getTransact() {
+        String preserveTrx = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.preserveTrx}").toString();
+        if(preserveTrx.equals("PRESERVE")){
+            TransactBO[] transactArray = new TransactBO[1];
+            transactArray[0] = transactBO;
+            return transactArray;
+        }
         transactBO = new TransactBO();
         //Defaulting values in the new object
         String nextOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextOpSeq}").toString();
@@ -48,8 +68,17 @@ public class TransactDC {
         String lastDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
         String lastOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
         String nextDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
-        String orgCode =
+            String orgCode =
             AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
+        String qtyOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyOp}").toString();
+        String qtyCompleted = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyCompleted}").toString();
+        String qtyQueue = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyQueue}").toString();
+        String qtyScrapped = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyScrapped}").toString();
+        String qtyRun = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyRun}").toString();
+        String qty2Move = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qty2Move}").toString();
+        String qtyCScrapQty = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyCScrapQty}").toString();
+        String qtyRejected = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyRejected}").toString();
+        
         transactBO.setOrgCode(orgCode);
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
@@ -62,12 +91,14 @@ public class TransactDC {
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
         transactBO.setFromOpSeq("0");
+        transactBO.setTrxQty(qtyOp);
+        transactBO.setScrapQty(qtyScrapped);
         TransactBO[] transactArray = new TransactBO[1];
         transactArray[0] = transactBO;
         return transactArray;
     }
 
-    public TrxResult saveTransaction(TransactBO transactBo) {
+    public String saveTransaction(TransactBO transactBo) {
         String subInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}").toString();
         String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
         transactBO.setSubinv(subInv);
@@ -127,7 +158,7 @@ public class TransactDC {
                 String status = jsObject.get("XSTATUS").toString();
                 String msg = jsObject.get("XMSG").toString();
                 trxResult = new TrxResult(status, msg);
-                return trxResult;
+                return trxResult.getResult();
             } catch (Exception e) {
                 e.getMessage();
             }
@@ -138,6 +169,8 @@ public class TransactDC {
     public void rollback() {
         if (transactBO != null) {
             transactBO = null;
+        }
+        if(trxResult!=null){
             trxResult = null;
         }
     }

@@ -14,9 +14,9 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveTransaction.execute}"
-                               action="backToWorkContent">
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveReportTime.execute}">
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="RETURN_ASSEMBLY"/>
+                <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
             </amx:commandButton>
         </amx:facet>
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
@@ -33,4 +33,18 @@
             </amx:selectOneChoice>
         </amx:panelFormLayout>
     </amx:panelPage>
+    <amx:popup id="pdispatch">
+        <amx:tableLayout id="tl1">
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1">
+                    <amx:outputText value="#{bindings.Return.inputValue}" id="ot2"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl5">
+                <amx:cellFormat id="cf6">
+                    <amx:commandButton text="Ok" id="cb2" action="backToWorkContent"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
 </amx:view>

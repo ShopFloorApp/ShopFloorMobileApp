@@ -24,6 +24,14 @@ public class JobOperationBO extends AEntity {
     private String lastOpSeq;
     private String nextDept;
     private String opSeq;
+    private String qtyOp;
+    private String qtyCompleted;
+    private String qtyQueue;
+    private String qtyScrapped;
+    private String qtyRun;
+    private String qty2Move;
+    private String qtyCScrapQty;
+    private String qtyRejected;
 
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -248,5 +256,69 @@ public class JobOperationBO extends AEntity {
 
     public String getOpSeq() {
         return opSeq;
+    }
+
+    public void setQtyOp(String qtyOp) {
+        this.qtyOp = qtyOp;
+    }
+
+    public String getQtyOp() {
+        return qtyOp;
+    }
+
+    public void setQtyCompleted(String qtyCompleted) {
+        this.qtyCompleted = qtyCompleted;
+    }
+
+    public String getQtyCompleted() {
+        return qtyCompleted;
+    }
+
+    public void setQtyQueue(String qtyQueue) {
+        this.qtyQueue = qtyQueue;
+    }
+
+    public String getQtyQueue() {
+        return qtyQueue;
+    }
+
+    public void setQtyScrapped(String qtyScrapped) {
+        this.qtyScrapped = qtyScrapped;
+    }
+
+    public String getQtyScrapped() {
+        return qtyScrapped;
+    }
+
+    public void setQtyRun(String qtyRun) {
+        this.qtyRun = qtyRun;
+    }
+
+    public String getQtyRun() {
+        return qtyRun;
+    }
+
+    public void setQty2Move(String qty2Move) {
+        this.qty2Move = qty2Move;
+    }
+
+    public String getQty2Move() {
+        return qty2Move;
+    }
+
+    public void setQtyCScrapQty(String qtyCScrapQty) {
+        this.qtyCScrapQty = qtyCScrapQty;
+    }
+
+    public String getQtyCScrapQty() {
+        return qtyCScrapQty;
+    }
+
+    public void setQtyRejected(String qtyRejected) {
+        this.qtyRejected = qtyRejected;
+    }
+
+    public String getQtyRejected() {
+        return qtyRejected;
     }
 }

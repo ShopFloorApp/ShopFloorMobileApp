@@ -17,6 +17,7 @@
             <amx:commandButton text="Save" id="cb1" action="backToWorkContent"
                                actionListener="#{bindings.saveTransaction.execute}">
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="MOVE_ASSEMBLY"/>
+                <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
             </amx:commandButton>
         </amx:facet>
         <amx:tableLayout id="tl1" styleClass="tableHeader1">
@@ -81,4 +82,18 @@
                                        text="Over complete assembly" simple="true"/>
         </amx:panelFormLayout>
     </amx:panelPage>
+     <amx:popup id="pdispatch">
+        <amx:tableLayout id="tl4">
+            <amx:rowLayout id="rl4">
+                <amx:cellFormat id="cf4">
+                    <amx:outputText value="#{bindings.Return.inputValue}" id="ot11"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl5">
+                <amx:cellFormat id="cf6">
+                    <amx:commandButton text="Ok" id="cb2" action="backToWorkContent"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
 </amx:view>
