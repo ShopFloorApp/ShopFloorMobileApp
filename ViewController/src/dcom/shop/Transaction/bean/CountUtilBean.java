@@ -58,7 +58,7 @@ public class CountUtilBean {
         String ccName = null;
         String itemNum = null;
         String uom = null;
-        String uomQty = null;
+        String trxQty = null;
         String action = null;
         String detailTxnType = null;
         String username = (String)AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}");
@@ -85,8 +85,8 @@ public class CountUtilBean {
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.uom}", String.class);
         uom = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.availQty}", String.class);
-        uomQty = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.qty}", String.class);
+        trxQty = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.callingPg}", String.class);
         action =((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
@@ -107,7 +107,7 @@ public class CountUtilBean {
         "                  \"Org_Id\": \"82\"\n" + 
         "                 },\n" + 
         "   \"InputParameters\": \n" + 
-        "      {\"P_WMS_TRX\": {\"ORG_CODE\": \""+orgCode+"\",\"SUBINV\": \""+subinv+"\",\"PRIMARY_UOM_QTY\": \""+uomQty+"\",\"LOCATOR\": \""+loc+"\",\"CC_NAME\": \""+ccName+"\",\"PARENT_LPN\": \""+lpn+"\",\"ITEM_NUMBER\": \""+itemNum+"\",\"COUNT_UOM\": \""+uom+"\",\"ACTION\": \""+action+"\",\"USER_NAME\": \""+username+"\"}}" + 
+        "      {\"P_WMS_TRX\": {\"ACTION\": \""+action+"\",\"ORG_CODE\": \""+orgCode+"\",\"CC_NAME\": \""+ccName+"\",\"SUBINV\": \""+subinv+"\",\"LOCATOR\": \""+loc+"\",\"PARENT_LPN\": \""+lpn+"\",\"ITEM_NUMBER\": \""+itemNum+"\",\"COUNT_UOM\": \""+uom+"\",\"PRIMARY_UOM_QTY\": \""+trxQty+"\",\"USER_NAME\": \""+username+"\"}}" + 
         "}\n" + 
         "}";
         System.out.println("Calling create method");

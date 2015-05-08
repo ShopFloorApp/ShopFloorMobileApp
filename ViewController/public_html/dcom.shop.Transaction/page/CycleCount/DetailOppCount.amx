@@ -28,7 +28,7 @@
                                        value="#{pageFlowScope.searchKeyword}"/>
                         <amx:commandLink id="cl12" action="ItemLOV">
                             <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                            <amx:setPropertyListener id="spl1"  from='LpnTrxn'
+                            <amx:setPropertyListener id="spl1"  from='MiscTrxn'
                                                      to="#{pageFlowScope.ItemLovPage}" type="action"/>
                         </amx:commandLink>
                         <amx:spacer width="10" id="s13"/>
@@ -107,6 +107,8 @@
                             </amx:tableLayout>
                            <amx:setPropertyListener id="sp2" from="DONE" type="action"
                                                      to="#{pageFlowScope.detTxnType}"/>
+                            <amx:setPropertyListener id="sp3" from="DoneMsg" type="action"
+                                                     to="#{pageFlowScope.doneMsg}"/>
                            <amx:showPopupBehavior id="spb22" popupId="p1" type="action" decoration="anchor" 
                                                    alignId="pp1" align="overlapMiddleCenter"/>
                         </amx:commandLink>
