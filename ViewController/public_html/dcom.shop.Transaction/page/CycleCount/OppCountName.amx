@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Header" id="ot1"/>
+    </amx:facet>
+     <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="oppCountNameBack" actionListener="#{CountUtilBean.clearCountPage}">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2" rendered="false"/>
+        </amx:facet>
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart" >
+            <amx:panelLabelAndMessage label="Name" inlineStyle="text-align:center;" id="plamrr1">
+             
+                <amx:panelGroupLayout id="pgl" >
+                <amx:panelFormLayout id="pfl1a"  >
+                <amx:panelLabelAndMessage  inlineStyle="text-align:center;" id="plamrr1a">
+                <amx:panelGroupLayout id="pgla" layout ="horizontal">
+                    <amx:inputText hintText="Name" inlineStyle="text-align:left;" id="it6" required="true" 
+                                   value="#{pageFlowScope.name}" />
+                     <amx:commandLink id="cl2" action="oppCount">
+                <amx:panelGroupLayout id="pgl333" layout="horizontal">
+                    <amx:outputHtml id="fwdArw" styleClass="fa fa-chevron-right fa-lg"/>
+                </amx:panelGroupLayout>
+                <amx:setPropertyListener id="spl3a" from="S" to="#{pageFlowScope.ccType}"
+                                                     type="action"/>
+            </amx:commandLink>
+            </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            </amx:panelFormLayout>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            
+        </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>

@@ -11,6 +11,12 @@
     <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
     <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CycleCountSubinvDC" id="CycleCountSubinvDCIterator"/>
+    <accessorIterator MasterBinding="CycleCountSubinvDCIterator" Binds="allSubInv" RangeSize="-1"
+                      DataControl="CycleCountSubinvDC" BeanClass="dcom.shop.Transaction.bean.CycleCountSubinvEntityBean"
+                      id="allSubInvIterator"/>
+    <accessorIterator MasterBinding="LocatorDCIterator" Binds="toLocators" RangeSize="-1" DataControl="LocatorDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="toLocatorsIterator"/>
   </executables>
   <bindings>
     <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -42,6 +48,36 @@
       </ListDisplayAttrNames>
     </list>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+    <list IterBinding="CycleCountSubinvDCIterator" id="subToInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="allSubInvIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="allSubInv"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="SUBINVENTORY"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="SUBINVENTORY"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="LocatorDCIterator" id="toLoc" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="toLocatorsIterator"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+          NullValueFlag="start">
+      <AttrNames>
+        <Item Value="toLoc"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locator"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locator"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="refreshToLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshToLocators"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
   </bindings>
 </pageDefinition>

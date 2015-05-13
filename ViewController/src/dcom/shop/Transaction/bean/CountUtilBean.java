@@ -25,6 +25,8 @@ public class CountUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToSubinventory}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToLocator}", null);        
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);            
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.callingPg}", null); 
        
@@ -62,6 +64,7 @@ public class CountUtilBean {
         String action = null;
         String detailTxnType = null;
         String username = (String)AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}");
+        String ccType = null;
 
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.name}", String.class);
         ccName = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
@@ -73,11 +76,26 @@ public class CountUtilBean {
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchLpnKeyword}", String.class);
         lpn = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
-        subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ccType}", String.class);
+        ccType = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
-        loc = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        if(ccType.equals("A")){
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
+            subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+            
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
+            loc = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+            
+        }else {
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", String.class);
+            subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+            
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToLocator}", String.class);
+            loc = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+        }
+        
+        
+        
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
         itemNum = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();

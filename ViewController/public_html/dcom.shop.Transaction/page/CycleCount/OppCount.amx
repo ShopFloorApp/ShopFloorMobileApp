@@ -6,42 +6,80 @@
             <amx:outputText value="Opportunistic Counting" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
+       
             <amx:commandLink id="cl1" action="oppCountBack" actionListener="#{CountUtilBean.clearCountPage}">
                 <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
                 </amx:panelGroupLayout>
+                 
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-            <amx:panelLabelAndMessage label="Name" inlineStyle="text-align:center;" id="plamrr1">
+            <!--amx:panelLabelAndMessage label="Name" inlineStyle="text-align:center;" id="plamrr1">
                 <amx:panelGroupLayout id="pgl">
                     <amx:inputText hintText="Name" inlineStyle="text-align:left;" id="it6" required="true"
                                    value="#{pageFlowScope.name}"/>
                 </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6">
+            </amx:panelLabelAndMessage-->
+            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6a"
+            rendered='#{pageFlowScope.ccType == "S" ? true : false}' >
+                <amx:panelGroupLayout id="pgl2a">
+                    <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}"
+                                         valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                        <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
+                    </amx:selectOneChoice-->
+                    <amx:selectOneChoice value="#{pageFlowScope.ToSubinventory}" 
+                    rendered='#{pageFlowScope.ccType == "S" ? true : false}'
+                                          id="soc3"  valueChangeListener="#{StateListenerBean.ToSubinvValueChange}"> 
+                        <amx:selectItem label="Choose" id="si4a" value="0"/>
+                        <amx:selectItems value="#{bindings.subToInv.items}" id="si3"/>
+                    </amx:selectOneChoice>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage> 
+            
+            <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam6aa"
+            rendered='#{pageFlowScope.ccType == "S" ? true : false}' >
+                <amx:panelGroupLayout id="pgl2aa">
+                    <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}"
+                                         valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                        <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
+                    </amx:selectOneChoice-->
+                    <amx:selectOneChoice value="#{pageFlowScope.ToLocator}" 
+                                         id="soc4"
+                                         rendered='#{pageFlowScope.ccType == "S" ? true : false}' >
+                        <amx:selectItem label="Choose" id="si4aa" value="0"/>
+                        <amx:selectItems value="#{bindings.toLoc.items}" id="si6"/>
+                    </amx:selectOneChoice>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage> 
+            
+            <amx:panelLabelAndMessage label="Subinventory" inlineStyle="text-align:center;" id="plam6" 
+            rendered='#{pageFlowScope.ccType == "A" ? true : false}' >
                 <amx:panelGroupLayout id="pgl2">
                     <!--amx:selectOneChoice value="#{bindings.subinventories.inputValue}"
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItems value="#{bindings.subinventories.items}" id="si1"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}" rendered="true"
+                    <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}" 
+                    rendered='#{pageFlowScope.ccType == "A" ? true : false}'
                                          valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
                         <amx:selectItem label="Choose" id="si4" value="0"/>
                         <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                     </amx:selectOneChoice>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886">
+            <amx:panelLabelAndMessage label="Locator" inlineStyle="text-align:center;" id="plam886"
+            rendered='#{pageFlowScope.ccType == "A" ? true : false}' >
                 <amx:panelGroupLayout id="pgl3">
                     <!--amx:selectOneChoice value="#{bindings.locators.inputValue}" id="soc2">
                         <amx:selectItems value="#{bindings.locators.items}" id="si2"/>
                     </amx:selectOneChoice-->
-                    <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" required="true" id="soc2">
+                    <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" required="true" id="soc2"
+                    rendered='#{pageFlowScope.ccType == "A" ? true : false}' >
                         <amx:selectItem label="Choose" id="si5" value="0"/>
                         <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
                     </amx:selectOneChoice>

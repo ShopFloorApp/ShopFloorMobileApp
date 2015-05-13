@@ -37,22 +37,25 @@
     <view id="itemLOVPG">
       <page>/page/LovPage/itemLOVPG.amx</page>
     </view>
+    <view id="OppCountName">
+      <page>/dcom.shop.Transaction/page/CycleCount/OppCountName.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>cycleCount</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>cycleCountBack</from-outcome>
         <to-activity-id>returnToTransaction</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__3">
-        <from-outcome>oppCount</from-outcome>
-        <to-activity-id>OppCount</to-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>oppCountName</from-outcome>
+        <to-activity-id>OppCountName</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__4">
       <from-activity-id>OppCount</from-activity-id>
       <control-flow-case id="__5">
         <from-outcome>oppCountBack</from-outcome>
-        <to-activity-id>cycleCount</to-activity-id>
+        <to-activity-id>OppCountName</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__8">
         <from-outcome>lpnLOV</from-outcome>
@@ -79,6 +82,17 @@
       <control-flow-case id="__15">
         <from-outcome>ItemLOV</from-outcome>
         <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>OppCountName</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>oppCount</from-outcome>
+        <to-activity-id>OppCount</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>oppCountNameBack</from-outcome>
+        <to-activity-id>cycleCount</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>
