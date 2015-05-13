@@ -394,9 +394,8 @@
                       BeanClass="dcom.shop.Inquiry.ProductSearchDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
     <Source>
       <bean-definition BeanClass="dcom.shop.Inquiry.ProductSearchDC"
-                             DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler"
-                             AccessMode="scrollable" EagerPersist="false"
-                             xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
   <AdapterDataControl id="InvTrnDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"

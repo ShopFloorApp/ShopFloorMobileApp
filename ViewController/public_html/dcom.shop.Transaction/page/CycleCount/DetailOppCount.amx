@@ -30,6 +30,9 @@
                             <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl1"  from='MiscTrxn'
                                                      to="#{pageFlowScope.ItemLovPage}" type="action"/>
+                            <amx:setPropertyListener id="spl1a"  from='CycleCount'
+                                                     to="#{pageFlowScope.callingPage}" type="action"/>
+                            
                         </amx:commandLink>
                         <amx:spacer width="10" id="s13"/>
                     </amx:panelGroupLayout>

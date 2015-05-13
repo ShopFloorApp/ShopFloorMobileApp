@@ -22,7 +22,7 @@ public class CountUtilBean {
     
     
     public void clearCountPage(ActionEvent actionEvent) {
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
+      //  AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToSubinventory}", null);

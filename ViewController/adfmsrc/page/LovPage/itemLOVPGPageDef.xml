@@ -38,6 +38,7 @@
           <Item Value="PRIMARYUOM"/>
           <Item Value="LOTCONTROL"/>
           <Item Value="SERIALCONTROL"/>
+          <Item Value="ORGID"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

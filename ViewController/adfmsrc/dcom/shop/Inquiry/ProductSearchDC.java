@@ -69,12 +69,13 @@ public class ProductSearchDC {
         String payload = null;
         String callingPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
         String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
-        if ("LPN".equals(callingPage)) {
+        if ("LPN".equals(callingPage) || "CycleCount".equals(callingPage)) {
             payload =
                 "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
                 "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\":\""+orgCode +"\",\"ITEM\": \"%" +
                 keyword + "%\",\"ITEMSTATUS\": \"ONHAND\"}}\n" + "}\n" + "}";
-        } else {
+        } 
+        else {
             payload =
                 "{\"x\":\n" + 
                 "{\n" + 

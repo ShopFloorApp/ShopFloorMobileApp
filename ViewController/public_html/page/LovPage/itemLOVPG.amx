@@ -21,7 +21,7 @@
             <!--amx:inputText value="#{bindings.desc.inputValue}" label="Item Desc" id="it1"/-->
         </amx:panelFormLayout>
         <amx:panelLabelAndMessage id="plam1" inlineStyle="vertical-align:middle; text-align:center;">
-            <amx:commandLink id="cl12" rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? true : false}"
+            <amx:commandLink id="cl12" rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn'  ? true : false}"
                              actionListener="#{bindings.refresh.execute}">
                 <amx:tableLayout id="tl2" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -38,7 +38,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
             </amx:commandLink>
-            <amx:commandLink id="cl1" rendered="#{pageFlowScope.ItemLovPage != 'LpnTrxn' ? false : true}"
+            <amx:commandLink id="cl1" rendered="#{pageFlowScope.ItemLovPage == 'LpnTrxn'  ? true : false}"
                              actionListener="#{bindings.refreshLpnItems.execute}">
                 <amx:tableLayout id="tl4" width="100%">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
@@ -73,6 +73,10 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:panelGroupLayout-->
+        
+        
+        
+        
         <amx:listView var="row" value="#{bindings.allProdItems.collectionModel}"
                       fetchSize="#{bindings.allProdItems.rangeSize}"
                       selectedRowKeys="#{bindings.allProdItems.collectionModel.selectedRow}"
@@ -119,6 +123,8 @@
                                          id="spl12"/>
                 <amx:setPropertyListener from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"
                                          id="sp11"/>
+                <amx:setPropertyListener from="#{row.ORGID}" type="action" to="#{pageFlowScope.availQty}"
+                                         id="sp12"/>
             </amx:listItem>
             <amx:listItem showLinkIcon="false" action="__back" actionListener="#{StateListenerBean.ItemValueChange}"
                           rendered="#{pageFlowScope.ItemLovPage != 'MiscTrxn' ? true : false}" id="li22">
@@ -150,6 +156,8 @@
                                          id="spl8"/>
                 <amx:setPropertyListener from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"
                                          id="spl9"/>
+                 <amx:setPropertyListener from="#{row.ORGID}" type="action" to="#{pageFlowScope.availQty}"
+                                         id="sp12a"/>
             </amx:listItem>
         </amx:listView>
         <amx:listView var="row" value="#{bindings.allLpnDetails.collectionModel}"
