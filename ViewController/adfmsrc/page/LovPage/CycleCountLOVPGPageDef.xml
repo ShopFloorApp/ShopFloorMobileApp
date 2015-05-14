@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="CycleCountLOVPGPageDef"
+                Package="page.LovPage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CountTypeDC" id="CountTypeDCIterator"/>
+    <accessorIterator MasterBinding="CountTypeDCIterator" Binds="countType" RangeSize="25" DataControl="CountTypeDC"
+                      BeanClass="dcom.shop.application.mobile.CountTypeBO" id="countTypeIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="countTypeIterator" id="countType">
+      <nodeDefinition DefName="dcom.shop.application.mobile.CountTypeBO" Name="countType0">
+        <AttrNames>
+          <Item Value="countName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="CountTypeDC" InstanceName="data.CountTypeDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

@@ -7,7 +7,13 @@ import dcom.shop.restURIDetails.RestCallerUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.el.ValueExpression;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.java.beans.PropertyChangeListener;
+import oracle.adfmf.java.beans.PropertyChangeSupport;
+import oracle.adfmf.java.beans.ProviderChangeListener;
+import oracle.adfmf.java.beans.ProviderChangeSupport;
 import oracle.adfmf.util.Utility;
 
 import org.json.simple.JSONArray;
@@ -21,6 +27,8 @@ public class CountTypeDC extends SyncUtils {
     }
     protected static List s_CountType = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
+    private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
+    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     //SyncUtils syncUtils = new SyncUtils();
 
 
@@ -36,8 +44,18 @@ public class CountTypeDC extends SyncUtils {
             Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
             String restURI = "/webservices/rest/DCOMLOV/getcyclecount/";
             RestCallerUtil rcu = new RestCallerUtil();
+            String orgCode = null;
+            String ccName = null;
+            ValueExpression ve = null;
+            
+            ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.name}", String.class);
+            ccName = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+            
+            ve = AdfmfJavaUtilities.getValueExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}", String.class);
+            orgCode = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+            
             String payload =
-                "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
+               /* "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
                 "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
                 "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/header\",\n" +
                 "                  \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
@@ -45,7 +63,23 @@ public class CountTypeDC extends SyncUtils {
                 "                  \"SecurityGroup\": \"STANDARD\",\n" +
                 "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
                 "                 },\n" + "   \"InputParameters\": \n" + "      {\"PWAREHOUSE\": \"\",\n" +
-                "       \"PCC\": \"\"\n }\n" + "}\n" + "}\n";
+                "       \"PCC\": \"\"\n }\n" + "}\n" + "}\n";*/
+                "{\n" + 
+                "    \"x\": {\n" + 
+                "        \n" + 
+                "        \"RESTHeader\": {\n" + 
+                "            \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
+                "            \"RespApplication\": \"ONT\",\n" + 
+                "            \"SecurityGroup\": \"STANDARD\",\n" + 
+                "            \"NLSLanguage\": \"AMERICAN\",\n" + 
+                "            \"Org_Id\": \"82\"\n" + 
+                "        },\n" + 
+                "        \"InputParameters\": {\n" + 
+                "            \"PWAREHOUSE\": \""+orgCode+"\",\n" + 
+                "            \"PCC\": \""+ccName+"\"\n" + 
+                "        }\n" + 
+                "    }\n" + 
+                "}";
             System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
@@ -85,6 +119,33 @@ public class CountTypeDC extends SyncUtils {
             }
         }
         CountTypeBO[] CountTypeArray = (CountTypeBO[]) s_CountType.toArray(new CountTypeBO[s_CountType.size()]);
+        if(s_CountType.size()!=0){
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.CycleNameResults}", "");
+        }else{
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.CycleNameResults}", "No Search Results");
+        }
+        
+        
         return CountTypeArray;
     }
+    public void refresh() {
+        providerChangeSupport.fireProviderRefresh("countType");
+    }
+
+    public void addProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.addProviderChangeListener(l);
+    }
+
+    public void removeProviderChangeListener(ProviderChangeListener l) {
+        providerChangeSupport.removeProviderChangeListener(l);
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.addPropertyChangeListener(l);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
 }

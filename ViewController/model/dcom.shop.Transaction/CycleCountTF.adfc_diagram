@@ -77,7 +77,7 @@
       <property
          name="fromOutcome">oppCountBack</property>
       <property
-         name="sdm:polyPoints">L50,465.0,165.49414,355.0,205.19531,R50</property>
+         name="sdm:polyPoints">L54,465.0,168.99414,356.23105,208.69531,R54</property>
    </ControlFlowCase>
    <View
       id="View8">
@@ -102,7 +102,7 @@
       <property
          name="fromOutcome">lpnLOV</property>
       <property
-         name="sdm:polyPoints">B50,506.0,223.68054,659.67474,320.5459,L54</property>
+         name="sdm:polyPoints">B44,502.5,223.3694,659.7074,320.5459,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -112,7 +112,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L46,661.68555,313.5459,513.0,219.84473,B61</property>
+         name="sdm:polyPoints">L46,661.68555,313.5459,509.5,219.49414,B56</property>
    </ControlFlowCase>
    <View
       id="View11">
@@ -208,5 +208,49 @@
          name="fromOutcome">oppCountNameBack</property>
       <property
          name="sdm:polyPoints">L54,273.0,208.69531,97.94965,257.34473,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View19">
+      <property
+         name="activityId">CycleCountLOVPG</property>
+      <property
+         name="page">/page/LovPage/CycleCountLOVPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CycleCountLOVPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">319.09766</property>
+      <property
+         name="x">415.68848</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="View16"
+      to="View19">
+      <property
+         name="fromOutcome">cycleCountLOV</property>
+      <property
+         name="sdm:polyPoints">B50,314.0,259.1953,374.68848,318.74707,L50</property>
+   </ControlFlowCase>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule21">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">32.29883</property>
+      <property
+         name="x">356.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase22"
+      from="WildcardControlFlowRule21"
+      to="View16">
+      <property
+         name="fromOutcome">txnDone</property>
+      <property
+         name="sdm:polyPoints">B50,356.0,74.94824,314.0,151.19531,T50</property>
    </ControlFlowCase>
 </SDM>

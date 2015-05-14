@@ -6,7 +6,7 @@
       <amx:outputText value="Detail Opportunistic Counting" id="ot1"/>
     </amx:facet>
     <amx:facet name="primary">
-      <amx:commandLink id="cl1" action= "detailOppCountBack">
+      <amx:commandLink id="cl1" action= "detailOppCountBack" actionListener="#{CountUtilBean.clearCountPage}">
                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
@@ -31,7 +31,7 @@
                             <amx:setPropertyListener id="spl1"  from='MiscTrxn'
                                                      to="#{pageFlowScope.ItemLovPage}" type="action"/>
                             <amx:setPropertyListener id="spl1a"  from='CycleCount'
-                                                     to="#{pageFlowScope.callingPage}" type="action"/>
+                                                     to="#{pageFlowScope.CallingPage}" type="action"/>
                             
                         </amx:commandLink>
                         <amx:spacer width="10" id="s13"/>
@@ -94,7 +94,7 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11">
                         <amx:commandLink id="cl4"  actionListener="#{CountUtilBean.callCountRestService}"
-                                         action="detailOppCountBack">
+                                         action="txnDone">
                             <amx:tableLayout id="tl5t" halign="center">
                                 <amx:rowLayout id="rl14">
                                     <amx:cellFormat id="cf11c" halign="center">

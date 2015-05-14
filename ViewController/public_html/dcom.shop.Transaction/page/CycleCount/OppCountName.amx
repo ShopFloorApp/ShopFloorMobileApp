@@ -25,6 +25,9 @@
                 <amx:panelGroupLayout id="pgla" layout ="horizontal">
                     <amx:inputText hintText="Name" inlineStyle="text-align:left;" id="it6" required="true" 
                                    value="#{pageFlowScope.name}" />
+                     <amx:commandLink id="cl12" action="cycleCountLOV">
+                            <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>                            
+                        </amx:commandLink>
                      <amx:commandLink id="cl2" action="oppCount">
                 <amx:panelGroupLayout id="pgl333" layout="horizontal">
                     <amx:outputHtml id="fwdArw" styleClass="fa fa-chevron-right fa-lg"/>

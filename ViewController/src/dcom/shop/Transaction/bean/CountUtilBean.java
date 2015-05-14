@@ -150,6 +150,7 @@ public class CountUtilBean {
                 }
                 else {
                     clearCountPage(actionEvent);
+                    clearCCName(actionEvent);
                 }
                 }
                 else if(action.equals("SUMMARY")) {
@@ -161,5 +162,9 @@ public class CountUtilBean {
                 Trace.log("REST_JSON",Level.SEVERE, this.getClass(),"ProductDetailsEntity", e.getLocalizedMessage());
             }
         
+    }
+
+    public void clearCCName(ActionEvent actionEvent) {
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
     }
 }
