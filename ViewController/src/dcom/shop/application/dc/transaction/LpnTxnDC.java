@@ -162,7 +162,7 @@ public class LpnTxnDC extends SyncUtils {
             "                  \"RespApplication\": \"ONT\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
-            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PORGCODE\": \"" + orgCode + "\" ";
+            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PORGCODE\": \"" + orgCode + "\" }}}";
         try {
             RestCallerUtil rest = new RestCallerUtil();
             String jsonArrayAsString = rest.invokeUPDATE(restURI, payload);
@@ -180,7 +180,7 @@ public class LpnTxnDC extends SyncUtils {
                 if ("F".equals(result)) {
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
-                                                                              "Success", "Generate LPN Failed.", "ok"
+                                                                              "Error", "Generate LPN Failed.", "ok"
                     });
 
                 } else {
@@ -188,10 +188,15 @@ public class LpnTxnDC extends SyncUtils {
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}",lpn);
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
-                                                                              "Error", "LPN " + lpn + " Generated!",
+                                                                              "Success", "LPN " + lpn + " Generated!",
                                                                               "ok"
                     });
                 }
+            }else{
+                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                          "showAlert", new Object[] {
+                                                                          "Error", "Generate LPN Failed.", "ok"
+                });
             }
         } catch (Exception e) {
             System.out.println("error " + e.toString());
