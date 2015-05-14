@@ -214,7 +214,12 @@ public class LocatorDC extends SyncUtils {
             paramMap.put("collection", s_locator);
             paramMap.put("filterFieldsValues", filterFileds);
 
-            filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
+            //AJ 14May
+            //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
+            //filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
+            
+            String whereClause="WHERE SUBINV=\""+subInv+"\"";
+            filtered_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
@@ -233,7 +238,12 @@ public class LocatorDC extends SyncUtils {
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_to_locator);
             paramMap.put("filterFieldsValues", filterFileds);
-            filtered_To_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
+            //AJ 14May
+            //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
+            //filtered_To_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
+            
+            String whereClause="WHERE SUBINV=\""+subInv+"\"";
+            filtered_To_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
