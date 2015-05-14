@@ -81,6 +81,11 @@
                         <amx:setPropertyListener id="spl11" from="LPN" to="#{pageFlowScope.barCodeField}"
                                                  type="action"/>
                     </amx:commandLink>
+                    <amx:spacer width="10" id="s19"/>
+                    <amx:commandLink id="cl7" rendered="#{pageFlowScope.LpnPage == 'PACK_FROM'}" actionListener="#{bindings.GenerateLpnWS.execute}">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:outputHtml id="oh3" styleClass="fa fa-cog fa-sm" inlineStyle="color:#34AADC;"/>
+                    </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Subinventory"

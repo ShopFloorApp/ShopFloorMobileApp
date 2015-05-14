@@ -152,6 +152,51 @@ public class LpnTxnDC extends SyncUtils {
 
     }
 
+    public void GenerateLpnWS() {
+        String restURI = RestURI.GenerateLpnURI();
+        String orgCode =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        String payload =
+            "{\n" + "\"Input_Parameters\":\n" + "{\n" +
+            "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+            "                  \"RespApplication\": \"ONT\",\n" +
+            "                  \"SecurityGroup\": \"STANDARD\",\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PORGCODE\": \"" + orgCode + "\" ";
+        try {
+            RestCallerUtil rest = new RestCallerUtil();
+            String jsonArrayAsString = rest.invokeUPDATE(restURI, payload);
+            System.out.println("Received response" + jsonArrayAsString);
+            if (jsonArrayAsString != null && !("".equals(jsonArrayAsString))) {
+                JSONObject jsObject1 = null;
+                JSONParser parser = new JSONParser();
+                Object object;
+
+                object = parser.parse(jsonArrayAsString);
+
+                JSONObject jsonObject = (JSONObject) object;
+                JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                String result = jsObject.get("XSTATUS").toString();
+                if ("F".equals(result)) {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Success", "Generate LPN Failed.", "ok"
+                    });
+
+                } else {
+                    String lpn = jsObject.get("XLPN").toString();
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}",lpn);
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error", "LPN " + lpn + " Generated!",
+                                                                              "ok"
+                    });
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("error " + e.toString());
+        }
+    }
 
     public String ProcessWS(Integer trxnId) {
         String restURI = RestURI.PostLpnTrxnURI();
@@ -275,8 +320,9 @@ public class LpnTxnDC extends SyncUtils {
                 } else {
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
-                                                                              "Error", "Transaction submission failed.\n"+jsObject.get("XMSG").toString(),
-                                                                              "ok"
+                                                                              "Error",
+                                                                              "Transaction submission failed.\n" +
+                                                                              jsObject.get("XMSG").toString(), "ok"
                     });
                     returnResult = "";
                 }
@@ -303,8 +349,8 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("collection", s_lpnTrxns);
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
-            if(s_lpnTrxns.size()>0)
-            filtered_LpnTxn = (List) super.getFileteredCollection(LpnTxnBO.class, paramMap);
+            if (s_lpnTrxns.size() > 0)
+                filtered_LpnTxn = (List) super.getFileteredCollection(LpnTxnBO.class, paramMap);
             System.out.println("collection size is " + filtered_LpnTxn.size());
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
@@ -327,8 +373,8 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-            if(s_serialTrxns.size()>0)
-            s_filteredSerialTrxns = (List) sync.getFileteredCollection(SerialBO.class, paramMap);
+            if (s_serialTrxns.size() > 0)
+                s_filteredSerialTrxns = (List) sync.getFileteredCollection(SerialBO.class, paramMap);
             System.out.println("collection size is " + s_filteredSerialTrxns.size());
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
@@ -351,8 +397,8 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
             SyncUtils sync = new SyncUtils();
-            if(s_lotTrxns.size()>0)
-            s_filteredLotTrxns = (List) sync.getFileteredCollection(LotBO.class, paramMap);
+            if (s_lotTrxns.size() > 0)
+                s_filteredLotTrxns = (List) sync.getFileteredCollection(LotBO.class, paramMap);
             System.out.println("collection size is " + s_filteredLotTrxns.size());
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);
@@ -375,8 +421,8 @@ public class LpnTxnDC extends SyncUtils {
             paramMap.put("collection", s_itemTrxns);
             paramMap.put("filterFieldsValues", filterFileds);
             System.out.println("called super filtered class");
-            if(s_itemTrxns.size()>0)
-            s_filteredItemTxn = super.getFileteredCollection(ItemTxnBO.class, paramMap);
+            if (s_itemTrxns.size() > 0)
+                s_filteredItemTxn = super.getFileteredCollection(ItemTxnBO.class, paramMap);
             System.out.println("collection size is " + s_filteredItemTxn.size());
         } catch (Exception e) {
             throw new RuntimeException("My Code Error " + e);

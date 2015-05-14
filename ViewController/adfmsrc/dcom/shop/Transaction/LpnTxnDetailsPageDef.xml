@@ -83,5 +83,7 @@
     <methodAction id="InsertTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="InsertTransaction"
                   IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider"
                   ReturnName="data.LpnTxnDC.methodResults.InsertTransaction_LpnTxnDC_dataProvider_InsertTransaction_result"/>
+    <methodAction id="GenerateLpnWS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="GenerateLpnWS"
+                  IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

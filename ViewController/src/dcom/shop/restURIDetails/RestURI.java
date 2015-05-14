@@ -23,6 +23,12 @@ public class RestURI {
     public static String PostLpnTrxnURI() {
         return PROCESS_LPN_TRXN_URI;
     }
+    
+    private static final String GENERATE_LPN_URI = "/webservices/rest/DCOMLPN/generatelpn/";
+
+    public static String GenerateLpnURI() {
+        return GENERATE_LPN_URI;
+    }
 
     private static final String ONHAND_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getonhand/";
 
