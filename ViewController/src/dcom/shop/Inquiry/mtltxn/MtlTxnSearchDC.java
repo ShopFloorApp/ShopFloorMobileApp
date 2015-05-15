@@ -1,5 +1,6 @@
 package dcom.shop.Inquiry.mtltxn;
 
+import dcom.shop.application.base.AEntity;
 import dcom.shop.restURIDetails.RestURI;
 
 import dcom.shop.restURIDetails.RestCallerUtil;
@@ -44,8 +45,8 @@ public class MtlTxnSearchDC {
         String locator = null;
         String lpn = null;
         String txnType = null;
-        Date startDate = null;
-        Date endDate = null;
+       // Date startDate = null;
+   //     Date endDate = null;
 
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
         item = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
@@ -62,11 +63,39 @@ public class MtlTxnSearchDC {
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.txnType}", String.class);
         txnType = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
 
-        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.MtlTrxnStartDate}", Date.class);
+      /*  ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.MtlTrxnStartDate}", Date.class);
         startDate = ((Date) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.MtlTrxnEndDate}", Date.class);
-        endDate = ((Date) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));
+        endDate = ((Date) ve.getValue(AdfmfJavaUtilities.getAdfELContext()));*/
+      String startDate = null;
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.MtlTrxnStartDate}", String.class);
+        startDate = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        if (startDate == null){
+            startDate = "";
+        }
+        else{
+          startDate = toDateTime(startDate);
+            if (startDate == null){
+                startDate = "";
+            }
+        }
+        String endDate = null;
+          ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.MtlTrxnEndDate}", String.class);
+          endDate = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+          
+          if (endDate==null){
+              endDate = "";
+          }
+          else {
+            endDate =  toDateTime(endDate);
+              if (endDate==null){
+                  endDate = "";
+              }
+          }
+       
+
         String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         
         String restURI = RestURI.PostMtlTxnInquiryURI();
@@ -185,5 +214,17 @@ public class MtlTxnSearchDC {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTxnSearchResults}", "No Results Found");
         }
         return mtlTxnArray;
+    }
+    public String toDateTime(String value){
+        SimpleDateFormat intialFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String newDate = null;
+        try {
+            Date date = intialFormat.parse(value);
+            newDate = newFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return newDate;
     }
 }

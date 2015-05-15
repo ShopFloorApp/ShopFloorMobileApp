@@ -32,7 +32,10 @@ public class SearchUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnLovPage}", null);       
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnType}", null);       
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnType}", null);  
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTrxnStartDate}", null);  
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTrxnEndDate}", null);  
+        
     }
 
     public void clearOnHandPageStart(ActionEvent actionEvent) {
