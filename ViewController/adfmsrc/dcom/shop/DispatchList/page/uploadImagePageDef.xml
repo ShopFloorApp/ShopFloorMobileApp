@@ -4,26 +4,42 @@
     <parameters/>
     <executables>
         <variableIterator id="variables">
-            <variable Type="java.lang.String" Name="getPicture_Return" IsQueriable="false" IsUpdateable="0"
-                      DefaultValue="${bindings.getPicture.result}"/>
+            <variable Type="java.lang.String" Name="uploadImage1_Return" IsQueriable="false" IsUpdateable="0"
+                      DefaultValue="${bindings.uploadImage1.result}"/>
         </variableIterator>
+        <iterator Binds="root" RangeSize="25" DataControl="UploadImageDC" id="UploadImageDCIterator"/>
+        <accessorIterator MasterBinding="UploadImageDCIterator" Binds="uploadImage" RangeSize="25"
+                          DataControl="UploadImageDC" BeanClass="dcom.shop.application.mobile.dispatch.UploadImageBO"
+                          id="uploadImageIterator"/>
     </executables>
     <bindings>
-        <methodAction id="getPicture" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getPicture"
-                      IsViewObjectMethod="false" DataControl="DeviceFeatures"
-                      InstanceName="data.DeviceFeatures.dataProvider"
-                      ReturnName="data.DeviceFeatures.methodResults.getPicture_DeviceFeatures_dataProvider_getPicture_result">
-            <NamedData NDName="quality" NDValue="50" NDType="int"/>
-            <NamedData NDName="destinationType" NDValue="1" NDType="int"/>
-            <NamedData NDName="sourceType" NDValue="1" NDType="int"/>
-            <NamedData NDName="allowEdit" NDValue="true" NDType="boolean"/>
-            <NamedData NDName="encodingType" NDValue="1" NDType="int"/>
-            <NamedData NDName="targetWidth" NDValue="200" NDType="int"/>
-            <NamedData NDName="targetHeight" NDValue="200" NDType="int"/>
+        <tree IterBinding="uploadImageIterator" id="uploadImage">
+            <nodeDefinition DefName="dcom.shop.application.mobile.dispatch.UploadImageBO" Name="uploadImage0">
+                <AttrNames>
+                    <Item Value="imageDataB64"/>
+                    <Item Value="imageDescription"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <methodAction id="addImage" RequiresUpdateModel="true" Action="invokeMethod" MethodName="addImage"
+                      IsViewObjectMethod="false" DataControl="UploadImageDC"
+                      InstanceName="data.UploadImageDC.dataProvider"/>
+        <methodAction id="uploadImage1" RequiresUpdateModel="true" Action="invokeMethod" MethodName="uploadImage"
+                      IsViewObjectMethod="false" DataControl="UploadImageDC"
+                      InstanceName="data.UploadImageDC.dataProvider"
+                      ReturnName="data.UploadImageDC.methodResults.uploadImage_UploadImageDC_dataProvider_uploadImage_result">
+            <NamedData NDName="imageObj" NDValue="#{bindings.uploadImageIterator.currentRow.dataProvider}"
+                       NDType="dcom.shop.application.mobile.dispatch.UploadImageBO"/>
+        </methodAction>
+        <methodAction id="deleteImage" RequiresUpdateModel="true" Action="invokeMethod" MethodName="deleteImage"
+                      IsViewObjectMethod="false" DataControl="UploadImageDC"
+                      InstanceName="data.UploadImageDC.dataProvider">
+            <NamedData NDName="imageObj" NDValue="#{bindings.uploadImageIterator.currentRow.dataProvider}"
+                       NDType="dcom.shop.application.mobile.dispatch.UploadImageBO"/>
         </methodAction>
         <attributeValues IterBinding="variables" id="Return">
             <AttrNames>
-                <Item Value="getPicture_Return"/>
+                <Item Value="uploadImage1_Return"/>
             </AttrNames>
         </attributeValues>
     </bindings>

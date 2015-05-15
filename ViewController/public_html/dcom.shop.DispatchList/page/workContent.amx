@@ -55,7 +55,9 @@
                                          to="#{pageFlowScope.qtyRejected}" type="action"/>
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
-            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveJobAction.execute}"/>
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveJobAction.execute}">
+                <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
+            </amx:commandButton>
         </amx:facet>
         <amx:tableLayout id="tl1" width="100%" borderWidth="0">
             <amx:rowLayout id="rl1">
@@ -172,7 +174,11 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="anchor"
+                            <amx:setPropertyListener id="spl21" to="#{pageFlowScope.jobOps}"
+                                                     from="#{bindings.jobOps.inputValue}" type="action"/>
+                            <amx:setPropertyListener id="spl22" from="#{bindings.jobNumber.inputValue}"
+                                                     to="#{pageFlowScope.jobNumber}" type="action"/>
+                            <amx:showPopupBehavior id="spb3" popupId="p1" type="action" decoration="anchor"
                                                    alignId="cl10"/>
                         </amx:commandLink>
                     </amx:cellFormat>
@@ -403,6 +409,20 @@
                             </amx:rowLayout>
                         </amx:tableLayout>
                     </amx:commandLink>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
+    </amx:popup>
+    <amx:popup id="pdispatch">
+        <amx:tableLayout id="tl21">
+            <amx:rowLayout id="rl37">
+                <amx:cellFormat id="cf50">
+                    <amx:outputText id="ot3" value="#{pageFlowScope.jobActionResult}"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl38">
+                <amx:cellFormat id="cf51">
+                    <amx:commandButton text="Ok" id="cb2" action="backToWorkContent"/>
                 </amx:cellFormat>
             </amx:rowLayout>
         </amx:tableLayout>

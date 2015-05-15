@@ -206,6 +206,12 @@ public class RestURI {
     public static String PostWipTrx(){
         return POST_WIP_TRX;
     }
+    
+    private static final String UPLOAD_IMAGE ="/webservices/rest/XXDcomsInsertBlob/insert_blob/";
+    
+    public static String UploadImage(){
+        return UPLOAD_IMAGE;
+    }
     /*
      * Dispatch Lists end
      */

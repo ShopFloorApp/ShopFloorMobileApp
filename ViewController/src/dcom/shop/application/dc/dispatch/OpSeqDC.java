@@ -42,7 +42,8 @@ public class OpSeqDC extends AViewObject {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
 
 
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
+        String orgCode =
+            AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String jobNumber = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}").toString();
 
         StringBuffer strPayload = new StringBuffer();
@@ -54,7 +55,6 @@ public class OpSeqDC extends AViewObject {
                           "      \"PJOBOP\": \"" + jobNumber + "\",\n" + "      \"PCONTEXT\":\"\"\n" + "    }\n" +
                           "  }\n" + "}");
 
-
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetOpSeq(), strPayload.toString());
         if (jsonArrayAsString != null) {
             try {
@@ -64,9 +64,9 @@ public class OpSeqDC extends AViewObject {
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObjectParent = (JSONObject) jsObject.get("XOP");
-                Boolean isArray = (jsObjectParent.size() > 1 ? true : false);
-                if (isArray) {
-                    JSONArray xopArray = (JSONArray) jsObjectParent.get("XOP_ITEM");
+                Object value = jsObjectParent.get("XOP_ITEM");
+                if (value instanceof JSONArray) {
+                    JSONArray xopArray = (JSONArray) value;
                     if (xopArray != null) {
                         int size = xopArray.size();
                         OpSeqBO opSeqObj;
@@ -89,7 +89,7 @@ public class OpSeqDC extends AViewObject {
                             opSeqList.add(opSeqObj);
                         }
                     }
-                } else {
+                } else if (value instanceof JSONObject) {
                     JSONObject xopObject = (JSONObject) jsObjectParent.get("XOP_ITEM");
                     OpSeqBO opSeqObj = new OpSeqBO();
 
@@ -117,7 +117,7 @@ public class OpSeqDC extends AViewObject {
     }
 
     public String getOpCode(String opSeq) {
-        if(opSeqList.isEmpty()){
+        if (opSeqList.isEmpty()) {
             getOpSeq();
         }
         for (OpSeqBO opseqObj : opSeqList) {
@@ -130,7 +130,7 @@ public class OpSeqDC extends AViewObject {
     }
 
     public String getDept(String opSeq) {
-        if(opSeqList.isEmpty()){
+        if (opSeqList.isEmpty()) {
             getOpSeq();
         }
         for (OpSeqBO opseqObj : opSeqList) {

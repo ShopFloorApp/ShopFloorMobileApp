@@ -39,9 +39,9 @@ public class TransactDC {
         
         String getResult(){
             if (getStatus().equals("S")){
-                return "Transaction Successful !";
+                return "Transaction Successful!";
             }else{
-                return "Transaction was Successful! "+getMessage();
+                return "Transaction Unsuccessful! "+getMessage();
             }
         }
     }
@@ -90,7 +90,7 @@ public class TransactDC {
         }
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
-        transactBO.setFromOpSeq("0");
+        transactBO.setFromOpSeq(opSeq);
         transactBO.setTrxQty(qtyOp);
         transactBO.setScrapQty(qtyScrapped);
         TransactBO[] transactArray = new TransactBO[1];

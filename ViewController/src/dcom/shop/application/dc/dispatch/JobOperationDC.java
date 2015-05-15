@@ -1,6 +1,7 @@
 package dcom.shop.application.dc.dispatch;
 
 import dcom.shop.application.base.AViewObject;
+import dcom.shop.application.dc.dispatch.ClockInOutDC.TrxResult;
 import dcom.shop.application.mobile.dispatch.JobOperationBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
@@ -26,6 +27,39 @@ public class JobOperationDC extends AViewObject {
 
     public JobOperationDC() {
         super();
+    }
+    TrxResult trxResult = null;
+
+    class TrxResult {
+        String status;
+        String message;
+
+        public TrxResult(String statusStr, String messageStr) {
+            this.status = statusStr;
+            this.message = messageStr;
+        }
+
+        public String getStatus() {
+            if (this.status.contains("@xsi")) {
+                return "";
+            }
+            return status;
+        }
+
+        public String getMessage() {
+            if (this.message.contains("@xsi")) {
+                return "";
+            }
+            return message;
+        }
+
+        String getResult() {
+            if (getStatus().equals("S")) {
+                return "Transaction Successful!";
+            } else {
+                return "Transaction Unsuccessful! " + getMessage();
+            }
+        }
     }
 
     public JobOperationBO[] getJobOperationBO() {
@@ -149,11 +183,15 @@ public class JobOperationDC extends AViewObject {
     }
 
     public void saveJobAction(JobOperationBO jobOperation) {
+        String status = null;
+        String message = null;
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobOperationBO[] jobOprArray = null;
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
+        String orgCode =
+            AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
         String pJobOp = jobOperation.getJobOps();
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.jobActionResult}", "");
         try {
             String pAction = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.JobAction}").toString();
 
@@ -178,21 +216,26 @@ public class JobOperationDC extends AViewObject {
                         JSONObject jsonObject = (JSONObject) parser.parse(jsonArrayAsString);
                         //JSONObject jsonObject = (JSONObject) object;
                         JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-                        String status = jsObject.get("XSTATUS").toString();
-                        String message = jsObject.get("XMSG").toString();
+                        status = jsObject.get("XSTATUS").toString();
+                        message = jsObject.get("XMSG").toString();
+                        trxResult = new TrxResult(status, message);
+                        String result= trxResult.getResult();
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.jobActionResult}", result);
+                        return;
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             } else {
-                String status = "F";
-                String message = "Please select a Job action!";
+                status = "F";
+                message = "Please select a Job action!";
+                
             }
         } catch (Exception ae) {
-            String status = "F";
-            String message = "Please select a Job action!";
+            status = "F";
+            message = "Please select a Job action!";
         }
-
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.jobActionResult}", message);
     }
 
     public void searchJobNumber() {

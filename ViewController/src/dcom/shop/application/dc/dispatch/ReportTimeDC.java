@@ -44,9 +44,9 @@ public class ReportTimeDC {
 
         String getResult() {
             if (getStatus().equals("S")) {
-                return "Transaction Successful !";
+                return "Transaction Successful!";
             } else {
-                return "Transaction was Successful! " + getMessage();
+                return "Transaction Unsuccessful! " + getMessage();
             }
         }
     }
