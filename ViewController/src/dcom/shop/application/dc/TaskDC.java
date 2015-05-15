@@ -52,8 +52,8 @@ public class TaskDC extends AViewObject {
         if (!(("-1".equals(str) || "0".equals(str) || "1".equals(str)))) {
             //providerChangeSupport.fireProviderRefresh("tasks");
             s_list.clear();
-            //getFromWS();
-            getDummyTasks();
+            getFromWS();
+            //getDummyTasks();
             sortTasks("TASK_ASC");
             sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
         }

@@ -218,7 +218,7 @@ public class LocatorDC extends SyncUtils {
             //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
             //filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
             
-            String whereClause="WHERE SUBINV=\""+subInv+"\"";
+            String whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
             filtered_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {
@@ -242,7 +242,7 @@ public class LocatorDC extends SyncUtils {
             //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
             //filtered_To_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
             
-            String whereClause="WHERE SUBINV=\""+subInv+"\"";
+            String whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
             filtered_To_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {

@@ -76,7 +76,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">L50,-83.442856,-144.8916,-333.65234,-6.6904297,R46</property>
+         name="sdm:polyPoints">L50,-83.442856,-144.60742,-333.65234,-6.40625,R46</property>
    </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall8">
@@ -388,7 +388,7 @@
       <property
          name="fromsrcid">__8</property>
       <property
-         name="sdm:polyPoints">T44,39.85742,24.960938,-44.149414,-88.31369,B44</property>
+         name="sdm:polyPoints">T44,39.85742,24.828125,-44.149414,-88.31152,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -403,20 +403,6 @@
          name="fromsrcid">__22</property>
       <property
          name="sdm:polyPoints">R46,149.66895,-85.95215,284.6875,-85.95215,L46</property>
-   </ControlFlowCase>
-   <ControlFlowCase
-      islink="true"
-      id="ControlFlowCase30"
-      from="TaskFlowCall8"
-      to="View4">
-      <property
-         name="fromOutcome">Back</property>
-      <property
-         name="tosrcid">__13</property>
-      <property
-         name="fromsrcid">__2</property>
-      <property
-         name="sdm:polyPoints">B44,-50.0,-255.49661,-44.149414,-198.60742,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -444,7 +430,7 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">B56,-37.149414,-90.60742,46.85742,22.68559,T56</property>
+         name="sdm:polyPoints">B56,-37.149414,-90.60742,46.85742,22.550661,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -570,6 +556,6 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">T56,-37.149414,-198.96419,-43.0,-255.85449,B56</property>
+         name="sdm:polyPoints">T50,-40.649414,-198.60742,-46.5,-255.85449,B50</property>
    </ControlFlowCase>
 </SDM>

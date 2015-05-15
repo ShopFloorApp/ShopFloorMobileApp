@@ -191,12 +191,5 @@
         <to-activity-id>MaterialTransaction</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__2">
-      <from-activity-id>TasksTF</from-activity-id>
-      <control-flow-case id="__13">
-        <from-outcome>Back</from-outcome>
-        <to-activity-id>MaterialMovements</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
   </task-flow-definition>
 </adfc-mobile-config>
