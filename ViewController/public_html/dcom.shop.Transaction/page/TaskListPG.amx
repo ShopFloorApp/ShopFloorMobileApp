@@ -125,7 +125,7 @@
             <amx:tableLayout id="tl2">
                 <amx:rowLayout id="rl1">
                     <amx:cellFormat id="cf1">
-                        <amx:selectManyCheckbox label="label1" id="smc1" readOnly="true"
+                        <amx:selectManyCheckbox label="Task Type" id="smc1" readOnly="true"
                                                 valueChangeListener="#{viewScope.TaskListBean.SortOptionSelectionListener}"
                                                 value="#{bindings.LOV_TaskTypes}">
                             <amx:selectItem id="si6" label="#{bindings.tasks.collectionModel.taskType.LOV_taskType}"/>

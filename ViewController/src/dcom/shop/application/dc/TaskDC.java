@@ -30,7 +30,8 @@ public class TaskDC extends AViewObject {
     protected transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private static boolean isSortOperation = false;
     private static TaskBO[] sTask = null;
-
+    private static List s_listTaskTypes = new ArrayList();
+   
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
     }
@@ -59,6 +60,12 @@ public class TaskDC extends AViewObject {
         }
 
         return sTask;
+    }
+    
+    public String[] getTaskTypes(){
+        s_listTaskTypes.add("Cycle Count");
+        s_listTaskTypes.add("XXX");
+        return (String[])s_listTaskTypes.toArray(new String[s_listTaskTypes.size()]);
     }
 
     public void sortTasks(String criteria) {
