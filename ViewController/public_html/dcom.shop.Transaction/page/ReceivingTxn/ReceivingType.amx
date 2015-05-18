@@ -21,7 +21,8 @@
                 <amx:validationBehavior id="vb2" group="vg1"/>
             </amx:commandButton>
         </amx:facet>
-        <amx:selectOneButton id="sob1" layout="horizontal" value="#{pageFlowScope.receivingType}">
+        <amx:selectOneButton id="sob1" layout="horizontal" value="#{pageFlowScope.receivingType}"
+                             valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.receivingTypeChange}">
             <amx:selectItem id="si1" label="Supplier" value="S"/>
             <amx:selectItem label="Customer" id="si2" value="C"/>
             <amx:selectItem label="Internal" id="si3" value="I"/>

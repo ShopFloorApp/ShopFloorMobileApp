@@ -376,6 +376,9 @@ public class ReceivingTxnDC extends SyncUtils{
                 JSONObject jsonObject = (JSONObject) object;
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 JSONObject jsObject1 = (JSONObject) jsObject.get("XPO");
+                if(jsObject1==null){
+                    return null;
+                }
                 JSONArray array = (JSONArray) jsObject1.get("XPO_ITEM");
 
                 if (array != null) {

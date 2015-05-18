@@ -112,7 +112,8 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13"
                                     rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; pageFlowScope.lotControlAdd==1}">
-                        <amx:commandLink id="cl3" action="lot">
+                        <amx:commandLink id="cl3" action="lot"
+                                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.quantityValidation}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
@@ -137,7 +138,8 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf1"
                                     rendered="#{pageFlowScope.lineAdd!=null &amp;&amp; pageFlowScope.serialControlAdd==1}">
-                        <amx:commandLink id="cl5" action="serial">
+                        <amx:commandLink id="cl5" action="serial"
+                                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.quantityValidation}">
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl3">
                                     <amx:cellFormat id="cf2" halign="center">

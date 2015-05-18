@@ -288,11 +288,16 @@ public class ReceivingTxnUtilBean {
     public void quantityValidation(ActionEvent ae){
         String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
         String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityDefAdd}");
-        if (quantityEntered==null){
-            quantityEntered="0";
-        }
-        if (quantityReceivable==null){
-            quantityReceivable="0";
+        if(Integer.parseInt(quantityEntered)<1){
+
+        
+            if (quantityEntered==null || quantityEntered==""){
+                quantityEntered="0";
+            }
+            if (quantityReceivable==null || quantityReceivable==""){
+                quantityReceivable="0";
+            }
+        throw new AdfException("Entered quantity should be more than zero", AdfException.ERROR);
         }
         if(Integer.parseInt(quantityEntered)>Integer.parseInt(quantityReceivable)){
             throw new AdfException("Entered quantity exceeds receivable Qty", AdfException.ERROR);
@@ -301,12 +306,16 @@ public class ReceivingTxnUtilBean {
     
     public void quantityValueChange(ValueChangeEvent vce){
         String quantityEntered = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
-        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityAdd}");
-        if (quantityEntered==null){
+        String quantityReceivable = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantityDefAdd}");
+
+        if (quantityEntered==null || quantityEntered.equals("")){
             quantityEntered="0";
         }
-        if (quantityReceivable==null){
+        if (quantityReceivable==null || quantityReceivable.equals("")){
             quantityReceivable="0";
+        }
+        if(Integer.parseInt(quantityEntered)<1){
+            throw new AdfException("Entered quantity should be more than zero", AdfException.ERROR);
         }
         if(Integer.parseInt(quantityEntered)>Integer.parseInt(quantityReceivable)){
             throw new AdfException("Entered quantity exceeds receivable Qty", AdfException.ERROR);
@@ -349,5 +358,34 @@ public class ReceivingTxnUtilBean {
         }else{
             return "pendingTxn";
         }
+    }
+    
+    public void receivingTypeChange(ValueChangeEvent ve){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.carrier}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.packSlip}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.bol}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.wayAirBill}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipment}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shippedDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.comments}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", null);
+        receiveDc.s_lines.clear();
+        receiveDc.s_shipmentLines.clear();
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        MethodExpression me1 =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.getPendingReceiveTxn.execute}", Object.class, new Class[] {
+                                                   });
+        me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
 }
