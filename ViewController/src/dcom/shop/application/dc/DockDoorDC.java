@@ -103,9 +103,9 @@ public class DockDoorDC {
 
             arr = (DockDoorBO[]) s_list.toArray(new DockDoorBO[s_list.size()]);
             if(s_list.size()!=0){
-                AdfmfJavaUtilities.setELValue("{pageFlowScope.LpnResults}", "");
+                AdfmfJavaUtilities.setELValue("{pageFlowScope.DockDoorResults}", "");
             }else{
-                AdfmfJavaUtilities.setELValue("{pageFlowScope.LpnResults}", "No Search Results");
+                AdfmfJavaUtilities.setELValue("{pageFlowScope.DockDoorResults}", "No Search Results");
             }
         
         } catch (Exception e) {

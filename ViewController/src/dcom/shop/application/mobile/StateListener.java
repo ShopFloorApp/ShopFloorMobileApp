@@ -192,7 +192,7 @@ public class StateListener {
         String subinv = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         //          String subinv = (String)valueChangeEvent.getNewValue();
 
-       // pageFlow.put("FromSubinventory", subinv);
+        // pageFlow.put("FromSubinventory", subinv);
         /*ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromLocator}", String.class);
         ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Y");
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.refreshFromSubinventory}", String.class);
@@ -211,12 +211,12 @@ public class StateListener {
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         String loc = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.RenderSubInvChoice}", String.class);
-        if ("{\"@xsi:nil\":\"true\"}".equals(subinv))
+        if ("{\"@xsi:nil\":\"true\"}".equals(subinv) || "".equals(subinv))
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Yes");
         else
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "No");
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.RenderLocChoice}", String.class);
-        if ("{\"@xsi:nil\":\"true\"}".equals(loc))
+        if ("{\"@xsi:nil\":\"true\"}".equals(loc) || "".equals(loc))
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "Yes");
         else
             ve.setValue(AdfmfJavaUtilities.getAdfELContext(), "No");

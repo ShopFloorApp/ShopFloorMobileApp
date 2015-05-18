@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-           <amx:verbatim id="v1">
+    <amx:panelPage id="pp1">
+        <amx:verbatim id="v1">
          <![CDATA[
         <script type="text/javascript">
         function scanBarcodeFromJavaBean(options)
@@ -29,95 +29,86 @@
         }
         </script>
     ]]></amx:verbatim>
-    <amx:facet name="header">
-      <amx:outputText value="Unload Truck" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-           <amx:commandLink id="cl1" action="backToShipTxn">
+        <amx:facet name="header">
+            <amx:outputText value="Unload Truck" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="backToShipTxn">
                 <!--amx:outputHtml id="oh1" styleClass="fa fa-arrow-left fa-lg"/-->
                 <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
-                    </amx:panelGroupLayout>
+                </amx:panelGroupLayout>
             </amx:commandLink>
-      <amx:commandButton id="cb1" rendered="false"/>
-    </amx:facet>
-    <!--amx:facet name="secondary" >
+            <amx:commandButton id="cb1" rendered="false"/>
+        </amx:facet>
+        <!--amx:facet name="secondary" >
           <amx:commandLink id="cl2" actionListener="#{bindings.saveTransaction.execute}" inlineStyle="width:30px;"
                              action="backToWorkContent">
                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
            </amx:commandLink>
     </amx:facet-->
-    <amx:panelFormLayout id="pfl1">
-
-      <amx:panelLabelAndMessage label="Dock Door" id="plam2">
-        <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
-          <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
-                                inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;"
-                                styleClass="pglBorder">
-            <amx:spacer id="s2" width="10"/>
-            <amx:inputText id="it12" value="#{pageFlowScope.searchDockDoor}" hintText="Dock Door"/>
-            <amx:commandLink id="cl3" action="unloadDock">
-              <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
-              <amx:setPropertyListener id="spl1" type="action" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"/>
-              <amx:setPropertyListener id="spl2" to="#{pageFlowScope.LpnPage}" type="action" from="SHIP_LPN"/>
-            </amx:commandLink>
-
-            <amx:spacer id="s52" width="10"/>
-
-          </amx:panelGroupLayout>
-          <amx:spacer id="s1" width="30"/>
-          <amx:commandLink id="cl5">
-            <amx:outputHtml id="oh5" styleClass="fa fa-barcode fa-lg"/>
-          </amx:commandLink>
-        </amx:panelGroupLayout>
-      </amx:panelLabelAndMessage>
-      <amx:panelLabelAndMessage label="LPN" id="plam1">
-        <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start" valign="baseline">
-          <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline"
-                                inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;"
-                                styleClass="pglBorder">
-            <amx:spacer id="s3" width="10"/>
-            <amx:inputText id="it1" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"/>
-            <amx:commandLink id="cl4" action="unloadLPN">
-              <amx:outputHtml id="oh4" styleClass="fa fa-search fa-sm"/>
-              <amx:setPropertyListener id="spl3" type="action" from="LPNTrxn" to="#{pageFlowScope.LpnLovPage}"/>
-              <amx:setPropertyListener id="spl4" to="#{pageFlowScope.LpnPage}" type="action" from="SHIP_LPN"/>
-            </amx:commandLink>
-
-            <amx:spacer id="s4" width="10"/>
-
-          </amx:panelGroupLayout>
-          <amx:spacer id="s5" width="30"/>
-          <amx:commandLink id="cl6" action="unloadLPN">
-            <amx:outputHtml id="oh6" styleClass="fa fa-barcode fa-lg"/>
-          </amx:commandLink>
-        </amx:panelGroupLayout>
-      </amx:panelLabelAndMessage>
-           <amx:panelLabelAndMessage label="Subinventory"
-                                      rendered='#{pageFlowScope.LpnPage eq "PACK_FROM" ||pageFlowScope.LpnPage eq  "UNPACK_FROM"?(pageFlowScope.RenderSubInvChoice == "No"):"false"}'
+        <amx:panelFormLayout id="pfl1">
+            <amx:panelLabelAndMessage label="Dock Door" id="plam2">
+                <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
+                    <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
+                                          inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;">
+                        <amx:inputText id="it12" value="#{pageFlowScope.dockDoor}" hintText="Dock Door"/>
+                        <amx:commandLink id="cl3" action="unloadDock">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
+                        <amx:spacer id="s52" width="10"/>
+                    </amx:panelGroupLayout>
+                    <amx:spacer id="s1" width="10"/>
+                    <amx:commandLink id="cl5" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
+                        <amx:outputHtml id="oh11" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC; "/>
+                        <amx:setPropertyListener id="spl11" from="DocDoor" to="#{pageFlowScope.barCodeField}"
+                                                 type="action"/>
+                    </amx:commandLink>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="LPN" id="plam1">
+                <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start" valign="baseline">
+                    <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline"
+                                          inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;">
+                        <amx:spacer id="s3" width="10"/>
+                        <amx:inputText id="it1" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"/>
+                        <amx:commandLink id="cl4" action="unloadLPN">
+                            <amx:outputHtml id="oh4" styleClass="fa fa-search fa-sm" inlineStyle="color:#34AADC;"/>
+                            <amx:setPropertyListener id="spl3" type="action" from="DocDoor"
+                                                     to="#{pageFlowScope.LpnLovPage}"/>
+                        </amx:commandLink>
+                        <amx:spacer id="s4" width="10"/>
+                    </amx:panelGroupLayout>
+                    <amx:spacer id="s5" width="10"/>
+                    <amx:commandLink id="cl6" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
+                        <amx:outputHtml id="oh6" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener id="spl5" from="LPN" to="#{pageFlowScope.barCodeField}" type="action"/>
+                    </amx:commandLink>
+                </amx:panelGroupLayout>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="Subinventory" rendered='#{pageFlowScope.RenderSubInvChoice == "No"}'
                                       inlineStyle="text-align:center;" id="pla2m3">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.FromSubinventory}" styleClass="adfmf-listItem-captionText"
                                 id="it3"/>
             </amx:panelLabelAndMessage>
-      <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}" 
-                                         valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
-                        <amx:selectItem label="Subinventory" id="si4" value="0"/>
-                        <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
-                    </amx:selectOneChoice>
-
-      <amx:panelLabelAndMessage label="Locator"
-                                      rendered='#{pageFlowScope.LpnPage eq "PACK_FROM" ||pageFlowScope.LpnPage eq  "UNPACK_FROM"?(pageFlowScope.RenderLocChoice == "No"):"false"}'
+            <amx:selectOneChoice label="Subinventory" rendered='#{pageFlowScope.RenderSubInvChoice != "No"}' value="#{pageFlowScope.FromSubinventory}"
+                                 valueChangeListener="#{StateListenerBean.FromSubinvValueChange}" id="soc1">
+                <amx:selectItem label="Choose" value="0" id="si10"/>
+                <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
+            </amx:selectOneChoice>
+            <amx:panelLabelAndMessage label="Locator" rendered='#{pageFlowScope.RenderLocChoice == "No"}'
                                       inlineStyle="text-align:center;" id="plam3">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.FromLocator}" styleClass="adfmf-listItem-captionText" id="ot2"/>
             </amx:panelLabelAndMessage>
-      <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" label="Locator" id="soc2">
-        <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
-      </amx:selectOneChoice>
-    </amx:panelFormLayout>
-            <amx:facet name="footer">
+            <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" rendered='#{pageFlowScope.RenderLocChoice != "No"}' label="Locator" id="soc2">
+                <amx:selectItem label="Choose" value="0" id="si3"/>
+                <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
+            </amx:selectOneChoice>
+        </amx:panelFormLayout>
+        <amx:facet name="footer">
             <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
@@ -127,7 +118,10 @@
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
-                                        <amx:outputHtml id="oh8" styleClass="fa fa-truck fa-lg"/>
+                                        <!--amx:outputHtml id="oh8" styleClass="fa fa-truck fa-lg"/-->
+                                        <amx:image id="i1"
+                                                   inlineStyle="width:30px;height:25px;top:-4px;position:relative"
+                                                   source="/images/Fork Lift-32.png"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl1">
@@ -137,18 +131,19 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
+                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor"
                                                    alignId="pp1" align="overlapMiddleCenter"/>
                         </amx:commandLink>
                     </amx:cellFormat>
-                     </amx:rowLayout>
+                </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>
-  </amx:panelPage>
-   <amx:popup id="p1" autoDismiss="true">
+    </amx:panelPage>
+    <amx:popup id="p1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl24" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl56"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
+            <amx:commandLink id="cl56">
+                <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
                     <amx:rowLayout id="rl17">
                         <amx:cellFormat id="cf26" halign="center">
