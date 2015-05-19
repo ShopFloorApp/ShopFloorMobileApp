@@ -26,11 +26,15 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Ship Method" inlineStyle="text-align:center;" id="plam6">
+            <amx:selectOneChoice value="#{bindings.shipMethod.inputValue}" label="Ship Method"
+                                 id="soc1">
+                <amx:selectItems value="#{bindings.shipMethod.items}" id="si1"/>
+            </amx:selectOneChoice>
+            <!--amx:panelLabelAndMessage label="Ship Method" inlineStyle="text-align:center;" id="plam6">
                 <amx:panelGroupLayout id="pgl3">
                     <amx:inputText hintText="Ship Method" id="it2" value="#{pageFlowScope.shipMthCode}"/>
                 </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
+            </amx:panelLabelAndMessage-->
             <amx:panelLabelAndMessage label="WayBill" inlineStyle="text-align:center;" id="plam7">
                 <amx:panelGroupLayout id="pgl4">
                     <amx:inputText hintText="WayBill" id="it3" value="#{pageFlowScope.waybill}"/>
