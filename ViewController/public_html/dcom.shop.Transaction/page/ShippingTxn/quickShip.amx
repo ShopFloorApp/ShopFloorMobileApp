@@ -26,8 +26,9 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:selectOneChoice value="#{bindings.shipMethod.inputValue}" label="Ship Method"
+            <amx:selectOneChoice value="#{pageFlowScope.shipMthCode}" label="Ship Method"
                                  id="soc1">
+                <amx:selectItem label="Choose" value="0" id="si10"/>
                 <amx:selectItems value="#{bindings.shipMethod.items}" id="si1"/>
             </amx:selectOneChoice>
             <!--amx:panelLabelAndMessage label="Ship Method" inlineStyle="text-align:center;" id="plam6">

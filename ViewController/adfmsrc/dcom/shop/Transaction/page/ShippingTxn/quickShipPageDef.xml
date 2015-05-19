@@ -12,7 +12,7 @@
     <list IterBinding="CarrierDCIterator" id="shipMethod" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="carrierIterator">
       <AttrNames>
-        <Item Value="carrier"/>
+        <Item Value="shipMethod"/>
       </AttrNames>
       <ListAttrNames>
         <Item Value="shipMethod"/>

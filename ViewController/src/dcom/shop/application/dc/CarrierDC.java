@@ -27,6 +27,17 @@ public class CarrierDC extends SyncUtils {
         super();
 
     }
+
+    public void setShipMethod(String shipMethod) {
+        String oldShipMethod = this.shipMethod;
+        this.shipMethod = shipMethod;
+        propertyChangeSupport.firePropertyChange("shipMethod", oldShipMethod, shipMethod);
+    }
+
+    public String getShipMethod() {
+        return shipMethod;
+    }
+    private String shipMethod;
     protected static List s_carrier = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
 

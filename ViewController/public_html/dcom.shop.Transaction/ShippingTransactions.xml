@@ -167,7 +167,7 @@
         <to-activity-id>dockLOV</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__32">
-        <from-outcome>unloadLPN</from-outcome>
+        <from-outcome>lpnLOV</from-outcome>
         <to-activity-id>LpnLOVPG</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__33">

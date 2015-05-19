@@ -73,7 +73,7 @@
                                           inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;">
                         <amx:spacer id="s3" width="10"/>
                         <amx:inputText id="it1" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"/>
-                        <amx:commandLink id="cl4" action="unloadLPN">
+                        <amx:commandLink id="cl4" action="#{StateListenerBean.validateAndNavigateLpnLov}">
                             <amx:outputHtml id="oh4" styleClass="fa fa-search fa-sm" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" type="action" from="DocDoor"
                                                      to="#{pageFlowScope.LpnLovPage}"/>
@@ -119,7 +119,7 @@
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl2">
                                     <amx:cellFormat id="cf2" halign="center">
-                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"/>
+                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg" inlineStyle="color:#34AADC;width:25px;height:25px;position:relative"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl3">
@@ -139,8 +139,8 @@
                                     <amx:cellFormat id="cf11" halign="center">
                                         <!--amx:outputHtml id="oh8" styleClass="fa fa-truck fa-lg"/-->
                                         <amx:image id="i1"
-                                                   inlineStyle="width:25px;height:25px;top:-4px;position:relative"
-                                                   source="/images/Fork Lift-32.png"/>
+                                                   inlineStyle="width:25px;height:25px;position:relative"
+                                                   source="/images/Fork Lift Filled-50.png"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl1">
