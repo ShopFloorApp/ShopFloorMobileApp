@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE PDefViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<PDefViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CarrierDC"
+  Version="12.1.3.13.26">
+  <DesignTime>
+    <Attr Name="_DCName" Value="dcom.shop.mobile.DataControls.CarrierDC"/>
+    <Attr Name="_SDName" Value="dcom.shop.application.dc.CarrierDC"/>
+  </DesignTime>
+</PDefViewObject>
