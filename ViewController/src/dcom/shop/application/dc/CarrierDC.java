@@ -3,6 +3,7 @@ package dcom.shop.application.dc;
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.AccountAliasBO;
 import dcom.shop.application.mobile.CarrierBO;
+import dcom.shop.application.mobile.LocatorBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 
 import java.util.ArrayList;
@@ -106,8 +107,10 @@ public class CarrierDC extends SyncUtils {
     }
 
     public CarrierBO[] getCarrier() {
-
-        CarrierBO[] carrierArray = (CarrierBO[]) s_carrier.toArray(new CarrierBO[s_carrier.size()]);
+        s_carrier = super.getOfflineCollection(CarrierBO.class);
+        CarrierBO[] carrierArray=(CarrierBO[]) s_carrier.toArray(new CarrierBO[s_carrier.size()]); 
+        
+        //CarrierBO[] carrierArray = (CarrierBO[]) s_carrier.toArray(new CarrierBO[s_carrier.size()]);
         return carrierArray;
     }
 
