@@ -16,9 +16,9 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-        <amx:panelFormLayout id="pf1" labelPosition="topStart">
+        <amx:panelFormLayout id="pf1">
             <amx:panelLabelAndMessage label="Delivery Number" inlineStyle="text-align:center;" id="plam33">
-                <amx:panelGroupLayout id="pgl1">
+                <amx:panelGroupLayout id="pgl1" layout="horizontal">
                     <amx:inputText hintText="Delivery Number" id="it1" value="#{pageFlowScope.dlvNumber}"
                                    required="true"/>
                     <amx:commandLink id="cb3" action="delvLov">
@@ -50,7 +50,7 @@
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
                     <amx:cellFormat id="cf10">
-                        <amx:commandLink id="cl2" actionListener="#{pageFlowScope.QuickShipUtilBean.callShip}">
+                        <amx:commandLink id="cl2" action="#{pageFlowScope.QuickShipUtilBean.callShip}">
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
@@ -64,13 +64,12 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="anchor"
-                                                   alignId="cl2"/>
+                            <!--amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="anchor"
+                                                   alignId="cl2"/-->
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13">
-                        <amx:commandLink id="cl3" actionListener="#{pageFlowScope.QuickShipUtilBean.callBackOrder}"
-                                         action="{pageFlowScope.txnStatus}">
+                        <amx:commandLink id="cl3" action="#{pageFlowScope.QuickShipUtilBean.callBackOrder}">
                             <amx:tableLayout id="tl5" halign="center">
                                 <amx:rowLayout id="rl12">
                                     <amx:cellFormat id="cf22" halign="center">
@@ -84,8 +83,8 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
-                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor"
-                                                   alignId="pp1" align="overlapMiddleCenter"/>
+                            <!--amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor"
+                                                   alignId="pp1" align="overlapMiddleCenter"/-->
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>

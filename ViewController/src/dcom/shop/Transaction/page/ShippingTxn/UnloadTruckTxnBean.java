@@ -14,6 +14,7 @@ import oracle.adf.share.ADFContext;
 import oracle.adf.share.security.SecurityContext;
 
 import oracle.adfmf.amx.event.ActionEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
 import oracle.adfmf.util.logging.Trace;
@@ -28,7 +29,7 @@ public class UnloadTruckTxnBean {
 
 
     public void callUnloadTruckService(ActionEvent actionEvent) {
-        
+
         ValueExpression ve = null;
         System.out.println("Inside unload truck service");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
@@ -41,68 +42,80 @@ public class UnloadTruckTxnBean {
         String lpn = null;
         String subinv = null;
         String loc = null;
-        String orgCode= null;
-            
-   
+        String orgCode = null;
+
 
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchDockDoor}", String.class);
         dockDoor = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
-        ve = AdfmfJavaUtilities.getValueExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}", String.class);
+
+        ve =
+            AdfmfJavaUtilities.getValueExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}",
+                                                  String.class);
         orgCode = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
 
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchLpnKeyword}", String.class);
         lpn = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
         subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         loc = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        
+
         String restURI = RestURI.PostUnloadTruckURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload = null;
-        
-        payload = "{\"x\":\n" + 
-        "{\n" + 
-        "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-        "                  \"RespApplication\": \"ONT\",\n" + 
-        "                  \"SecurityGroup\": \"STANDARD\",\n" + 
-        "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-        "                  \"Org_Id\": \"82\"\n" + 
-        "                 },\n" + 
-        "   \"InputParameters\": \n" + 
-        "      {\"PUNTRUCKREC\": {\"ORGCODE\": \""+orgCode+"\",\"DOCKDOOR\": \""+dockDoor+"\",\"LPN\": \""+lpn+"\",\"SUBINV\": \""+subinv+"\",\"LOCATOR\": \""+loc+"\"}}\n" + 
-        "}\n" + 
-        "}";
+
+        payload =
+            "{\"x\":\n" + "{\n" + "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+            "                  \"RespApplication\": \"ONT\",\n" +
+            "                  \"SecurityGroup\": \"STANDARD\",\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + "      {\"PUNTRUCKREC\": {\"ORGCODE\": \"" +
+            orgCode + "\",\"DOCKDOOR\": \"" + dockDoor + "\",\"LPN\": \"" + lpn + "\",\"SUBINV\": \"" + subinv +
+            "\",\"LOCATOR\": \"" + loc + "\"}}\n" + "}\n" + "}";
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");
-        
-        try{
+
+        try {
             JSONParser parser = new JSONParser();
             Object object = parser.parse(jsonArrayAsString);
-            JSONObject jsonObject = (JSONObject)object;
+            JSONObject jsonObject = (JSONObject) object;
             JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-            if(jsObject != null){
-             // QuickShipEntityBean quickShipStatus = new QuickShipEntityBean();
-                
-                String status =jsObject.get("XSTATUS").toString();
+            if (jsObject != null) {
+                // QuickShipEntityBean quickShipStatus = new QuickShipEntityBean();
+
+                String status = jsObject.get("XSTATUS").toString();
                 String msg = jsObject.get("XMSG").toString();
                 Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
                 pageFlow.put("unloadTruckTxnMsg", msg);
-                clearTxnVal();
+                if ("S".contains(status)) {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Success",
+                                                                              "Transaction has been submitted successfully.",
+                                                                              "ok"
+                    });
+                } else {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error",
+                                                                              "Transaction submission failed. \n" +
+                                                                              jsObject.get("XMSG").toString(), "ok"
+                    });
+                }
+                clearTxnVal(actionEvent);
             }
 
-        }catch(Exception e){
-                Trace.log("REST_JSON",Level.SEVERE, this.getClass(),"ProductDetailsEntity", e.getLocalizedMessage());
-            }
-        
+        } catch (Exception e) {
+            Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "ProductDetailsEntity", e.getLocalizedMessage());
+        }
+
     }
 
-    public void clearTxnVal() {
+    public void clearTxnVal(ActionEvent actionEvent) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchDockDoor}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);

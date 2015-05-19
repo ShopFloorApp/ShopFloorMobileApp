@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import javax.el.ValueExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.util.Utility;
@@ -24,15 +25,16 @@ public class QuickShipUtilBean {
     }
 
 
-    public void callBackOrder(ActionEvent actionEvent) {
+    public String callBackOrder() {
      //   AdfmfJavaUtilities.setELValue("{pageFlowScope.txnStatus}", "");
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         pageFlow.put("event", "BACKORDER");
-        callRestService();
+        return callRestService();
     }
     
-    public void callRestService(){       
+    public String callRestService(){       
         ValueExpression ve = null;
+        String response = null;
         System.out.println("Inside productItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         /* OrgItemEntity orgObj = new OrgItemEntity();
@@ -101,6 +103,23 @@ public class QuickShipUtilBean {
                 String msg = jsObject.get("XMSG").toString();
                 Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
                 pageFlow.put("txnMsg", msg);
+                if ("S".contains(status)) {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Success",
+                                                                              "Transaction has been submitted successfully.",
+                                                                              "ok"
+                    });
+                    response =  "quickShipBack";
+                } else {
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error",
+                                                                              "Transaction submission failed. \n" +
+                                                                              jsObject.get("XMSG").toString(), "ok"
+                    });
+                    response =  "";
+                }
               /*  if(status.equals("F")){
                     Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
                     pageFlow.put("txnStatus", "");
@@ -123,14 +142,15 @@ public class QuickShipUtilBean {
                 Trace.log("REST_JSON",Level.SEVERE, this.getClass(),"ProductDetailsEntity", e.getLocalizedMessage());
             }
         
-        
+        return response;
         
     }
 
-    public void callShip(ActionEvent actionEvent) {
+    public String callShip() {
        // AdfmfJavaUtilities.setELValue("{pageFlowScope.txnStatus}", "");
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         pageFlow.put("event", "SHIP");
-        callRestService();
+       return callRestService();
     }
+
 }

@@ -137,7 +137,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">R50,124.01758,92.08301,226.53516,98.73242,L50</property>
+         name="sdm:polyPoints">R50,124.01758,91.79883,226.53516,98.44824,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -151,7 +151,7 @@
       <property
          name="fromsrcid">__8</property>
       <property
-         name="sdm:polyPoints">R30,124.83984,341.88184,271.2868,305.23242,L46</property>
+         name="sdm:polyPoints">R30,124.83984,341.59766,271.2868,304.94824,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -165,7 +165,7 @@
       <property
          name="fromsrcid">__14</property>
       <property
-         name="sdm:polyPoints">L46,539.3301,352.88184,354.9674,308.73242,R50</property>
+         name="sdm:polyPoints">L46,539.3301,352.59766,354.9674,308.44824,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -179,7 +179,7 @@
       <property
          name="fromsrcid">__12</property>
       <property
-         name="sdm:polyPoints">L54,272.14453,312.23242,125.700005,348.88184,R38</property>
+         name="sdm:polyPoints">L54,272.14453,311.94824,125.700005,348.59766,R38</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -221,7 +221,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">L46,207.83827,187.23242,80.33984,302.29727,T44</property>
+         name="sdm:polyPoints">L46,207.83827,186.94824,80.33984,302.0131,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -249,7 +249,7 @@
       <property
          name="fromsrcid">__12</property>
       <property
-         name="sdm:polyPoints">R58,354.14453,315.73242,538.5054,359.88184,L54</property>
+         name="sdm:polyPoints">R58,354.14453,315.44824,538.5054,359.59766,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -313,7 +313,7 @@
       <property
          name="fromOutcome">quickShipBack</property>
       <property
-         name="sdm:polyPoints">L54,287.2706,474.42773,131.06354,362.88184,R54</property>
+         name="sdm:polyPoints">L54,287.2706,474.14355,131.06354,362.59766,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -323,7 +323,7 @@
       <property
          name="fromOutcome">delvLov</property>
       <property
-         name="sdm:polyPoints">R46,371.81735,467.42773,599.3496,488.1289,L46</property>
+         name="sdm:polyPoints">R46,371.81735,467.14355,599.3496,487.84473,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -333,7 +333,7 @@
       <property
          name="fromOutcome">backToPage</property>
       <property
-         name="sdm:polyPoints">L54,599.03204,495.1289,371.5,474.42773,R54</property>
+         name="sdm:polyPoints">L54,599.03204,494.84473,371.5,474.14355,R54</property>
    </ControlFlowCase>
    <TaskFlowCall
       id="TaskFlowCall38">
@@ -360,7 +360,7 @@
       <property
          name="fromOutcome">PackAndDirectShip</property>
       <property
-         name="sdm:polyPoints">B44,80.33984,414.98914,133.52148,523.083,T44</property>
+         name="sdm:polyPoints">B44,80.33984,414.70496,133.52148,522.7988,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -370,7 +370,7 @@
       <property
          name="fromOutcome">backToShipT</property>
       <property
-         name="sdm:polyPoints">T56,140.52148,521.46497,87.33984,413.38184,B56</property>
+         name="sdm:polyPoints">T56,140.52148,521.1808,87.33984,413.09766,B56</property>
    </ControlFlowCase>
    <View
       id="View29">
@@ -425,6 +425,6 @@
       <property
          name="fromOutcome">backToShipTxn</property>
       <property
-         name="sdm:polyPoints">T44,367.51367,680.25134,128.27536,369.88184,R62</property>
+         name="sdm:polyPoints">T44,367.51367,679.96716,128.27536,369.59766,R62</property>
    </ControlFlowCase>
 </SDM>
