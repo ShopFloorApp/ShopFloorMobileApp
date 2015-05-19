@@ -370,7 +370,7 @@
       <property
          name="fromOutcome">backToShipT</property>
       <property
-         name="sdm:polyPoints">T56,140.52148,521.1808,87.33984,413.09766,B56</property>
+         name="sdm:polyPoints">T56,140.52148,521.46497,87.33984,413.38184,B56</property>
    </ControlFlowCase>
    <View
       id="View29">

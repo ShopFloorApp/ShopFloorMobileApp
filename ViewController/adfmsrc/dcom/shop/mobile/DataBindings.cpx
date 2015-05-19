@@ -114,6 +114,7 @@
     <page path="/dcom.shop.DispatchList/page/uploadImage.amx" usageId="dcom_shop_mobile_uploadImagePageDef"/>
     <page path="/dcom.shop.Transaction/page/ShippingTxn/UnloadTruck.amx" usageId="dcom_shop_mobile_UnloadTruckPageDef"/>
     <page path="/page/LovPage/CycleCountLOVPG.amx" usageId="dcom_shop_mobile_CycleCountLOVPGPageDef"/>
+    <page path="/dcom.shop.Transaction/page/ShippingTxn/quickShip.amx" usageId="dcom_shop_mobile_quickShipPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
@@ -213,6 +214,7 @@
     <page id="dcom_shop_mobile_uploadImagePageDef" path="dcom.shop.DispatchList.page.uploadImagePageDef"/>
     <page id="dcom_shop_mobile_UnloadTruckPageDef" path="dcom.shop.Transaction.page.ShippingTxn.UnloadTruckPageDef"/>
     <page id="dcom_shop_mobile_CycleCountLOVPGPageDef" path="page.LovPage.CycleCountLOVPGPageDef"/>
+    <page id="dcom_shop_mobile_quickShipPageDef" path="dcom.shop.Transaction.page.ShippingTxn.quickShipPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="CycleCountSubinvDC" path="dcom.shop.mobile.CycleCountSubinvDC"/>

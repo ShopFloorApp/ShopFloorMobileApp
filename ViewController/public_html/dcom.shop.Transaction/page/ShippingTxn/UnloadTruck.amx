@@ -48,7 +48,7 @@
                <amx:outputHtml id="oh2" styleClass="fa fa-save fa-lg style1"/>
            </amx:commandLink>
     </amx:facet-->
-        <amx:panelFormLayout id="pfl1">
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:panelLabelAndMessage label="Dock Door" id="plam2">
                 <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
                     <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
