@@ -924,6 +924,7 @@ public class ReceivingTxnDC extends SyncUtils{
     
     public void editReceivingTxn(){
         Integer receiveTxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.receiveTxnIdProc}");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", null);
         ArrayList<ShipmentBO> shipmentBO =
             (ArrayList<ShipmentBO>) super.getFilteredCollectionFromDB(ShipmentBO.class,
                                                                       "WHERE RECEIVETXNID=" + receiveTxnId);

@@ -338,6 +338,7 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.shippedDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.comments}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", null);
         receiveDc.s_lines.clear();
         receiveDc.s_shipmentLines.clear();
         MethodExpression me =
@@ -377,6 +378,7 @@ public class ReceivingTxnUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.shippedDate}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.comments}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", null);                                                                                
         receiveDc.s_lines.clear();
         receiveDc.s_shipmentLines.clear();
         MethodExpression me =

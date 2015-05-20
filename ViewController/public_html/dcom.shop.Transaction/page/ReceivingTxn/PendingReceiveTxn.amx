@@ -106,7 +106,7 @@
                 <amx:closePopupBehavior id="cpb1" popupId="popup1" type="action"/>
             </amx:commandLink>
             <amx:commandLink id="cl8" rendered="#{pageFlowScope.isSubmittedRow=='N'}"
-                             actionListener="#{bindings.completeTxn.execute}">
+                             actionListener="#{bindings.completeTxn.execute}" action="self">
                 <amx:tableLayout id="tl10" halign="center" inlineStyle="margin-right: 20px;margin-left: 8px;">
                     <amx:rowLayout id="rl22">
                         <amx:cellFormat id="cf32" halign="center">
