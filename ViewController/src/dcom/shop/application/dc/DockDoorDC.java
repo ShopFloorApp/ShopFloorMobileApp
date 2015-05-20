@@ -30,7 +30,7 @@ public class DockDoorDC {
     List s_list = new ArrayList();
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
-
+//AJ
     public DockDoorBO[] getDockDoors() {
         ValueExpression ve = null;
         s_list.clear();
