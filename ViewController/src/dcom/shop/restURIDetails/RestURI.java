@@ -7,11 +7,17 @@ public class RestURI {
     }
     private static final String ITEM_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getitems/";
 
+    private static final String PAYLOAD_HEADER =
+        "\"RESTHeader\":{\"Responsibility\":\"ORDER_MGMT_SUPER_USER\",\"RespApplication\":\"ONT\",\"SecurityGroup\":\"STANDARD\",\"NLSLanguage\":\"AMERICAN\",\"Org_Id\":\"82\"}";
+    
+    public static String getPayloadHeader(){
+        return PAYLOAD_HEADER;
+    }
     public static String PostItemInquiryURI() {
         return ITEM_INQUIRY_URI;
     }
-    
-    
+
+
     private static final String PROCESS_INV_TRXN_URI = "/webservices/rest/DcomTrns/processinvtxn/";
 
     public static String PostInvTrxnURI() {
@@ -23,7 +29,7 @@ public class RestURI {
     public static String PostLpnTrxnURI() {
         return PROCESS_LPN_TRXN_URI;
     }
-    
+
     private static final String GENERATE_LPN_URI = "/webservices/rest/DCOMLPN/generatelpn/";
 
     public static String GenerateLpnURI() {
@@ -70,7 +76,7 @@ public class RestURI {
     public static String PostUnloadTruckURI() {
         return UNLOAD_TRUCK_URI;
     }
-    
+
     private static final String CYCLE_COUNT_URI = "/webservices/rest/DCOMCycleCntSvc/processcyclecount/";
 
     public static String PostCycleCountURI() {
@@ -78,9 +84,9 @@ public class RestURI {
     }
     private static final String CYCLE_COUNT_SUBINV_URI = "/webservices/rest/DCOMCycleCntSvc/get_subinventory_in_cc/";
 
-        public static String PostCycleCountSubinvURI() {
-            return CYCLE_COUNT_SUBINV_URI;
-        }
+    public static String PostCycleCountSubinvURI() {
+        return CYCLE_COUNT_SUBINV_URI;
+    }
 
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
     private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";
@@ -118,13 +124,14 @@ public class RestURI {
     public static String PostDockDoorDetailsURI() {
         return DOCKDOOR_DETAILS_URI;
     }
-    
-    private static final String TASK_DETAILS_URI="/webservices/rest/DCOMTask/gettask/";
-    public static String PostTaskDetailsURI(){
+
+    private static final String TASK_DETAILS_URI = "/webservices/rest/DCOMTask/gettask/";
+
+    public static String PostTaskDetailsURI() {
         return TASK_DETAILS_URI;
-        }
-    
-    
+    }
+
+
     private static final String LPN_INQUIRY_URI = "/webservices/rest/DCOMShip/getlpn/";
 
     public static String PostLpnInquiryURI() {
@@ -200,16 +207,16 @@ public class RestURI {
     public static String PostClockOut() {
         return POST_CLOCK_OUT;
     }
-    
+
     private static final String POST_WIP_TRX = "/webservices/rest/DcomTrns/processwiptxn/";
-    
-    public static String PostWipTrx(){
+
+    public static String PostWipTrx() {
         return POST_WIP_TRX;
     }
-    
-    private static final String UPLOAD_IMAGE ="/webservices/rest/XXDcomsInsertBlob/insert_blob/";
-    
-    public static String UploadImage(){
+
+    private static final String UPLOAD_IMAGE = "/webservices/rest/XXDcomsInsertBlob/insert_blob/";
+
+    public static String UploadImage() {
         return UPLOAD_IMAGE;
     }
     /*

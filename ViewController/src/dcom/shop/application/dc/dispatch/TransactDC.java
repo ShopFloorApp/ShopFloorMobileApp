@@ -36,12 +36,12 @@ public class TransactDC {
             }
             return message;
         }
-        
-        String getResult(){
-            if (getStatus().equals("S")){
+
+        String getResult() {
+            if (getStatus().equals("S")) {
                 return "Transaction Successful!";
-            }else{
-                return "Transaction Unsuccessful! "+getMessage();
+            } else {
+                return "Transaction Unsuccessful! " + getMessage();
             }
         }
     }
@@ -52,7 +52,7 @@ public class TransactDC {
 
     public TransactBO[] getTransact() {
         String preserveTrx = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.preserveTrx}").toString();
-        if(preserveTrx.equals("PRESERVE")){
+        if (preserveTrx.equals("PRESERVE")) {
             TransactBO[] transactArray = new TransactBO[1];
             transactArray[0] = transactBO;
             return transactArray;
@@ -68,7 +68,7 @@ public class TransactDC {
         String lastDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastDept}").toString();
         String lastOpSeq = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lastOpSeq}").toString();
         String nextDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
-            String orgCode =
+        String orgCode =
             AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String qtyOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyOp}").toString();
         String qtyCompleted = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyCompleted}").toString();
@@ -78,7 +78,7 @@ public class TransactDC {
         String qty2Move = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qty2Move}").toString();
         String qtyCScrapQty = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyCScrapQty}").toString();
         String qtyRejected = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyRejected}").toString();
-        
+
         transactBO.setOrgCode(orgCode);
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
@@ -107,46 +107,11 @@ public class TransactDC {
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();
-        strPayload.append("{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
-                          "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
-                          "      \"RespApplication\": \"ONT\",\n" + "      \"SecurityGroup\": \"STANDARD\",\n" +
-                          "      \"NLSLanguage\": \"AMERICAN\",\n" + "      \"Org_Id\": \"82\"\n" + "    },\n" +
-                          "    \"InputParameters\": {\n" + "      \"PWIPTXN\": {\n" +
-                          "        \"APPS.XXDCOM_WIP_TXN_IN\": {\n" + "          \"ACTION\": \"" +
-                          transactBo.getAction() + "\",\n" + "          \"TRXREF\": \"" + transactBo.getTrxRef() +
-                          "\",\n" + "          \"SOURCETYPE\": \"" + transactBo.getSourceType() + "\",\n" +
-                          "          \"TRXTYPE\": \"" + trxType + "\",\n" + "          \"TRXDATE\": \"" +
-                          transactBo.getTrxDate() + "\",\n" + "          \"ORGCODE\": \"" + transactBo.getOrgCode() +
-                          "\",\n" + "          \"ITEM\": \"" + transactBo.getItem() + "\",\n" +
-                          "          \"SUBINV\": \"" + transactBo.getSubinv() + "\",\n" + "          \"LOCATOR\": \"" +
-                          transactBo.getLocator() + "\",\n" + "          \"LPN\": \"" + transactBo.getLpn() + "\",\n" +
-                          "          \"SOURCECODE\": \"" + transactBo.getSourceCode() + "\",\n" +
-                          "          \"TRXQTY\": \"" + transactBo.getTrxQty() + "\",\n" + "          \"TXNUOM\": \"" +
-                          transactBo.getTxnUom() + "\",\n" + "          \"GLACCOUNT\": \"" + transactBo.getGlAccount() +
-                          "\",\n" + "          \"ACCOUNTALIAS\": \"" + transactBo.getAccountAlias() + "\",\n" +
-                          "          \"REASON\": \"" + transactBo.getReason() + "\",\n" +
-                          "          \"TRXNACTION\": \"" + transactBo.getTrxnAction() + "\",\n" +
-                          "          \"TRXSOURCE\": \"" + transactBo.getTrxSource() + "\",\n" +
-                          "          \"WIPENTITYNAME\": \"" + transactBo.getWipEntityName() + "\",\n" +
-                          "          \"DEPT\": \"" + transactBo.getDept() + "\",\n" + "          \"FROMOPSEQ\": \"" +
-                          transactBo.getFromOpSeq() + "\",\n" + "          \"TOOPSEQ\": \"" + transactBo.getToOpSeq() +
-                          "\",\n" + "          \"CREATEDBY\": \"" + transactBo.getCreatedBy() + "\",\n" +
-                          "          \"SALESORDER\": \"" + transactBo.getSalesOrder() + "\",\n" +
-                          "          \"NOTES\": \"" + transactBo.getNotes() + "\",\n" + "          \"REFERENCE\": \"" +
-                          transactBo.getReference() + "\",\n" + "          \"KANBAN\": \"" + transactBo.getKanban() +
-                          "\",\n" + "          \"SCRAPQTY\": \"" + transactBo.getScrapQty() + "\",\n" +
-                          "          \"FROMSTEP\": \"" + transactBo.getFromStep() + "\",\n" +
-                          "          \"TOSTEP\": \"" + transactBo.getToStep() + "\",\n" +
-                          "          \"OVERCOMPLFLAG\": \"" + transactBo.getOverComplFlag() + "\",\n" +
-                          "          \"ATTRIB\": \"\",\n" + "          \"LOTS\": {\n" +
-                          "            \"APPS.XXDCOM_LOT_TAB\": {\n" + "              \"LOTS_ITEM\": {\n" +
-                          "                \"APPS.XXDCOM_LOT_TYPE\": {\n" + "                  \"LOT\": \"\",\n" +
-                          "                  \"LOTQTY\": \"\"\n" + "                }\n" + "              }\n" +
-                          "            }\n" + "          },\n" + "          \"SERIALS\": {\n" +
-                          "            \"SERIALS_ITEM\": {\n" + "              \"APPS.XXDCOM_SERIAL_TYPE\": {\n" +
-                          "                \"FROMSERIAL\": \"\",\n" + "                \"TOSERIAL\": \"\",\n" +
-                          "                \"SERIALQTY\": \"\"\n" + "              }\n" + "            }\n" +
-                          "          }\n" + "        }\n" + "      }\n" + "    }\n" + "  }\n" + "}");
+        strPayload.append("{");
+        strPayload.append(RestURI.getPayloadHeader());
+        strPayload.append(",");
+        strPayload.append(transactBo.getPayload());
+        strPayload.append("}");
         String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostWipTrx(), strPayload.toString());
         if (jsonArrayAsString != null) {
             try {
@@ -163,6 +128,7 @@ public class TransactDC {
                 e.getMessage();
             }
         }
+
         return null;
     }
 
@@ -170,7 +136,7 @@ public class TransactDC {
         if (transactBO != null) {
             transactBO = null;
         }
-        if(trxResult!=null){
+        if (trxResult != null) {
             trxResult = null;
         }
     }

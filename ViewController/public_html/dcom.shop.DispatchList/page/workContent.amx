@@ -53,6 +53,9 @@
                                          to="#{pageFlowScope.qtyCScrapQty}" type="action"/>
                 <amx:setPropertyListener id="spl19" from="#{bindings.qtyRejected.inputValue}"
                                          to="#{pageFlowScope.qtyRejected}" type="action"/>
+                <amx:setPropertyListener id="spl23" to="#{pageFlowScope.FromSubinventory}" from=' ' type="action"/>
+                <amx:setPropertyListener id="spl24" to="#{pageFlowScope.FromLocator}" from=" " type="action"/>
+                <amx:setPropertyListener id="spl25" to="#{pageFlowScope.searchKeyword}" from=" " type="action"/>
                 <amx:showPopupBehavior id="spb2" popupId="p2" alignId="cl11" decoration="anchor" type="action"/>
             </amx:commandLink>
             <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveJobAction.execute}">

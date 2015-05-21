@@ -120,7 +120,7 @@
                         <amx:cellFormat height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3">
                             <amx:outputText value="#{row.jobNumber}" id="ot3" inlineStyle="font-weight:normal;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf4" width="60px"
+                        <amx:cellFormat height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf4" width="100px"
                                         halign="end" valign="middle">
                             <amx:outputText value="#{row.jobStatus}" styleClass="adfmf-listItem-captionText" id="ot4"
                                             inlineStyle="color:Gray;"/>

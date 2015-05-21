@@ -109,9 +109,9 @@
         </amx:panelFormLayout>
         <amx:tableLayout id="tl4" width="100%" inlineStyle="margin-left:40px;margin-right:40px;">
             <amx:rowLayout id="rl4">
-                <amx:cellFormat id="cf2">
+                <amx:cellFormat id="cf2" rendered="#{pageFlowScope.searchKeyword == ''?false:true}">
                     <amx:commandLink id="cl4" inlineStyle="float:left;margin:0px;padding:0px;" action="SerialEntry"
-                                     disabled='#{pageFlowScope.serialControl eq "1" ? false : true}'>
+                                     rendered="#{pageFlowScope.serialControl ne 1}">
                         <amx:setPropertyListener from="#{bindings.trxQty.inputValue}" to="#{pageFlowScope.SerialQty}"
                                                  id="spl1"/>
                         <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
@@ -130,9 +130,9 @@
                         </amx:tableLayout>
                     </amx:commandLink>
                 </amx:cellFormat>
-                <amx:cellFormat id="cf4" halign="end">
+                <amx:cellFormat id="cf4" halign="end" rendered="#{pageFlowScope.searchKeyword == ''?false:true}">
                     <amx:commandLink id="cl3" action="LotEntry"
-                                     disabled='#{pageFlowScope.lotControl eq "1" ? false : true}'>
+                                     rendered="#{pageFlowScope.lotControl ne 1}">
                         <?audit suppress oracle.maf.warning-missing-shortDesc?>
                         <amx:setPropertyListener from="#{pageFlowScope.quantity}" to="#{pageFlowScope.LotQty}"
                                                  id="spl5"/>

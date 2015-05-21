@@ -4,6 +4,7 @@ import dcom.shop.application.dc.dispatch.OpSeqDC;
 
 import java.math.BigDecimal;
 
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
@@ -42,8 +43,8 @@ public class TransactBO {
     private String reference;
     private String kanban;
     private String attrib;
-    private Serials lots;
-    private Lots serials;
+    private Serials serials;
+    private Lots lots;
     private Boolean isNewEntity;
     private String fromOpCode;
     private String toOpCode;
@@ -448,31 +449,147 @@ public class TransactBO {
         return attrib;
     }
 
-    public void setLots(Serials lots) {
-        Serials oldLots = this.lots;
-        this.lots = lots;
-        propertyChangeSupport.firePropertyChange("lots", oldLots, lots);
-    }
-
-    public Serials getLots() {
-        return lots;
-    }
-
-    public void setSerials(Lots serials) {
-        Lots oldSerials = this.serials;
-        this.serials = serials;
-        propertyChangeSupport.firePropertyChange("serials", oldSerials, serials);
-    }
-
-    public Lots getSerials() {
-        return serials;
-    }
-
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);
     }
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
+    }
+
+    public String getPayload() {
+        StringBuffer payload = new StringBuffer();
+        payload.append("\"InputParameters\":{\"PWIPTXN\":{");
+        //Adding not null attributes in the payload
+        if (getAction() != null) {
+            payload.append("\"ACTION\": \"" + getAction() + "\",");
+        }
+        if (getTrxRef() != null) {
+            payload.append("\"TRXREF\": \"" + getTrxRef() + "\",");
+        }
+        if (getSourceType() != null) {
+            payload.append("\"SOURCETYPE\": \"" + getSourceType() + "\",");
+        }
+        String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();
+        if (trxType != null) {
+            payload.append("\"TRXTYPE\": \"" + trxType + "\",");
+        }
+        if (getTrxDate() != null) {
+            payload.append("\"TRXDATE\": \"" + getTrxDate() + "\",");
+        }
+        if (getOrgCode() != null) {
+            payload.append("\"ORGCODE\": \"" + getOrgCode() + "\",");
+        }
+        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}").toString();
+        if (item != null) {
+            payload.append("\"ITEM\": \"" + item + "\",");
+        }
+        if (getSubinv() != null) {
+            payload.append("\"SUBINV\": \"" + getSubinv() + "\",");
+        }
+        if (getLocator() != null) {
+            payload.append("\"LOCATOR\": \"" + getLocator() + "\",");
+        }
+        if (getLpn() != null) {
+            payload.append("\"LPN\": \"" + getLpn() + "\",");
+        }
+        if (getSourceCode() != null) {
+            payload.append("\"SOURCECODE\": \"" + getSourceCode() + "\",");
+        }
+        if (getTrxQty() != null) {
+            payload.append("\"TRXQTY\": \"" + getTrxQty() + "\",");
+        }
+        if (getTxnUom() != null) {
+            payload.append("\"TXNUOM\": \"" + getTxnUom() + "\",");
+        }
+        if (getGlAccount() != null) {
+            payload.append("\"GLACCOUNT\": \"" + getGlAccount() + "\",");
+        }
+        if (getAccountAlias() != null) {
+            payload.append("\"ACCOUNTALIAS\": \"" + getAccountAlias() + "\",");
+        }
+        if (getReason() != null) {
+            payload.append("\"REASON\": \"" + getReason() + "\",");
+        }
+        if (getTrxnAction() != null) {
+            payload.append("\"TRXNACTION\": \"" + getTrxnAction() + "\",");
+        }
+        if (getTrxSource() != null) {
+            payload.append("\"TRXSOURCE\": \"" + getTrxSource() + "\",");
+        }
+        if (getWipEntityName() != null) {
+            payload.append("\"WIPENTITYNAME\": \"" + getWipEntityName() + "\",");
+        }
+        if (getDept() != null) {
+            payload.append("\"DEPT\": \"" + getDept() + "\",");
+        }
+        if (getFromOpSeq() != null) {
+            payload.append("\"FROMOPSEQ\": \"" + getFromOpSeq() + "\",");
+        }
+        if (getToOpSeq() != null) {
+            payload.append("\"TOOPSEQ\": \"" + getToOpSeq() + "\",");
+        }
+        String createdBy = AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}").toString();
+        if (createdBy != null) {
+            payload.append("\"CREATEDBY\": \"" + createdBy + "\",");
+        }
+        if (getSalesOrder() != null) {
+            payload.append("\"SALESORDER\": \"" + getSalesOrder() + "\",");
+        }
+        if (getNotes() != null) {
+            payload.append("\"NOTES\": \"" + getNotes() + "\",");
+        }
+        if (getReference() != null) {
+            payload.append("\"REFERENCE\": \"" + getReference() + "\",");
+        }
+        if (getKanban() != null) {
+            payload.append("\"KANBAN\": \"" + getKanban() + "\",");
+        }
+        if (getScrapQty() != null) {
+            payload.append("\"SCRAPQTY\": \"" + getScrapQty() + "\",");
+        }
+        if (getFromStep() != null) {
+            payload.append("\"FROMSTEP\": \"" + getFromStep() + "\",");
+        }
+        if (getToStep() != null) {
+            payload.append("\"TOSTEP\": \"" + getToStep() + "\",");
+        }
+        if (getOverComplFlag() != null) {
+            payload.append("\"OVERCOMPLFLAG\": \"" + getOverComplFlag() + "\",");
+        }
+        if (getSerials() != null) {
+            payload.append("\"LOTS\": \"" + getSerialPayload() + "\",");
+        }
+        payload.deleteCharAt(payload.length() - 1);
+        payload.append("}}");
+        return payload.toString();
+    }
+
+    public void setSerials(Serials serials) {
+        Serials oldSerials = this.serials;
+        this.serials = serials;
+        propertyChangeSupport.firePropertyChange("serials", oldSerials, serials);
+    }
+
+    public Serials getSerials() {
+        return serials;
+    }
+
+    public void setLots(Lots lots) {
+        Lots oldLots = this.lots;
+        this.lots = lots;
+        propertyChangeSupport.firePropertyChange("lots", oldLots, lots);
+    }
+
+    public Lots getLots() {
+        return lots;
+    }
+
+    public String getSerialPayload() {
+        return null;
+    }
+
+    public String getLotPayload() {
+        return null;
     }
 }
