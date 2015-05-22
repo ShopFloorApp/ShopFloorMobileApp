@@ -119,7 +119,7 @@ public class RestURI {
         return LPN_DETAILS_URI;
     }
 
-    private static final String DOCKDOOR_DETAILS_URI = "/webservices/rest/DCOMInquiry/getdockdoor/";
+    private static final String DOCKDOOR_DETAILS_URI = "/webservices/rest/DCOMShip/getdockdoor/";
 
     public static String PostDockDoorDetailsURI() {
         return DOCKDOOR_DETAILS_URI;
@@ -262,5 +262,21 @@ public class RestURI {
 
     public static String PostReceiveTxn() {
         return POST_RECEIVE;
+    }
+    
+    private static final String POST_LPN_SHIP = "/webservices/rest/DCOMShip/loadship/";
+    private static final String POST_LPN_LOAD = "/webservices/rest/DCOMShip/loadlpn/";
+    private static final String POST_LPN_UNLOAD = "/webservices/rest/DCOMShip/unloadlpn/";
+    
+    public static String PostLpnShip(){
+        return POST_LPN_SHIP;
+    }
+    
+    public static String PostLpnLoad(){
+        return POST_LPN_LOAD;
+    }
+    
+    public static String PostLpnUnLoad(){
+        return POST_LPN_UNLOAD;
     }
 }
