@@ -14,7 +14,7 @@ public class LPNBO {
     private String WeightUom;
     private String Subinv;
     private String Locator;
-    private int GrossWeight;
+    private float GrossWeight;
     private String VolumeUom;
 
     public void setLpn(String Lpn) {
@@ -67,13 +67,13 @@ public class LPNBO {
         return Locator;
     }
 
-    public void setGrossWeight(int GrossWeight) {
-        int oldGrossWeight = this.GrossWeight;
+    public void setGrossWeight(float GrossWeight) {
+        float oldGrossWeight = this.GrossWeight;
         this.GrossWeight = GrossWeight;
         propertyChangeSupport.firePropertyChange("GrossWeight", oldGrossWeight, GrossWeight);
     }
 
-    public int getGrossWeight() {
+    public float getGrossWeight() {
         return GrossWeight;
     }
 
@@ -87,13 +87,13 @@ public class LPNBO {
         return VolumeUom;
     }
 
-    public void setVolume(int Volume) {
-        int oldVolume = this.Volume;
+    public void setVolume(float Volume) {
+        float oldVolume = this.Volume;
         this.Volume = Volume;
         propertyChangeSupport.firePropertyChange("Volume", oldVolume, Volume);
     }
 
-    public int getVolume() {
+    public float getVolume() {
         return Volume;
     }
 
@@ -136,7 +136,7 @@ public class LPNBO {
     public String getLoadSeq() {
         return LoadSeq;
     }
-    private int Volume;
+    private float Volume;
     private String ParentLpn;
     private String OutermostLpn;
     private int DeliveryId;
