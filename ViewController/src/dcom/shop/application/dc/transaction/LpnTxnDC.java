@@ -128,7 +128,9 @@ public class LpnTxnDC extends SyncUtils {
         String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
         if (!("MERGE_FROM".equals(lpnPage))) {
             ItemTxnDC item = new ItemTxnDC();
-            item.InsertItems(); //Inserting current item on the page
+            String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+            if (!("".equals(itemNumber)) && itemNumber != null && !("null".equals(itemNumber)))
+                item.InsertItems(); //Inserting current item on the page
         }
         LpnTxnBO lpnTxn = new LpnTxnBO();
 
@@ -185,14 +187,14 @@ public class LpnTxnDC extends SyncUtils {
 
                 } else {
                     String lpn = jsObject.get("XLPN").toString();
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}",lpn);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", lpn);
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
                                                                               "Success", "LPN " + lpn + " Generated!",
                                                                               "ok"
                     });
                 }
-            }else{
+            } else {
                 AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                           "showAlert", new Object[] {
                                                                           "Error", "Generate LPN Failed.", "ok"

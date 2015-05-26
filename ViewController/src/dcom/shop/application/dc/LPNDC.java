@@ -52,7 +52,7 @@ public class LPNDC {
             "      \"SecurityGroup\": \"STANDARD\",\n" + "      \"NLSLanguage\": \"AMERICAN\",\n" +
             "      \"Org_Id\": \"82\"\n" + "    },\n" + "    \"InputParameters\": {\n" +
             "        \"PORGCODE\": \""+orgCode+"\",\n" + "        \"PLPNTYPE\": \"" + lpnPage + "\",\n" +
-            "        \"PLPNFROM\": \"" + keyword + "\"\n" + "}\n" + "    }\n" + "  }\n" + "}";
+            "        \"PLPNFROM\": \"" + keyword + "\"\n" + "}\n" + "    }\n" + "  }\n" ;
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");

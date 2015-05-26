@@ -22,6 +22,7 @@ import java.util.logging.Level;
 
 import javax.el.ValueExpression;
 
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -164,33 +165,49 @@ public class ItemTxnDC extends SyncUtils {
             int itemId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
             int trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
             String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
-            String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
-            String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
-            Integer quantity =
-                (Integer) Integer.parseInt((String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}"));
-            String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
-            String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
-            String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
+            if ("".equals(itemNumber) || itemNumber == null)
+                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                          "showAlert", new Object[] {
+                                                                          "Failure", "Please Enter Item Number!", "ok"
+                });
+            else {
+                String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
+                String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
+                String qty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
+                if ("".equals(qty) || qty == null)
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Failure", "Please Enter Quantity!", "ok"
+                    });
+                else {
+                    Integer quantity =
+                        (Integer) Integer.parseInt((String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}"));
+                    String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
+                    String serialControl =
+                        (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
+                    String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
 
-            item.setItemId(itemId);
-            item.setTrxnId(trxnId);
-            item.setItemNumber(itemNumber);
-            item.setItemName(itemName);
-            item.setUom(uom);
-            item.setQuantity(quantity);
-            item.setTrxType(trxType);
-            item.setSerialControl(serialControl);
-            item.setLotControl(lotControl);
+                    item.setItemId(itemId);
+                    item.setTrxnId(trxnId);
+                    item.setItemNumber(itemNumber);
+                    item.setItemName(itemName);
+                    item.setUom(uom);
+                    item.setQuantity(quantity);
+                    item.setTrxType(trxType);
+                    item.setSerialControl(serialControl);
+                    item.setLotControl(lotControl);
 
-            s_insertItems.add(item);
-            boolean insertStatus = super.insertSqlLiteTable(ItemTxnBO.class, s_insertItems);
-            if (insertStatus) {
-                clearItems();
-                refreshTrxnId();
+                    s_insertItems.add(item);
+                    boolean insertStatus = super.insertSqlLiteTable(ItemTxnBO.class, s_insertItems);
+                    if (insertStatus) {
+                        clearItems();
+                        refreshTrxnId();
 
+                    }
+
+                    providerChangeSupport.fireProviderRefresh("items");
+                }
             }
-
-            providerChangeSupport.fireProviderRefresh("items");
         }
 
     }
