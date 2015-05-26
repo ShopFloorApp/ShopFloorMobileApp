@@ -82,11 +82,11 @@ public class LPNDC {
                         lpnItems.setLpnContext((jsObjectArrayData.get("LPNCONTEXT").toString()));
                         lpnItems.setSubinv((jsObjectArrayData.get("SUBINV").toString()));
                         lpnItems.setLocator((jsObjectArrayData.get("LOCATOR").toString()));
-                        lpnItems.setGrossWeight(((Integer) Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("GROSSWEIGHT").toString()) ?
+                        lpnItems.setGrossWeight(((Float) Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("GROSSWEIGHT").toString()) ?
                                                                              "0" :
                                                                              jsObjectArrayData.get("GROSSWEIGHT")).toString())));
                         lpnItems.setVolumeUom((jsObjectArrayData.get("VOLUMEUOM").toString()));
-                        lpnItems.setVolume(((Integer) Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("VOLUME").toString()) ?
+                        lpnItems.setVolume(((Float) Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("VOLUME").toString()) ?
                                                                         "0" :
                                                                         jsObjectArrayData.get("VOLUME")).toString())));
                         lpnItems.setParentLpn((jsObjectArrayData.get("PARENTLPN").toString()));
