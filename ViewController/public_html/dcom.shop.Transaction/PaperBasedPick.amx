@@ -45,7 +45,7 @@
         <amx:facet name="secondary"></amx:facet>
         <amx:facet name="footer">
             <amx:spacer id="s1" width="50"/>
-            <amx:commandLink id="cl3" actionListener="#{bindings.getPick.execute}">
+            <amx:commandLink id="cl3" action="Load" actionListener="#{bindings.getPick.execute}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl5">
                     <amx:rowLayout id="rl7">
