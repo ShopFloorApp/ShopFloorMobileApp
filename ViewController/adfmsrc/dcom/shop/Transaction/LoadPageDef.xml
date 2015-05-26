@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LoadPageDef"
+                Package="dcom.shop.Transaction.">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PickTxnDC" id="PickTxnDCIterator"/>
+    <accessorIterator MasterBinding="PickTxnDCIterator" Binds="pickResult" RangeSize="25" DataControl="PickTxnDC"
+                      BeanClass="dcom.shop.application.mobile.PickTxnBO" id="pickResultIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="pickResultIterator" id="SUBINV">
+      <AttrNames>
+        <Item Value="SUBINV"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickResultIterator" id="LOCATORCODE">
+      <AttrNames>
+        <Item Value="LOCATORCODE"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickResultIterator" id="ITEM">
+      <AttrNames>
+        <Item Value="ITEM"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="pickResultIterator" id="TXNQTY">
+      <AttrNames>
+        <Item Value="TXNQTY"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

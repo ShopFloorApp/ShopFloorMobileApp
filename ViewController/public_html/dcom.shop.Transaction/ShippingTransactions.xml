@@ -65,6 +65,12 @@
     <view id="UnloadTruck">
       <page>/dcom.shop.Transaction/page/ShippingTxn/UnloadTruck.amx</page>
     </view>
+    <view id="PaperBasedPick">
+      <page>/dcom.shop.Transaction/PaperBasedPick.amx</page>
+    </view>
+    <view id="Load">
+      <page>/dcom.shop.Transaction./Load.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
       <control-flow-case id="__10">
@@ -104,6 +110,10 @@
       <control-flow-case id="__29">
         <from-outcome>toUnloadTruck</from-outcome>
         <to-activity-id>UnloadTruck</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome>PaperPick</from-outcome>
+        <to-activity-id>PaperBasedPick</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__12">
@@ -180,6 +190,24 @@
       <control-flow-case id="__37">
         <from-outcome>Back</from-outcome>
         <to-activity-id>LPNship</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__39">
+      <from-activity-id>PaperBasedPick</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>__ShippingTransactions2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__41">
+        <from-outcome>Load</from-outcome>
+        <to-activity-id>Load</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__42">
+      <from-activity-id>Load</from-activity-id>
+      <control-flow-case id="__43">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>PaperBasedPick</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

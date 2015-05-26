@@ -138,6 +138,13 @@ public class RestURI {
         return LPN_INQUIRY_URI;
 
     }
+    
+    private static final String GET_PICK_URI = "/webservices/rest/DCOMShip/getpick/";
+
+    public static String PostGetPickURI() {
+        return GET_PICK_URI;
+
+    }
     private static final String ITEM_DETAILS_URI = "/webservices/rest/DCOMInquiry/getitem/";
 
     public static String PostItemDetailsURI() {

@@ -43,6 +43,14 @@ public class BarcodeBean {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", barcodeResult);
         } else if ("Job".equals(barCodeField)) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchJobKeyword}", barcodeResult);
+        } else if ("SONumber".equals(barCodeField)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.salesOrderNumber}", barcodeResult);
+        }else if ("MONumber".equals(barCodeField)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.moveOrderNumber}", barcodeResult);
+        }else if ("DeliveryNumber".equals(barCodeField)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.deliveryNumber}", barcodeResult);
+        }else if ("TaskId".equals(barCodeField)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskId}", barcodeResult);
         }
 
         propertyChangeSupport.firePropertyChange("barcodeResult", oldBarcodeResult, barcodeResult);

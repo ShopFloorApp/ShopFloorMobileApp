@@ -26,7 +26,7 @@
                 <amx:setPropertyListener id="spl2" to="#{pageFlowScope.documnetNumber}" type="action"/>
                 <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pickRule}" from="10" type="action"/>
             </amx:listItem>
-            <amx:listItem id="li3" showLinkIcon="false">
+            <amx:listItem action="PaperPick" id="li3" showLinkIcon="false">
                 <amx:outputText value="Paper Based Pick" id="ot4"/>
             </amx:listItem>
             <amx:listItem action="quickShip" id="li4" showLinkIcon="false">
