@@ -32,10 +32,10 @@
                         <amx:inputText id="it12" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"/>
                         <amx:commandLink id="cl3" action="lpn">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
-                            <amx:setPropertyListener id="spl3" type="action" from="LPNTrxn"
+                            <amx:setPropertyListener id="spl4" to="#{pageFlowScope.LpnLovField}" type="action"
+                                                     from="#{'SHIP_LPN'}"/>
+                            <amx:setPropertyListener id="spl3" type="action" from="#{'LPNTrxn'}"
                                                      to="#{pageFlowScope.LpnLovPage}"/>
-                            <amx:setPropertyListener id="spl4" to="#{pageFlowScope.LpnPage}" type="action"
-                                                     from="SHIP_LPN"/>
                         </amx:commandLink>
                         <amx:spacer id="s52" width="10"/>
                     </amx:panelGroupLayout>
