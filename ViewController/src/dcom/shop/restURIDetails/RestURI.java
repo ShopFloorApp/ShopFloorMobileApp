@@ -271,9 +271,10 @@ public class RestURI {
         return POST_RECEIVE;
     }
     
-    private static final String POST_LPN_SHIP = "/webservices/rest/DCOMShip/loadship/";
+    private static final String POST_LPN_SHIP = "/webservices/rest/DCOMShip/lpnship/";
     private static final String POST_LPN_LOAD = "/webservices/rest/DCOMShip/loadlpn/";
     private static final String POST_LPN_UNLOAD = "/webservices/rest/DCOMShip/unloadlpn/";
+    private static final String POST_LPN = "/webservices/rest/DCOMShip/getlpn";
     
     public static String PostLpnShip(){
         return POST_LPN_SHIP;
@@ -285,5 +286,9 @@ public class RestURI {
     
     public static String PostLpnUnLoad(){
         return POST_LPN_UNLOAD;
+    }
+    
+    public static String PostLpn(){
+        return POST_LPN;
     }
 }
