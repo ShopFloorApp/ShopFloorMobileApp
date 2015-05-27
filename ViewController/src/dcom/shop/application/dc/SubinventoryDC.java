@@ -145,6 +145,7 @@ public class SubinventoryDC extends SyncUtils {
 
         try {
             SubinventoryBO[] subInventories = null;
+            filtered_Subinventories.clear();
             /**Commented as data will be coming from local DB
                  * GenericVirtualType payload = new GenericVirtualType(null, "payload");
                 payload.defineAttribute(null, "Whse", String.class, "100");
@@ -157,7 +158,10 @@ public class SubinventoryDC extends SyncUtils {
             //  String refresh =
             //     (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshFromSubinventory}");
             //if ("Y".equals(refresh))
-            filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+            //filtered_Subinventories = super.getOfflineCollection(SubinventoryBO.class);
+            String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+            filtered_Subinventories=super.getFilteredCollectionFromDB(SubinventoryBO.class,"WHERE WHSE="+orgCode);
+
             subInventories =
                 (SubinventoryBO[]) filtered_Subinventories.toArray(new SubinventoryBO[filtered_Subinventories.size()]);
 
@@ -183,7 +187,10 @@ public class SubinventoryDC extends SyncUtils {
             paramsMap.put("payload", payload);*/
             //  String refresh = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.refreshToSubinventory}");
             // if ("Y".equals(refresh))
-            s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
+            //s_to_subInventories = super.getOfflineCollection(SubinventoryBO.class);
+            String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+            s_to_subInventories=super.getFilteredCollectionFromDB(SubinventoryBO.class,"WHERE WHSE="+orgCode);
+
             subInventories =
                 (SubinventoryBO[]) s_to_subInventories.toArray(new SubinventoryBO[s_to_subInventories.size()]);
             //  ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ToSubinventory}", int.class);
