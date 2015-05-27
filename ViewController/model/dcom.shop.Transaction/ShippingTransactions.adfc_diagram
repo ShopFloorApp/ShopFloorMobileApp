@@ -269,7 +269,7 @@
       <property
          name="fromsrcid">__8</property>
       <property
-         name="sdm:polyPoints">T44,478.3828,444.6739,271.55664,324.39456,B44</property>
+         name="sdm:polyPoints">T44,478.3828,444.3897,271.55664,324.11038,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -353,7 +353,7 @@
       <property
          name="fromsrcid">__19</property>
       <property
-         name="sdm:polyPoints">B56,278.55664,320.4336,485.3828,440.68002,T56</property>
+         name="sdm:polyPoints">B56,278.55664,320.1494,485.3828,440.39584,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -367,7 +367,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">L54,234.05664,615.33594,129.01758,615.33594,R54</property>
+         name="sdm:polyPoints">L54,234.05664,615.05176,129.01758,615.05176,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -381,7 +381,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R54,318.65128,615.33594,440.8828,509.1739,L62</property>
+         name="sdm:polyPoints">R54,318.65128,615.05176,440.8828,508.8897,L62</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -451,7 +451,7 @@
       <property
          name="fromsrcid">__8</property>
       <property
-         name="sdm:polyPoints">B56,485.3828,555.90564,278.55664,730.5371,T56</property>
+         name="sdm:polyPoints">B56,485.3828,555.62146,278.55664,730.2529,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -514,7 +514,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L54,637.0,430.16797,524.7367,495.1739,R46</property>
+         name="sdm:polyPoints">L54,637.0,429.8838,524.7367,494.8897,R46</property>
    </ControlFlowCase>
    <View
       id="View38">
@@ -550,5 +550,30 @@
          name="fromOutcome">Back</property>
       <property
          name="sdm:polyPoints">L54,762.0,334.0166,723.53217,429.8838,R54</property>
+   </ControlFlowCase>
+   <View
+      id="View41">
+      <property
+         name="activityId">itemLOVPG</property>
+      <property
+         name="page">/page/LovPage/itemLOVPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>itemLOVPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">329.09766</property>
+      <property
+         name="x">991.00977</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase42"
+      from="View38"
+      to="View41">
+      <property
+         name="fromOutcome">ItemLOV</property>
+      <property
+         name="sdm:polyPoints">R50,844.0,330.5166,950.00977,328.74707,L50</property>
    </ControlFlowCase>
 </SDM>

@@ -48,7 +48,7 @@
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
                     <amx:cellFormat id="cf10">
-                        <amx:commandLink id="cl2" actionListener="#{bindings.getPick.execute}">
+                        <amx:commandLink id="cl2" action="Load" actionListener="#{bindings.getPick.execute}">
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11" halign="center">
