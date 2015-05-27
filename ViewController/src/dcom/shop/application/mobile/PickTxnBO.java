@@ -230,7 +230,18 @@ public class PickTxnBO {
     private String LOTCONTROL;
     private String LOTALLOC;
     private String SERIALCONTROL;
+
+    public void setLPN(String LPN) {
+        String oldLPN = this.LPN;
+        this.LPN = LPN;
+        propertyChangeSupport.firePropertyChange("LPN", oldLPN, LPN);
+    }
+
+    public String getLPN() {
+        return LPN;
+    }
     private String SERIALALLOC;
+    private String LPN;
 
     public void addPropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.addPropertyChangeListener(l);

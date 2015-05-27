@@ -66,8 +66,12 @@ public class PickTxnDC {
         order = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.moveOrderNumber}", String.class);
         String moveOrder = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        String delivery = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deliveryNumber}");
-        String pickId = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.taskId}");
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.deliveryNumber}", String.class);
+        String delivery = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.taskId}", String.class);
+        String pickId = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
         String restURI = RestURI.PostGetPickURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String orgCode =
@@ -79,7 +83,7 @@ public class PickTxnDC {
             "      \"SecurityGroup\": \"STANDARD\",\n" + "      \"NLSLanguage\": \"AMERICAN\",\n" +
             "      \"Org_Id\": \"82\"\n" + "    },\n" + "    \"InputParameters\": {\n" + "        \"PORGCODE\": \"" +
             orgCode + "\",\n" + "        \"PORDER\": \"" + order + "\",\n" + "        \"PMOVEORDER\": \"" + moveOrder +
-            "\"\n" + "        \"PDELIVERY\": \"" + delivery + "\"\n" + "        \"PPICKID\": \"" + pickId + "\"\n" +
+            "\",\n" + "        \"PDELIVERY\": \"" + delivery + "\",\n" + "        \"PPICKID\": \"" + pickId + "\"\n" +
             "}\n" + "    }\n" + "  }\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
@@ -90,9 +94,9 @@ public class PickTxnDC {
             Object object = parser.parse(jsonArrayAsString);
             JSONObject jsonObject = (JSONObject) object;
             JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
-            JSONObject jsObject1 = (JSONObject) jsObject.get("XLPN");
+           // JSONObject jsObject1 = (JSONObject) jsObject.get("XLPN");
             try {
-                JSONArray array = (JSONArray) jsObject1.get("XLPN_ITEM");
+                JSONArray array = (JSONArray) jsObject.get("XPICKLOAD");
 
                 if (array != null) {
                     int size = array.size();
@@ -124,6 +128,7 @@ public class PickTxnDC {
                         pickItems.setLOTALLOC((jsObjectArrayData.get("LOTALLOC").toString()));
                         pickItems.setSERIALCONTROL((jsObjectArrayData.get("SERIALCONTROL").toString()));
                         pickItems.setSERIALALLOC((jsObjectArrayData.get("SERIALALLOC").toString()));
+                        pickItems.setLPN((jsObjectArrayData.get("LPN").toString()));
 
                         s_PickTxnList.add(pickItems);
                     }
@@ -131,7 +136,7 @@ public class PickTxnDC {
 
                 }
             } catch (ClassCastException e2) {
-                JSONObject jsObject2 = (JSONObject) jsObject1.get("XLPNRES_ITEM");
+                JSONObject jsObject2 = (JSONObject) jsObject.get("XPICKLOAD");
                 if (jsObject2 != null) {
 
 
@@ -141,7 +146,7 @@ public class PickTxnDC {
                     pickItems.setITEM((jsObject2.get("ITEM").toString()));
                     pickItems.setITEMDESC((jsObject2.get("ITEMDESC").toString()));
                     pickItems.setTXNUOM((jsObject2.get("TXNUOM").toString()));
-                    pickItems.setTXNQTY(new BigDecimal((jsObject2.get("SUBINV").toString())));
+                    pickItems.setTXNQTY(new BigDecimal((jsObject2.get("TXNQTY").toString())));
                     pickItems.setPRIMARYUOM((jsObject2.get("PRIMARYUOM").toString()));
                     pickItems.setSUBINV((jsObject2.get("SUBINV").toString()));
                     pickItems.setPICKID(new BigDecimal((jsObject2.get("PICKID").toString())));
@@ -158,6 +163,7 @@ public class PickTxnDC {
                     pickItems.setLOTALLOC((jsObject2.get("LOTALLOC").toString()));
                     pickItems.setSERIALCONTROL((jsObject2.get("SERIALCONTROL").toString()));
                     pickItems.setSERIALALLOC((jsObject2.get("SERIALALLOC").toString()));
+                    pickItems.setLPN((jsObject2.get("LPN").toString()));
 
                     s_PickTxnList.add(pickItems);
 
