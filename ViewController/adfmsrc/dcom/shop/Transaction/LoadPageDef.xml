@@ -16,6 +16,13 @@
                       BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
   </executables>
   <bindings>
+    <tree IterBinding="pickResultIterator" id="pickResult">
+      <nodeDefinition DefName="dcom.shop.application.mobile.PickTxnBO" Name="pickResult0">
+        <AttrNames>
+          <Item Value="ITEM"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
     <attributeValues IterBinding="pickResultIterator" id="SUBINV">
       <AttrNames>
         <Item Value="SUBINV"/>
