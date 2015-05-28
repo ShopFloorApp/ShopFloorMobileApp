@@ -97,5 +97,6 @@
             <amx:inputText value="#{pageFlowScope.PickQty}" label="Pick Qty" id="it1"/>
             <amx:inputText value="#{pageFlowScope.XferLPN}" label="Xfer LPN" id="it2"/>
         </amx:panelFormLayout>
+       
     </amx:panelPage>
 </amx:view>

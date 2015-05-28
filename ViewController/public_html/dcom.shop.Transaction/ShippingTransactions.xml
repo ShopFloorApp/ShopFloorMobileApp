@@ -202,7 +202,7 @@
         <to-activity-id>__ShippingTransactions2</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__41">
-        <from-outcome>Load</from-outcome>
+        <from-outcome>goToLoad</from-outcome>
         <to-activity-id>Load</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
