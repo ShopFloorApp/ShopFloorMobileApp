@@ -173,14 +173,14 @@ public class PickTxnDC {
                     pickItems.setSERIALALLOC((jsObject2.get("SERIALALLOC").toString()));
                     String lpn = jsObject2.get("LPN").toString();
                     pickItems.setLPN(lpn);
-
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickSubinv", subInv);
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickLocator", locator);
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword", lpn);
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword", item);
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickQty", txnQty);
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.SerialControl", serialControl);
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.LotControl", lotControl);
+                   
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", subInv.contains("@xsi")?"":subInv);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", locator.contains("@xsi")?"":locator );
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", lpn.contains("@xsi")?"":lpn );
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", item.contains("@xsi")?"":item );
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickQty}", txnQty );
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.SerialControl}",serialControl.contains("@xsi")?"":serialControl  );
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.LotControl}", lotControl.contains("@xsi")?"":lotControl );
                     s_PickTxnList.add(pickItems);
 
 

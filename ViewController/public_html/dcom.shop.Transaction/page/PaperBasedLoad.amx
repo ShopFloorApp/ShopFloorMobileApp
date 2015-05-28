@@ -29,8 +29,6 @@
                                         <amx:image id="i1" inlineStyle="width:25px;height:25px;position:relative"
                                                    source="/images/Fork Lift Filled-50.png"/>
                                     </amx:cellFormat>
-                                </amx:rowLayout>
-                                <amx:rowLayout id="rl1">
                                     <amx:cellFormat id="cf12" halign="center">
                                         <amx:outputHtml id="ot2" value="Load and Drop"
                                                         inlineStyle="font-size:small;color:Gray;"/>
@@ -50,8 +48,6 @@
                                         <amx:outputHtml id="oh1" styleClass="fa fa-info fa-lg"
                                                         inlineStyle="color:#34AADC;width:25px;height:25px;position:relative"/>
                                     </amx:cellFormat>
-                                </amx:rowLayout>
-                                <amx:rowLayout>
                                     <amx:cellFormat id="cf2" halign="center">
                                         <amx:outputHtml id="ot3" value="Information"
                                                         inlineStyle="font-size:small;color:Gray;"/>
@@ -64,10 +60,11 @@
             </amx:tableLayout>
         </amx:facet>
         <amx:panelFormLayout id="pfl1">
-            <amx:selectOneChoice value="#{pageFlowScope.PickSubinv}" label="Pick From Subinventory" id="soc1">
+            <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}" label="Pick From Subinventory" id="soc1"
+                                 valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                 <amx:selectItems value="#{bindings.subinv.items}" id="si1"/>
             </amx:selectOneChoice>
-            <amx:selectOneChoice value="#{pageFlowScope.PickLocator}" label="Pick From Locator" id="soc2">
+            <amx:selectOneChoice value="#{pageFlowScope.FromLocator}" label="Pick From Locator" id="soc2">
                 <amx:selectItems value="#{bindings.locator.items}" id="si2"/>
             </amx:selectOneChoice>
             <amx:inputText value="#{pageFlowScope.searchLpnKeyword}" label="Allocated LPN" id="it4"/>
@@ -97,6 +94,5 @@
             <amx:inputText value="#{pageFlowScope.PickQty}" label="Pick Qty" id="it1"/>
             <amx:inputText value="#{pageFlowScope.XferLPN}" label="Xfer LPN" id="it2"/>
         </amx:panelFormLayout>
-       
     </amx:panelPage>
 </amx:view>

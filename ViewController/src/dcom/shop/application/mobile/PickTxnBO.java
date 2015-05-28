@@ -1,11 +1,13 @@
 package dcom.shop.application.mobile;
 
+import dcom.shop.application.base.AEntity;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class PickTxnBO {
+public class PickTxnBO extends AEntity {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public PickTxnBO() {

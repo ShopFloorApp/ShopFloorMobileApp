@@ -204,6 +204,7 @@ public class LocatorDC extends SyncUtils {
             filtered_Locators.clear();
 
             HashMap filterFileds = new HashMap();
+            String whereClause = null;
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
             //if (subInv == null)
             // subInv = "RAW";
@@ -217,8 +218,10 @@ public class LocatorDC extends SyncUtils {
             //AJ 14May
             //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
             //filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
-            
-            String whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
+            if(subInv != null)
+            whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
+            else
+                 whereClause="WHERE LOCATORTYPE=\"3\"";
             filtered_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {
