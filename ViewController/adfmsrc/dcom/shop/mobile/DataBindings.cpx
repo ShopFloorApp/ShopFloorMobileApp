@@ -116,7 +116,6 @@
     <page path="/page/LovPage/CycleCountLOVPG.amx" usageId="dcom_shop_mobile_CycleCountLOVPGPageDef"/>
     <page path="/dcom.shop.Transaction/page/ShippingTxn/quickShip.amx" usageId="dcom_shop_mobile_quickShipPageDef"/>
     <page path="/dcom.shop.Transaction/PaperBasedPick.amx" usageId="dcom_shop_mobile_PaperBasedPickPageDef"/>
-    <page path="/dcom.shop.Transaction./Load.amx" usageId="dcom_shop_mobile_LoadPageDef"/>
     <page path="/dcom.shop.Transaction/page/PaperBasedLoad.amx" usageId="dcom_shop_mobile_PaperBasedLoadPageDef"/>
   </pageMap>
   <pageDefinitionUsages>

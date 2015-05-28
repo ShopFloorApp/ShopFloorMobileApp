@@ -44,7 +44,7 @@
         </amx:facet>
         <amx:facet name="secondary"></amx:facet>
         <amx:facet name="footer">
-            <amx:commandLink id="cl2" action="goToLoad">
+            <amx:commandLink id="cl2" action="goToLoad" actionListener="#{bindings.getPick.execute}">
                 <amx:tableLayout id="tl1">
                     <amx:rowLayout id="rl10">
                         <amx:cellFormat id="cf11">
