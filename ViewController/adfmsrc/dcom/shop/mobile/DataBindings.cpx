@@ -117,6 +117,7 @@
     <page path="/dcom.shop.Transaction/page/ShippingTxn/quickShip.amx" usageId="dcom_shop_mobile_quickShipPageDef"/>
     <page path="/dcom.shop.Transaction/PaperBasedPick.amx" usageId="dcom_shop_mobile_PaperBasedPickPageDef"/>
     <page path="/dcom.shop.Transaction./Load.amx" usageId="dcom_shop_mobile_LoadPageDef"/>
+    <page path="/dcom.shop.Transaction/page/PaperBasedLoad.amx" usageId="dcom_shop_mobile_PaperBasedLoadPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
@@ -218,7 +219,7 @@
     <page id="dcom_shop_mobile_CycleCountLOVPGPageDef" path="page.LovPage.CycleCountLOVPGPageDef"/>
     <page id="dcom_shop_mobile_quickShipPageDef" path="dcom.shop.Transaction.page.ShippingTxn.quickShipPageDef"/>
     <page id="dcom_shop_mobile_PaperBasedPickPageDef" path="dcom.shop.Transaction.PaperBasedPickPageDef"/>
-    <page id="dcom_shop_mobile_LoadPageDef" path="dcom.shop.Transaction..LoadPageDef"/>
+     <page id="dcom_shop_mobile_PaperBasedLoadPageDef" path="dcom.shop.Transaction.page.PaperBasedLoadPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="PickTxnDC" path="dcom.shop.mobile.PickTxnDC"/>

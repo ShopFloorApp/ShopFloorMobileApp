@@ -68,11 +68,11 @@
     <view id="PaperBasedPick">
       <page>/dcom.shop.Transaction/PaperBasedPick.amx</page>
     </view>
-    <view id="Load">
-      <page>/dcom.shop.Transaction./Load.amx</page>
-    </view>
     <view id="itemLOVPG">
       <page>/page/LovPage/itemLOVPG.amx</page>
+    </view>
+    <view id="PaperBasedLoad">
+      <page>/dcom.shop.Transaction/page/PaperBasedLoad.amx</page>
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
@@ -203,16 +203,16 @@
       </control-flow-case>
       <control-flow-case id="__41">
         <from-outcome>goToLoad</from-outcome>
-        <to-activity-id>Load</to-activity-id>
+        <to-activity-id>PaperBasedLoad</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__42">
-      <from-activity-id>Load</from-activity-id>
-      <control-flow-case id="__43">
+    <control-flow-rule id="__43">
+      <from-activity-id>PaperBasedLoad</from-activity-id>
+      <control-flow-case id="__45">
         <from-outcome>Back</from-outcome>
         <to-activity-id>PaperBasedPick</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__44">
+      <control-flow-case id="__46">
         <from-outcome>ItemLOV</from-outcome>
         <to-activity-id>itemLOVPG</to-activity-id>
       </control-flow-case>

@@ -516,40 +516,25 @@
       <property
          name="sdm:polyPoints">L54,637.0,429.8838,524.7367,494.8897,R46</property>
    </ControlFlowCase>
-   <View
-      id="View38">
-      <property
-         name="activityId">Load</property>
-      <property
-         name="page">/dcom.shop.Transaction./Load.amx</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>Load&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">330.8672</property>
-      <property
-         name="x">803.0</property>
-   </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase39"
       from="View35"
-      to="View38">
+      to="View43">
       <property
-         name="fromOutcome">Load</property>
+         name="fromOutcome">goToLoad</property>
       <property
-         name="sdm:polyPoints">R46,719.0,422.8838,757.36707,327.0166,L46</property>
+         name="sdm:polyPoints">R46,720.4205,422.8838,784.0,450.39648,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase40"
-      from="View38"
+      from="View43"
       to="View35">
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">L54,762.0,334.0166,723.53217,429.8838,R54</property>
+         name="sdm:polyPoints">L54,782.565,457.39648,719.0,429.8838,R54</property>
    </ControlFlowCase>
    <View
       id="View41">
@@ -569,11 +554,26 @@
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase42"
-      from="View38"
+      from="View43"
       to="View41">
       <property
          name="fromOutcome">ItemLOV</property>
       <property
-         name="sdm:polyPoints">R50,844.0,330.5166,950.00977,328.74707,L50</property>
+         name="sdm:polyPoints">T50,825.0,399.89648,950.00977,328.74707,L50</property>
    </ControlFlowCase>
+   <View
+      id="View43">
+      <property
+         name="activityId">PaperBasedLoad</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/PaperBasedLoad.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>PaperBasedLoad&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">454.24707</property>
+      <property
+         name="x">825.0</property>
+   </View>
 </SDM>
