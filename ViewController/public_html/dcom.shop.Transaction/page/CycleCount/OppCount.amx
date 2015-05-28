@@ -148,8 +148,8 @@
                             </amx:tableLayout>
                             <amx:setPropertyListener id="sp2" from="SUMMARY" type="action"
                                                      to="#{pageFlowScope.callingPg}"/>
-                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
-                                                   alignId="pp1" align="overlapMiddleCenter"/>
+                            <!--amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
+                                                   alignId="pp1" align="overlapMiddleCenter"/-->
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf10">
@@ -173,18 +173,12 @@
             </amx:tableLayout>
             
         </amx:facet>
-        <amx:commandLink id = "c13">
-            <amx:showPopupBehavior id="spb22"  popupId="p2" type="action" decoration="anchor" 
-                                                   alignId="pp1" align="overlapMiddleCenter"/>
-                                                    
-            <amx:setPropertyListener id="sp3" from="" type="action"
-                                                     to="#{pageFlowScope.doneMsg}"/>
-        </amx:commandLink>
+       
     </amx:panelPage>
-     <amx:popup id="p1" autoDismiss="true">
+     <!--amx:popup id="p1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl24" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl56"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
+            <amx:commandLink id="cl56"> <actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}">
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
                     <amx:rowLayout id="rl17">
                         <amx:cellFormat id="cf26" halign="center">
@@ -194,19 +188,6 @@
                 </amx:tableLayout>
             </amx:commandLink>
         </amx:panelGroupLayout>
-    </amx:popup>
-     <amx:popup id="p2" autoDismiss="true" rendered = "#{pageFlowScope.doneMsg == 'DoneMsg' ? true : false}">
-        <?audit suppress oracle.maf.warning-missing-shortDesc?>
-        <amx:panelGroupLayout id="pgl25" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl567"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
-                <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
-                    <amx:rowLayout id="rl19">
-                        <amx:cellFormat id="cf27" halign="center">
-                            <amx:outputText id="oh965" value="#{pageFlowScope.countTxnMsg}"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-        </amx:panelGroupLayout>
-    </amx:popup>
+    </amx:popup-->
+     
 </amx:view>

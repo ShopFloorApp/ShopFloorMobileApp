@@ -26,7 +26,8 @@
                                           id="pgl7">
                         <amx:inputText hintText="Item Number" inlineStyle="text-align:left;" id="it6"
                                        value="#{pageFlowScope.searchKeyword}"/>
-                        <amx:commandLink id="cl12" action="ItemLOV">
+                        <amx:commandLink id="cl12"  action="#{StateListenerBean.validateAndNavigateItemLov}">
+                        
                             <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl1"  from='MiscTrxn'
                                                      to="#{pageFlowScope.ItemLovPage}" type="action"/>
@@ -65,8 +66,50 @@
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
+         <amx:panelGroupLayout layout="horizontal">
+                <amx:spacer width="30" id="s7"/>
+                <amx:commandLink id="cl4" rendered="#{pageFlowScope.serialControl ne 1}"
+                                 inlineStyle="float:left;margin:0px;padding:0px;" action="SerialEntry"
+                                 actionListener="#{CountUtilBean.genTxnId}">
+                    <amx:setPropertyListener from="#{pageFlowScope.qty}" to="#{pageFlowScope.SerialQty}"
+                                             id="spl1SS"/>
+                    <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
+                                             id="spl2"/>
+                    <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
+                    <amx:setPropertyListener from="CycleCount" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                    <amx:tableLayout id="tl2">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:rowLayout id="rl2">
+                            <amx:cellFormat id="cf3">
+                                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                                <amx:outputText id="ot5" inlineStyle="font-weight:bold;color:#34AADC;"
+                                                value="Serial Entry"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:commandLink>
+                <amx:spacer width="40" id="s16"/>
+                <amx:commandLink id="cl2" rendered="#{pageFlowScope.lotControl ne 1}" action="LotEntry"
+                            actionListener="#{CountUtilBean.genTxnId}" >
+                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                    <amx:setPropertyListener from="#{pageFlowScope.qty}" to="#{pageFlowScope.LotQty}" id="spl5"/>
+                    <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.LotItem}"
+                                             id="spl6"/>
+                    <amx:setPropertyListener from="CycleCount" to="#{pageFlowScope.ParentPage}" id="spl10"/>
+                    <amx:tableLayout id="tl3">
+                        <amx:rowLayout id="rl3">
+                            <amx:cellFormat id="cf5">
+                                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                                <amx:outputText id="ot6" inlineStyle="font-weight:bold;color:#34AADC;"
+                                                value="Lot Entry"/>
+                            </amx:cellFormat>
+                        </amx:rowLayout>
+                    </amx:tableLayout>
+                </amx:commandLink>
+            </amx:panelGroupLayout>
+ 
          <amx:facet name="footer">
-            <amx:tableLayout id="tl3" halign="center" width="100%" inlineStyle="margin-top:6px;">
+            <amx:tableLayout id="tl3C" halign="center" width="100%" inlineStyle="margin-top:6px;">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:rowLayout id="rl8">
                     
@@ -88,12 +131,12 @@
                             </amx:tableLayout> 
                             <amx:setPropertyListener id="spl" from="SAVE" type="action"
                                                      to="#{pageFlowScope.detTxnType}"/>
-                            <amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
-                                                   alignId="pp1" align="overlapMiddleCenter"/>
+                            <!--amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor" 
+                                                   alignId="pp1" align="overlapMiddleCenter"/-->
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11">
-                        <amx:commandLink id="cl4"  actionListener="#{CountUtilBean.callCountRestService}"
+                        <amx:commandLink id="cl4C"  actionListener="#{CountUtilBean.callCountRestService}"
                                          action="txnDone">
                             <amx:tableLayout id="tl5t" halign="center">
                                 <amx:rowLayout id="rl14">
@@ -112,13 +155,13 @@
                                                      to="#{pageFlowScope.detTxnType}"/>
                             <amx:setPropertyListener id="sp3" from="DoneMsg" type="action"
                                                      to="#{pageFlowScope.doneMsg}"/>
-                           <amx:showPopupBehavior id="spb22" popupId="p1" type="action" decoration="anchor" 
-                                                   alignId="pp1" align="overlapMiddleCenter"/>
+                           <!--amx:showPopupBehavior id="spb22" popupId="p1" type="action" decoration="anchor" 
+                                                   alignId="pp1" align="overlapMiddleCenter"/-->
                         </amx:commandLink>
                     </amx:cellFormat>
                     
                     <amx:cellFormat id="cf10">
-                        <amx:commandLink id="cl2" actionListener="#{CountUtilBean.clearDetailPage}">
+                        <amx:commandLink id="cl2C" actionListener="#{CountUtilBean.clearDetailPage}">
                             <amx:tableLayout id="tl1" halign="center">
                                 <amx:rowLayout id="rl10">
                                     <amx:cellFormat id="cf11r" halign="center">
@@ -138,10 +181,10 @@
             </amx:tableLayout>
         </amx:facet>
   </amx:panelPage>
-  <amx:popup id="p1" autoDismiss="true">
+  <!--amx:popup id="p1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl24" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl56"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
+            <amx:commandLink id="cl56"> <actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}">
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
                     <amx:rowLayout id="rl17">
                         <amx:cellFormat id="cf26" halign="center">
@@ -151,5 +194,5 @@
                 </amx:tableLayout>
             </amx:commandLink>
         </amx:panelGroupLayout>
-    </amx:popup>
+    </amx:popup-->
 </amx:view>

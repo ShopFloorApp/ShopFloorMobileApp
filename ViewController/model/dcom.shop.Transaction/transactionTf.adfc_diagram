@@ -318,7 +318,7 @@
       <property
          name="fromsrcid">__40</property>
       <property
-         name="sdm:polyPoints">B64,339.0,-283.31934,446.5,-175.45215,L50</property>
+         name="sdm:polyPoints">B64,339.0,-283.60352,446.5,-175.73633,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -346,7 +346,7 @@
       <property
          name="fromsrcid">__22</property>
       <property
-         name="sdm:polyPoints">L46,67.668945,-85.95215,3.0879662,-148.10742,R46</property>
+         name="sdm:polyPoints">L46,67.668945,-86.23633,3.0879662,-148.3916,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

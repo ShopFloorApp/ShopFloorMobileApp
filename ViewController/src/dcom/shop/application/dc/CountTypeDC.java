@@ -47,15 +47,17 @@ public class CountTypeDC extends SyncUtils {
             String orgCode = null;
             String ccName = null;
             ValueExpression ve = null;
-            
+
             ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.name}", String.class);
             ccName = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-            
-            ve = AdfmfJavaUtilities.getValueExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}", String.class);
+
+            ve =
+                AdfmfJavaUtilities.getValueExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}",
+                                                      String.class);
             orgCode = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-            
+
             String payload =
-               /* "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
+                /* "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
                 "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
                 "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/header\",\n" +
                 "                  \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
@@ -64,22 +66,12 @@ public class CountTypeDC extends SyncUtils {
                 "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
                 "                 },\n" + "   \"InputParameters\": \n" + "      {\"PWAREHOUSE\": \"\",\n" +
                 "       \"PCC\": \"\"\n }\n" + "}\n" + "}\n";*/
-                "{\n" + 
-                "    \"x\": {\n" + 
-                "        \n" + 
-                "        \"RESTHeader\": {\n" + 
-                "            \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-                "            \"RespApplication\": \"ONT\",\n" + 
-                "            \"SecurityGroup\": \"STANDARD\",\n" + 
-                "            \"NLSLanguage\": \"AMERICAN\",\n" + 
-                "            \"Org_Id\": \"82\"\n" + 
-                "        },\n" + 
-                "        \"InputParameters\": {\n" + 
-                "            \"PWAREHOUSE\": \""+orgCode+"\",\n" + 
-                "            \"PCC\": \""+ccName+"\"\n" + 
-                "        }\n" + 
-                "    }\n" + 
-                "}";
+                "{\n" + "    \"x\": {\n" + "        \n" + "        \"RESTHeader\": {\n" +
+                "            \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "            \"RespApplication\": \"ONT\",\n" + "            \"SecurityGroup\": \"STANDARD\",\n" +
+                "            \"NLSLanguage\": \"AMERICAN\",\n" + "            \"Org_Id\": \"82\"\n" + "        },\n" +
+                "        \"InputParameters\": {\n" + "            \"PWAREHOUSE\": \"" + orgCode + "\",\n" +
+                "            \"PCC\": \"" + ccName + "\"\n" + "        }\n" + "    }\n" + "}";
             System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
             System.out.println("Received response");
@@ -93,25 +85,27 @@ public class CountTypeDC extends SyncUtils {
                     JSONObject jsonObject = (JSONObject) object;
                     JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                     JSONObject jsObject1 = (JSONObject) jsObject.get("XCC");
-                    JSONArray array = (JSONArray) jsObject1.get("XCC_ITEM");
-                    if (array != null) {
-                        int size = array.size();
-                        //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
-                        for (int i = 0; i < size; i++) {
+                    if (jsObject1 != null) {
+                        JSONArray array = (JSONArray) jsObject1.get("XCC_ITEM");
+                        if (array != null) {
+                            int size = array.size();
+                            //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
+                            for (int i = 0; i < size; i++) {
 
 
-                            CountTypeBO CountTypeItems = new CountTypeBO();
-                            JSONObject jsObject2 = (JSONObject) array.get(i);
-                            CountTypeItems.setWhse((jsObject2.get("WHSE").toString()));
-                            CountTypeItems.setCountType((jsObject2.get("COUNTTYPE").toString()));
-                            CountTypeItems.setCountName((jsObject2.get("COUNTNAME").toString()));
-                            CountTypeItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
-                            s_CountType.add(CountTypeItems);
+                                CountTypeBO CountTypeItems = new CountTypeBO();
+                                JSONObject jsObject2 = (JSONObject) array.get(i);
+                                CountTypeItems.setWhse((jsObject2.get("WHSE").toString()));
+                                CountTypeItems.setCountType((jsObject2.get("COUNTTYPE").toString()));
+                                CountTypeItems.setCountName((jsObject2.get("COUNTNAME").toString()));
+                                CountTypeItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
+                                s_CountType.add(CountTypeItems);
 
 
+                            }
+
+                            super.updateSqlLiteTable(CountTypeBO.class, s_CountType);
                         }
-
-                        super.updateSqlLiteTable(CountTypeBO.class, s_CountType);
                     }
                 } catch (ParseException e) {
                     e.getMessage();
@@ -119,15 +113,16 @@ public class CountTypeDC extends SyncUtils {
             }
         }
         CountTypeBO[] CountTypeArray = (CountTypeBO[]) s_CountType.toArray(new CountTypeBO[s_CountType.size()]);
-        if(s_CountType.size()!=0){
+        if (s_CountType.size() != 0) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.CycleNameResults}", "");
-        }else{
+        } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.CycleNameResults}", "No Search Results");
         }
-        
-        
+
+
         return CountTypeArray;
     }
+
     public void refresh() {
         providerChangeSupport.fireProviderRefresh("countType");
     }

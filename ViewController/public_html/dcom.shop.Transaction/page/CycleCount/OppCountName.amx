@@ -35,6 +35,14 @@
                 <amx:setPropertyListener id="spl3a" from="S" to="#{pageFlowScope.ccType}"
                                                      type="action"/>
             </amx:commandLink>
+            
+             <amx:commandLink id = "c13">
+            <amx:showPopupBehavior id="spb22"  popupId="p2" type="action" decoration="anchor" 
+                                                   alignId="pp1" align="overlapMiddleCenter"/>
+                                                    
+            <amx:setPropertyListener id="sp3" from="" type="action"
+                                                     to="#{pageFlowScope.doneMsg}"/>
+        </amx:commandLink>
             </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             </amx:panelFormLayout>
@@ -43,4 +51,18 @@
             
         </amx:panelFormLayout>
   </amx:panelPage>
+  <amx:popup id="p2" autoDismiss="true" rendered = "#{pageFlowScope.doneMsg == 'DoneMsg' ? true : false}">
+        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+        <amx:panelGroupLayout id="pgl25" layout="horizontal" halign="center" valign="middle">
+            <amx:commandLink id="cl567"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
+                <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl19">
+                        <amx:cellFormat id="cf27" halign="center">
+                            <amx:outputText id="oh965" value="#{pageFlowScope.countTxnMsg}"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

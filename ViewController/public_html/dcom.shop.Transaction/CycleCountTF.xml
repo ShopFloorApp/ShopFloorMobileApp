@@ -43,6 +43,12 @@
     <view id="CycleCountLOVPG">
       <page>/page/LovPage/CycleCountLOVPG.amx</page>
     </view>
+    <view id="LotEntry">
+      <page>/page/LotEntry.amx</page>
+    </view>
+    <view id="SerialEntry">
+      <page>/page/SerialEntry.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>cycleCount</from-activity-id>
       <control-flow-case id="__2">
@@ -85,6 +91,14 @@
       <control-flow-case id="__15">
         <from-outcome>ItemLOV</from-outcome>
         <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome>SerialEntry</from-outcome>
+        <to-activity-id>SerialEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome>LotEntry</from-outcome>
+        <to-activity-id>LotEntry</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
