@@ -142,14 +142,19 @@ public class PickTxnDC {
 
                     PickTxnBO pickItems = new PickTxnBO();
                     // JSONObject jsObject2 = (JSONObject)
-
-                    pickItems.setITEM((jsObject2.get("ITEM").toString()));
-                    pickItems.setITEMDESC((jsObject2.get("ITEMDESC").toString()));
-                    pickItems.setTXNUOM((jsObject2.get("TXNUOM").toString()));
-                    pickItems.setTXNQTY(new BigDecimal((jsObject2.get("TXNQTY").toString())));
+                    String item = jsObject2.get("ITEM").toString();
+                    pickItems.setITEM(item);
+                    String itemDesc = jsObject2.get("ITEMDESC").toString();
+                    pickItems.setITEMDESC(itemDesc);
+                    String txnUom = jsObject2.get("TXNUOM").toString();
+                    pickItems.setTXNUOM(txnUom);
+                    BigDecimal txnQty = new BigDecimal(jsObject2.get("TXNQTY").toString());
+                    pickItems.setTXNQTY(txnQty);
                     pickItems.setPRIMARYUOM((jsObject2.get("PRIMARYUOM").toString()));
-                    pickItems.setSUBINV((jsObject2.get("SUBINV").toString()));
-                    pickItems.setPICKID(new BigDecimal((jsObject2.get("PICKID").toString())));
+                    String subInv = jsObject2.get("SUBINV").toString();
+                    pickItems.setSUBINV(subInv);
+                    BigDecimal PickId = new BigDecimal(jsObject2.get("PICKID").toString());
+                    pickItems.setPICKID(PickId);
                     pickItems.setTOSUBINV((jsObject2.get("TOSUBINV").toString()));
                     pickItems.setTOLOCATOR((jsObject2.get("TOLOCATOR").toString()));
                     pickItems.setSUBREST((jsObject2.get("SUBREST").toString()));
@@ -158,13 +163,24 @@ public class PickTxnDC {
                     pickItems.setTASKID(new BigDecimal((jsObject2.get("TASKID").toString())));
                     pickItems.setTRXHDRID(new BigDecimal((jsObject2.get("TRXHDRID").toString())));
                     pickItems.setPACKSLIPNUM((jsObject2.get("PACKSLIPNUM").toString()));
-                    pickItems.setLOCATOR((jsObject2.get("LOCATOR").toString()));
-                    pickItems.setLOTCONTROL((jsObject2.get("LOTCONTROL").toString()));
+                    String locator = jsObject2.get("LOCATOR").toString();
+                    pickItems.setLOCATOR(locator);
+                    String lotControl = jsObject2.get("LOTCONTROL").toString();
+                    pickItems.setLOTCONTROL(lotControl);
                     pickItems.setLOTALLOC((jsObject2.get("LOTALLOC").toString()));
-                    pickItems.setSERIALCONTROL((jsObject2.get("SERIALCONTROL").toString()));
+                    String serialControl = jsObject2.get("SERIALCONTROL").toString();
+                    pickItems.setSERIALCONTROL(serialControl);
                     pickItems.setSERIALALLOC((jsObject2.get("SERIALALLOC").toString()));
-                    pickItems.setLPN((jsObject2.get("LPN").toString()));
+                    String lpn = jsObject2.get("LPN").toString();
+                    pickItems.setLPN(lpn);
 
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickSubinv", subInv);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickLocator", locator);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword", lpn);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword", item);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.PickQty", txnQty);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.SerialControl", serialControl);
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.LotControl", lotControl);
                     s_PickTxnList.add(pickItems);
 
 
