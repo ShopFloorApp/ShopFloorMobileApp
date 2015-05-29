@@ -74,6 +74,9 @@
     <view id="PaperBasedLoad">
       <page>/dcom.shop.Transaction/page/PaperBasedLoad.amx</page>
     </view>
+    <view id="MissingLPNs">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/MissingLPNs.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>PickRelease</from-activity-id>
       <control-flow-case id="__10">
@@ -132,6 +135,10 @@
       <control-flow-case id="__17">
         <from-outcome>dock</from-outcome>
         <to-activity-id>dockLOV</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__42">
+        <from-outcome>missing</from-outcome>
+        <to-activity-id>MissingLPNs</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__5">
@@ -215,6 +222,13 @@
       <control-flow-case id="__46">
         <from-outcome>ItemLOV</from-outcome>
         <to-activity-id>itemLOVPG</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__44">
+      <from-activity-id>MissingLPNs</from-activity-id>
+      <control-flow-case id="__47">
+        <from-outcome>Back</from-outcome>
+        <to-activity-id>LPNship</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>
