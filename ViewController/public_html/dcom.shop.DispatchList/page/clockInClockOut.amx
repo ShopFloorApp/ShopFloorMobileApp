@@ -23,8 +23,10 @@
             <amx:inputText value="#{bindings.jobNumber.inputValue}" label="Job" id="it1"/>
             <amx:inputText label="Op Sequence" id="it9" value="#{bindings.opSeq.inputValue}"/>
             <amx:inputText value="#{bindings.PDeptCode.inputValue}" label="Department" id="it7"/>
-            <amx:inputText value="#{bindings.opStartDate.inputValue}" label="Operation Start Date" id="it6"/>
-            <amx:inputText value="#{bindings.opCompletionDate.inputValue}" label="Operation Completion Date" id="it8"/>
+            <!--<amx:inputText value="#{bindings.opStartDate.inputValue}" label="Operation Start Date" id="it6"/>
+            <amx:inputText value="#{bindings.opCompletionDate.inputValue}" label="Operation Completion Date" id="it8"/>-->
+            <amx:inputDate id="it6" label="Operation Start Date" value="#{bindings.opStartDate.inputValue}"/>
+            <amx:inputDate id="it8" label="Operation Completion Date" value="#{bindings.opCompletionDate.inputValue}"/>
             <amx:inputText value="#{bindings.badgeNumber.inputValue}" label="Crew Size" id="it4"/>
             <amx:selectOneRadio value="#{bindings.action.inputValue}" label="Actions" id="sor1">
                 <amx:selectItem label="Clock In" id="si2" value="CLOCK IN"/>
