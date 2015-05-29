@@ -22,7 +22,9 @@
         <amx:facet name="secondary">
             <amx:commandLink id="cl1" action="siDet">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:outputHtml id="oh1" styleClass="fa fa-plus fa-lg" inlineStyle="color:#34AADC;"/>
+                 <amx:panelGroupLayout id="pgl1" layout="horizontal">
+                    <amx:outputHtml id="oh1" value="Add"/>
+                </amx:panelGroupLayout>
                 <amx:setPropertyListener from="SUBTXFR" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.ToSubinventory}" id="spl2"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
