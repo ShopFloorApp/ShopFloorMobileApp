@@ -325,7 +325,7 @@
       <property
          name="fromsrcid">__14</property>
       <property
-         name="sdm:polyPoints">L42,760.37305,641.6947,704.25757,577.41565,R46</property>
+         name="sdm:polyPoints">L42,760.37305,641.6947,704.0201,584.41565,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -395,7 +395,7 @@
       <property
          name="fromsrcid">__12</property>
       <property
-         name="sdm:polyPoints">R54,701.1875,584.41565,757.24744,648.6947,L50</property>
+         name="sdm:polyPoints">R62,701.1875,591.41565,757.49023,648.6947,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -576,4 +576,39 @@
       <property
          name="x">825.0</property>
    </View>
+   <View
+      id="View44">
+      <property
+         name="activityId">MissingLPNs</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ShippingTxn/MissingLPNs.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MissingLPNs&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">562.09766</property>
+      <property
+         name="x">896.00977</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase45"
+      from="View11"
+      to="View44">
+      <property
+         name="fromOutcome">missing</property>
+      <property
+         name="sdm:polyPoints">R38,701.1875,570.41565,854.7331,558.2471,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase46"
+      from="View44"
+      to="View11">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="sdm:polyPoints">L54,855.00977,565.2471,701.4639,577.41565,R46</property>
+   </ControlFlowCase>
 </SDM>
