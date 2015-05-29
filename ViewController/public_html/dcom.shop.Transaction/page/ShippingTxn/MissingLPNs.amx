@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Missing LPNs" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+    <amx:commandLink id="cl1" action="Back">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+            </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+    </amx:facet>
+    <amx:listView var="row" value="#{bindings.shipLPN.collectionModel}" fetchSize="#{bindings.shipLPN.rangeSize}"
+                  selectedRowKeys="#{bindings.shipLPN.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.shipLPN.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" id="lv1">
+      <amx:listItem id="li1">
+        <amx:outputText value="#{row.lpn}" id="ot2"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>
