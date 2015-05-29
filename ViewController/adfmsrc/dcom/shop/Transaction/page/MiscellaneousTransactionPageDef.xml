@@ -32,7 +32,7 @@
         <Item Value="accountAlias"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
-        <Item Value="accountAlias"/>
+        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="variables" StaticList="true" id="TrxTypeList">
