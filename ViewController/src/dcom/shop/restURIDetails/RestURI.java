@@ -145,6 +145,20 @@ public class RestURI {
         return GET_PICK_URI;
 
     }
+    
+    private static final String GET_INFO_URI = "/webservices/rest/DCOMShip/getinfo/";
+
+    public static String PostGetInfoURI() {
+        return GET_INFO_URI;
+
+    }
+    
+    private static final String LOAD_PICK_URI = "/webservices/rest/DCOMShip/loadpick/";
+
+    public static String PostLoadPickURI() {
+        return LOAD_PICK_URI;
+
+    }
     private static final String ITEM_DETAILS_URI = "/webservices/rest/DCOMInquiry/getitem/";
 
     public static String PostItemDetailsURI() {

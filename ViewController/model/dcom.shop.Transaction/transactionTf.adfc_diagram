@@ -556,6 +556,6 @@
       <property
          name="fromsrcid">__5</property>
       <property
-         name="sdm:polyPoints">T50,-40.649414,-198.8916,-46.5,-256.13867,B50</property>
+         name="sdm:polyPoints">T50,-40.649414,-198.60742,-46.5,-255.85449,B50</property>
    </ControlFlowCase>
 </SDM>

@@ -14,6 +14,11 @@
         <iterator Binds="root" RangeSize="25" DataControl="LocatorDC" id="LocatorDCIterator"/>
         <accessorIterator MasterBinding="LocatorDCIterator" Binds="locators" RangeSize="-1" DataControl="LocatorDC"
                           BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+        <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="toSubinventories" RangeSize="-1"
+                          DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                          id="toSubinventoriesIterator"/>
+        <accessorIterator MasterBinding="LocatorDCIterator" Binds="toLocators" RangeSize="-1" DataControl="LocatorDC"
+                          BeanClass="dcom.shop.application.mobile.LocatorBO" id="toLocatorsIterator"/>
     </executables>
     <bindings>
         <tree IterBinding="pickResultIterator" id="pickResult">
@@ -69,6 +74,37 @@
         </list>
         <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                       IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
+        <methodAction id="getInfo" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getInfo"
+                      IsViewObjectMethod="false" DataControl="PickTxnDC" InstanceName="data.PickTxnDC.dataProvider"/>
+        <list IterBinding="SubinventoryDCIterator" id="toSubinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+              StaticList="false" ListIter="toSubinventoriesIterator">
+            <AttrNames>
+                <Item Value="subToInv"/>
+            </AttrNames>
+            <ListAttrNames>
+                <Item Value="subinv"/>
+            </ListAttrNames>
+            <ListDisplayAttrNames>
+                <Item Value="subinv"/>
+            </ListDisplayAttrNames>
+        </list>
+        <list IterBinding="LocatorDCIterator" id="toLocator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+              StaticList="false" ListIter="toLocatorsIterator">
+            <AttrNames>
+                <Item Value="toLoc"/>
+            </AttrNames>
+            <ListAttrNames>
+                <Item Value="locator"/>
+            </ListAttrNames>
+            <ListDisplayAttrNames>
+                <Item Value="locator"/>
+            </ListDisplayAttrNames>
+        </list>
+        <methodAction id="refreshToLocators" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="refreshToLocators" IsViewObjectMethod="false" DataControl="LocatorDC"
+                      InstanceName="data.LocatorDC.dataProvider"/>
+        <methodAction id="loadPick" RequiresUpdateModel="true" Action="invokeMethod" MethodName="loadPick"
+                      IsViewObjectMethod="false" DataControl="PickTxnDC" InstanceName="data.PickTxnDC.dataProvider"/>
     </bindings>
 </pageDefinition>
 
