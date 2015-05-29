@@ -291,7 +291,8 @@ public class PickTxnDC {
             "\"PACKSLIPNUM\": \"" + packSlipNum + "\",\n" + "\"LOCATOR\": \"" + locator + "\",\n" +
             "\"LOTCONTROL\": \"" + lotControl + "\",\n" + "\"LOTALLOC\": \"" + lotAlloc + "\",\n" +
             "\"SERIALCONTROL\": \"" + serialControl + "\",\n" + "\"SERIALALLOC\": \"" + serialAlloc + "\",\n" +
-            "\"LPN\": \"" + lpn + "\",\n" + "}\n }\n" + "    }\n" + "  }\n";
+            "\"LPN\": \"" + lpn + "\",\n"+
+            "\"XFERLPN\": \"" + xferlpn + "\"\n" + "}\n }\n" + "    }\n" + "  }\n";
         System.out.println("Calling create method");
         try {
             String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
