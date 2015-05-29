@@ -40,8 +40,8 @@
         <Item Value="p_TrxType"/>
       </AttrNames>
       <ValueList>
-        <Item Value="Miscellaneous Receipts"/>
-        <Item Value="Miscellaneous Issues"/>
+        <Item Value="Account Alias Receipt"/>
+        <Item Value="Account Alias Issue"/>
       </ValueList>
     </list>
     <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -100,7 +100,7 @@
         <Item Value="accountSegment"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
-        <Item Value="accountSegment"/>
+        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
   </bindings>

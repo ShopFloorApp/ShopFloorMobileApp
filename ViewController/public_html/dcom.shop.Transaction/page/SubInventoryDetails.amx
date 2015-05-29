@@ -118,6 +118,17 @@
                     <amx:selectItem label="Choose" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.UOMCode.items}" id="si9"/>
                 </amx:selectOneChoice>
+                <amx:selectOneChoice label="From Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
+                                     valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
+                    <?audit suppress oracle.maf.warning-missing-label?>
+                    <amx:selectItem label="Choose" value="0" id="si10"/>
+                    <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
+                </amx:selectOneChoice>
+                <amx:selectOneChoice label="From Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
+                    <?audit suppress oracle.maf.warning-missing-label?>
+                    <amx:selectItem label="Choose" value="0" id="si6"/>
+                    <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
+                </amx:selectOneChoice>
                 <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam10">
                     <?audit suppress oracle.maf.warning-missing-label?>
                     <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"
@@ -138,17 +149,7 @@
                     <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                 </amx:selectOneChoice-->
-                <amx:selectOneChoice label="From Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
-                                     valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
-                    <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose" value="0" id="si10"/>
-                    <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
-                </amx:selectOneChoice>
-                <amx:selectOneChoice label="From Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
-                    <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:selectItem label="Choose" value="0" id="si6"/>
-                    <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
-                </amx:selectOneChoice>
+                
                 <amx:selectOneChoice label="To Subinventory" value="#{pageFlowScope.ToSubinventory}"
                                      valueChangeListener="#{StateListenerBean.ToSubinvValueChange}" id="soc2">
                     <?audit suppress oracle.maf.warning-missing-label?>

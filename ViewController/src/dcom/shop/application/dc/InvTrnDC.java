@@ -438,6 +438,11 @@ public class InvTrnDC extends RestCallerUtil {
         String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
         String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TrxType}");
+        if("Account Alias Receipt".equals(trxnType)){
+            trxnType = "Miscellaneous Receipts";
+        }else if("Account Alias Issue".equals(trxnType)){
+            trxnType = "Miscellaneous Issues";
+        }
         String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.serialControl}");
         String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.lotControl}");
         String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
