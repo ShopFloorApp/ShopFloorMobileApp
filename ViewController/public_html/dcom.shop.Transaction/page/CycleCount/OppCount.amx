@@ -94,7 +94,7 @@
                                           id="pgl1">
                         <amx:inputText hintText="Parent LPN" id="it11" value="#{pageFlowScope.searchLpnKeyword}"
                                        required="true" inlineStyle="text-align:left;"/>
-                        <amx:commandLink id="cb3" action="lpnLOV">
+                        <amx:commandLink id="cb3" action="#{StateListenerBean.validateAndNavigateLpnLov}">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl3" from="SubInvTrf" to="#{pageFlowScope.LpnLovPage}"
                                                      type="action"/>
