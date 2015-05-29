@@ -6,6 +6,8 @@ import dcom.shop.restURIDetails.RestURI;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
+import oracle.adfmf.framework.internal.AdfmfJavaUtilitiesInternal;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -101,8 +103,10 @@ public class TransactDC {
     public String saveTransaction(TransactBO transactBo) {
         String subInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}").toString();
         String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
+        String salesOrder = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}").toString();
         transactBO.setSubinv(subInv);
         transactBO.setLocator(locator);
+        transactBO.setSalesOrder(salesOrder);
 
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
