@@ -265,7 +265,7 @@ public class LpnTxnDC extends SyncUtils {
             payload =
                 payload + "{\"ITEM\":\"" + item.getItemNumber() + "\",\"ITEMDESC\": \"" + item.getItemName() +
                 "\",\"UOM\": \"" + item.getUom() + "\",\"ONHANDQTY\": \"" + onHandQty + "\",\"AVAILABLEQTY\": \"" +
-                availQty + "\"   ";
+                item.getQuantity() + "\"   ";
 
             filterLots(item.getItemId());
             filterSerials(item.getItemId());

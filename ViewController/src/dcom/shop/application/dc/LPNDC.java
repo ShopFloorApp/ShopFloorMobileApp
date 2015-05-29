@@ -101,7 +101,7 @@ public class LPNDC {
 
                 }
             } catch (ClassCastException e2) {
-                JSONObject jsObject2 = (JSONObject) jsObject1.get("XLPNRES_ITEM");
+                JSONObject jsObject2 = (JSONObject) jsObject1.get("XLPN_ITEM");
                 if (jsObject2 != null) {
 
 
