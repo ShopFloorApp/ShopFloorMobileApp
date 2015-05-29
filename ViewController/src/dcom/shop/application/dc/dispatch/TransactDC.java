@@ -4,6 +4,8 @@ import dcom.shop.application.mobile.dispatch.TransactBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
+//import oracle.adf.mbean.share.config.adfc.String;
+
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 
 import oracle.adfmf.framework.internal.AdfmfJavaUtilitiesInternal;
@@ -101,16 +103,24 @@ public class TransactDC {
     }
 
     public String saveTransaction(TransactBO transactBo) {
-        String subInv = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}").toString();
-        String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
-        String salesOrder = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}").toString();
+        String subInv = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}"));
+        String locator = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}"));
+        String salesOrder = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));        
+        String trxRef = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}"));        
+         
+        
+        //String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
+        //String salesOrder = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}").toString();
         transactBO.setSubinv(subInv);
         transactBO.setLocator(locator);
         transactBO.setSalesOrder(salesOrder);
+        transactBO.setTrxType(trxType);
+        transactBO.setTrxRef(trxRef);
 
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
-        String trxType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}").toString();
+        //String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));        
         strPayload.append("{");
         strPayload.append(RestURI.getPayloadHeader());
         strPayload.append(",");
