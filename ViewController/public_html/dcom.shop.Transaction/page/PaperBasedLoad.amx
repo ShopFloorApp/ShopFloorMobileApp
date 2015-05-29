@@ -2,6 +2,35 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
+     <amx:verbatim id="v1">
+         <![CDATA[
+        <script type="text/javascript">
+        function scanBarcodeFromJavaBean(options)
+        {
+            cordova.plugins.barcodeScanner.scan(
+              function(result)
+              {
+               // Note that you could also use adf.mf.api.invokeMethod() to invoke Java methods directly if 
+                // you do not want to use EL expressions.
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                       "value": result.text },
+                //adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                  //                     "value": "Result = " + result.text + ", Format = " + result.format + ", Cancelled = " + result.cancelled}, 
+                                       function() {}, 
+                                       function() {});
+              },
+              function(error)
+              {
+                alert("Scanning failed: " + error);
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                        "value": "Error = " + error.text }, 
+                                        function() {}, 
+                                        function() {});
+              }
+            );
+        }
+        </script>
+    ]]></amx:verbatim>
         <amx:facet name="header">
             <amx:outputText value="Pick Release" id="ot1"/>
         </amx:facet>
@@ -59,7 +88,7 @@
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>
-        <amx:panelFormLayout id="pfl1">
+        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:selectOneChoice value="#{pageFlowScope.FromSubinventory}" label="Pick From Subinventory" id="soc1"
                                  valueChangeListener="#{StateListenerBean.FromSubinvValueChange}">
                 <amx:selectItems value="#{bindings.subinv.items}" id="si1"/>
