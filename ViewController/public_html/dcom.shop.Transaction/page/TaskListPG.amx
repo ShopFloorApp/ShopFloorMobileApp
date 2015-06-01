@@ -17,13 +17,25 @@
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
         <amx:facet name="footer">
-            <amx:panelGroupLayout id="pgl2" halign="center" layout="horizontal" scrollPolicy="none">
-                <amx:panelGroupLayout id="pgl4" inlineStyle="grid-column-sizing:50%;">
-                    <amx:commandButton text="Filter" id="FilterBtn" inlineStyle="max-height:none;">
-                        <amx:showPopupBehavior id="spb2" popupId="p2" type="action" align="bottomEnd" alignId="pgl2"/>
-                    </amx:commandButton>
-                </amx:panelGroupLayout>
-            </amx:panelGroupLayout>
+            <amx:tableLayout id="tl1" width="100%"
+                             inlineStyle="border-top-color:WindowText; border-top-style:solid; border-top-width:thin;">
+                <amx:rowLayout id="rl2">
+                    <amx:cellFormat id="cf4" width="50%" halign="center" valign="middle">
+                        <amx:commandLink id="cl5">
+                            <amx:outputText value="Sort" id="ot3"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                    <amx:cellFormat id="cf5" width="50%" halign="center"
+                                    inlineStyle="border-left-style:solid; border-left-color:WindowText; border-left-width:thin;"
+                                    valign="middle">
+                        <amx:commandLink id="cl6">
+                            <amx:outputText value="Filter" id="ot9"/>
+                            <amx:showPopupBehavior id="spb2" popupId="p2" type="action" align="bottomEnd"
+                                                   alignId="tl3"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
+                </amx:rowLayout>
+            </amx:tableLayout>
         </amx:facet>
         <amx:tableLayout id="tl3" cellPadding="0" cellSpacing="10" width="100%" layout="fixed" borderWidth="0">
             <amx:rowLayout id="rl3">
@@ -104,16 +116,26 @@
                       bufferStrategy="viewport" id="lv1">
             <amx:listItem id="li1">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:tableLayout id="tl1" width="100%" layout="fixed" cellPadding="10" cellSpacing="10">
-                    <amx:rowLayout id="rl2">
-                        <amx:cellFormat id="cf4" header="true">
-                            <amx:outputText value="#{row.TASKNUM}" id="ot2"/>
+                <amx:tableLayout id="tl7" width="100%">
+                    <amx:rowLayout id="rl8">
+                        <amx:cellFormat id="cf6" width="50%">
+                            <amx:outputText value="#{row.TASKNUM}" id="ot7" inlineStyle="font-weight:bold;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf5">
+                        <amx:cellFormat id="cf14" width="50%">
+                            <amx:outputText value="#{row.PRIORITY}" id="ot7x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl9">
+                        <amx:cellFormat id="cf16" width="50%">
                             <amx:outputText value="#{row.TASKTYPE}" id="ot6"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf6" inlineStyle="color:Orange;">
-                            <amx:outputText value="#{row.PRIORITY}" id="ot7" inlineStyle="color:Orange;"/>
+                        <amx:cellFormat id="cf15" width="50%">
+                            <amx:outputText value="#{row.STATUS}" id="ot6x"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl7">
+                        <amx:cellFormat id="cf17">
+                            <amx:outputText value="#{row.ITEMDESC}" id="ot2"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -126,9 +148,8 @@
                 <amx:rowLayout id="rl1">
                     <amx:cellFormat id="cf1">
                         <amx:selectManyCheckbox label="Task Type" id="smc1" readOnly="true"
-                                                valueChangeListener="#{viewScope.TaskListBean.SortOptionSelectionListener}"
-                                                value="#{bindings.LOV_TaskTypes}">
-                            <amx:selectItem id="si6" label="#{bindings.tasks.collectionModel.taskType.LOV_taskType}"/>
+                                                value="#{pageFlowScope.Filter_TaskTypes}">
+                            <amx:selectItems id="si1" value="#{bindings.TASKTYPE.items}"/>
                         </amx:selectManyCheckbox>
                     </amx:cellFormat>
                 </amx:rowLayout>
@@ -140,6 +161,23 @@
                 <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.PerformFilter}"/>
                 <amx:actionListener id="al2" binding="#{viewScope.TaskListBean.PerformFilterListener}" type="action"/>
             </amx:commandButton>
+        </amx:panelGroupLayout>
+    </amx:popup>
+    <amx:popup id="p1">
+        <amx:panelGroupLayout id="pgl1">
+            <amx:selectOneRadio label="Sort By" id="sor1" value="#{pageFlowScope.sortBy}">
+                <amx:selectItem id="si2" label="Priority:High to Low" value="PRIORITY_DESC"/>
+                <amx:selectItem id="si2X" label="Priority:Low to High" value="PRIORITY_ASC"/>
+                <amx:selectItem label="Task Type:A-Z" id="si3" value="TASK_TYPE_ASC"/>
+                <amx:selectItem label="Task Type:Z-A" id="si4" value="TASK_TYPE_DESC"/>
+                <amx:selectItem label="Task Id:Ascending" id="si5" value="TASK_ASC"/>
+                <amx:selectItem label="Task Id:Descending" id="si6" value="TASK_DESC"/>
+            </amx:selectOneRadio>
+            <amx:panelGroupLayout id="pgl2">
+                <amx:commandButton text="Cancel" id="cb1">
+                    <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
+                </amx:commandButton>
+            </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:popup>
 </amx:view>
