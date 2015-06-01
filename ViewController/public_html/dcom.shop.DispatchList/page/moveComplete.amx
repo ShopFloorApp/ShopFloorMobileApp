@@ -14,7 +14,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" action="backToWorkContent"
+            <amx:commandButton text="Save" id="cb1" 
                                actionListener="#{bindings.saveTransaction.execute}">
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="MOVE_COMP_ASSEMBLY"/>
                 <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
