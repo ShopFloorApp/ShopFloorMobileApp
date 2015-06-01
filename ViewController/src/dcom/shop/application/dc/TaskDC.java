@@ -8,6 +8,7 @@ import dcom.shop.restURIDetails.RestURI;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
@@ -58,14 +59,30 @@ public class TaskDC extends AViewObject {
             sortTasks("TASK_ASC");
             sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
         }
-
+    
         return sTask;
     }
     
     public String[] getTaskTypes(){
         s_listTaskTypes.add("Cycle Count");
         s_listTaskTypes.add("XXX");
+        
+        
         return (String[])s_listTaskTypes.toArray(new String[s_listTaskTypes.size()]);
+    }
+    
+     
+
+    public HashMap<String,Integer> getTT(){
+        HashMap<String,Integer> al = new HashMap<String,Integer>();
+
+        for (int i=0; i<s_list.size(); i++){
+            TaskBO ti = (TaskBO) s_list.get(i);
+            al.put(ti.getTASKTYPE(), al.get(ti.getTASKTYPE())==null?0:al.get(ti.getTASKTYPE())+1);
+            
+        }
+
+        return al;
     }
 
     public void sortTasks(String criteria) {
@@ -250,24 +267,24 @@ public class TaskDC extends AViewObject {
                         JSONObject jsObject2 = (JSONObject) jsonJobArray.get(i);
 
                         TaskBO taskBO = new TaskBO();
-                        taskBO.setORGCODE(jsObject2.get("ORGCODE").toString());
-                        taskBO.setTASKNUM(jsObject2.get("TASKNUM").toString());
-                        taskBO.setTASKLINE(jsObject2.get("TASKLINE").toString());
-                        taskBO.setITEM(jsObject2.get("ITEM").toString());
-                        taskBO.setITEMDESC(jsObject2.get("ITEMDESC").toString());
-                        taskBO.setQTY(jsObject2.get("QTY").toString());
-                        taskBO.setUOM(jsObject2.get("PRIORITY").toString());
-                        taskBO.setTASKTYPE(jsObject2.get("TASKTYPE").toString());
-                        taskBO.setSUBINV(jsObject2.get("SUBINV").toString());
-                        taskBO.setLOCATOR(jsObject2.get("LOCATOR").toString());
-                        taskBO.setSTATUS(jsObject2.get("STATUS").toString());
+                        taskBO.setORGCODE(jsObject2.get("ORGCODE")==null?"":jsObject2.get("ORGCODE").toString());
+                        taskBO.setTASKNUM(jsObject2.get("TASKNUM")==null?"":jsObject2.get("TASKNUM").toString());
+                        taskBO.setTASKLINE(jsObject2.get("TASKLINE")==null?"":jsObject2.get("TASKLINE").toString());
+                        taskBO.setITEM(jsObject2.get("ITEM")==null?"":jsObject2.get("ITEM").toString());
+                        taskBO.setITEMDESC(jsObject2.get("ITEMDESC")==null?"":jsObject2.get("ITEMDESC").toString());
+                        taskBO.setQTY(jsObject2.get("QTY")==null?"":jsObject2.get("QTY").toString());
+                        taskBO.setPRIORITY(jsObject2.get("PRIORITY")==null?"":jsObject2.get("PRIORITY").toString());
+                        taskBO.setTASKTYPE(jsObject2.get("TASKTYPE")==null?"":jsObject2.get("TASKTYPE").toString());
+                        taskBO.setSUBINV(jsObject2.get("SUBINV")==null?"":jsObject2.get("SUBINV").toString());
+                        taskBO.setLOCATOR(jsObject2.get("LOCATOR")==null?"":jsObject2.get("LOCATOR").toString());
+                        taskBO.setSTATUS(jsObject2.get("STATUS")==null?"":jsObject2.get("STATUS").toString());
                         //taskBO.setCREATIONDATE((Date)jsObject2.get("CREATIONDATE"));
-                        taskBO.setDESTSUBINV(jsObject2.get("DESTSUBINV").toString());
-                        taskBO.setDESTLOCATOR(jsObject2.get("DESTLOCATOR").toString());
-                        taskBO.setEMPLOYEE(jsObject2.get("EMPLOYEE").toString());
+                        taskBO.setDESTSUBINV(jsObject2.get("DESTSUBINV")==null?"":jsObject2.get("DESTSUBINV").toString());
+                        taskBO.setDESTLOCATOR(jsObject2.get("DESTLOCATOR")==null?"":jsObject2.get("DESTLOCATOR").toString());
+                        taskBO.setEMPLOYEE(jsObject2.get("EMPLOYEE")==null?"":jsObject2.get("EMPLOYEE").toString());
                         //taskBO.setSTARTDATE((Date)jsObject2.get("STARTDATE"));
                         //taskBO.setENDDATE((Date)jsObject2.get("ENDDATE"));
-                        taskBO.setUSERNAME(jsObject2.get("USERNAME").toString());
+                        taskBO.setUSERNAME(jsObject2.get("USERNAME")==null?"":jsObject2.get("USERNAME").toString());
                         s_list.add(taskBO);
                     }
                     //super.updateSqlLiteTable(JobOperationBO.class, s_list);
