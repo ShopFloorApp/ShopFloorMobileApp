@@ -108,7 +108,7 @@ public class TransactDC {
         String salesOrder = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));        
         String trxRef = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}"));        
-         
+        String glAccount = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}"));         
         
         //String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
         //String salesOrder = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}").toString();
@@ -117,7 +117,8 @@ public class TransactDC {
         transactBO.setSalesOrder(salesOrder);
         transactBO.setTrxType(trxType);
         transactBO.setTrxRef(trxRef);
-
+        transactBO.setGlAccount(glAccount);
+        
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         //String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));        
