@@ -104,10 +104,10 @@
         <Item Value="accountAlias"/>
       </AttrNames>
       <ListAttrNames>
-        <Item Value="accountAlias"/>
+        <Item Value="accountSegment"/>
       </ListAttrNames>
       <ListDisplayAttrNames>
-        <Item Value="accountAlias"/>
+        <Item Value="accountSegment"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="transactIterator" StaticList="true" id="fromStep">
