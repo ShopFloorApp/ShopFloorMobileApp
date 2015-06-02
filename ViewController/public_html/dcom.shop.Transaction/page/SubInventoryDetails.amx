@@ -43,8 +43,8 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.InsertTransaction.execute}"
-                               action="cancel">
+            <amx:commandButton text="Save" id="cb1"
+                               action="#{bindings.InsertTransaction.execute}">
                 <amx:setPropertyListener id="spl8" from="SUBMIT" to="#{pageFlowScope.TrxnType}" type="action"/>
             </amx:commandButton>
         </amx:facet>
@@ -149,7 +149,6 @@
                     <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
                     <amx:selectItems value="#{bindings.subFromInv.items}" id="si1"/>
                 </amx:selectOneChoice-->
-                
                 <amx:selectOneChoice label="To Subinventory" value="#{pageFlowScope.ToSubinventory}"
                                      valueChangeListener="#{StateListenerBean.ToSubinvValueChange}" id="soc2">
                     <?audit suppress oracle.maf.warning-missing-label?>

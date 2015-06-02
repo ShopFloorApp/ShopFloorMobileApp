@@ -17,6 +17,7 @@ import javax.el.MethodExpression;
 
 import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.framework.exception.AdfException;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
 
@@ -62,6 +63,7 @@ public class InvTrnDC extends RestCallerUtil {
 
     public String InsertTransaction(String trxType) {
         s_invTrxns.clear();
+        String errMsg = null;
         String processResult = null;
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
@@ -73,7 +75,7 @@ public class InvTrnDC extends RestCallerUtil {
             subInvTxn.setCompleteFlag("Y");
         }*/
         subInvTxn.setIsNewEntity("Y");
-
+        
         Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
         String lpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
         String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
@@ -85,7 +87,29 @@ public class InvTrnDC extends RestCallerUtil {
         String toSubInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
         String toLocator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToLocator}");
         String tranStatus = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.TransactionStatus}");
-
+        /*
+         * Below block is for validation
+         */
+        if(("".equals(lpn.trim()) || lpn == null) && (item == null || "".equals(item.trim()) )){
+            errMsg =          "Item/LPN:                         Please enter either Item or LPN. \n";
+        }
+        if("0".equals(fromSubInv) || fromSubInv == null){
+            errMsg = (errMsg==null?"":errMsg) + "From Subinventory:       You must enter a value. \n ";
+        }
+        if("0".equals(toSubInv) || toSubInv == null){
+            errMsg = (errMsg==null?"":errMsg) + "To Subinventory:           You must enter a value. \n ";
+        }
+        if("".equals(qty) || qty == null){
+            errMsg = (errMsg==null?"":errMsg) + "Qty:                                    You must enter a value. \n ";
+        }
+        
+        if(errMsg != null){
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", errMsg, "ok"
+            });
+          //  throw new AdfException(errMsg,AdfException.ERROR);
+        }
+        else{
         subInvTxn.setTrxnId(trxnId);
         subInvTxn.setLPN(lpn);
         subInvTxn.setItemNumber(item);
@@ -122,6 +146,7 @@ public class InvTrnDC extends RestCallerUtil {
         }
         if ("SUBMIT".equals(trxType) && (!(networkStatus.equals(NOT_REACHABLE))))
             processResult = ProcessWS(trxnId);
+        }
         return processResult;
     }
 

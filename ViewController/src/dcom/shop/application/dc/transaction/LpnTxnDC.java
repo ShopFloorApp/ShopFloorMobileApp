@@ -123,6 +123,7 @@ public class LpnTxnDC extends SyncUtils {
 
     public String InsertTransaction() {
         s_lpnTrxns.clear();
+        String errMsg = null;
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
         String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
@@ -140,17 +141,45 @@ public class LpnTxnDC extends SyncUtils {
         String subinv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
         String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
+        /*
+         * Below block is for validation
+         */
+        if (("".equals(fromLpn.trim()) || fromLpn == null)) {
+            errMsg = "From LPN:"+ (String.format("%0$" + 70 + "s", "You must enter a value. ")+"\n");
+        }
+        if ("PACK_FROM".equals(lpnPage) || "UNPACK_FROM".equals(lpnPage)) {
 
-        lpnTxn.setTrxnId(trxnId);
-        lpnTxn.setLpnFrom(fromLpn == "null" ? "" : fromLpn);
-        lpnTxn.setSubinventory(subinv == "null" ? "" : subinv);
-        lpnTxn.setLocator(locator == "null" ? "" : locator);
-        lpnTxn.setLpnTo(toLpn == "null" ? "" : toLpn);
-        lpnTxn.setTrxType(lpnPage == "null" ? "" : lpnPage);
-        s_lpnTrxns.add(lpnTxn);
-        SyncUtils syncUtils = new SyncUtils();
-        syncUtils.insertSqlLiteTable(LpnTxnBO.class, s_lpnTrxns);
-        return ProcessWS(trxnId);
+            if ("0".equals(subinv) || subinv == null) {
+                errMsg = (errMsg == null ? "" : errMsg) + "Subinventory:"+ (String.format("%0$" + 64 + "s", "You must enter a value. ")+"\n");
+            }
+            if ("0".equals(locator) || locator == null) {
+                errMsg = (errMsg == null ? "" : errMsg) + "Locator:"+ (String.format("%0$" + 75 + "s", "You must enter a value. ")+"\n");
+            }
+        }
+        if (!("PACK_FROM".equals(lpnPage))) {
+            if ("".equals(toLpn) || toLpn == null) {
+                errMsg = (errMsg == null ? "" : errMsg) + "To LPN:"+ (String.format("%0$" + 76 + "s", "You must enter a value. ")+"\n");
+            }
+        }
+
+
+        if (errMsg != null) {
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", errMsg, "ok"
+            });
+            return null;
+        } else {
+            lpnTxn.setTrxnId(trxnId);
+            lpnTxn.setLpnFrom(fromLpn == "null" ? "" : fromLpn);
+            lpnTxn.setSubinventory(subinv == "null" ? "" : subinv);
+            lpnTxn.setLocator(locator == "null" ? "" : locator);
+            lpnTxn.setLpnTo(toLpn == "null" ? "" : toLpn);
+            lpnTxn.setTrxType(lpnPage == "null" ? "" : lpnPage);
+            s_lpnTrxns.add(lpnTxn);
+            SyncUtils syncUtils = new SyncUtils();
+            syncUtils.insertSqlLiteTable(LpnTxnBO.class, s_lpnTrxns);
+            return ProcessWS(trxnId);
+        }
 
     }
 
