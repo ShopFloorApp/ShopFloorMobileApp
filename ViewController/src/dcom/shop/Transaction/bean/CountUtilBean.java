@@ -257,7 +257,7 @@ public class CountUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
     }
     public void clearTxnId(ActionEvent actionEvent) {
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnId}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", null);
     }
 
     public void genTxnId(ActionEvent actionEvent) {
