@@ -151,8 +151,6 @@ public class CountUtilBean {
         "        },\n" + 
         "        \"InputParameters\": {\n" + 
         "            \"P_WMS_TRX\": {\n" + 
-        "                \"XXDCOM_INV_CYC_CNT_IN\": [\n" + 
-        "                    {\n" + 
         "                        \"ACTION\": \""+action+"\",\n" + 
         "                        \"ORG_CODE\": \""+orgCode+"\",\n" + 
         "                        \"CC_NAME\": \""+ccName+"\",\n" + 
@@ -194,7 +192,7 @@ public class CountUtilBean {
         "                        \"COUNT_UOM\": \""+uom+"\",\n" + 
         "                        \"PRIMARY_UOM_QTY\": \""+trxQty+"\",\n" + 
         "                        \"USER_NAME\": \""+username+"\" \n"+
-        "}]}}}}";
+        "}}}}";
         
         
         
