@@ -286,6 +286,7 @@ public class ConcurrentProgramDC extends SyncUtils {
         RestCallerUtil rcu = new RestCallerUtil();
         String shortName = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.shortName}"));
         String applCcde = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applCode}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.applCode}"));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
             "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
@@ -297,7 +298,8 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"PPROGCODE\": \""+shortName+"\",\n" +
-            "                    \"PPROGAPPL\": \""+applCcde+"\"\n }\n" + "}\n" + "}\n";
+            "                    \"PPROGAPPL\": \""+applCcde+"\", " +
+            "                    \"PWHSE\": \""+orgCode+"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
@@ -414,6 +416,7 @@ public class ConcurrentProgramDC extends SyncUtils {
         String param2 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param2}"));
         String param3 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param3}"));
         String param4 = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.param4}"));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
             "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
@@ -426,6 +429,7 @@ public class ConcurrentProgramDC extends SyncUtils {
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                  {\"PPROGCODE\": \""+progCode+"\",\n" + 
             "                  \"PSEQ\": \""+seq+"\",\n" +
+        "                  \"PWHSE\": \""+orgCode+"\",\n" +
             "                  \"PREFPARAM5\": \""+param5+"\",\n" +
             "                  \"PREFPARAM1\": \""+param1+"\",\n" +
             "                  \"PREFPARAM2\": \""+param2+"\",\n" +
