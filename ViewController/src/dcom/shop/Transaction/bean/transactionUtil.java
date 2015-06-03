@@ -80,6 +80,18 @@ public class transactionUtil {
                         AdfmfJavaUtilities.setELValue("#{pageFlowScope.Event}", Boolean.TRUE);
                     }
 
+                    if(status.equalsIgnoreCase("S")){
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+                        
+                        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                                  "Pick Release Successful", message, "OK"
+                        });
+                    }else{
+                        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                                  "Error", message, "OK"
+                        });
+                    }
+
                     
                 } catch (ParseException e) {
                     e.getMessage();
@@ -209,11 +221,11 @@ public class transactionUtil {
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
                     
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                              "Ship Successful", message1, "ok"
+                                                                              "Ship Successful", message1, "OK"
                     });
                 }else{
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                              "Error", message1, "ok"
+                                                                              "Error", message1, "OK"
                     });
                 }
 
@@ -273,11 +285,11 @@ public class transactionUtil {
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
                                    
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                              "Load Successful", message, "ok"
+                                                                              "Load Successful", message, "OK"
                     });
                 }else{
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                              "Error", message, "ok"
+                                                                              "Error", message, "OK"
                     });
                 }
 
@@ -335,11 +347,11 @@ public class transactionUtil {
                 if(status.equalsIgnoreCase("S")){
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
                                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                              "Ship Successful", message, "ok"
+                                                                              "Ship Successful", message, "OK"
                     });
                 }else{
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                              "Error", message, "ok"
+                                                                              "Error", message, "OK"
                     });
                 }
 

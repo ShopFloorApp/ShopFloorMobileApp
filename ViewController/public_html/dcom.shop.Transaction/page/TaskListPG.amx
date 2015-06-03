@@ -95,7 +95,6 @@
     <amx:popup id="p1" animation="slideUp" autoDismiss="true">
         <amx:panelGroupLayout id="pgl1">
             <amx:panelGroupLayout id="pgl2"
-                                  inlineStyle="border-bottom-color:Blue; border-bottom-style:solid; border-bottom-width:thin;"
                                   halign="center">
                 <amx:outputText value="Sort By" id="ot4"/>
             </amx:panelGroupLayout>
@@ -109,15 +108,15 @@
             </amx:selectOneRadio>
             <amx:panelGroupLayout id="pgl3"
                                   inlineStyle="border-top-color:Blue; border-top-style:solid; border-top-width:thin;">
-                <amx:tableLayout id="tl3">
+                <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
-                        <amx:cellFormat id="cf2">
+                        <amx:cellFormat id="cf2" width="50%" halign="center">
                             <amx:commandButton text="OK" id="cb3"
                                                actionListener="#{pageFlowScope.TasksBean.sortMethod}">
                                 <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
                             </amx:commandButton>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf3">
+                        <amx:cellFormat id="cf3" width="50%" halign="center">
                             <amx:commandButton text="Cancel" id="cb1">
                                 <amx:closePopupBehavior id="cpb2" popupId="p1" type="action"/>
                             </amx:commandButton>

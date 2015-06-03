@@ -35,15 +35,7 @@ public class TaskBO extends AEntity {
     String USERNAME;
     protected transient PropertyChangeSupport   
                 propertyChangeSupport = new PropertyChangeSupport(this);  
-      protected transient ProviderChangeSupport   
-                providerChangeSupport = new ProviderChangeSupport(this); 
       
-    public void addProviderChangeListener(ProviderChangeListener l) {  
-         providerChangeSupport.addProviderChangeListener(l);  
-      }  
-      public void removeProviderChangeListener(ProviderChangeListener l) {  
-         providerChangeSupport.removeProviderChangeListener(l);  
-      }  
       public void addPropertyChangeListener(PropertyChangeListener l) {  
          propertyChangeSupport.addPropertyChangeListener(l);  
       }  

@@ -19,7 +19,6 @@
                 <amx:panelGroupLayout id="pgl8" layout="horizontal" halign="end">
                     <amx:outputHtml id="x2" value="Submit"/>
                 </amx:panelGroupLayout>
-                <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="overlapMiddleCenter" alignId="pp1"/>
             </amx:commandLink>
         </amx:facet>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
@@ -78,39 +77,7 @@
             <amx:spacer id="s1" width="10"/>
             <amx:commandLink id="cl5" actionListener="#{pageFlowScope.TransactionUtil.executePickRelease}">
                 <amx:outputHtml id="oh2" styleClass="fa fa-check-square fa-3x"/>
-                <amx:showPopupBehavior id="spb2" popupId="p1" type="action" align="overlapMiddleCenter" alignId="pp1"/>
             </amx:commandLink>
         </amx:panelGroupLayout>
     </amx:panelPage>
-    <amx:popup id="p1" autoDismiss="true">
-        <amx:tableLayout id="tl1">
-            <amx:rowLayout id="rl2">
-                <amx:cellFormat id="cf2" rendered="#{pageFlowScope.pickRelStatus eq 'S'}"
-                                inlineStyle="border-bottom-color:GrayText; border-bottom-style:solid; border-bottom-width:thin;">
-                    <amx:panelGroupLayout id="pgl6" halign="center">
-                        <amx:outputText value="Request is successfully submitted" id="ot3"
-                                        rendered="#{pageFlowScope.pickRelStatus eq 'S'}"/>
-                        <amx:outputText value="#{pageFlowScope.pickRelMsg}" id="ot2"
-                                        rendered="#{pageFlowScope.pickRelStatus eq 'S'}"/>
-                    </amx:panelGroupLayout>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf3" rendered="#{pageFlowScope.pickRelStatus ne 'S'}"
-                                inlineStyle="border-bottom-color:GrayText;">
-                    <amx:panelGroupLayout id="pgl1" rendered="#{pageFlowScope.pickRelStatus ne 'S'}"
-                                          layout="horizontal">
-                        <amx:outputText value="Request ended in error :" id="ot5"/>
-                        <amx:outputText value="#{pageFlowScope.pickRelMsg}" id="ot6"/>
-                    </amx:panelGroupLayout>
-                </amx:cellFormat>
-            </amx:rowLayout>
-            <amx:rowLayout id="rl1">
-                <amx:cellFormat id="cf1" halign="center">
-                    <amx:commandLink id="cl3" inlineStyle="text-decoration:none;">
-                        <amx:outputText value="OK" id="ot7" inlineStyle="color:Blue;"/>
-                        <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
-                    </amx:commandLink>
-                </amx:cellFormat>
-            </amx:rowLayout>
-        </amx:tableLayout>
-    </amx:popup>
 </amx:view>
