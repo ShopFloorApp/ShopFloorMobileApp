@@ -90,5 +90,23 @@
         <Item Value="ssTaken"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="displayFile" RequiresUpdateModel="true" Action="invokeMethod" MethodName="displayFile"
+                  IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider">
+      <NamedData NDName="fileURL" NDValue="#{pageFlowScope.FileURL}" NDType="java.lang.String"/>
+      <NamedData NDName="headerText" NDValue="#{bindings.outPutSize.inputValue}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getLogFileDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getLogFileDetails"
+                  IsViewObjectMethod="false" DataControl="ConcurrentProgramDC"
+                  InstanceName="data.ConcurrentProgramDC.dataProvider"
+                  ReturnName="data.ConcurrentProgramDC.methodResults.getLogFileDetails_ConcurrentProgramDC_dataProvider_getLogFileDetails_result">
+      <NamedData NDName="requestId" NDValue="#{bindings.requestId.inputValue}" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getOutFileDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getOutFileDetails"
+                  IsViewObjectMethod="false" DataControl="ConcurrentProgramDC"
+                  InstanceName="data.ConcurrentProgramDC.dataProvider"
+                  ReturnName="data.ConcurrentProgramDC.methodResults.getOutFileDetails_ConcurrentProgramDC_dataProvider_getOutFileDetails_result">
+      <NamedData NDName="requestId" NDValue="#{bindings.requestId.inputValue}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

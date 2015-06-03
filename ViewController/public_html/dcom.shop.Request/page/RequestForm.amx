@@ -66,10 +66,25 @@
                 <amx:outputText value="#{bindings.ofileType.inputValue}" id="ot13"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Log File Size" id="plam1">
-                <amx:outputText value="#{bindings.logSize.inputValue} Bytes" id="ot2"/>
+                <!--amx:outputText value="#{bindings.logSize.inputValue} Bytes" id="ot2">
+                </amx:outputText-->
+                <amx:panelGroupLayout layout="horizontal" id="pgl2">
+                    <amx:goLink url="#{bindings.getLogFileDetails.result}"
+                                disabled="#{bindings.logSize.inputValue == '0'}"
+                                text="#{bindings.logSize.inputValue} Bytes" id="gl1">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                    </amx:goLink>
+                       </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label=" Output File Size" id="plam10">
-                <amx:outputText value="#{bindings.outPutSize.inputValue} Bytes" id="ot11"/>
+            <amx:panelLabelAndMessage label=" Output File Size" id="plam15">
+                <!--amx:outputText value="#{bindings.outPutSize.inputValue} Bytes" id="ot11"/-->
+                <amx:panelGroupLayout layout="horizontal" id="pgl4">
+                    <amx:goLink url="#{bindings.getOutFileDetails.result}"
+                                disabled="#{bindings.outPutSize.inputValue == '0'}"
+                                text="#{bindings.outPutSize.inputValue} Bytes" id="gl2">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                    </amx:goLink>
+                        </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
     </amx:panelPage>

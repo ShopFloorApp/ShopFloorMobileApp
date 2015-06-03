@@ -32,4 +32,5 @@
     <adfmf:login defaultConnRefId="ShopFloorSecurity">
         <adfmf:localHTML url="CustomLoginPage.html"/>
     </adfmf:login>
+    <adfmf:remoteURLWhiteList/>
 </adfmf:application>
