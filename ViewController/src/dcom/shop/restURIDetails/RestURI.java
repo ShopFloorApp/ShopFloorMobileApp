@@ -93,9 +93,14 @@ public class RestURI {
     private static final String ProgramParamLovURI = "/webservices/rest/DCOMSRS/getlov/";
     private static final String SubmitProgramURI = "/webservices/rest/DCOMSRS/submitprog/";
     private static final String RequestsURI = "/webservices/rest/DCOMSRS/getrequest/";
+    private static final String fileDetailsURI = "/webservices/rest/DCOMSRS/getfile/";
 
     public static String PostProgramListURI() {
         return ProgramListURI;
+    }
+    
+    public static String PostFileDetailsURI() {
+        return fileDetailsURI;
     }
 
     public static String PostProgramParamsURI() {
