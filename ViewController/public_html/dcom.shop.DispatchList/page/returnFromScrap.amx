@@ -28,7 +28,7 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
-            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc1" disabled="true">
+            <amx:selectOneChoice value="#{pageFlowScope.opSeq}" label="Sequence" id="soc1" disabled="true">
                 <amx:selectItem label="Choose" id="si5" value="0"/>
                 <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
             </amx:selectOneChoice>
@@ -50,7 +50,7 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-            <amx:selectOneChoice label="Sequence" id="soc3" value="#{bindings.toOpSeq.inputValue}">
+            <amx:selectOneChoice label="Sequence" id="soc3" value="#{pageFlowScope.nextOpSeq}">
                 <amx:selectItem label="Choose" id="si6" value="0"/>
                 <amx:selectItems id="si4" value="#{bindings.toOpSeq.items}"/>
             </amx:selectOneChoice>
@@ -77,7 +77,7 @@
                 <amx:outputText value="#{pageFlowScope.availableQty}" id="ot9"/>
             </amx:panelLabelAndMessage>
             <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it2"/>
-            <amx:selectOneChoice value="#{bindings.accountAlias.inputValue}" label="Scrap Account Alias" id="soc5">
+            <amx:selectOneChoice value="#{pageFlowScope.accountAlias}" label="Scrap Account Alias" id="soc5">
                 <amx:selectItems value="#{bindings.accountAlias.items}" id="si7"/>
             </amx:selectOneChoice>
             <amx:panelLabelAndMessage label="Sales Order" id="plam6">
