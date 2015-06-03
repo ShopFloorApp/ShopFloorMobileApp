@@ -103,5 +103,8 @@
         <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="callOnHandService" RequiresUpdateModel="true" Action="invokeMethod" MethodName="callOnHandService"
+                  IsViewObjectMethod="false" DataControl="OnHandSearchDC"
+                  InstanceName="data.OnHandSearchDC.dataProvider"/>
   </bindings>
 </pageDefinition>

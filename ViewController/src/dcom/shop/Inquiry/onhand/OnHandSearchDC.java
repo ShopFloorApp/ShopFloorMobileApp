@@ -42,7 +42,9 @@ public class OnHandSearchDC {
         }
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         locator = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-
+        if ("0".equals(locator)) {
+            locator = "";
+        }
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.costGrp}", String.class);
         costGroup = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
 
@@ -85,6 +87,8 @@ public class OnHandSearchDC {
                             onhandItems.setUOM((jsObjectArrayData.get("UOM").toString()));
                             onhandItems.setONHANDQTY(new BigDecimal(jsObjectArrayData.get("ONHANDQTY").toString()));
                             onhandItems.setAVAILABLEQTY(new BigDecimal((jsObjectArrayData.get("AVAILABLEQTY").toString())));
+                            AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", jsObjectArrayData.get("AVAILABLEQTY").toString());
+                            AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", jsObjectArrayData.get("ONHANDQTY").toString());
                         } catch (Exception e) {
                             e.getMessage();
                         }
@@ -104,6 +108,8 @@ public class OnHandSearchDC {
                         onhandItems.setLOCATOR((jsObject2.get("LOCATOR").toString()));
                         onhandItems.setONHANDQTY(new BigDecimal(jsObject2.get("ONHANDQTY").toString()));
                         onhandItems.setAVAILABLEQTY(new BigDecimal((jsObject2.get("AVAILABLEQTY").toString())));
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQty}", jsObject2.get("AVAILABLEQTY").toString());
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.onHandQty}", jsObject2.get("ONHANDQTY").toString());
                     } catch (Exception e) {
                         e.getMessage();
                     }
@@ -120,5 +126,8 @@ public class OnHandSearchDC {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.OnHandResults}", "No Results Found");
         }
         return onHandArray;
+    }
+    public void callOnHandService(){
+        getAllOnhands();
     }
 }

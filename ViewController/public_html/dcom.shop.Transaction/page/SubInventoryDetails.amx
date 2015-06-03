@@ -43,8 +43,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1"
-                               action="#{bindings.InsertTransaction.execute}">
+            <amx:commandButton text="Save" id="cb1" action="#{bindings.InsertTransaction.execute}">
                 <amx:setPropertyListener id="spl8" from="SUBMIT" to="#{pageFlowScope.TrxnType}" type="action"/>
             </amx:commandButton>
         </amx:facet>
@@ -129,15 +128,28 @@
                     <amx:selectItem label="Choose" value="0" id="si6"/>
                     <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
                 </amx:selectOneChoice>
-                <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;" id="plam10">
+                <amx:panelLabelAndMessage id="plam1">
                     <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"
-                                    id="it4"/>
-                </amx:panelLabelAndMessage>
-                <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:left;" id="plam2">
-                    <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
-                                    id="it5"/>
+                    <amx:panelGroupLayout layout="horizontal" id="pgl3">
+                        <amx:panelGroupLayout id="pgl8">
+                            <amx:panelLabelAndMessage label="Available Qty" inlineStyle="text-align:center;"
+                                                      id="plam10">
+                                <?audit suppress oracle.maf.warning-missing-label?>
+                                <amx:outputText value="#{pageFlowScope.availableQty}"
+                                                styleClass="adfmf-listItem-captionText" id="it4"/>
+                            </amx:panelLabelAndMessage>
+                            <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:left;" id="plam2">
+                                <?audit suppress oracle.maf.warning-missing-label?>
+                                <amx:outputText value="#{pageFlowScope.onHandQty}"
+                                                styleClass="adfmf-listItem-captionText" id="it5"/>
+                            </amx:panelLabelAndMessage>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="sp1" width="30"/>
+                        <amx:commandLink id="cl5" actionListener="#{bindings.callOnHandService.execute}">
+                            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                            <amx:outputHtml id="oh1" styleClass="fa fa-refresh fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
+                    </amx:panelGroupLayout>
                 </amx:panelLabelAndMessage>
                 <amx:inputText label="Quantity" showRequired="true" inlineStyle="text-align:left;"
                                value="#{pageFlowScope.quantity}" styleClass="adfmf-listItem-captionText" id="it2">
