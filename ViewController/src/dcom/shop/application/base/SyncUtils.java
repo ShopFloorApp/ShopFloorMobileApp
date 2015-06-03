@@ -96,6 +96,7 @@ public class SyncUtils {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -113,6 +114,7 @@ public class SyncUtils {
                 for (int i = 0; i < fields.length; i++) {
                     if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
@@ -218,6 +220,7 @@ public class SyncUtils {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -242,6 +245,7 @@ public class SyncUtils {
                 for (int j = 0; j < fields.length; j++) {
                     if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
@@ -254,7 +258,7 @@ public class SyncUtils {
                 }
                 System.out.println("insert value is " + insertQueryValues);
                 String valuesStr = insertQueryValues.substring(0, insertQueryValues.length() - 1);
-                String finalQuery = query.toString() + valuesStr + ");";
+String finalQuery = query.toString() + valuesStr + ");";
                 System.out.println("insert query is " + finalQuery);
                 stmt.execute(finalQuery);
 
@@ -291,6 +295,7 @@ public class SyncUtils {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -315,6 +320,7 @@ public class SyncUtils {
                 for (int j = 0; j < fields.length; j++) {
                     if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
@@ -397,6 +403,7 @@ public class SyncUtils {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -422,6 +429,7 @@ public class SyncUtils {
                 for (int j = 0; j < fields.length; j++) {
                     if ((fields[j].getName().trim().equalsIgnoreCase("attributes")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[j].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;
@@ -598,6 +606,7 @@ public class SyncUtils {
 
                 if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                    (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                     (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                     continue;
@@ -615,6 +624,7 @@ public class SyncUtils {
                 for (int i = 0; i < fields.length; i++) {
                     if ((fields[i].getName().trim().equalsIgnoreCase("attributes")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("propertyChangeSupport")) ||
+                        (fields[i].getName().trim().equalsIgnoreCase("providerChangeSupport")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("rowIdx")) ||
                         (fields[i].getName().trim().equalsIgnoreCase("idx"))) {
                         continue;

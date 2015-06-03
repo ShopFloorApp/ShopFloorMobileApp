@@ -77,21 +77,21 @@ public class LPNDC {
                         //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
                         JSONObject jsObjectArrayData = (JSONObject) array.get(i);
 
-                        lpnItems.setWeightUom((jsObjectArrayData.get("WEIGHTUOM").toString()));
-                        lpnItems.setLpn((jsObjectArrayData.get("LPN").toString()));
-                        lpnItems.setLpnContext((jsObjectArrayData.get("LPNCONTEXT").toString()));
-                        lpnItems.setSubinv((jsObjectArrayData.get("SUBINV").toString()));
-                        lpnItems.setLocator((jsObjectArrayData.get("LOCATOR").toString()));
+                        lpnItems.setWeightUom(jsObjectArrayData.get("WEIGHTUOM")==null?"":(jsObjectArrayData.get("WEIGHTUOM").toString()));
+                        lpnItems.setLpn(jsObjectArrayData.get("LPN")==null?"":(jsObjectArrayData.get("LPN").toString()));
+                        lpnItems.setLpnContext(jsObjectArrayData.get("LPNCONTEXT")==null?"":(jsObjectArrayData.get("LPNCONTEXT").toString()));
+                        lpnItems.setSubinv(jsObjectArrayData.get("SUBINV")==null?"":(jsObjectArrayData.get("SUBINV").toString()));
+                        lpnItems.setLocator(jsObjectArrayData.get("LOCATOR")==null?"":(jsObjectArrayData.get("LOCATOR").toString()));
                         lpnItems.setGrossWeight(((Float) Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("GROSSWEIGHT").toString()) ?
                                                                              "0" :
                                                                              jsObjectArrayData.get("GROSSWEIGHT")).toString())));
-                        lpnItems.setVolumeUom((jsObjectArrayData.get("VOLUMEUOM").toString()));
+                        lpnItems.setVolumeUom(jsObjectArrayData.get("VOLUMEUOM")==null?"":(jsObjectArrayData.get("VOLUMEUOM").toString()));
                         lpnItems.setVolume(((Float) Float.parseFloat(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("VOLUME").toString()) ?
                                                                         "0" :
                                                                         jsObjectArrayData.get("VOLUME")).toString())));
-                        lpnItems.setParentLpn((jsObjectArrayData.get("PARENTLPN").toString()));
-                        lpnItems.setOutermostLpn((jsObjectArrayData.get("OUTERMOSTLPN").toString()));
-                        lpnItems.setLoadSeq((jsObjectArrayData.get("LOADSEQ").toString()));
+                        lpnItems.setParentLpn(jsObjectArrayData.get("PARENTLPN")==null?"":(jsObjectArrayData.get("PARENTLPN").toString()));
+                        lpnItems.setOutermostLpn(jsObjectArrayData.get("OUTERMOSTLPN")==null?"":(jsObjectArrayData.get("OUTERMOSTLPN").toString()));
+                        lpnItems.setLoadSeq(jsObjectArrayData.get("LOADSEQ")==null?"":(jsObjectArrayData.get("LOADSEQ").toString()));
                         lpnItems.setDeliveryId(((Integer) Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("DELIVERYID").toString()) ?
                                                                             "0" :
                                                                             jsObjectArrayData.get("DELIVERYID")).toString())));

@@ -55,8 +55,7 @@
                             <amx:tableLayout id="tl2">
                                 <amx:rowLayout id="rl1">
                                     <amx:cellFormat id="cf1" halign="center">
-                                        <amx:outputHtml id="oh5" styleClass="fa fa-ship fa-lg"
-                                                        inlineStyle="color:Gray;"/>
+                                        <amx:outputHtml id="oh5" styleClass="fa fa-ship fa-md"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl3">
@@ -68,13 +67,13 @@
                             </amx:tableLayout>
                         </amx:commandLink>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf6" width="25%">
+                    <amx:cellFormat id="cf6" width="25%" halign="center">
                         <amx:commandLink id="cl6" actionListener="#{pageFlowScope.TransactionUtil.LPNLoadAction}">
                             <amx:tableLayout id="tl3">
                                 <amx:rowLayout id="rl4">
                                     <amx:cellFormat id="cf3" halign="center">
-                                        <amx:outputHtml id="oh6" inlineStyle="color:Gray;"
-                                                        styleClass="fa fa-mail-forward fa-lg"/>
+                                        <amx:outputHtml id="oh6"
+                                                        styleClass="fa fa-share-square-o fa-md"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl5">
@@ -86,13 +85,13 @@
                             </amx:tableLayout>
                         </amx:commandLink>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf8" width="25%">
+                    <amx:cellFormat id="cf8" width="25%" halign="center">
                         <amx:commandLink id="cl8" actionListener="#{pageFlowScope.TransactionUtil.UnloadLPNAction}">
                             <amx:tableLayout id="tl5">
                                 <amx:rowLayout id="rl8">
                                     <amx:cellFormat id="cf11" halign="center">
-                                        <amx:outputHtml id="oh11" inlineStyle="color:Gray;"
-                                                        styleClass="fa fa-download fa-lg"/>
+                                        <amx:outputHtml id="oh11"
+                                                        styleClass="fa fa-download fa-md"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl9">
@@ -104,13 +103,12 @@
                             </amx:tableLayout>
                         </amx:commandLink>
                     </amx:cellFormat>
-                    <amx:cellFormat id="cf7" width="25%">
+                    <amx:cellFormat id="cf7" width="25%" halign="center">
                         <amx:commandLink id="cl7" actionListener="#{pageFlowScope.TransactionUtil.clearLPNShip}">
                             <amx:tableLayout id="tl4">
                                 <amx:rowLayout id="rl6">
                                     <amx:cellFormat id="cf9" halign="center">
-                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"
-                                                        inlineStyle="color:Gray;"/>
+                                        <amx:outputHtml id="oh8" styleClass="fa fa-times fa-lg"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl7">

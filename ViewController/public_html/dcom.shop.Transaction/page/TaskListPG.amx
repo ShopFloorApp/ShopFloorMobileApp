@@ -3,7 +3,7 @@
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
         <amx:facet name="header">
-            <amx:outputText value="TASKS" id="ot1"/>
+            <amx:outputText value="Tasks" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="Back">
@@ -18,98 +18,27 @@
         </amx:facet>
         <amx:facet name="footer">
             <amx:tableLayout id="tl1" width="100%"
-                             inlineStyle="border-top-color:WindowText; border-top-style:solid; border-top-width:thin;">
+                             inlineStyle="border-top-color:Blue; border-top-style:solid; border-top-width:thin;">
                 <amx:rowLayout id="rl2">
                     <amx:cellFormat id="cf4" width="50%" halign="center" valign="middle">
                         <amx:commandLink id="cl5">
                             <amx:outputText value="Sort" id="ot3"/>
+                            <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="bottomCenter"
+                                                   alignId="pp1"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf5" width="50%" halign="center"
-                                    inlineStyle="border-left-style:solid; border-left-color:WindowText; border-left-width:thin;"
+                                    inlineStyle="border-left-style:solid; border-left-color:Blue; border-left-width:thin;"
                                     valign="middle">
                         <amx:commandLink id="cl6">
                             <amx:outputText value="Filter" id="ot9"/>
                             <amx:showPopupBehavior id="spb2" popupId="p2" type="action" align="bottomEnd"
-                                                   alignId="tl3"/>
+                                                   alignId="pp1"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
             </amx:tableLayout>
         </amx:facet>
-        <amx:tableLayout id="tl3" cellPadding="0" cellSpacing="10" width="100%" layout="fixed" borderWidth="0">
-            <amx:rowLayout id="rl3">
-                <amx:cellFormat id="cf2">
-                    <amx:commandLink id="cl2" actionListener="#{bindings.sortTasks.execute}">
-                        <amx:tableLayout id="tl4">
-                            <amx:rowLayout id="rl4">
-                                <amx:cellFormat id="cf8">
-                                    <amx:outputText value="Task ID" id="ot4"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"/>
-                                </amx:cellFormat>
-                                <amx:cellFormat id="cf9">
-                                    <amx:outputHtml id="oh4" styleClass="fa fa-times  fa-caret-up"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"
-                                                    rendered="#{pageFlowScope.sortBy eq 'TASK_ASC' ? true : false}"/>
-                                    <amx:outputHtml id="oh2" styleClass="fa fa-times  fa-caret-down"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"
-                                                    rendered="#{pageFlowScope.sortBy eq 'TASK_DESC' ? true : false}"/>
-                                </amx:cellFormat>
-                            </amx:rowLayout>
-                        </amx:tableLayout>
-                        <amx:setPropertyListener id="spl1"
-                                                 from="#{pageFlowScope.sortBy eq 'TASK_DESC' ? 'TASK_ASC' : 'TASK_DESC'}"
-                                                 to="pageFlowScope.sortBy"/>
-                    </amx:commandLink>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf3">
-                    <amx:commandLink id="cl3" actionListener="#{bindings.sortTasks.execute}">
-                        <amx:tableLayout id="tl5">
-                            <amx:rowLayout id="rl5">
-                                <amx:cellFormat id="cf10">
-                                    <amx:outputText value="Type" id="ot5"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"/>
-                                </amx:cellFormat>
-                                <amx:cellFormat id="cf11">
-                                    <amx:outputHtml id="oh5" styleClass="fa fa-times  fa-caret-up"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"
-                                                    rendered="#{pageFlowScope.sortBy eq 'TASK_TYPE_ASC' ? true : false}"/>
-                                    <amx:outputHtml id="oh3" styleClass="fa fa-times  fa-caret-down"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"
-                                                    rendered="#{pageFlowScope.sortBy eq 'TASK_TYPE_DESC' ? true : false}"/>
-                                </amx:cellFormat>
-                            </amx:rowLayout>
-                        </amx:tableLayout>
-                        <amx:setPropertyListener id="spl2"
-                                                 from="#{pageFlowScope.sortBy eq 'TASK_TYPE_DESC' ? 'TASK_TYPE_ASC' : 'TASK_TYPE_DESC'}"
-                                                 to="#{pageFlowScope.sortBy}"/>
-                    </amx:commandLink>
-                </amx:cellFormat>
-                <amx:cellFormat id="cf7">
-                    <amx:commandLink id="cl4" actionListener="#{bindings.sortTasks.execute}">
-                        <amx:tableLayout id="tl6">
-                            <amx:rowLayout id="rl6">
-                                <amx:cellFormat id="cf12">
-                                    <amx:outputText value="Priority" id="ot8"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"/>
-                                </amx:cellFormat>
-                                <amx:cellFormat id="cf13">
-                                    <amx:outputHtml id="oh7" styleClass="fa fa-times  fa-caret-up"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"
-                                                    rendered="#{pageFlowScope.sortBy eq 'PRIORITY_ASC' ? true : false}"/>
-                                    <amx:outputHtml id="oh6" styleClass="fa fa-times  fa-caret-down"
-                                                    inlineStyle="color:#34AADC; font-weight:bold;"
-                                                    rendered="#{pageFlowScope.sortBy eq 'PRIORITY_DESC' ? true : false}"/>
-                                </amx:cellFormat>
-                            </amx:rowLayout>
-                        </amx:tableLayout>
-                        <amx:setPropertyListener id="spl4"
-                                                 from="#{pageFlowScope.sortBy eq 'PRIORITY_DESC' ? 'PRIORITY_ASC' : 'PRIORITY_DESC'}"
-                                                 to="#{pageFlowScope.sortBy}"/>
-                    </amx:commandLink>
-                </amx:cellFormat>
-            </amx:rowLayout>
-        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.tasks.collectionModel}" fetchSize="#{bindings.tasks.rangeSize}"
                       selectedRowKeys="#{bindings.tasks.collectionModel.selectedRow}"
                       selectionListener="#{bindings.tasks.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
@@ -149,7 +78,7 @@
                     <amx:cellFormat id="cf1">
                         <amx:selectManyCheckbox label="Task Type" id="smc1" readOnly="true"
                                                 value="#{pageFlowScope.Filter_TaskTypes}">
-                            <amx:selectItems id="si1" value="#{bindings.TASKTYPE.items}"/>
+                            <amx:selectItems id="si1" value="#{pageFlowScope.TasksBean.filterItems}"/>
                         </amx:selectManyCheckbox>
                     </amx:cellFormat>
                 </amx:rowLayout>
@@ -163,9 +92,14 @@
             </amx:commandButton>
         </amx:panelGroupLayout>
     </amx:popup>
-    <amx:popup id="p1">
+    <amx:popup id="p1" animation="slideUp" autoDismiss="true">
         <amx:panelGroupLayout id="pgl1">
-            <amx:selectOneRadio label="Sort By" id="sor1" value="#{pageFlowScope.sortBy}">
+            <amx:panelGroupLayout id="pgl2"
+                                  inlineStyle="border-bottom-color:Blue; border-bottom-style:solid; border-bottom-width:thin;"
+                                  halign="center">
+                <amx:outputText value="Sort By" id="ot4"/>
+            </amx:panelGroupLayout>
+            <amx:selectOneRadio id="sor1" value="#{pageFlowScope.sortBy}">
                 <amx:selectItem id="si2" label="Priority:High to Low" value="PRIORITY_DESC"/>
                 <amx:selectItem id="si2X" label="Priority:Low to High" value="PRIORITY_ASC"/>
                 <amx:selectItem label="Task Type:A-Z" id="si3" value="TASK_TYPE_ASC"/>
@@ -173,10 +107,23 @@
                 <amx:selectItem label="Task Id:Ascending" id="si5" value="TASK_ASC"/>
                 <amx:selectItem label="Task Id:Descending" id="si6" value="TASK_DESC"/>
             </amx:selectOneRadio>
-            <amx:panelGroupLayout id="pgl2">
-                <amx:commandButton text="Cancel" id="cb1">
-                    <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
-                </amx:commandButton>
+            <amx:panelGroupLayout id="pgl3"
+                                  inlineStyle="border-top-color:Blue; border-top-style:solid; border-top-width:thin;">
+                <amx:tableLayout id="tl3">
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat id="cf2">
+                            <amx:commandButton text="OK" id="cb3"
+                                               actionListener="#{pageFlowScope.TasksBean.sortMethod}">
+                                <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
+                            </amx:commandButton>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf3">
+                            <amx:commandButton text="Cancel" id="cb1">
+                                <amx:closePopupBehavior id="cpb2" popupId="p1" type="action"/>
+                            </amx:commandButton>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
             </amx:panelGroupLayout>
         </amx:panelGroupLayout>
     </amx:popup>

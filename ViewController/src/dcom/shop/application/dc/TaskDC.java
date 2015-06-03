@@ -1,7 +1,9 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.AViewObject;
+import dcom.shop.application.dc.dispatch.JobOperationDC;
 import dcom.shop.application.mobile.TaskBO;
+import dcom.shop.application.mobile.dispatch.JobOperationBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
@@ -50,14 +52,19 @@ public class TaskDC extends AViewObject {
     }
 
     public TaskBO[] getTasks() {
-        String str = AdfmfJavaUtilities.getELValue("#{pageFlowScope.taskIdUp}") + "";
-        if (!(("-1".equals(str) || "0".equals(str) || "1".equals(str)))) {
+        if (!isSortOperation) {
             //providerChangeSupport.fireProviderRefresh("tasks");
             s_list.clear();
-            getFromWS();
-            //getDummyTasks();
-            sortTasks("TASK_ASC");
+            if (isOffline()) {
+                s_list = getCollectionFromDB(TaskDC.class);
+            } else {
+                getFromWS();
+            }
             sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
+            providerChangeSupport.fireProviderRefresh("TaskBO");
+
+        }else{
+            isSortOperation = false;
         }
     
         return sTask;
@@ -86,64 +93,26 @@ public class TaskDC extends AViewObject {
     }
 
     public void sortTasks(String criteria) {
+            s_list.clear();
+            isSortOperation = true;
+            String orderByClause = "";
         if (criteria != null) {
             try {
-                if ("TASK_ASC".equals(criteria) || "TASK_DESC".equals(criteria)) {
-                    Collections.sort(s_list, new Comparator() {
-                        public int compare(Object o1, Object o2) {
-                            TaskBO p1 = (TaskBO) o1;
-                            TaskBO p2 = (TaskBO) o2;
-                            int a = Integer.parseInt(p1.getTASKNUM());
-                            int b = Integer.parseInt(p2.getTASKNUM());
-                            if ("TASK_ASC".equals(criteria)) {
-                                return a - b;
-                            } else {
-                                return b - a;
-                            }
-                        }
-                    });
-                } else if ("TASK_TYPE_ASC".equals(criteria) || "TASK_TYPE_DESC".equals(criteria)) {
-                    Collections.sort(s_list, new Comparator() {
-                        public int compare(Object o1, Object o2) {
-                            TaskBO p1 = (TaskBO) o1;
-                            TaskBO p2 = (TaskBO) o2;
-
-                            if ("TASK_TYPE_ASC".equals(criteria)) {
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskIdUp}", -1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskTypeUp}", 1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskPriorityUp}", -1);
-                                return p1.getTASKTYPE().compareTo(p2.getTASKTYPE());
-                            } else {
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskIdUp}", -1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskTypeUp}", 0);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskPriorityUp}", -1);
-                                return p2.getTASKTYPE().compareTo(p1.getTASKTYPE());
-                            }
-                        }
-                    });
-                } else if ("PRIORITY_ASC".equals(criteria) || "PRIORITY_DESC".equals(criteria)) {
-                    Collections.sort(s_list, new Comparator() {
-                        public int compare(Object o1, Object o2) {
-                            TaskBO p1 = (TaskBO) o1;
-                            TaskBO p2 = (TaskBO) o2;
-                            String a = p1.getPRIORITY();
-                            String b = p2.getPRIORITY();
-
-                            if ("PRIORITY_ASC".equals(criteria)) {
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskIdUp}", -1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskTypeUp}", -1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskPriorityUp}", 1);
-                                return a.compareTo(b);
-                            } else {
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskIdUp}", -1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskTypeUp}", -1);
-                                AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskPriorityUp}", 0);
-                                return a.compareTo(b);
-                            }
-
-                        }
-                    });
-                }
+                if(criteria.equalsIgnoreCase("PRIORITY_ASC")){
+                    orderByClause = "ORDER BY PRIORITY ASC";
+                }else if(criteria.equalsIgnoreCase("PRIORITY_DESC")){
+                    orderByClause = "ORDER BY PRIORITY DESC";                    
+                }else if(criteria.equalsIgnoreCase("TASK_TYPE_ASC")){
+                    orderByClause = "ORDER BY TASKTYPE ASC";                    
+                }else if(criteria.equalsIgnoreCase("TASK_TYPE_DESC")){
+                    orderByClause = "ORDER BY TASKTYPE DESC";                    
+                }else if(criteria.equalsIgnoreCase("TASK_ASC")){
+                    orderByClause = "ORDER BY TASKNUM ASC";                    
+                }else if(criteria.equalsIgnoreCase("TASK_DESC")){
+                    orderByClause = "ORDER BY TASKNUM DESC";                    
+                }                
+                super.getFilteredCollectionFromDB(TaskBO.class, orderByClause);
+                getTasks();
             } catch (Exception e) {
                 String msg = e.getMessage();
                 System.out.println("Error msg:" + msg);
@@ -151,47 +120,7 @@ public class TaskDC extends AViewObject {
         }
 
     }
-    /*
-    public void sortTaskId(ActionEvent ae){
-            String str = AdfmfJavaUtilities.getELValue("#{pageFlowScope.taskIdUp}")+"";
-            if("-1".equals(str)||"0".equals(str)){
-                sortTasks("taskIdUp");
-                }
-            else if("1".equals(str)){
-                sortTasks("taskIdDown");
-                }
-            sTask = (TaskBO[])s_list.toArray(new TaskBO[s_list.size()]);
-            providerChangeSupport.fireProviderRefresh("tasks");
-            //getTasks();
-        }
 
-    public void sortTaskType(ActionEvent ae){
-            String str = AdfmfJavaUtilities.getELValue("#{pageFlowScope.taskTypeUp}")+"";
-            if("-1".equals(str)||"0".equals(str)){
-                sortTasks("taskTypeUp");
-                }
-            else if("1".equals(str)){
-                sortTasks("taskTypeDown");
-                }
-            sTask = (TaskBO[])s_list.toArray(new TaskBO[s_list.size()]);
-            providerChangeSupport.fireProviderRefresh("tasks");
-            //getTasks();
-        }
-
-    public void sortTaskPriority(ActionEvent ae){
-            String str = AdfmfJavaUtilities.getELValue("#{pageFlowScope.taskPriorityUp}")+"";
-            if("-1".equals(str)||"0".equals(str)){
-                sortTasks("taskPriorityUp");
-                }
-            else if("1".equals(str)){
-                sortTasks("taskPriorityDown");
-                }
-            sTask = (TaskBO[])s_list.toArray(new TaskBO[s_list.size()]);
-            providerChangeSupport.fireProviderRefresh("tasks");
-            //getTasks();
-        }
-
-    */
     public void getDummyTasks() {
         TaskBO task = new TaskBO();
         task.setTASKNUM("51");
@@ -287,7 +216,7 @@ public class TaskDC extends AViewObject {
                         taskBO.setUSERNAME(jsObject2.get("USERNAME")==null?"":jsObject2.get("USERNAME").toString());
                         s_list.add(taskBO);
                     }
-                    //super.updateSqlLiteTable(JobOperationBO.class, s_list);
+                    super.updateSqlLiteTable(TaskBO.class, s_list);
                 }
             } catch (Exception e) {
                 e.getMessage();
