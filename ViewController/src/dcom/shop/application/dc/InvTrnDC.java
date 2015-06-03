@@ -564,7 +564,7 @@ public class InvTrnDC extends RestCallerUtil {
         Iterator j = s_filteredLotTrxns.iterator();
         while (j.hasNext()) {
             lot = (LotBO) j.next();
-            payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
+            payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"} ,";
 
         }
         payload = payload.substring(0, payload.length() - 1);
