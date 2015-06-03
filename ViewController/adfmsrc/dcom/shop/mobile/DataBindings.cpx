@@ -225,6 +225,7 @@
     <page id="dcom_shop_mobile_instructionsPageDef" path="dcom.shop.DispatchList.page.instructionsPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="AttachmentDC" path="dcom.shop.mobile.AttachmentDC"/>
     <dc id="InstructionsDC" path="dcom.shop.mobile.InstructionsDC"/>
     <dc id="ShippingLpnDC" path="dcom.shop.mobile.ShippingLpnDC"/>
     <dc id="PickTxnDC" path="dcom.shop.mobile.PickTxnDC"/>

@@ -212,6 +212,12 @@ public class RestURI {
     public static String PostGetInstructions() {
         return GET_INSTRUCTIONS;
     }
+    
+    private static final String GET_BLOB = "/webservices/rest/getBlob/get_blob/";
+
+    public static String PostGetBlobData() {
+        return GET_BLOB;
+    }
     private static final String GET_OPSEQ = "/webservices/rest/DCOMDispatchTxn/getopseq/";
 
     public static String PostGetOpSeq() {

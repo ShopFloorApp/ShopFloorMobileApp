@@ -18,5 +18,13 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="displayFile" RequiresUpdateModel="true" Action="invokeMethod" MethodName="displayFile"
+                  IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider">
+      <NamedData NDName="fileURL" NDValue="#{pageFlowScope.filePath}" NDType="java.lang.String"/>
+      <NamedData NDName="headerText" NDValue="Attachment File" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getBlobData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getBlobData"
+                  IsViewObjectMethod="false" DataControl="AttachmentDC" InstanceName="data.AttachmentDC.dataProvider"/>
   </bindings>
 </pageDefinition>
