@@ -206,6 +206,12 @@ public class RestURI {
     public static String PostGetComponents() {
         return GET_COMPONENTS;
     }
+    
+    private static final String GET_INSTRUCTIONS = "/webservices/rest/DCOMDispatchTxn/getjobinstr/";
+
+    public static String PostGetInstructions() {
+        return GET_INSTRUCTIONS;
+    }
     private static final String GET_OPSEQ = "/webservices/rest/DCOMDispatchTxn/getopseq/";
 
     public static String PostGetOpSeq() {

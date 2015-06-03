@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-    <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-  </amx:panelPage>
+    <amx:panelPage id="pp1">
+        <amx:facet name="header">
+            <amx:outputText value="Instructions" id="ot1"/>
+        </amx:facet>
+         <amx:facet name="primary">
+            <amx:commandLink id="cl1" action="backToWorkContent">
+                <amx:panelGroupLayout id="pgl3" layout="horizontal">
+                    <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="oh2" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+            </amx:commandLink>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:listView var="row" value="#{bindings.instructionsBO.collectionModel}"
+                      fetchSize="#{bindings.instructionsBO.rangeSize}"
+                      selectedRowKeys="#{bindings.instructionsBO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.instructionsBO.collectionModel.makeCurrent}"
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
+            <amx:listItem id="li1" showLinkIcon="false">
+                <amx:outputText value="#{row.FILENAME}" id="ot2"/>
+                <amx:setPropertyListener id="spl1" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
+            </amx:listItem>
+        </amx:listView>
+    </amx:panelPage>
 </amx:view>

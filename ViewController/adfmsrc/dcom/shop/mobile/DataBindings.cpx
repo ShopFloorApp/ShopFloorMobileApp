@@ -118,6 +118,7 @@
     <page path="/dcom.shop.Transaction/PaperBasedPick.amx" usageId="dcom_shop_mobile_PaperBasedPickPageDef"/>
     <page path="/dcom.shop.Transaction/page/PaperBasedLoad.amx" usageId="dcom_shop_mobile_PaperBasedLoadPageDef"/>
     <page path="/dcom.shop.Transaction/page/ShippingTxn/MissingLPNs.amx" usageId="dcom_shop_mobile_MissingLPNsPageDef"/>
+    <page path="/dcom.shop.DispatchList/page/instructions.amx" usageId="dcom_shop_mobile_instructionsPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="dcom_shop_mobile_ReceivingTransaction_ReceivingTransaction_getPendingReceiveTxn1PageDef"
@@ -221,8 +222,10 @@
     <page id="dcom_shop_mobile_PaperBasedPickPageDef" path="dcom.shop.Transaction.PaperBasedPickPageDef"/>
      <page id="dcom_shop_mobile_PaperBasedLoadPageDef" path="dcom.shop.Transaction.page.PaperBasedLoadPageDef"/>
     <page id="dcom_shop_mobile_MissingLPNsPageDef" path="dcom.shop.Transaction.page.ShippingTxn.MissingLPNsPageDef"/>
+    <page id="dcom_shop_mobile_instructionsPageDef" path="dcom.shop.DispatchList.page.instructionsPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="InstructionsDC" path="dcom.shop.mobile.InstructionsDC"/>
     <dc id="ShippingLpnDC" path="dcom.shop.mobile.ShippingLpnDC"/>
     <dc id="PickTxnDC" path="dcom.shop.mobile.PickTxnDC"/>
     <dc id="CycleCountSubinvDC" path="dcom.shop.mobile.CycleCountSubinvDC"/>

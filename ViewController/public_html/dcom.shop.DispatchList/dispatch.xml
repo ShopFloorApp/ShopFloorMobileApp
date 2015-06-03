@@ -109,6 +109,9 @@
         <view id="uploadImage">
             <page>/dcom.shop.DispatchList/page/uploadImage.amx</page>
         </view>
+        <view id="instructions">
+            <page>/dcom.shop.DispatchList/page/instructions.amx</page>
+        </view>
         <control-flow-rule id="__1">
             <from-activity-id>dispatchList</from-activity-id>
             <control-flow-case id="__2">
@@ -247,6 +250,10 @@
             <control-flow-case id="__7">
                 <from-outcome>toUploadImage</from-outcome>
                 <to-activity-id>uploadImage</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__45">
+                <from-outcome>toInstructions</from-outcome>
+                <to-activity-id>instructions</to-activity-id>
             </control-flow-case>
         </control-flow-rule>
         <control-flow-rule id="__39">

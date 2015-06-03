@@ -37,7 +37,7 @@
           </rememberCredentials>
           <injectCookiesToRestHttpHeader value="true"/>
           <includeBasicAuthHeader value="true"/>
-          <accessControl/>
+          <accessControl url="http://10.118.32.41:8000/webservices/rest/AccessControlService/accesscontrol"/>
           <userObjectFilter/>
         </Contents>
       </XmlRefAddr>

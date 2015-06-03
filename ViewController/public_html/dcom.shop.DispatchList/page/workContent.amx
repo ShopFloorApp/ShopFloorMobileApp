@@ -192,7 +192,7 @@
     <amx:popup id="p1" autoDismiss="true">
         <?audit suppress oracle.maf.warning-missing-shortDesc?>
         <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl5">
+            <amx:commandLink id="cl5" action="toInstructions">
                 <amx:tableLayout id="tl7" halign="center" inlineStyle="margin-right: 20px;">
                     <amx:rowLayout id="rl16">
                         <amx:cellFormat id="cf27" halign="center">
