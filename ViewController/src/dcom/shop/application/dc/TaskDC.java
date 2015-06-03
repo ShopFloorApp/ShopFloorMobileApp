@@ -1,11 +1,16 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.AViewObject;
+import dcom.shop.application.database.ConnectionFactory;
 import dcom.shop.application.dc.dispatch.JobOperationDC;
 import dcom.shop.application.mobile.TaskBO;
 import dcom.shop.application.mobile.dispatch.JobOperationBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,6 +23,8 @@ import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
+
+import oracle.adfmf.javax.faces.model.SelectItem;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -61,12 +68,13 @@ public class TaskDC extends AViewObject {
                 getFromWS();
             }
             sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
-            providerChangeSupport.fireProviderRefresh("TaskBO");
+            providerChangeSupport.fireProviderRefresh("tasks");
 
         }else{
             isSortOperation = false;
         }
-    
+        sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
+        providerChangeSupport.fireProviderRefresh("tasks");
         return sTask;
     }
     
@@ -80,16 +88,45 @@ public class TaskDC extends AViewObject {
     
      
 
-    public HashMap<String,Integer> getTT(){
-        HashMap<String,Integer> al = new HashMap<String,Integer>();
+    public SelectItem[] getTT(){
+        SelectItem[] si ;
+        List slist = new ArrayList<SelectItem>();
+        String tt;
+        String cc;
+        Connection conn;
+        try {
+            conn = ConnectionFactory.getConnection();
+        
+        Statement stmt = conn.createStatement();
 
-        for (int i=0; i<s_list.size(); i++){
-            TaskBO ti = (TaskBO) s_list.get(i);
-            al.put(ti.getTASKTYPE(), al.get(ti.getTASKTYPE())==null?0:al.get(ti.getTASKTYPE())+1);
-            
+        StringBuffer query = new StringBuffer();
+        query.append("SELECT COUNT(1) COUNT, TASKTYPE FROM TASKS GROUP BY TASKTYPE;");
+   
+            try{
+            ResultSet result = stmt.executeQuery(query.toString());
+            while (result.next()) {
+                tt = result.getObject("TASKTYPE")==null?"":result.getObject("TASKTYPE").toString();
+                cc = result.getObject("COUNT")==null?"":result.getObject("COUNT").toString();
+                
+                SelectItem s1 = new SelectItem();
+                s1.setLabel(tt+" ("+cc+")");
+                s1.setValue(tt);
+                
+                slist.add(s1);
+                
+                }
+                }catch(Exception e1){
+                       e1.printStackTrace(); 
+                    }
+   
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        
+        si = (SelectItem[]) slist.toArray(new SelectItem[slist.size()]);
+      
 
-        return al;
+        return si;
     }
 
     public void sortTasks(String criteria) {
@@ -111,7 +148,7 @@ public class TaskDC extends AViewObject {
                 }else if(criteria.equalsIgnoreCase("TASK_DESC")){
                     orderByClause = "ORDER BY TASKNUM DESC";                    
                 }                
-                super.getFilteredCollectionFromDB(TaskBO.class, orderByClause);
+             s_list =   super.getFilteredCollectionFromDB(TaskBO.class, orderByClause);
                 getTasks();
             } catch (Exception e) {
                 String msg = e.getMessage();

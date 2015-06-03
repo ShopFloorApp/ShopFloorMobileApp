@@ -84,7 +84,7 @@ public class transactionUtil {
                         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
                         
                         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
-                                                                                  "Pick Release Successful", message, "OK"
+                                                                                  "Success", message, "OK"
                         });
                     }else{
                         AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {

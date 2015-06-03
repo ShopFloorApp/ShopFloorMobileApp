@@ -71,7 +71,7 @@ public class RestURI {
         return ITEM_UDA_INQUIRY_URI;
     }
 
-    private static final String UNLOAD_TRUCK_URI = "/webservices/rest/XXDCOMShip/unloadtruck/";
+    private static final String UNLOAD_TRUCK_URI = "/webservices/rest/DCOMShip/unloadtruck/";
 
     public static String PostUnloadTruckURI() {
         return UNLOAD_TRUCK_URI;

@@ -38,5 +38,21 @@
                   IsViewObjectMethod="false" DataControl="TaskDC" InstanceName="data.TaskDC.dataProvider">
       <NamedData NDName="criteria" NDValue="#{pageFlowScope.sortBy}" NDType="java.lang.String"/>
     </methodAction>
+    <tree IterBinding="TaskDCIterator" id="root">
+      <nodeDefinition DefName="dcom.shop.application.dc.TaskDC" Name="root0">
+        <Accessors>
+          <Item Value="TT"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="oracle.adfmf.javax.faces.model.SelectItem" Name="root1">
+        <AttrNames>
+          <Item Value="value"/>
+          <Item Value="description"/>
+          <Item Value="disabled"/>
+          <Item Value="escape"/>
+          <Item Value="label"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

@@ -44,7 +44,7 @@
                       selectedRowKeys="#{bindings.dockDoors.collectionModel.selectedRow}"
                       selectionListener="#{bindings.dockDoors.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" showLinkIcon="false">
+            <amx:listItem id="li1" showLinkIcon="false" action="__back">
                 <amx:outputText value="#{row.DOCKDOOR}" id="ot4"/>
                 <amx:setPropertyListener id="spl1" from="#{row.DOCKDOOR}" type="action" to="#{pageFlowScope.dockDoor}"/>
             </amx:listItem>
