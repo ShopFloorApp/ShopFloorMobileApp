@@ -214,14 +214,16 @@ public class LocatorDC extends SyncUtils {
             HashMap paramMap = new HashMap();
             paramMap.put("collection", s_locator);
             paramMap.put("filterFieldsValues", filterFileds);
+            
+            String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
 
             //AJ 14May
             //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
             //filtered_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
             if(subInv != null)
-            whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
+            whereClause="WHERE SUBINV=\""+subInv+"\" AND WHSE=\""+orgCode+"\" AND LOCATORTYPE=\"3\"";
             else
-                 whereClause="WHERE LOCATORTYPE=\"3\"";
+                 whereClause="WHERE LOCATORTYPE=\"3\" AND WHSE=\""+orgCode+"\"";
             filtered_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {
@@ -233,6 +235,7 @@ public class LocatorDC extends SyncUtils {
         try {
             filtered_To_Locators.clear();
             HashMap filterFileds = new HashMap();
+            String whereClause = null;
             String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
             //if (subInv == null)
             //    subInv = "DEFAULT";
@@ -244,8 +247,13 @@ public class LocatorDC extends SyncUtils {
             //AJ 14May
             //Changed the way to call filtered as FG and FGCUST both subinv were getting returned
             //filtered_To_Locators = (List) super.getFileteredCollection(LocatorBO.class, paramMap);
-            
-            String whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
+            String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+
+            if(subInv != null)
+            whereClause="WHERE SUBINV=\""+subInv+"\" AND WHSE=\""+orgCode+"\" AND LOCATORTYPE=\"3\"";
+            else
+                 whereClause="WHERE LOCATORTYPE=\"3\" AND WHSE=\""+orgCode+"\"";
+           // String whereClause="WHERE SUBINV=\""+subInv+"\" AND LOCATORTYPE=\"3\"";
             filtered_To_Locators=super.getFilteredCollectionFromDB(LocatorBO.class,whereClause);
 
         } catch (Exception e) {
