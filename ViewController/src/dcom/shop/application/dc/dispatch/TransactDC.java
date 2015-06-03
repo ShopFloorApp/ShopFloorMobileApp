@@ -86,15 +86,17 @@ public class TransactDC {
         transactBO.setOrgCode(orgCode);
         transactBO.setIsNewEntity(true);
         transactBO.setToDept(nextDept);
-        transactBO.setToOpSeq(nextOpSeq);
+        //transactBO.setToOpSeq(nextOpSeq);
         if (opSeq.equals(lastOpSeq)) {
             transactBO.setToStep("To Move");
         } else {
             transactBO.setToStep("Queue");
         }
+        
+        
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
-        transactBO.setFromOpSeq(opSeq);
+        //transactBO.setFromOpSeq(opSeq);
         transactBO.setTrxQty(qtyOp);
         transactBO.setScrapQty(qtyScrapped);
         TransactBO[] transactArray = new TransactBO[1];
