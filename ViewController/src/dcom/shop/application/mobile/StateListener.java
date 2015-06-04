@@ -420,7 +420,10 @@ public class StateListener {
 
     public String validateAndNavigateLpnLov() {
         // Add event code here...
-        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
+        String item =
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}") == null ? "" :
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
+       // String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
         if (item.length() < 3 || item == null) {
 
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
@@ -433,8 +436,11 @@ public class StateListener {
     }
 
     public String validateAndNavigateToLpnLov() {
-        // Add event code here...
-        String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
+        String item =
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}") == null ? "" :
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
+        
+     //   String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
         if (item.length() < 3) {
 
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
