@@ -20,7 +20,8 @@
             </amx:commandLink-->
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl1" action="siDet">
+            <amx:commandLink id="cl1" action="siDet"
+                             actionListener="#{pageFlowScope.TransactionUtilityBean.getLocation}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                  <amx:panelGroupLayout id="pgl1" layout="horizontal">
                     <amx:outputHtml id="oh1" value="Add"/>

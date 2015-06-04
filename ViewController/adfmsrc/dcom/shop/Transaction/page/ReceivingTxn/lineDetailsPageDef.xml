@@ -37,6 +37,33 @@
                       BeanClass="dcom.shop.application.mobile.UOMBO" id="uomsIterator"/>
   </executables>
   <bindings>
+    <tree IterBinding="linesIterator" id="lines">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.receiving.LinesBO" Name="lines0">
+        <AttrNames>
+          <Item Value="lines"/>
+          <Item Value="subInv"/>
+          <Item Value="isNewEntity"/>
+          <Item Value="locator"/>
+          <Item Value="lpn"/>
+          <Item Value="quantity"/>
+          <Item Value="uom"/>
+          <Item Value="receiveTxnId"/>
+          <Item Value="rowLineIdx"/>
+          <Item Value="docRefLine"/>
+          <Item Value="shipmentLine"/>
+          <Item Value="lotControl"/>
+          <Item Value="serialControl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="refreshLines" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLines"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
+    <methodAction id="processReceive" RequiresUpdateModel="true" Action="invokeMethod" MethodName="processReceive"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider">
+      <NamedData NDName="actionType" NDValue="#{pageFlowScope.actionType}" NDType="java.lang.String"/>
+    </methodAction>
     <list IterBinding="variables" id="item" DTSupportsMRU="true" SelectItemValueMode="ListObject"
           StaticList="false" ListIter="shipmentLinesIterator"
           NullValueFlag="start"
@@ -103,7 +130,7 @@
         <Item Value="quantityVar"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="linesIterator" id="lines">
+    <attributeValues IterBinding="linesIterator" id="linesk">
       <AttrNames>
         <Item Value="lines"/>
       </AttrNames>
@@ -201,5 +228,8 @@
         <Item Value="lineItemVar"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="refreshShipmentLines" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="refreshShipmentLines" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

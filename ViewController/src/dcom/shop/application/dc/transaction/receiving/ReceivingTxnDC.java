@@ -438,7 +438,8 @@ public class ReceivingTxnDC extends SyncUtils{
     
     public CarrierBO[] getCarriers(){
         s_carriers.clear();
-        s_carriers=super.getCollectionFromDB(CarrierBO.class);
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        s_carriers=super.getFilteredCollectionFromDB(CarrierBO.class,"WHERE WHSE="+orgCode);
         CarrierBO[] carriersArray =
             (CarrierBO[]) s_carriers.toArray(new CarrierBO[s_carriers.size()]);
         return carriersArray;
@@ -446,7 +447,8 @@ public class ReceivingTxnDC extends SyncUtils{
     
     public SubinventoryBO[] getSubInventories(){
         s_subInv.clear();
-        s_subInv=super.getCollectionFromDB(SubinventoryBO.class);
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        s_subInv=super.getFilteredCollectionFromDB(SubinventoryBO.class,"WHERE WHSE="+orgCode);
         SubinventoryBO[] subInventoriesArray =
             (SubinventoryBO[]) s_subInv.toArray(new SubinventoryBO[s_subInv.size()]);
         return subInventoriesArray;
@@ -657,6 +659,10 @@ public class ReceivingTxnDC extends SyncUtils{
         ShipmentLinesBO[] shipmentLinesArray =
             (ShipmentLinesBO[]) s_shipmentLines.toArray(new ShipmentLinesBO[s_shipmentLines.size()]);
         return shipmentLinesArray;
+    }
+    
+    public void refreshShipmentLines() {
+        providerChangeSupport.fireProviderRefresh("shipmentLines");
     }
 
     public void addPropertyChangeListener(PropertyChangeListener l) {

@@ -12,6 +12,11 @@
       <managed-bean-class>dcom.shop.mobile.barcode.BarcodeBean</managed-bean-class>
       <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>TransactionUtilityBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.bean.TransactionUtilityBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="SubInventoryTxn">
       <page>/dcom.shop.Transaction/page/SubInventoryTxn.amx</page>
     </view>
@@ -38,12 +43,7 @@
       <task-flow-reference>
         <document>/dcom.shop.Transaction/ReceivingTransaction.xml</document>
         <id>ReceivingTransaction</id>
-      </task-flow-reference>
-
-      <input-parameter id="__44">
-        <name>receivingType</name>
-        <value>#{'S'}</value>
-      </input-parameter>
+      </task-flow-reference>     
     </task-flow-call>
 
     <view id="SerialEntry">

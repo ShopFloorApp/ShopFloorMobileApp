@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="LPNListPageDef"
+                Package="dcom.shop.Transaction.page.ReceivingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LPNDC" id="LPNDCIterator"/>
+    <accessorIterator MasterBinding="LPNDCIterator" Binds="fromLpns" RangeSize="25" DataControl="LPNDC"
+                      BeanClass="dcom.shop.application.mobile.LPNBO" id="fromLpnsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="fromLpnsIterator" id="fromLpns">
+      <nodeDefinition DefName="dcom.shop.application.mobile.LPNBO" Name="fromLpns0">
+        <AttrNames>
+          <Item Value="lpn"/>
+          <Item Value="lpnContext"/>
+          <Item Value="deliveryId"/>
+          <Item Value="grossWeight"/>
+          <Item Value="loadSeq"/>
+          <Item Value="locator"/>
+          <Item Value="outermostLpn"/>
+          <Item Value="parentLpn"/>
+          <Item Value="subinv"/>
+          <Item Value="volume"/>
+          <Item Value="volumeUom"/>
+          <Item Value="weightUom"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

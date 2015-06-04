@@ -283,6 +283,14 @@ public class ReceivingTxnUtilBean {
     public void addMore(ActionEvent ae){
         updateRecord(ae);
         addRecord(ae);
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshShipmentLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
+        MethodExpression me1 =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
     }
     
     public void quantityValidation(ActionEvent ae){
@@ -389,5 +397,27 @@ public class ReceivingTxnUtilBean {
             AdfmfJavaUtilities.getMethodExpression("#{bindings.getPendingReceiveTxn.execute}", Object.class, new Class[] {
                                                    });
         me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public String clearLPNPutaway(){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnMain}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.itemLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.qtyReceivedLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnSubLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subinvLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.descriptionLPN}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.availableQtyLPN}", null);       
+        return null;
+    }
+    
+    public void generateLPN(ActionEvent ae){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.GenerateLpnWS.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnSubLPN}", AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}"));
     }
 }

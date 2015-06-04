@@ -6,7 +6,7 @@
             <amx:outputText value="Receiving Transaction" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="backToMain"
+            <amx:commandLink id="cl1" action="ReceiveHome"
                              actionListener="#{pageFlowScope.ReceivingTxnUtilBean.removeRecords}">
                 <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
@@ -42,7 +42,8 @@
                         <amx:inputText id="it" value="#{pageFlowScope.documnetNumber}" hintText="Document No."
                                        required="true" label="Document No." simple="true"/>
                     </amx:validationGroup>
-                    <amx:commandLink id="cbw3" action="getValue">
+                    <amx:commandLink id="cbw3" action="getValue"
+                                     actionListener="#{pageFlowScope.ReceivingTxnUtilBean.clearReceiveTypePage}">
                         <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>
@@ -72,10 +73,8 @@
                 <amx:inputText label="Pack Slip" id="it2" value="#{pageFlowScope.packSlip}"/>
                 <amx:inputText label="BOL" id="it3" value="#{pageFlowScope.bol}"/>
                 <amx:inputText label="Waybill/Airbill" id="it4" value="#{pageFlowScope.wayAirBill}"/>
-                <amx:inputText label="Shipment" id="it5" value="#{pageFlowScope.shipment}" required="true"
-                               showRequired="true"/>
-                <amx:inputDate label="Shipped Date" id="id1" value="#{pageFlowScope.shippedDate}" required="true"
-                               showRequired="true"/>
+                <amx:inputText label="Shipment" id="it5" value="#{pageFlowScope.shipment}"/>
+                <amx:inputDate label="Shipped Date" id="id1" value="#{pageFlowScope.shippedDate}"/>
                 <amx:inputText label="Comments" id="it6" rows="4" value="#{pageFlowScope.comments}"/>
             </amx:panelFormLayout>
         </amx:validationGroup>
@@ -104,7 +103,8 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf2"
                                     rendered="#{pageFlowScope.shipmentLinesCount!=0 &amp;&amp; pageFlowScope.documnetNumber!=null &amp;&amp; pageFlowScope.documnetNumber!=''}">
-                        <amx:commandLink id="cl2" action="addLine">
+                        <amx:commandLink id="cl2" action="addLine"
+                                         actionListener="#{pageFlowScope.ReceivingTxnUtilBean.addRecord}">
                             <amx:tableLayout id="tl2" halign="center">
                                 <amx:rowLayout id="rl2">
                                     <amx:cellFormat id="cf3" halign="center">
@@ -118,6 +118,7 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
+                            <amx:validationBehavior id="vb1" group="vg1"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13"

@@ -54,6 +54,7 @@
                                    id="i10"/>
                     <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i17"/>
                     <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i20"/>
+                    <adfmf:include type="StyleSheet" file="resources/css/expandcollapse.css" id="i21"/>
                 </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>

@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
   <task-flow-definition id="ReceivingTransaction">
-    <default-activity>getPendingReceiveTxn</default-activity>
-    <input-parameter-definition id="__8">
-      <name>receivingType</name>
-      <value>#{pageFlowScope.receivingType}</value>
-      <class>java.lang.String</class>
-    </input-parameter-definition>
+    <default-activity>Receiving</default-activity>
     <managed-bean id="__5">
       <managed-bean-name>ReceivingTxnUtilBean</managed-bean-name>
       <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>
@@ -75,11 +70,24 @@
     <view id="LinesListPG">
       <page>/dcom.shop.Transaction/page/ReceivingTxn/LinesListPG.amx</page>
     </view>
+    <view id="Receiving">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/Receiving.amx</page>
+    </view>
+    <view id="ReceiveLPN">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/ReceiveLPN.amx</page>
+    </view>
+    <view id="LPNList">
+      <page>/dcom.shop.Transaction/page/ReceivingTxn/LPNList.amx</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>backToMain</from-outcome>
         <to-activity-id>backToMain</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__44">
+        <from-outcome>ReceiveHome</from-outcome>
+        <to-activity-id>Receiving</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
@@ -90,7 +98,7 @@
       </control-flow-case>
       <control-flow-case id="__6">
         <from-outcome>addLine</from-outcome>
-        <to-activity-id>LinesListPG</to-activity-id>
+        <to-activity-id>lineDetails</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__28">
         <from-outcome>pendingTxn</from-outcome>
@@ -127,7 +135,7 @@
       </control-flow-case>
       <control-flow-case id="__29">
         <from-outcome>back</from-outcome>
-        <to-activity-id>LinesListPG</to-activity-id>
+        <to-activity-id>ReceivingType</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__17">
@@ -200,6 +208,31 @@
       <control-flow-case id="__39">
         <from-outcome>createLine</from-outcome>
         <to-activity-id>lineDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id>Receiving</from-activity-id>
+      <control-flow-case id="__42">
+        <from-outcome>receiveMaterial</from-outcome>
+        <to-activity-id>getPendingReceiveTxn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__43">
+        <from-outcome>lpn</from-outcome>
+        <to-activity-id>ReceiveLPN</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id>ReceiveLPN</from-activity-id>
+      <control-flow-case id="__46">
+        <from-outcome>getLPN</from-outcome>
+        <to-activity-id>LPNList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__47">
+      <from-activity-id>LPNList</from-activity-id>
+      <control-flow-case id="__48">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>ReceiveLPN</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

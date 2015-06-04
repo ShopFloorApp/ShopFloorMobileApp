@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Receiving Transaction" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+                  <amx:commandLink id="cl1" action="backToMain">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                    <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
+                    <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
+                </amx:panelGroupLayout>
+                </amx:commandLink>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton id="cb2"/>
+    </amx:facet>
+    <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
+            <!--actionListener="#{bindings.ProcessWS.execute}"-->
+            <amx:listItem id="li3" showLinkIcon="false" action="receiveMaterial">
+                <amx:outputText value="Receiving Material" id="ot4"/>
+        <amx:setPropertyListener id="spl1" from="#{'S'}" to="#{pageFlowScope.receivingType}"/>
+      </amx:listItem>
+            <amx:listItem id="li4" showLinkIcon="false" action="lpn">
+                <amx:outputText value="LPN Putaway" id="ot5"/>
+          
+            </amx:listItem>
+        </amx:listView>
+  </amx:panelPage>
+</amx:view>

@@ -16,6 +16,9 @@ public class SubinventoryBO extends AEntity implements Comparable {
     private String LPNControl;
     private String DefLocator;
     private String DefCostGrp;
+    private String XDIM;
+    private String YDIM;
+    private String ZDIM;
     private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -23,6 +26,36 @@ public class SubinventoryBO extends AEntity implements Comparable {
         String oldWhse = this.Whse;
         this.Whse = Whse;
         propertyChangeSupport.firePropertyChange("Whse", oldWhse, Whse);
+    }
+
+    public void setXDIM(String XDIM) {
+        String oldXDIM = this.XDIM;
+        this.XDIM = XDIM;
+        propertyChangeSupport.firePropertyChange("XDIM", oldXDIM, XDIM);
+    }
+
+    public String getXDIM() {
+        return XDIM;
+    }
+
+    public void setYDIM(String YDIM) {
+        String oldYDIM = this.YDIM;
+        this.YDIM = YDIM;
+        propertyChangeSupport.firePropertyChange("YDIM", oldYDIM, YDIM);
+    }
+
+    public String getYDIM() {
+        return YDIM;
+    }
+
+    public void setZDIM(String ZDIM) {
+        String oldZDIM = this.ZDIM;
+        this.ZDIM = ZDIM;
+        propertyChangeSupport.firePropertyChange("ZDIM", oldZDIM, ZDIM);
+    }
+
+    public String getZDIM() {
+        return ZDIM;
     }
 
     public String getWhse() {
@@ -124,6 +157,9 @@ public class SubinventoryBO extends AEntity implements Comparable {
         this.setLPNControl((String) hashMap.get("lpncontrol"));
         this.setDefLocator((String) hashMap.get("deflocator"));
         this.setDefCostGrp((String) hashMap.get("defcostgrp"));
+        this.setXDIM((String) hashMap.get("xdim"));
+        this.setYDIM((String) hashMap.get("ydim"));
+        this.setZDIM((String) hashMap.get("zdim"));
     }
 
     public HashMap getBOClassRow(SubinventoryBO subInventories) {
@@ -135,6 +171,9 @@ public class SubinventoryBO extends AEntity implements Comparable {
         map.put("lpncontrol", subInventories.getLPNControl());
         map.put("deflocator", subInventories.getDefLocator());
         map.put("defcostgrp", subInventories.getDefCostGrp());
+        map.put("xdim", subInventories.getXDIM());
+        map.put("ydim", subInventories.getYDIM());
+        map.put("zdim", subInventories.getZDIM());
         return map;
     }
 }

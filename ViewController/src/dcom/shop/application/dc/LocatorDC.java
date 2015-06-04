@@ -111,6 +111,8 @@ public class LocatorDC extends SyncUtils {
                             locatorItems.setSubinv((jsObject2.get("SUBINV").toString()));
                             locatorItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                             locatorItems.setLocatorType((jsObject2.get("LOCATORTYPE").toString()));
+                            locatorItems.setXDIM((jsObject2.get("XDIM").toString()));
+                            locatorItems.setYDIM((jsObject2.get("YDIM").toString()));
                             s_locator.add(locatorItems);
                         }
                         super.updateSqlLiteTable(LocatorBO.class, s_locator);
@@ -124,6 +126,8 @@ public class LocatorDC extends SyncUtils {
                         locatorItems.setSubinv((jsObject2.get("SUBINV").toString()));
                         locatorItems.setDescription((jsObject2.get("DESCRIPTION").toString()));
                         locatorItems.setLocatorType((jsObject2.get("LOCATORTYPE").toString()));
+                        locatorItems.setXDIM((jsObject2.get("XDIM").toString()));
+                        locatorItems.setYDIM((jsObject2.get("YDIM").toString()));
                         s_locator.add(locatorItems);
                         super.updateSqlLiteTable(LocatorBO.class, s_locator);
                     }

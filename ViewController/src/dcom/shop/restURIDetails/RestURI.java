@@ -321,5 +321,10 @@ public class RestURI {
     
     public static String PostLpn(){
         return POST_LPN;
+
+}
+    private static final String POST_LPN_PUTAWAY = "/webservices/rest/DCOMShip/lpnputway/";
+    public static String PostLpnPutaway(){
+    return POST_LPN_PUTAWAY;
     }
 }

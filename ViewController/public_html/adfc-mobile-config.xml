@@ -15,4 +15,9 @@
     <managed-bean-class>dcom.shop.Inquiry.SearchUtilBean</managed-bean-class>
     <managed-bean-scope>application</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__4">
+    <managed-bean-name>GPSLocatorBean</managed-bean-name>
+    <managed-bean-class>dcom.shop.application.base.GPSLocatorBean</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+  </managed-bean>
 </adfc-mobile-config>

@@ -15,8 +15,41 @@ public class LocatorBO extends AEntity implements Comparable {
         private String Alias;
         private String Description;
         private String LocatorType;
+        private String XDIM;
+        private String YDIM;
+        private String ZDIM;
         private GenericVirtualType Attributes;
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
+    public void setXDIM(String XDIM) {
+        String oldXDIM = this.XDIM;
+        this.XDIM = getAttributeValue(XDIM);
+        propertyChangeSupport.firePropertyChange("XDIM", oldXDIM, getAttributeValue(XDIM));
+    }
+
+    public String getXDIM() {
+        return XDIM;
+    }
+
+    public void setYDIM(String YDIM) {
+        String oldYDIM = this.YDIM;
+        this.YDIM = getAttributeValue(YDIM);
+        propertyChangeSupport.firePropertyChange("YDIM", oldYDIM, getAttributeValue(YDIM));
+    }
+
+    public String getYDIM() {
+        return YDIM;
+    }
+
+    public void setZDIM(String ZDIM) {
+        String oldZDIM = this.ZDIM;
+        this.ZDIM = ZDIM;
+        propertyChangeSupport.firePropertyChange("ZDIM", oldZDIM, ZDIM);
+    }
+
+    public String getZDIM() {
+        return ZDIM;
+    }
 
     public void setWhse(String Whse) {
         String oldWhse = this.Whse;
@@ -112,6 +145,9 @@ public class LocatorBO extends AEntity implements Comparable {
         this.setAlias((String) hashMap.get("alias"));
         this.setDescription((String) hashMap.get("description"));
         this.setLocatorType((String) hashMap.get("locatortype"));
+        this.setXDIM((String) hashMap.get("xdim"));
+        this.setYDIM((String) hashMap.get("ydim"));
+        this.setZDIM((String) hashMap.get("zdim"));
     }
 
     public HashMap getBOClassRow(LocatorBO locators) {
@@ -122,6 +158,9 @@ public class LocatorBO extends AEntity implements Comparable {
         map.put("alias", locators.getAlias());
         map.put("description", locators.getDescription());
         map.put("locatortype", locators.getLocatorType());
+        map.put("xdim", locators.getXDIM());
+        map.put("ydim", locators.getYDIM());
+        map.put("zdim", locators.getZDIM());
         return map;
     }
 }

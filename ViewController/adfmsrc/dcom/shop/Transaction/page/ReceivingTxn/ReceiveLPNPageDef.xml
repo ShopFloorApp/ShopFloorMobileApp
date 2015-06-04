@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="ReceiveLPNPageDef"
+                Package="dcom.shop.Transaction.page.ReceivingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="subinvVar" Type="java.lang.String"/>
+      <variable Name="locatorVar" Type="java.lang.String"/>
+    </variableIterator>
+    <iterator Binds="root" RangeSize="25" DataControl="LpnPutawayDC" id="LpnPutawayDCIterator"/>
+    <accessorIterator MasterBinding="LpnPutawayDCIterator" Binds="subInventories" RangeSize="-1"
+                      DataControl="LpnPutawayDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
+                      id="subInventoriesIterator"/>
+    <accessorIterator MasterBinding="LpnPutawayDCIterator" Binds="locators" RangeSize="-1" DataControl="LpnPutawayDC"
+                      BeanClass="dcom.shop.application.mobile.LocatorBO" id="locatorsIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="variables" id="subinv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="subInventoriesIterator" NullValueFlag="start"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+      <AttrNames>
+        <Item Value="subinvVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="subinv"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="subinv"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="variables" id="locator" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="locatorsIterator" NullValueFlag="start"
+          NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+      <AttrNames>
+        <Item Value="subinvVar"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="locator"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="locator"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="refreshLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLocators"
+                  IsViewObjectMethod="false" DataControl="LpnPutawayDC" InstanceName="data.LpnPutawayDC.dataProvider"/>
+    <methodAction id="submitLpnPutaway" RequiresUpdateModel="true" Action="invokeMethod" MethodName="submitLpnPutaway"
+                  IsViewObjectMethod="false" DataControl="LpnPutawayDC" InstanceName="data.LpnPutawayDC.dataProvider"/>
+    <methodAction id="GenerateLpnWS" RequiresUpdateModel="true" Action="invokeMethod" MethodName="GenerateLpnWS"
+                  IsViewObjectMethod="false" DataControl="LpnTxnDC" InstanceName="data.LpnTxnDC.dataProvider"/>
+  </bindings>
+  <ResourceBundle>
+    <XliffBundle xmlns="http://xmlns.oracle.com/adfm/resourcebundle" id="dcom.shop.mobile.ViewControllerBundle"/>
+  </ResourceBundle>
+</pageDefinition>

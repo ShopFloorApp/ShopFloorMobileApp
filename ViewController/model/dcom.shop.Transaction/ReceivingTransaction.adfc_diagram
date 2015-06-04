@@ -15,18 +15,18 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">78.94824</property>
+         name="y">53.24707</property>
       <property
-         name="x">597.0</property>
+         name="x">-81.0</property>
    </TaskFlowReturn>
    <WildcardControlFlowRule
       id="WildcardControlFlowRule3">
       <property
          name="activityId">*</property>
       <property
-         name="y">34.597656</property>
+         name="y">239.89648</property>
       <property
-         name="x">781.0</property>
+         name="x">-222.0</property>
    </WildcardControlFlowRule>
    <ControlFlowCase
       islink="true"
@@ -36,7 +36,7 @@
       <property
          name="fromOutcome">backToMain</property>
       <property
-         name="sdm:polyPoints">L50,745.0,34.74707,638.0,78.59766,R50</property>
+         name="sdm:polyPoints">T50,-222.0,197.5459,-81.0,106.896484,B50</property>
    </ControlFlowCase>
    <View
       id="View5">
@@ -99,7 +99,7 @@
       islink="true"
       id="ControlFlowCase9"
       from="View5"
-      to="View34">
+      to="View8">
       <property
          name="fromOutcome">addLine</property>
       <property
@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">T56,422.5,286.62015,332.5,161.5459,B56</property>
+         name="sdm:polyPoints">L38,378.0,332.34473,62.0,113.74707,B79</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -130,7 +130,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">B50,756.0,295.1289,741.70605,335.083,T50</property>
+         name="sdm:polyPoints">B50,756.0,294.84473,741.70605,334.79883,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -180,7 +180,7 @@
       <property
          name="fromOutcome">lot</property>
       <property
-         name="sdm:polyPoints">B21,27.0,113.74707,-67.0,255.95432,T44</property>
+         name="sdm:polyPoints">B33,34.0,113.74707,-67.0,255.82553,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -190,7 +190,7 @@
       <property
          name="fromOutcome">serial</property>
       <property
-         name="sdm:polyPoints">B56,48.0,120.3894,169.0,271.6059,T56</property>
+         name="sdm:polyPoints">B44,41.0,122.73476,162.0,274.0459,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -200,7 +200,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T56,169.0,271.7978,55.0,113.74707,B67</property>
+         name="sdm:polyPoints">T56,169.0,271.6059,48.0,120.3894,B56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -210,16 +210,16 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T56,-60.0,258.0459,34.0,115.825966,B33</property>
+         name="sdm:polyPoints">T56,-60.0,258.0459,41.0,115.95346,B44</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall19">
       <property
          name="activityId">getPendingReceiveTxn</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>getPendingReceiveTxn&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>getPendingReceiveTxn&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -250,7 +250,7 @@
       <property
          name="fromOutcome">new</property>
       <property
-         name="sdm:polyPoints">T50,547.0,546.2471,419.0,396.84473,B50</property>
+         name="sdm:polyPoints">T61,554.0,541.4,419.0,396.84473,B50</property>
    </ControlFlowCase>
    <Router
       id="Router22">
@@ -273,7 +273,7 @@
       <property
          name="fromOutcome">getPendingReceiveTxn</property>
       <property
-         name="sdm:polyPoints">R54,65.21357,535.2471,198.0,520.14355,L50</property>
+         name="sdm:polyPoints">R54,65.182106,535.2471,198.0,520.14355,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -309,7 +309,7 @@
       islink="true"
       id="ControlFlowCase27"
       from="View8"
-      to="View34">
+      to="View5">
       <property
          name="fromOutcome">back</property>
       <property
@@ -406,7 +406,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">B56,332.5,162.24707,422.5,286.6101,T56</property>
+         name="sdm:polyPoints">B50,329.0,161.5459,419.0,288.84473,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -416,7 +416,7 @@
       <property
          name="fromOutcome">createLine</property>
       <property
-         name="sdm:polyPoints">L46,288.0,104.0459,86.31496,56.24707,R46</property>
+         name="sdm:polyPoints">L50,288.0,107.5459,85.5,59.74707,R50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -427,5 +427,102 @@
          name="fromOutcome">self</property>
       <property
          name="sdm:polyPoints">T39,540.0,546.2471,547.0,546.2471,T50</property>
+   </ControlFlowCase>
+   <View
+      id="View38">
+      <property
+         name="activityId">Receiving</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/Receiving.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Receiving&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">549.59766</property>
+      <property
+         name="x">-218.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase39"
+      from="View38"
+      to="MethodCall19">
+      <property
+         name="fromOutcome">receiveMaterial</property>
+      <property
+         name="sdm:polyPoints">R50,-177.0,549.2471,-17.960938,531.7471,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View40">
+      <property
+         name="activityId">ReceiveLPN</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/ReceiveLPN.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ReceiveLPN&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">359.59766</property>
+      <property
+         name="x">-315.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase41"
+      from="View38"
+      to="View40">
+      <property
+         name="fromOutcome">lpn</property>
+      <property
+         name="sdm:polyPoints">T44,-221.5,495.24707,-315.0,413.24707,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase42"
+      from="WildcardControlFlowRule3"
+      to="View38">
+      <property
+         name="fromOutcome">ReceiveHome</property>
+      <property
+         name="sdm:polyPoints">B50,-222.0,282.5459,-214.5,493.59958,T56</property>
+   </ControlFlowCase>
+   <View
+      id="View43">
+      <property
+         name="activityId">LPNList</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ReceivingTxn/LPNList.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LPNList&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">372.29883</property>
+      <property
+         name="x">-594.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase44"
+      from="View40"
+      to="View43">
+      <property
+         name="fromOutcome">getLPN</property>
+      <property
+         name="sdm:polyPoints">L46,-356.22543,355.74707,-553.0,368.44824,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase45"
+      from="View43"
+      to="View40">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">R54,-552.7745,375.44824,-356.0,362.74707,L54</property>
    </ControlFlowCase>
 </SDM>

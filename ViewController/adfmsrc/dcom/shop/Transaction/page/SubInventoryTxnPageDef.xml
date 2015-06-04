@@ -11,6 +11,15 @@
                       id="subinventoriesIterator"/>
   </executables>
   <bindings>
+      <methodAction id="startLocationMonitor" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="startLocationMonitor" IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider">
+      <NamedData NDName="enableHighAccuracy" NDValue="#{applicationScope.GPSLocatorBean.highAccuracy}"
+                 NDType="boolean"/>
+      <NamedData NDName="updateInterval" NDValue="#{applicationScope.GPSLocatorBean.updateInterval}" NDType="int"/>
+      <NamedData NDName="locationListener" NDValue="applicationScope.LocatorBean.locationUpdated"
+                 NDType="java.lang.String"/>
+    </methodAction>
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
