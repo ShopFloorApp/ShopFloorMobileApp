@@ -336,10 +336,11 @@ public class ConcurrentProgramDC extends SyncUtils {
                         requestItems.setSubmittedBy((jsObject2.get("SUBMITTEDBY").toString()));
                         requestItems.setRespName((jsObject2.get("RESPNAME").toString()));
                         requestItems.setLogSize((jsObject2.get("LOGSIZE").toString()));
+                        requestItems.setOutPutSize((jsObject2.get("OUTPUTSIZE").toString()));
                         /*if (!("0".equals(requestItems.getLogSize()))) {
                             getFileDetails("LOG", requestItems.getRequestId());
                         }
-                        requestItems.setOutPutSize((jsObject2.get("OUTPUTSIZE").toString()));
+                        
                         if (!("0".equals(requestItems.getOutPutSize()))) {
                             getFileDetails("OUT", requestItems.getRequestId());
                         }*/

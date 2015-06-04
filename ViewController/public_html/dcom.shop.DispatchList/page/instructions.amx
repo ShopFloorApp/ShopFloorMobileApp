@@ -21,7 +21,7 @@
                       selectedRowKeys="#{bindings.instructionsBO.collectionModel.selectedRow}"
                       selectionListener="#{bindings.instructionsBO.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" actionListener="#{bindings.getBlobData.execute}" showLinkIcon="false">
+            <amx:listItem id="li1" action="#{bindings.getBlobData.execute}" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl2">
                         <amx:cellFormat width="50%" height="25px" id="cf2">
@@ -49,6 +49,7 @@
                     </amx:rowLayout>
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl1" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
+                <amx:setPropertyListener id="spl2" from="#{row.FILENAME}" to="#{pageFlowScope.fileName}" type="action"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>

@@ -1,11 +1,13 @@
 package dcom.shop.application.mobile.dispatch;
 
+import dcom.shop.application.base.AEntity;
+
 import java.math.BigDecimal;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class InstructionsBO {
+public class InstructionsBO extends AEntity  {
     private String SEQ;
     private String CATEGDESC;
     private String TITLE;
@@ -68,7 +70,7 @@ public class InstructionsBO {
 
     public void setFILENAME(String FILENAME) {
         String oldFILENAME = this.FILENAME;
-        this.FILENAME = FILENAME;
+        this.FILENAME = super.getAttributeValue(FILENAME);
         propertyChangeSupport.firePropertyChange("FILENAME", oldFILENAME, FILENAME);
     }
 
