@@ -21,7 +21,7 @@
                       selectedRowKeys="#{bindings.instructionsBO.collectionModel.selectedRow}"
                       selectionListener="#{bindings.instructionsBO.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" action="#{bindings.getBlobData.execute}" showLinkIcon="false">
+            <amx:listItem id="li1" rendered="#{row.FILENAME != ''}" action="#{bindings.getBlobData.execute}" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl2">
                         <amx:cellFormat width="50%" height="25px" id="cf2">
@@ -51,6 +51,47 @@
                 <amx:setPropertyListener id="spl1" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
                 <amx:setPropertyListener id="spl2" from="#{row.FILENAME}" to="#{pageFlowScope.fileName}" type="action"/>
             </amx:listItem>
+            <amx:listItem id="li2" rendered="#{row.FILENAME == ''}" showLinkIcon="false">
+                <amx:tableLayout width="100%" id="tl2">
+                    <amx:rowLayout id="rl1">
+                        <amx:cellFormat width="50%" height="25px" id="cf1">
+                            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                            <amx:outputText value="#{row.CATEGDESC}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot4"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" height="25px" id="cf4">
+                            <amx:outputText value="#{row.TITLE}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot5"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl3">
+                        <amx:cellFormat  columnSpan="2" width="50%" height="25px" id="cf5">
+                            <!--amx:panelLabelAndMessage label="Subinv" inlineStyle="text-align:left;"
+                                                      id="plam212222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.FILENAME}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot6"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl3" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
+                <amx:setPropertyListener id="spl4" from="#{row.FILENAME}" to="#{pageFlowScope.fileName}" type="action"/>
+                <amx:setPropertyListener id="spl5" from="#{row.SHORTTEXT}" to="#{pageFlowScope.TextToDisplay}" type="action"/>
+                 <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="topCenter"
+                                                       alignId="li2"/>
+            </amx:listItem>
         </amx:listView>
     </amx:panelPage>
+        <amx:popup id="p1">
+        <amx:panelGroupLayout id="pgl4">
+            <amx:outputText value="#{pageFlowScope.TextToDisplay}" id="ot7"/>
+            <amx:commandButton text="OK" id="cb1">
+                <amx:closePopupBehavior id="cpb1" popupId="p1" type="action"/>
+            </amx:commandButton>
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

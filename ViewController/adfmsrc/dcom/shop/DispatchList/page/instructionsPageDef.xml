@@ -17,6 +17,7 @@
           <Item Value="URL"/>
           <Item Value="CATEGDESC"/>
           <Item Value="TITLE"/>
+          <Item Value="SHORTTEXT"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
