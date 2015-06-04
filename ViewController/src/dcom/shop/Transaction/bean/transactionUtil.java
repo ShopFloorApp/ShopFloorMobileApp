@@ -361,7 +361,62 @@ public class transactionUtil {
             }
             }
     }
+
+
+    public void orderNumValidation(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        String OrderNum = valueChangeEvent.getNewValue()==null?"":valueChangeEvent.getNewValue().toString();
+        
+        if(!("".equalsIgnoreCase(OrderNum))){
+        System.out.println("Inside orgItem");
+        
+        String pType = "PICK";
+        String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        String restURI = RestURI.PostGetSalesOrder();
+        RestCallerUtil rcu = new RestCallerUtil();
+        String payload =
+            "{\n" + "\"GET_SO_PER_ORG_Input\":\n" + "{\n" +
+            "\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/get_so_per_org/\",\n" +
+            "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/fnd/rest/GetSoPerOrgSvc/header\",\n" +
+            "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
+            "                  \"RespApplication\": \"INV\",\n" +
+            "                  \"SecurityGroup\": \"STANDARD\",\n" +
+            "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \""+orgCode+"\"\n" +
+            "                 },\n" + "   \"InputParameters\": \n" + 
+            "                   {\"POU\": \"\",\n" +
+            "                   \"PTYPE\": \""+pType+"\",\n" +
+               "                   \"PORDER\": \""+documentNo+"\",\n" +
+            "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
+        System.out.println("Calling create method");
+        String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
+        System.out.println("Received response");  
+        
+        if (jsonArrayAsString != null) {
+            try {
+                JSONParser parser = new JSONParser();
+                Object object;
+
+                object = parser.parse(jsonArrayAsString);
+
+                JSONObject jsonObject = (JSONObject) object;
+                JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
+                JSONObject jsObject1 = (JSONObject) jsObject.get("XORDER");
+                if(jsObject1==null){
+       
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                              "Note", "Please enter a valid Order Number", "OK"                      
     
-    
+                    });
+                    
+                }
+            } catch (ParseException e) {
+                e.getMessage();
+            } 
+        
+        }
+        
+        }
+        
+    }
 }
-               

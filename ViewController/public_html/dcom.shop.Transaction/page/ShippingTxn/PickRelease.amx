@@ -32,7 +32,8 @@
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Order Number" id="plam5">
                 <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
-                    <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"/>
+                    <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"
+                                   valueChangeListener="#{pageFlowScope.TransactionUtil.orderNumValidation}"/>
                     <amx:commandLink id="cbw3" action="pickRLov">
                         <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                         <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
