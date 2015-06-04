@@ -79,8 +79,7 @@ public class InstructionsDC extends AViewObject {
                         instructionlist.add(instr);
                     }
                 }
-                return instructionsArray;
-
+          
             } catch (ClassCastException e2) {
                 JSONObject resrcJson = (JSONObject) jsObjectParent.get("XJOBINSTR_ITEM");
                 InstructionsBO instr = new InstructionsBO();

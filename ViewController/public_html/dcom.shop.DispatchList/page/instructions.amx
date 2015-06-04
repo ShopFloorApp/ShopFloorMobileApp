@@ -22,7 +22,32 @@
                       selectionListener="#{bindings.instructionsBO.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
             <amx:listItem id="li1" actionListener="#{bindings.getBlobData.execute}" showLinkIcon="false">
-                <amx:outputText value="#{row.FILENAME}" id="ot2"/>
+                <amx:tableLayout width="100%" id="tl1">
+                    <amx:rowLayout id="rl2">
+                        <amx:cellFormat width="50%" height="25px" id="cf2">
+                            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                            <amx:outputText value="#{row.CATEGDESC}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot413"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat width="50%" height="25px" id="cf12">
+                            <amx:outputText value="#{row.TITLE}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot3"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl13">
+                        <amx:cellFormat  columnSpan="2" width="50%" height="25px" id="cf3">
+                            <!--amx:panelLabelAndMessage label="Subinv" inlineStyle="text-align:left;"
+                                                      id="plam212222">
+                                <amx:spacer height="8"/-->
+                            <amx:outputText value="#{row.FILENAME}"
+                                            inlineStyle="white-space:pre-wrap; vertical-align:middle;"
+                                            styleClass="adfmf-listItem-captionText" id="ot2"/>
+                            <!--/amx:panelLabelAndMessage-->
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
                 <amx:setPropertyListener id="spl1" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
             </amx:listItem>
         </amx:listView>
