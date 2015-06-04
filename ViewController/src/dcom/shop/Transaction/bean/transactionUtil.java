@@ -27,6 +27,14 @@ public class transactionUtil {
     }
 
     public void executePickRelease(ActionEvent actionEvent) {
+        
+        String sOrderValidated = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.sOrderVal}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.sOrderVal}"));
+        String valResult = "S";
+        if("N".equalsIgnoreCase(sOrderValidated)){
+        valResult = orderNumValidation();
+        }
+
+        if("S".equalsIgnoreCase(valResult)){
             System.out.println("Inside execute Pick Release");
             Utility.ApplicationLogger.info("Inside execute Pick Release");
             String restURI =  "/webservices/rest/DCOMShip/pickrelease/";
@@ -96,7 +104,7 @@ public class transactionUtil {
                 } catch (ParseException e) {
                     e.getMessage();
                 }
-                }
+                }}
     }
 
     public void clearPickRel(ActionEvent actionEvent) {
@@ -363,15 +371,14 @@ public class transactionUtil {
     }
 
 
-    public void orderNumValidation(ValueChangeEvent valueChangeEvent) {
+    public String orderNumValidation() {
         // Add event code here...
-        String OrderNum = valueChangeEvent.getNewValue()==null?"":valueChangeEvent.getNewValue().toString();
+        String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         
-        if(!("".equalsIgnoreCase(OrderNum))){
+        if(!("".equalsIgnoreCase(documentNo))){
         System.out.println("Inside orgItem");
         
         String pType = "PICK";
-        String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         String restURI = RestURI.PostGetSalesOrder();
         RestCallerUtil rcu = new RestCallerUtil();
@@ -406,9 +413,11 @@ public class transactionUtil {
        
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
                                                                               "Note", "Please enter a valid Order Number", "OK"                      
-    
                     });
-                    
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
+
+                    return "N";
+   
                 }
             } catch (ParseException e) {
                 e.getMessage();
@@ -417,6 +426,13 @@ public class transactionUtil {
         }
         
         }
+        return "S";
         
+    }
+
+    public void docNumVL(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.sOrderVal}", "N");
+
     }
 }
