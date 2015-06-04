@@ -18,6 +18,7 @@
           <Item Value="CATEGDESC"/>
           <Item Value="TITLE"/>
           <Item Value="SHORTTEXT"/>
+          <Item Value="DATATYPE"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

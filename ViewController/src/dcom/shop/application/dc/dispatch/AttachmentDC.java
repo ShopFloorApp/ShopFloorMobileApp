@@ -31,13 +31,15 @@ public class AttachmentDC {
         String fileId = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fileId}").toString();
 
         String fileNameStr = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fileName}").toString();
+        String fileType = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.fileType}").toString();
         if (!("".equals(fileNameStr))) {
             StringBuffer strPayload = new StringBuffer();
             strPayload.append("{\n" + "  \"x\": {\n" + "    \"RESTHeader\": {\n" +
                               "      \"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
                               "      \"RespApplication\": \"ONT\",\n" + "      \"SecurityGroup\": \"STANDARD\",\n" +
                               "      \"NLSLanguage\": \"AMERICAN\",\n" + "      \"Org_Id\": \"82\"\n" + "    },\n" +
-                              "    \"InputParameters\": {\n" + "      \"P_FILE_ID\": \"" + fileId + "\"\n" + "    }\n" +
+                              "    \"InputParameters\": {\n" + "      \"P_FILE_ID\": \"" + fileId + "\"\n" +
+                               "      \"P_FILE_TYPE\": \"" + fileType + "\"\n" + "    }\n" +
                               "  }\n" + "}");
 
             String jsonArrayAsString = restCallerUtil.invokeUPDATE(RestURI.PostGetBlobData(), strPayload.toString());
