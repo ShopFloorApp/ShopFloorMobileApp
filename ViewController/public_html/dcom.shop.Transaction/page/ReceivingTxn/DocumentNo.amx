@@ -79,6 +79,7 @@
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl3" to="#{pageFlowScope.documnetNumber}" from="#{row.orderNumber}"/>
                 <!--<amx:setPropertyListener id="spl4" from="#{row.orderLines}" to="#{pageFlowScope.orderLines}"/>-->
+                <amx:setPropertyListener id="spl4" from="#{'Y'}" to="#{pageFlowScope.sOrderVal}" type="action"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
