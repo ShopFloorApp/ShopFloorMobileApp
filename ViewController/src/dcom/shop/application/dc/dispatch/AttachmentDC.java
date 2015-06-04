@@ -1,5 +1,7 @@
 package dcom.shop.application.dc.dispatch;
 
+import Decoder.BASE64Decoder;
+
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
@@ -20,7 +22,7 @@ public class AttachmentDC {
     }
 
     public void getBlobData() {
-        String filePath = AdfmfJavaUtilities.getDirectoryPathRoot(AdfmfJavaUtilities.ApplicationDirectory);
+        String filePath = AdfmfJavaUtilities.getDirectoryPathRoot(AdfmfJavaUtilities.TemporaryDirectory);
         String fileName = null;
         byte[] bytes = null;
         RestCallerUtil restCallerUtil = new RestCallerUtil();
@@ -49,8 +51,12 @@ public class AttachmentDC {
                 String status = (String) jsObject.get("XSTATUS");
                 if ("S".equals(status)) {
                     String fileData = (String) jsObject.get("P_FILE_DATA");
+                    BASE64Decoder decode = new BASE64Decoder();
+                        bytes = decode.decodeBuffer(fileData);
+                        System.out.println(" bytes is " + bytes);
+                    //AdfmfJavaUtilities.decryptStringBase64(fileData);
                     fileName = (String) jsObject.get("P_FILE_NAME");
-                    bytes = (fileData.getBytes());
+                    //bytes = (fileData.getBytes());
                     System.out.println(" bytes is " + bytes);
                     File file = new File(filePath+"/" + fileName);
                     System.out.println("After File");
@@ -72,7 +78,7 @@ public class AttachmentDC {
                                 
                         }
                     }
-                    AdfmfJavaUtilities.setELValue( "#{pageFlowScope.filePath}", filePath+"/" + fileName);
+                    AdfmfJavaUtilities.setELValue( "#{pageFlowScope.filePath}", "file://"+ filePath+"/" + fileName);
                    
                     MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.displayFile.execute}", Object.class, new Class[] {}); 
                                 me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] {});

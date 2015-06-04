@@ -1189,6 +1189,10 @@
             <value n="id" v="Resource Bundle Support"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Sun.misc.BASE64Decoder.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
@@ -1199,6 +1203,15 @@
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Json-simple-1.1.jar"/>
                <value n="id" v="Json-simple-1.1.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="lib/sun.misc.BASE64Decoder.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Sun.misc.BASE64Decoder.jar"/>
+               <value n="id" v="Sun.misc.BASE64Decoder.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -1255,6 +1268,10 @@
          </hash>
          <hash>
             <value n="id" v="Resource Bundle Support"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Sun.misc.BASE64Decoder.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
