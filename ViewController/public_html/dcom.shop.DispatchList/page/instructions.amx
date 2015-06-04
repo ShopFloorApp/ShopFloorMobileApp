@@ -21,7 +21,7 @@
                       selectedRowKeys="#{bindings.instructionsBO.collectionModel.selectedRow}"
                       selectionListener="#{bindings.instructionsBO.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
-            <amx:listItem id="li1" rendered="#{row.FILENAME != ''}" action="#{bindings.getBlobData.execute}"
+            <amx:listItem id="li1" action="#{bindings.getBlobData.execute}"
                           showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl1">
                     <amx:rowLayout id="rl2">
@@ -52,8 +52,10 @@
                 <amx:setPropertyListener id="spl1" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
                 <amx:setPropertyListener id="spl2" from="#{row.FILENAME}" to="#{pageFlowScope.fileName}" type="action"/>
                 <amx:setPropertyListener id="spl5" from="#{row.DATATYPE}" to="#{pageFlowScope.fileType}" type="action"/>
+                 <amx:setPropertyListener id="spl6" from="#{row.SHORTTEXT}" to="#{pageFlowScope.TextToDisplay}"
+                                         type="action"/>
             </amx:listItem>
-            <amx:listItem id="li2" rendered="#{row.FILENAME == ''}" showLinkIcon="false">
+            <amx:listItem id="li2" rendered="#{row.FILENAME == 'NOT WORKING'}" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl2">
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat width="50%" height="25px" id="cf1">
@@ -82,13 +84,15 @@
                 </amx:tableLayout>
                 <amx:setPropertyListener id="spl3" from="#{row.URL}" to="#{pageFlowScope.fileId}" type="action"/>
                 <amx:setPropertyListener id="spl4" from="#{row.FILENAME}" to="#{pageFlowScope.fileName}" type="action"/>
-                <amx:setPropertyListener id="spl6" from="#{row.SHORTTEXT}" to="#{pageFlowScope.TextToDisplay}"
+                <amx:setPropertyListener id="spl8" from="#{row.SHORTTEXT}" to="#{pageFlowScope.TextToDisplay}"
                                          type="action"/>
-                <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="topCenter" alignId="li2"/>
+                  <amx:setPropertyListener id="spl7" from="true" to="#{pageFlowScope.RenderPopup}"
+                                         type="action"/>                         
+                <amx:showPopupBehavior id="spb2" popupId="p1" type="action" align="topCenter" alignId="li2"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
-    <amx:popup id="p1">
+    <amx:popup id="p1" rendered="#{pageFlowScope.RenderPopup}">
         <amx:panelGroupLayout id="pgl4">
             <amx:outputText value="#{pageFlowScope.TextToDisplay}" id="ot7"/>
             <amx:commandButton text="OK" id="cb1">

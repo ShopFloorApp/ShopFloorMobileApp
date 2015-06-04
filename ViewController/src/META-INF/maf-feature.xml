@@ -33,6 +33,7 @@
                 <adfmf:includes>
                     <adfmf:include type="JavaScript" file="dcom.shop.DispatchList/js/openJob.js" id="i5"/>
                     <adfmf:include type="StyleSheet" file="dcom.shop.DispatchList/css/openJob.css" id="i6"/>
+                    <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i22"/>
                 </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
