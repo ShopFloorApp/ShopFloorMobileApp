@@ -216,7 +216,12 @@ public class LpnTxnDC extends SyncUtils {
 
                 } else {
                     String lpn = jsObject.get("XLPN").toString();
+                    String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
+                    if("SPLIT_FROM".equals(lpnPage)){
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", lpn);    
+                    }else
                     AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", lpn);
+                    
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
                                                                               "Success", "LPN " + lpn + " Generated!",

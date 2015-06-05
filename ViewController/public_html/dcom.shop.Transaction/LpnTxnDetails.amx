@@ -150,6 +150,12 @@
                         <amx:setPropertyListener id="spl17" from="TOLPN" to="#{pageFlowScope.barCodeField}"
                                                  type="action"/>
                     </amx:commandLink>
+                    <amx:spacer width="10" id="s20"/>
+                    <amx:commandLink id="cl14" rendered="#{pageFlowScope.LpnPage == 'SPLIT_FROM'}"
+                                     actionListener="#{bindings.GenerateLpnWS.execute}">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:outputHtml id="oh13" styleClass="fa fa-cog fa-sm" inlineStyle="color:#34AADC;"/>
+                    </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage rendered="#{pageFlowScope.LpnPage ne 'MERGE_FROM'}" label="Item" id="plm1">
