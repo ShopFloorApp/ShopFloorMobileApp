@@ -7,6 +7,11 @@
       <managed-bean-class>dcom.shop.Transaction.bean.tasksBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__4">
+      <managed-bean-name>TaskDC</managed-bean-name>
+      <managed-bean-class>dcom.shop.application.dc.TaskDC</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="TaskListPG">
       <page>/dcom.shop.Transaction/page/TaskListPG.amx</page>
     </view>
