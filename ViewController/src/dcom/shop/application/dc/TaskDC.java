@@ -100,7 +100,7 @@ public class TaskDC extends AViewObject {
         Statement stmt = conn.createStatement();
 
         StringBuffer query = new StringBuffer();
-        query.append("SELECT COUNT(1) COUNT, TASKTYPE FROM TASKS GROUP BY TASKTYPE;");
+        query.append("SELECT COUNT(1) , TASKTYPE FROM TASK GROUP BY TASKTYPE;");
    
             try{
             ResultSet result = stmt.executeQuery(query.toString());
