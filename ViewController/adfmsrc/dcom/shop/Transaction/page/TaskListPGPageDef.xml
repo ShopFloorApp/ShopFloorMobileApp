@@ -7,6 +7,8 @@
     <iterator Binds="root" RangeSize="25" DataControl="TaskDC" id="TaskDCIterator"/>
     <accessorIterator MasterBinding="TaskDCIterator" Binds="tasks" RangeSize="25" DataControl="TaskDC"
                       BeanClass="dcom.shop.application.mobile.TaskBO" id="tasksIterator"/>
+    <accessorIterator MasterBinding="TaskDCIterator" Binds="filterData" RangeSize="25" DataControl="TaskDC"
+                      BeanClass="oracle.adfmf.javax.faces.model.SelectItem" id="filterDataIterator"/>
   </executables>
   <bindings>
     <tree IterBinding="tasksIterator" id="tasks">
@@ -38,5 +40,14 @@
                   IsViewObjectMethod="false" DataControl="TaskDC" InstanceName="data.TaskDC.dataProvider">
       <NamedData NDName="criteria" NDValue="#{pageFlowScope.sortBy}" NDType="java.lang.String"/>
     </methodAction>
+    <list IterBinding="filterDataIterator" ListOperMode="multiSelect" ListIter="filterDataIterator" id="filterData"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="value"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="label"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>
