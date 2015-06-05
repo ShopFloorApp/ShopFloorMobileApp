@@ -326,32 +326,36 @@ public class StateListener {
     public void LpnValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         System.out.println("here");
-
-        if ("".equals(valueChangeEvent.getNewValue())) {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
-        } else {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
+        String lpnPage = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.LpnPage}");
+        if ("UNPACK_FROM".equals(lpnPage)) {
+            if ("".equals(valueChangeEvent.getNewValue())) {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+            } else {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
+            }
         }
     }
 
     public void ItemValueChange(ValueChangeEvent valueChangeEvent) {
         // Add event code here...
         System.out.println("here");
-
-        if ("".equals(valueChangeEvent.getNewValue())) {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
-        } else {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
+        String lpnPage = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.LpnPage}");
+        if ("UNPACK_FROM".equals(lpnPage)) {
+            if ("".equals(valueChangeEvent.getNewValue())) {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+            } else {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
+            }
         }
     }
 
@@ -423,7 +427,7 @@ public class StateListener {
         String item =
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}") == null ? "" :
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
-       // String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
+        // String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
         if (item.length() < 3 || item == null) {
 
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
@@ -439,8 +443,8 @@ public class StateListener {
         String item =
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}") == null ? "" :
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
-        
-     //   String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
+
+        //   String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}").toString();
         if (item.length() < 3) {
 
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
