@@ -138,5 +138,15 @@
         <Item Value="qty2Move"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="currOpSeq">
+      <AttrNames>
+        <Item Value="currOpSeq"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="currDept">
+      <AttrNames>
+        <Item Value="currDept"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>
