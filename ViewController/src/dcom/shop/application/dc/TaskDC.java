@@ -40,7 +40,6 @@ public class TaskDC extends AViewObject {
     protected transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private static boolean isSortOperation = false;
     private static TaskBO[] sTask = null;
-    private static List s_listTaskTypes = new ArrayList();
    
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
@@ -74,23 +73,24 @@ public class TaskDC extends AViewObject {
             isSortOperation = false;
         }
         sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
+        
+        si = getTT();
         providerChangeSupport.fireProviderRefresh("tasks");
         return sTask;
     }
-    
-    public String[] getTaskTypes(){
-        s_listTaskTypes.add("Cycle Count");
-        s_listTaskTypes.add("XXX");
-        
-        
-        return (String[])s_listTaskTypes.toArray(new String[s_listTaskTypes.size()]);
+
+    public void setSi(SelectItem[] si) {
+        SelectItem[] oldSi = this.si;
+        this.si = si;
+        propertyChangeSupport.firePropertyChange("si", oldSi, si);
     }
-    
-     
+
+
+    List slist = new ArrayList<SelectItem>();
+    SelectItem[] si =null;
+
 
     public SelectItem[] getTT(){
-        SelectItem[] si ;
-        List slist = new ArrayList<SelectItem>();
         String tt;
         String cc;
         Connection conn;
@@ -100,7 +100,7 @@ public class TaskDC extends AViewObject {
         Statement stmt = conn.createStatement();
 
         StringBuffer query = new StringBuffer();
-        query.append("SELECT COUNT(1) , TASKTYPE FROM TASK GROUP BY TASKTYPE;");
+        query.append("SELECT COUNT(1) COUNT, TASKTYPE FROM TASK GROUP BY TASKTYPE;");
    
             try{
             ResultSet result = stmt.executeQuery(query.toString());
@@ -158,51 +158,7 @@ public class TaskDC extends AViewObject {
 
     }
 
-    public void getDummyTasks() {
-        TaskBO task = new TaskBO();
-        task.setTASKNUM("51");
-        task.setTASKTYPE("Cycle Count");
-        task.setPRIORITY("High");
-        s_list.add(task);
-
-        task = new TaskBO();
-        task.setTASKNUM("12");
-        task.setTASKTYPE("Cycle Group");
-        task.setPRIORITY("Low");
-        s_list.add(task);
-
-        task = new TaskBO();
-        task.setTASKNUM("3");
-        task.setTASKTYPE("Pack");
-        task.setPRIORITY("Low");
-        s_list.add(task);
-
-        task = new TaskBO();
-        task.setTASKNUM("45");
-        task.setTASKTYPE("Pack");
-        task.setPRIORITY("Low");
-        s_list.add(task);
-
-        task = new TaskBO();
-        task.setTASKNUM("29");
-        task.setTASKTYPE("Assemble");
-        task.setPRIORITY("Medium");
-        s_list.add(task);
-
-        task = new TaskBO();
-        task.setTASKNUM("34");
-        task.setTASKTYPE("Inspection");
-        task.setPRIORITY("High");
-        s_list.add(task);
-
-        task = new TaskBO();
-        task.setTASKNUM("92");
-        task.setTASKTYPE("Assemble");
-        task.setPRIORITY("Medium");
-        s_list.add(task);
-
-    }
-
+   
     public void getFromWS() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         TaskBO[] taskArray = null;
