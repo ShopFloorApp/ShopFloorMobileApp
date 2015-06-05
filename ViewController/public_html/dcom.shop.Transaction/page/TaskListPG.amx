@@ -78,7 +78,7 @@
                     <amx:cellFormat id="cf1">
                         <amx:selectManyCheckbox label="Task Type" id="smc1" readOnly="true"
                                                 value="#{pageFlowScope.Filter_TaskTypes}">
-                            <amx:selectItems id="si1" value="#{bindings.root.collectionModel.TT}"/>
+                            <amx:selectItems id="si1" value="#{pageFlowScope.TaskDC.TT}"/>
                         </amx:selectManyCheckbox>
                     </amx:cellFormat>
                 </amx:rowLayout>
@@ -87,8 +87,6 @@
         <amx:panelGroupLayout id="pgl7">
             <amx:commandButton text="Ok" id="cb4">
                 <amx:closePopupBehavior id="cpb3" type="action" popupId="pgl7"/>
-                <amx:setPropertyListener id="spl3" from="true" to="#{pageFlowScope.PerformFilter}"/>
-                <amx:actionListener id="al2" binding="#{viewScope.TaskListBean.PerformFilterListener}" type="action"/>
             </amx:commandButton>
         </amx:panelGroupLayout>
     </amx:popup>
