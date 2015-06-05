@@ -22,7 +22,7 @@ public class JobOperationBO extends AEntity {
     private String assemblyUom;
     private String lastDept;
     private String lastOpSeq;
-    private String nextDept;
+    private String nextDept;    
     private String opSeq;
     private String qtyOp;
     private String qtyCompleted;
@@ -32,6 +32,28 @@ public class JobOperationBO extends AEntity {
     private String qty2Move;
     private String qtyCScrapQty;
     private String qtyRejected;
+    private String currDept;
+    private String currOpSeq;
+
+    public void setCurrOpSeq(String currOpSeq) {
+        String oldCurrOpSeq = this.currOpSeq;
+        this.currOpSeq = currOpSeq;
+        propertyChangeSupport.firePropertyChange("currOpSeq", oldCurrOpSeq, currOpSeq);
+    }
+
+    public String getCurrOpSeq() {
+        return currOpSeq;
+    }
+
+    public void setCurrDept(String currDept) {
+        String oldCurrDept = this.currDept;
+        this.currDept = currDept;
+        propertyChangeSupport.firePropertyChange("currDept", oldCurrDept, currDept);
+    }
+
+    public String getCurrDept() {
+        return currDept;
+    }
 
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
