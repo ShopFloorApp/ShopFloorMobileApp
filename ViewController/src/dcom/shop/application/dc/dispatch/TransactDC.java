@@ -74,7 +74,8 @@ public class TransactDC {
         String nextDept = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.nextDept}").toString();
         String orgCode =
             AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
-        String qtyOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyOp}").toString();
+        //String qtyOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyOp}").toString(); //Commented  by Ram as the default quantity should be always that of the Queue
+        //String qtyOp = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyQueue}").toString();
         String qtyCompleted = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyCompleted}").toString();
         String qtyQueue = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyQueue}").toString();
         String qtyScrapped = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.qtyScrapped}").toString();
@@ -92,12 +93,12 @@ public class TransactDC {
         } else {
             transactBO.setToStep("Queue");
         }
-        
-        
+
+
         transactBO.setTxnUom(assemblyUom);
         transactBO.setFromDept(lastDept);
-        //transactBO.setFromOpSeq(opSeq);
-        transactBO.setTrxQty(qtyOp);
+        transactBO.setFromOpSeq(opSeq);
+        //transactBO.setTrxQty(qtyOp);
         transactBO.setScrapQty(qtyScrapped);
         TransactBO[] transactArray = new TransactBO[1];
         transactArray[0] = transactBO;
@@ -105,13 +106,25 @@ public class TransactDC {
     }
 
     public String saveTransaction(TransactBO transactBo) {
-        String subInv = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}"));
-        String locator = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}"));
-        String salesOrder = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
-        String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));        
-        String trxRef = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}"));        
-        String glAccount = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}"));         
-        
+        String subInv =
+            (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}") == null ? "" :
+                      AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}"));
+        String locator =
+            (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}") == null ? "" :
+                      AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}"));
+        String salesOrder =
+            (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}") == null ? "" :
+                      AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
+        String trxType =
+            (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}") == null ? "" :
+                      AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));
+        String trxRef =
+            (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}") == null ? "" :
+                      AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobNumber}"));
+        String glAccount =
+            (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}") == null ? "" :
+                      AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.accountAlias}"));
+
         //String locator = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}").toString();
         //String salesOrder = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}").toString();
         transactBO.setSubinv(subInv);
@@ -120,10 +133,10 @@ public class TransactDC {
         transactBO.setTrxType(trxType);
         transactBO.setTrxRef(trxRef);
         transactBO.setGlAccount(glAccount);
-        
+
         StringBuffer strPayload = new StringBuffer();
         RestCallerUtil restCallerUtil = new RestCallerUtil();
-        //String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));        
+        //String trxType = (String)(AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}")==null ? "" : AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.trxType}"));
         strPayload.append("{");
         strPayload.append(RestURI.getPayloadHeader());
         strPayload.append(",");
