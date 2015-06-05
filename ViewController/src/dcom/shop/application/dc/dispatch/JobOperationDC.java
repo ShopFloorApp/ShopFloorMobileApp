@@ -150,6 +150,8 @@ public class JobOperationDC extends AViewObject {
                         jobOperationBO.setQty2Move(jsObject2.get("QTY2MOVE").toString());
                         jobOperationBO.setQtyCScrapQty(jsObject2.get("QTYCSCRAPQTY").toString());
                         jobOperationBO.setQtyRejected(jsObject2.get("QTYREJECTED").toString());
+                        jobOperationBO.setCurrDept(jsObject2.get("CURRENTDEPT").toString());
+                        jobOperationBO.setCurrOpSeq(jsObject2.get("CURRENTOPSEQ").toString());
                         //End Changes
                         jobOpList.add(jobOperationBO);
                     }
