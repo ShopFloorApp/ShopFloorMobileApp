@@ -28,8 +28,8 @@
                 </amx:panelGroupLayout>
                 <amx:setPropertyListener from="SUBTXFR" type="action" to="#{pageFlowScope.CallingPage}" id="spl7"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.ToSubinventory}" id="spl2"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
-                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl12"/>
+                <!--amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
+                <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl12"/-->
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.ToLocator}" id="spl13"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="spl5"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchKeyword}" id="spl4"/>

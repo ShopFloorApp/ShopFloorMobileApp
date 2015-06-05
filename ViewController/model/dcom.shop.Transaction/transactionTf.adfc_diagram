@@ -1,283 +1,561 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <SDM>
-    <OverallProperties id="OverallProperties1"/>
-    <View id="View3">
-        <property name="activityId">SubInventoryTxn</property>
-        <property name="page">/dcom.shop.Transaction/page/SubInventoryTxn.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;SubInventoryTxn&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">78.89453</property>
-        <property name="x">43.35742</property>
-    </View>
-    <View id="View4">
-        <property name="activityId">MaterialMovements</property>
-        <property name="page">/dcom.shop.Transaction/page/MaterialMovements.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;MaterialMovements&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-144.54102</property>
-        <property name="x">-40.649414</property>
-    </View>
-    <View id="View5">
-        <property name="activityId">SubInventoryDetails</property>
-        <property name="page">/dcom.shop.Transaction/page/SubInventoryDetails.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;SubInventoryDetails&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">73.99805</property>
-        <property name="x">321.6953</property>
-    </View>
-    <View id="View6">
-        <property name="activityId">Transaction</property>
-        <property name="page">/dcom.shop.Transaction/page/Transaction.amx</property>
-        <property name="start">true</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;Transaction&amp;lt;/b&gt; (Default
-                                     Activity)&amp;lt;/p&gt;&amp;lt;p&gt;Activity Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-2.8398438</property>
-        <property name="x">-374.65234</property>
-    </View>
-    <ControlFlowCase islink="true" id="ControlFlowCase7" from="View4" to="View6">
-        <property name="fromOutcome">bT</property>
-        <property name="tosrcid">__7</property>
-        <property name="fromsrcid">__5</property>
-        <property name="sdm:polyPoints">L50,-83.442856,-144.8916,-333.65234,-6.6904297,R46</property>
-    </ControlFlowCase>
-    <TaskFlowCall id="TaskFlowCall8">
-        <property name="taskFlowId">TasksTF</property>
-        <property name="activityId">TasksTF</property>
-        <property name="documentReference">/dcom.shop.Transaction/TasksTF.xml</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;TasksTF&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: Task Flow Call&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-309.7881</property>
-        <property name="x">-46.5</property>
-    </TaskFlowCall>
-    <WildcardControlFlowRule id="WildcardControlFlowRule9">
-        <property name="activityId">*</property>
-        <property name="srcid">__40</property>
-        <property name="y">-326.25293</property>
-        <property name="x">332.0</property>
-    </WildcardControlFlowRule>
-    <TaskFlowCall id="TaskFlowCall10">
-        <property name="taskFlowId">CycleCountTF</property>
-        <property name="activityId">CycleCountTF</property>
-        <property name="documentReference">/dcom.shop.Transaction/CycleCountTF.xml</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;CycleCountTF&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: Task Flow Call&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-172.96875</property>
-        <property name="x">-374.65625</property>
-    </TaskFlowCall>
-    <View id="View11">
-        <property name="activityId">itemLOVPG</property>
-        <property name="page">/page/LovPage/itemLOVPG.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;itemLOVPG&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-318.38574</property>
-        <property name="x">454.00977</property>
-    </View>
-    <View id="View12">
-        <property name="activityId">MaterialTransaction</property>
-        <property name="page">/dcom.shop.Transaction/page/MiscellaneousTransaction.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;MaterialTransaction&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-82.38574</property>
-        <property name="x">325.6875</property>
-    </View>
-    <TaskFlowCall id="TaskFlowCall13">
-        <property name="taskFlowId">ReceivingTransaction</property>
-        <property name="activityId">ReceivingTransaction</property>
-        <property name="documentReference">/dcom.shop.Transaction/ReceivingTransaction.xml</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;ReceivingTransaction&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: Task Flow Call&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-15.839844</property>
-        <property name="x">-586.30566</property>
-    </TaskFlowCall>
-    <TaskFlowCall id="TaskFlowCall14">
-        <property name="taskFlowId">ShippingTransactions</property>
-        <property name="activityId">ShippingTransactions</property>
-        <property name="documentReference">/dcom.shop.Transaction/ShippingTransactions.xml</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;ShippingTransactions&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: Task Flow Call&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">191.96484</property>
-        <property name="x">-376.2998</property>
-    </TaskFlowCall>
-    <View id="View15">
-        <property name="activityId">LpnLOVPG</property>
-        <property name="page">/page/LovPage/LpnLOVPG.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;LpnLOVPG&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">49.481445</property>
-        <property name="x">526.68555</property>
-    </View>
-    <View id="View16">
-        <property name="activityId">SerialEntry</property>
-        <property name="page">/page/SerialEntry.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;SerialEntry&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-261.13867</property>
-        <property name="x">191.5</property>
-    </View>
-    <TaskFlowCall id="TaskFlowCall17">
-        <property name="taskFlowId">LpnTransactionTF</property>
-        <property name="activityId">LpnTransaction</property>
-        <property name="documentReference">/dcom.shop.Transaction/LpnTransactionTF.xml</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;LpnTransaction&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: Task Flow Call&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-269.73633</property>
-        <property name="x">-276.6416</property>
-    </TaskFlowCall>
-    <View id="View18">
-        <property name="activityId">LotEntry</property>
-        <property name="page">/page/LotEntry.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;LotEntry&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-175.38574</property>
-        <property name="x">487.5</property>
-    </View>
-    <View id="View19">
-        <property name="activityId">MtrlTrxnReview</property>
-        <property name="page">/dcom.shop.Transaction/MtrlTrxnReview.amx</property>
-        <property name="description">&amp;lt;html&gt;&amp;lt;p&gt;&amp;lt;b&gt;MtrlTrxnReview&amp;lt;/b&gt;&amp;lt;/p&gt;&amp;lt;p&gt;Activity
-                                     Type: View&amp;lt;/p&gt;</property>
-        <property name="exceptionHandler">false</property>
-        <property name="y">-82.38574</property>
-        <property name="x">108.668945</property>
-    </View>
-    <ControlFlowCase islink="true" id="ControlFlowCase20" from="WildcardControlFlowRule9" to="View11">
-        <property name="fromOutcome">ItemLOV</property>
-        <property name="tosrcid">__18</property>
-        <property name="fromsrcid">__40</property>
-        <property name="sdm:polyPoints">R50,368.0,-326.10352,413.00977,-318.73633,L50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase21" from="WildcardControlFlowRule9" to="View16">
-        <property name="fromOutcome">SerialEntry</property>
-        <property name="tosrcid">__42</property>
-        <property name="fromsrcid">__40</property>
-        <property name="sdm:polyPoints">L50,296.0,-326.10352,232.5,-261.48926,R50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase22" from="WildcardControlFlowRule9" to="View12">
-        <property name="fromOutcome">BackToPage</property>
-        <property name="tosrcid">__32</property>
-        <property name="fromsrcid">__40</property>
-        <property name="sdm:polyPoints">B36,325.0,-283.60352,325.6875,-136.73633,T50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase23" from="WildcardControlFlowRule9" to="View18">
-        <property name="fromOutcome">LotEntry</property>
-        <property name="tosrcid">__41</property>
-        <property name="fromsrcid">__40</property>
-        <property name="sdm:polyPoints">B64,339.0,-283.60352,446.5,-175.73633,L50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase24" from="WildcardControlFlowRule9" to="View5">
-        <property name="fromOutcome">Back</property>
-        <property name="tosrcid">__21</property>
-        <property name="fromsrcid">__40</property>
-        <property name="sdm:polyPoints">B50,332.0,-283.60352,321.6953,19.64746,T50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase25" from="View19" to="View4">
-        <property name="fromOutcome">cancel</property>
-        <property name="tosrcid">__23</property>
-        <property name="fromsrcid">__22</property>
-        <property name="sdm:polyPoints">L46,67.668945,-86.23633,3.0879662,-148.3916,R46</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase26" from="View4" to="TaskFlowCall17">
-        <property name="fromOutcome">lpnTransTF</property>
-        <property name="tosrcid">__43</property>
-        <property name="fromsrcid">__5</property>
-        <property name="sdm:polyPoints">L42,-81.649414,-151.8916,-235.6416,-270.0869,R50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase27" from="View4" to="View19">
-        <property name="fromOutcome">mtrTrxn</property>
-        <property name="tosrcid">__24</property>
-        <property name="fromsrcid">__5</property>
-        <property name="sdm:polyPoints">R54,0.35058594,-141.3916,64.88959,-79.23633,L54</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase28" from="View3" to="View4">
-        <property name="fromOutcome">bMM</property>
-        <property name="tosrcid">__9</property>
-        <property name="fromsrcid">__8</property>
-        <property name="sdm:polyPoints">T44,39.85742,24.543945,-44.149414,-88.5957,B44</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase29" from="View19" to="View12">
-        <property name="fromOutcome">miscTransaction</property>
-        <property name="tosrcid">__27</property>
-        <property name="fromsrcid">__22</property>
-        <property name="sdm:polyPoints">R46,149.66895,-86.23633,284.6875,-86.23633,L46</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase32" from="View6" to="TaskFlowCall13">
-        <property name="fromOutcome">receiveTxn</property>
-        <property name="tosrcid">__29</property>
-        <property name="fromsrcid">__3</property>
-        <property name="sdm:polyPoints">L50,-415.65234,-3.1904297,-459.30566,4.5625,R50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase33" from="View4" to="View3">
-        <property name="fromOutcome">subInv</property>
-        <property name="tosrcid">__6</property>
-        <property name="fromsrcid">__5</property>
-        <property name="sdm:polyPoints">B56,-37.149414,-90.8916,46.85742,22.266481,T56</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase34" from="View15" to="View5">
-        <property name="fromOutcome">Back</property>
-        <property name="tosrcid">__15</property>
-        <property name="fromsrcid">__14</property>
-        <property name="sdm:polyPoints">L46,484.99274,45.63086,362.6953,70.14746,R46</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase35" from="View6" to="TaskFlowCall10">
-        <property name="fromOutcome">cycleCount</property>
-        <property name="tosrcid">__1</property>
-        <property name="fromsrcid">__3</property>
-        <property name="sdm:polyPoints">T50,-374.65234,-57.19043,-374.65625,-119.319336,B50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase36" from="View3" to="View5">
-        <property name="fromOutcome">siDet</property>
-        <property name="tosrcid">__10</property>
-        <property name="fromsrcid">__8</property>
-        <property name="sdm:polyPoints">R46,84.35742,75.043945,280.60803,70.14746,L46</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase37" from="View6" to="TaskFlowCall14">
-        <property name="fromOutcome">shippingTxn</property>
-        <property name="tosrcid">__36</property>
-        <property name="fromsrcid">__3</property>
-        <property name="sdm:polyPoints">B50,-374.65234,50.80957,-376.2998,137.61426,T50</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase38" from="View5" to="View3">
-        <property name="fromOutcome">cancel</property>
-        <property name="tosrcid">__12</property>
-        <property name="fromsrcid">__11</property>
-        <property name="sdm:polyPoints">L54,280.6953,77.14746,84.444695,82.043945,R54</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase39" from="View6" to="View4">
-        <property name="fromOutcome">matMov</property>
-        <property name="tosrcid">__4</property>
-        <property name="fromsrcid">__3</property>
-        <property name="sdm:polyPoints">R54,-331.85327,0.3095703,-81.649414,-137.8916,L58</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase40" from="View5" to="View15">
-        <property name="fromOutcome">lpnLOV</property>
-        <property name="tosrcid">__16</property>
-        <property name="fromsrcid">__11</property>
-        <property name="sdm:polyPoints">R54,363.3862,77.14746,485.68555,52.63086,L54</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase41" from="View12" to="View19">
-        <property name="fromOutcome">bMM</property>
-        <property name="tosrcid">__26</property>
-        <property name="fromsrcid">__25</property>
-        <property name="sdm:polyPoints">L54,284.6875,-79.23633,149.66895,-79.23633,R54</property>
-    </ControlFlowCase>
-    <ControlFlowCase islink="true" id="ControlFlowCase44" from="View4" to="TaskFlowCall8">
-        <property name="fromOutcome">Tasks</property>
-        <property name="tosrcid">__446</property>
-        <property name="fromsrcid">__5</property>
-        <property name="sdm:polyPoints">T50,-40.649414,-198.8916,-46.5,-256.13867,B50</property>
-    </ControlFlowCase>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">SubInventoryTxn</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/SubInventoryTxn.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SubInventoryTxn&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">78.89453</property>
+      <property
+         name="x">43.35742</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">MaterialMovements</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/MaterialMovements.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MaterialMovements&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-144.54102</property>
+      <property
+         name="x">-40.649414</property>
+   </View>
+   <View
+      id="View5">
+      <property
+         name="activityId">SubInventoryDetails</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/SubInventoryDetails.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SubInventoryDetails&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">73.99805</property>
+      <property
+         name="x">321.6953</property>
+   </View>
+   <View
+      id="View6">
+      <property
+         name="activityId">Transaction</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/Transaction.amx</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Transaction&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-2.8398438</property>
+      <property
+         name="x">-374.65234</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="View4"
+      to="View6">
+      <property
+         name="fromOutcome">bT</property>
+      <property
+         name="tosrcid">__7</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">L50,-83.442856,-144.60742,-333.65234,-6.40625,R46</property>
+   </ControlFlowCase>
+   <TaskFlowCall
+      id="TaskFlowCall8">
+      <property
+         name="taskFlowId">TasksTF</property>
+      <property
+         name="activityId">TasksTF</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/TasksTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>TasksTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-309.7881</property>
+      <property
+         name="x">-46.5</property>
+   </TaskFlowCall>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule9">
+      <property
+         name="activityId">*</property>
+      <property
+         name="srcid">__40</property>
+      <property
+         name="y">-326.25293</property>
+      <property
+         name="x">332.0</property>
+   </WildcardControlFlowRule>
+   <TaskFlowCall
+      id="TaskFlowCall10">
+      <property
+         name="taskFlowId">CycleCountTF</property>
+      <property
+         name="activityId">CycleCountTF</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/CycleCountTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CycleCountTF&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-172.96875</property>
+      <property
+         name="x">-374.65625</property>
+   </TaskFlowCall>
+   <View
+      id="View11">
+      <property
+         name="activityId">itemLOVPG</property>
+      <property
+         name="page">/page/LovPage/itemLOVPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>itemLOVPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-318.38574</property>
+      <property
+         name="x">454.00977</property>
+   </View>
+   <View
+      id="View12">
+      <property
+         name="activityId">MaterialTransaction</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/MiscellaneousTransaction.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MaterialTransaction&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-82.38574</property>
+      <property
+         name="x">325.6875</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall13">
+      <property
+         name="taskFlowId">ReceivingTransaction</property>
+      <property
+         name="activityId">ReceivingTransaction</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/ReceivingTransaction.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ReceivingTransaction&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-15.839844</property>
+      <property
+         name="x">-586.30566</property>
+   </TaskFlowCall>
+   <TaskFlowCall
+      id="TaskFlowCall14">
+      <property
+         name="taskFlowId">ShippingTransactions</property>
+      <property
+         name="activityId">ShippingTransactions</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/ShippingTransactions.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ShippingTransactions&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">191.96484</property>
+      <property
+         name="x">-376.2998</property>
+   </TaskFlowCall>
+   <View
+      id="View15">
+      <property
+         name="activityId">LpnLOVPG</property>
+      <property
+         name="page">/page/LovPage/LpnLOVPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnLOVPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">49.481445</property>
+      <property
+         name="x">526.68555</property>
+   </View>
+   <View
+      id="View16">
+      <property
+         name="activityId">SerialEntry</property>
+      <property
+         name="page">/page/SerialEntry.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>SerialEntry&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-261.13867</property>
+      <property
+         name="x">191.5</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall17">
+      <property
+         name="taskFlowId">LpnTransactionTF</property>
+      <property
+         name="activityId">LpnTransaction</property>
+      <property
+         name="documentReference">/dcom.shop.Transaction/LpnTransactionTF.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LpnTransaction&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-269.73633</property>
+      <property
+         name="x">-276.6416</property>
+   </TaskFlowCall>
+   <View
+      id="View18">
+      <property
+         name="activityId">LotEntry</property>
+      <property
+         name="page">/page/LotEntry.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>LotEntry&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-175.38574</property>
+      <property
+         name="x">487.5</property>
+   </View>
+   <View
+      id="View19">
+      <property
+         name="activityId">MtrlTrxnReview</property>
+      <property
+         name="page">/dcom.shop.Transaction/MtrlTrxnReview.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>MtrlTrxnReview&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-82.38574</property>
+      <property
+         name="x">108.668945</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase20"
+      from="WildcardControlFlowRule9"
+      to="View11">
+      <property
+         name="fromOutcome">ItemLOV</property>
+      <property
+         name="tosrcid">__18</property>
+      <property
+         name="fromsrcid">__40</property>
+      <property
+         name="sdm:polyPoints">R50,368.0,-325.81934,413.00977,-318.45215,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase21"
+      from="WildcardControlFlowRule9"
+      to="View16">
+      <property
+         name="fromOutcome">SerialEntry</property>
+      <property
+         name="tosrcid">__42</property>
+      <property
+         name="fromsrcid">__40</property>
+      <property
+         name="sdm:polyPoints">L50,296.0,-325.81934,232.5,-261.20508,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase22"
+      from="WildcardControlFlowRule9"
+      to="View12">
+      <property
+         name="fromOutcome">BackToPage</property>
+      <property
+         name="tosrcid">__32</property>
+      <property
+         name="fromsrcid">__40</property>
+      <property
+         name="sdm:polyPoints">B36,325.0,-283.31934,325.6875,-136.45215,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase23"
+      from="WildcardControlFlowRule9"
+      to="View18">
+      <property
+         name="fromOutcome">LotEntry</property>
+      <property
+         name="tosrcid">__41</property>
+      <property
+         name="fromsrcid">__40</property>
+      <property
+         name="sdm:polyPoints">B64,339.0,-283.60352,446.5,-175.73633,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase24"
+      from="WildcardControlFlowRule9"
+      to="View5">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="tosrcid">__21</property>
+      <property
+         name="fromsrcid">__40</property>
+      <property
+         name="sdm:polyPoints">B50,332.0,-283.31934,321.6953,19.93164,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase25"
+      from="View19"
+      to="View4">
+      <property
+         name="fromOutcome">cancel</property>
+      <property
+         name="tosrcid">__23</property>
+      <property
+         name="fromsrcid">__22</property>
+      <property
+         name="sdm:polyPoints">L46,67.668945,-86.23633,3.0879662,-148.3916,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase26"
+      from="View4"
+      to="TaskFlowCall17">
+      <property
+         name="fromOutcome">lpnTransTF</property>
+      <property
+         name="tosrcid">__43</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">L42,-81.649414,-151.60742,-235.6416,-269.80273,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase27"
+      from="View4"
+      to="View19">
+      <property
+         name="fromOutcome">mtrTrxn</property>
+      <property
+         name="tosrcid">__24</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">R54,0.35058594,-141.3916,64.88959,-79.23633,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase28"
+      from="View3"
+      to="View4">
+      <property
+         name="fromOutcome">bMM</property>
+      <property
+         name="tosrcid">__9</property>
+      <property
+         name="fromsrcid">__8</property>
+      <property
+         name="sdm:polyPoints">T44,39.85742,24.828125,-44.149414,-88.31152,B44</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase29"
+      from="View19"
+      to="View12">
+      <property
+         name="fromOutcome">miscTransaction</property>
+      <property
+         name="tosrcid">__27</property>
+      <property
+         name="fromsrcid">__22</property>
+      <property
+         name="sdm:polyPoints">R46,149.66895,-86.23633,284.6875,-86.23633,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase32"
+      from="View6"
+      to="TaskFlowCall13">
+      <property
+         name="fromOutcome">receiveTxn</property>
+      <property
+         name="tosrcid">__29</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">L50,-415.65234,-2.90625,-545.30566,-15.90625,R50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase33"
+      from="View4"
+      to="View3">
+      <property
+         name="fromOutcome">subInv</property>
+      <property
+         name="tosrcid">__6</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">B56,-37.149414,-90.60742,46.85742,22.550661,T56</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase34"
+      from="View15"
+      to="View5">
+      <property
+         name="fromOutcome">Back</property>
+      <property
+         name="tosrcid">__15</property>
+      <property
+         name="fromsrcid">__14</property>
+      <property
+         name="sdm:polyPoints">L46,484.99274,45.91504,362.6953,70.43164,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase35"
+      from="View6"
+      to="TaskFlowCall10">
+      <property
+         name="fromOutcome">cycleCount</property>
+      <property
+         name="tosrcid">__1</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">T50,-374.65234,-56.90625,-374.65625,-119.03516,B50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase36"
+      from="View3"
+      to="View5">
+      <property
+         name="fromOutcome">siDet</property>
+      <property
+         name="tosrcid">__10</property>
+      <property
+         name="fromsrcid">__8</property>
+      <property
+         name="sdm:polyPoints">R46,84.35742,75.328125,280.60803,70.43164,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase37"
+      from="View6"
+      to="TaskFlowCall14">
+      <property
+         name="fromOutcome">shippingTxn</property>
+      <property
+         name="tosrcid">__36</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">B50,-374.65234,51.09375,-376.2998,137.89844,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase38"
+      from="View5"
+      to="View3">
+      <property
+         name="fromOutcome">cancel</property>
+      <property
+         name="tosrcid">__12</property>
+      <property
+         name="fromsrcid">__11</property>
+      <property
+         name="sdm:polyPoints">L54,280.6953,77.43164,84.444695,82.328125,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase39"
+      from="View6"
+      to="View4">
+      <property
+         name="fromOutcome">matMov</property>
+      <property
+         name="tosrcid">__4</property>
+      <property
+         name="fromsrcid">__3</property>
+      <property
+         name="sdm:polyPoints">R54,-331.85327,0.3095703,-81.649414,-137.8916,L58</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase40"
+      from="View5"
+      to="View15">
+      <property
+         name="fromOutcome">lpnLOV</property>
+      <property
+         name="tosrcid">__16</property>
+      <property
+         name="fromsrcid">__11</property>
+      <property
+         name="sdm:polyPoints">R54,363.3862,77.43164,485.68555,52.91504,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase41"
+      from="View12"
+      to="View19">
+      <property
+         name="fromOutcome">bMM</property>
+      <property
+         name="tosrcid">__26</property>
+      <property
+         name="fromsrcid">__25</property>
+      <property
+         name="sdm:polyPoints">L54,284.6875,-78.95215,149.66895,-78.95215,R54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase44"
+      from="View4"
+      to="TaskFlowCall8">
+      <property
+         name="fromOutcome">Tasks</property>
+      <property
+         name="tosrcid">__446</property>
+      <property
+         name="fromsrcid">__5</property>
+      <property
+         name="sdm:polyPoints">T50,-40.649414,-198.60742,-46.5,-255.85449,B50</property>
+   </ControlFlowCase>
 </SDM>

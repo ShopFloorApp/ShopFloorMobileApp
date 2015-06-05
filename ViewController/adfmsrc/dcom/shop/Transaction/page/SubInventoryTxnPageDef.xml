@@ -11,15 +11,6 @@
                       id="subinventoriesIterator"/>
   </executables>
   <bindings>
-      <methodAction id="startLocationMonitor" RequiresUpdateModel="true" Action="invokeMethod"
-                  MethodName="startLocationMonitor" IsViewObjectMethod="false" DataControl="DeviceFeatures"
-                  InstanceName="data.DeviceFeatures.dataProvider">
-      <NamedData NDName="enableHighAccuracy" NDValue="#{applicationScope.GPSLocatorBean.highAccuracy}"
-                 NDType="boolean"/>
-      <NamedData NDName="updateInterval" NDValue="#{applicationScope.GPSLocatorBean.updateInterval}" NDType="int"/>
-      <NamedData NDName="locationListener" NDValue="applicationScope.LocatorBean.locationUpdated"
-                 NDType="java.lang.String"/>
-    </methodAction>
     <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
                   IsViewObjectMethod="false" DataControl="ApplicationFeatures"
                   InstanceName="data.ApplicationFeatures.dataProvider"/>
@@ -53,6 +44,14 @@
     <methodAction id="DeleteTransaction" RequiresUpdateModel="true" Action="invokeMethod" MethodName="DeleteTransaction"
                   IsViewObjectMethod="false" DataControl="InvTrnDC" InstanceName="data.InvTrnDC.dataProvider">
       <NamedData NDName="trxnId" NDValue="#{pageFlowScope.TrxnId}" NDType="java.lang.Integer"/>
+    </methodAction>
+    <methodAction id="startLocationMonitor" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="startLocationMonitor" IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider">
+      <NamedData NDName="enableHighAccuracy" NDValue="true" NDType="boolean"/>
+      <NamedData NDName="updateInterval" NDValue="1000" NDType="int"/>
+      <NamedData NDName="locationListener" NDValue="applicationScope.GPSLocatorBean.locationUpdated"
+                 NDType="java.lang.String"/>
     </methodAction>
   </bindings>
 </pageDefinition>

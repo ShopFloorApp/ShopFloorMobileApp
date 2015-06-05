@@ -12,6 +12,7 @@ public class TransactionUtilityBean {
         super();
     }
     public void getLocation(ActionEvent ae){
+        System.out.println("test");;
         GPSLocatorBean gPSLocatorBean=new GPSLocatorBean();
         HashMap points=gPSLocatorBean.getDefaultLocation();
         String subinv = (String) points.get("subinv");
