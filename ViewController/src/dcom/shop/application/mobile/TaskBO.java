@@ -219,5 +219,12 @@ public class TaskBO extends AEntity {
         map.put("priority", task.getPRIORITY());
         return map;
     }
+    
+    public void setBOClassRow(HashMap hashmap){
+        this.setTASKNUM(hashmap.get("tasknum")==null?"":hashmap.get("tasknum").toString());
+        this.setTASKTYPE(hashmap.get("tasktype")==null?"":hashmap.get("tasktype").toString());
+        this.setPRIORITY(hashmap.get("priority")==null?"":hashmap.get("priority").toString());
+
+    }
 
 }
