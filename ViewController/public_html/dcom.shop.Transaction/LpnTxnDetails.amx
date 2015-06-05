@@ -213,9 +213,18 @@
                         </amx:panelLabelAndMessage>
                     </amx:panelGroupLayout>
                     <amx:spacer id="sp1" width="30"/>
-                    <amx:commandLink id="cl9" actionListener="#{bindings.callOnHandService.execute}">
+                    <amx:commandLink id="cl9" rendered="#{pageFlowScope.LpnPage eq 'PACK_FROM'}"
+                                     actionListener="#{bindings.callOnHandService.execute}">
                         <?audit suppress oracle.maf.warning-missing-shortDesc?>
                         <amx:outputHtml id="oh5" styleClass="fa fa-refresh fa-lg" inlineStyle="color:#34AADC;"/>
+                    </amx:commandLink>
+                    <amx:commandLink id="cl11" rendered="#{pageFlowScope.LpnPage ne 'PACK_FROM'}">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:outputHtml id="oh12" styleClass="fa fa-refresh fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.availQty}" to="#{pageFlowScope.availableQty}"
+                                                 id="spl9"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.onhandQty}" to="#{pageFlowScope.onHandQty}"
+                                                 id="spl18"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
@@ -244,7 +253,7 @@
                 <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
                                          id="spl2"/>
                 <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
-                <amx:setPropertyListener from="LpnTrxn" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                <amx:setPropertyListener from="LpnTrxn" to="#{pageFlowScope.ParentPage}" id="spl19"/>
                 <amx:tableLayout id="tl2">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:rowLayout id="rl2">

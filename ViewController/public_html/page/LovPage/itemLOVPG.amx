@@ -194,6 +194,8 @@
                                          id="spl14"/>
                 <amx:setPropertyListener from="#{row.AVAILABLEQTY}" type="action" to="#{pageFlowScope.availQty}"
                                          id="spl6"/>
+                 <amx:setPropertyListener from="#{row.ONHANDQTY}" type="action" to="#{pageFlowScope.onhandQty}"
+                                         id="spl15"/>
                 <amx:setPropertyListener from="#{row.SERIALCONTROL}" type="action" to="#{pageFlowScope.serialControl}"
                                          id="spl10"/>
                 <amx:setPropertyListener from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"
