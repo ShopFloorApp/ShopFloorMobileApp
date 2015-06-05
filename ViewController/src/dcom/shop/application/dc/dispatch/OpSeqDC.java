@@ -84,8 +84,10 @@ public class OpSeqDC extends AViewObject {
                             opSeqObj.setDeptCode(opSeqJson.get("DEPTCODE").toString());
                             opSeqObj.setOrgCode(opSeqJson.get("ORGCODE").toString());
                             opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("SCRAPQTY")));
-                            opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("CSCRAPQTY")));
-                            opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("QUEUEQTY")));
+                            //opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("CSCRAPQTY")));
+                            //opSeqObj.setScrapQty(getAttributeValue(opSeqJson.get("QUEUEQTY")));
+                            opSeqObj.setCsScrapQty(getAttributeValue(opSeqJson.get("CSCRAPQTY")));
+                            opSeqObj.setQueueQty(getAttributeValue(opSeqJson.get("QUEUEQTY")));
                             opSeqList.add(opSeqObj);
                         }
                     }
@@ -105,8 +107,10 @@ public class OpSeqDC extends AViewObject {
                     opSeqObj.setOrgCode(xopObject.get("ORGCODE").toString());
                     opSeqObj.setScrapQty(getAttributeValue(xopObject.get("SCRAPQTY")));
 
-                    opSeqObj.setScrapQty(getAttributeValue(xopObject.get("CSCRAPQTY")));
-                    opSeqObj.setScrapQty(getAttributeValue(xopObject.get("QUEUEQTY")));
+                    //opSeqObj.setScrapQty(getAttributeValue(xopObject.get("CSCRAPQTY")));
+                    //opSeqObj.setScrapQty(getAttributeValue(xopObject.get("QUEUEQTY")));
+                    opSeqObj.setCsScrapQty(getAttributeValue(xopObject.get("CSCRAPQTY")));
+                    opSeqObj.setQueueQty(getAttributeValue(xopObject.get("QUEUEQTY")));
                     opSeqList.add(opSeqObj);
 
                 }
