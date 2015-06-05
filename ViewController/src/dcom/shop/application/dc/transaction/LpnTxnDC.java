@@ -156,11 +156,11 @@ public class LpnTxnDC extends SyncUtils {
                 errMsg = (errMsg == null ? "" : errMsg) + "Locator:"+ (String.format("%0$" + 75 + "s", "You must enter a value. ")+"\n");
             }
         }
-        if (!("PACK_FROM".equals(lpnPage))) {
+       /* if (!("PACK_FROM".equals(lpnPage))) {
             if ("".equals(toLpn) || toLpn == null) {
                 errMsg = (errMsg == null ? "" : errMsg) + "To LPN:"+ (String.format("%0$" + 76 + "s", "You must enter a value. ")+"\n");
             }
-        }
+        }*/
 
 
         if (errMsg != null) {

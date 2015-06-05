@@ -37,12 +37,12 @@ public class OnHandSearchDC {
         item = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromSubinventory}", String.class);
         subinv = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        if ("0".equals(subinv)) {
+        if (("0".equals(subinv)) || (subinv.contains("xsi:nil"))) {
             subinv = "";
         }
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.FromLocator}", String.class);
         locator = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
-        if ("0".equals(locator)) {
+        if (("0".equals(locator) ||(locator.contains("xsi:nil")))) {
             locator = "";
         }
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.costGrp}", String.class);
