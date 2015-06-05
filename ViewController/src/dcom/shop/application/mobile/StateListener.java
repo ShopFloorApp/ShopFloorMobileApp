@@ -340,7 +340,11 @@ public class StateListener {
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
             }
+        } else {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
         }
+
     }
 
     public void ItemValueChange(ValueChangeEvent valueChangeEvent) {
@@ -356,36 +360,48 @@ public class StateListener {
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
             }
+        } else {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
         }
     }
 
     public void ItemValueChange(ActionEvent actionEvent) {
         // Add event code here...
-        String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
-        if ("".equals(item)) {
+        String lpnPage = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.LpnPage}");
+        if ("UNPACK_FROM".equals(lpnPage)) {
+            String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+            if ("".equals(item)) {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+            } else {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
+            }
+        } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
-        } else {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "false");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", "");
         }
     }
 
     public void ToLpnValueChange(ActionEvent actionEvent) {
         // Add event code here...
         String toLpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchToLpnKeyword}");
-        if ("".equals(toLpn)) {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
-        } else {
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
-            AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
+        if ("UNPACK_FROM".equals(toLpn)) {
+            String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
+            if ("".equals(toLpn)) {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
+            } else {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "false");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.description}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.uom}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.availQty}", "");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantity}", "");
+            }
         }
     }
 
