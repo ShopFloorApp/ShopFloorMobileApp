@@ -14,8 +14,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1"                                
-                               actionListener="#{bindings.saveTransaction.execute}">
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveTransaction.execute}">
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="MOVE_ASSEMBLY"/>
                 <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
             </amx:commandButton>
@@ -36,9 +35,11 @@
                 <amx:outputText id="ot5" value="#{bindings.fromOpCode.inputValue}"/>
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Department" id="plam2">
-                <amx:outputText value="#{bindings.fromDept.inputValue}" id="ot6"/>
+                <!--<amx:outputText value="#{bindings.fromDept.inputValue}" id="ot6"/>-->
+                <amx:outputText value="#{pageFlowScope.currDept}" id="ot6"/>
             </amx:panelLabelAndMessage>
-            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}">
+            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}"
+                                 valueChangeListener="#{pageFlowScope.DispatchBean.fromStepListener}">
                 <amx:selectItems id="si2" value="#{bindings.fromStep.items}"/>
             </amx:selectOneChoice>
         </amx:panelFormLayout>
@@ -74,15 +75,19 @@
         <amx:panelFormLayout id="pfl3" labelPosition="topStart">
             <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it3"/>
             <amx:panelLabelAndMessage label="Available" id="plam5">
-                <amx:outputText value="#{pageFlowScope.availableQty}" id="ot9"/>
+                <amx:outputText value="#{bindings.fromStep.inputValue=='Queue' ? pageFlowScope.qtyQueue :(bindings.fromStep.inputValue=='Run' ? pageFlowScope.qtyRun : pageFlowScope.qty2Move)}"
+                                id="ot9" rendered="#{pageFlowScope.DispatchBean.showAvailQty}"></amx:outputText>
             </amx:panelLabelAndMessage>
+            <!--<amx:inputText value="#{bindings.toStep.inputValue=='Queue' ? pageFlowScope.qtyQueue :(bindings.toStep.inputValue=='Run' ? pageFlowScope.qtyRun : pageFlowScope.qty2Move)}"
+                           label="Quantity #{bindings.toStep.inputValue}" id="it1"
+                           rendered="#{pageFlowScope.DispatchBean.showAvailQty}"></amx:inputText>-->
             <amx:inputText value="#{bindings.trxQty.inputValue}" label="Move Quantity" id="it1"/>
             <amx:inputText value="#{bindings.scrapQty.inputValue}" label="Scrap Quantity" id="it7"/>
             <amx:selectBooleanCheckbox id="sbc1" value="#{bindings.overComplFlag.inputValue}"
                                        text="Over complete assembly" simple="true"/>
         </amx:panelFormLayout>
     </amx:panelPage>
-     <amx:popup id="pdispatch">
+    <amx:popup id="pdispatch">
         <amx:tableLayout id="tl4">
             <amx:rowLayout id="rl4">
                 <amx:cellFormat id="cf4">
