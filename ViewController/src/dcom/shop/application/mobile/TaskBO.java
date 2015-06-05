@@ -2,7 +2,11 @@ package dcom.shop.application.mobile;
 
 import dcom.shop.application.base.AEntity;
 
+import dcom.shop.application.mobile.dispatch.JobOperationBO;
+
 import java.util.Date;
+
+import java.util.HashMap;
 
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -206,6 +210,14 @@ public class TaskBO extends AEntity {
 
     public String getUSERNAME() {
         return USERNAME;
+    }
+    
+    public HashMap getBOClassRow(TaskBO task) {
+        HashMap map = new HashMap();
+        map.put("tasknum", task.getTASKNUM());
+        map.put("tasktype", task.getTASKTYPE());
+        map.put("priority", task.getPRIORITY());
+        return map;
     }
 
 }
