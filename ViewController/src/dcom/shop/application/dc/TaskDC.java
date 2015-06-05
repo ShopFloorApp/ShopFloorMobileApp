@@ -40,7 +40,9 @@ public class TaskDC extends AViewObject {
     protected transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     private static boolean isSortOperation = false;
     private static TaskBO[] sTask = null;
-   
+    private static List slist = new ArrayList<SelectItem>();
+
+    
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
     }
@@ -74,23 +76,16 @@ public class TaskDC extends AViewObject {
         }
         sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
         
-        si = getTT();
+        getTT();
         providerChangeSupport.fireProviderRefresh("tasks");
+
         return sTask;
     }
 
-    public void setSi(SelectItem[] si) {
-        SelectItem[] oldSi = this.si;
-        this.si = si;
-        propertyChangeSupport.firePropertyChange("si", oldSi, si);
-    }
 
+    
 
-    List slist = new ArrayList<SelectItem>();
-    SelectItem[] si =null;
-
-
-    public SelectItem[] getTT(){
+    public void getTT(){
         String tt;
         String cc;
         Connection conn;
@@ -98,7 +93,7 @@ public class TaskDC extends AViewObject {
             conn = ConnectionFactory.getConnection();
         
         Statement stmt = conn.createStatement();
-
+        slist.clear();
         StringBuffer query = new StringBuffer();
         query.append("SELECT COUNT(1) COUNT, TASKTYPE FROM TASK GROUP BY TASKTYPE;");
    
@@ -122,10 +117,13 @@ public class TaskDC extends AViewObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        si = (SelectItem[]) slist.toArray(new SelectItem[slist.size()]);
       
 
+    }
+    
+    public SelectItem[] getFilterData(){
+        SelectItem[] si = null;
+        si= (SelectItem[]) slist.toArray(new SelectItem[slist.size()]);
         return si;
     }
 
@@ -217,4 +215,6 @@ public class TaskDC extends AViewObject {
         }
 
     }
+    
+    
 }
