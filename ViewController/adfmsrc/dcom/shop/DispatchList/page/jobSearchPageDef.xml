@@ -21,6 +21,8 @@
         <AttrNames>
           <Item Value="jobNumber"/>
           <Item Value="jobStatus"/>
+          <Item Value="jobOps"/>
+          <Item Value="assembly"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
