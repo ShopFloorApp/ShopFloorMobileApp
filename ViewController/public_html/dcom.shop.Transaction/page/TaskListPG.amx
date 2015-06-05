@@ -76,9 +76,9 @@
             <amx:tableLayout id="tl2">
                 <amx:rowLayout id="rl1">
                     <amx:cellFormat id="cf1">
-                        <amx:selectManyCheckbox label="Task Type" id="smc1" readOnly="true"
-                                                value="#{pageFlowScope.Filter_TaskTypes}">
-                            <amx:selectItems id="si1" value="#{pageFlowScope.TaskDC.si}"/>
+                        <amx:selectManyCheckbox value="#{bindings.filterData.inputValue}"
+                                                label="#{bindings.filterData.label}" id="smc2">
+                            <amx:selectItems value="#{bindings.filterData.items}" id="si7"/>
                         </amx:selectManyCheckbox>
                     </amx:cellFormat>
                 </amx:rowLayout>
