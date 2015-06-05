@@ -31,6 +31,10 @@
                                          to="#{pageFlowScope.compLocator}" type="action"/>
                 <amx:setPropertyListener id="spl32" from="#{bindings.assemblyUom.inputValue}" to="#{pageFlowScope.uom}"
                                          type="action"/>
+                <amx:setPropertyListener id="spl033" from="#{bindings.currDept.inputValue}"
+                                         to="#{pageFlowScope.currDept}" type="action"/>
+                <amx:setPropertyListener id="spl034" from="#{bindings.currOpSeq.inputValue}"
+                                         to="#{pageFlowScope.currOpSeq}" type="action"/>
                 <amx:setPropertyListener id="spl33" from="#{bindings.lastDept.inputValue}"
                                          to="#{pageFlowScope.lastDept}" type="action"/>
                 <amx:setPropertyListener id="spl34" from="#{bindings.lastOpSeq.inputValue}"
