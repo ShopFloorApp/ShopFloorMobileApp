@@ -82,22 +82,20 @@
             </amx:tableLayout>
         </amx:facet>
         <amx:tableLayout id="tl1" width="100%">
-                    <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                    <amx:rowLayout id="rl1">
-                        <amx:cellFormat id="cf1" halign="center" valign="middle"
-                                        inlineStyle="background-color:#C7C7CC;">
-                            <amx:outputText id="ot2" inlineStyle="font-weight:bold;" value="Job Search"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl4">
-                        <amx:cellFormat id="cf5">
-                            <amx:panelGroupLayout id="pgl1" layout="horizontal">
-                                <amx:inputText hintText="Search Job" label="" id="dispatchSearch" simple="true"
-                                               inlineStyle="width:240px;" value="#{pageFlowScope.searchJobKeyword}"/>
-                                <amx:commandLink id="cb3" actionListener="#{bindings.searchJobNumber.execute}">
-                                    <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg"
-                                                    inlineStyle="color:#34AADC;"/>
-                                </amx:commandLink>
+            <?audit suppress oracle.maf.warning-missing-shortDesc?>
+            <amx:rowLayout id="rl1">
+                <amx:cellFormat id="cf1" halign="center" valign="middle" inlineStyle="background-color:#C7C7CC;">
+                    <amx:outputText id="ot2" inlineStyle="font-weight:bold;" value="Job Search"/>
+                </amx:cellFormat>
+            </amx:rowLayout>
+            <amx:rowLayout id="rl4">
+                <amx:cellFormat id="cf5">
+                    <amx:panelGroupLayout id="pgl1" layout="horizontal">
+                        <amx:inputText hintText="Search Job" label="" id="dispatchSearch" simple="true"
+                                       inlineStyle="width:240px;" value="#{pageFlowScope.searchJobKeyword}"/>
+                        <amx:commandLink id="cb3" actionListener="#{bindings.searchJobNumber.execute}">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
                         <amx:commandLink id="cl13" actionListener="#{viewScope.BarcodeBean.scanBarcode}"
                                          inlineStyle="margin-left:20px;">
                             <amx:outputHtml id="oh11" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC;"/>
@@ -105,9 +103,9 @@
                                                      type="action"/>
                         </amx:commandLink>
                     </amx:panelGroupLayout>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                </amx:tableLayout>
+                </amx:cellFormat>
+            </amx:rowLayout>
+        </amx:tableLayout>
         <amx:listView var="row" value="#{bindings.jobOperationBO.collectionModel}"
                       fetchSize="#{bindings.jobOperationBO.rangeSize}"
                       selectedRowKeys="#{bindings.jobOperationBO.collectionModel.selectedRow}"
@@ -118,11 +116,18 @@
                     <amx:rowLayout id="rl2">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf2"/>
                         <amx:cellFormat height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf3">
-                            <amx:outputText value="#{row.jobNumber}" id="ot3" inlineStyle="font-weight:normal;"/>
+                            <amx:outputText value="#{row.jobOps}" id="ot3" inlineStyle="font-weight:normal;"/>
                         </amx:cellFormat>
                         <amx:cellFormat height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf4" width="100px"
                                         halign="end" valign="middle">
                             <amx:outputText value="#{row.jobStatus}" styleClass="adfmf-listItem-captionText" id="ot4"
+                                            inlineStyle="color:Gray;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl21">
+                        <amx:cellFormat height="#{deviceScope.device.os=='Android'?'22':'19'}px" id="cf41" width="100px"
+                                        halign="start" valign="middle">
+                            <amx:outputText value="#{row.assembly}" styleClass="adfmf-listItem-captionText" id="ot41"
                                             inlineStyle="color:Gray;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
