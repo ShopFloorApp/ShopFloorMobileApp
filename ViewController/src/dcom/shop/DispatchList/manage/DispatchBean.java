@@ -19,7 +19,7 @@ public class DispatchBean {
         super();
     }
 
-    boolean showAvailQty = false;
+    boolean showAvailQty = true;
 
     public void setShowAvailQty(boolean showAvailQty) {
         boolean oldShowAvailQty = this.showAvailQty;
