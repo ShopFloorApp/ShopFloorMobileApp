@@ -74,14 +74,22 @@
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl3" labelPosition="topStart">
             <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it3"/>
+            
+            <amx:panelLabelAndMessage label="TestParamValues" id="plam6">
+                <amx:outputText value="From Step #{bindings.fromStep.inputValue}" id="ot100"/>
+                <amx:outputText value="Queue #{pageFlowScope.qtyQueue}" id="ot10"/>
+                <amx:outputText value="Run #{pageFlowScope.qtyRun}" id="ot12"/>
+                <amx:outputText value="Move #{pageFlowScope.qty2Move}" id="ot13"/>
+                <amx:outputText value="Show #{pageFlowScope.DispatchBean.showAvailQty ? 'Yeah' : 'No'}" id="ot14"/>
+            </amx:panelLabelAndMessage>
+            
             <amx:panelLabelAndMessage label="Available" id="plam5">
                 <amx:outputText value="#{bindings.fromStep.inputValue=='Queue' ? pageFlowScope.qtyQueue :(bindings.fromStep.inputValue=='Run' ? pageFlowScope.qtyRun : pageFlowScope.qty2Move)}"
                                 id="ot9" rendered="#{pageFlowScope.DispatchBean.showAvailQty}"></amx:outputText>
             </amx:panelLabelAndMessage>
-            <!--<amx:inputText value="#{bindings.toStep.inputValue=='Queue' ? pageFlowScope.qtyQueue :(bindings.toStep.inputValue=='Run' ? pageFlowScope.qtyRun : pageFlowScope.qty2Move)}"
-                           label="Quantity #{bindings.toStep.inputValue}" id="it1"
-                           rendered="#{pageFlowScope.DispatchBean.showAvailQty}"></amx:inputText>-->
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Move Quantity" id="it1"/>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Move Quantity" id="it1"
+                           hintText="#{bindings.fromStep.inputValue=='Queue' ? pageFlowScope.qtyQueue :(bindings.fromStep.inputValue=='Run' ? pageFlowScope.qtyRun : pageFlowScope.qty2Move)}"
+                           rendered="#{pageFlowScope.DispatchBean.showAvailQty}"/>
             <amx:inputText value="#{bindings.scrapQty.inputValue}" label="Scrap Quantity" id="it7"/>
             <amx:selectBooleanCheckbox id="sbc1" value="#{bindings.overComplFlag.inputValue}"
                                        text="Over complete assembly" simple="true"/>
