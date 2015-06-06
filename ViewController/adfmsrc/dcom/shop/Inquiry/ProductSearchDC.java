@@ -38,7 +38,7 @@ public class ProductSearchDC {
         ValueExpression ve = null;
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         pageFlow.put("keywrdLenErr", "");
-        
+
         System.out.println("Inside productItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         /* OrgItemEntity orgObj = new OrgItemEntity();
@@ -50,48 +50,51 @@ public class ProductSearchDC {
         String itemCat = null;
         String itemType = null;
         String itemStatus = null;
+        String parentPage = null;
+        
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
         keyword = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemCat}", String.class);
         itemCat = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemStatus}", String.class);
-        itemType = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        
+        itemStatus = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.itemType}", String.class);
-        itemStatus = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());        
-        
+        itemType = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ParentPage}", String.class);
+        parentPage = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+
+
         String restURI = RestURI.PostItemInquiryURI();
         RestCallerUtil rcu = new RestCallerUtil();
         /*AJ
          */
         String payload = null;
         String callingPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
-        String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        String orgCode =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
         if ("LPN".equals(callingPage) || "CycleCount".equals(callingPage)) {
             payload =
                 "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMInquiry/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\":\""+orgCode +"\",\"ITEM\": \"%" +
-                keyword + "%\",\"ITEMSTATUS\": \"ONHAND\"}}\n" + "}\n" + "}";
-        } 
+                "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PITEMREQ\": {\"ORGCODE\":\"" +
+                orgCode + "\",\"ITEM\": \"%" + keyword + "%\",\"ITEMSTATUS\": \"ONHAND\"}}\n" + "}\n" + "}";
+        }
+
         else {
             payload =
-                "{\"x\":\n" + 
-                "{\n" + 
-                "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
-                "                  \"RespApplication\": \"ONT\",\n" + 
-                "                  \"SecurityGroup\": \"STANDARD\",\n" + 
-                "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
-                "                  \"Org_Id\": \"82\"\n" + 
-                "                 },\n" + 
-                "   \"InputParameters\": \n" + 
-                "      {\"PITEMREQ\": {\"ORGCODE\": \""+orgCode+"\",\"ITEM\": \"%"+keyword.trim()+"%\",\"ITEMSTATUS\": \""+itemStatus+"\",\"ITEMTYPE\": \""+itemType+"\",\"ITEMCATALOG\": \""+itemCat+"\"}}\n" + 
-                "}\n" + 
-                "}";
+                "{\"x\":\n" + "{\n" + "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" +
+                "                  \"RespApplication\": \"ONT\",\n" +
+                "                  \"SecurityGroup\": \"STANDARD\",\n" +
+                "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
+                "                 },\n" + "   \"InputParameters\": \n" + "      {\"PITEMREQ\": {\"ORGCODE\": \"" +
+                orgCode + "\",\"ITEM\": \"%" + keyword.trim() + "%\",\"ITEMSTATUS\": \"" + itemStatus +
+                "\",\"ITEMTYPE\": \"" + itemType + "\",\"ITEMCATALOG\": \"" + itemCat + "\"}}\n" + "}\n" + "}";
         }
         ProductSearchEntity[] prodArray = null;
-        
+
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");
@@ -121,8 +124,10 @@ public class ProductSearchDC {
                         prodItems.setPRIMARYUOM((jsObjectArrayData.get("PRIMARYUOM").toString()));
                         prodItems.setITEMTYPE((jsObjectArrayData.get("ITEMTYPE").toString()));
                         prodItems.setITEMCATALOG((jsObjectArrayData.get("ITEMCATALOG").toString()));
-                        prodItems.setITEMID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("ITEMID").toString()))?"0":jsObjectArrayData.get("ITEMID").toString()));
-                        prodItems.setORGID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("ORGID").toString()))?"0":jsObjectArrayData.get("ORGID").toString()));
+                        prodItems.setITEMID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("ITEMID").toString())) ?
+                                                             "0" : jsObjectArrayData.get("ITEMID").toString()));
+                        prodItems.setORGID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObjectArrayData.get("ORGID").toString())) ?
+                                                            "0" : jsObjectArrayData.get("ORGID").toString()));
                         prodItems.setSERIALCONTROL((jsObjectArrayData.get("SERIALCONTROL").toString()));
                         prodItems.setLOTCONTROL((jsObjectArrayData.get("LOTCONTROL").toString()));
                         s_ProdList.add(prodItems);
@@ -139,8 +144,10 @@ public class ProductSearchDC {
                     prodItems.setPRIMARYUOM((jsObject2.get("PRIMARYUOM").toString()));
                     prodItems.setITEMTYPE((jsObject2.get("ITEMTYPE").toString()));
                     prodItems.setITEMCATALOG((jsObject2.get("ITEMCATALOG").toString()));
-                    prodItems.setITEMID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("ITEMID").toString()))?"0":jsObject2.get("ITEMID").toString()));
-                    prodItems.setORGID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("ORGID").toString()))?"0":jsObject2.get("ORGID").toString()));
+                    prodItems.setITEMID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("ITEMID").toString())) ?
+                                                         "0" : jsObject2.get("ITEMID").toString()));
+                    prodItems.setORGID(Integer.parseInt(("{\"@xsi:nil\":\"true\"}".equals(jsObject2.get("ORGID").toString())) ?
+                                                        "0" : jsObject2.get("ORGID").toString()));
                     prodItems.setSERIALCONTROL((jsObject2.get("SERIALCONTROL").toString()));
                     prodItems.setLOTCONTROL((jsObject2.get("LOTCONTROL").toString()));
                     s_ProdList.add(prodItems);
@@ -149,14 +156,14 @@ public class ProductSearchDC {
 
 
             prodArray = (ProductSearchEntity[]) s_ProdList.toArray(new ProductSearchEntity[s_ProdList.size()]);
-            
+
 
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "ProductSearchEntity", e.getLocalizedMessage());
         }
-        if(s_ProdList.size()!=0){
+        if (s_ProdList.size() != 0) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemServiceResults}", "");
-        }else{
+        } else {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemServiceResults}", "No Search Results");
         }
         return prodArray;
