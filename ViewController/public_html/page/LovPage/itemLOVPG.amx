@@ -33,7 +33,7 @@
                             <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf9">
-                            <amx:outputText value="Search" id="ot7"/>
+                            <amx:outputText value="Search #{pageFlowScope.itemStatus}  Items" id="ot7"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
