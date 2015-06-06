@@ -14,8 +14,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" 
-                               actionListener="#{bindings.saveTransaction.execute}">
+            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveTransaction.execute}">
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="COMP_ASSEMBLY"/>
                 <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
             </amx:commandButton>
@@ -45,7 +44,7 @@
                         <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
                         <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'RET'}"/>
                         <amx:setPropertyListener id="spl4" from='PRESERVE' to="#{pageFlowScope.preserveTrx}"
-                                                     type="action"/>
+                                                 type="action"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
@@ -56,7 +55,7 @@
             <amx:inputText value="#{bindings.notes.inputValue}" label="Note" id="it2" rows="3"/>
         </amx:panelFormLayout>
     </amx:panelPage>
-     <amx:popup id="pdispatch">
+    <amx:popup id="pdispatch">
         <amx:tableLayout id="tl1">
             <amx:rowLayout id="rl1">
                 <amx:cellFormat id="cf1">
