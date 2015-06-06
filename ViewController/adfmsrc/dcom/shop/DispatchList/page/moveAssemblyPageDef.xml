@@ -85,6 +85,8 @@
         <Item Value="Queue"/>
         <Item Value="Run"/>
         <Item Value="To Move"/>
+        <Item Value="Scrap"/>
+        <Item Value="Reject"/>
       </ValueList>
     </list>
     <list IterBinding="transactIterator" StaticList="true" id="toStep">
@@ -95,6 +97,8 @@
         <Item Value="Queue"/>
         <Item Value="Run"/>
         <Item Value="To Move"/>
+        <Item Value="Scrap"/>
+        <Item Value="Reject"/>
       </ValueList>
     </list>
     <list StaticList="false" IterBinding="transactIterator" ListIter="opSeqIterator" id="toOpSeq">
