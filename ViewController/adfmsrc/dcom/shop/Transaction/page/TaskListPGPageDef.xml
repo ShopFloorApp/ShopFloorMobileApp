@@ -43,11 +43,16 @@
     <list IterBinding="filterDataIterator" ListOperMode="multiSelect" ListIter="filterDataIterator" id="filterData"
           SelectItemValueMode="ListObject">
       <AttrNames>
-        <Item Value="value"/>
+        <Item Value="label"/>
       </AttrNames>
       <ListDisplayAttrNames>
         <Item Value="label"/>
+        <Item Value="value"/>
       </ListDisplayAttrNames>
     </list>
+    <methodAction id="filterTasks" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filterTasks"
+                  IsViewObjectMethod="false" DataControl="TaskDC" InstanceName="data.TaskDC.dataProvider">
+      <NamedData NDName="Criteria" NDValue="#{pageFlowScope.filterValues}" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>
