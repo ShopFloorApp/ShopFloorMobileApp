@@ -68,15 +68,15 @@ public class TaskDC extends AViewObject {
             } else {
                 getFromWS();
             }
-            sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
-            providerChangeSupport.fireProviderRefresh("tasks");
+            //sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
+            //providerChangeSupport.fireProviderRefresh("tasks");
 
         }else{
             isSortOperation = false;
         }
         sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
         
-        getTT();
+        //getTT();
         providerChangeSupport.fireProviderRefresh("tasks");
 
         return sTask;
@@ -123,6 +123,7 @@ public class TaskDC extends AViewObject {
     
     public SelectItem[] getFilterData(){
         SelectItem[] si = null;
+        getTT();
         si= (SelectItem[]) slist.toArray(new SelectItem[slist.size()]);
         return si;
     }
@@ -154,6 +155,18 @@ public class TaskDC extends AViewObject {
             }
         }
 
+    }
+    
+    public void filterTasks(String Criteria){
+        s_list.clear();
+        isSortOperation = true;
+        String whereClause = "";
+        
+        if(Criteria != null){
+            whereClause = "WHERE TASKTYPE IN ("+Criteria+");";
+        }
+        slist = super.getFilteredCollectionFromDB(TaskBO.class, whereClause);
+        getTasks();
     }
 
    
