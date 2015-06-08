@@ -42,6 +42,10 @@ public class TaskDC extends AViewObject {
     private static TaskBO[] sTask = null;
     private static List slist = new ArrayList<SelectItem>();
 
+    public void refresh() {
+        providerChangeSupport.fireProviderRefresh("tasks");
+    }
+
     
     public void addProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.addProviderChangeListener(l);
@@ -61,23 +65,17 @@ public class TaskDC extends AViewObject {
 
     public TaskBO[] getTasks() {
         if (!isSortOperation) {
-            //providerChangeSupport.fireProviderRefresh("tasks");
             s_list.clear();
             if (isOffline()) {
                 s_list = getCollectionFromDB(TaskDC.class);
             } else {
                 getFromWS();
             }
-            //sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
-            //providerChangeSupport.fireProviderRefresh("tasks");
 
         }else{
             isSortOperation = false;
         }
         sTask = (TaskBO[]) s_list.toArray(new TaskBO[s_list.size()]);
-        
-        //getTT();
-        providerChangeSupport.fireProviderRefresh("tasks");
 
         return sTask;
     }
@@ -148,7 +146,8 @@ public class TaskDC extends AViewObject {
                     orderByClause = "ORDER BY TASKNUM DESC";                    
                 }                
              s_list =   super.getFilteredCollectionFromDB(TaskBO.class, orderByClause);
-                getTasks();
+                //getTasks();
+                refresh();
             } catch (Exception e) {
                 String msg = e.getMessage();
                 System.out.println("Error msg:" + msg);
@@ -165,8 +164,9 @@ public class TaskDC extends AViewObject {
         if(Criteria != null){
             whereClause = "WHERE TASKTYPE IN ("+Criteria+");";
         }
-        slist = super.getFilteredCollectionFromDB(TaskBO.class, whereClause);
-        getTasks();
+        s_list = super.getFilteredCollectionFromDB(TaskBO.class, whereClause);
+        //getTasks();
+        refresh();
     }
 
    

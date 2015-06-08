@@ -18,8 +18,7 @@ public class tasksBean {
         try {
             String newValue = valueChangeEvent.getNewValue().toString();
             MethodExpression methodExpression =
-                AdfmfJavaUtilities.getMethodExpression("#{bindings.sortTasks.execute}", Object.class, new Class[] {
-                                                       });
+                AdfmfJavaUtilities.getMethodExpression("#{bindings.sortTasks.execute}", Object.class, new Class[] { });
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.sortBy}", newValue);
             methodExpression.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
         } catch (Exception e) {
@@ -31,8 +30,7 @@ public class tasksBean {
     public void sortMethod(ActionEvent actionEvent) {
         try {
             MethodExpression methodExpression =
-                AdfmfJavaUtilities.getMethodExpression("#{bindings.sortTasks.execute}", Object.class, new Class[] {
-                                                       });
+                AdfmfJavaUtilities.getMethodExpression("#{bindings.sortTasks.execute}", Object.class, new Class[] { });
             methodExpression.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
         } catch (Exception e) {
             e.printStackTrace();
@@ -41,37 +39,31 @@ public class tasksBean {
 
     public void filterAL(ActionEvent actionEvent) {
         //lists are represented by the  AmxAttributeBinding
-        try{
+        try {
 
-        AmxAttributeBinding filterList = (AmxAttributeBinding) AdfmfJavaUtilities
-                                      .evaluateELExpression("#{bindings.filterData}");
+            AmxAttributeBinding filterList =
+                (AmxAttributeBinding) AdfmfJavaUtilities.evaluateELExpression("#{bindings.filterData}");
 
-        String selectedCustomerNames = "";
+            String selectedCustomerNames = "";
 
-        /*         AmxIteratorBinding amxListIterator =  filterList.getIteratorBinding();
-        
-        //the basic iterator in the AmxIteratorBinding is what we need to work with
-         BasicIterator      basicIterator = amxListIterator.getIterator();
-        Integer customerIndx = 0;
+            AmxIteratorBinding amxListIterator = filterList.getIteratorBinding();
 
-         while (basicIterator.hasNext()){
-            basicIterator.setCurrentIndex(customerIndx.intValue());
-            //get current row. Note that for POJO models you call getDataProvider and cast to 
-            //the entity. For SOAP models you call getCurrentRow and cast it to GenericType 
-            SelectItem customer = (SelectItem) basicIterator.getDataProvider();
-            //for this sample, print selected customers into a text field on the page
-            selectedCustomerNames = selectedCustomerNames+ ("'"+customer.getValue()+"',");
-             customerIndx++;
-         }
-         
-         if(selectedCustomerNames.length()>0){
-             selectedCustomerNames = selectedCustomerNames.substring(0, selectedCustomerNames.length()-1);
-         } */
-            
-            selectedCustomerNames = "'Move Order Issue'";
-        
-        
-        //try {
+            BasicIterator basicIterator = amxListIterator.getIterator();
+            Integer customerIndx = 0;
+
+            while (basicIterator.hasNext()) {
+                basicIterator.setCurrentIndex(customerIndx.intValue());
+                SelectItem customer = (SelectItem) basicIterator.getDataProvider();
+                selectedCustomerNames = selectedCustomerNames + ("'" + customer.getValue() + "',");
+                customerIndx++;
+            }
+
+            if (selectedCustomerNames.length() > 0) {
+                selectedCustomerNames = selectedCustomerNames.substring(0, selectedCustomerNames.length() - 1);
+            }
+
+               selectedCustomerNames = "'Move Order Issue'";
+
             MethodExpression methodExpression =
                 AdfmfJavaUtilities.getMethodExpression("#{bindings.filterTasks.execute}", Object.class, new Class[] {
                                                        });
@@ -80,6 +72,6 @@ public class tasksBean {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }
 }
