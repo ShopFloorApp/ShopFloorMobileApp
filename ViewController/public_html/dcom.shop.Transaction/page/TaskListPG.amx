@@ -18,7 +18,7 @@
         </amx:facet>
         <amx:facet name="footer">
             <amx:tableLayout id="tl1" width="100%"
-                             inlineStyle="border-top-color:Blue; border-top-style:solid; border-top-width:thin;">
+                             inlineStyle="border-top-color:ButtonHighlight; border-top-style:solid; border-top-width:thin;">
                 <amx:rowLayout id="rl2">
                     <amx:cellFormat id="cf4" width="50%" halign="center" valign="middle">
                         <amx:commandLink id="cl5">
@@ -28,7 +28,7 @@
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf5" width="50%" halign="center"
-                                    inlineStyle="border-left-style:solid; border-left-color:Blue; border-left-width:thin;"
+                                    inlineStyle="border-left-style:solid; border-left-color:ButtonHighlight; border-left-width:thin;"
                                     valign="middle">
                         <amx:commandLink id="cl6">
                             <amx:outputText value="Filter" id="ot9"/>
@@ -47,24 +47,26 @@
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl7" width="100%">
                     <amx:rowLayout id="rl8">
-                        <amx:cellFormat id="cf6" width="50%">
-                            <amx:outputText value="#{row.TASKNUM}" id="ot7" inlineStyle="font-weight:bold;"/>
+                        <amx:cellFormat id="cf6" width="50%" halign="start">
+                            <amx:outputText value="#{row.TASKNUM}" id="ot7"
+                                            inlineStyle="font-weight:bold;color:GrayText;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf14" width="50%">
-                            <amx:outputText value="#{row.PRIORITY}" id="ot7x"/>
+                        <amx:cellFormat id="cf14" width="50%" halign="end">
+                            <amx:outputText value="#{row.PRIORITY}" id="ot7x" inlineStyle="color:GrayText;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl9">
-                        <amx:cellFormat id="cf16" width="50%">
-                            <amx:outputText value="#{row.TASKTYPE}" id="ot6"/>
+                        <amx:cellFormat id="cf16" width="50%" halign="start">
+                            <amx:outputText value="#{row.TASKTYPE}" id="ot6" inlineStyle="color:Gray;font-size:small;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf15" width="50%">
-                            <amx:outputText value="#{row.STATUS}" id="ot6x"/>
+                        <amx:cellFormat id="cf15" width="50%" halign="end">
+                            <amx:outputText value="#{row.STATUS}" id="ot6x" inlineStyle="color:Gray;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl7">
                         <amx:cellFormat id="cf17">
-                            <amx:outputText value="#{row.ITEMDESC}" id="ot2"/>
+                            <amx:outputText value="#{row.ITEMDESC}" id="ot2"
+                                            inlineStyle="color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
@@ -79,7 +81,7 @@
             </amx:selectManyCheckbox>
         </amx:panelGroupLayout>
         <amx:panelGroupLayout id="pgl7">
-            <amx:commandButton text="Ok" id="cb4" actionListener="#{pageFlowScope.TasksBean.filterAL}">
+            <amx:commandButton text="OK" id="cb4" actionListener="#{pageFlowScope.TasksBean.filterAL}">
                 <amx:closePopupBehavior id="cpb3" type="action" popupId="p2"/>
             </amx:commandButton>
         </amx:panelGroupLayout>
