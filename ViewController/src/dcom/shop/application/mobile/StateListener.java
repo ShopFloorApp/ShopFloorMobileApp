@@ -383,6 +383,18 @@ public class StateListener {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnEnable}", "true");
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemEnable}", "true");
         }
+        //ashish
+        ValueExpression ve = null;
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ItemLovPage}", String.class);
+        String callingPg =(String)ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+        
+        if(callingPg.equals("CountTrxn")){
+            MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.getQty.execute}", Object.class, new Class[] {
+                                                                         });
+            me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+        }
+        
+        
     }
 
     public void ToLpnValueChange(ActionEvent actionEvent) {

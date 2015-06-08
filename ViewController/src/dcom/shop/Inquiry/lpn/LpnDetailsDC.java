@@ -1,5 +1,6 @@
 package dcom.shop.Inquiry.lpn;
 
+import dcom.shop.Transaction.bean.CountUtilBean;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
@@ -39,7 +40,9 @@ public class LpnDetailsDC {
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.lpn}", String.class);
         keyword = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
         String page = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemLovPage}");
-        if ("LpnTrxn".equals(page)) {
+        String callingpage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.callingPg}");
+        
+        if ("LpnTrxn".equals(page) || "DETAIL".equals(callingpage)) {
             keyword = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}");
         }
         String orgCode =
@@ -148,4 +151,9 @@ public class LpnDetailsDC {
     public void removeProviderChangeListener(ProviderChangeListener l) {
         providerChangeSupport.removeProviderChangeListener(l);
     }
+    //ashish
+   /* public void getLpnItemQty(){
+        CountUtilBean countutilbean = new CountUtilBean();
+        countutilbean.getQty();
+    }*/
 }

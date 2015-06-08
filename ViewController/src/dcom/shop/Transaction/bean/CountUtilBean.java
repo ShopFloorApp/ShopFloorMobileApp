@@ -1,5 +1,7 @@
 package dcom.shop.Transaction.bean;
 
+import dcom.shop.Inquiry.lpn.LpnDetailsDC;
+import dcom.shop.Inquiry.lpn.LpnDetailsEntity;
 import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.LotBO;
 import dcom.shop.application.mobile.SerialBO;
@@ -7,6 +9,7 @@ import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -34,7 +37,7 @@ public class CountUtilBean {
     protected static List s_filteredSerialTrxns = new ArrayList();
     protected static List s_filteredLotTrxns = new ArrayList();
     
-    public void clearCountPage(ActionEvent actionEvent) {
+    public void     clearCountPage(ActionEvent actionEvent) {
       //  AdfmfJavaUtilities.setELValue("#{pageFlowScope.name}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
@@ -42,6 +45,7 @@ public class CountUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ToLocator}", null);        
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);            
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.callingPg}", null); 
+        lpnDetailsArray = null;
        
         clearDetailPage(actionEvent);
     }
@@ -300,7 +304,7 @@ public class CountUtilBean {
             throw new RuntimeException("My Code Error " + e);
         }
     }
-
+    
     public void filterLots(Integer trxnId) {
         try {
             System.out.println("inside filter code");
@@ -325,4 +329,29 @@ public class CountUtilBean {
             throw new RuntimeException("My Code Error " + e);
         }
     }
+   public static LpnDetailsEntity[] lpnDetailsArray = null;
+    public void getLpnContents(ActionEvent actionEvent) {
+           lpnDetailsArray = null;
+        LpnDetailsDC lpnDetails = new LpnDetailsDC();
+        lpnDetailsArray = lpnDetails.getAllLpnDetails(); 
+    }
+    
+    public void getQty() {
+
+   ValueExpression ve = null;
+        ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.searchKeyword}", String.class);
+        String itemNum = ((String) ve.getValue(AdfmfJavaUtilities.getAdfELContext())).trim();
+       for (int i= 0; i< lpnDetailsArray.length; i++ ){
+           if(lpnDetailsArray[i].getITEM().equals(itemNum))
+           {
+               Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+               pageFlow.put("availQty", lpnDetailsArray[i].getONHANDQTY());
+               return;
+           }
+       }
+
+        Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+        pageFlow.put("availQty", 0);
+    }
+
 }

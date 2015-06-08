@@ -250,6 +250,7 @@
         <page id="dcom_shop_mobile_ReceiveLPNPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.ReceiveLPNPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
+        <dc id="CountUtilBean" path="dcom.shop.mobile.CountUtilBean"/>
         <dc id="PickTxnDC" path="dcom.shop.mobile.PickTxnDC"/>
         <dc id="LpnPutawayDC" path="dcom.shop.mobile.LpnPutawayDC"/>
     <dc id="AttachmentDC" path="dcom.shop.mobile.AttachmentDC"/>

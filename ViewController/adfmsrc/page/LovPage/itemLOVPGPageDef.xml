@@ -60,5 +60,8 @@
     </tree>
     <methodAction id="refreshLpnItems" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLpnItems"
                   IsViewObjectMethod="false" DataControl="LpnDetailsDC" InstanceName="data.LpnDetailsDC.dataProvider"/>
+    <methodAction id="getQty" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getQty"
+                  IsViewObjectMethod="false" DataControl="CountUtilBean"
+                  InstanceName="data.CountUtilBean.dataProvider"/>
   </bindings>
 </pageDefinition>
