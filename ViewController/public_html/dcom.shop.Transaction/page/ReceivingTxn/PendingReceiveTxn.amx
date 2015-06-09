@@ -21,8 +21,7 @@
     </amx:commandLink>    </amx:facet>
     <amx:listView var="row" value="#{bindings.shipments.collectionModel}" fetchSize="#{bindings.shipments.rangeSize}"
                   selectedRowKeys="#{bindings.shipments.collectionModel.selectedRow}"
-                  selectionListener="#{bindings.shipments.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
-                  bufferStrategy="viewport" id="lv1" layout="cards">
+                  selectionListener="#{bindings.shipments.collectionModel.makeCurrent}" showMoreStrategy="autoScroll" id="lv1" layout="cards">
       <amx:listItem id="li1" showLinkIcon="false">
         <amx:tableLayout width="100%" id="tl1">
           <amx:rowLayout id="rl1">

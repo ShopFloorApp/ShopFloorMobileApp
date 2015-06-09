@@ -714,9 +714,9 @@ public class ReceivingTxnDC extends SyncUtils{
             }
         }
         
-        if (resultShipment) {
-            refreshShipments();
-        }
+//        if (resultShipment) {
+//            refreshShipments();
+//        }
     }
     
     public void processReceive(String actionType){
@@ -787,6 +787,8 @@ public class ReceivingTxnDC extends SyncUtils{
                 super.insertSqlLiteTable(ShipmentBO.class, s_shipmentValues);
                 super.insertSqlLiteTable(LinesBO.class, s_lines);
             } else {
+                super.insertSqlLiteTable(ShipmentBO.class, s_shipmentValues);
+                super.insertSqlLiteTable(LinesBO.class, s_lines);
                 submitReceiveRequest(s_shipmentValues,s_lines);
             }
             
@@ -810,9 +812,9 @@ public class ReceivingTxnDC extends SyncUtils{
         }else{
             submitReceiveRequest(shipmentBO,LinesBO); 
         }
-        refreshShipments();
-        String featureID = AdfmfJavaUtilities.getFeatureId();
-        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] {"cb1"});
+//        refreshShipments();
+//        String featureID = AdfmfJavaUtilities.getFeatureId();
+//        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] {"cb1"});
     }
     
     public void submitReceiveRequest(List<ShipmentBO> shipmentList,List<LinesBO> linesList){   
