@@ -231,6 +231,7 @@
                 <amx:closePopupBehavior id="cpb2" popupId="popup1" type="action"/>
                 <amx:setPropertyListener id="spl5" from="#{'PROCESS'}" to="#{pageFlowScope.actionType}"/>
             </amx:commandLink>
+            <amx:spacer id="s2" height="5"/>
             <amx:commandLink id="cl6" action="#{pageFlowScope.ReceivingTxnUtilBean.navigateToTxnSummary}"
                                          actionListener="#{bindings.processReceive.execute}">
                 <amx:tableLayout id="tl8" inlineStyle="margin-right: 20px;">
