@@ -76,7 +76,7 @@
     <amx:popup id="p2" autoDismiss="true">
         <amx:panelGroupLayout id="pgl6">
             <amx:selectManyCheckbox value="#{bindings.filterData.inputValue}"
-                                    id="smc2">
+                                    id="smc2" valueChangeListener="#{pageFlowScope.TasksBean.filterVL}">
                 <amx:selectItems value="#{bindings.filterData.items}" id="si7"/>
             </amx:selectManyCheckbox>
         </amx:panelGroupLayout>
