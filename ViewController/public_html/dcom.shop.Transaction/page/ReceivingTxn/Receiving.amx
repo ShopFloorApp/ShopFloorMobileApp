@@ -18,7 +18,8 @@
     </amx:facet>
     <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
             <!--actionListener="#{bindings.ProcessWS.execute}"-->
-            <amx:listItem id="li3" showLinkIcon="false" action="receiveMaterial">
+            <amx:listItem id="li3" showLinkIcon="false" action="receiveMaterial"
+                          actionListener="#{pageFlowScope.ReceivingTxnUtilBean.enterReceivingPage}">
                 <amx:outputText value="Receiving Material" id="ot4"/>
         <amx:setPropertyListener id="spl1" from="#{'S'}" to="#{pageFlowScope.receivingType}"/>
       </amx:listItem>

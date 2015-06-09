@@ -43,7 +43,7 @@
                                        required="true" label="Document No." simple="true"/>
                     </amx:validationGroup>
                     <amx:commandLink id="cbw3" action="getValue"
-                                     actionListener="#{pageFlowScope.ReceivingTxnUtilBean.clearReceiveTypePage}">
+                                     actionListener="#{pageFlowScope.ReceivingTxnUtilBean.documentNoChange}">
                         <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>

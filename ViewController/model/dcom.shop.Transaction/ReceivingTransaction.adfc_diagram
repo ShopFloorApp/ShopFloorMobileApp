@@ -107,7 +107,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">L38,378.0,332.34473,62.0,113.74707,B79</property>
+         name="sdm:polyPoints">L42,378.0,335.84473,62.0,113.74707,B79</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall10">
@@ -180,7 +180,7 @@
       <property
          name="fromOutcome">lot</property>
       <property
-         name="sdm:polyPoints">B33,34.0,113.74707,-67.0,255.82553,T44</property>
+         name="sdm:polyPoints">B21,27.0,113.74707,-67.0,255.95432,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -190,7 +190,7 @@
       <property
          name="fromOutcome">serial</property>
       <property
-         name="sdm:polyPoints">B44,41.0,122.73476,162.0,274.0459,T44</property>
+         name="sdm:polyPoints">B56,48.0,120.34041,169.0,271.6065,T56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -200,7 +200,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T56,169.0,271.6059,48.0,120.3894,B56</property>
+         name="sdm:polyPoints">T44,162.0,274.0459,41.0,122.68576,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -210,7 +210,7 @@
       <property
          name="fromOutcome">Back</property>
       <property
-         name="sdm:polyPoints">T56,-60.0,258.0459,41.0,115.95346,B44</property>
+         name="sdm:polyPoints">T56,-60.0,258.0459,34.0,115.825966,B33</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall19">
@@ -273,7 +273,7 @@
       <property
          name="fromOutcome">getPendingReceiveTxn</property>
       <property
-         name="sdm:polyPoints">R54,65.182106,535.2471,198.0,520.14355,L50</property>
+         name="sdm:polyPoints">R50,64.03906,531.7471,198.0,520.14355,L50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -283,7 +283,7 @@
       <property
          name="fromOutcome">createTxn</property>
       <property
-         name="sdm:polyPoints">T50,239.0,466.14355,378.0,346.34473,L54</property>
+         name="sdm:polyPoints">T50,239.0,466.14355,378.0,349.84473,L58</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -298,12 +298,12 @@
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase26"
-      from="View5"
+      from="WildcardControlFlowRule3"
       to="MethodCall19">
       <property
          name="fromOutcome">pendingTxn</property>
       <property
-         name="sdm:polyPoints">L46,375.7281,339.34473,64.03906,528.2471,R46</property>
+         name="sdm:polyPoints">B57,-218.5,282.5459,23.039062,477.74707,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -313,7 +313,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">R54,85.5,63.24707,287.18344,111.0459,L54</property>
+         name="sdm:polyPoints">B67,55.0,117.366425,375.77783,342.84473,L50</property>
    </ControlFlowCase>
    <View
       id="View28">
@@ -488,7 +488,7 @@
       <property
          name="fromOutcome">ReceiveHome</property>
       <property
-         name="sdm:polyPoints">B50,-222.0,282.5459,-214.5,493.59958,T56</property>
+         name="sdm:polyPoints">B43,-225.5,284.30786,-214.5,493.57007,T56</property>
    </ControlFlowCase>
    <View
       id="View43">
@@ -524,5 +524,15 @@
          name="fromOutcome">back</property>
       <property
          name="sdm:polyPoints">R54,-552.7745,375.44824,-356.0,362.74707,L54</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase46"
+      from="View20"
+      to="MethodCall19">
+      <property
+         name="fromOutcome">refreshPendingPage</property>
+      <property
+         name="sdm:polyPoints">B50,547.0,654.2471,23.039062,585.7471,B50</property>
    </ControlFlowCase>
 </SDM>

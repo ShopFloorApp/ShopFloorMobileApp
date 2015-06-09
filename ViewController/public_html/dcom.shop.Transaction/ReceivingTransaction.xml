@@ -89,6 +89,10 @@
         <from-outcome>ReceiveHome</from-outcome>
         <to-activity-id>Receiving</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>pendingTxn</from-outcome>
+        <to-activity-id>getPendingReceiveTxn</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">
       <from-activity-id>ReceivingType</from-activity-id>
@@ -99,10 +103,6 @@
       <control-flow-case id="__6">
         <from-outcome>addLine</from-outcome>
         <to-activity-id>lineDetails</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__28">
-        <from-outcome>pendingTxn</from-outcome>
-        <to-activity-id>getPendingReceiveTxn</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__31">
         <from-outcome>success</from-outcome>
@@ -165,6 +165,10 @@
       <control-flow-case id="__40">
         <from-outcome>self</from-outcome>
         <to-activity-id>PendingReceiveTxn</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome>refreshPendingPage</from-outcome>
+        <to-activity-id>getPendingReceiveTxn</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__21">

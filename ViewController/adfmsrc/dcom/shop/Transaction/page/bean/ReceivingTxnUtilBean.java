@@ -232,6 +232,10 @@ public class ReceivingTxnUtilBean {
             AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
                                                    });
         me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
+        MethodExpression me1 =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshShipmentLines.execute}", Object.class, new Class[] {
+                                                   });
+        me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
     }
     
     public void rePopulateLines(ActionEvent ae){
@@ -278,6 +282,14 @@ public class ReceivingTxnUtilBean {
                 }
                 
         receiveDc.s_shipmentLines=linColl;
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshShipmentLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { }); 
+        MethodExpression me1 =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
     
     public void addMore(ActionEvent ae){
@@ -359,11 +371,37 @@ public class ReceivingTxnUtilBean {
         me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
     
+    public void enterReceivingPage(ActionEvent ae){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.documnetNumber}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.carrier}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.packSlip}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.bol}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.wayAirBill}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipment}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shippedDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.comments}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", null);
+        receiveDc.s_lines.clear();
+        receiveDc.s_shipmentLines.clear();
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
     public String navigateToTxnSummary(){
-        String status = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.successMsg}");
+        String status = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.isError}");
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.isError}", null);
         if(status!=null){
-            return null;
+            return "abc";
         }else{
             return "pendingTxn";
         }
@@ -397,6 +435,35 @@ public class ReceivingTxnUtilBean {
             AdfmfJavaUtilities.getMethodExpression("#{bindings.getPendingReceiveTxn.execute}", Object.class, new Class[] {
                                                    });
         me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+    }
+    
+    public void documentNoChange(ActionEvent ae){
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.rowIdxAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lineAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.subInvAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.locatorAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.quantityAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.uomAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.lpnAdd}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.carrier}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.packSlip}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.bol}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.wayAirBill}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shipment}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.shippedDate}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.comments}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.suppCustName}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.successMsg}", null);                                                                                
+        receiveDc.s_lines.clear();
+        receiveDc.s_shipmentLines.clear();
+        MethodExpression me =
+            AdfmfJavaUtilities.getMethodExpression("#{bindings.refreshLines.execute}", Object.class, new Class[] {
+                                                   });
+        me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
+//        MethodExpression me1 =
+//            AdfmfJavaUtilities.getMethodExpression("#{bindings.getPendingReceiveTxn.execute}", Object.class, new Class[] {
+//                                                   });
+//        me1.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
     }
     
     public String clearLPNPutaway(){

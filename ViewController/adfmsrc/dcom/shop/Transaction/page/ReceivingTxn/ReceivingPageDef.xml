@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.26" id="ReceivingPageDef"
+                Package="dcom.shop.Transaction.page.ReceivingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="refreshLines" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshLines"
+                  IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
+    <methodAction id="getPendingReceiveTxn" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getPendingReceiveTxn" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
+  </bindings>
+</pageDefinition>

@@ -15,14 +15,16 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.processReceive.execute}"
-                               action="#{pageFlowScope.ReceivingTxnUtilBean.navigateToTxnSummary}">
-                <amx:setPropertyListener id="spl9" from="#{'PROCESS'}" to="#{pageFlowScope.actionType}"/>
-                <amx:validationBehavior id="vb2" group="vg1"/>
-            </amx:commandButton>
+            <amx:commandLink id="cl8">
+
+                    <amx:outputHtml id="oh12" styleClass="fa fa-caret-square-o-down fa-lg"/>
+                 <amx:showPopupBehavior id="spb1" popupId="popup1" decoration="anchor" alignId="cl8"/>  
+
+            </amx:commandLink>
+              
         </amx:facet>
 
-        <amx:panelGroupLayout id="pgl2">
+  
                 <custom:expandcollapse id="pgl4" value="test3" rendered="true">
             <amx:facet name="header">
                 <?audit suppress oracle.maf.duplicate-facet?>
@@ -61,7 +63,7 @@
                 </amx:panelFormLayout>
             </amx:validationGroup>
                     </custom:expandcollapse>
-        </amx:panelGroupLayout>
+    
 
         <amx:spacer id="s1" height="10"/>
         <amx:listView var="row" value="#{bindings.lines.collectionModel}" fetchSize="#{bindings.lines.rangeSize}"
@@ -69,12 +71,12 @@
                   selectionListener="#{bindings.lines.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                   bufferStrategy="viewport" id="lv1">
       <amx:listItem id="li1" showLinkIcon="false"
-                    actionListener="#{pageFlowScope.ReceivingTxnUtilBean.rePopulateLines}">
+                    >
         <amx:tableLayout width="100%" id="tl2">
           <amx:rowLayout id="rl4">
             <amx:cellFormat id="cf2" width="10px"/>
             <amx:cellFormat width="40%" height="#{deviceScope.device.os=='Android'?'36':'32'}px" id="cf6">
-              <amx:outputText value="#{row.lines}" id="otk3"/>
+              <amx:outputText value="#{row.lines} - #{row.subInv}" id="otk3"/>
             </amx:cellFormat>
             <amx:cellFormat id="cf14" width="30%" rowSpan="1" halign="center" height="#{deviceScope.device.os=='Android'?'36':'32'}px">
             <amx:outputText value="#{row.quantity}" styleClass="adfmf-listItem-captionText" id="okkt8"
@@ -99,7 +101,7 @@
 
           </amx:rowLayout>
         </amx:tableLayout>
-        <amx:setPropertyListener id="splk1" from="#{'UPDATE'}" to="#{pageFlowScope.rowAction}"/>
+        <!--amx:setPropertyListener id="splk1" from="#{'UPDATE'}" to="#{pageFlowScope.rowAction}"/>
         <amx:setPropertyListener id="splkk13" from="#{row.rowLineIdx}" to="#{pageFlowScope.rowIdxAdd}"/>
         <amx:setPropertyListener id="splk7" from="#{row.lines}" to="#{pageFlowScope.lineAdd}"/>
         <amx:setPropertyListener id="splk2" from="#{row.subInv}" to="#{pageFlowScope.subInvAdd}"/>
@@ -110,7 +112,7 @@
         <amx:setPropertyListener id="splk11" from="#{row.docRefLine}" to="#{pageFlowScope.docRefLineAdd}"/>
         <amx:setPropertyListener id="splk12" from="#{row.shipmentLine}" to="#{pageFlowScope.shipmentLineAdd}"/>
         <amx:setPropertyListener id="splk15" from="#{row.lotControl}" to="#{pageFlowScope.lotControlAdd}"/>
-        <amx:setPropertyListener id="splk10" from="#{row.serialControl}" to="#{pageFlowScope.serialControlAdd}"/>
+        <amx:setPropertyListener id="splk10" from="#{row.serialControl}" to="#{pageFlowScope.serialControlAdd}"/-->
       </amx:listItem>
     </amx:listView>
         <amx:facet name="footer">
@@ -198,7 +200,7 @@
                                 </amx:rowLayout>
                                 <amx:rowLayout id="rl15">
                                     <amx:cellFormat id="cf25" halign="center">
-                                        <amx:outputHtml id="oh7" value="Add More"
+                                        <amx:outputHtml id="oh7" value="Add"
                                                         inlineStyle="font-size:small;color:Gray;"/>
                                     </amx:cellFormat>
                                 </amx:rowLayout>
@@ -210,4 +212,41 @@
             </amx:tableLayout>
         </amx:facet>
     </amx:panelPage>
+      <amx:popup id="popup1" autoDismiss="true">
+        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+        <amx:panelGroupLayout id="pgl2" layout="vertical">
+            <amx:commandLink id="cl7" actionListener="#{bindings.processReceive.execute}"
+                               action="#{pageFlowScope.ReceivingTxnUtilBean.navigateToTxnSummary}">
+                <amx:tableLayout id="tl7" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl16">
+                        <amx:cellFormat id="cf27">
+                            <amx:outputHtml id="oh1" styleClass="fa fa-floppy-o fa-lg"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf5" width="10px"/>
+                        <amx:cellFormat id="cf26">
+                            <amx:outputHtml id="oh4" value="Submit" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:closePopupBehavior id="cpb2" popupId="popup1" type="action"/>
+                <amx:setPropertyListener id="spl5" from="#{'PROCESS'}" to="#{pageFlowScope.actionType}"/>
+            </amx:commandLink>
+            <amx:commandLink id="cl6" action="#{pageFlowScope.ReceivingTxnUtilBean.navigateToTxnSummary}"
+                                         actionListener="#{bindings.processReceive.execute}">
+                <amx:tableLayout id="tl8" inlineStyle="margin-right: 20px;">
+                    <amx:rowLayout id="rl18">
+                        <amx:cellFormat id="cf28">
+                            <amx:outputHtml id="oh5" styleClass="fa fa-database fa-lg"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf7" width="10px"/>
+                        <amx:cellFormat id="cf29" >
+                            <amx:outputHtml id="oh11" value="Add to Queue" inlineStyle="font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+                <amx:setPropertyListener id="spl6" from="#{'SAVE'}" to="#{pageFlowScope.actionType}"/>
+                <amx:closePopupBehavior id="cpb1" popupId="popup1" type="action"/>
+            </amx:commandLink>            
+        </amx:panelGroupLayout>
+    </amx:popup>
 </amx:view>

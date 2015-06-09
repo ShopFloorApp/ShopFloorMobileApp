@@ -9,6 +9,7 @@
 
 .custom-expandcollapse {
     border-bottom: solid 1px #BBBBBB;
+    display: inline-table;
 }
 
 .div-table {

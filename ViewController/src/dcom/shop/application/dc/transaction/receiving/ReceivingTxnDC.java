@@ -765,7 +765,12 @@ public class ReceivingTxnDC extends SyncUtils{
         shipmentBO.setPackingSlip(packSlip);
         shipmentBO.setReceiveTxnId((Integer)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ReceiveTxnId}"));
         shipmentBO.setShipmentNum(shipment);
-        shipmentBO.setShippedDate(shippedDate.substring(0,10));
+        if(shippedDate.equals("")){
+            shipmentBO.setShippedDate(shippedDate);                
+        }else{
+            shipmentBO.setShippedDate(shippedDate.substring(0,10)); 
+        }
+        
         shipmentBO.setVendor(customer);
         shipmentBO.setWayAirBill(wayAirBill);
         shipmentBO.setIsSubmitted("N");
