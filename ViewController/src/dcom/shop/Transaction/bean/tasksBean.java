@@ -1,5 +1,7 @@
 package dcom.shop.Transaction.bean;
 
+import java.util.ArrayList;
+
 import javax.el.MethodExpression;
 
 import oracle.adfmf.amx.event.ActionEvent;
@@ -41,29 +43,10 @@ public class tasksBean {
         //lists are represented by the  AmxAttributeBinding
         try {
 
-            AmxAttributeBinding filterList =
-                (AmxAttributeBinding) AdfmfJavaUtilities.evaluateELExpression("#{bindings.filterData}");
+           String selectedCustomerNames =
+                (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.filteredList}");
 
-            String selectedCustomerNames = "";
-
-            AmxIteratorBinding amxListIterator = filterList.getIteratorBinding();
-
-            BasicIterator basicIterator = amxListIterator.getIterator();
-            Integer customerIndx = 0;
-
-            while (basicIterator.hasNext()) {
-                basicIterator.setCurrentIndex(customerIndx.intValue());
-                SelectItem customer = (SelectItem) basicIterator.getDataProvider();
-                selectedCustomerNames = selectedCustomerNames + ("'" + customer.getValue() + "',");
-                customerIndx++;
-            }
-
-            if (selectedCustomerNames.length() > 0) {
-                selectedCustomerNames = selectedCustomerNames.substring(0, selectedCustomerNames.length() - 1);
-            }
-
-               selectedCustomerNames = "'Move Order Issue'";
-
+            
             MethodExpression methodExpression =
                 AdfmfJavaUtilities.getMethodExpression("#{bindings.filterTasks.execute}", Object.class, new Class[] {
                                                        });
@@ -73,5 +56,40 @@ public class tasksBean {
             e.printStackTrace();
         }
 
+    }
+
+    public void filterVL(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        Object[] newVal = (Object[]) valueChangeEvent.getNewValue();
+
+         Object[]  oldVal = (Object[]) valueChangeEvent.getOldValue();
+         ArrayList<Integer> selectedCustomers = new ArrayList<Integer>();      
+         for (int i = 0; i < newVal.length; i++) {
+             selectedCustomers.add(new Integer((String)newVal[i]));
+         }
+         AmxAttributeBinding customerList = (AmxAttributeBinding) AdfmfJavaUtilities
+                                       .evaluateELExpression("#{bindings.filterData}");
+
+         String selectedCustomerNames = "";
+
+         AmxIteratorBinding amxListIterator =  customerList.getIteratorBinding();
+         
+          BasicIterator      basicIterator = amxListIterator.getIterator();
+                
+          for (Integer customerIndx : selectedCustomers) {
+             basicIterator.setCurrentIndex(customerIndx.intValue());
+             SelectItem customer = (SelectItem) basicIterator.getDataProvider();
+             selectedCustomerNames = selectedCustomerNames+("'"+ customer.getValue()+"',");
+          }
+          
+        
+          
+        if (selectedCustomerNames.length() > 0) {
+           selectedCustomerNames = selectedCustomerNames.substring(0, selectedCustomerNames.length() - 1);
+        }
+      
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.filteredList}",selectedCustomerNames);
+        
+        
     }
 }
