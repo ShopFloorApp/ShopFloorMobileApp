@@ -217,6 +217,22 @@ public class TaskBO extends AEntity {
         map.put("tasknum", task.getTASKNUM());
         map.put("tasktype", task.getTASKTYPE());
         map.put("priority", task.getPRIORITY());
+        map.put("orgcode", task.getORGCODE());
+        map.put("taskline", task.getTASKLINE());
+        map.put("item", task.getITEM());
+        map.put("itemdesc", task.getITEMDESC());
+        map.put("qty", task.getQTY());
+        map.put("uom", task.getUOM());
+        map.put("subinv", task.getSUBINV());
+        map.put("locator", task.getLOCATOR());
+        map.put("status", task.getSTATUS());
+        map.put("creationdate", task.getCREATIONDATE());
+        map.put("destsubinv", task.getDESTSUBINV());
+        map.put("destlocator", task.getDESTLOCATOR());
+        map.put("employee", task.getEMPLOYEE());
+        map.put("startdate", task.getSTARTDATE());
+        map.put("enddate", task.getENDDATE());
+        map.put("username", task.getUSERNAME());
         return map;
     }
     
@@ -224,7 +240,22 @@ public class TaskBO extends AEntity {
         this.setTASKNUM(hashmap.get("tasknum")==null?"":hashmap.get("tasknum").toString());
         this.setTASKTYPE(hashmap.get("tasktype")==null?"":hashmap.get("tasktype").toString());
         this.setPRIORITY(hashmap.get("priority")==null?"":hashmap.get("priority").toString());
-
+        this.setTASKTYPE(hashmap.get("orgcode")==null?"":hashmap.get("orgcode").toString());
+        this.setPRIORITY(hashmap.get("taskline")==null?"":hashmap.get("taskline").toString());
+        this.setTASKTYPE(hashmap.get("item")==null?"":hashmap.get("item").toString());
+        this.setPRIORITY(hashmap.get("itemdesc")==null?"":hashmap.get("itemdesc").toString());
+        this.setTASKTYPE(hashmap.get("qty")==null?"":hashmap.get("qty").toString());
+        this.setPRIORITY(hashmap.get("uom")==null?"":hashmap.get("uom").toString());
+        this.setTASKTYPE(hashmap.get("subinv")==null?"":hashmap.get("subinv").toString());
+        this.setPRIORITY(hashmap.get("locator")==null?"":hashmap.get("locator").toString());
+        this.setTASKTYPE(hashmap.get("status")==null?"":hashmap.get("status").toString());
+        this.setPRIORITY(hashmap.get("creationdate")==null?"":hashmap.get("creationdate").toString());
+        this.setTASKTYPE(hashmap.get("destsubinv")==null?"":hashmap.get("destsubinv").toString());
+        this.setPRIORITY(hashmap.get("destlocator")==null?"":hashmap.get("destlocator").toString());
+        this.setTASKTYPE(hashmap.get("employee")==null?"":hashmap.get("employee").toString());
+        this.setPRIORITY(hashmap.get("startdate")==null?"":hashmap.get("startdate").toString());
+        this.setTASKTYPE(hashmap.get("enddate")==null?"":hashmap.get("enddate").toString());
+        this.setPRIORITY(hashmap.get("username")==null?"":hashmap.get("username").toString());
     }
 
 }
