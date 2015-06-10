@@ -152,6 +152,18 @@ public class JobOperationDC extends AViewObject {
                         jobOperationBO.setQtyRejected(jsObject2.get("QTYREJECTED").toString());
                         jobOperationBO.setCurrDept(jsObject2.get("CURRENTDEPT").toString());
                         jobOperationBO.setCurrOpSeq(jsObject2.get("CURRENTOPSEQ").toString());
+                        //Added by Ram to derive the Quantity to Return for Return Assembly Page
+                        if (Integer.parseInt(jsObject2.get("QTYCOMPLETED").toString()) > 0) {
+
+                            Integer qty2Return =
+                                (Integer.parseInt(jsObject2.get("QTYCOMPLETED").toString()) -
+                                 Integer.parseInt(jsObject2.get("QTY2MOVE").toString()));
+                            jobOperationBO.setQty2Return(qty2Return.toString());
+
+
+                        } else {
+                            jobOperationBO.setQty2Return("0");
+                        }
                         //End Changes
                         jobOpList.add(jobOperationBO);
                     }
@@ -221,7 +233,7 @@ public class JobOperationDC extends AViewObject {
                         status = jsObject.get("XSTATUS").toString();
                         message = jsObject.get("XMSG").toString();
                         trxResult = new TrxResult(status, message);
-                        String result= trxResult.getResult();
+                        String result = trxResult.getResult();
                         AdfmfJavaUtilities.setELValue("#{pageFlowScope.jobActionResult}", result);
                         return;
                     } catch (Exception e) {
@@ -231,7 +243,7 @@ public class JobOperationDC extends AViewObject {
             } else {
                 status = "F";
                 message = "Please select a Job action!";
-                
+
             }
         } catch (Exception ae) {
             status = "F";

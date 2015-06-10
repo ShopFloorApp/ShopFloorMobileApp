@@ -23,7 +23,8 @@ public class JobOperationsDC extends AViewObject {
     public JobOperationsBO[] getJobOperations() {
         RestCallerUtil restCallerUtil = new RestCallerUtil();
         JobOperationsBO[] jobOpsArray = null;
-        String orgCode = AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
+        String orgCode =
+            AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
         String jobOpsVal = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobOps}").toString();
         StringBuffer strPayload = new StringBuffer();
