@@ -28,21 +28,9 @@
                      <amx:commandLink id="cl12" action="cycleCountLOV">
                             <amx:outputHtml id="oh10" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>                            
                         </amx:commandLink>
-                     <amx:commandLink id="cl2" action="oppCount">
-                <amx:panelGroupLayout id="pgl333" layout="horizontal">
-                    <amx:outputHtml id="fwdArw" styleClass="fa fa-chevron-right fa-lg"/>
-                </amx:panelGroupLayout>
-                <amx:setPropertyListener id="spl3a" from="S" to="#{pageFlowScope.ccType}"
-                                                     type="action"/>
-            </amx:commandLink>
+                    
             
-             <amx:commandLink id = "c13">
-            <amx:showPopupBehavior id="spb22"  popupId="p2" type="action" decoration="anchor" 
-                                                   alignId="pp1" align="overlapMiddleCenter"/>
-                                                    
-            <amx:setPropertyListener id="sp3" from="" type="action"
-                                                     to="#{pageFlowScope.doneMsg}"/>
-        </amx:commandLink>
+        
             </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             </amx:panelFormLayout>
@@ -50,19 +38,35 @@
             </amx:panelLabelAndMessage>
             
         </amx:panelFormLayout>
-  </amx:panelPage>
-  <amx:popup id="p2" autoDismiss="true" rendered = "#{pageFlowScope.doneMsg == 'DoneMsg' ? true : false}">
-        <?audit suppress oracle.maf.warning-missing-shortDesc?>
-        <amx:panelGroupLayout id="pgl25" layout="horizontal" halign="center" valign="middle">
-            <amx:commandLink id="cl567"> <!--actionListener="#{pageFlowScope.UnloadTruckTxnBean.clearTxnVal}"-->
-                <amx:tableLayout id="tl8" halign="center" inlineStyle="margin-right: 20px;">
-                    <amx:rowLayout id="rl19">
-                        <amx:cellFormat id="cf27" halign="center">
-                            <amx:outputText id="oh965" value="#{pageFlowScope.countTxnMsg}"/>
-                        </amx:cellFormat>
+         <amx:facet name="footer">
+            <amx:tableLayout id="tl3C" halign="center" width="100%" inlineStyle="margin-top:6px;">
+                <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                <amx:rowLayout id="rl8">
+                    
+                    <amx:cellFormat id="cf13">
+                        <amx:commandLink id="cl3" 
+                                        action="oppCount">
+                            <amx:tableLayout id="tl5" halign="center">
+                                <amx:rowLayout id="rl12">
+                                    <amx:cellFormat id="cf22" halign="center">
+                                        <amx:outputHtml id="oh112" styleClass="fa fa-chevron-right fa-lg"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                                <amx:rowLayout id="rl13">
+                                    <amx:cellFormat id="cf23" halign="center">
+                                        <amx:outputHtml id="oh6" value="Go"
+                                                        inlineStyle="font-size:small;color:Gray;"/>
+                                    </amx:cellFormat>
+                                </amx:rowLayout>
+                            </amx:tableLayout> 
+                            <amx:setPropertyListener id="spl3a" from="S" to="#{pageFlowScope.ccType}"
+	                                                           type="action"/>
+                        </amx:commandLink>
+                    </amx:cellFormat>
                     </amx:rowLayout>
-                </amx:tableLayout>
-            </amx:commandLink>
-        </amx:panelGroupLayout>
-    </amx:popup>
+                    </amx:tableLayout>
+                    </amx:facet>
+                    
+  </amx:panelPage>
+
 </amx:view>
