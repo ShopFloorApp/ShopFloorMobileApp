@@ -34,6 +34,17 @@ public class JobOperationBO extends AEntity {
     private String qtyRejected;
     private String currDept;
     private String currOpSeq;
+    private String qty2Return;
+
+    public void setQty2Return(String qty2Return) {
+        String oldQty2Return = this.qty2Return;
+        this.qty2Return = qty2Return;
+        propertyChangeSupport.firePropertyChange("qty2Return", oldQty2Return, qty2Return);
+    }
+
+    public String getQty2Return() {
+        return qty2Return;
+    }
 
     public void setCurrOpSeq(String currOpSeq) {
         String oldCurrOpSeq = this.currOpSeq;
