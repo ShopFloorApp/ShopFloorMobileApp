@@ -46,12 +46,18 @@
             <amx:listItem id="li1" showLinkIcon="false">
                 <amx:tableLayout id="tl7" width="100%" inlineStyle="grid-row:auto;">
                     <amx:rowLayout id="rl8">
-                        <amx:cellFormat id="cf6" width="50%" halign="start">
+                        <amx:cellFormat id="cf6" width="50%" halign="start" valign="middle">
                             <amx:outputText value="#{row.TASKNUM}" id="ot7"
                                             inlineStyle="font-weight:bold;color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf14" width="50%">
+                        <amx:cellFormat id="cf14" width="50%" halign="end" valign="middle">
                             <amx:outputText value="#{row.PRIORITY}" id="ot7x"
+                                            inlineStyle="color:GrayText;font-size:small;"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                    <amx:rowLayout id="rl7">
+                        <amx:cellFormat id="cf17" halign="center">
+                            <amx:outputText value="#{row.ITEMDESC}" id="ot2"
                                             inlineStyle="color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -61,12 +67,6 @@
                         </amx:cellFormat>
                         <amx:cellFormat id="cf15" width="50%" halign="end">
                             <amx:outputText value="#{row.STATUS}" id="ot6x" inlineStyle="color:Gray;font-size:small;"/>
-                        </amx:cellFormat>
-                    </amx:rowLayout>
-                    <amx:rowLayout id="rl7">
-                        <amx:cellFormat id="cf17">
-                            <amx:outputText value="#{row.ITEMDESC}" id="ot2"
-                                            inlineStyle="color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>
