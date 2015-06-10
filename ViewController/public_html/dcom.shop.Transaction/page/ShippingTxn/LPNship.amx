@@ -14,38 +14,42 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary"/>
-        <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
-            <amx:panelLabelAndMessage label="Dock Door" id="plam1">
-                <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start" valign="baseline">
-                    <amx:inputText id="it1x" value="#{pageFlowScope.dockDoor}" hintText="Dock"/>
-                    <amx:commandLink id="cl4" action="dock">
-                        <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg"/>
-                    </amx:commandLink>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="LPN" id="plam2">
-                <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
-                    <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
-                                          inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;"
-                                          styleClass="pglBorder">
-                        <amx:spacer id="s2" width="10"/>
-                        <amx:inputText id="it12" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"/>
-                        <amx:commandLink id="cl3" action="lpn">
-                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
-                            <amx:setPropertyListener id="spl4" to="#{pageFlowScope.LpnLovField}" type="action"
-                                                     from="#{'SHIP_LPN'}"/>
-                            <amx:setPropertyListener id="spl3" type="action" from="#{'LPNTrxn'}"
-                                                     to="#{pageFlowScope.LpnLovPage}"/>
+        <amx:validationGroup id="vg1">
+            <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
+                <amx:panelLabelAndMessage label="Dock Door" id="plam1">
+                    <amx:panelGroupLayout id="pgl2" layout="horizontal" halign="start" valign="baseline">
+                        <amx:inputText id="it1x" value="#{pageFlowScope.dockDoor}" hintText="Dock" required="true"
+                                       showRequired="true" label="Dock Door" simple="true"/>
+                        <amx:commandLink id="cl4" action="dock">
+                            <amx:outputHtml id="oh4" styleClass="fa fa-search fa-lg"/>
                         </amx:commandLink>
-                        <amx:spacer id="s52" width="10"/>
                     </amx:panelGroupLayout>
-                    <amx:spacer id="s1" width="30"/>
-                    <amx:commandLink id="cl2">
-                        <amx:outputHtml id="oh2" styleClass="fa fa-barcode fa-lg"/>
-                    </amx:commandLink>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-        </amx:panelFormLayout>
+                </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage label="LPN" id="plam2">
+                    <amx:panelGroupLayout id="pgl1" layout="horizontal" halign="start" valign="baseline">
+                        <amx:panelGroupLayout id="pgl3" layout="horizontal" halign="start" valign="baseline"
+                                              inlineStyle="border-left-color:Blue; border-left-style:inset; border-right-style:inset; border-top-style:inset; border-bottom-style:inset; border-right-color:Blue; border-top-color:Blue; border-bottom-color:Blue; border-left-width:thin; border-right-width:thin; border-top-width:thin; border-bottom-width:thin;"
+                                              styleClass="pglBorder">
+                            <amx:spacer id="s2" width="10"/>
+                            <amx:inputText id="it12" value="#{pageFlowScope.searchLpnKeyword}" hintText="LPN"
+                                           required="true" showRequired="true" label="LPN" simple="true"/>
+                            <amx:commandLink id="cl3" action="lpn">
+                                <amx:outputHtml id="oh3" styleClass="fa fa-search fa-sm"/>
+                                <amx:setPropertyListener id="spl4" to="#{pageFlowScope.LpnLovField}" type="action"
+                                                         from="#{'SHIP_LPN'}"/>
+                                <amx:setPropertyListener id="spl3" type="action" from="#{'LPNTrxn'}"
+                                                         to="#{pageFlowScope.LpnLovPage}"/>
+                            </amx:commandLink>
+                            <amx:spacer id="s52" width="10"/>
+                        </amx:panelGroupLayout>
+                        <amx:spacer id="s1" width="30"/>
+                        <amx:commandLink id="cl2">
+                            <amx:outputHtml id="oh2" styleClass="fa fa-barcode fa-lg"/>
+                        </amx:commandLink>
+                    </amx:panelGroupLayout>
+                </amx:panelLabelAndMessage>
+            </amx:panelFormLayout>
+        </amx:validationGroup>
         <amx:facet name="footer">
             <amx:tableLayout id="tl1" width="100%">
                 <amx:rowLayout id="rl2">
@@ -65,6 +69,7 @@
                                     </amx:cellFormat>
                                 </amx:rowLayout>
                             </amx:tableLayout>
+                            <amx:validationBehavior id="vb1" group="vg1"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf6" width="25%" halign="center">
