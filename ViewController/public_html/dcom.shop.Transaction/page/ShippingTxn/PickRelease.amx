@@ -24,15 +24,11 @@
         </amx:facet>
         <amx:validationGroup id="vg1">
             <amx:panelFormLayout id="pfl1" labelPosition="topStart" fieldHalign="start">
-                <amx:panelLabelAndMessage label="Rule Name" id="plam4" showRequired="true">
-                    <amx:panelGroupLayout id="pgl3">
-                        <amx:selectOneChoice value="#{pageFlowScope.pickRule}" id="soc2" showRequired="true"
-                                             required="true" label="Rule Name" simple="true">
-                            <amx:selectItem label="Choose a Rule" id="si1"/>
-                            <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
-                        </amx:selectOneChoice>
-                    </amx:panelGroupLayout>
-                </amx:panelLabelAndMessage>
+                <amx:selectOneChoice value="#{pageFlowScope.pickRule}" id="soc2" showRequired="true" required="true"
+                                     label="Rule Name" simple="false">
+                    <amx:selectItem label="Choose a Rule" id="si1"/>
+                    <amx:selectItems value="#{bindings.ruleName.items}" id="si2"/>
+                </amx:selectOneChoice>
                 <amx:panelLabelAndMessage label="Order Number" id="plam5">
                     <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
                         <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"
