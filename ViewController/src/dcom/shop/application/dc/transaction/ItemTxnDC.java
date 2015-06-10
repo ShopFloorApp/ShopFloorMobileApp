@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import java.text.ParseException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -166,22 +168,29 @@ public class ItemTxnDC extends SyncUtils {
             int trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnTrxnId}");
             String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
             if ("".equals(itemNumber) || itemNumber == null)
-                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                          "showAlert", new Object[] {
-                                                                          "Failure", "Please Enter Item Number!", "ok"
-                });
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.errMsg}", "Please Enter Item Number!");
+         //       AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+           //                                                               "showAlert", new Object[] {
+             //                                                             "Failure", "Please Enter Item Number!", "ok"
+               // });
             else {
                 String itemName = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.description}");
                 String uom = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.uom}");
                 String qty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}");
+                try{
+                
                 if ("".equals(qty) || qty == null)
-                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                              "showAlert", new Object[] {
-                                                                              "Failure", "Please Enter Quantity!", "ok"
-                    });
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.errMsg}", "Please Enter Quantity!");
+               //     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                 //                                                             "showAlert", new Object[] {
+                  //                                                            "Failure", "Please Enter Quantity!", "ok"
+                   // });
                 else {
+                    Integer.parseInt(qty);
+                    
                     Integer quantity =
                         (Integer) Integer.parseInt((String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.quantity}"));
+                    
                     String trxType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.CallingPage}");
                     String serialControl =
                         (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
@@ -207,7 +216,10 @@ public class ItemTxnDC extends SyncUtils {
 
                     providerChangeSupport.fireProviderRefresh("items");
                 }
-            }
+            }catch(Exception e) {
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.errMsg}", "Please Enter Quantity in numbers only!");
+                }
+                }
         }
 
     }

@@ -5,11 +5,15 @@ import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 
+import javax.el.MethodExpression;
 import javax.el.ValueExpression;
 
+import oracle.adfmf.amx.event.ValueChangeEvent;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
@@ -23,7 +27,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class LPNDC {
-    List s_LpnList = new ArrayList();
+    public static List s_LpnList = new ArrayList();
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
@@ -110,6 +114,7 @@ public class LPNDC {
 
                     lpnItems.setWeightUom((jsObject2.get("WEIGHTUOM").toString()));
                     lpnItems.setLpn((jsObject2.get("LPN").toString()));
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", (jsObject2.get("LPN").toString())); 
                     lpnItems.setLpnContext((jsObject2.get("LPNCONTEXT").toString()));
                     lpnItems.setSubinv((jsObject2.get("SUBINV").toString()));
                     lpnItems.setLocator((jsObject2.get("LOCATOR").toString()));

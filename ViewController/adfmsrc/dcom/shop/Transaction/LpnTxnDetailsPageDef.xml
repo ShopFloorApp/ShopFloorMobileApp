@@ -88,5 +88,8 @@
     <methodAction id="callOnHandService" RequiresUpdateModel="true" Action="invokeMethod" MethodName="callOnHandService"
                   IsViewObjectMethod="false" DataControl="OnHandSearchDC"
                   InstanceName="data.OnHandSearchDC.dataProvider"/>
+    <methodAction id="checkLpnExists" RequiresUpdateModel="true" Action="invokeMethod" MethodName="checkLpnExists"
+                  IsViewObjectMethod="false" DataControl="LPNDC" InstanceName="data.LPNDC.dataProvider"
+                  ReturnName="data.LPNDC.methodResults.checkLpnExists_LPNDC_dataProvider_checkLpnExists_result"/>
   </bindings>
 </pageDefinition>

@@ -126,12 +126,16 @@ public class LpnTxnDC extends SyncUtils {
         String errMsg = null;
         String networkStatus =
             (String) AdfmfJavaUtilities.evaluateELExpression("#{deviceScope.hardware.networkStatus}");
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.errMsg}", "");
         String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
         if (!("MERGE_FROM".equals(lpnPage))) {
             ItemTxnDC item = new ItemTxnDC();
             String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
             if (!("".equals(itemNumber)) && itemNumber != null && !("null".equals(itemNumber)))
                 item.InsertItems(); //Inserting current item on the page
+            if (!("PACK_FROM".equals(lpnPage))){
+                item.InsertItems(); 
+            }
         }
         LpnTxnBO lpnTxn = new LpnTxnBO();
 
@@ -145,25 +149,35 @@ public class LpnTxnDC extends SyncUtils {
          * Below block is for validation
          */
         if (("".equals(fromLpn.trim()) || fromLpn == null)) {
-            errMsg = "From LPN:"+ (String.format("%0$" + 70 + "s", "You must enter a value. ")+"\n");
+            errMsg = "From LPN:"  + "    You must enter a value. " +"\n"; //(String.format("%0$" + 26 + "s", "You must enter a value. ") + "\n");
         }
         if ("PACK_FROM".equals(lpnPage) || "UNPACK_FROM".equals(lpnPage)) {
 
             if ("0".equals(subinv) || subinv == null) {
-                errMsg = (errMsg == null ? "" : errMsg) + "Subinventory:"+ (String.format("%0$" + 64 + "s", "You must enter a value. ")+"\n");
+                errMsg =
+                    (errMsg == null ? "" : errMsg) + "Subinventory:" + "You must enter a value. " +"\n";
+                    //(String.format("%0$" + 40 + "s", "You must enter a value. ") + "\n"); 
             }
             if ("0".equals(locator) || locator == null) {
-                errMsg = (errMsg == null ? "" : errMsg) + "Locator:"+ (String.format("%0$" + 75 + "s", "You must enter a value. ")+"\n");
+                errMsg =
+                    (errMsg == null ? "" : errMsg) + "Locator:" +
+                    (String.format("%0$" + 33 + "s", "You must enter a value. ") + "\n");
             }
         }
-       /* if (!("PACK_FROM".equals(lpnPage))) {
+        String error = AdfmfJavaUtilities.getELValue("#{pageFlowScope.errMsg}").toString();
+        /* if (!("PACK_FROM".equals(lpnPage))) {
             if ("".equals(toLpn) || toLpn == null) {
                 errMsg = (errMsg == null ? "" : errMsg) + "To LPN:"+ (String.format("%0$" + 76 + "s", "You must enter a value. ")+"\n");
             }
         }*/
 
-
-        if (errMsg != null) {
+        if(!("".equals(error))){
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error", error, "ok"
+            });
+            return null;
+        } else{
+            if (errMsg != null  ) {
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
                                                                       "Error", errMsg, "ok"
             });
@@ -179,6 +193,7 @@ public class LpnTxnDC extends SyncUtils {
             SyncUtils syncUtils = new SyncUtils();
             syncUtils.insertSqlLiteTable(LpnTxnBO.class, s_lpnTrxns);
             return ProcessWS(trxnId);
+        }
         }
 
     }
@@ -217,11 +232,11 @@ public class LpnTxnDC extends SyncUtils {
                 } else {
                     String lpn = jsObject.get("XLPN").toString();
                     String lpnPage = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnPage}");
-                    if("SPLIT_FROM".equals(lpnPage)){
-                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", lpn);    
-                    }else
-                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", lpn);
-                    
+                    if ("SPLIT_FROM".equals(lpnPage)) {
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchToLpnKeyword}", lpn);
+                    } else
+                        AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", lpn);
+
                     AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                               "showAlert", new Object[] {
                                                                               "Success", "LPN " + lpn + " Generated!",

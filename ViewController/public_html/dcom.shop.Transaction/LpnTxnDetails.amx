@@ -60,7 +60,8 @@
                     <amx:panelGroupLayout layout="horizontal"
                                           inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
                                           id="pgl1">
-                        <amx:inputText hintText="LPN" id="it11" value="#{pageFlowScope.searchLpnKeyword}"
+                        <amx:inputText hintText="LPN" id="it11"
+                                       valueChangeListener="#{StateListenerBean.FromLpnValueChange}" value="#{pageFlowScope.searchLpnKeyword}"
                                        inlineStyle="text-align:left;"/>
                         <amx:commandLink id="cl1" action="#{StateListenerBean.validateAndNavigateLpnLov}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>

@@ -1,8 +1,10 @@
 package dcom.shop.application.mobile;
 
+import dcom.shop.application.dc.LPNDC;
 import dcom.shop.application.dc.LocatorDC;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +22,7 @@ import oracle.adfmf.javax.faces.model.SelectItem;
 public class StateListener {
     public StateListener() {
     }
-
+    private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public void FromSubinvValueChange(ValueChangeEvent valueChangeEvent) {
@@ -386,15 +388,15 @@ public class StateListener {
         //ashish
         ValueExpression ve = null;
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ItemLovPage}", String.class);
-        String callingPg =(String)ve.getValue(AdfmfJavaUtilities.getAdfELContext());
-        
-        if(callingPg.equals("CountTrxn")){
+        String callingPg = (String) ve.getValue(AdfmfJavaUtilities.getAdfELContext());
+
+        if (callingPg.equals("CountTrxn")) {
             MethodExpression me = AdfmfJavaUtilities.getMethodExpression("#{bindings.getQty.execute}", Object.class, new Class[] {
                                                                          });
             me.invoke(AdfmfJavaUtilities.getAdfELContext(), new Object[] { });
         }
-        
-        
+
+
     }
 
     public void ToLpnValueChange(ActionEvent actionEvent) {
@@ -463,8 +465,22 @@ public class StateListener {
                                                                       "Please enter atleast 3 characters for LPN.", "Ok"
             });
             return "";
-        } else
-            return "lpnLOV";
+        } else {
+            LPNDC lpnDc = new LPNDC();
+            lpnDc.getFromLpns();
+            List lpnsList = lpnDc.s_LpnList;
+            if (lpnsList.size() == 0) {
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                          "showAlert", new Object[] {
+                                                                          "Error", "No LPN Found.", "Ok"
+                });
+                return "";
+            } else if (lpnsList.size() == 1) {
+                return "";
+            } else
+                return "lpnLOV";
+        }
     }
 
     public String validateAndNavigateToLpnLov() {
@@ -482,6 +498,19 @@ public class StateListener {
             return "";
         } else
             return "lpnLOV";
+    }
+
+    public void FromLpnValueChange(ValueChangeEvent valueChangeEvent) {
+        String lpnPage = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.LpnPage}");
+        if ("UNPACK_FROM".equals(lpnPage)) {
+            callJS("cl1");
+        }
+
+    }
+
+    public void callJS(String btn) {
+        String featureID = AdfmfJavaUtilities.getFeatureId();
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(featureID, "showPopup", new Object[] { btn });
     }
 
 

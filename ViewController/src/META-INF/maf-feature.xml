@@ -56,6 +56,7 @@
                     <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i17"/>
                     <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i20"/>
                     <adfmf:include type="StyleSheet" file="resources/css/expandcollapse.css" id="i21"/>
+                    <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i23"/>
                 </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
@@ -70,7 +71,8 @@
                     <adfmf:include type="JavaScript" file="plugins/BarcodeScanner/iOS/js/barcodescanner.js" id="i12"/>
                     <adfmf:include type="JavaScript" file="resources/js/expandCollapse.js" id="i13"/>
                       <adfmf:include type="JavaScript" file="resources/js/Alert.js" id="i18"/>
-              </adfmf:includes>
+                    <adfmf:include type="JavaScript" file="resources/js/customEvent.js" id="i24"/>
+                </adfmf:includes>
             </adfmf:amx>
         </adfmf:content>
     </adfmf:feature>
