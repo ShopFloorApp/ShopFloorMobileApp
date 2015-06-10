@@ -21,7 +21,7 @@
                              inlineStyle="border-top-color:ButtonHighlight; border-top-style:solid; border-top-width:thin;">
                 <amx:rowLayout id="rl2">
                     <amx:cellFormat id="cf4" width="50%" halign="center" valign="middle">
-                        <amx:commandLink id="cl5">
+                        <amx:commandLink id="cl5" inlineStyle="text-decoration:none;">
                             <amx:outputText value="Sort" id="ot3"/>
                             <amx:showPopupBehavior id="spb1" popupId="p1" type="action" align="bottomCenter"
                                                    alignId="pp1"/>
@@ -30,7 +30,7 @@
                     <amx:cellFormat id="cf5" width="50%" halign="center"
                                     inlineStyle="border-left-style:solid; border-left-color:ButtonHighlight; border-left-width:thin;"
                                     valign="middle">
-                        <amx:commandLink id="cl6">
+                        <amx:commandLink id="cl6" inlineStyle="text-decoration:none">
                             <amx:outputText value="Filter" id="ot9"/>
                             <amx:showPopupBehavior id="spb2" popupId="p2" type="action" align="bottomEnd"
                                                    alignId="pp1"/>
@@ -43,16 +43,16 @@
                       selectedRowKeys="#{bindings.tasks.collectionModel.selectedRow}"
                       selectionListener="#{bindings.tasks.collectionModel.makeCurrent}" showMoreStrategy="autoScroll"
                       bufferStrategy="viewport" id="lv1">
-            <amx:listItem id="li1">
-                <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                <amx:tableLayout id="tl7" width="100%">
+            <amx:listItem id="li1" showLinkIcon="false">
+                <amx:tableLayout id="tl7" width="100%" inlineStyle="grid-row:auto;">
                     <amx:rowLayout id="rl8">
                         <amx:cellFormat id="cf6" width="50%" halign="start">
                             <amx:outputText value="#{row.TASKNUM}" id="ot7"
-                                            inlineStyle="font-weight:bold;color:GrayText;"/>
+                                            inlineStyle="font-weight:bold;color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf14" width="50%" halign="end">
-                            <amx:outputText value="#{row.PRIORITY}" id="ot7x" inlineStyle="color:GrayText;"/>
+                        <amx:cellFormat id="cf14" width="50%">
+                            <amx:outputText value="#{row.PRIORITY}" id="ot7x"
+                                            inlineStyle="color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl9">
