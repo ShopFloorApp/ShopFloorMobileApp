@@ -22,9 +22,10 @@
         <amx:panelFormLayout id="pfl1" labelPosition="topStart">
             <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it8"/>
             <amx:panelLabelAndMessage label="Available" id="plam5">
-                <amx:outputText value="#{pageFlowScope.availableQty}" id="ot9"/>
+                <amx:outputText value="#{pageFlowScope.qty2Move}" id="ot9"/>
             </amx:panelLabelAndMessage>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it10"/>
+            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it10"
+                           hintText="#{pageFlowScope.qty2Move}"/>
             <amx:inputText value="#{bindings.kanban.inputValue}" label="Kanban Num" id="it6"/>
             <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
                                  valueChangeListener="#{pageFlowScope.DispatchBean.subInvChangeListner}">

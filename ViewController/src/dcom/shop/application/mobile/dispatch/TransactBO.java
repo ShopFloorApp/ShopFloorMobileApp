@@ -359,7 +359,6 @@ public class TransactBO {
         return dept;
     }
 
-
     public void setFromOpSeq(String fromOpSeq) {
         //Need to update FromOpCode and fromDept
         OpSeqDC opSeqDC = new OpSeqDC();
@@ -523,12 +522,24 @@ public class TransactBO {
         if (getDept() != null) {
             payload.append("\"DEPT\": \"" + getDept() + "\",");
         }
+        if (getFromStep() != null) {
+            payload.append("\"FROMSTEP\": \"" + getFromStep() + "\",");
+        }
+        if (getToStep() != null) {
+            payload.append("\"TOSTEP\": \"" + getToStep() + "\",");
+        }
+
         if (getFromOpSeq() != null) {
             payload.append("\"FROMOPSEQ\": \"" + getFromOpSeq() + "\",");
         }
         if (getToOpSeq() != null) {
             payload.append("\"TOOPSEQ\": \"" + getToOpSeq() + "\",");
         }
+
+        if (getOverComplFlag() != null) {
+            payload.append("\"OVERCOMPLFLAG\": \"" + getOverComplFlag() + "\",");
+        }
+
         String createdBy = AdfmfJavaUtilities.evaluateELExpression("#{securityContext.userName}").toString();
         if (createdBy != null) {
             payload.append("\"CREATEDBY\": \"" + createdBy + "\",");
@@ -547,15 +558,6 @@ public class TransactBO {
         }
         if (getScrapQty() != null) {
             payload.append("\"SCRAPQTY\": \"" + getScrapQty() + "\",");
-        }
-        if (getFromStep() != null) {
-            payload.append("\"FROMSTEP\": \"" + getFromStep() + "\",");
-        }
-        if (getToStep() != null) {
-            payload.append("\"TOSTEP\": \"" + getToStep() + "\",");
-        }
-        if (getOverComplFlag() != null) {
-            payload.append("\"OVERCOMPLFLAG\": \"" + getOverComplFlag() + "\",");
         }
         if (getSerials() != null) {
             payload.append("\"LOTS\": \"" + getSerialPayload() + "\",");
