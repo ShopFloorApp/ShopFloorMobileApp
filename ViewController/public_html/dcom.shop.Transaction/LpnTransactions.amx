@@ -19,7 +19,7 @@
         </amx:facet>
         <amx:listView var="row" id="lv1" rendered="true" inlineStyle="vertical-align:middle;">
             <!--actionListener="#{bindings.ProcessWS.execute}"-->
-            <amx:listItem id="li4" action="unpack" showLinkIcon="false">
+            <amx:listItem id="li4" action="unpack" actionListener="#{pageFlowScope.TransactionUtilityBean.getLocation}" showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Pack LPN" id="ot8"/>
                 <amx:setPropertyListener from="PACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp20"/>
@@ -43,7 +43,7 @@
                  <amx:setPropertyListener from="true" type="action" to="#{pageFlowScope.renderUomChoiceList}"
                                          id="spl24"/>
             </amx:listItem>
-            <amx:listItem id="li3" action="unpack" showLinkIcon="false">
+            <amx:listItem id="li3" action="unpack" actionListener="#{pageFlowScope.TransactionUtilityBean.getLocation}"  showLinkIcon="false">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:outputText value="Unpack LPN" id="ot4"/>
                 <amx:setPropertyListener from="UNPACK_FROM" type="action" to="#{pageFlowScope.LpnPage}" id="sp10"/>

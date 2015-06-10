@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="LpnTransactionsPageDef"
+                Package="dcom.shop.Transaction">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="startLocationMonitor" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="startLocationMonitor" IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider">
+      <NamedData NDName="enableHighAccuracy" NDValue="true" NDType="boolean"/>
+      <NamedData NDName="updateInterval" NDValue="1000" NDType="int"/>
+      <NamedData NDName="locationListener" NDValue="applicationScope.GPSLocatorBean.locationUpdated"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

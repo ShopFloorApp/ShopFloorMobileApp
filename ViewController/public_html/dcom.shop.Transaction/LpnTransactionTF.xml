@@ -12,6 +12,11 @@
       <managed-bean-class>dcom.shop.application.mobile.StateListener</managed-bean-class>
       <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name>TransactionUtilityBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.bean.TransactionUtilityBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="LpnTransactions">
       <page>/dcom.shop.Transaction/LpnTransactions.amx</page>
     </view>
