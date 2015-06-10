@@ -16,37 +16,39 @@
         <amx:facet name="secondary">
             <amx:commandButton id="cb2" rendered="false"/>
         </amx:facet>
-        <amx:panelFormLayout id="pf1" labelPosition="topStart">
-            <amx:panelLabelAndMessage label="Delivery Number" inlineStyle="text-align:center;" id="plam33">
-                <amx:panelGroupLayout id="pgl1" layout="horizontal">
-                    <amx:inputText hintText="Delivery Number" id="it1" value="#{pageFlowScope.dlvNumber}"
-                                   required="true"/>
-                    <amx:commandLink id="cb3" action="delvLov">
-                        <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                    </amx:commandLink>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-            <amx:selectOneChoice value="#{pageFlowScope.shipMthCode}" label="Ship Method"
-                                 id="soc1">
-                <amx:selectItem label="Choose" value="0" id="si10"/>
-                <amx:selectItems value="#{bindings.shipMethod.items}" id="si1"/>
-            </amx:selectOneChoice>
-            <!--amx:panelLabelAndMessage label="Ship Method" inlineStyle="text-align:center;" id="plam6">
+        <amx:validationGroup id="vg1">
+            <amx:panelFormLayout id="pf1" labelPosition="topStart">
+                <amx:panelLabelAndMessage label="Delivery Number" inlineStyle="text-align:center;" id="plam33">
+                    <amx:panelGroupLayout id="pgl1" layout="horizontal">
+                        <amx:inputText hintText="Delivery Number" id="it1" value="#{pageFlowScope.dlvNumber}"
+                                       required="true" label="Delivery Number" simple="true" showRequired="true"/>
+                        <amx:commandLink id="cb3" action="delvLov">
+                            <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:commandLink>
+                    </amx:panelGroupLayout>
+                </amx:panelLabelAndMessage>
+                <amx:selectOneChoice value="#{pageFlowScope.shipMthCode}" label="Ship Method" id="soc1"
+                                     showRequired="true" required="true">
+                    <amx:selectItem label="Choose" id="si10"/>
+                    <amx:selectItems value="#{bindings.shipMethod.items}" id="si1"/>
+                </amx:selectOneChoice>
+                <!--amx:panelLabelAndMessage label="Ship Method" inlineStyle="text-align:center;" id="plam6">
                 <amx:panelGroupLayout id="pgl3">
                     <amx:inputText hintText="Ship Method" id="it2" value="#{pageFlowScope.shipMthCode}"/>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage-->
-            <amx:panelLabelAndMessage label="WayBill" inlineStyle="text-align:center;" id="plam7">
-                <amx:panelGroupLayout id="pgl4">
-                    <amx:inputText hintText="WayBill" id="it3" value="#{pageFlowScope.waybill}"/>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Vehicle Number" inlineStyle="text-align:center;" id="plam8">
-                <amx:panelGroupLayout id="pgl5">
-                    <amx:inputText hintText="Vehicle Number" id="it4" value="#{pageFlowScope.vehicleNumber}"/>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-        </amx:panelFormLayout>
+                <amx:panelLabelAndMessage label="WayBill" inlineStyle="text-align:center;" id="plam7">
+                    <amx:panelGroupLayout id="pgl4">
+                        <amx:inputText hintText="WayBill" id="it3" value="#{pageFlowScope.waybill}"/>
+                    </amx:panelGroupLayout>
+                </amx:panelLabelAndMessage>
+                <amx:panelLabelAndMessage label="Vehicle Number" inlineStyle="text-align:center;" id="plam8">
+                    <amx:panelGroupLayout id="pgl5">
+                        <amx:inputText hintText="Vehicle Number" id="it4" value="#{pageFlowScope.vehicleNumber}"/>
+                    </amx:panelGroupLayout>
+                </amx:panelLabelAndMessage>
+            </amx:panelFormLayout>
+        </amx:validationGroup>
         <!--amx:commandButton text="Ship" id="cb6" actionListener="#{pageFlowScope.QuickShipUtilBean.callShip}"/>
       <amx:commandButton text="Back Order" id="cb5" actionListener="#{pageFlowScope.QuickShipUtilBean.callBackOrder}"/>
       <amx:commandButton text="Cancel" id="cb4"/-->
@@ -71,6 +73,7 @@
                             </amx:tableLayout>
                             <!--amx:showPopupBehavior id="spb1" popupId="p1" type="action" decoration="anchor"
                                                    alignId="cl2"/-->
+                            <amx:validationBehavior id="vb1" group="vg1"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                     <amx:cellFormat id="cf13">
@@ -90,6 +93,7 @@
                             </amx:tableLayout>
                             <!--amx:showPopupBehavior id="spb2" popupId="p1" type="action" decoration="anchor"
                                                    alignId="pp1" align="overlapMiddleCenter"/-->
+                            <amx:validationBehavior id="vb2" group="vg1"/>
                         </amx:commandLink>
                     </amx:cellFormat>
                 </amx:rowLayout>
