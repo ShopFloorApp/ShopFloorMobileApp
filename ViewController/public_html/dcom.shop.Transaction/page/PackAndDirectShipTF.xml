@@ -17,6 +17,11 @@
       <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>
       <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__29">
+      <managed-bean-name>PackAndDirectShipBean</managed-bean-name>
+      <managed-bean-class>dcom.shop.Transaction.page.bean.PackAndDirectShipBean</managed-bean-class>
+      <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
     <view id="PackAndDirectShip">
       <page>/dcom.shop.Transaction/page/ShippingTxn/PackAndDirectShip.amx</page>
     </view>
@@ -48,6 +53,9 @@
     </view>
     <view id="SerialEntry">
       <page>/page/SerialEntry.amx</page>
+    </view>
+    <view id="DeliveryPG">
+      <page>/dcom.shop.Transaction/page/ShippingTxn/DeliveryPG.amx</page>
     </view>
     <control-flow-rule id="__1">
       <from-activity-id>PackAndDirectShip</from-activity-id>
@@ -82,6 +90,10 @@
       <control-flow-case id="__23">
         <from-outcome>SerialEntry</from-outcome>
         <to-activity-id>SerialEntry</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__30">
+        <from-outcome>DeliveryPG</from-outcome>
+        <to-activity-id>DeliveryPG</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__3">

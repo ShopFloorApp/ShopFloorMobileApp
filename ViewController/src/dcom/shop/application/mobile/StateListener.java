@@ -263,7 +263,7 @@ public class StateListener {
 
     public void ClearPackDirectShipPage(ActionEvent actionEvent) {
         // Add event code here...
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.dockDorr}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.dockDoor}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
 

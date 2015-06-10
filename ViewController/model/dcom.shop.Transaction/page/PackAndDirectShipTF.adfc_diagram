@@ -191,7 +191,7 @@
       <property
          name="fromsrcid">__3</property>
       <property
-         name="sdm:polyPoints">R46,103.26044,271.94824,132.43745,887.44824,R50</property>
+         name="sdm:polyPoints">R46,103.25907,271.94824,132.44759,883.94824,R46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -247,7 +247,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">R58,139.60555,894.44824,98.009766,74.94824,R54</property>
+         name="sdm:polyPoints">R54,139.61653,890.94824,98.009766,74.94824,R54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -261,7 +261,7 @@
       <property
          name="fromsrcid">__26</property>
       <property
-         name="sdm:polyPoints">R50,96.5,683.44824,117.69141,873.44824,R34</property>
+         name="sdm:polyPoints">R50,96.5,683.44824,117.69141,869.94824,R30</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -402,5 +402,30 @@
          name="fromsrcid">__1</property>
       <property
          name="sdm:polyPoints">T61,83.69141,832.8381,63.515625,533.44824,B56</property>
+   </ControlFlowCase>
+   <View
+      id="View30">
+      <property
+         name="activityId">DeliveryPG</property>
+      <property
+         name="page">/dcom.shop.Transaction/page/ShippingTxn/DeliveryPG.amx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>DeliveryPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">928.2988</property>
+      <property
+         name="x">318.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase31"
+      from="View39"
+      to="View30">
+      <property
+         name="fromOutcome">DeliveryPG</property>
+      <property
+         name="sdm:polyPoints">R70,117.69141,904.94824,277.0,927.94824,L50</property>
    </ControlFlowCase>
 </SDM>

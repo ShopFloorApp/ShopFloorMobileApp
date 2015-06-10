@@ -53,6 +53,18 @@ public class RestURI {
     public static String PostQuickShipURI() {
         return QUICK_SHIP_URI;
     }
+    
+    private static final String PACK_URI = "/webservices/rest/DCOMShip/pack/";
+    
+    public static String PostPackURI() {
+        return PACK_URI;
+    }
+    
+    private static final String DIRECT_SHIP_URI = "/webservices/rest/DCOMShip/directship/";
+    
+    public static String PostDirectShipURI() {
+        return DIRECT_SHIP_URI;
+    }
 
     private static final String MTLTXN_INQUIRY_URI = "/webservices/rest/DCOMInquiry/getmtltxn/";
 

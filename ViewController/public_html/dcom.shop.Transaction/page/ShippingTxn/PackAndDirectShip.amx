@@ -273,14 +273,14 @@
                 </amx:tableLayout>
             </amx:commandLink>
             <amx:spacer id="s31" width="20"/>
-            <amx:commandLink id="cl16">
+            <amx:commandLink id="cl16" actionListener="#{PackAndDirectShipBean.callPackService}" action="DeliveryPG">
                 <amx:tableLayout id="tl4" inlineStyle="background-color:transparent;">
                     <amx:rowLayout id="rl4">
                         <amx:cellFormat id="cf4">
                             <amx:outputHtml id="oh9" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;"/>
                         </amx:cellFormat>
                         <amx:cellFormat id="cf6">
-                            <amx:outputText value="Pack and Ship" id="ot2"/>
+                            <amx:outputText value="Pack" id="ot2"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                 </amx:tableLayout>

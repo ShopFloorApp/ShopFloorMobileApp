@@ -55,11 +55,31 @@ public class Test {
                        "                   \"PORDER\": \"\",\n" +
                     "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         
-        payload =   "{\"x\": {\"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/inv/rest/DCOMTask/header\",\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\"RespApplication\": \"ONT\",\"SecurityGroup\": \"STANDARD\",\n" +
-                    "\"NLSLanguage\": \"AMERICAN\",\"Org_Id\": \"82\"},\"InputParameters\": {\"PTASK\": {\"ORGCODE\": \"100\",\"UNRELEASED\": \"\"}}\n" + "}\n" + "}";
+        payload = "{\"x\":\n" + 
+        "{\n" + 
+        "   \"RESTHeader\": {\"Responsibility\": \"ORDER_MGMT_SUPER_USER\",\n" + 
+        "                  \"RespApplication\": \"ONT\",\n" + 
+        "                  \"SecurityGroup\": \"STANDARD\",\n" + 
+        "                  \"NLSLanguage\": \"AMERICAN\",\n" + 
+        "                  \"Org_Id\": \"82\"\n" + 
+        "                 },\n" + 
+        "   \"InputParameters\": \n" + 
+        "      {\"PPACK\": {\"DOCKDOOR\": \""+"1213"
+                  +"\",\"LPN\": \""+"1546"
+                  +"\",\"SUBINV\": \""+"subInventory"
+                  +"\",\"LOCATOR\": \""+"locator"
+                  +"\",\"ITEM\": \""+"12345"
+                  +"\",\"QTY\": \""+"2"
+                  +"\",\"ORDERNUM\": \""+"987"
+                  +"\",\"LINENUM\": \""+"1"
+                  +"\",\"LOTS\": \""+null
+                  +"\",\"SERIALS\": \""+null
+                  +"\"}}\n" + 
+        "}\n" + 
+        "}";
         
-        //System.out.println("payload: "+payload);
-        
+        System.out.println("payload: "+payload);
+        /*
         TaskBO[] sTask = getTasks();
         
         //s_list.clear();
@@ -69,7 +89,7 @@ public class Test {
         for(int i=0;i<s_list.size();i++){
                 System.out.println("SList-"+i+":"+sTask[i].getTASKNUM()+"-"+sTask[i].getTASKTYPE());
             }
-        
+        */
         
     }
     

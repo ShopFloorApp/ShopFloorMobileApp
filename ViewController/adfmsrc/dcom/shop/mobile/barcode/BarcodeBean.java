@@ -51,8 +51,10 @@ public class BarcodeBean {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.deliveryNumber}", barcodeResult);
         }else if ("TaskId".equals(barCodeField)) {
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.taskId}", barcodeResult);
+        }else if ("ShipMethod".equals(barCodeField)) {
+            AdfmfJavaUtilities.setELValue("#{pageFlowScope.SHIPMETHOD}", barcodeResult);
         }
-
+        
         propertyChangeSupport.firePropertyChange("barcodeResult", oldBarcodeResult, barcodeResult);
     }
 
