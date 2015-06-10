@@ -237,25 +237,25 @@ public class TaskBO extends AEntity {
     }
     
     public void setBOClassRow(HashMap hashmap){
-        this.setTASKNUM(hashmap.get("tasknum")==null?"":hashmap.get("tasknum").toString());
-        this.setTASKTYPE(hashmap.get("tasktype")==null?"":hashmap.get("tasktype").toString());
-        this.setPRIORITY(hashmap.get("priority")==null?"":hashmap.get("priority").toString());
-        this.setORGCODE(hashmap.get("orgcode")==null?"":hashmap.get("orgcode").toString());
-        this.setTASKLINE(hashmap.get("taskline")==null?"":hashmap.get("taskline").toString());
-        this.setITEM(hashmap.get("item")==null?"":hashmap.get("item").toString());
-        this.setITEMDESC(hashmap.get("itemdesc")==null?"":hashmap.get("itemdesc").toString());
-        this.setQTY(hashmap.get("qty")==null?"":hashmap.get("qty").toString());
-        this.setUOM(hashmap.get("uom")==null?"":hashmap.get("uom").toString());
-        this.setSUBINV(hashmap.get("subinv")==null?"":hashmap.get("subinv").toString());
-        this.setLOCATOR(hashmap.get("locator")==null?"":hashmap.get("locator").toString());
-        this.setSTATUS(hashmap.get("status")==null?"":hashmap.get("status").toString());
+        this.setTASKNUM(hashmap.get("tasknum")==null?"1":hashmap.get("tasknum").toString());
+        this.setTASKTYPE(hashmap.get("tasktype")==null?" ":hashmap.get("tasktype").toString());
+        this.setPRIORITY(hashmap.get("priority")==null?" ":hashmap.get("priority").toString());
+        this.setORGCODE(hashmap.get("orgcode")==null?" ":hashmap.get("orgcode").toString());
+        this.setTASKLINE(hashmap.get("taskline")==null?" ":hashmap.get("taskline").toString());
+        this.setITEM(hashmap.get("item")==null?" ":hashmap.get("item").toString());
+        this.setITEMDESC(hashmap.get("itemdesc")==null?" ":hashmap.get("itemdesc").toString());
+        this.setQTY(hashmap.get("qty")==null?" ":hashmap.get("qty").toString());
+        this.setUOM(hashmap.get("uom")==null?" ":hashmap.get("uom").toString());
+        this.setSUBINV(hashmap.get("subinv")==null?" ":hashmap.get("subinv").toString());
+        this.setLOCATOR(hashmap.get("locator")==null?" ":hashmap.get("locator").toString());
+        this.setSTATUS(hashmap.get("status")==null?" ":hashmap.get("status").toString());
        // this.setCREATIONDATE((Date)hashmap.get("creationdate"));
-        this.setDESTSUBINV(hashmap.get("destsubinv")==null?"":hashmap.get("destsubinv").toString());
-        this.setDESTLOCATOR(hashmap.get("destlocator")==null?"":hashmap.get("destlocator").toString());
-        this.setEMPLOYEE(hashmap.get("employee")==null?"":hashmap.get("employee").toString());
+        this.setDESTSUBINV(hashmap.get("destsubinv")==null?" ":hashmap.get("destsubinv").toString());
+        this.setDESTLOCATOR(hashmap.get("destlocator")==null?" ":hashmap.get("destlocator").toString());
+        this.setEMPLOYEE(hashmap.get("employee")==null?" ":hashmap.get("employee").toString());
         //this.setSTARTDATE((Date)hashmap.get("startdate"));
        // this.setENDDATE((Date)hashmap.get("enddate"));
-        this.setUSERNAME(hashmap.get("username")==null?"":hashmap.get("username").toString());
+        this.setUSERNAME(hashmap.get("username")==null?" ":hashmap.get("username").toString());
     }
 
 }
