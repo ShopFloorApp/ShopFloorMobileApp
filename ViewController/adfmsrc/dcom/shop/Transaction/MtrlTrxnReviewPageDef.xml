@@ -40,5 +40,12 @@
     </methodAction>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="MiscTxnDC" InstanceName="data.MiscTxnDC.dataProvider"/>
+    <methodAction id="startLocationMonitor" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="startLocationMonitor" IsViewObjectMethod="false" DataControl="DeviceFeatures"
+                  InstanceName="data.DeviceFeatures.dataProvider">
+      <NamedData NDName="enableHighAccuracy" NDValue="true" NDType="boolean"/>
+      <NamedData NDName="updateInterval" NDValue="1000" NDType="int"/>
+      <NamedData NDName="locationListener" NDValue="applicationScope.GPSLocatorBean.locationUpdated" NDType="java.lang.String"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

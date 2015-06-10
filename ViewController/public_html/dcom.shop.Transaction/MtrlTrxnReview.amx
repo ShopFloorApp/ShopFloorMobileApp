@@ -14,7 +14,7 @@
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl1" action="miscTransaction">
+            <amx:commandLink id="cl1" action="miscTransaction" actionListener="#{pageFlowScope.TransactionUtilityBean.getLocation}">
                 <amx:panelGroupLayout id="pgl1" layout="horizontal">
                     <amx:outputHtml id="oh1" value="Add"/>
                 </amx:panelGroupLayout>
