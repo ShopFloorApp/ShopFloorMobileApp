@@ -27,7 +27,7 @@
             </amx:rowLayout>
         </amx:tableLayout>
         <amx:panelFormLayout id="pfl2" labelPosition="topStart">
-            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc1" disabled="true">
+            <amx:selectOneChoice value="#{bindings.fromOpSeq.inputValue}" label="Sequence" id="soc1" disabled="false">
                 <amx:selectItem label="Choose" id="si5" value="0"/>
                 <amx:selectItems value="#{bindings.fromOpSeq.items}" id="si1"/>
             </amx:selectOneChoice>
@@ -37,7 +37,7 @@
             <amx:panelLabelAndMessage label="Department" id="plam2">
                 <amx:outputText value="#{bindings.fromDept.inputValue}" id="ot6"/>
             </amx:panelLabelAndMessage>
-            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}" disabled="true">
+            <amx:selectOneChoice label="Step" id="soc2" value="#{bindings.fromStep.inputValue}" disabled="false">
                 <amx:selectItems id="si2" value="#{bindings.fromStep.items}"/>
             </amx:selectOneChoice>
         </amx:panelFormLayout>

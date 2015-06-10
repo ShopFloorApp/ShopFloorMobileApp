@@ -148,5 +148,10 @@
         <Item Value="currDept"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="jobOperationBOIterator" id="qty2Return">
+      <AttrNames>
+        <Item Value="qty2Return"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

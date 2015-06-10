@@ -108,7 +108,9 @@
       <ValueList>
         <Item Value="Queue"/>
         <Item Value="Run"/>
-        <Item Value="In Move"/>
+        <Item Value="To Move"/>
+        <Item Value="Scrap"/>
+        <Item Value="Reject"/>
       </ValueList>
     </list>
     <list IterBinding="transactIterator" StaticList="true" id="toStep">
@@ -118,7 +120,9 @@
       <ValueList>
         <Item Value="Queue"/>
         <Item Value="Run"/>
-        <Item Value="In Move"/>
+        <Item Value="To Move"/>
+        <Item Value="Scrap"/>
+        <Item Value="Reject"/>
       </ValueList>
     </list>
     <list IterBinding="transactIterator" id="fromOpSeq" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -173,5 +177,7 @@
         <Item Value="saveTransaction_Return"/>
       </AttrNames>
     </attributeValues>
+    <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
+                  IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
   </bindings>
 </pageDefinition>

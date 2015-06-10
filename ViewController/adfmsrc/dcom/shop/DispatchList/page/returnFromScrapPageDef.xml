@@ -140,7 +140,9 @@
       <ValueList>
         <Item Value="Queue"/>
         <Item Value="Run"/>
-        <Item Value="In Move"/>
+        <Item Value="To Move"/>
+        <Item Value="Scrap"/>
+        <Item Value="Reject"/>
       </ValueList>
     </list>
     <list IterBinding="transactIterator" StaticList="true" id="toStep">
@@ -150,7 +152,9 @@
       <ValueList>
         <Item Value="Queue"/>
         <Item Value="Run"/>
-        <Item Value="In Move"/>
+        <Item Value="To Move"/>
+        <Item Value="Scrap"/>
+        <Item Value="Reject"/>
       </ValueList>
     </list>
     <attributeValues IterBinding="variables" id="Return">

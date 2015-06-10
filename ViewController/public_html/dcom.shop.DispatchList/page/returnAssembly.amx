@@ -15,44 +15,49 @@
         </amx:facet>
         <amx:facet name="secondary">
             <amx:commandButton text="Save" id="cb1" actionListener="#{bindings.saveTransaction.execute}">
-                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="RETURN_ASSEMBLY"/>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.trxType}" from="RETURN_ASSEMBLY"/>                
                 <amx:showPopupBehavior id="spb1" popupId="pdispatch" type="action" alignId="cb1" decoration="anchor"/>
+                <amx:validationBehavior id="vb1" group="vg1"/>
             </amx:commandButton>
         </amx:facet>
-        <amx:panelFormLayout id="pfl1" labelPosition="topStart">
-            <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it7"/>
-            <amx:panelLabelAndMessage label="Completed Quantity" id="plam1">
-                <amx:outputText value="#{pageFlowScope.completedQuantity}" id="ot2"/>
-            </amx:panelLabelAndMessage>
-            <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it2"/>
-            <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
-                                 valueChangeListener="#{pageFlowScope.DispatchBean.subInvChangeListner}">
-                <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
-                <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
-            </amx:selectOneChoice>
-            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
-                <amx:selectItem label="Choose Locator" value="0" id="si6"/>
-                <amx:selectItems value="#{bindings.locator.items}" id="si7"/>
-            </amx:selectOneChoice>
-            <amx:panelLabelAndMessage label="Sales Order" id="plam5">
-                <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
-                    <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"/>
-                    <amx:commandLink id="cbw3" action="pickRLov">
-                        <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                        <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
-                        <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'RET'}"/>
-                        <amx:setPropertyListener id="spl4" from='PRESERVE' to="#{pageFlowScope.preserveTrx}"
-                                                 type="action"/>
-                    </amx:commandLink>
-                </amx:panelGroupLayout>
-            </amx:panelLabelAndMessage>
-            <amx:selectOneChoice value="#{bindings.reasonName.inputValue}" label="Reason" id="soc1">
-                <amx:selectItems value="#{bindings.reasonName.items}" id="si1"/>
-            </amx:selectOneChoice>
-            <amx:inputText value="#{bindings.reference.inputValue}" label="Reference" id="it1"/>
-            <amx:inputText value="#{bindings.notes.inputValue}" label="Note" id="it6" rows="3"/>
-        </amx:panelFormLayout>
+        <amx:validationGroup id="vg1">
+            <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+                <amx:inputText value="#{bindings.txnUom.inputValue}" label="UOM" id="it7"/>
+                <amx:panelLabelAndMessage label="Available for Return" id="plam1">
+                    <!--<amx:outputText value="#{pageFlowScope.completedQuantity}" id="ot2"/>-->
+                    <amx:outputText value="#{pageFlowScope.qty2Return}" id="ot2"/>
+                </amx:panelLabelAndMessage>
+                <amx:inputText value="#{bindings.trxQty.inputValue}" label="Quantity" id="it2"
+                               hintText="#{pageFlowScope.qty2Return}" showRequired="true" required="true"/>
+                <amx:selectOneChoice label="Subinventory" value="#{pageFlowScope.FromSubinventory}" id="soc4"
+                                     valueChangeListener="#{pageFlowScope.DispatchBean.subInvChangeListner}">
+                    <?audit suppress oracle.maf.warning-missing-label?>
+                    <amx:selectItem label="Choose Subinventory" value="0" id="si4"/>
+                    <amx:selectItems value="#{bindings.subinv.items}" id="si5"/>
+                </amx:selectOneChoice>
+                <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
+                    <amx:selectItem label="Choose Locator" value="0" id="si6"/>
+                    <amx:selectItems value="#{bindings.locator.items}" id="si7"/>
+                </amx:selectOneChoice>
+                <amx:panelLabelAndMessage label="Sales Order" id="plam5">
+                    <amx:panelGroupLayout id="pgl4" layout="horizontal" halign="start" valign="baseline">
+                        <amx:inputText id="it12" value="#{pageFlowScope.documnetNumber}"/>
+                        <amx:commandLink id="cbw3" action="pickRLov">
+                            <amx:outputHtml id="oh3s" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                            <amx:setPropertyListener id="spl2" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
+                            <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pTypeSalesOrd}" from="#{'RET'}"/>
+                            <amx:setPropertyListener id="spl4" from="PRESERVE" to="#{pageFlowScope.preserveTrx}"
+                                                     type="action"/>
+                        </amx:commandLink>
+                    </amx:panelGroupLayout>
+                </amx:panelLabelAndMessage>
+                <amx:selectOneChoice value="#{bindings.reasonName.inputValue}" label="Reason" id="soc1">
+                    <amx:selectItems value="#{bindings.reasonName.items}" id="si1"/>
+                </amx:selectOneChoice>
+                <amx:inputText value="#{bindings.reference.inputValue}" label="Reference" id="it1"/>
+                <amx:inputText value="#{bindings.notes.inputValue}" label="Note" id="it6" rows="3"/>
+            </amx:panelFormLayout>
+        </amx:validationGroup>
     </amx:panelPage>
     <amx:popup id="pdispatch">
         <amx:tableLayout id="tl1">
