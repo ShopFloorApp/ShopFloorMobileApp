@@ -90,6 +90,8 @@
                     <amx:spacer width="10" id="s10"/>
                     <amx:commandLink id="cl10" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
                         <amx:outputHtml id="oh8" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC; "/>
+                         <amx:setPropertyListener id="spl1" from="LPN" to="#{pageFlowScope.barCodeField}"
+                                                 type="action"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
