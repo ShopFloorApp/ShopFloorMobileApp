@@ -13,6 +13,7 @@
       <nodeDefinition DefName="dcom.shop.application.mobile.LPNBO" Name="shipLPN0">
         <AttrNames>
           <Item Value="lpn"/>
+          <Item Value="lpnContext"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

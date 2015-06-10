@@ -69,10 +69,12 @@ public class ShippingLpnDC {
                 JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                 String status=jsObject.get("XSTATUS").toString();
                 String message=jsObject.get("XMSG").toString();
+               
+        try{
                JSONArray jsarray = (JSONArray) jsObject.get("XLPN");
                 
                 if(jsarray!=null){
-                    try{
+                   
                         int arraySize = jsarray.size();
                         for(int i=0; i<arraySize; i++){
                             
@@ -81,17 +83,17 @@ public class ShippingLpnDC {
                                 try{
                                     
                                     LPNBO lpni = new LPNBO();
-                                    lpni.setLpn(jsi.get("LPN").toString());
-                                    lpni.setGrossWeight(Integer.parseInt(jsi.get("GROSSWEIGHT").toString()));
-                                    lpni.setLoadSeq(jsi.get("LOADSEQ").toString());
-                                    lpni.setLocator(jsi.get("LOCATOR").toString());
-                                    lpni.setLpnContext(jsi.get("LPNCONTEXT").toString());
-                                    lpni.setOutermostLpn(jsi.get("OUTERMOSTLPN").toString());
-                                    lpni.setParentLpn(jsi.get("PARENTLPN").toString());
-                                    lpni.setSubinv(jsi.get("SUBINV").toString());
-                                    lpni.setVolume(Integer.parseInt(jsi.get("VOLUME").toString()));
-                                    lpni.setVolumeUom(jsi.get("VOLUMEUOM").toString());
-                                    lpni.setWeightUom(jsi.get("WEIGHTUOM").toString());
+                                    lpni.setLpn(jsi.get("LPN")==null?"":jsi.get("LPN").toString());
+                                    lpni.setGrossWeight(Integer.parseInt(jsi.get("GROSSWEIGHT")==null?"0":jsi.get("GROSSWEIGHT").toString()));
+                                    lpni.setLoadSeq(jsi.get("LOADSEQ")==null?"":jsi.get("LOADSEQ").toString());
+                                    lpni.setLocator(jsi.get("LOCATOR")==null?"":jsi.get("LOCATOR").toString());
+                                    lpni.setLpnContext(jsi.get("LPNCONTEXT")==null?"":jsi.get("LPNCONTEXT").toString());
+                                    lpni.setOutermostLpn(jsi.get("OUTERMOSTLPN")==null?"":jsi.get("OUTERMOSTLPN").toString());
+                                    lpni.setParentLpn(jsi.get("PARENTLPN")==null?"":jsi.get("PARENTLPN").toString());
+                                    lpni.setSubinv(jsi.get("SUBINV")==null?"":jsi.get("SUBINV").toString());
+                                    lpni.setVolume(Integer.parseInt(jsi.get("VOLUME")==null?"0":jsi.get("VOLUME").toString()));
+                                    lpni.setVolumeUom(jsi.get("VOLUMEUOM")==null?"":jsi.get("VOLUMEUOM").toString());
+                                    lpni.setWeightUom(jsi.get("WEIGHTUOM")==null?"":jsi.get("WEIGHTUOM").toString());
                                     //add other stuff also
                                     
                                     s_Lpnlist.add(lpni);
@@ -104,10 +106,37 @@ public class ShippingLpnDC {
                             }                      
                             
                         }
-                    }catch(Exception e1){
+                    }}catch(ClassCastException e1){
+                        JSONObject js2 = (JSONObject) jsObject.get("XLPN");
+                        if(js2!=null){
+                            try{
+                                JSONObject js1 = (JSONObject)js2.get("XLPN_ITEM");
+                                LPNBO lpni = new LPNBO();
+                                lpni.setLpn(js1.get("LPN")==null?"":js1.get("LPN").toString());
+                                lpni.setGrossWeight(Integer.parseInt(js1.get("GROSSWEIGHT")==null?"0":js1.get("GROSSWEIGHT").toString()));
+                                lpni.setLoadSeq(js1.get("LOADSEQ")==null?"":js1.get("LOADSEQ").toString());
+                                lpni.setLocator(js1.get("LOCATOR")==null?"":js1.get("LOCATOR").toString());
+                                lpni.setLpnContext(js1.get("LPNCONTEXT")==null?"":js1.get("LPNCONTEXT").toString());
+                                lpni.setOutermostLpn(js1.get("OUTERMOSTLPN")==null?"":js1.get("OUTERMOSTLPN").toString());
+                                lpni.setParentLpn(js1.get("PARENTLPN")==null?"":js1.get("PARENTLPN").toString());
+                                lpni.setSubinv(js1.get("SUBINV")==null?"":js1.get("SUBINV").toString());
+                                lpni.setVolume(Integer.parseInt(js1.get("VOLUME")==null?"0":js1.get("VOLUME").toString()));
+                                lpni.setVolumeUom(js1.get("VOLUMEUOM")==null?"":js1.get("VOLUMEUOM").toString());
+                                lpni.setWeightUom(js1.get("WEIGHTUOM")==null?"":js1.get("WEIGHTUOM").toString());
+                                //add other stuff also
+                                
+                                s_Lpnlist.add(lpni);
+                                    
+                                
+                            }catch(Exception e2){
+                                e2.getMessage();
+                            }
+                            
+                        }  
+
                         e1.getMessage();
                     }
-                }
+                
                 
                
                 ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.ShipLpnResults}", String.class);

@@ -305,7 +305,7 @@ public class RestURI {
     private static final String POST_LPN_SHIP = "/webservices/rest/DCOMShip/lpnship/";
     private static final String POST_LPN_LOAD = "/webservices/rest/DCOMShip/loadlpn/";
     private static final String POST_LPN_UNLOAD = "/webservices/rest/DCOMShip/unloadlpn/";
-    private static final String POST_LPN = "/webservices/rest/DCOMShip/getlpn";
+    private static final String POST_LPN = "/webservices/rest/DCOMShip/getlpn/";
     
     public static String PostLpnShip(){
         return POST_LPN_SHIP;

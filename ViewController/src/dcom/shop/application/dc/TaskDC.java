@@ -201,7 +201,7 @@ public class TaskDC extends AViewObject {
 
                         TaskBO taskBO = new TaskBO();
                         taskBO.setORGCODE(jsObject2.get("ORGCODE")==null?"":jsObject2.get("ORGCODE").toString());
-                        taskBO.setTASKNUM(jsObject2.get("TASKNUM")==null?"":jsObject2.get("TASKNUM").toString());
+                        taskBO.setTASKNUM(jsObject2.get("TASKNUM")==null?"1":jsObject2.get("TASKNUM").toString());
                         taskBO.setTASKLINE(jsObject2.get("TASKLINE")==null?"":jsObject2.get("TASKLINE").toString());
                         taskBO.setITEM(jsObject2.get("ITEM")==null?"":jsObject2.get("ITEM").toString());
                         taskBO.setITEMDESC(jsObject2.get("ITEMDESC")==null?"":jsObject2.get("ITEMDESC").toString());
