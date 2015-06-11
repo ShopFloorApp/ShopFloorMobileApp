@@ -108,7 +108,7 @@
                 <amx:selectItem label="Choose" value="0" id="si2"/>
                 <amx:selectItems value="#{bindings.subInv.items}" id="si3"/>
             </amx:selectOneChoice>
-             <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
+            <amx:selectOneChoice label="Locator" value="#{pageFlowScope.FromLocator}" id="soc5">
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:selectItem label="Choose" value="0" id="si6"/>
                 <amx:selectItems value="#{bindings.fromLoc.items}" id="si5"/>
@@ -125,8 +125,8 @@
                         <amx:commandLink id="cl12" action="#{StateListenerBean.validateAndNavigateDirectShipItemLov}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh12" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
-                             <amx:setPropertyListener id="spl11" from="LpnTrxn" to="#{pageFlowScope.ItemLovPage}"
-                                                 type="action"/>
+                            <amx:setPropertyListener id="spl11" from="LpnTrxn" to="#{pageFlowScope.ItemLovPage}"
+                                                     type="action"/>
                         </amx:commandLink>
                         <amx:spacer width="10" id="s13"/>
                     </amx:panelGroupLayout>
@@ -142,14 +142,42 @@
             <amx:panelLabelAndMessage label="Description" inlineStyle="text-align:left;" id="plam133">
                 <amx:outputText value="#{pageFlowScope.description}" styleClass="adfmf-listItem-captionText" id="ot12"/>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Available Quantity" inlineStyle="text-align:center;" id="plam10">
-                <?audit suppress oracle.maf.warning-missing-label?>
-                <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"
-                                id="ot14"/>
-                </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:center;" id="plam7">
                 <?audit suppress oracle.maf.warning-missing-label?>
-                    <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="ot13"/>
+                <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="ot13"/>
+            </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage id="plam5">
+                <?audit suppress oracle.maf.warning-missing-label?>
+                <amx:panelGroupLayout layout="horizontal" id="pgl8">
+                    <amx:panelGroupLayout id="pgl9">
+                        <amx:panelLabelAndMessage label="Available Quantity" inlineStyle="text-align:center;"
+                                                  id="plam10">
+                            <?audit suppress oracle.maf.warning-missing-label?>
+                            <amx:outputText value="#{pageFlowScope.availableQty}"
+                                            styleClass="adfmf-listItem-captionText" id="ot14"/>
+                        </amx:panelLabelAndMessage>
+                        <amx:panelLabelAndMessage label="On-Hand Qty" inlineStyle="text-align:left;" id="plam4">
+                            <?audit suppress oracle.maf.warning-missing-label?>
+                            <amx:outputText value="#{pageFlowScope.onHandQty}" styleClass="adfmf-listItem-captionText"
+                                            id="it5"/>
+                        </amx:panelLabelAndMessage>
+                    </amx:panelGroupLayout>
+                    <amx:spacer id="sp1" width="30"/>
+                    <amx:commandLink id="cl9" actionListener="#{bindings.callOnHandService.execute}">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:outputHtml id="oh5" styleClass="fa fa-refresh fa-lg" inlineStyle="color:#34AADC;"/>
+                    </amx:commandLink>
+                    <amx:commandLink id="cl18" rendered="#{pageFlowScope.ItemLovPage eq 'LpnTrxn'}">
+                        <?audit suppress oracle.maf.warning-missing-shortDesc?>
+                        <amx:outputHtml id="oh16" styleClass="fa fa-refresh fa-lg" inlineStyle="color:#34AADC;"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.availQty}" to="#{pageFlowScope.availableQty}"
+                                                 id="spl9"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.availQty}" to="#{pageFlowScope.onHandQty}"
+                                                 id="spl19"/>
+                        <amx:setPropertyListener from="#{pageFlowScope.availQty}" to="#{pageFlowScope.quantity}"
+                                                 id="spl20"/>
+                    </amx:commandLink>
+                </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
             <amx:inputText value="#{pageFlowScope.quantity}" label="Quantity" id="it19">
                 <?audit suppress oracle.maf.warning-missing-hintText?>
@@ -166,7 +194,7 @@
                         <amx:setPropertyListener from="#{pageFlowScope.searchKeyword}" to="#{pageFlowScope.SerialItem}"
                                                  id="spl2"/>
                         <amx:setPropertyListener from="false" to="#{pageFlowScope.RangeOff}" id="spl4"/>
-                        <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" id="spl9"/>
+                        <amx:setPropertyListener from="SubinvTxfr" to="#{pageFlowScope.ParentPage}" id="spl21"/>
                         <amx:tableLayout id="tl2">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:rowLayout id="rl2">
@@ -200,11 +228,11 @@
             </amx:panelLabelAndMessage>
             <amx:panelLabelAndMessage label="Lot Number" id="plam2" rendered="false">
                 <amx:spacer width="10" id="s6"/>
-                <amx:panelGroupLayout layout="horizontal" id="pgl8">
+                <amx:panelGroupLayout layout="horizontal" id="pgl2">
                     <amx:spacer width="10" id="s27"/>
                     <amx:panelGroupLayout layout="horizontal"
                                           inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
-                                          id="pgl9">
+                                          id="pgl15">
                         <amx:inputText hintText="Item Number" inlineStyle="text-align:left;" id="it1"
                                        value="#{pageFlowScope.lotNo}"/>
                         <amx:commandLink id="cl15" action="LotLOV">
@@ -222,7 +250,7 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Serial Number" id="plam4" rendered="false">
+            <amx:panelLabelAndMessage label="Serial Number" id="plam8" rendered="false">
                 <amx:spacer width="10" id="s17"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl10">
                     <amx:spacer width="10" id="s18"/>
@@ -246,7 +274,7 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            <amx:panelLabelAndMessage label="Order Number" id="plam5">
+            <amx:panelLabelAndMessage label="Order Number" id="plam9">
                 <amx:spacer width="10" id="s21"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl12">
                     <amx:spacer width="10" id="s22"/>
@@ -257,7 +285,7 @@
                                        value="#{pageFlowScope.documnetNumber}"/>
                         <amx:commandLink id="cl5" action="OrderLOV">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
-                            <amx:outputHtml id="oh5" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
+                            <amx:outputHtml id="oh17" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl14" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
                             <amx:setPropertyListener id="spl7" to="#{pageFlowScope.pTypeSalesOrd}"
                                                      from="#{'DIRECT_SHIP'}"/>
@@ -280,7 +308,7 @@
         </amx:panelFormLayout>
         <amx:facet name="footer">
             <amx:spacer id="s29" width="50"/>
-            <amx:commandLink id="cl9" actionListener="#{StateListenerBean.ClearPackDirectShipPage}">
+            <amx:commandLink id="cl19" actionListener="#{StateListenerBean.ClearPackDirectShipPage}">
                 <?audit suppress oracle.maf.warning-missing-shortDesc?>
                 <amx:tableLayout id="tl1">
                     <amx:rowLayout id="rl1">

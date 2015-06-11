@@ -17,7 +17,7 @@
       <managed-bean-class>dcom.shop.Transaction.page.bean.ReceivingTxnUtilBean</managed-bean-class>
       <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
-    <managed-bean id="__29">
+    <managed-bean id="__31">
       <managed-bean-name>PackAndDirectShipBean</managed-bean-name>
       <managed-bean-class>dcom.shop.Transaction.page.bean.PackAndDirectShipBean</managed-bean-class>
       <managed-bean-scope>application</managed-bean-scope>

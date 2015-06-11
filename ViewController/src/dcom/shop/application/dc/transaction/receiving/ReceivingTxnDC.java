@@ -81,6 +81,7 @@ public class ReceivingTxnDC extends SyncUtils{
         String pType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}")==null?"RMA":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}"));
         String documentNo=(String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}")==null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}"));
         String orgCode = (String)AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+        String item = (String)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
         String restURI = RestURI.PostGetSalesOrder();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
@@ -95,6 +96,7 @@ public class ReceivingTxnDC extends SyncUtils{
             "                   {\"POU\": \"\",\n" +
             "                   \"PTYPE\": \""+pType+"\",\n" +
                "                   \"PORDER\": \""+documentNo+"\",\n" +
+            (pType == "DIRECT_SHIP"?"                   \"PITEM\": \""+item+"\",\n" :"")+
             "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
