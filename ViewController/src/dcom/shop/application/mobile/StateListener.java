@@ -457,7 +457,7 @@ public class StateListener {
         String item =
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}") == null ? "" :
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
-        // String item = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
+        String lpnPage = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnLovPage}").toString();
         if (item.length() < 3 || item == null) {
 
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
@@ -466,20 +466,23 @@ public class StateListener {
             });
             return "";
         } else {
-            LPNDC lpnDc = new LPNDC();
-            lpnDc.getFromLpns();
-            List lpnsList = lpnDc.s_LpnList;
-            if (lpnsList.size() == 0) {
-                AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
-                AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
-                                                                          "showAlert", new Object[] {
-                                                                          "Error", "No LPN Found.", "Ok"
-                });
-                return "";
-            } else if (lpnsList.size() == 1) {
-                return "";
-            } else
-                return "lpnLOV";
+            if ("LPNTrxn".equals(lpnPage)) {
+                LPNDC lpnDc = new LPNDC();
+                lpnDc.getFromLpns();
+                List lpnsList = lpnDc.s_LpnList;
+                if (lpnsList.size() == 0) {
+                    AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchLpnKeyword}", null);
+                    AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                              "showAlert", new Object[] {
+                                                                              "Error", "No LPN Found.", "Ok"
+                    });
+                    return "";
+                } else if (lpnsList.size() == 1) {
+                    return "";
+                } else
+                    return "lpnLOV";
+            }
+            return "lpnLOV";
         }
     }
 
