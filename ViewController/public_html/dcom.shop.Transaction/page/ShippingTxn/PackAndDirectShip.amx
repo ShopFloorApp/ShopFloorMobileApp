@@ -122,7 +122,7 @@
                                           id="pgl7">
                         <amx:inputText hintText="Item Number" inlineStyle="text-align:left;" id="it13"
                                        value="#{pageFlowScope.searchKeyword}"/>
-                        <amx:commandLink id="cl12" action="ItemLOV">
+                        <amx:commandLink id="cl12" action="#{StateListenerBean.validateAndNavigateDirectShipItemLov}">
                             <?audit suppress oracle.maf.warning-missing-shortDesc?>
                             <amx:outputHtml id="oh12" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                              <amx:setPropertyListener id="spl11" from="LpnTrxn" to="#{pageFlowScope.ItemLovPage}"
@@ -146,8 +146,10 @@
                 <?audit suppress oracle.maf.warning-missing-label?>
                 <amx:outputText value="#{pageFlowScope.availableQty}" styleClass="adfmf-listItem-captionText"
                                 id="ot14"/>
-                <amx:spacer id="s25" width="10"/>
-                <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="ot13"/>
+                </amx:panelLabelAndMessage>
+            <amx:panelLabelAndMessage label="UOM" inlineStyle="text-align:center;" id="plam7">
+                <?audit suppress oracle.maf.warning-missing-label?>
+                    <amx:outputText value="#{pageFlowScope.uom}" styleClass="adfmf-listItem-captionText" id="ot13"/>
             </amx:panelLabelAndMessage>
             <amx:inputText value="#{pageFlowScope.quantity}" label="Quantity" id="it19">
                 <?audit suppress oracle.maf.warning-missing-hintText?>

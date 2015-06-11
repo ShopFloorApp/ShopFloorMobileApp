@@ -1,5 +1,6 @@
 package dcom.shop.application.mobile;
 
+import dcom.shop.Inquiry.lpn.LpnDetailsDC;
 import dcom.shop.application.dc.LPNDC;
 import dcom.shop.application.dc.LocatorDC;
 
@@ -450,6 +451,31 @@ public class StateListener {
             return "";
         } else
             return "ItemLOV";
+    }
+    
+    public String validateAndNavigateDirectShipItemLov() {
+        // Add event code here...
+        String item =
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}") == null ? "" :
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}").toString();
+        if (item.length() < 3) {
+
+            AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                      "Error",
+                                                                      "Please enter atleast 3 characters for Item.",
+                                                                      "Ok"
+            });
+            return "";
+        } else{
+            LpnDetailsDC lpnDetails = new LpnDetailsDC();
+            lpnDetails.getAllLpnDetails();
+            List lpnDetailsList = lpnDetails.s_LpnContentsList;
+            if(lpnDetailsList.size()==0){
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", "SubInvTrxn");
+                AdfmfJavaUtilities.setELValue("#{pageFlowScope.CallingPage}", "LPN");
+            }
+           return "ItemLOV";
+        }
     }
 
     public String validateAndNavigateLpnLov() {

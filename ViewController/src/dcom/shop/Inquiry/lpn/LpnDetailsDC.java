@@ -26,8 +26,8 @@ public class LpnDetailsDC {
     public LpnDetailsDC() {
         super();
     }
-    List s_LpnDetailList = new ArrayList();
-    List s_LpnContentsList = new ArrayList();
+    public static List s_LpnDetailList = new ArrayList();
+    public static List s_LpnContentsList = new ArrayList();
     private transient ProviderChangeSupport providerChangeSupport = new ProviderChangeSupport(this);
 
     public LpnDetailsEntity[] getAllLpnDetails() {
@@ -65,6 +65,7 @@ public class LpnDetailsDC {
             JSONObject jsonObject = (JSONObject) object;
             JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
             JSONObject jsObject1 = (JSONObject) jsObject.get("XLPNRES");
+            try{
             JSONObject jsObject2 = (JSONObject) jsObject1.get("XLPNRES_ITEM");
             JSONObject jsObject3 = (JSONObject) jsObject2.get("LPNCONTENTS");
             try {
@@ -135,6 +136,33 @@ public class LpnDetailsDC {
                 
             }
         } catch (Exception e) {
+            JSONArray array = (JSONArray)jsObject1.get("XLPNRES_ITEM");
+            if (array != null) {
+                int size = array.size();
+                //  ProductSearchEntity[] prodItems= new ProductSearchEntity[size];
+                for (int i = 0; i < size; i++) {
+
+
+                    LpnDetailsEntity lpnDetails = new LpnDetailsEntity();
+                    //  JSONObject jsObjectArrayData = (JSONObject) jsObject1.get("XLPNRES_ITEM");
+                    JSONObject jsObjectArrayData = (JSONObject) array.get(i);
+
+                    lpnDetails.setITEM((jsObjectArrayData.get("ITEM").toString()));
+                    lpnDetails.setITEMDESC((jsObjectArrayData.get("ITEMDESC").toString()));
+                    lpnDetails.setUOM((jsObjectArrayData.get("UOM").toString()));
+                    lpnDetails.setONHANDQTY(Float.parseFloat((jsObjectArrayData.get("ONHANDQTY").toString())));
+                    lpnDetails.setAVAILABLEQTY(Float.parseFloat((jsObjectArrayData.get("AVAILABLEQTY").toString())));
+                    lpnDetails.setSERIALCONTROL(jsObjectArrayData.get("SERIALCONTROL").toString());
+                    lpnDetails.setLOTCONTROL(jsObjectArrayData.get("LOTCONTROL").toString());
+
+                    s_LpnDetailList.add(lpnDetails);
+                }
+
+
+            }
+            Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnDetailsEntity", e.getLocalizedMessage());
+        }
+        }catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "LpnDetailsEntity", e.getLocalizedMessage());
         }
         return lpnDetailsArray;
