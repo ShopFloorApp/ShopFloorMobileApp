@@ -58,8 +58,9 @@ public class LpnTxnDC extends SyncUtils {
         MiscTxnBO subinventory = null;
         s_lpnTrxns = selectLpnTrxns(s_lpnTrxns);
         int trxnId = s_lpnTrxns.size();
+        // Commented from here as we are setting the trxnid in itemTxnDC getItems method
         // ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.LpnTrxnId}", int.class);
-        // ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
+         //ve.setValue(AdfmfJavaUtilities.getAdfELContext(), trxnId);
 
         return s_lpnTrxns;
     }
@@ -133,9 +134,10 @@ public class LpnTxnDC extends SyncUtils {
             String itemNumber = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
             if (!("".equals(itemNumber)) && itemNumber != null && !("null".equals(itemNumber)))
                 item.InsertItems(); //Inserting current item on the page
-            if (!("PACK_FROM".equals(lpnPage))){
-                item.InsertItems(); 
-            }
+           //Commenting this part as above condition inserts item on current page
+           //if (!("PACK_FROM".equals(lpnPage))){
+            //    item.InsertItems(); 
+           // }
         }
         LpnTxnBO lpnTxn = new LpnTxnBO();
 

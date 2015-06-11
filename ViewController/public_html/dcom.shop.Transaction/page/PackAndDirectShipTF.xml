@@ -64,7 +64,7 @@
         <to-activity-id>dockLOV</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__5">
-        <from-outcome>LpnLOV</from-outcome>
+        <from-outcome>lpnLOV</from-outcome>
         <to-activity-id>LpnLOVPG</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__8">

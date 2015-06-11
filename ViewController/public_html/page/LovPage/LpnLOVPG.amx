@@ -120,6 +120,8 @@
                 <amx:setPropertyListener from="#{row.LPNSTATUS}" type="action" to="#{pageFlowScope.lpnID}" id="spl4"/>
                 <amx:setPropertyListener id="spl8" from="#{row.SUBINV}" to="#{pageFlowScope.subInv}" type="action"/>
                 <amx:setPropertyListener id="spl9" to="#{pageFlowScope.locator}" type="action" from="#{row.LOCATOR}"/>
+                <amx:setPropertyListener id="spl19" from="#{row.SUBINV}" to="#{pageFlowScope.FromSubinventory}" type="action"/>
+                <amx:setPropertyListener id="spl20" to="#{pageFlowScope.FromLocator}" type="action" from="#{row.LOCATOR}"/>
             </amx:listItem>
             <amx:listItem showLinkIcon="false" rendered="#{pageFlowScope.LpnLovPage ne 'DocDoor'?false:true}"
                           action="#{StateListenerBean.BackToLpnTrxn}" id="li4">

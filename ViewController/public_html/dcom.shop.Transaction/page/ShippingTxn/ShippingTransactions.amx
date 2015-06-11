@@ -19,10 +19,11 @@
         <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
             <amx:listItem action="PackAndDirectShip" id="li1" showLinkIcon="false">
                 <amx:outputText value="Pack and Direct Ship" id="ot2"/>
+                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.LpnPage}" from="UNPACK_FROM" type="action"/>
             </amx:listItem>
             <amx:listItem id="li2" action="pickRel" showLinkIcon="false">
                 <amx:outputText value="Perform Pick Release" id="ot3"/>
-                <amx:setPropertyListener id="spl1" to="#{pageFlowScope.Event}" from="true" type="action"/>
+                <amx:setPropertyListener id="spl4" to="#{pageFlowScope.Event}" from="true" type="action"/>
                 <amx:setPropertyListener id="spl2" to="#{pageFlowScope.documnetNumber}" type="action"/>
                 <amx:setPropertyListener id="spl3" to="#{pageFlowScope.pickRule}" from="10" type="action"/>
             </amx:listItem>
