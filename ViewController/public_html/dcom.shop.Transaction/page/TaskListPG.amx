@@ -46,26 +46,26 @@
             <amx:listItem id="li1" showLinkIcon="false">
                 <amx:tableLayout id="tl7" width="100%" inlineStyle="grid-row:auto;">
                     <amx:rowLayout id="rl8">
-                        <amx:cellFormat id="cf6" width="50%" halign="start" valign="middle" height="50px">
+                        <amx:cellFormat id="cf6" width="50%" halign="start" valign="middle" height="25px">
                             <amx:outputText value="#{row.TASKNUM}" id="ot7"
                                             inlineStyle="font-weight:bold;color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf14" width="50%" halign="end" valign="middle" height="50px">
+                        <amx:cellFormat id="cf14" width="50%" halign="end" valign="middle" height="25px">
                             <amx:outputText value="#{row.PRIORITY}" id="ot7x"
                                             inlineStyle="color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl7">
-                        <amx:cellFormat id="cf17" halign="center" height="50px">
+                        <amx:cellFormat id="cf17" halign="center" height="25px" width="100%">
                             <amx:outputText value="#{row.ITEMDESC}" id="ot2"
                                             inlineStyle="color:GrayText;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl9">
-                        <amx:cellFormat id="cf16" width="50%" halign="start" height="50px">
+                        <amx:cellFormat id="cf16" width="50%" halign="start" height="25px">
                             <amx:outputText value="#{row.TASKTYPE}" id="ot6" inlineStyle="color:Gray;font-size:small;"/>
                         </amx:cellFormat>
-                        <amx:cellFormat id="cf15" width="50%" halign="end" height="50px">
+                        <amx:cellFormat id="cf15" width="50%" halign="end" height="25px">
                             <amx:outputText value="#{row.STATUS}" id="ot6x" inlineStyle="color:Gray;font-size:small;"/>
                         </amx:cellFormat>
                     </amx:rowLayout>
@@ -74,13 +74,16 @@
         </amx:listView>
     </amx:panelPage>
     <amx:popup id="p2" autoDismiss="true">
+        <amx:panelGroupLayout id="pgl4" halign="center">
+            <amx:outputText value="Filter" id="ot5"/>
+        </amx:panelGroupLayout>
         <amx:panelGroupLayout id="pgl6">
             <amx:selectManyCheckbox value="#{bindings.filterData.inputValue}"
                                     id="smc2" valueChangeListener="#{pageFlowScope.TasksBean.filterVL}">
                 <amx:selectItems value="#{bindings.filterData.items}" id="si7"/>
             </amx:selectManyCheckbox>
         </amx:panelGroupLayout>
-        <amx:panelGroupLayout id="pgl7">
+        <amx:panelGroupLayout id="pgl7" halign="center">
             <amx:commandButton text="OK" id="cb4" actionListener="#{pageFlowScope.TasksBean.filterAL}">
                 <amx:closePopupBehavior id="cpb3" type="action" popupId="p2"/>
             </amx:commandButton>
@@ -92,16 +95,16 @@
                                   halign="center">
                 <amx:outputText value="Sort By" id="ot4"/>
             </amx:panelGroupLayout>
-            <amx:selectOneRadio id="sor1" value="#{pageFlowScope.sortBy}">
-                <amx:selectItem id="si2" label="Priority:High to Low" value="PRIORITY_DESC"/>
-                <amx:selectItem id="si2X" label="Priority:Low to High" value="PRIORITY_ASC"/>
-                <amx:selectItem label="Task Type:A-Z" id="si3" value="TASK_TYPE_ASC"/>
-                <amx:selectItem label="Task Type:Z-A" id="si4" value="TASK_TYPE_DESC"/>
-                <amx:selectItem label="Task Id:Ascending" id="si5" value="TASK_ASC"/>
-                <amx:selectItem label="Task Id:Descending" id="si6" value="TASK_DESC"/>
+            <amx:selectOneRadio id="sor1" value="#{pageFlowScope.sortBy}" inlineStyle="text-align:center;">
+                <amx:selectItem id="si2" label="Priority : High to Low" value="PRIORITY_DESC"/>
+                <amx:selectItem id="si2X" label="Priority : Low to High" value="PRIORITY_ASC"/>
+                <amx:selectItem label="Task Type : A-Z" id="si3" value="TASK_TYPE_ASC"/>
+                <amx:selectItem label="Task Type : Z-A" id="si4" value="TASK_TYPE_DESC"/>
+                <amx:selectItem label="Task Id : Ascending" id="si5" value="TASK_ASC"/>
+                <amx:selectItem label="Task Id : Descending" id="si6" value="TASK_DESC"/>
             </amx:selectOneRadio>
             <amx:panelGroupLayout id="pgl3"
-                                  inlineStyle="border-top-color:Blue; border-top-style:solid; border-top-width:thin;">
+                                  inlineStyle="border-top-color:ButtonHighlight; border-top-style:solid; border-top-width:thin;">
                 <amx:tableLayout id="tl3" width="100%">
                     <amx:rowLayout id="rl3">
                         <amx:cellFormat id="cf2" width="50%" halign="center">

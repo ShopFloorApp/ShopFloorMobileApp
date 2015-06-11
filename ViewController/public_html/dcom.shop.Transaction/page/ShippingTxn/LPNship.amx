@@ -6,7 +6,8 @@
             <amx:outputText value="LPN Ship" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="backToShipT">
+            <amx:commandLink id="cl1" action="backToShipT"
+                             actionListener="#{pageFlowScope.TransactionUtil.clearLPNShip}">
                 <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>

@@ -156,6 +156,8 @@ public class TaskDC extends AViewObject {
 
     }
     
+    
+    
     public void filterTasks(String Criteria){
         s_list.clear();
         isSortOperation = true;
