@@ -58,5 +58,8 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <methodAction id="refreshSalesOrderLines" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="refreshSalesOrderLines" IsViewObjectMethod="false" DataControl="ReceivingTxnDC"
+                  InstanceName="data.ReceivingTxnDC.dataProvider"/>
   </bindings>
 </pageDefinition>

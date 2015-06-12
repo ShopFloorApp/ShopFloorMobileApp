@@ -76,6 +76,7 @@ public class ReceivingTxnDC extends SyncUtils{
 
     public SalesOrderBO[] getSalesOrder() {
         s_salesOrder.clear();
+        s_salesOrderLines.clear();
         System.out.println("Inside orgItem");
         Utility.ApplicationLogger.info("Inside script dcomShopFloor.db");
         String pType = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}")==null?"RMA":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.pTypeSalesOrd}"));
@@ -94,10 +95,11 @@ public class ReceivingTxnDC extends SyncUtils{
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \""+orgCode+"\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + 
             "                   {\"POU\": \"\",\n" +
+            "                   \"PORGCODE\": \""+orgCode+"\",\n" +
             "                   \"PTYPE\": \""+pType+"\",\n" +
-               "                   \"PORDER\": \""+documentNo+"\",\n" +
-            (pType == "DIRECT_SHIP"?"                   \"PITEM\": \""+item+"\",\n" :"")+
-            "                    \"PWAREHOUSE\": \"\"\n }\n" + "}\n" + "}\n";
+             "                   \"PORDER\": \""+documentNo+"\",\n" +
+            ("DIRECT_SHIP".equals(pType)?"                   \"PITEM\": \""+item+"\"\n" :"")+
+           "\n }\n" + "}\n" + "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
         System.out.println("Received response");
@@ -162,15 +164,33 @@ public class ReceivingTxnDC extends SyncUtils{
                         lines= (JSONArray)jsObject2.get("LINES");
                         }catch(ClassCastException cce){
                             SalesOrderLineBO lineItem=new SalesOrderLineBO();
+                            try{
+                         
                             JSONObject jsLine = (JSONObject)jsObject2.get("LINES");
-                            lineItem.setLINENUM(jsLine.get("LINENUM")+"");
-                            lineItem.setITEM(jsLine.get("ITEM")+"");
-                            lineItem.setLOTCONTROL(jsLine.get("LOTCONTROL")+"");
-                            lineItem.setSERIALCONTROL(jsLine.get("SERIALCONTROL")+"");
-                            lineItem.setLINEQTY(jsLine.get("LINEQTY")+"");
-                            lineItem.setUOM(jsLine.get("UOM")+"");
-                            
+                            JSONArray lineArray = (JSONArray)jsLine.get("LINES_ITEM");
+                            int lineSize = lineArray.size();
+                            for(int k=0;k<lineSize;k++){
+                            JSONObject jsLin = (JSONObject)lineArray.get(k);
+                            lineItem.setORDERNUM((jsObject2.get("ORDERNUMBER").toString()));
+                            lineItem.setLINENUM(jsLin.get("LINENUM")+"");
+                            lineItem.setITEM(jsLin.get("ITEM")+"");
+                            lineItem.setLOTCONTROL(jsLin.get("LOTCONTROL")+"");
+                            lineItem.setSERIALCONTROL(jsLin.get("SERIALCONTROL")+"");
+                            lineItem.setLINEQTY(jsLin.get("LINEQTY")+"");
+                            lineItem.setUOM(jsLin.get("UOM")+"");
+                            }
                             s_salesOrderLines.add(lineItem);
+                            }catch(ClassCastException ce){
+                                JSONObject jsLine = (JSONObject)jsObject2.get("LINES");
+                                JSONObject jsLin = (JSONObject)jsLine.get("LINES_ITEM");
+                                lineItem.setORDERNUM((jsObject2.get("ORDERNUMBER").toString()));
+                                lineItem.setLINENUM(jsLin.get("LINENUM")+"");
+                                lineItem.setITEM(jsLin.get("ITEM")+"");
+                                lineItem.setLOTCONTROL(jsLin.get("LOTCONTROL")+"");
+                                lineItem.setSERIALCONTROL(jsLin.get("SERIALCONTROL")+"");
+                                lineItem.setLINEQTY(jsLin.get("LINEQTY")+"");
+                                lineItem.setUOM(jsLin.get("UOM")+"");
+                            }
                         }
                         if (lines != null) {
                             int lineSize = lines.size(); // array.size();
@@ -246,10 +266,22 @@ public class ReceivingTxnDC extends SyncUtils{
             }
         return null;
 */
+        String order = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.documnetNumber}");
+        List returnList = new ArrayList();
+         for(int i=0;i<s_salesOrderLines.size();i++){
+            SalesOrderLineBO line = (SalesOrderLineBO)s_salesOrderLines.get(i);
+            if(order.equals(line.getORDERNUM())){
+                returnList.add(line);
+            }
+        }
         SalesOrderLineBO[] orderLinesArray=
-            (SalesOrderLineBO[])s_salesOrderLines.toArray(new SalesOrderLineBO[s_salesOrderLines.size()]);
+            (SalesOrderLineBO[])returnList.toArray(new SalesOrderLineBO[returnList.size()]);
         
         return orderLinesArray;
+    }
+    
+    public void refreshSalesOrderLines(){
+        providerChangeSupport.fireProviderRefresh("salesOrderLines");
     }
     
 

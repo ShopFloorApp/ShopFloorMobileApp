@@ -1,6 +1,11 @@
 package dcom.shop.application.mobile.transaction.receiving;
 
+import oracle.adfmf.java.beans.PropertyChangeListener;
+import oracle.adfmf.java.beans.PropertyChangeSupport;
+
 public class SalesOrderLineBO {
+    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+
     public SalesOrderLineBO() {
         super();
     }
@@ -11,6 +16,17 @@ public class SalesOrderLineBO {
     String SERIALCONTROL;
     String LINEQTY;
     String UOM;
+
+    public void setORDERNUM(String ORDERNUM) {
+        String oldORDERNUM = this.ORDERNUM;
+        this.ORDERNUM = ORDERNUM;
+        propertyChangeSupport.firePropertyChange("ORDERNUM", oldORDERNUM, ORDERNUM);
+    }
+
+    public String getORDERNUM() {
+        return ORDERNUM;
+    }
+    String ORDERNUM;
 
 
     public void setLINENUM(String LINENUM) {
@@ -59,5 +75,13 @@ public class SalesOrderLineBO {
 
     public String getUOM() {
         return UOM;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.addPropertyChangeListener(l);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener l) {
+        propertyChangeSupport.removePropertyChangeListener(l);
     }
 }

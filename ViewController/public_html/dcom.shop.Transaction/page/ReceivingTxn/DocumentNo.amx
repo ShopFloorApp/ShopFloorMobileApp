@@ -63,7 +63,7 @@
                       selectionListener="#{bindings.salesOrder.collectionModel.makeCurrent}"
                       showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv3"
                       rendered="#{pageFlowScope.receivingType=='C'}">
-            <amx:listItem id="li3" action="back" showLinkIcon="false">
+            <amx:listItem id="li3" action="__back" showLinkIcon="false">
                 <amx:tableLayout width="100%" id="tl3">
                     <amx:rowLayout id="rl6">
                         <amx:cellFormat width="10px" rowSpan="2" id="cf9"/>
