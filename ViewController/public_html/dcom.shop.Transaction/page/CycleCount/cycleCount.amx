@@ -18,12 +18,16 @@
         </amx:facet>
         <amx:listView var="row" showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1"
                       styleClass="adfmf-listView-insetList">
-            <amx:listItem id="li1" inlineStyle="width:97%;" action="phyCount" showLinkIcon="false">
-                <amx:outputText value="Physical Count" id="ot2"/>
+            <amx:listItem id="li1" inlineStyle="width:97%;" action="oppCountName" showLinkIcon="false">
+                <amx:outputText value="Task Based Count" id="ot2"/>
+                <amx:setPropertyListener id="spl" from="TaskCountTxn" to="#{pageFlowScope.countCallingPg}"
+                                                     type="action"/>
             </amx:listItem>
             <amx:listItem id="li2" inlineStyle="width:97%;" action="oppCountName" showLinkIcon="false"
                           actionListener="#{CountUtilBean.clearCCName}">
                 <amx:outputText value="Opportunistic Count" id="ot3"/>
+                <amx:setPropertyListener id="sp2" from="OppCountTxn" to="#{pageFlowScope.countCallingPg}"
+                                                     type="action"/>
             </amx:listItem>
         </amx:listView>
     </amx:panelPage>
