@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.13.52" id="DeliveryPGPageDef"
+                Package="dcom.shop.Transaction.page.ShippingTxn">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="CarrierDC" id="CarrierDCIterator"/>
+    <accessorIterator MasterBinding="CarrierDCIterator" Binds="carrier" RangeSize="-1" DataControl="CarrierDC"
+                      BeanClass="dcom.shop.application.mobile.CarrierBO" id="carrierIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="CarrierDCIterator" id="shipMethod" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="carrierIterator">
+      <AttrNames>
+        <Item Value="shipMethod"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="shipMethod"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="shipMethod"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

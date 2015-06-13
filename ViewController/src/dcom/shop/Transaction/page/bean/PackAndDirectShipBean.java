@@ -1,10 +1,19 @@
 package dcom.shop.Transaction.page.bean;
 
+import dcom.shop.application.base.SyncUtils;
 import dcom.shop.application.mobile.DeliveryBO;
+import dcom.shop.application.mobile.LotBO;
+import dcom.shop.application.mobile.SerialBO;
 import dcom.shop.application.mobile.TaskBO;
+import dcom.shop.application.mobile.transaction.LpnTxnBO;
+import dcom.shop.application.mobile.transaction.PackTxnBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
 import dcom.shop.restURIDetails.RestURI;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -22,13 +31,16 @@ import org.json.simple.parser.JSONParser;
 public class PackAndDirectShipBean {
     public PackAndDirectShipBean() {
     }
+    protected static List s_serialTrxns = new ArrayList();
+    protected static List s_lotTrxns = new ArrayList();
+    protected static List s_filteredSerialTrxns = new ArrayList();
+    protected static List s_filteredLotTrxns = new ArrayList();
     
     public void callDirectShipService(ActionEvent actionEvent){       
         ValueExpression ve = null;
         String response = null;
         System.out.println("Inside callPackService");
         String DELIVERYID=null;
-        
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.DELIVERYID}", String.class);
         DELIVERYID = (ve.getValue(AdfmfJavaUtilities.getAdfELContext())+"").trim();
         if("{\"@xsi:nil\":\"true\"}".equals(DELIVERYID)){
@@ -67,8 +79,6 @@ public class PackAndDirectShipBean {
         if("{\"@xsi:nil\":\"true\"}".equals(WAYBILL)){
             WAYBILL = "";
         } 
-        
-        
         String restURI = RestURI.PostDirectShipURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload = null;
@@ -121,6 +131,7 @@ public class PackAndDirectShipBean {
         String response = null;
         System.out.println("Inside callPackService");
         String dockDoor=null;
+        List s_packList = new ArrayList();
         
         ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.dockDoor}", String.class);
         dockDoor = (ve.getValue(AdfmfJavaUtilities.getAdfELContext())+"").trim();
@@ -200,7 +211,36 @@ public class PackAndDirectShipBean {
         if("{\"@xsi:nil\":\"true\"}".equals(orderLineNumber)){
             orderLineNumber = "";
         } 
+        PackTxnBO packTxn = new PackTxnBO();
+        Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+        packTxn.setTrxnId(trxnId);
+        packTxn.setDockDoor(dockDoor);
+        packTxn.setItem(item);
+        packTxn.setLPN(lpn);
+        packTxn.setLineNum(orderLineNumber);
+        packTxn.setLocator(locator);
+        packTxn.setOrderNum(orderNumber);
+        packTxn.setQty(quantity);
+        packTxn.setSubInv(subInventory);
+        SyncUtils sync = new SyncUtils();
+        s_serialTrxns = sync.getCollectionFromDB(SerialBO.class);
+        filterSerials(trxnId);
+        if (s_filteredSerialTrxns.size() > 0)
+            packTxn.setSerialControl("0");
+        else
+            packTxn.setSerialControl("1");
+        s_lotTrxns = sync.getCollectionFromDB(LotBO.class);
+        filterLots(trxnId);
+        if (s_filteredLotTrxns.size() > 0)
+            packTxn.setLotControl("0");
+        else 
+           packTxn.setLotControl("1");
         
+        sync.insertSqlLiteTable(PackTxnBO.class, s_packList);
+        
+        String orgCode =
+            (String) AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}");
+
         String restURI = RestURI.PostPackURI();
         RestCallerUtil rcu = new RestCallerUtil();
         String payload = null;
@@ -214,7 +254,8 @@ public class PackAndDirectShipBean {
         "                  \"Org_Id\": \"82\"\n" + 
         "                 },\n" + 
         "   \"InputParameters\": \n" + 
-        "      {\"PPACK\": {\"DOCKDOOR\": \""+dockDoor
+        "      { \"PORGCODE\":  \""+orgCode+"\""+
+            ",\"PPACK\": {\"DOCKDOOR\": \""+dockDoor
                   +"\",\"LPN\": \""+lpn
                   +"\",\"SUBINV\": \""+subInventory
                   +"\",\"LOCATOR\": \""+locator
@@ -222,11 +263,36 @@ public class PackAndDirectShipBean {
                   +"\",\"QTY\": \""+quantity
                   +"\",\"ORDERNUM\": \""+orderNumber
                   +"\",\"LINENUM\": \""+orderLineNumber
-                  +"\",\"LOTS\": \""+null
-                  +"\",\"SERIALS\": \""+null
-                  +"\"}}\n" + 
-        "}\n" + 
-        "}";
+                  +"\"\n" 
+       ;
+        
+        LotBO lot = new LotBO();
+        Iterator j = s_filteredLotTrxns.iterator();
+        //  if(s_filteredLotTrxns.size()>0){
+        payload = payload + ", \"LOTS\": { \"XXDCOM_LOT_TAB\": [  ";
+        // }
+        while (j.hasNext()) {
+            lot = (LotBO) j.next();
+            payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
+
+        }
+        payload = payload.substring(0, payload.length() - 1);
+
+        SerialBO serial = new SerialBO();
+        if (s_filteredSerialTrxns.size() > 0) {
+            payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
+        }
+        Iterator i = s_filteredSerialTrxns.iterator();
+        while (i.hasNext()) {
+            serial = (SerialBO) i.next();
+            payload =
+                payload + "{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" + serial.getToSerial() +
+                "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
+
+        }
+        payload = payload.substring(0, payload.length() - 1);
+        payload = payload + "]}\n" + "}}}}";
+        
         System.out.println("Calling create method");
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         System.out.println("Received response");
@@ -261,5 +327,55 @@ public class PackAndDirectShipBean {
                 Trace.log("REST_JSON",Level.SEVERE, this.getClass(),"ProductDetailsEntity", e.getLocalizedMessage());
             }
         
+    }
+    
+    public void filterSerials(Integer trxnId) {
+        try {
+            System.out.println("inside filter code");
+            s_filteredSerialTrxns.clear();
+
+            HashMap filterFileds = new HashMap();
+            //Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
+            filterFileds.put("trxnid", trxnId);
+            filterFileds.put("trxtype", trxnType);
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_serialTrxns);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+            SyncUtils sync = new SyncUtils();
+            if(s_serialTrxns.size()>0)
+            s_filteredSerialTrxns = (List) sync.getFileteredCollection(SerialBO.class, paramMap);
+            System.out.println("collection size is " + s_filteredSerialTrxns.size());
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
+    }
+
+    public void filterLots(Integer trxnId) {
+        try {
+            System.out.println("inside filter code");
+            s_filteredLotTrxns.clear();
+
+            HashMap filterFileds = new HashMap();
+            // Integer trxnId = (Integer) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SubinvTrxnId}");
+            String trxnType = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ParentPage}");
+            filterFileds.put("trxnid", trxnId);
+            filterFileds.put("trxtype", trxnType);
+
+
+            HashMap paramMap = new HashMap();
+            paramMap.put("collection", s_lotTrxns);
+            paramMap.put("filterFieldsValues", filterFileds);
+            System.out.println("called super filtered class");
+            SyncUtils sync = new SyncUtils();
+            if(s_lotTrxns.size()>0)
+            s_filteredLotTrxns = (List) sync.getFileteredCollection(LotBO.class, paramMap);
+            System.out.println("collection size is " + s_filteredLotTrxns.size());
+        } catch (Exception e) {
+            throw new RuntimeException("My Code Error " + e);
+        }
     }
 }

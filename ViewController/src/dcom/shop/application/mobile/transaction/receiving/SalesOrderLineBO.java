@@ -3,7 +3,7 @@ package dcom.shop.application.mobile.transaction.receiving;
 import oracle.adfmf.java.beans.PropertyChangeListener;
 import oracle.adfmf.java.beans.PropertyChangeSupport;
 
-public class SalesOrderLineBO {
+public class SalesOrderLineBO implements Comparable {
     private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
 
     public SalesOrderLineBO() {
@@ -83,5 +83,9 @@ public class SalesOrderLineBO {
 
     public void removePropertyChangeListener(PropertyChangeListener l) {
         propertyChangeSupport.removePropertyChangeListener(l);
+    }
+    public int compareTo(Object o) {
+        // TODO Implement this method
+        return 0;
     }
 }

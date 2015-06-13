@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
-  <amx:panelPage id="pp1">
-  <amx:verbatim id="v1">
+    <amx:panelPage id="pp1">
+        <amx:verbatim id="v1">
          <![CDATA[
         <script type="text/javascript">
         function scanBarcodeFromJavaBean(options)
@@ -31,29 +31,29 @@
         }
         </script>
     ]]></amx:verbatim>
-    <amx:facet name="header">
-      <amx:outputText value="Header" id="ot1"/>
-    </amx:facet>
-    <amx:facet name="primary">
-      <amx:commandButton id="cb1"/>
-    </amx:facet>
-    <amx:facet name="secondary">
-      <amx:commandButton id="cb2"/>
-    </amx:facet>
-    <amx:facet name="footer">
-        <amx:spacer id="s31" width="20"/>
-        <amx:commandLink id="cl16" actionListener="#{PackAndDirectShipBean.callDirectShipService}">
-            <amx:tableLayout id="tl4" inlineStyle="background-color:transparent;">
-                <amx:rowLayout id="rl4">
-                    <amx:cellFormat id="cf4">
-                        <amx:outputHtml id="oh9" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;"/>
-                    </amx:cellFormat>
-                    <amx:cellFormat id="cf6">
-                        <amx:outputText value="Ship" id="ot2"/>
-                    </amx:cellFormat>
-                </amx:rowLayout>
-            </amx:tableLayout>
-        </amx:commandLink>
+        <amx:facet name="header">
+            <amx:outputText value="Delivery" id="ot1"/>
+        </amx:facet>
+        <amx:facet name="primary">
+            <amx:commandButton id="cb1"/>
+        </amx:facet>
+        <amx:facet name="secondary">
+            <amx:commandButton id="cb2"/>
+        </amx:facet>
+        <amx:facet name="footer">
+            <amx:spacer id="s31" width="20"/>
+            <amx:commandLink id="cl16" actionListener="#{PackAndDirectShipBean.callDirectShipService}">
+                <amx:tableLayout id="tl4" inlineStyle="background-color:transparent;">
+                    <amx:rowLayout id="rl4">
+                        <amx:cellFormat id="cf4">
+                            <amx:outputHtml id="oh9" styleClass="fa fa-check fa-lg" inlineStyle="color:#34AADC;"/>
+                        </amx:cellFormat>
+                        <amx:cellFormat id="cf6">
+                            <amx:outputText value="Ship" id="ot2"/>
+                        </amx:cellFormat>
+                    </amx:rowLayout>
+                </amx:tableLayout>
+            </amx:commandLink>
             <amx:spacer id="s29" width="50"/>
             <amx:commandLink id="cl9" action="backToShipT">
                 <amx:tableLayout id="tl1">
@@ -69,7 +69,7 @@
                 </amx:tableLayout>
             </amx:commandLink>
         </amx:facet>
-    <amx:panelFormLayout id="pfl2" labelPosition="topStart" fieldHalign="start" inlineStyle="font-size:medium;"
+        <amx:panelFormLayout id="pfl2" labelPosition="topStart" fieldHalign="start" inlineStyle="font-size:medium;"
                              rendered="true">
             <amx:panelLabelAndMessage label="Delivery" inlineStyle="text-align:left;" id="plam133">
                 <amx:outputText value="#{pageFlowScope.DELIVERYID}" styleClass="adfmf-listItem-captionText" id="ot12"/>
@@ -84,18 +84,20 @@
                 <amx:spacer width="10" id="s21"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl12">
                     <amx:spacer width="10" id="s22"/>
-                    <amx:panelGroupLayout layout="horizontal"
-                                          inlineStyle="border-color:#34aadc; outline-color:#34AADC; outline-width:thin; outline-style:solid; border-left-color:#34AADC; border-right-color:#34AADC; border-top-color:#34AADC; border-bottom-color:#34AADC;"
-                                          id="pgl13">
-                        <amx:inputText hintText="Ship Method" inlineStyle="text-align:left;" id="it3"
-                                       value="#{pageFlowScope.SHIPMETHOD}"/>
-                        <amx:commandLink id="cl5" >
+                    <amx:panelGroupLayout layout="horizontal" id="pgl13">
+                        <!--amx:inputText hintText="Ship Method" inlineStyle="text-align:left;" id="it3"
+                                       value="#{pageFlowScope.SHIPMETHOD}"/-->
+                        <amx:selectOneChoice value="#{pageFlowScope.SHIPMETHOD}" id="soc1">
+                            <amx:selectItem label="Choose" value="0" id="si6"/>
+                            <amx:selectItems value="#{bindings.shipMethod.items}" id="si1"/>
+                        </amx:selectOneChoice>
+                        <!--amx:commandLink id="cl5" >
                             <amx:outputHtml id="oh5" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
                             <amx:setPropertyListener id="spl14" to="#{pageFlowScope.receivingType}" from="#{'C'}"/>
                             <amx:setPropertyListener id="spl7" to="#{pageFlowScope.pTypeSalesOrd}"
                                                      from="#{'DIRECT_SHIP'}"/>
                         </amx:commandLink>
-                        <amx:spacer width="10" id="s23"/>
+                        <amx:spacer width="10" id="s23"/-->
                     </amx:panelGroupLayout>
                     <amx:spacer width="10" id="s24"/>
                     <amx:commandLink id="cl6" actionListener="#{viewScope.BarCodeBean.scanBarcode}">
@@ -105,10 +107,9 @@
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
-            
             <amx:panelLabelAndMessage label="Waybill" inlineStyle="text-align:center;" id="plam14">
                 <amx:outputText value="#{pageFlowScope.WAYBILL}" styleClass="adfmf-listItem-captionText" id="ot18"/>
             </amx:panelLabelAndMessage>
         </amx:panelFormLayout>
-  </amx:panelPage>
+    </amx:panelPage>
 </amx:view>

@@ -137,6 +137,8 @@
         <page path="/dcom.shop.Transaction/page/ReceivingTxn/Receiving.amx"
               usageId="dcom_shop_mobile_ReceivingPageDef"/>
         <page path="/dcom.shop.Transaction/LpnTransactions.amx" usageId="dcom_shop_mobile_LpnTransactionsPageDef"/>
+        <page path="/dcom.shop.Transaction/page/ShippingTxn/DeliveryPG.amx"
+              usageId="dcom_shop_mobile_DeliveryPGPageDef"/>
     </pageMap>
     <pageDefinitionUsages>        
     <page id="dcom_shop_mobile_MissingLPNsPageDef"
@@ -253,6 +255,7 @@
         <page id="dcom_shop_mobile_ReceiveLPNPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.ReceiveLPNPageDef"/>
         <page id="dcom_shop_mobile_ReceivingPageDef" path="dcom.shop.Transaction.page.ReceivingTxn.ReceivingPageDef"/>
         <page id="dcom_shop_mobile_LpnTransactionsPageDef" path="dcom.shop.Transaction.LpnTransactionsPageDef"/>
+        <page id="dcom_shop_mobile_DeliveryPGPageDef" path="dcom.shop.Transaction.page.ShippingTxn.DeliveryPGPageDef"/>
     </pageDefinitionUsages>
     <dataControlUsages>
         <dc id="CountUtilBean" path="dcom.shop.mobile.CountUtilBean"/>

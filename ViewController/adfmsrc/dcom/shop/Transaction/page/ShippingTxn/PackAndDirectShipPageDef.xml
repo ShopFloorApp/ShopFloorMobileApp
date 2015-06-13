@@ -19,25 +19,23 @@
     <accessorIterator MasterBinding="salesOrderIterator" Binds="lines" RangeSize="25" DataControl="ReceivingTxnDC"
                       BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderLineBO"
                       id="linesIterator"/>
-    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="salesOrderLines" RangeSize="25"
+    <accessorIterator MasterBinding="ReceivingTxnDCIterator" Binds="salesOrderLines" RangeSize="-1"
                       DataControl="ReceivingTxnDC"
                       BeanClass="dcom.shop.application.mobile.transaction.receiving.SalesOrderLineBO"
                       id="salesOrderLinesIterator"/>
     <accessorIterator MasterBinding="SubinventoryDCIterator" Binds="subinventory" RangeSize="-1"
                       DataControl="SubinventoryDC" BeanClass="dcom.shop.application.mobile.SubinventoryBO"
                       id="subinventoryIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="PackAndDirectShipDC" id="PackAndDirectShipDCIterator"/>
+    <accessorIterator MasterBinding="PackAndDirectShipDCIterator" Binds="packTxns" RangeSize="25"
+                      DataControl="PackAndDirectShipDC" BeanClass="dcom.shop.application.mobile.transaction.PackTxnBO"
+                      id="packTxnsIterator"/>
   </executables>
   <bindings>
     <methodAction id="refreshToLocators" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refreshToLocators"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
     <methodAction id="refresh" RequiresUpdateModel="true" Action="invokeMethod" MethodName="refresh"
                   IsViewObjectMethod="false" DataControl="LocatorDC" InstanceName="data.LocatorDC.dataProvider"/>
-    <list IterBinding="salesOrderLinesIterator" ListOperMode="navigation" ListIter="salesOrderLinesIterator"
-          id="salesOrderLines" DTSupportsMRU="true" SelectItemValueMode="ListObject">
-      <AttrNames>
-        <Item Value="LINENUM"/>
-      </AttrNames>
-    </list>
     <list IterBinding="subinventoryIterator" ListOperMode="navigation" ListIter="subinventoryIterator"
           id="subinventory" DTSupportsMRU="true" SelectItemValueMode="ListObject">
       <AttrNames>
@@ -79,5 +77,24 @@
     <methodAction id="callOnHandService" RequiresUpdateModel="true" Action="invokeMethod" MethodName="callOnHandService"
                   IsViewObjectMethod="false" DataControl="OnHandSearchDC"
                   InstanceName="data.OnHandSearchDC.dataProvider"/>
+    <tree IterBinding="packTxnsIterator" id="packTxns">
+      <nodeDefinition DefName="dcom.shop.application.mobile.transaction.PackTxnBO" Name="packTxns0">
+        <AttrNames>
+          <Item Value="trxnId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ReceivingTxnDCIterator" id="salesOrderLines" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="false" ListIter="salesOrderLinesIterator">
+      <AttrNames>
+        <Item Value="salesOrderLineNum"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="LINENUM"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="LINENUM"/>
+      </ListDisplayAttrNames>
+    </list>
   </bindings>
 </pageDefinition>

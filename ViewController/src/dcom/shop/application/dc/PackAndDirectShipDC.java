@@ -1,17 +1,26 @@
 package dcom.shop.application.dc;
 
 import dcom.shop.application.base.SyncUtils;
+import dcom.shop.application.database.ConnectionFactory;
 import dcom.shop.application.mobile.PackAndDirectShipBO;
-import dcom.shop.application.mobile.PackAndDirectShipBO;
-import dcom.shop.application.mobile.txn.ConcurrentProgramBO;
+import dcom.shop.application.mobile.transaction.PackTxnBO;
 import dcom.shop.restURIDetails.RestCallerUtil;
-import dcom.shop.restURIDetails.RestURI;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+
+import javax.el.ValueExpression;
 
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.util.Utility;
+import oracle.adfmf.util.logging.Trace;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -26,6 +35,7 @@ public class PackAndDirectShipDC extends SyncUtils{
     protected static List s_packAndDirectShip = new ArrayList();
     private static final String NOT_REACHABLE = "NotReachable"; // Indiates no network connectivity
     
+    protected static List<PackTxnBO> s_packTxns = new ArrayList<PackTxnBO>();;
     
     public void syncLocalDB(){
             s_packAndDirectShip.clear();
@@ -102,4 +112,76 @@ public class PackAndDirectShipDC extends SyncUtils{
         PackAndDirectShipBO[] arr = (PackAndDirectShipBO[]) s_packAndDirectShip.toArray(new PackAndDirectShipBO[s_packAndDirectShip.size()]);
         return arr;
     }
+    
+    public synchronized List<PackTxnBO> getPackTxns() {
+        s_packTxns.clear();
+        s_packTxns = selectPackTxns(s_packTxns);
+        int trxnId = s_packTxns.size();
+         AdfmfJavaUtilities.setELValue("#{pageFlowScope.SubinvTrxnId}", trxnId);
+         Map map = (Map)AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
+         return s_packTxns;
+    }
+
+    public static List<PackTxnBO> selectPackTxns(List<PackTxnBO> packTxns) {
+
+        //   ArrayList stocks = new ArrayList();
+
+        int recordCount = 0;
+        try {
+            Connection conn = ConnectionFactory.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM PACKTXN ORDER BY TRXNID");
+
+            while (rs.next()) {
+                recordCount++;
+            }
+
+            rs.beforeFirst();
+
+            while (rs.next()) {
+                int trxnid = rs.getInt(1);
+                String dockDoor = rs.getString(2);
+                String lpn = rs.getString(3);
+                String subInv = rs.getString(4);
+                String locator = rs.getString(5);
+                String item = rs.getString(6);
+                String Qty = rs.getString(7);
+                String orderNum = rs.getString(8);
+                String lineNUm = rs.getString(9);
+                String serialControl = rs.getString(16);
+                String lotControl = rs.getString(17);
+
+                if (packTxns != null && packTxns.size() >= recordCount) {
+                    PackTxnBO packTxn = (PackTxnBO) packTxns.get(trxnid);
+                    packTxn.setTrxnId(trxnid);
+                    packTxn.setDockDoor(dockDoor);
+                    packTxn.setLPN(lpn);
+                    packTxn.setSubInv(subInv);
+                    packTxn.setLocator(locator);
+                    packTxn.setItem(item);
+                    packTxn.setQty(Qty);
+                    packTxn.setOrderNum(orderNum);
+                    packTxn.setLineNum(lineNUm);
+                    packTxn.setSerialControl(serialControl);
+                    packTxn.setLotControl(lotControl);
+                } else {
+                    PackTxnBO packTxn =
+                        new PackTxnBO(trxnid, dockDoor, lpn, subInv, locator, item,
+                                              Qty, orderNum, lineNUm, serialControl, lotControl);
+                    packTxns.add(packTxn);
+                }
+            }
+
+        } catch (SQLException e) {
+            Trace.log(Utility.ApplicationLogger, Level.SEVERE, PackAndDirectShipDC.class, "packTxns",
+                      "##############SQL Exception:  " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception exception) {
+            Trace.log(Utility.ApplicationLogger, Level.SEVERE, PackAndDirectShipDC.class, "packTxns",
+                      "##############Exception:  " + exception.getMessage());
+
+        }
+        return packTxns;
+    }
+
 }

@@ -20,6 +20,8 @@
             <amx:listItem action="PackAndDirectShip" id="li1" showLinkIcon="false">
                 <amx:outputText value="Pack and Direct Ship" id="ot2"/>
                 <amx:setPropertyListener id="spl1" to="#{pageFlowScope.LpnPage}" from="UNPACK_FROM" type="action"/>
+                <amx:setPropertyListener id="spl5" to="#{pageFlowScope.serialControl}" from="1" type="action"/>
+                <amx:setPropertyListener id="spl6" to="#{pageFlowScope.lotControl}" from="1" type="action"/>
             </amx:listItem>
             <amx:listItem id="li2" action="pickRel" showLinkIcon="false">
                 <amx:outputText value="Perform Pick Release" id="ot3"/>

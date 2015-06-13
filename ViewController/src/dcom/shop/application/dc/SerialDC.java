@@ -168,7 +168,7 @@ public class SerialDC extends SyncUtils {
 
     public void insertSerials(String trxnId, String fromSerial, String toSerial, String trxType) {
         s_insertSerials.clear();
-        long qty = Long.parseLong(toSerial) - Long.parseLong(fromSerial) + 1L;
+        long qty = Long.parseLong(toSerial.replaceAll("[^0-9]", "")) - Long.parseLong(fromSerial.replaceAll("[^0-9]", "")) + 1L;
         qtyEntered = qtyEntered +  Integer.parseInt(Long.toString(qty));
         Map pageFlow = (Map) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope}");
         ValueExpression ve = AdfmfJavaUtilities.getValueExpression("#{pageFlowScope.SerialQty}", String.class);
