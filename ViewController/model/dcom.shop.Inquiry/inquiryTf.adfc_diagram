@@ -149,7 +149,7 @@
       <property
          name="fromsrcid">__1</property>
       <property
-         name="sdm:polyPoints">T44,101.0,131.68048,277.5,24.226562,B39</property>
+         name="sdm:polyPoints">T44,101.0,131.35568,281.0,23.942383,B44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"

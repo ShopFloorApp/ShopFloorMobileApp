@@ -27,8 +27,8 @@
                     <amx:rowLayout id="rl">
                         <amx:cellFormat id="cf5" inlineStyle="margin-left:10px;" width="100%">
                             <amx:tableLayout id="tl3" width="100%">
-                                <amx:rowLayout id="rl4">
-                                    <amx:cellFormat id="cf4" columnSpan="2">
+                                <amx:rowLayout id="rl4" >
+                                    <amx:cellFormat id="cf4" width = "100%">
                                         <amx:outputText value='#{row.CATALOGNAME}' id="ot4"
                                                         inlineStyle="font-weight:bold;/>                                         "/>
                                     </amx:cellFormat>
