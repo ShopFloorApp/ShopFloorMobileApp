@@ -28,6 +28,7 @@ public class ProductCategDC {
 
     List s_categList = new ArrayList();
     public ProductCategEntity[] getAllItemCateg() {
+        s_categList.clear();
         ValueExpression ve = null;
 
 
