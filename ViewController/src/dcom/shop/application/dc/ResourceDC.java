@@ -50,7 +50,7 @@ public class ResourceDC extends SyncUtils {
                 "       \"PRESOURCE\": \"\"\n }\n" + "}\n" + "}\n";
             System.out.println("Calling create method");
             String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
-            System.out.println("Received response");
+            System.out.println("Received response.");
             if (jsonArrayAsString != null) {
                 JSONObject jsObject1 = null;
                 try {
