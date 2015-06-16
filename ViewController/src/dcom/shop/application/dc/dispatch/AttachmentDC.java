@@ -77,7 +77,7 @@ public class AttachmentDC {
                                 fileName = (String) jsObject.get("P_FILE_NAME");
                                 //bytes = (fileData.getBytes());
                                 System.out.println(" bytes is " + bytes);
-                                File file = new File(filePath + "/" + fileName);
+                                File file = new File(filePath + "/" + fileName.replace(' ', '_'));
                                 System.out.println("After File");
                                 if (file.exists()) {
                                     file.delete();
@@ -98,7 +98,7 @@ public class AttachmentDC {
                                     }
                                 }
                                 AdfmfJavaUtilities.setELValue("#{pageFlowScope.filePath}",
-                                                              "file://" + filePath + "/" + fileName);
+                                                              "file://" + filePath + "/" + fileName.replace(' ', '_'));
 
                                 MethodExpression me =
                                     AdfmfJavaUtilities.getMethodExpression("#{bindings.displayFile.execute}",
@@ -109,6 +109,9 @@ public class AttachmentDC {
                         }
                     } catch (Exception e) {
                         e.getMessage();
+                        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
+                                                                                  "showAlert", new Object[] {
+                                                                                  "Error", e.getCause(), "ok"});
                     }
                 }
                 return "";
