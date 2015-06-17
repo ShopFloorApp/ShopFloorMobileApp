@@ -165,15 +165,7 @@ public class MtlTxnSearchEntity extends AEntity  {
         return COSTED;
     }
 
-    public void setTRXQTY(Integer TRXQTY) {
-        Integer oldTRXQTY = this.TRXQTY;
-        this.TRXQTY = TRXQTY;
-        propertyChangeSupport.firePropertyChange("TRXQTY", oldTRXQTY, TRXQTY);
-    }
 
-    public Integer getTRXQTY() {
-        return TRXQTY;
-    }
 
     public void setTXNUOM(String TXNUOM) {
         String oldTXNUOM = this.TXNUOM;
@@ -274,7 +266,17 @@ public class MtlTxnSearchEntity extends AEntity  {
     private String DESTLOCATOR;
     private String SOURCECODE;
     private String COSTED;
-    private Integer TRXQTY;
+    private float TRXQTY;
+
+    public void setTRXQTY(float TRXQTY) {
+        float oldTRXQTY = this.TRXQTY;
+        this.TRXQTY = TRXQTY;
+        propertyChangeSupport.firePropertyChange("TRXQTY", oldTRXQTY, TRXQTY);
+    }
+
+    public float getTRXQTY() {
+        return TRXQTY;
+    }
     private String TXNUOM;
     private String GLACCOUNT;
     private String ACCOUNTALIAS;

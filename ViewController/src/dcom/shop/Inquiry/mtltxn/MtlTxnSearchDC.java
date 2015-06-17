@@ -141,11 +141,12 @@ public class MtlTxnSearchDC {
                         mtlTxnItems.setTRXQTY(Integer.parseInt((jsObjectArrayData.get("TRXQTY").toString())));
                         mtlTxnItems.setTXNUOM((jsObjectArrayData.get("TXNUOM").toString()));
                         
-                        String txnDateStr = ((jsObjectArrayData.get("TRXDATE").toString())).substring(0, 10);
+                         String txnDateStr = ((jsObjectArrayData.get("TRXDATE").toString())).substring(0, 10);
                         try{
-                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+                           SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");    
                             Date date = formatter.parse(txnDateStr);
                             System.out.println(date);
+
                             System.out.println(formatter.format(date));
                             SimpleDateFormat formatter1 = new SimpleDateFormat("dd-mm-yyyy");
                             Date date1 = formatter1.parse(txnDateStr);
@@ -180,7 +181,7 @@ public class MtlTxnSearchDC {
                     mtlTxnItems.setSOURCELOCATOR((jsObject2.get("SOURCELOCATOR").toString()));
                     mtlTxnItems.setTRXTYPE((jsObject2.get("TRXTYPE").toString()));
                     mtlTxnItems.setTRXREF(Integer.parseInt((jsObject2.get("TRXREF").toString())));
-                    mtlTxnItems.setTRXQTY(Integer.parseInt((jsObject2.get("TRXQTY").toString())));
+                    mtlTxnItems.setTRXQTY(Float.valueOf((jsObject2.get("TRXQTY").toString())));
                     mtlTxnItems.setTXNUOM((jsObject2.get("TXNUOM").toString()));
                     String txnDateStr = ((jsObject2.get("TRXDATE").toString())).substring(0, 10);
                     try{
@@ -203,16 +204,19 @@ public class MtlTxnSearchDC {
                 }
             }
 
-            mtlTxnArray = (MtlTxnSearchEntity[]) s_mtlTxnList.toArray(new MtlTxnSearchEntity[s_mtlTxnList.size()]);
 
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "MtlTxnSearchEntity", e.getLocalizedMessage());
         }
+        mtlTxnArray = (MtlTxnSearchEntity[]) s_mtlTxnList.toArray(new MtlTxnSearchEntity[s_mtlTxnList.size()]);
         if(s_mtlTxnList.size()!=0){
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTxnSearchResults}", "");
         }else{
             AdfmfJavaUtilities.setELValue("#{pageFlowScope.MtlTxnSearchResults}", "No Results Found");
         }
+        
+        
+
         return mtlTxnArray;
     }
     public String toDateTime(String value){

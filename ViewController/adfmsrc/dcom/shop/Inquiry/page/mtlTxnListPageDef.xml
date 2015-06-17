@@ -14,11 +14,6 @@
       <nodeDefinition DefName="dcom.shop.Inquiry.mtltxn.MtlTxnSearchEntity" Name="allmtlTxn0">
         <AttrNames>
           <Item Value="TRXREF"/>
-          <Item Value="ITEM"/>
-          <Item Value="SOURCELOCATOR"/>
-          <Item Value="SOURCSUBINV"/>
-          <Item Value="TRXQTY"/>
-          <Item Value="TRXTYPE"/>
           <Item Value="ACCOUNTALIAS"/>
           <Item Value="COSTED"/>
           <Item Value="CREATEDBY"/>
@@ -27,14 +22,19 @@
           <Item Value="DESTORG"/>
           <Item Value="DESTSUBINV"/>
           <Item Value="GLACCOUNT"/>
+          <Item Value="ITEM"/>
           <Item Value="LPN"/>
           <Item Value="REASON"/>
           <Item Value="SOURCECODE"/>
+          <Item Value="SOURCELOCATOR"/>
           <Item Value="SOURCEORGCODE"/>
           <Item Value="SOURCETYPE"/>
+          <Item Value="SOURCSUBINV"/>
           <Item Value="TRXDATE"/>
           <Item Value="TRXNACTION"/>
+          <Item Value="TRXQTY"/>
           <Item Value="TRXSOURCE"/>
+          <Item Value="TRXTYPE"/>
           <Item Value="TXNUOM"/>
         </AttrNames>
       </nodeDefinition>

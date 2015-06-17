@@ -21,7 +21,7 @@
                       fetchSize="#{bindings.allmtlTxn.rangeSize}"
                       selectedRowKeys="#{bindings.allmtlTxn.collectionModel.selectedRow}"
                       selectionListener="#{bindings.allmtlTxn.collectionModel.makeCurrent}"
-                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1" layout="cards">
+                      showMoreStrategy="autoScroll" bufferStrategy="viewport" id="lv1">
             <amx:listItem id="li1" showLinkIcon="false" action="mtlTxnDetails">
                 <amx:tableLayout width="100%" id="tl">
                     <amx:rowLayout id="rl">
