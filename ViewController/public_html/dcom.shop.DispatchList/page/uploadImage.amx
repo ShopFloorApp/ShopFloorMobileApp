@@ -35,7 +35,7 @@
                     <amx:rowLayout id="rl1">
                         <amx:cellFormat id="cf1" columnSpan="2">
                             <amx:image id="i1" source='#{"data:image/gif;base64,"+row.imageDataB64}'
-                                       inlineStyle="width:100%; "/>
+                                       inlineStyle="width:60%;max-width:100%;margin-top:10px" />
                         </amx:cellFormat>
                     </amx:rowLayout>
                     <amx:rowLayout id="rl2">

@@ -22,6 +22,7 @@ import oracle.adf.model.datacontrols.device.DeviceManager;
 import oracle.adf.model.datacontrols.device.DeviceManagerFactory;
 
 import oracle.adfmf.dc.ws.rest.RestServiceAdapter;
+import oracle.adfmf.framework.api.AdfmfContainerUtilities;
 import oracle.adfmf.framework.api.AdfmfJavaUtilities;
 import oracle.adfmf.java.beans.ProviderChangeListener;
 import oracle.adfmf.java.beans.ProviderChangeSupport;
@@ -90,15 +91,15 @@ public class UploadImageDC {
         DeviceManager dm = DeviceManagerFactory.getDeviceManager();
         String imageDataB64 =
             dm.getPicture(50, DeviceManager.CAMERA_DESTINATIONTYPE_DATA_URL,
-                          DeviceManager.CAMERA_SOURCETYPE_CAMERA, true, DeviceManager.CAMERA_ENCODINGTYPE_PNG, 0,
-                          0);
-        try {
+                          DeviceManager.CAMERA_SOURCETYPE_CAMERA, true, DeviceManager.CAMERA_ENCODINGTYPE_PNG, 720,
+                          720);
+        /*try {
             imageDataB64 = URLEncoder.encode(imageDataB64, java.nio.charset.StandardCharsets.UTF_8.toString());
         } catch (Exception e) {
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "invokeRestRequest",
                       "Invoke of REST Resource failed for " + RestServiceAdapter.REQUEST_TYPE_POST + " to ");
             Trace.log("REST_JSON", Level.SEVERE, this.getClass(), "invokeRestRequest", e.getLocalizedMessage());
-        }
+        }*/
 
         //Fetch Value of Job Number and Job Op
         String jobOps = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.jobOps}").toString();
@@ -107,6 +108,9 @@ public class UploadImageDC {
         String fileName = jobNumber + ":" + jobOps + ":" + date.getTime();
         UploadImageBO newImage = new UploadImageBO("PNG", "", imageDataB64, fileName);
         imagesList.add(newImage);
+        AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
+                                                                  "Success", "Image clicked, Please click on upload button to store on server", "ok"
+        });
         providerChangeSupport.fireProviderRefresh("uploadImage");
     }
 
