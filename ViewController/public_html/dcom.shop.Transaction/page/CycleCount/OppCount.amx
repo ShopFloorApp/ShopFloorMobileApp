@@ -2,6 +2,34 @@
 <amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
           xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
     <amx:panelPage id="pp1">
+    
+    <amx:verbatim id="v1">
+         <![CDATA[
+        <script type="text/javascript">
+        function scanBarcodeFromJavaBean(options)
+        {
+            cordova.plugins.barcodeScanner.scan(
+              function(result)
+              {
+               // Note that you could also use adf.mf.api.invokeMethod() to invoke Java methods directly if 
+                // you do not want to use EL expressions.
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                       "value": result.text}, 
+                                       function() {}, 
+                                       function() {});
+              },
+              function(error)
+              {
+                alert("Scanning failed: " + error);
+                adf.mf.api.setValue( { "name": "#{viewScope.BarcodeBean.barcodeResult}", 
+                                        "value": "Error = " + error.text }, 
+                                        function() {}, 
+                                        function() {});
+              }
+            );
+        }
+        </script>
+    ]]></amx:verbatim>
         <amx:facet name="header">
             <amx:outputText value="Opportunity Counting" id="ot1"/>
         </amx:facet>
@@ -104,6 +132,8 @@
                     <amx:spacer width="10" id="s10"/>
                     <amx:commandLink id="cl10" actionListener="#{viewScope.BarcodeBean.scanBarcode}">
                         <amx:outputHtml id="oh8" styleClass="fa fa-barcode fa-lg" inlineStyle="color:#34AADC; "/>
+                        <amx:setPropertyListener id="spl11" from="LPN" to="#{pageFlowScope.barCodeField}"
+                                                 type="action"/>
                     </amx:commandLink>
                 </amx:panelGroupLayout>
             </amx:panelLabelAndMessage>
