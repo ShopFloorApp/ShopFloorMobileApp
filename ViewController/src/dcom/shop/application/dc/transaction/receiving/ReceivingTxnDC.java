@@ -1078,7 +1078,7 @@ public class ReceivingTxnDC extends SyncUtils {
                                                                           "Receiving Transaction",
                                                                           "Status : Success \n" + msg, "Ok"
                 });
-                refreshShipments();
+//                refreshShipments();
             } else {
                 AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(),
                                                                           "showAlert", new Object[] {
