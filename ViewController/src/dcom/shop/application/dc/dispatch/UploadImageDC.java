@@ -90,9 +90,9 @@ public class UploadImageDC {
     public void addImage() {
         DeviceManager dm = DeviceManagerFactory.getDeviceManager();
         String imageDataB64 =
-            dm.getPicture(50, DeviceManager.CAMERA_DESTINATIONTYPE_DATA_URL,
-                          DeviceManager.CAMERA_SOURCETYPE_CAMERA, true, DeviceManager.CAMERA_ENCODINGTYPE_PNG, 720,
-                          720);
+            dm.getPicture(40, DeviceManager.CAMERA_DESTINATIONTYPE_DATA_URL,
+                          DeviceManager.CAMERA_SOURCETYPE_CAMERA, true, DeviceManager.CAMERA_ENCODINGTYPE_PNG, 100,
+                          100);
         /*try {
             imageDataB64 = URLEncoder.encode(imageDataB64, java.nio.charset.StandardCharsets.UTF_8.toString());
         } catch (Exception e) {
