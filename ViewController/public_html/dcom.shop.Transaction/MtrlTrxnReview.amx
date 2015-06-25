@@ -7,14 +7,15 @@
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cb3" action="cancel">
-               <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
+                <amx:panelGroupLayout id="pglbackBtn" layout="horizontal">
                     <amx:outputHtml id="backArw" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="backTxt" value="Back" inlineStyle="margin-left:5px;"/>
                 </amx:panelGroupLayout>
             </amx:commandLink>
         </amx:facet>
         <amx:facet name="secondary">
-            <amx:commandLink id="cl1" action="miscTransaction" actionListener="#{pageFlowScope.TransactionUtilityBean.getLocation}">
+            <amx:commandLink id="cl1" action="miscTransaction"
+                             actionListener="#{pageFlowScope.TransactionUtilityBean.getLocation}">
                 <amx:panelGroupLayout id="pgl1" layout="horizontal">
                     <amx:outputHtml id="oh1" value="Add"/>
                 </amx:panelGroupLayout>
@@ -23,6 +24,8 @@
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl3"/>
                 <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl12"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.quantity}" id="spl5"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="spl27"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.onHandQty}" id="spl28"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.searchKeyword}" id="spl4"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.uom}" id="spl6"/>
                 <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.description}" id="spl10"/>
@@ -109,6 +112,8 @@
                                          to="#{pageFlowScope.FromSubinventory}" id="spl15"/>
                 <amx:setPropertyListener from="#{row.quantity}" type="action" to="#{pageFlowScope.quantity}"
                                          id="spl16"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.availableQty}" id="spl31"/>
+                <amx:setPropertyListener from="" type="action" to="#{pageFlowScope.onHandQty}" id="spl32"/>
                 <amx:setPropertyListener from="#{row.itemNumber}" type="action" to="#{pageFlowScope.searchKeyword}"
                                          id="spl17"/>
                 <amx:setPropertyListener from="#{row.txnUom}" type="action" to="#{pageFlowScope.uom}" id="spl18"/>
