@@ -6,7 +6,8 @@
             <amx:outputText value="On Hand Search Results" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
-            <amx:commandLink id="cl1" action="#{pageFlowScope.NavigationVarUtilBean.getOnhandNavigations}">
+            <amx:commandLink id="cl1" action="#{pageFlowScope.NavigationVarUtilBean.getOnhandNavigations}" 
+                actionListener="#{SearchUtilBean.clearOnHandPageStart}">
                 <amx:panelGroupLayout id="pgl3" layout="horizontal">
                     <amx:outputHtml id="oh1" styleClass="fa fa-angle-left fa-lg"/>
                     <amx:outputHtml id="oh2" value="Back" inlineStyle="margin-left:5px;"/>

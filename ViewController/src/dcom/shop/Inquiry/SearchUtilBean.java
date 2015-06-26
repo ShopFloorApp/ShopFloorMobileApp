@@ -41,7 +41,9 @@ public class SearchUtilBean {
     public void clearOnHandPageStart(ActionEvent actionEvent) {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.searchKeyword}", null);
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.ItemLovPage}", null);
-        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", null); 
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.costGrp}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromSubinventory}", null);
+        AdfmfJavaUtilities.setELValue("#{pageFlowScope.FromLocator}", null);
     }
 
     public void clearTrxPageStart(ActionEvent actionEvent) {
@@ -51,4 +53,6 @@ public class SearchUtilBean {
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.LpnLovPage}", null);       
         AdfmfJavaUtilities.setELValue("#{pageFlowScope.txnType}", null);   
     }
+
+
 }

@@ -60,7 +60,7 @@ public class OnHandSearchDC {
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
             "                 },\n" + "   \"InputParameters\": \n" + "     {\"PONHANDREQ\": {\"ORGCODE\": \"" +
             orgCode + "\",\"ITEM\": \"" + item + "\",\"SUBINV\": \"" + subinv + "\",\"LOCATOR\": \"" + locator +
-            "\",\"COSTGROUP\": \"\"}}\n" + "}\n" + "}";
+            "\",\"COSTGROUP\": \""+costGroup+"\"}}\n" + "}\n" + "}";
 
         String jsonArrayAsString = (rcu.invokeUPDATE(restURI, payload)).toString();
         OnHandSearchEntity[] onHandArray = null;
