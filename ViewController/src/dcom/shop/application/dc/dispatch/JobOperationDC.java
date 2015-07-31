@@ -79,7 +79,7 @@ public class JobOperationDC extends AViewObject {
             isSortOperation = false;
         }
         sJobOperation = jobOpList.toArray(new JobOperationBO[jobOpList.size()]);
-        providerChangeSupport.fireProviderRefresh("jobOperationBO");
+        //providerChangeSupport.fireProviderRefresh("jobOperationBO");
     }
 
     public void getFromWS() {
@@ -185,7 +185,8 @@ public class JobOperationDC extends AViewObject {
             orderByClause = "ORDER BY " + sortByCol + " ASC";
         }
         jobOpList = super.getFilteredCollectionFromDB(JobOperationBO.class, orderByClause);
-        fetchData();
+//        fetchData();
+        providerChangeSupport.fireProviderRefresh("jobOperationBO");
     }
 
     public void addProviderChangeListener(ProviderChangeListener l) {
