@@ -99,6 +99,12 @@ public class RestURI {
     public static String PostCycleCountSubinvURI() {
         return CYCLE_COUNT_SUBINV_URI;
     }
+    
+    private static final String CYCLE_COUNT_TASKS_URI = "/webservices/rest/DcomGetTaskDtls/get_task_details/";
+
+    public static String PostCycleCountTasksURI() {
+        return CYCLE_COUNT_TASKS_URI;
+    }
 
     private static final String ProgramListURI = "/webservices/rest/DCOMSRS/getproglist/";
     private static final String ProgramParamsURI = "/webservices/rest/DCOMSRS/getprogparam/";

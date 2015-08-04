@@ -67,7 +67,7 @@
       <property
          name="fromOutcome">oppCount</property>
       <property
-         name="sdm:polyPoints">R46,355.0,201.69531,514.954,199.5918,L46</property>
+         name="sdm:polyPoints">R50,400.66565,141.49414,515.0,199.5918,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -77,7 +77,7 @@
       <property
          name="fromOutcome">oppCountBack</property>
       <property
-         name="sdm:polyPoints">L54,515.0,206.5918,355.04602,208.69531,R54</property>
+         name="sdm:polyPoints">L54,513.34503,206.5918,399.0,148.49414,R58</property>
    </ControlFlowCase>
    <View
       id="View8">
@@ -185,9 +185,9 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">205.5459</property>
+         name="y">141.84473</property>
       <property
-         name="x">314.0</property>
+         name="x">358.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -197,7 +197,7 @@
       <property
          name="fromOutcome">oppCountName</property>
       <property
-         name="sdm:polyPoints">R46,97.0,250.34473,272.04785,201.69531,L46</property>
+         name="sdm:polyPoints">R46,97.0,250.34473,315.31027,137.99414,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -207,7 +207,7 @@
       <property
          name="fromOutcome">oppCountNameBack</property>
       <property
-         name="sdm:polyPoints">L54,273.0,208.69531,97.94965,257.34473,R54</property>
+         name="sdm:polyPoints">L54,317.0,144.99414,98.68396,257.34473,R54</property>
    </ControlFlowCase>
    <View
       id="View19">
@@ -232,7 +232,7 @@
       <property
          name="fromOutcome">cycleCountLOV</property>
       <property
-         name="sdm:polyPoints">T56,317.5,151.19531,431.68848,65.0459,L50</property>
+         name="sdm:polyPoints">R42,399.0,134.49414,431.68848,65.0459,L50</property>
    </ControlFlowCase>
    <WildcardControlFlowRule
       id="WildcardControlFlowRule21">
@@ -251,7 +251,7 @@
       <property
          name="fromOutcome">txnDone</property>
       <property
-         name="sdm:polyPoints">B50,356.0,74.94824,310.5,148.4866,T44</property>
+         name="sdm:polyPoints">B50,356.0,74.94824,358.0,87.49414,T50</property>
    </ControlFlowCase>
    <View
       id="View23">
@@ -301,7 +301,7 @@
       <property
          name="fromOutcome">LotEntry</property>
       <property
-         name="sdm:polyPoints">T50,817.0,125.84473,943.5,47.0459,B50</property>
+         name="sdm:polyPoints">T50,817.0,125.143555,943.5,47.0459,B50</property>
    </ControlFlowCase>
    <View
       id="View29">
@@ -321,22 +321,22 @@
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase30"
-      from="View16"
+      from="View2"
       to="View29">
       <property
          name="fromOutcome">taskCount</property>
       <property
-         name="sdm:polyPoints">B44,310.5,259.2482,312.5,391.5459,T33</property>
+         name="sdm:polyPoints">B44,52.5,311.77704,280.05936,449.0459,L54</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase31"
       from="View29"
-      to="View16">
+      to="View2">
       <property
          name="fromOutcome">taskBack</property>
       <property
-         name="sdm:polyPoints">T44,319.5,391.493,317.5,259.1953,B56</property>
+         name="sdm:polyPoints">L46,282.0,442.0459,59.5,307.84473,B56</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -346,7 +346,7 @@
       <property
          name="fromOutcome">taskCount</property>
       <property
-         name="sdm:polyPoints">T56,326.5,388.31137,545.5,257.0918,B33</property>
+         name="sdm:polyPoints">T44,319.5,387.5348,545.5,257.0918,B33</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -356,6 +356,25 @@
       <property
          name="fromOutcome">taskCountBack</property>
       <property
-         name="sdm:polyPoints">B44,552.5,261.00815,333.5,391.5459,T67</property>
+         name="sdm:polyPoints">B44,552.5,261.07242,326.5,391.5459,T56</property>
+   </ControlFlowCase>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule34">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">471.89648</property>
+      <property
+         name="x">546.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase35"
+      from="WildcardControlFlowRule34"
+      to="View29">
+      <property
+         name="fromOutcome">picknextTask</property>
+      <property
+         name="sdm:polyPoints">L50,510.0,472.0459,364.0,445.5459,R50</property>
    </ControlFlowCase>
 </SDM>

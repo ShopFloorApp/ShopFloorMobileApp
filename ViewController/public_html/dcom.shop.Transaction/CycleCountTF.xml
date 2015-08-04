@@ -62,6 +62,10 @@
         <from-outcome>oppCountName</from-outcome>
         <to-activity-id>OppCountName</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome>taskCount</from-outcome>
+        <to-activity-id>TaskList</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__4">
       <from-activity-id>OppCount</from-activity-id>
@@ -122,10 +126,6 @@
         <from-outcome>cycleCountLOV</from-outcome>
         <to-activity-id>CycleCountLOVPG</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__24">
-        <from-outcome>taskCount</from-outcome>
-        <to-activity-id>TaskList</to-activity-id>
-      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__20">
       <from-activity-id>*</from-activity-id>
@@ -138,11 +138,18 @@
       <from-activity-id>TaskList</from-activity-id>
       <control-flow-case id="__26">
         <from-outcome>taskBack</from-outcome>
-        <to-activity-id>OppCountName</to-activity-id>
+        <to-activity-id>cycleCount</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__27">
         <from-outcome>taskCount</from-outcome>
         <to-activity-id>OppCount</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome>picknextTask</from-outcome>
+        <to-activity-id>TaskList</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <page-flow-scope-behavior>

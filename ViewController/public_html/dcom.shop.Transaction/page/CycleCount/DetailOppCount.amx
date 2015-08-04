@@ -164,7 +164,7 @@
                     </amx:cellFormat>
                     <amx:cellFormat id="cf11">
                         <amx:commandLink id="cl4C"  actionListener="#{CountUtilBean.callCountRestService}"
-                                         action="txnDone">
+                                         action="#{StateListenerBean.navigateDetailCount}">
                             <amx:tableLayout id="tl5t" halign="center">
                                 <amx:rowLayout id="rl14">
                                     <amx:cellFormat id="cf11c" halign="center">
