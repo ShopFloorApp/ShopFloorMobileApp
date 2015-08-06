@@ -483,7 +483,8 @@ public class StateListener {
         String item =
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}") == null ? "" :
             AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchLpnKeyword}").toString();
-        String lpnPage = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnLovPage}").toString();
+        String lpnPage =AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnLovPage}") == null ? "":
+            AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LpnLovPage}").toString();
         if (item.length() < 3 || item == null) {
 
             AdfmfContainerUtilities.invokeContainerJavaScriptFunction(AdfmfJavaUtilities.getFeatureId(), "showAlert", new Object[] {
