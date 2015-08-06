@@ -108,9 +108,10 @@ public class ReceivingTxnDC extends SyncUtils {
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"" + orgCode +
             "\"\n" + "                 },\n" + "   \"InputParameters\": \n" + "                   {\"POU\": \"\",\n" +
-            "                   \"PORGCODE\": \"" + orgCode + "\",\n" + "                   \"PTYPE\": \"" + pType +
-            "\",\n" + "                   \"PORDER\": \"" + documentNo + "\",\n" +
-            ("DIRECT_SHIP".equals(pType) ? "                   \"PITEM\": \"" + item + "\"\n" : "") + "\n }\n" + "}\n" +
+            "                   \"PORGCODE\": \"" + orgCode + "\",\n" + 
+            "                   \"PTYPE\": \"" + pType + "\",\n" + 
+            "                   \"PORDER\": \"" + documentNo + "\"\n" +
+            ("DIRECT_SHIP".equals(pType) ? "                   \",PITEM\": \"" + item + "\"\n" : "") + "\n }\n" + "}\n" +
             "}\n";
         System.out.println("Calling create method");
         String jsonArrayAsString = rcu.invokeUPDATE(restURI, payload);
