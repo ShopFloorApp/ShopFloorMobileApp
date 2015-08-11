@@ -186,7 +186,7 @@ public class JobOperationDC extends AViewObject {
         }
         jobOpList = super.getFilteredCollectionFromDB(JobOperationBO.class, orderByClause);
         fetchData();
-//        providerChangeSupport.fireProviderRefresh("jobOperationBO");
+        //        providerChangeSupport.fireProviderRefresh("jobOperationBO");
     }
 
     public void addProviderChangeListener(ProviderChangeListener l) {
@@ -200,8 +200,9 @@ public class JobOperationDC extends AViewObject {
     public void saveJobAction(JobOperationBO jobOperation) {
         String status = null;
         String message = null;
+
         RestCallerUtil restCallerUtil = new RestCallerUtil();
-        JobOperationBO[] jobOprArray = null;
+
         String orgCode =
             AdfmfJavaUtilities.evaluateELExpression("#{preferenceScope.feature.dcom.shop.MyWarehouse.OrgCodePG.OrgCode}").toString();
         String deptCode = AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.deptName}").toString();
@@ -227,11 +228,39 @@ public class JobOperationDC extends AViewObject {
                 if (jsonArrayAsString != null) {
                     try {
                         JSONParser parser = new JSONParser();
-                        //Object object;
+
                         JSONObject jsonObject = (JSONObject) parser.parse(jsonArrayAsString);
-                        //JSONObject jsonObject = (JSONObject) object;
+
                         JSONObject jsObject = (JSONObject) jsonObject.get("OutputParameters");
                         status = jsObject.get("XSTATUS").toString();
+
+                        if (status.equals("S")) {
+                            /*
+                             * Update Job Status
+                             * Valid Actions are as below
+                             * Unrelease Job
+                             * Release Job
+                             * Put Job On Hold
+                             */
+
+                            //Search for this Job in Job List
+                            int index = jobOpList.indexOf(jobOperation);
+                            String newJobStatus = "";
+                            switch (pAction) {
+                            case "Unrelease Job":
+                                newJobStatus = "Unreleased";
+                                break;
+                            case "Release Job":
+                                newJobStatus = "Released";
+                                break;
+                            case "Put Job On Hold":
+                                newJobStatus = "On Hold";
+                                break;
+                            }
+                            jobOperation.setJobStatus(newJobStatus);
+                            jobOpList.set(index, jobOperation);
+                        }
+
                         message = jsObject.get("XMSG").toString();
                         trxResult = new TrxResult(status, message);
                         String result = trxResult.getResult();
