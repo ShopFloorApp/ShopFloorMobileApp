@@ -32,7 +32,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="locator"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <list IterBinding="SubinventoryDCIterator" id="subFromInv" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -45,7 +44,6 @@
       </ListAttrNames>
       <ListDisplayAttrNames>
         <Item Value="subinv"/>
-        <Item Value="description"/>
       </ListDisplayAttrNames>
     </list>
     <tree IterBinding="lpnTrxnsIterator" id="lpnTrxns">
