@@ -32,24 +32,24 @@
             </amx:facet>
             <amx:validationGroup id="vg1">
                 <amx:panelFormLayout id="pfl1">
-                    <amx:selectOneChoice value="#{pageFlowScope.docRefLineAdd}" label="#{bindings.item.label}" id="soc1"
+                    <amx:selectOneChoice value="#{pageFlowScope.docRefLineAdd}" label="Item" id="soc1"
                                          showRequired="true" required="true"
                                          valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.lineItemChange}">
                         <amx:selectItem label=" " id="sikk4"/>
                         <amx:selectItems value="#{bindings.item.items}" id="si1"/>
                     </amx:selectOneChoice>                    
-                    <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="#{bindings.subinv.label}" id="soc2"
+                    <amx:selectOneChoice value="#{pageFlowScope.subInvAdd}" label="Sub-Inventory" id="soc2"
                                          valueChangeListener="#{pageFlowScope.ReceivingTxnUtilBean.subInvChnage}"
                                          required="true" showRequired="true">
                         <amx:selectItem label=" " id="si5"/>
                         <amx:selectItems value="#{bindings.subinv.items}" id="si2"/>
                     </amx:selectOneChoice>
-                    <amx:selectOneChoice value="#{pageFlowScope.locatorAdd}" label="#{bindings.locator.label}"
+                    <amx:selectOneChoice value="#{pageFlowScope.locatorAdd}" label="Locator"
                                          id="soc3">
                         <amx:selectItem label=" " id="si6"/>
                         <amx:selectItems value="#{bindings.locator.items}" id="si3"/>
                     </amx:selectOneChoice>
-                    <amx:selectOneChoice value="#{pageFlowScope.uomAdd}" label="#{bindings.UOM.label}" id="soc5">
+                    <amx:selectOneChoice value="#{pageFlowScope.uomAdd}" label="UOM" id="soc5">
                         <amx:selectItem label=" " id="si9"/>
                         <amx:selectItems value="#{bindings.UOM.items}" id="si8"/>
                     </amx:selectOneChoice>
