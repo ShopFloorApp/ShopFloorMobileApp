@@ -42,6 +42,7 @@
                                     <amx:cellFormat id="cf2" columnSpan="1">
                                         <amx:outputText value='#{row.SUBINVENTORY}/#{row.LOCATOR}' id="ot6"
                                                     inlineStyle="font-size:small; color:GrayText;"/>
+                                                     
                                     </amx:cellFormat>
                                     <amx:cellFormat id="cf3" columnSpan="1">
                                         <amx:outputText id="ot5" value="#{row.LPN}"
@@ -62,6 +63,9 @@
               <amx:setPropertyListener id="sp7" from="#{row.UOM}" type="action" to="#{pageFlowScope.uom}"/>
               <amx:setPropertyListener id="sp8" from="#{row.OHQTY}" type="action" to="#{pageFlowScope.availQty}"/>
               <amx:setPropertyListener id="sp9" from="#{row.ITEM_DESC}" type="action" to="#{pageFlowScope.description}"/>
+              <amx:setPropertyListener id="sp10" from="#{row.CC_ENTRY_ID}" type="action" to="#{pageFlowScope.ccEntryId}"/>
+              <amx:setPropertyListener id="sp11" from="#{row.LOTCONTROL}" type="action" to="#{pageFlowScope.lotControl}"/>
+              <amx:setPropertyListener id="sp12" from="#{row.SERIALCONTROL}" type="action" to="#{pageFlowScope.serialControl}"/>
               
       </amx:listItem>
     </amx:listView>

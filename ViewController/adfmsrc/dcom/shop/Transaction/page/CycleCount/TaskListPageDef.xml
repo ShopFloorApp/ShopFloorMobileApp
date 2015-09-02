@@ -20,6 +20,9 @@
           <Item Value="OHQTY"/>
           <Item Value="UOM"/>
           <Item Value="ITEM_DESC"/>
+          <Item Value="CC_ENTRY_ID"/>
+          <Item Value="LOTCONTROL"/>
+          <Item Value="SERIALCONTROL"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

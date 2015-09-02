@@ -564,6 +564,16 @@ public class StateListener {
         }
         
     }
+    
+    public String renderSummBtn(){
+        String countCallingPage = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.countCallingPg}");
+        if("TaskCountTxn".equals(countCallingPage)){
+            return "False";
+        }
+        else{
+            return "True";
+        }
+    }
 
     public String navigateDetailCount() {
         String countCallingPage = (String) AdfmfJavaUtilities.getELValue("#{pageFlowScope.countCallingPg}");

@@ -90,6 +90,9 @@ public class TaskCountDC {
                         taskItems.setUOM((jsObjectArrayData.get("UOM").toString()));
                         taskItems.setOHQTY(Float.valueOf((jsObjectArrayData.get("OHQTY").toString())));
                         taskItems.setITEM_DESC((jsObjectArrayData.get("ITEM_DESC").toString()));
+                        taskItems.setCC_ENTRY_ID(Integer.parseInt((jsObjectArrayData.get("CC_ENTRY_ID").toString())));
+                        taskItems.setLOTCONTROL((jsObjectArrayData.get("LOTCONTROL").toString()));
+                        taskItems.setSERIALCONTROL((jsObjectArrayData.get("SERIALCONTROL").toString()));
                         
                         
                         s_TaskList.add(taskItems);
@@ -107,6 +110,9 @@ public class TaskCountDC {
                     taskItems.setUOM((jsObject2.get("UOM").toString()));
                     taskItems.setOHQTY(Float.valueOf((jsObject2.get("OHQTY").toString())));
                     taskItems.setITEM_DESC((jsObject2.get("ITEM_DESC").toString()));
+                    taskItems.setCC_ENTRY_ID(Integer.parseInt((jsObject2.get("CC_ENTRY_ID").toString())));
+                    taskItems.setLOTCONTROL((jsObject2.get("LOTCONTROL").toString()));
+                    taskItems.setSERIALCONTROL((jsObject2.get("SERIALCONTROL").toString()));
                     s_TaskList.add(taskItems);
                     
                 }

@@ -44,6 +44,7 @@
       <amx:commandButton id="cb2" rendered="false"/>
     </amx:facet>
     <amx:panelFormLayout id="pfl1" labelPosition="topStart">
+    
      <amx:panelLabelAndMessage label="Item Number" id="plm1">
                 <amx:spacer width="10" id="s11"/>
                 <amx:panelGroupLayout layout="horizontal" id="pgl6">

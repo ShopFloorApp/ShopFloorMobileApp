@@ -66,6 +66,39 @@ public class TaskCountEntityBean {
     private String CCNAME;
     private String UOM;
     private float OHQTY;
+    private int CC_ENTRY_ID;
+
+    public void setCC_ENTRY_ID(int CC_ENTRY_ID) {
+        int oldCC_ENTRY_ID = this.CC_ENTRY_ID;
+        this.CC_ENTRY_ID = CC_ENTRY_ID;
+        propertyChangeSupport.firePropertyChange("CC_ENTRY_ID", oldCC_ENTRY_ID, CC_ENTRY_ID);
+    }
+
+    public int getCC_ENTRY_ID() {
+        return CC_ENTRY_ID;
+    }
+
+    public void setLOTCONTROL(String LOTCONTROL) {
+        String oldLOTCONTROL = this.LOTCONTROL;
+        this.LOTCONTROL = LOTCONTROL;
+        propertyChangeSupport.firePropertyChange("LOTCONTROL", oldLOTCONTROL, LOTCONTROL);
+    }
+
+    public String getLOTCONTROL() {
+        return LOTCONTROL;
+    }
+
+    public void setSERIALCONTROL(String SERIALCONTROL) {
+        String oldSERIALCONTROL = this.SERIALCONTROL;
+        this.SERIALCONTROL = SERIALCONTROL;
+        propertyChangeSupport.firePropertyChange("SERIALCONTROL", oldSERIALCONTROL, SERIALCONTROL);
+    }
+
+    public String getSERIALCONTROL() {
+        return SERIALCONTROL;
+    }
+    private String LOTCONTROL;
+    private String SERIALCONTROL;
 
     public void setOHQTY(float OHQTY) {
         float oldOHQTY = this.OHQTY;
