@@ -322,37 +322,43 @@ public class LpnTxnDC extends SyncUtils {
             filterSerials(item.getItemId());
 
             LotBO lot = new LotBO();
-            Iterator j = s_filteredLotTrxns.iterator();
-            //if (s_filteredLotTrxns.size() > 0) {
-            payload = payload + ",\"LOTS\": { \"LOTS_ITEM\": [   ";
+            
+            if (s_filteredLotTrxns.size() > 0) {
+                Iterator j = s_filteredLotTrxns.iterator();
+                payload = payload + ",\"LOTS\": { \"LOTS_ITEM\": [   ";
 
-            //}
-            while (j.hasNext()) {
-                lot = (LotBO) j.next();
-                payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
-
+            
+                while (j.hasNext()) {
+                    lot = (LotBO) j.next();
+                    payload = payload + "{\"LOT\":\"" + lot.getLotNo() + "\",\"LOTQTY\": \"" + lot.getLotQty() + "\"},";
+    
+                }
+                payload = payload.substring(0, payload.length() - 1);
+                payload = payload + "]},";
             }
-            payload = payload.substring(0, payload.length() - 1);
             SerialBO serial = new SerialBO();
-            Iterator i = s_filteredSerialTrxns.iterator();
+            
             if (s_filteredSerialTrxns.size() > 0) {
-                payload = payload + "]},\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
+                Iterator i = s_filteredSerialTrxns.iterator();
+                payload = payload + "\"SERIALS\": { \"XXDCOM_SERIAL_TAB\": [";
 
 
+            
+                while (i.hasNext()) {
+                    serial = (SerialBO) i.next();
+                    payload =
+                        payload + "{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" +
+                        serial.getToSerial() + "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
+    
+                }
+                payload = payload.substring(0, payload.length() - 1);
+                payload = payload + "]},";
             }
-            while (i.hasNext()) {
-                serial = (SerialBO) i.next();
-                payload =
-                    payload + "{\"FROMSERIAL\":\"" + serial.getFromSerial() + "\",\"TOSERIAL\": \"" +
-                    serial.getToSerial() + "\",\"SERIALQTY\": \"" + serial.getSerialQty() + "\"},";
-
-            }
-            payload = payload.substring(0, payload.length() - 1);
-            payload = payload + "]}},";
         }
         payload = payload.substring(0, payload.length() - 1);
-        payload = payload + "]" + "}}}}}";
+        payload = payload + "}]" + "}}}}}";
         try {
+            String x = payload;
             RestCallerUtil rest = new RestCallerUtil();
             String jsonArrayAsString = rest.invokeUPDATE(restURI, payload);
             System.out.println("Received response" + jsonArrayAsString);
