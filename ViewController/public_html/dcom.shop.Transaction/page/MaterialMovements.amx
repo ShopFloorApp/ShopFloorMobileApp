@@ -25,6 +25,10 @@
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
                     <amx:outputText value="Subinventory Transfers" id="ot4"/>
                     <amx:setPropertyListener from="false" type="action" to="#{pageFlowScope.renderButton}" id="sp10"/>
+                    <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderSubInvChoice}" id="spl1"/>
+                    <amx:setPropertyListener from="Yes" type="action" to="#{pageFlowScope.RenderLocChoice}" id="spl2"/>
+                    <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromLocator}" id="spl38"/>
+                    <amx:setPropertyListener from="0" type="action" to="#{pageFlowScope.FromSubinventory}" id="spl39"/>
                 </amx:listItem>
                 <amx:listItem id="li4" showLinkIcon="false" action="mtrTrxn">
                     <?audit suppress oracle.maf.warning-missing-shortDesc?>
