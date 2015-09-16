@@ -89,12 +89,12 @@ public class RestURI {
         return UNLOAD_TRUCK_URI;
     }
 
-    private static final String CYCLE_COUNT_URI = "/webservices/rest/DCOMCycleCntSvc/processcyclecount/";
+    private static final String CYCLE_COUNT_URI = "/webservices/rest/DCOMCC/processcyclecount/";
 
     public static String PostCycleCountURI() {
         return CYCLE_COUNT_URI;
     }
-    private static final String CYCLE_COUNT_SUBINV_URI = "/webservices/rest/DCOMCycleCntSvc/get_subinventory_in_cc/";
+    private static final String CYCLE_COUNT_SUBINV_URI = "/webservices/rest/DCOMCC/get_subinventory_in_cc/";
 
     public static String PostCycleCountSubinvURI() {
         return CYCLE_COUNT_SUBINV_URI;
