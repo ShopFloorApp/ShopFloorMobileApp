@@ -20,7 +20,7 @@
             <amx:panelFormLayout id="pf1" labelPosition="topStart">
                 <amx:panelLabelAndMessage label="Delivery Number" inlineStyle="text-align:center;" id="plam33">
                     <amx:panelGroupLayout id="pgl1" layout="horizontal">
-                        <amx:inputText hintText="Delivery Number" id="it1" value="#{pageFlowScope.dlvNumber}"
+                        <amx:inputText hintText="Delivery Number" id="it1" value="#{pageFlowScope.delvName}"
                                        required="true" label="Delivery Number" simple="true" showRequired="true"/>
                         <amx:commandLink id="cb3" action="delvLov">
                             <amx:outputHtml id="oh3" styleClass="fa fa-search fa-lg" inlineStyle="color:#34AADC;"/>
