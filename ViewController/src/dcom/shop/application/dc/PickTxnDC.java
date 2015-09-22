@@ -256,7 +256,7 @@ public class PickTxnDC {
         String packSlipNum = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PackSlipNum}");
         String lotAlloc = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotAlloc}");
         String serialAlloc = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialAlloc}");
-        String taskId = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickTaskId}");
+        String taskId = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.taskId}")== null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.taskId}"));
         String subInv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromSubinventory}");
         String locator = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.FromLocator}");
         String toSubinv = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ToSubinventory}");
@@ -265,10 +265,10 @@ public class PickTxnDC {
         String item = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.searchKeyword}");
         String itemDesc = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.ItemDesc}");
         String txnQty = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickQty}");
-        String trxnHdrId = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickTrxHdrId}");
+        String trxnHdrId = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickTrxHdrId}")== null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickTrxHdrId}"));
         String serialControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.SerialControl}");
         String lotControl = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.LotControl}");
-        String pickId = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickId}");
+        String pickId = (String) (AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickId}")== null?"":AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.PickId}"));
         String xferlpn = (String) AdfmfJavaUtilities.evaluateELExpression("#{pageFlowScope.XferLPN}");
         
 
