@@ -141,10 +141,8 @@ public class transactionUtil {
 
         RestCallerUtil rcu = new RestCallerUtil();
         String payload =
-            "{\n" + "\"PickRelease_Input\":\n" + "{\n" +
-            "\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/pickrelease/\",\n" +
-            "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/header\",\n" +
-            "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
+"{\n" + "  \"Input_Parameters\": {\n" + "    \"RESTHeader\": {\n" +
+"                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
@@ -182,7 +180,8 @@ public class transactionUtil {
                 } catch (ClassCastException e1) {
                     JSONObject jsObject1 = (JSONObject) jsObject.get("XLPN");
                     if (jsObject1 != null) {
-                        return "missing";
+                        //return "missing";
+                        System.out.println("object is"+jsObject1);
                     }
                 }
             } catch (ParseException e) {
@@ -203,10 +202,8 @@ public class transactionUtil {
         // RestCallerUtil rcu = new RestCallerUtil();
         //System.out.println("values to method are 1 "+orgCode);
         String payload1 =
-            "{\n" + "\"PickRelease_Input\":\n" + "{\n" +
-            "\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/pickrelease/\",\n" +
-            "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/header\",\n" +
-            "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
+"{\n" + "  \"Input_Parameters\": {\n" + "    \"RESTHeader\": {\n" +
+"                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
@@ -272,10 +269,8 @@ public class transactionUtil {
         RestCallerUtil rcu = new RestCallerUtil();
         System.out.println("values to method are 1 " + orgCode);
         String payload =
-            "{\n" + "\"PickRelease_Input\":\n" + "{\n" +
-            "\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/pickrelease/\",\n" +
-            "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/header\",\n" +
-            "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
+"{\n" + "  \"Input_Parameters\": {\n" + "    \"RESTHeader\": {\n" +
+"                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
             "                  \"NLSLanguage\": \"AMERICAN\",\n" + "                  \"Org_Id\": \"82\"\n" +
@@ -340,9 +335,7 @@ public class transactionUtil {
         RestCallerUtil rcu = new RestCallerUtil();
         System.out.println("values to method are 1 " + orgCode);
         String payload =
-            "{\n" + "\"PickRelease_Input\":\n" + "{\n" +
-            "\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/pickrelease/\",\n" +
-            "   \"RESTHeader\": {\"@xmlns\": \"http://xmlns.oracle.com/apps/per/rest/dcomship/header\",\n" +
+        "{\n" + "  \"Input_Parameters\": {\n" + "    \"RESTHeader\": {\n" +
             "                  \"Responsibility\": \"DCOM_MOBILE_USER\",\n" +
             "                  \"RespApplication\": \"INV\",\n" +
             "                  \"SecurityGroup\": \"STANDARD\",\n" +
