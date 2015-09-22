@@ -32,7 +32,7 @@
         </script>
     ]]></amx:verbatim>
         <amx:facet name="header">
-            <amx:outputText value="Pick Release" id="ot1"/>
+            <amx:outputText value="Paper Based Picking" id="ot1"/>
         </amx:facet>
         <amx:facet name="primary">
             <amx:commandLink id="cl1" action="Back">
